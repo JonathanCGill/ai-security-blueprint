@@ -115,39 +115,6 @@ Every safety layer emits structured events:
 
 ![Aggregation Pipeline](../images/aggregation-pipeline.svg)
 
-```
-┌─────────────┐  ┌─────────────┐  ┌─────────────┐
-│ Guardrails  │  │   Judge     │  │   Formal    │
-│   Events    │  │   Events    │  │   Verify    │
-└──────┬──────┘  └──────┬──────┘  └──────┬──────┘
-       │                │                │
-       └────────────────┼────────────────┘
-                        ▼
-              ┌─────────────────┐
-              │  Event Stream   │
-              │  (Kafka, etc.)  │
-              └────────┬────────┘
-                       ▼
-              ┌─────────────────┐
-              │   Aggregator    │
-              │  - Sessionize   │
-              │  - Correlate    │
-              │  - Enrich       │
-              └────────┬────────┘
-                       ▼
-              ┌─────────────────┐
-              │  Alert Store    │
-              │  (Time-series)  │
-              └────────┬────────┘
-                       │
-        ┌──────────────┼──────────────┐
-        ▼              ▼              ▼
-   ┌─────────┐   ┌──────────┐   ┌──────────┐
-   │ Anomaly │   │Dashboard │   │  Alerts  │
-   │   ML    │   │ & Query  │   │ & Pages  │
-   └─────────┘   └──────────┘   └──────────┘
-```
-
 ### ML Anomaly Detection
 
 **Baseline modeling**:
