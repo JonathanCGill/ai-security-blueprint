@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+  </defs>
+  
+  <style>
+    .title { font: bold 16px Inter, system-ui, sans-serif; fill: #1e293b; }
+    .subtitle { font: 12px Inter, system-ui, sans-serif; fill: #64748b; }
+    .authority-title { font: bold 13px Inter, system-ui, sans-serif; fill: white; }
+    .authority-role { font: 10px Inter, system-ui, sans-serif; fill: rgba(255,255,255,0.9); }
+    .detail { font: 10px Inter, system-ui, sans-serif; fill: #475569; }
+    .timing { font: bold 10px Inter, system-ui, sans-serif; fill: #64748b; }
+    .label { font: 9px Inter, system-ui, sans-serif; fill: #64748b; }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">Three Independent Decision Authorities</text>
+  <text x="400" y="48" text-anchor="middle" class="subtitle">AI is one voice, not the final word</text>
+  
+  <!-- Authority 1: Fraud Engines -->
+  <rect x="50" y="80" width="200" height="140" rx="12" fill="url(#blueGrad)"/>
+  <text x="150" y="110" text-anchor="middle" class="authority-title">FRAUD ENGINES</text>
+  <text x="150" y="128" text-anchor="middle" class="authority-role">Deterministic Risk Signals</text>
+  
+  <rect x="65" y="140" width="170" height="65" rx="6" fill="rgba(255,255,255,0.15)"/>
+  <text x="150" y="158" text-anchor="middle" class="authority-role">• Rules engines</text>
+  <text x="150" y="173" text-anchor="middle" class="authority-role">• Behavioural analytics</text>
+  <text x="150" y="188" text-anchor="middle" class="authority-role">• Sanctions screening</text>
+  
+  <rect x="90" y="230" width="120" height="24" rx="4" fill="#1e40af"/>
+  <text x="150" y="246" text-anchor="middle" class="authority-role">INLINE (~ms)</text>
+  
+  <!-- Arrow 1→2 -->
+  <line x1="250" y1="150" x2="290" y2="150" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="270" y="140" text-anchor="middle" class="label">signals</text>
+  
+  <!-- Authority 2: Agentic AI -->
+  <rect x="300" y="80" width="200" height="140" rx="12" fill="url(#purpleGrad)"/>
+  <text x="400" y="110" text-anchor="middle" class="authority-title">AGENTIC AI</text>
+  <text x="400" y="128" text-anchor="middle" class="authority-role">Analysis & Recommendations</text>
+  
+  <rect x="315" y="140" width="170" height="65" rx="6" fill="rgba(255,255,255,0.15)"/>
+  <text x="400" y="158" text-anchor="middle" class="authority-role">• Context aggregation</text>
+  <text x="400" y="173" text-anchor="middle" class="authority-role">• Narrative generation</text>
+  <text x="400" y="188" text-anchor="middle" class="authority-role">• Triage recommendation</text>
+  
+  <rect x="340" y="230" width="120" height="24" rx="4" fill="#5b21b6"/>
+  <text x="400" y="246" text-anchor="middle" class="authority-role">NEAR-RT (~sec)</text>
+  
+  <!-- Arrow 2→3 -->
+  <line x1="500" y1="150" x2="540" y2="150" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="520" y="140" text-anchor="middle" class="label">recommends</text>
+  
+  <!-- Authority 3: Human Analyst -->
+  <rect x="550" y="80" width="200" height="140" rx="12" fill="url(#amberGrad)"/>
+  <text x="650" y="110" text-anchor="middle" class="authority-title">HUMAN ANALYST</text>
+  <text x="650" y="128" text-anchor="middle" class="authority-role">Final Arbitration</text>
+  
+  <rect x="565" y="140" width="170" height="65" rx="6" fill="rgba(255,255,255,0.15)"/>
+  <text x="650" y="158" text-anchor="middle" class="authority-role">• Review all evidence</text>
+  <text x="650" y="173" text-anchor="middle" class="authority-role">• Override AI if needed</text>
+  <text x="650" y="188" text-anchor="middle" class="authority-role">• Final decision authority</text>
+  
+  <rect x="590" y="230" width="120" height="24" rx="4" fill="#b45309"/>
+  <text x="650" y="246" text-anchor="middle" class="authority-role">MINUTES+</text>
+  
+  <!-- Correlation bar -->
+  <rect x="50" y="280" width="700" height="50" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="400" y="300" text-anchor="middle" class="timing">All stages emit telemetry, correlated by:</text>
+  <text x="400" y="320" text-anchor="middle" class="detail" style="font-family: monospace;">transaction_id + case_id</text>
+  
+  <!-- Key insight -->
+  <rect x="200" y="350" width="400" height="36" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+  <text x="400" y="373" text-anchor="middle" class="detail" style="font-weight:bold;">AI proposes interpretation. Fraud engines enforce. Humans arbitrate.</text>
+</svg>

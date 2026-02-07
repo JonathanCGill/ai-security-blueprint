@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 700" width="1100" height="700">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#dc2626"/>
+    </marker>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d9488"/>
+      <stop offset="100%" style="stop-color:#0f766e"/>
+    </linearGradient>
+  </defs>
+  
+  <style>
+    .title { font: bold 18px Inter, system-ui, sans-serif; fill: #1e293b; }
+    .subtitle { font: 12px Inter, system-ui, sans-serif; fill: #64748b; }
+    .section-title { font: bold 12px Inter, system-ui, sans-serif; fill: white; }
+    .section-time { font: 10px Inter, system-ui, sans-serif; fill: rgba(255,255,255,0.85); }
+    .box-title { font: bold 10px Inter, system-ui, sans-serif; fill: #1e293b; }
+    .box-detail { font: 9px Inter, system-ui, sans-serif; fill: #64748b; }
+    .label { font: 9px Inter, system-ui, sans-serif; fill: #64748b; }
+    .alert { font: bold 9px Inter, system-ui, sans-serif; fill: #dc2626; }
+  </style>
+  
+  <!-- Background -->
+  <rect width="1100" height="700" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="550" y="32" text-anchor="middle" class="title">AI-Assisted Fraud Analytics Architecture</text>
+  <text x="550" y="52" text-anchor="middle" class="subtitle">Sentinel AI: Analyst amplifier within existing fraud control chain</text>
+  
+  <!-- ============================================== -->
+  <!-- INLINE BAND (Green) -->
+  <!-- ============================================== -->
+  <rect x="30" y="75" width="200" height="280" rx="10" fill="#22c55e" opacity="0.08"/>
+  <rect x="30" y="75" width="200" height="40" rx="10" fill="url(#greenGrad)"/>
+  <rect x="30" y="105" width="200" height="10" fill="url(#greenGrad)"/>
+  <text x="130" y="98" text-anchor="middle" class="section-title">INLINE (~ms)</text>
+  <text x="130" y="112" text-anchor="middle" class="section-time">Fraud engines dominate</text>
+  
+  <!-- Transaction -->
+  <rect x="50" y="130" width="160" height="40" rx="6" fill="white" stroke="#22c55e" stroke-width="2"/>
+  <text x="130" y="152" text-anchor="middle" class="box-title">Transaction</text>
+  <text x="130" y="165" text-anchor="middle" class="box-detail">Payment/Card/Transfer</text>
+  
+  <line x1="130" y1="170" x2="130" y2="185" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Fraud Engines -->
+  <rect x="50" y="195" width="160" height="70" rx="6" fill="white" stroke="#22c55e" stroke-width="2"/>
+  <text x="130" y="215" text-anchor="middle" class="box-title">Fraud Engines</text>
+  <text x="60" y="232" class="box-detail">• Rules engine</text>
+  <text x="60" y="245" class="box-detail">• Behavioural analytics</text>
+  <text x="60" y="258" class="box-detail">• Sanctions screening</text>
+  
+  <line x1="130" y1="265" x2="130" y2="280" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Block/Hold Decision -->
+  <polygon points="130,290 170,320 130,350 90,320" fill="white" stroke="#22c55e" stroke-width="2"/>
+  <text x="130" y="317" text-anchor="middle" class="box-title" style="font-size:9px">Block?</text>
+  <text x="130" y="330" text-anchor="middle" class="box-title" style="font-size:9px">Hold?</text>
+  
+  <!-- ============================================== -->
+  <!-- NEAR-RT BAND (Purple) -->
+  <!-- ============================================== -->
+  <rect x="250" y="75" width="320" height="280" rx="10" fill="#8b5cf6" opacity="0.08"/>
+  <rect x="250" y="75" width="320" height="40" rx="10" fill="url(#purpleGrad)"/>
+  <rect x="250" y="105" width="320" height="10" fill="url(#purpleGrad)"/>
+  <text x="410" y="98" text-anchor="middle" class="section-title">NEAR-REAL-TIME (~sec)</text>
+  <text x="410" y="112" text-anchor="middle" class="section-time">AI enrichment & triage</text>
+  
+  <!-- Arrow from inline -->
+  <line x1="170" y1="320" x2="265" y2="180" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="218" y="240" class="label">Case</text>
+  
+  <!-- Sentinel AI -->
+  <rect x="270" y="130" width="140" height="100" rx="8" fill="white" stroke="#8b5cf6" stroke-width="3"/>
+  <text x="340" y="152" text-anchor="middle" class="box-title" style="fill:#8b5cf6">★ SENTINEL AI</text>
+  <text x="280" y="172" class="box-detail">• Context aggregation</text>
+  <text x="280" y="185" class="box-detail">• Narrative generation</text>
+  <text x="280" y="198" class="box-detail">• Triage recommendation</text>
+  <text x="280" y="218" class="box-detail" style="font-style:italic">Recommends only</text>
+  
+  <line x1="410" y1="180" x2="430" y2="180" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Guardrails -->
+  <rect x="440" y="130" width="110" height="100" rx="6" fill="white" stroke="#22c55e" stroke-width="2"/>
+  <text x="495" y="152" text-anchor="middle" class="box-title">Guardrails</text>
+  <text x="450" y="172" class="box-detail">• No fraud override</text>
+  <text x="450" y="185" class="box-detail">• No sanctions skip</text>
+  <text x="450" y="198" class="box-detail">• Schema validation</text>
+  <text x="450" y="218" class="box-detail" style="font-style:italic">Enforces policy</text>
+  
+  <!-- RAG -->
+  <rect x="270" y="250" width="140" height="50" rx="6" fill="white" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="340" y="272" text-anchor="middle" class="box-title">RAG Knowledge</text>
+  <text x="340" y="288" text-anchor="middle" class="box-detail">Fraud typologies, history</text>
+  
+  <line x1="340" y1="250" x2="340" y2="230" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- Circuit Breaker -->
+  <rect x="440" y="250" width="110" height="50" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="495" y="272" text-anchor="middle" class="alert">Circuit Breaker</text>
+  <text x="495" y="288" text-anchor="middle" class="box-detail">Auto-bypass if needed</text>
+  
+  <path d="M 495 250 L 495 230" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow-red)"/>
+  
+  <!-- ============================================== -->
+  <!-- HUMAN BAND (Amber) -->
+  <!-- ============================================== -->
+  <rect x="590" y="75" width="220" height="280" rx="10" fill="#f59e0b" opacity="0.08"/>
+  <rect x="590" y="75" width="220" height="40" rx="10" fill="url(#amberGrad)"/>
+  <rect x="590" y="105" width="220" height="10" fill="url(#amberGrad)"/>
+  <text x="700" y="98" text-anchor="middle" class="section-title">HUMAN REVIEW (~min)</text>
+  <text x="700" y="112" text-anchor="middle" class="section-time">Final arbitration</text>
+  
+  <!-- Arrow from near-rt -->
+  <line x1="550" y1="180" x2="605" y2="180" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Analyst Dashboard -->
+  <rect x="610" y="130" width="180" height="120" rx="6" fill="white" stroke="#f59e0b" stroke-width="2"/>
+  <text x="700" y="152" text-anchor="middle" class="box-title">Analyst Dashboard</text>
+  <text x="620" y="172" class="box-detail">• Fraud engine signals</text>
+  <text x="620" y="185" class="box-detail">• AI narrative</text>
+  <text x="620" y="198" class="box-detail">• Behavioural timeline</text>
+  <text x="620" y="211" class="box-detail">• All alerts</text>
+  <text x="620" y="232" class="box-detail" style="font-weight:bold">Decision: Block / Allow / Escalate</text>
+  
+  <!-- Arrow to enforcement -->
+  <line x1="700" y1="250" x2="700" y2="280" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Decision box -->
+  <rect x="640" y="290" width="120" height="45" rx="6" fill="#f59e0b"/>
+  <text x="700" y="312" text-anchor="middle" class="section-title">HUMAN</text>
+  <text x="700" y="327" text-anchor="middle" class="section-time">DECIDES</text>
+  
+  <!-- ============================================== -->
+  <!-- ENFORCEMENT & NEARLINE -->
+  <!-- ============================================== -->
+  <rect x="830" y="75" width="240" height="280" rx="10" fill="#64748b" opacity="0.08"/>
+  <rect x="830" y="75" width="240" height="40" rx="10" fill="#64748b"/>
+  <rect x="830" y="105" width="240" height="10" fill="#64748b"/>
+  <text x="950" y="98" text-anchor="middle" class="section-title">ENFORCEMENT + NEARLINE</text>
+  <text x="950" y="112" text-anchor="middle" class="section-time">Execute & learn</text>
+  
+  <!-- Arrow from human -->
+  <line x1="760" y1="312" x2="845" y2="180" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Enforcement -->
+  <rect x="850" y="130" width="100" height="70" rx="6" fill="white" stroke="#64748b" stroke-width="2"/>
+  <text x="900" y="152" text-anchor="middle" class="box-title">Enforce</text>
+  <text x="860" y="172" class="box-detail">• Payment proc</text>
+  <text x="860" y="185" class="box-detail">• Account ctrl</text>
+  
+  <!-- Nearline Analysis -->
+  <rect x="960" y="130" width="100" height="70" rx="6" fill="white" stroke="#0d9488" stroke-width="2"/>
+  <text x="1010" y="152" text-anchor="middle" class="box-title">Analyse</text>
+  <text x="970" y="172" class="box-detail">• Judge eval</text>
+  <text x="970" y="185" class="box-detail">• Drift detect</text>
+  
+  <!-- Policy Updates -->
+  <rect x="880" y="220" width="150" height="50" rx="6" fill="#0d9488"/>
+  <text x="955" y="245" text-anchor="middle" class="section-title" style="font-size:10px">Policy Updates</text>
+  <text x="955" y="260" text-anchor="middle" class="section-time">Improve over time</text>
+  
+  <!-- Feedback to AI -->
+  <path d="M 880 245 L 340 245 L 340 230" stroke="#0d9488" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  
+  <!-- ============================================== -->
+  <!-- ALERT AGGREGATION SPINE -->
+  <!-- ============================================== -->
+  <rect x="30" y="380" width="1040" height="120" rx="10" fill="#1e293b"/>
+  <text x="550" y="408" text-anchor="middle" class="section-title" style="font-size:14px">ALERT AGGREGATION SPINE</text>
+  <text x="550" y="425" text-anchor="middle" class="section-time">All stages emit events, correlated by transaction_id + case_id</text>
+  
+  <!-- Alert sources -->
+  <line x1="130" y1="355" x2="130" y2="380" stroke="#22c55e" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="340" y1="300" x2="340" y2="380" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="495" y1="300" x2="495" y2="380" stroke="#22c55e" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="700" y1="335" x2="700" y2="380" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="900" y1="200" x2="900" y2="380" stroke="#64748b" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="1010" y1="200" x2="1010" y2="380" stroke="#0d9488" stroke-width="2" stroke-dasharray="4"/>
+  
+  <!-- Aggregation outputs -->
+  <rect x="100" y="445" width="150" height="40" rx="6" fill="#3b82f6"/>
+  <text x="175" y="468" text-anchor="middle" class="section-title" style="font-size:10px">Per-Case Timeline</text>
+  <text x="175" y="480" text-anchor="middle" class="section-time">Full audit trail</text>
+  
+  <rect x="290" y="445" width="150" height="40" rx="6" fill="#8b5cf6"/>
+  <text x="365" y="468" text-anchor="middle" class="section-title" style="font-size:10px">Cross-Case Analytics</text>
+  <text x="365" y="480" text-anchor="middle" class="section-time">Pattern detection</text>
+  
+  <rect x="480" y="445" width="150" height="40" rx="6" fill="#0d9488"/>
+  <text x="555" y="468" text-anchor="middle" class="section-title" style="font-size:10px">ML Anomaly Detection</text>
+  <text x="555" y="480" text-anchor="middle" class="section-time">Drift & clusters</text>
+  
+  <rect x="670" y="445" width="150" height="40" rx="6" fill="#f59e0b"/>
+  <text x="745" y="468" text-anchor="middle" class="section-title" style="font-size:10px">Ops Dashboards</text>
+  <text x="745" y="480" text-anchor="middle" class="section-time">Real-time metrics</text>
+  
+  <rect x="860" y="445" width="150" height="40" rx="6" fill="#dc2626"/>
+  <text x="935" y="468" text-anchor="middle" class="section-title" style="font-size:10px">Circuit Breakers</text>
+  <text x="935" y="480" text-anchor="middle" class="section-time">Auto-protection</text>
+  
+  <!-- ============================================== -->
+  <!-- LEGEND / KEY PRINCIPLES -->
+  <!-- ============================================== -->
+  <rect x="30" y="520" width="1040" height="160" rx="10" fill="white" stroke="#e2e8f0"/>
+  <text x="550" y="545" text-anchor="middle" class="box-title" style="font-size:13px">Key Principles</text>
+  
+  <!-- Principle boxes -->
+  <rect x="50" y="560" width="230" height="50" rx="6" fill="#dbeafe"/>
+  <text x="165" y="580" text-anchor="middle" class="box-title">AI Recommends Only</text>
+  <text x="165" y="598" text-anchor="middle" class="box-detail">Never bypasses fraud engine blocks</text>
+  
+  <rect x="300" y="560" width="230" height="50" rx="6" fill="#fef3c7"/>
+  <text x="415" y="580" text-anchor="middle" class="box-title">Humans Arbitrate</text>
+  <text x="415" y="598" text-anchor="middle" class="box-detail">Final decision authority always human</text>
+  
+  <rect x="550" y="560" width="230" height="50" rx="6" fill="#dcfce7"/>
+  <text x="665" y="580" text-anchor="middle" class="box-title">Guardrails Enforce</text>
+  <text x="665" y="598" text-anchor="middle" class="box-detail">Policy constraints are deterministic</text>
+  
+  <rect x="800" y="560" width="230" height="50" rx="6" fill="#fee2e2"/>
+  <text x="915" y="580" text-anchor="middle" class="box-title">Circuit Breakers Protect</text>
+  <text x="915" y="598" text-anchor="middle" class="box-detail">Auto-bypass AI if misbehaving</text>
+  
+  <!-- Bottom tagline -->
+  <rect x="250" y="625" width="600" height="40" rx="6" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="550" y="650" text-anchor="middle" class="box-title" style="font-size:12px">Disagreements between AI and fraud engines are the most valuable signal</text>
+</svg>
