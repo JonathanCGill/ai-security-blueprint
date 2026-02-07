@@ -50,13 +50,11 @@ Write down your tier. This determines your control requirements.
 
 Every system needs input and output guardrails. Start simple.
 
+![Quick Start Overview](images/quick-start-overview.svg)
+
 ### Input Guardrails
 
-Block obviously malicious inputs before they reach the model:
-
-```
-User Input → [Input Guardrails] → Model
-```
+Block obviously malicious inputs before they reach the model.
 
 **Minimum implementation:**
 - Prompt injection patterns (block known signatures)
@@ -67,11 +65,7 @@ Most platforms provide this. AWS Bedrock Guardrails, Azure Content Safety, or op
 
 ### Output Guardrails
 
-Filter outputs before they reach users:
-
-```
-Model → [Output Guardrails] → User
-```
+Filter outputs before they reach users.
 
 **Minimum implementation:**
 - PII detection (redact or block)

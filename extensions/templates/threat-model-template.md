@@ -278,22 +278,15 @@ Add AI-specific considerations to each category:
 
 ### Attack Trees for AI
 
-Build hierarchical attack paths:
+Build hierarchical attack paths showing how threats branch into specific techniques, and map controls to each:
 
-```
-Root: Cause AI to disclose PII
-├── Direct extraction
-│   ├── Ask directly (blocked by guardrails)
-│   ├── Roleplay scenario (mitigated by Judge)
-│   └── Encoding tricks (partially blocked)
-├── Indirect extraction
-│   ├── Inject via document
-│   ├── Poison context window
-│   └── Manipulate tool responses
-└── Inference
-    ├── Pattern analysis across responses
-    └── Differential queries
-```
+![Attack Tree Example](../../images/attack-tree-pii.svg)
+
+Attack trees help you:
+- Identify all paths to a threat goal
+- Map existing controls to attack paths
+- Find gaps where controls are missing
+- Prioritise mitigations by coverage
 
 ### MITRE ATLAS
 
