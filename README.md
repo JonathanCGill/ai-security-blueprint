@@ -1,4 +1,4 @@
-# AI Governance Framework
+# AI Security Governance Framework
 
 Operational controls for enterprise AI systems.
 
