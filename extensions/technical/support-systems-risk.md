@@ -437,4 +437,4 @@ Use this for each production AI system:
 
 ---
 
-*AI Security Reference Architecture — Discussion Draft*
+*AI Security Blueprint — Discussion Draft*

@@ -289,4 +289,4 @@ For security team:
 
 ---
 
-*AI Security Reference Architecture — Operational Metrics*
+*AI Security Blueprint — Operational Metrics*

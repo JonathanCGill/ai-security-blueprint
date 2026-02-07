@@ -572,4 +572,4 @@ Agentic AI requires controls at three phases:
 
 ---
 
-*AI Security Reference Architecture — Discussion Draft*
+*AI Security Blueprint — Discussion Draft*

@@ -262,4 +262,4 @@ Use this questionnaire when assessing AI vendors, foundation model providers, an
 
 ---
 
-*AI Security Reference Architecture — Vendor Assessment Template*
+*AI Security Blueprint — Vendor Assessment Template*

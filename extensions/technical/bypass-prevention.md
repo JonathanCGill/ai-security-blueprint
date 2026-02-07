@@ -481,4 +481,4 @@ Be honest about what's impossible:
 
 ---
 
-*AI Security Reference Architecture — Bypass Prevention*
+*AI Security Blueprint — Bypass Prevention*

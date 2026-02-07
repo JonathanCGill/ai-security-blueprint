@@ -2,7 +2,7 @@
 
 ## Scope
 
-This security policy applies to the AI Security Reference Architecture documentation and any example code provided.
+This security policy applies to the AI Security Blueprint documentation and any example code provided.
 
 ## Reporting Vulnerabilities
 
@@ -55,4 +55,4 @@ We appreciate responsible disclosure and will acknowledge security researchers w
 
 ---
 
-*AI Security Reference Architecture*
+*AI Security Blueprint*

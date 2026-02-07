@@ -1,4 +1,4 @@
-# Contributing to AI Security Reference Architecture
+# Contributing to AI Security Blueprint
 
 Thank you for your interest in contributing to this project. This document provides guidelines for contributions.
 

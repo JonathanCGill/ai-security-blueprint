@@ -614,4 +614,4 @@ Judge outputs include confidence. Use this to route findings:
 
 ---
 
-*AI Security Reference Architecture — Discussion Draft*
+*AI Security Blueprint — Discussion Draft*

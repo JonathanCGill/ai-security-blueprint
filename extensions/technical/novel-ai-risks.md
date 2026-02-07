@@ -413,4 +413,4 @@ The correct response is not to avoid AI. It's to:
 
 ---
 
-*AI Security Reference Architecture — Discussion Draft*
+*AI Security Blueprint — Discussion Draft*

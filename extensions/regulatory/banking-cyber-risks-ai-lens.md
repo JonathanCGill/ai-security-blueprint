@@ -683,4 +683,4 @@ When banks build AI-powered SaaS solutions for internal use or customer-facing s
 
 ---
 
-*AI Security Reference Architecture — Discussion Draft*
+*AI Security Blueprint — Discussion Draft*

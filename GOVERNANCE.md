@@ -2,7 +2,7 @@
 
 ## Overview
 
-The AI Security Reference Architecture is maintained as an open-source project. This document describes how the project is governed.
+The AI Security Blueprint is maintained as an open-source project. This document describes how the project is governed.
 
 ## Roles
 
@@ -69,4 +69,4 @@ Changes to this governance document follow the "Significant Changes" process.
 
 ---
 
-*AI Security Reference Architecture*
+*AI Security Blueprint*

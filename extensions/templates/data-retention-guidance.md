@@ -291,4 +291,4 @@ Maintain documentation of:
 
 ---
 
-*AI Security Reference Architecture — Data Retention Guidance*
+*AI Security Blueprint — Data Retention Guidance*

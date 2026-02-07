@@ -1,8 +1,8 @@
-# AI Security Governance Framework
+# AI Security Blueprint
 
 Operational controls for enterprise AI systems.
 
-![AI Security Reference Architecture](images/ai-security-tube-map.svg)
+![AI Security Blueprint](images/ai-security-tube-map.svg)
 
 ---
 

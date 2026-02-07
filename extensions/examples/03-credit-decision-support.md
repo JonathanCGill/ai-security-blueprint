@@ -724,4 +724,4 @@ CreditAssist demonstrates CRITICAL-tier implementation with proper control separ
 
 ---
 
-*This worked example is part of the AI Security Reference Architecture — Discussion Draft*
+*This worked example is part of the AI Security Blueprint — Discussion Draft*

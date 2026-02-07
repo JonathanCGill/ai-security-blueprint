@@ -400,4 +400,4 @@ For each AI system, document:
 
 ---
 
-*AI Security Reference Architecture — Discussion Draft*
+*AI Security Blueprint — Discussion Draft*

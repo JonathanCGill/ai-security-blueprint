@@ -446,4 +446,4 @@ FOLLOW-UP ACTIONS
 
 ---
 
-*AI Security Reference Architecture — Incident Response Playbook*
+*AI Security Blueprint — Incident Response Playbook*

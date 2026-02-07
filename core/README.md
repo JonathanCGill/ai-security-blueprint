@@ -1,4 +1,4 @@
-# AI Security Governance Framework — Core
+# AI Security Blueprint — Core
 
 Operational controls for AI systems in production.
 
