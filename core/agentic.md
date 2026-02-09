@@ -17,6 +17,57 @@ Additional controls for AI systems that take autonomous actions.
 
 ---
 
+## The Two Core Problems
+
+Agentic AI security reduces to two problems:
+
+![The Two Core Problems](../images/agentic-two-problems.svg)
+
+| Problem | Question | Failure Mode |
+|---------|----------|--------------|
+| **1. System Access** | Does the agent access only the right systems? | Reaches data/APIs it shouldn't |
+| **2. Request Integrity** | Does the action match the user's actual intent? | Manipulated or misinterpreted requests |
+
+### Problem 1: System Access
+
+The agent should only reach systems it needs, with minimum necessary permissions.
+
+| Control | Implementation |
+|---------|----------------|
+| **Least-privilege credentials** | Agent gets tokens scoped to specific resources |
+| **Network allowlists** | Agent can only reach approved endpoints |
+| **Data views** | Database exposes only permitted subset |
+| **Action allowlists** | Only pre-approved action types permitted |
+| **Blast radius limits** | Maximum records, funds, or scope per action |
+
+**Test:** If the agent is fully compromised, what's the worst it can do? Reduce that.
+
+### Problem 2: Request Integrity
+
+The action the agent takes should match what the user actually wanted.
+
+| Threat | Control |
+|--------|---------|
+| **Injection attacks** | Input guardrails, tool output sanitisation |
+| **Instruction drift** | Anchor to original request, not intermediate reasoning |
+| **Misinterpretation** | Intent confirmation before irreversible actions |
+| **Manipulation via tools** | Treat tool outputs as untrusted data |
+
+**Test:** Can you trace from the user's original request to the final action? Is the link intact?
+
+### Why Both Problems Matter
+
+| Scenario | Access OK? | Integrity OK? | Outcome |
+|----------|------------|---------------|---------|
+| Normal operation | ✓ | ✓ | Correct action |
+| Over-privileged agent | ✗ | ✓ | Correct action, but breach waiting to happen |
+| Injection attack | ✓ | ✗ | Wrong action on right systems |
+| Compromised agent | ✗ | ✗ | Catastrophic — wrong action, broad access |
+
+Both problems must be solved. Solving one doesn't help if the other fails.
+
+---
+
 ## Core Principle
 
 **Infrastructure beats instructions.**
@@ -130,11 +181,28 @@ Agent interactions need deeper evaluation.
 
 ---
 
+## Recovery and Rollback
+
+When integrity is compromised, you need to undo the damage.
+
+| Capability | Purpose |
+|------------|---------|
+| **Action logging** | Full audit trail of what agent did (not just said) |
+| **Reversibility windows** | Delay irreversible actions to allow intervention |
+| **Automated rollback** | Undo actions when integrity breach detected |
+| **Blast radius tracking** | Know exactly what was affected |
+
+Not all actions are reversible. For those that aren't, require human approval.
+
+---
+
 ## Key Takeaways
 
-1. **Enforce via infrastructure** — Agents can ignore instructions
-2. **Validate every action** — Independent of agent reasoning
-3. **Sanitise tool outputs** — They're injection vectors
-4. **Use circuit breakers** — Hard stops that can't be reasoned around
-5. **Require approval for impact** — Irreversible actions need humans
-6. **Monitor aggressively** — Agents can cause harm fast
+1. **Solve both problems** — Access control AND integrity preservation
+2. **Enforce via infrastructure** — Agents can ignore instructions
+3. **Validate every action** — Independent of agent reasoning
+4. **Sanitise tool outputs** — They're injection vectors
+5. **Use circuit breakers** — Hard stops that can't be reasoned around
+6. **Require approval for impact** — Irreversible actions need humans
+7. **Enable rollback** — Assume integrity will sometimes fail
+8. **Monitor aggressively** — Agents can cause harm fast
