@@ -103,6 +103,8 @@ At Stage 4, the system operates at machine speed across potentially thousands of
 
 The three-layer pattern doesn't need to be abandoned. It needs to be **augmented** for multi-agent architectures. The emerging consensus (from OWASP, AWS, and production deployments) points to several new architectural primitives:
 
+[![Multi-Agent Security Architecture](/images/multi-agent-security-architecture.svg)](/images/multi-agent-security-architecture.svg)
+
 ### 1. System-Level Invariant Monitoring
 
 Instead of evaluating individual agent outputs (judge per agent), define **system-level invariants** — properties that must remain true regardless of which agents are involved:
