@@ -266,39 +266,39 @@
   <!-- LINE 6: OPS (Yellow #FFD300, outlined in #B36305) -->
   <!-- ============================================================ -->
   <g id="line-ops">
-    <polyline points="490,810 700,810 920,810 1120,810" 
+    <polyline points="490,785 700,785 920,785 1120,785" 
               fill="none" stroke="#FFD300" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="490,810 700,810 920,810 1120,810" 
+    <polyline points="490,785 700,785 920,785 1120,785" 
               fill="none" stroke="#B36305" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/>
 
-    <use href="#stn" x="490" y="810" stroke="#B36305"/>
-    <text x="490" y="835" text-anchor="middle" font-size="10" font-weight="bold" fill="#B36305">Metrics</text>
+    <use href="#stn" x="490" y="785" stroke="#B36305"/>
+    <text x="490" y="810" text-anchor="middle" font-size="10" font-weight="bold" fill="#B36305">Metrics</text>
 
-    <use href="#stn" x="700" y="810" stroke="#B36305"/>
-    <text x="700" y="835" text-anchor="middle" font-size="10" font-weight="bold" fill="#B36305">SOC Integration</text>
-    <use href="#new-badge" x="700" y="851"/>
+    <use href="#stn" x="700" y="785" stroke="#B36305"/>
+    <text x="700" y="810" text-anchor="middle" font-size="10" font-weight="bold" fill="#B36305">SOC Integration</text>
+    <use href="#new-badge" x="700" y="826"/>
 
-    <use href="#stn" x="920" y="810" stroke="#B36305"/>
-    <text x="920" y="835" text-anchor="middle" font-size="10" font-weight="bold" fill="#B36305">Anomaly Detection Ops</text>
-    <use href="#new-badge" x="920" y="851"/>
+    <use href="#stn" x="920" y="785" stroke="#B36305"/>
+    <text x="920" y="810" text-anchor="middle" font-size="10" font-weight="bold" fill="#B36305">Anomaly Detection Ops</text>
+    <use href="#new-badge" x="920" y="826"/>
 
-    <use href="#stn" x="1120" y="810" stroke="#B36305"/>
-    <text x="1120" y="835" text-anchor="middle" font-size="10" font-weight="bold" fill="#B36305">Cost &amp; Latency</text>
-    <use href="#new-badge" x="1120" y="851"/>
+    <use href="#stn" x="1120" y="785" stroke="#B36305"/>
+    <text x="1120" y="810" text-anchor="middle" font-size="10" font-weight="bold" fill="#B36305">Cost &amp; Latency</text>
+    <use href="#new-badge" x="1120" y="826"/>
   </g>
 
   <!-- ============================================================ -->
   <!-- LINE 7: REGULATORY (Silver #A0A5A9) -->
   <!-- ============================================================ -->
   <g id="line-regulatory">
-    <polyline points="920,900 1120,900 1330,900 1330,448" 
+    <polyline points="920,860 1120,860 1330,860 1330,448" 
               fill="none" stroke="#A0A5A9" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <use href="#stn" x="920" y="900" stroke="#A0A5A9"/>
-    <text x="920" y="925" text-anchor="middle" font-size="10" fill="#555">ISO 42001 Mapping</text>
+    <use href="#stn" x="920" y="860" stroke="#A0A5A9"/>
+    <text x="920" y="885" text-anchor="middle" font-size="10" fill="#555">ISO 42001 Mapping</text>
 
-    <use href="#stn" x="1120" y="900" stroke="#A0A5A9"/>
-    <text x="1120" y="925" text-anchor="middle" font-size="10" fill="#555">EU AI Act</text>
+    <use href="#stn" x="1120" y="860" stroke="#A0A5A9"/>
+    <text x="1120" y="885" text-anchor="middle" font-size="10" fill="#555">EU AI Act</text>
 
     <!-- Connects up to Checklist (already an interchange on Red) -->
   </g>
@@ -308,9 +308,9 @@
   <!-- ============================================================ -->
   <g id="ops-connectors">
     <!-- Metrics up to Guardrails area -->
-    <line x1="490" y1="802" x2="490" y2="710" stroke="#B36305" stroke-width="3" stroke-dasharray="6,4" opacity="0.3"/>
+    <line x1="490" y1="777" x2="490" y2="710" stroke="#B36305" stroke-width="3" stroke-dasharray="6,4" opacity="0.3"/>
     <!-- SOC up to Judge area -->
-    <line x1="700" y1="802" x2="700" y2="710" stroke="#B36305" stroke-width="3" stroke-dasharray="6,4" opacity="0.3"/>
+    <line x1="700" y1="777" x2="700" y2="710" stroke="#B36305" stroke-width="3" stroke-dasharray="6,4" opacity="0.3"/>
   </g>
 
   <!-- ============================================================ -->
