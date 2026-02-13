@@ -111,6 +111,8 @@ Articles explaining the reasoning behind the pattern — suitable for standalone
 | [When Agents Talk to Agents](insights/when-agents-talk-to-agents.md) | Multi-agent systems have accountability gaps |
 | [The Memory Problem](insights/the-memory-problem.md) | Long context and persistent memory introduce novel risks |
 | [You Can't Validate What Hasn't Finished](insights/you-cant-validate-unfinished.md) | Real-time streaming challenges existing validation approaches |
+| [Open-Weight Models Shift the Burden](insights/open-weight-models-shift-the-burden.md) | Self-hosted models inherit the provider's control responsibilities |
+| [When the Judge Can Be Fooled](insights/when-the-judge-can-be-fooled.md) | The Judge layer needs its own threat model |
 
 ### Infrastructure Controls
 
@@ -133,6 +135,10 @@ This framework defines *what* to enforce. The [infrastructure](infrastructure/) 
 **In scope:** Custom LLM applications, AI decision support, document processing, agentic systems — from deployment through incident response.
 
 **Out of scope:** Vendor AI products (use vendor controls), model training (see MLOps security guidance), and pre-deployment testing. This framework is about what happens in production.
+
+**Pre-deployment complement:** For secure development practices covering data sourcing, training, fine-tuning, and model release, see [NIST SP 800-218A](https://csrc.nist.gov/pubs/sp/800/218/a/final). This framework begins where SP 800-218A ends.
+
+**Note on fine-tuning:** Organisations that fine-tune or customise models before deployment operate in both the development and deployment lifecycle phases. They are simultaneously model producers (partially) and deployers. These organisations should apply SP 800-218A practices to their fine-tuning pipeline and this framework's controls to their production deployment. Neither framework alone provides complete coverage for this hybrid role.
 
 ---
 
@@ -162,6 +168,7 @@ The framework maps to established standards and risk taxonomies:
 | [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/) | Risks specific to autonomous AI agents | [OWASP mapping](infrastructure/mappings/owasp-llm-top10.md) |
 | [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework) | AI risk management framework | [NIST mapping](infrastructure/mappings/nist-ai-rmf.md) |
 | [ISO 42001](https://www.iso.org/standard/81230.html) | AI management system standard | [ISO 42001 mapping](infrastructure/mappings/iso42001-annex-a.md) |
+| [NIST SP 800-218A](https://csrc.nist.gov/pubs/sp/800/218/a/final) | Secure development practices for generative AI and dual-use foundation models | [SP 800-218A mapping](infrastructure/mappings/nist-sp800-218a.md) |
 
 ---
 
