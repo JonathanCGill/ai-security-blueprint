@@ -22,7 +22,7 @@ This isn't theoretical. If you're running agentic AI systems in production with 
 
 ## PACE Mapped to the Three-Layer Architecture
 
-![PACE Resilience Model for AI Security Controls](images/pace-resilience-layers.svg)
+![PACE Resilience Model for AI Security Controls](../images/pace-resilience-layers.svg)
 
 The framework's three control layers map to PACE with an important addition: the **Emergency** layer makes explicit what is often left implicit — the circuit breaker that routes around AI entirely.
 
@@ -70,7 +70,7 @@ For agentic AI systems, it's harder. Agents may be:
 
 This is why the Emergency layer can't just be "pull the plug." It needs to be a **structured degradation path** with pre-configured transition points.
 
-![Agentic AI Graceful Degradation Path](images/pace-degradation-path.svg)
+![Agentic AI Graceful Degradation Path](../images/pace-degradation-path.svg)
 
 ### The Five Degradation Phases
 
