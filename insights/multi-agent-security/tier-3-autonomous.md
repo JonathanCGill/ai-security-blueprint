@@ -30,38 +30,7 @@ Examples of Tier 3 candidates: high-frequency trading support agents, 24/7 secur
 
 ## Architecture at Tier 3
 
-```
-┌───────────────────────────────────────────────────────────────┐
-│                    HUMAN GOVERNANCE LAYER                      │
-│    (strategic review · exception handling · red team cycles)   │
-│                        ▲                                       │
-│                        │ exceptions + periodic review           │
-├────────────────────────┼──────────────────────────────────────┤
-│                        │                                       │
-│  ┌──────────┐    ┌─────┴──────┐    ┌──────────┐              │
-│  │ Agent A   │◄──►│ Encrypted  │◄──►│ Agent B   │              │
-│  │ (NHI-A)   │    │ Signed     │    │ (NHI-B)   │              │
-│  └─────┬─────┘    │ Message    │    └─────┬─────┘              │
-│        │          │ Bus        │          │                    │
-│        │          └──────┬─────┘          │                    │
-│        ▼                 │                ▼                    │
-│  ┌──────────┐      ┌────┴─────┐    ┌──────────┐              │
-│  │ Guardrails│      │ LLM-as-  │    │ Guardrails│              │
-│  │ (Layer 1) │      │ Judge    │    │ (Layer 1) │              │
-│  └──────────┘      │ (Layer 2) │    └──────────┘              │
-│                     └──────────┘                               │
-│                                                                │
-│  ┌──────────────────────────────────────────────────────────┐ │
-│  │          Autonomous Monitoring & Response Layer            │ │
-│  │  Continuous drift detection · Automated PACE transitions   │ │
-│  │  Self-healing (P↔A) · Escalation-only to human (C, E)    │ │
-│  └──────────────────────────────────────────────────────────┘ │
-│                                                                │
-│  ┌──────────────────────────────────────────────────────────┐ │
-│  │          Kill Switch (physically isolated, auditable)      │ │
-│  └──────────────────────────────────────────────────────────┘ │
-└────────────────────────────────────────────────────────────────┘
-```
+![Tier 3 Architecture](../diagrams/tier-3-architecture.svg)
 
 Key architectural changes from Tier 2:
 
@@ -231,19 +200,7 @@ All agents active and operating autonomously within pre-approved task categories
 
 Tier 3 provides comprehensive coverage across all 20 OWASP risks. The few gaps remaining at Tier 2 are addressed.
 
-| Risk | Tier 3 Coverage | Additional Control Beyond Tier 2 |
-|------|----------------|----------------------------------|
-| LLM01–LLM10 | Full | Multi-model cross-validation for high-consequence actions |
-| ASI01: Agent Goal Hijack | Full | Delegation contracts + real-time RAG integrity |
-| ASI02: Tool Misuse | Full | Infrastructure-enforced blast radius |
-| ASI03: Identity & Privilege Abuse | Full | Behavioural NHI binding + 15-min credential rotation |
-| ASI04: Agentic Supply Chain | Full | Continuous scanning + model version pinning + automated rollback |
-| ASI05: Unexpected Code Execution | Full | Infrastructure-enforced sandbox + time-boxing |
-| ASI06: Memory & Context Poisoning | Full | Memory decay + cross-session analysis agent |
-| ASI07: Insecure Inter-Agent Comms | Full | Encrypted + signed bus + delegation contracts |
-| ASI08: Cascading Failures | Full | Autonomous self-healing + infrastructure blast radius |
-| ASI09: Human-Agent Trust Exploitation | Full | Multi-model cross-validation + independent observability agent |
-| ASI10: Rogue Agents | Full | Long-window drift detection + independent monitoring + kill switch |
+![Tier 3 OWASP Coverage](../diagrams/tier-3-owasp-coverage.svg)
 
 **ASI09 at Tier 3:** The combination of multi-model cross-validation (disagreement triggers human review), independent observability agent (provides an untainted perspective), and automated compliance evidence (creates a paper trail that can be audited independently of the operator's judgment) closes the ASI09 gap. The human is no longer the sole target for trust exploitation because multiple automated systems cross-check each other.
 
@@ -302,20 +259,7 @@ Tier 3 paradoxically requires the most skilled staff despite having the least pe
 
 Tier 3 costs are heavily weighted toward skilled labour and infrastructure sophistication.
 
-| Cost Category | Estimate (Annual) | Notes |
-|--------------|-------------------|-------|
-| AI Security Architect (0.5–1 FTE) | $100K–$200K | Senior role; market rate varies significantly |
-| AI Security Engineer (1 FTE) | $120K–$200K | Dedicated to the agent system |
-| Platform Engineer (0.5–1 FTE) | $60K–$120K | Infrastructure-level control management |
-| Red Team (0.25 FTE or quarterly contract) | $40K–$100K | Specialised AI red team capability |
-| Governance Reviewer (0.25 FTE) | $30K–$60K | Portion of existing governance role |
-| LLM-as-Judge + cross-validation model costs | $30K–$150K | Two separate model costs at Tier 3 |
-| Task agent model API costs | $50K–$500K+ | High volume at Tier 3 |
-| Infrastructure (encrypted bus, NHI, sandboxes, isolated kill switch, independent monitoring) | $80K–$200K | Significant infrastructure investment |
-| Adversarial testing programme (tools + infrastructure) | $20K–$60K | Shadow environment + automated probes |
-| **Total (single agent system)** | **$530K–$1.59M** | Justified only for high-value, high-volume use cases |
-
-**Cost justification:** Tier 3 is only cost-effective when the business value of autonomous 24/7 operation significantly exceeds the Tier 2 cost of human supervision. In financial services, a fraud detection agent system processing 100,000 transactions/hour that would require 5 Tier 2 supervisors operating 24/7 ($1.5M+ in supervisor costs alone) may justify the Tier 3 investment. For a document processing system handling 50 items per day, Tier 2 is almost certainly more cost-effective.
+![Tier 3 Cost Indicators](../diagrams/tier-3-cost.svg)
 
 ---
 

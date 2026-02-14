@@ -27,32 +27,7 @@ Most regulated enterprises will operate at Tier 2 for their production multi-age
 
 ## Architecture at Tier 2
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    HUMAN SUPERVISOR                          │
-│      (exception-based review · high-consequence actions)     │
-│                        ▲                                     │
-│                        │ escalation only                     │
-├────────────────────────┼────────────────────────────────────┤
-│                        │                                     │
-│  ┌──────────┐    ┌─────┴──────┐    ┌──────────┐            │
-│  │ Agent A   │◄──►│ Signed     │◄──►│ Agent B   │            │
-│  │ (NHI-A)   │    │ Message    │    │ (NHI-B)   │            │
-│  └─────┬─────┘    │ Bus        │    └─────┬─────┘            │
-│        │          └──────┬─────┘          │                  │
-│        ▼                 │                ▼                  │
-│  ┌──────────┐      ┌────┴─────┐    ┌──────────┐            │
-│  │ Guardrails│      │ LLM-as-  │    │ Guardrails│            │
-│  │ (Layer 1) │      │ Judge    │    │ (Layer 1) │            │
-│  └──────────┘      │ (Layer 2) │    └──────────┘            │
-│                     └──────────┘                             │
-│                                                              │
-│  ┌────────────────────────────────────────────────────────┐ │
-│  │              Continuous Monitoring Layer                 │ │
-│  │  Anomaly scoring · Drift detection · PACE triggers      │ │
-│  └────────────────────────────────────────────────────────┘ │
-└──────────────────────────────────────────────────────────────┘
-```
+![Tier 2 Architecture](../diagrams/tier-2-architecture.svg)
 
 Key architectural changes from Tier 1:
 
@@ -250,28 +225,7 @@ Requires a formal post-incident review confirming:
 
 Tier 2 provides technical controls for the majority of OWASP risks. The combination of NHI, signed message bus, LLM-as-Judge, and continuous monitoring closes most of the gaps left open at Tier 1.
 
-| Risk | Tier 2 Coverage | Primary Control |
-|------|----------------|-----------------|
-| LLM01: Prompt Injection | Covered | Guardrails + LLM-as-Judge + goal integrity monitor |
-| LLM02: Sensitive Info Disclosure | Covered | DLP on message bus + cross-agent data fencing |
-| LLM03: Supply Chain | Covered | AIBOM + signed tool manifests + MCP allow-listing |
-| LLM04: Data/Model Poisoning | Covered | RAG integrity validation + source attribution |
-| LLM05: Improper Output Handling | Covered | LLM-as-Judge + schema enforcement + output validation |
-| LLM06: Excessive Agency | Covered | NHI scoping + no transitive permissions + PACE |
-| LLM07: System Prompt Leakage | Partial | Prompt isolation per agent (no obfuscation enforcement) |
-| LLM08: Vector/Embedding Weaknesses | Covered | Per-agent RAG access controls + integrity verification |
-| LLM09: Misinformation | Covered | LLM-as-Judge + cross-agent validation + confidence scoring |
-| LLM10: Unbounded Consumption | Covered | Rate limits + blast radius caps + circuit breakers + loop detection |
-| ASI01: Agent Goal Hijack | Covered | Goal integrity monitor + LLM-as-Judge + signed task specs |
-| ASI02: Tool Misuse | Covered | Signed manifests + argument validation + sandbox |
-| ASI03: Identity & Privilege Abuse | Covered | NHI + short-lived credentials + zero-trust auth |
-| ASI04: Agentic Supply Chain | Covered | MCP allow-listing + runtime integrity + AIBOM |
-| ASI05: Unexpected Code Execution | Covered | Sandboxed execution + allow-lists + time-boxing |
-| ASI06: Memory & Context Poisoning | Covered | Memory isolation + integrity checksums |
-| ASI07: Insecure Inter-Agent Comms | Covered | Signed message bus + schema validation + replay protection |
-| ASI08: Cascading Failures | Covered | Blast radius caps + circuit breakers + PACE triggers |
-| ASI09: Human-Agent Trust Exploitation | Mitigated | Confidence calibration + decision audit trails + independent verification |
-| ASI10: Rogue Agents | Mitigated | Drift detection + anomaly scoring + kill switch |
+![Tier 2 OWASP Coverage](../diagrams/tier-2-owasp-coverage.svg)
 
 **Remaining gaps at Tier 2:**
 
@@ -299,16 +253,7 @@ Tier 2 shifts the human role from gatekeeper to supervisor, reducing per-action 
 
 Tier 2 costs shift from predominantly labour (Tier 1) to a mix of labour and technical infrastructure.
 
-| Cost Category | Estimate (Annual) | Notes |
-|--------------|-------------------|-------|
-| Agent Supervisor | $80K–$150K | Per supervisor; efficiency gain over Tier 1 operator |
-| AI Security Engineer (0.5–1 FTE) | $75K–$175K | New role or upskill from existing security team |
-| Platform Engineer (0.5 FTE) | $50K–$75K | Increased from Tier 1 due to NHI/sandbox management |
-| LLM-as-Judge model costs | $10K–$80K | Depends on evaluation volume; separate from task agent costs |
-| Task agent model API costs | $20K–$200K | Increases with autonomy and volume |
-| Infrastructure (NHI, signing, monitoring, SIEM) | $30K–$80K | Significant increase over Tier 1 |
-| Tooling (anomaly detection, drift scoring) | $15K–$40K | Build or buy |
-| **Total (single agent system)** | **$280K–$800K** | Wide range reflects system complexity and volume |
+![Tier 2 Cost Indicators](../diagrams/tier-2-cost.svg)
 
 The cost increase from Tier 1 is substantial but is typically justified by the operational throughput gain — agents can now process work without per-action human gating, which in many use cases represents a 5–20x throughput increase.
 

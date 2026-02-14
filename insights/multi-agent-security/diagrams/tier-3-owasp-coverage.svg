@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 520" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#1a1e3a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1100" height="520" fill="url(#bg)"/>
+
+  <text x="550" y="30" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" letter-spacing="1">TIER 3 — OWASP RISK COVERAGE</text>
+  <text x="550" y="46" text-anchor="middle" fill="#c77dff" font-size="9" letter-spacing="1">AUTONOMOUS MULTI-AGENT · FULL COVERAGE ACROSS ALL 20 RISKS</text>
+
+  <circle cx="400" cy="62" r="5" fill="#92fe9d"/>
+  <text x="410" y="66" fill="#8899aa" font-size="9">Full Coverage — all risks addressed with layered controls</text>
+
+  <!-- Table header -->
+  <rect x="30" y="78" width="1040" height="28" rx="4" fill="#151a30"/>
+  <text x="50" y="97" fill="#fff" font-size="10" font-weight="700">RISK</text>
+  <text x="370" y="97" fill="#fff" font-size="10" font-weight="700">STATUS</text>
+  <text x="470" y="97" fill="#fff" font-size="10" font-weight="700">ADDITIONAL CONTROL BEYOND TIER 2</text>
+
+  <!-- LLM header -->
+  <rect x="30" y="108" width="1040" height="20" rx="0" fill="#0d1528"/>
+  <text x="50" y="122" fill="#00c9ff" font-size="9" font-weight="700" letter-spacing="1">OWASP TOP 10 FOR LLM APPLICATIONS (2025)</text>
+
+  <rect x="30" y="130" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="148" fill="#00c9ff" font-size="9" font-weight="600">LLM01–LLM10 (all)</text>
+  <circle cx="380" cy="144" r="5" fill="#92fe9d"/>
+  <text x="395" y="148" fill="#92fe9d" font-size="9">Full</text>
+  <text x="470" y="148" fill="#8899aa" font-size="9">Multi-model cross-validation for high-consequence actions · All Tier 2 controls active</text>
+
+  <!-- ASI header -->
+  <rect x="30" y="160" width="1040" height="20" rx="0" fill="#0d1528"/>
+  <text x="50" y="174" fill="#ff6b35" font-size="9" font-weight="700" letter-spacing="1">OWASP TOP 10 FOR AGENTIC APPLICATIONS (2026) — INDIVIDUAL RISK DETAIL</text>
+
+  <rect x="30" y="182" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="200" fill="#ff6b35" font-size="9" font-weight="600">ASI01: Agent Goal Hijack</text>
+  <circle cx="380" cy="196" r="5" fill="#92fe9d"/>
+  <text x="395" y="200" fill="#92fe9d" font-size="9">Full</text>
+  <text x="470" y="200" fill="#8899aa" font-size="9">Delegation contracts + real-time RAG integrity at query time</text>
+
+  <rect x="30" y="210" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="228" fill="#ff6b35" font-size="9" font-weight="600">ASI02: Tool Misuse</text>
+  <circle cx="380" cy="224" r="5" fill="#92fe9d"/>
+  <text x="395" y="228" fill="#92fe9d" font-size="9">Full</text>
+  <text x="470" y="228" fill="#8899aa" font-size="9">Infrastructure-enforced blast radius (platform-level, not agent-level)</text>
+
+  <rect x="30" y="238" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="256" fill="#ff6b35" font-size="9" font-weight="600">ASI03: Identity &amp; Privilege Abuse</text>
+  <circle cx="380" cy="252" r="5" fill="#92fe9d"/>
+  <text x="395" y="256" fill="#92fe9d" font-size="9">Full</text>
+  <text x="470" y="256" fill="#8899aa" font-size="9">Behavioural NHI binding + 15-min credential rotation + auto-revoke (30s)</text>
+
+  <rect x="30" y="266" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="284" fill="#ff6b35" font-size="9" font-weight="600">ASI04: Agentic Supply Chain</text>
+  <circle cx="380" cy="280" r="5" fill="#92fe9d"/>
+  <text x="395" y="284" fill="#92fe9d" font-size="9">Full</text>
+  <text x="470" y="284" fill="#8899aa" font-size="9">Continuous scanning + model version pinning + automated rollback</text>
+
+  <rect x="30" y="294" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="312" fill="#ff6b35" font-size="9" font-weight="600">ASI05: Unexpected Code Execution</text>
+  <circle cx="380" cy="308" r="5" fill="#92fe9d"/>
+  <text x="395" y="312" fill="#92fe9d" font-size="9">Full</text>
+  <text x="470" y="312" fill="#8899aa" font-size="9">Infrastructure-enforced sandbox + time-boxing on all autonomous ops</text>
+
+  <rect x="30" y="322" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="340" fill="#ff6b35" font-size="9" font-weight="600">ASI06: Memory &amp; Context Poisoning</text>
+  <circle cx="380" cy="336" r="5" fill="#92fe9d"/>
+  <text x="395" y="340" fill="#92fe9d" font-size="9">Full</text>
+  <text x="470" y="340" fill="#8899aa" font-size="9">Memory decay policies + cross-session analysis agent (separate infra)</text>
+
+  <rect x="30" y="350" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="368" fill="#ff6b35" font-size="9" font-weight="600">ASI07: Insecure Inter-Agent Comms</text>
+  <circle cx="380" cy="364" r="5" fill="#92fe9d"/>
+  <text x="395" y="368" fill="#92fe9d" font-size="9">Full</text>
+  <text x="470" y="368" fill="#8899aa" font-size="9">Encrypted + signed bus + delegation contracts with scope/time limits</text>
+
+  <rect x="30" y="378" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="396" fill="#ff6b35" font-size="9" font-weight="600">ASI08: Cascading Failures</text>
+  <circle cx="380" cy="392" r="5" fill="#92fe9d"/>
+  <text x="395" y="396" fill="#92fe9d" font-size="9">Full</text>
+  <text x="470" y="396" fill="#8899aa" font-size="9">Autonomous self-healing P↔A + infrastructure blast radius enforcement</text>
+
+  <rect x="30" y="406" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="424" fill="#ff6b35" font-size="9" font-weight="600">ASI09: Human-Agent Trust Exploitation</text>
+  <circle cx="380" cy="420" r="5" fill="#92fe9d"/>
+  <text x="395" y="424" fill="#92fe9d" font-size="9">Full</text>
+  <text x="470" y="424" fill="#8899aa" font-size="9">Multi-model cross-validation + independent observability agent</text>
+
+  <rect x="30" y="434" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="452" fill="#ff6b35" font-size="9" font-weight="600">ASI10: Rogue Agents</text>
+  <circle cx="380" cy="448" r="5" fill="#92fe9d"/>
+  <text x="395" y="452" fill="#92fe9d" font-size="9">Full</text>
+  <text x="470" y="452" fill="#8899aa" font-size="9">Long-window drift (30/90-day) + independent monitoring + isolated kill switch</text>
+
+  <!-- Summary footer -->
+  <rect x="30" y="475" width="1040" height="35" rx="4" fill="#0a1520" stroke="#c77dff" stroke-width="0.5"/>
+  <text x="550" y="491" text-anchor="middle" fill="#c77dff" font-size="9" font-weight="600">Tier 3 closes all Tier 2 gaps through: independent observability agent, multi-model cross-validation,</text>
+  <text x="550" y="504" text-anchor="middle" fill="#c77dff" font-size="9">long-window behavioural analysis, and a physically isolated kill switch with independent trigger authority.</text>
+</svg>

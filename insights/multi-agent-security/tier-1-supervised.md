@@ -25,29 +25,7 @@ Tier 1 is not a permanent state. It is designed to build the operational evidenc
 
 ## Architecture at Tier 1
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    HUMAN OPERATOR                        │
-│          (approves all write operations)                 │
-│                        ▲                                 │
-│                        │ approval gate                   │
-├────────────────────────┼────────────────────────────────┤
-│                        │                                 │
-│  ┌──────────┐    ┌─────┴──────┐    ┌──────────┐        │
-│  │ Agent A   │◄──►│ Message    │◄──►│ Agent B   │        │
-│  │ (Task)    │    │ Bus        │    │ (Task)    │        │
-│  └─────┬─────┘    │ (logged)   │    └─────┬─────┘        │
-│        │          └────────────┘          │              │
-│        ▼                                  ▼              │
-│  ┌──────────┐                       ┌──────────┐        │
-│  │ Guardrails│                       │ Guardrails│        │
-│  │ (Layer 1) │                       │ (Layer 1) │        │
-│  └──────────┘                       └──────────┘        │
-│                                                          │
-│  Layer 2 (LLM-as-Judge): OPTIONAL at Tier 1             │
-│  Layer 3 (Human Oversight): MANDATORY for all writes    │
-└──────────────────────────────────────────────────────────┘
-```
+![Tier 1 Architecture](../diagrams/tier-1-architecture.svg)
 
 Key architectural constraints at Tier 1:
 
@@ -232,28 +210,7 @@ Degraded mode orchestration is unnecessary at Tier 1 because the system is alrea
 
 Not all OWASP risks require active technical controls at Tier 1. The human-in-the-loop for all write operations provides a compensating control for several risks that would otherwise require automated mitigation.
 
-| Risk | Tier 1 Coverage | Primary Control |
-|------|----------------|-----------------|
-| LLM01: Prompt Injection | Partial | Guardrails + human review of agent outputs |
-| LLM02: Sensitive Info Disclosure | Partial | Data classification + human review |
-| LLM03: Supply Chain | Partial | Model/tool inventory + fixed toolsets |
-| LLM04: Data/Model Poisoning | Minimal | RAG source inventory (no automated validation) |
-| LLM05: Improper Output Handling | Covered | Human reviews all outputs before execution |
-| LLM06: Excessive Agency | Covered | Human approval gate blocks all autonomous action |
-| LLM07: System Prompt Leakage | Minimal | Awareness only (no technical enforcement) |
-| LLM08: Vector/Embedding Weaknesses | Minimal | RAG source inventory |
-| LLM09: Misinformation | Partial | Human review catches obvious hallucinations |
-| LLM10: Unbounded Consumption | Partial | Rate limits + human observation |
-| ASI01: Agent Goal Hijack | Partial | Human review of agent behaviour |
-| ASI02: Tool Misuse | Covered | Tool allow-lists + human approval |
-| ASI03: Identity & Privilege Abuse | Partial | Scoped credentials (no NHI) |
-| ASI04: Agentic Supply Chain | Partial | Fixed toolsets, no runtime composition |
-| ASI05: Unexpected Code Execution | Covered | Human approval before any execution |
-| ASI06: Memory & Context Poisoning | Minimal | Awareness only |
-| ASI07: Insecure Inter-Agent Comms | Minimal | Logging only (no signing) |
-| ASI08: Cascading Failures | Partial | Human can intervene + rate limits |
-| ASI09: Human-Agent Trust Exploitation | Risk present | Human is the primary control — this risk applies directly |
-| ASI10: Rogue Agents | Partial | Human observation + kill switch |
+![Tier 1 OWASP Coverage](../diagrams/tier-1-owasp-coverage.svg)
 
 **Critical note on ASI09:** At Tier 1, the human operator is the primary control for most risks. This means ASI09 (Human-Agent Trust Exploitation) is the most dangerous risk at this tier. Agents producing confident, well-reasoned explanations can lead the human operator to approve harmful actions through authority bias. Mitigations: ensure the human reviewer has domain expertise, rotate reviewers to prevent trust complacency, and establish a "challenge by default" review culture where the operator's role is to find reasons NOT to approve, not reasons to approve.
 
@@ -277,14 +234,7 @@ Tier 1 requires direct human involvement in operations. The staffing model refle
 
 Tier 1 costs are dominated by human labour, not infrastructure.
 
-| Cost Category | Estimate (Annual) | Notes |
-|--------------|-------------------|-------|
-| Agent Operator | $80K–$150K per operator | Varies by jurisdiction and domain expertise required |
-| AI Security Lead (0.25 FTE) | $30K–$50K | Portion of existing security role |
-| Platform Engineer (0.25 FTE) | $30K–$50K | Portion of existing platform role |
-| Model API costs | $5K–$50K | Depends on volume; Tier 1 is typically low volume |
-| Infrastructure (logging, message bus) | $5K–$15K | Cloud-based; minimal at Tier 1 |
-| **Total (single agent system)** | **$150K–$315K** | First year; reduces as processes mature |
+![Tier 1 Cost Indicators](../diagrams/tier-1-cost.svg)
 
 The dominant cost is the Agent Operator. This is the intentional trade-off at Tier 1: you are paying for human oversight in exchange for lower technical control complexity. As the system matures and moves to Tier 2, the operator role shifts from approving every action to managing exceptions.
 

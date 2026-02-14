@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 740" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#1a1e3a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1100" height="740" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="550" y="30" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" letter-spacing="1">TIER 1 — OWASP RISK COVERAGE</text>
+  <text x="550" y="46" text-anchor="middle" fill="#ff6b35" font-size="9" letter-spacing="1">SUPERVISED MULTI-AGENT · HUMAN-IN-THE-LOOP COMPENSATING CONTROL</text>
+
+  <!-- Legend -->
+  <circle cx="320" cy="62" r="5" fill="#92fe9d"/>
+  <text x="330" y="66" fill="#8899aa" font-size="9">Covered</text>
+  <circle cx="410" cy="62" r="5" fill="#ffd700"/>
+  <text x="420" y="66" fill="#8899aa" font-size="9">Partial</text>
+  <circle cx="490" cy="62" r="5" fill="#f5576c"/>
+  <text x="500" y="66" fill="#8899aa" font-size="9">Minimal</text>
+  <circle cx="580" cy="62" r="5" fill="#ff6b35"/>
+  <text x="590" y="66" fill="#8899aa" font-size="9">Risk Present</text>
+
+  <!-- Table header -->
+  <rect x="30" y="78" width="1040" height="28" rx="4" fill="#151a30"/>
+  <text x="50" y="97" fill="#fff" font-size="10" font-weight="700">RISK</text>
+  <text x="370" y="97" fill="#fff" font-size="10" font-weight="700">STATUS</text>
+  <text x="470" y="97" fill="#fff" font-size="10" font-weight="700">PRIMARY CONTROL</text>
+
+  <!-- LLM Section header -->
+  <rect x="30" y="108" width="1040" height="20" rx="0" fill="#0d1528"/>
+  <text x="50" y="122" fill="#00c9ff" font-size="9" font-weight="700" letter-spacing="1">OWASP TOP 10 FOR LLM APPLICATIONS (2025)</text>
+
+  <!-- Row template: y starts at 130, increment 28 -->
+  <!-- LLM01 -->
+  <rect x="30" y="130" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="148" fill="#00c9ff" font-size="9" font-weight="600">LLM01: Prompt Injection</text>
+  <circle cx="380" cy="144" r="5" fill="#ffd700"/>
+  <text x="395" y="148" fill="#ffd700" font-size="9">Partial</text>
+  <text x="470" y="148" fill="#8899aa" font-size="9">Guardrails + human review of agent outputs</text>
+
+  <!-- LLM02 -->
+  <rect x="30" y="158" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="176" fill="#00c9ff" font-size="9" font-weight="600">LLM02: Sensitive Info Disclosure</text>
+  <circle cx="380" cy="172" r="5" fill="#ffd700"/>
+  <text x="395" y="176" fill="#ffd700" font-size="9">Partial</text>
+  <text x="470" y="176" fill="#8899aa" font-size="9">Data classification + human review</text>
+
+  <!-- LLM03 -->
+  <rect x="30" y="186" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="204" fill="#00c9ff" font-size="9" font-weight="600">LLM03: Supply Chain</text>
+  <circle cx="380" cy="200" r="5" fill="#ffd700"/>
+  <text x="395" y="204" fill="#ffd700" font-size="9">Partial</text>
+  <text x="470" y="204" fill="#8899aa" font-size="9">Model/tool inventory + fixed toolsets</text>
+
+  <!-- LLM04 -->
+  <rect x="30" y="214" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="232" fill="#00c9ff" font-size="9" font-weight="600">LLM04: Data/Model Poisoning</text>
+  <circle cx="380" cy="228" r="5" fill="#f5576c"/>
+  <text x="395" y="232" fill="#f5576c" font-size="9">Minimal</text>
+  <text x="470" y="232" fill="#8899aa" font-size="9">RAG source inventory (no automated validation)</text>
+
+  <!-- LLM05 -->
+  <rect x="30" y="242" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="260" fill="#00c9ff" font-size="9" font-weight="600">LLM05: Improper Output Handling</text>
+  <circle cx="380" cy="256" r="5" fill="#92fe9d"/>
+  <text x="395" y="260" fill="#92fe9d" font-size="9">Covered</text>
+  <text x="470" y="260" fill="#8899aa" font-size="9">Human reviews all outputs before execution</text>
+
+  <!-- LLM06 -->
+  <rect x="30" y="270" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="288" fill="#00c9ff" font-size="9" font-weight="600">LLM06: Excessive Agency</text>
+  <circle cx="380" cy="284" r="5" fill="#92fe9d"/>
+  <text x="395" y="288" fill="#92fe9d" font-size="9">Covered</text>
+  <text x="470" y="288" fill="#8899aa" font-size="9">Human approval gate blocks all autonomous action</text>
+
+  <!-- LLM07 -->
+  <rect x="30" y="298" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="316" fill="#00c9ff" font-size="9" font-weight="600">LLM07: System Prompt Leakage</text>
+  <circle cx="380" cy="312" r="5" fill="#f5576c"/>
+  <text x="395" y="316" fill="#f5576c" font-size="9">Minimal</text>
+  <text x="470" y="316" fill="#8899aa" font-size="9">Awareness only (no technical enforcement)</text>
+
+  <!-- LLM08 -->
+  <rect x="30" y="326" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="344" fill="#00c9ff" font-size="9" font-weight="600">LLM08: Vector/Embedding Weaknesses</text>
+  <circle cx="380" cy="340" r="5" fill="#f5576c"/>
+  <text x="395" y="344" fill="#f5576c" font-size="9">Minimal</text>
+  <text x="470" y="344" fill="#8899aa" font-size="9">RAG source inventory</text>
+
+  <!-- LLM09 -->
+  <rect x="30" y="354" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="372" fill="#00c9ff" font-size="9" font-weight="600">LLM09: Misinformation</text>
+  <circle cx="380" cy="368" r="5" fill="#ffd700"/>
+  <text x="395" y="372" fill="#ffd700" font-size="9">Partial</text>
+  <text x="470" y="372" fill="#8899aa" font-size="9">Human review catches obvious hallucinations</text>
+
+  <!-- LLM10 -->
+  <rect x="30" y="382" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="400" fill="#00c9ff" font-size="9" font-weight="600">LLM10: Unbounded Consumption</text>
+  <circle cx="380" cy="396" r="5" fill="#ffd700"/>
+  <text x="395" y="400" fill="#ffd700" font-size="9">Partial</text>
+  <text x="470" y="400" fill="#8899aa" font-size="9">Rate limits + human observation</text>
+
+  <!-- ASI Section header -->
+  <rect x="30" y="412" width="1040" height="20" rx="0" fill="#0d1528"/>
+  <text x="50" y="426" fill="#ff6b35" font-size="9" font-weight="700" letter-spacing="1">OWASP TOP 10 FOR AGENTIC APPLICATIONS (2026)</text>
+
+  <!-- ASI01 -->
+  <rect x="30" y="434" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="452" fill="#ff6b35" font-size="9" font-weight="600">ASI01: Agent Goal Hijack</text>
+  <circle cx="380" cy="448" r="5" fill="#ffd700"/>
+  <text x="395" y="452" fill="#ffd700" font-size="9">Partial</text>
+  <text x="470" y="452" fill="#8899aa" font-size="9">Human review of agent behaviour</text>
+
+  <!-- ASI02 -->
+  <rect x="30" y="462" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="480" fill="#ff6b35" font-size="9" font-weight="600">ASI02: Tool Misuse</text>
+  <circle cx="380" cy="476" r="5" fill="#92fe9d"/>
+  <text x="395" y="480" fill="#92fe9d" font-size="9">Covered</text>
+  <text x="470" y="480" fill="#8899aa" font-size="9">Tool allow-lists + human approval</text>
+
+  <!-- ASI03 -->
+  <rect x="30" y="490" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="508" fill="#ff6b35" font-size="9" font-weight="600">ASI03: Identity &amp; Privilege Abuse</text>
+  <circle cx="380" cy="504" r="5" fill="#ffd700"/>
+  <text x="395" y="508" fill="#ffd700" font-size="9">Partial</text>
+  <text x="470" y="508" fill="#8899aa" font-size="9">Scoped credentials (no NHI)</text>
+
+  <!-- ASI04 -->
+  <rect x="30" y="518" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="536" fill="#ff6b35" font-size="9" font-weight="600">ASI04: Agentic Supply Chain</text>
+  <circle cx="380" cy="532" r="5" fill="#ffd700"/>
+  <text x="395" y="536" fill="#ffd700" font-size="9">Partial</text>
+  <text x="470" y="536" fill="#8899aa" font-size="9">Fixed toolsets, no runtime composition</text>
+
+  <!-- ASI05 -->
+  <rect x="30" y="546" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="564" fill="#ff6b35" font-size="9" font-weight="600">ASI05: Unexpected Code Execution</text>
+  <circle cx="380" cy="560" r="5" fill="#92fe9d"/>
+  <text x="395" y="564" fill="#92fe9d" font-size="9">Covered</text>
+  <text x="470" y="564" fill="#8899aa" font-size="9">Human approval before any execution</text>
+
+  <!-- ASI06 -->
+  <rect x="30" y="574" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="592" fill="#ff6b35" font-size="9" font-weight="600">ASI06: Memory &amp; Context Poisoning</text>
+  <circle cx="380" cy="588" r="5" fill="#f5576c"/>
+  <text x="395" y="592" fill="#f5576c" font-size="9">Minimal</text>
+  <text x="470" y="592" fill="#8899aa" font-size="9">Awareness only</text>
+
+  <!-- ASI07 -->
+  <rect x="30" y="602" width="1040" height="28" rx="0" fill="#0a0e1a"/>
+  <text x="50" y="620" fill="#ff6b35" font-size="9" font-weight="600">ASI07: Insecure Inter-Agent Comms</text>
+  <circle cx="380" cy="616" r="5" fill="#f5576c"/>
+  <text x="395" y="620" fill="#f5576c" font-size="9">Minimal</text>
+  <text x="470" y="620" fill="#8899aa" font-size="9">Logging only (no signing)</text>
+
+  <!-- ASI08 -->
+  <rect x="30" y="630" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="648" fill="#ff6b35" font-size="9" font-weight="600">ASI08: Cascading Failures</text>
+  <circle cx="380" cy="644" r="5" fill="#ffd700"/>
+  <text x="395" y="648" fill="#ffd700" font-size="9">Partial</text>
+  <text x="470" y="648" fill="#8899aa" font-size="9">Human can intervene + rate limits</text>
+
+  <!-- ASI09 - highlighted -->
+  <rect x="30" y="658" width="1040" height="28" rx="0" fill="#1a0a0a"/>
+  <text x="50" y="676" fill="#ff6b35" font-size="9" font-weight="600">ASI09: Human-Agent Trust Exploitation</text>
+  <circle cx="380" cy="672" r="5" fill="#ff6b35"/>
+  <text x="395" y="676" fill="#ff6b35" font-size="9" font-weight="700">RISK</text>
+  <text x="470" y="676" fill="#ff6b35" font-size="9" font-weight="600">Human IS the primary control — this risk applies directly</text>
+
+  <!-- ASI10 -->
+  <rect x="30" y="686" width="1040" height="28" rx="0" fill="#0d1225"/>
+  <text x="50" y="704" fill="#ff6b35" font-size="9" font-weight="600">ASI10: Rogue Agents</text>
+  <circle cx="380" cy="700" r="5" fill="#ffd700"/>
+  <text x="395" y="704" fill="#ffd700" font-size="9">Partial</text>
+  <text x="470" y="704" fill="#8899aa" font-size="9">Human observation + kill switch</text>
+
+  <!-- ASI09 warning footer -->
+  <rect x="30" y="720" width="1040" height="16" rx="4" fill="#1a0a0a" stroke="#ff6b35" stroke-width="0.5"/>
+  <text x="550" y="732" text-anchor="middle" fill="#ff6b35" font-size="8">⚠ ASI09 is the highest-risk item at Tier 1. Rotate reviewers. Establish "challenge by default" review culture.</text>
+</svg>
