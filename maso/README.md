@@ -35,7 +35,7 @@ The critical addition for multi-agent systems is the **Secure Inter-Agent Messag
 
 ## PACE Resilience for Multi-Agent Operations
 
-![PACE Multi-Agent Cycle](images/pace-multi-agent-cycle.svg)
+![PACE Multi-Agent Cycle](/images/pace-multi-agent-cycle.svg)
 
 The [PACE methodology](https://github.com/JonathanCGill/enterprise-ai-security-controls-framework) (Primary, Alternate, Contingency, Emergency) from the parent framework is extended to handle the unique failure modes of multi-agent orchestration.
 
@@ -75,7 +75,7 @@ Transition authority: CISO or incident commander.
 
 ## OWASP Risk Coverage
 
-![OWASP Dual Mapping](images/owasp-dual-mapping.svg)
+![OWASP Dual Mapping](/images/owasp-dual-mapping.svg)
 
 The MASO framework maps controls against both OWASP threat taxonomies relevant to multi-agent systems.
 
