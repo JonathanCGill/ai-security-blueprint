@@ -98,8 +98,9 @@ The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestr
 
 | If you want to... | Go here |
 | --- | --- |
+| **See the entire framework on one map** | **[Tube Map](TUBE-MAP.md)** |
 | **Secure a multi-agent system** | **[MASO Framework](maso/)** |
-| Understand MASO controls at a glance | [MASO Tube Map](/images/maso-tube-map.svg) |
+| Understand MASO controls at a glance | [MASO Domain Map](/images/maso-tube-map.svg) |
 | See real incidents mapped to controls | [Incident Tracker](maso/threat-intelligence/incident-tracker.md) |
 | Run adversarial tests on your agents | [Red Team Playbook](maso/red-team/red-team-playbook.md) |
 | Implement MASO in LangGraph, AutoGen, CrewAI, or Bedrock | [Integration Guide](maso/integration/integration-guide.md) |
@@ -109,6 +110,7 @@ The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestr
 | Classify a system by risk | [Risk Tiers](core/risk-tiers.md) |
 | Understand PACE resilience | [PACE Methodology](PACE-RESILIENCE.md) |
 | Enforce controls at infrastructure level | [Infrastructure Controls](infrastructure/) |
+| Navigate by role | [Framework Map](FRAMEWORK-MAP.md) |
 
 ---
 
@@ -131,6 +133,7 @@ The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestr
 
 ```
 ├── README.md                          # This document — start here
+├── TUBE-MAP.md                        # Complete framework tube map with guide
 ├── foundations/
 │   └── README.md                      # Single-model AI security framework
 ├── maso/
