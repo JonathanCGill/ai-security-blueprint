@@ -1,5 +1,7 @@
 # Open-Weight Models Shift the Burden
 
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+
 **When you self-host a model, you inherit the controls the provider would have applied. Most organisations don't realise this until something goes wrong.**
 
 ---

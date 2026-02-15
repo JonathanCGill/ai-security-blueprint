@@ -134,6 +134,22 @@ If any dimension suggests higher tier, use it.
 
 ---
 
+## Simplified Tier Mapping
+
+Some framework documents — particularly [PACE](pace-controls-section.md), [CHEATSHEET](../CHEATSHEET.md), and specialized controls — use a simplified **three-tier numbered system** (Tier 1/2/3). This is intentional: the three-tier system is a practical shorthand for operational contexts where the full four-tier classification adds complexity without proportionate benefit.
+
+| Simplified Tier | Named Risk Tiers | Description |
+|-----------------|-----------------|-------------|
+| **Tier 1** (Low) | LOW, MEDIUM | Internal users, no regulated decisions, recoverable errors |
+| **Tier 2** (Medium) | HIGH | Customer-facing, sensitive data access, human reviews before delivery |
+| **Tier 3** (High) | CRITICAL | Regulated decisions, autonomous agents with write access, financial/medical/legal |
+
+**When in doubt, use the four-tier system.** The simplified tiers are for operational guidance (PACE resilience, testing cadence, fail posture) where the distinction between LOW and MEDIUM or HIGH and CRITICAL is less material than the distinction between internal/customer-facing/regulated.
+
+The [MASO Framework](../maso/) also uses Tier 1/2/3 for multi-agent **autonomy levels** (Supervised → Managed → Autonomous), which is a separate dimension from risk classification.
+
+---
+
 ## Tier Changes
 
 **Upgrade triggers:**

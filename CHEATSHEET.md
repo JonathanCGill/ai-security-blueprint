@@ -2,6 +2,8 @@
 
 *Classify. Control. Define fail posture. Test. One page.*
 
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](core/risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+
 ---
 
 ## 1. Classify

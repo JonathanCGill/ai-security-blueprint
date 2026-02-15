@@ -2,6 +2,8 @@
 
 *Verification items for PACE resilience, organised by risk tier. Complete these before go-live and revalidate at the cadence specified for your tier.*
 
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+
 ---
 
 ## All Tiers — Pre-Deployment

@@ -1,6 +1,8 @@
 # Multi-Agent Controls
 
 > Extends [Agentic Controls](/core/agentic.md) for systems where agents interact with other agents.
+>
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
 
 ## The Problem
 

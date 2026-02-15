@@ -1,5 +1,7 @@
 # When the Judge Can Be Fooled
 
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+
 **The LLM-as-Judge pattern works because it provides independent evaluation. But the Judge is itself an LLM — and LLMs can be manipulated.**
 
 ---

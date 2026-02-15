@@ -2,6 +2,8 @@
 
 *This section defines what happens when each control layer degrades. Every control has its own PACE plan (vertical axis) in addition to the architecture-level PACE across layers (horizontal axis). See the [PACE Resilience Methodology](../PACE-RESILIENCE.md) for the full model.*
 
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+
 ---
 
 ## Design Principle

@@ -4,6 +4,8 @@
 
 *The structured approach to ensuring no single failure in your AI security controls is catastrophic.*
 
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](core/risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+
 ---
 
 ## What PACE Is

@@ -1,6 +1,8 @@
 # Memory and Context Controls
 
 > Securing what the model remembers — across turns, sessions, and users.
+>
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
 
 ## The Problem
 

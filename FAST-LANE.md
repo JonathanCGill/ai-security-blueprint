@@ -2,6 +2,8 @@ F# Secure AI Fast Lane
 
 *Pre-approved controls for low-risk AI. If your deployment qualifies, security has already said yes.*
 
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](core/risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+
 ---
 
 ## The Problem This Solves
