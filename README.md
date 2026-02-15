@@ -18,6 +18,8 @@ You can't fully test an AI system before deployment. The question is: **how do y
 
 ## The Foundation
 
+![Single-Agent Security Architecture](/images/single-agent-architecture.svg)
+
 The industry is converging on an answer: **runtime behavioural monitoring.** Instead of proving correctness at design time, you continuously verify behaviour in production through three complementary layers.
 
 | Layer | What It Does | When It Acts |
