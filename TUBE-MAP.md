@@ -6,7 +6,7 @@
 
 ---
 
-[![Enterprise AI Security Framework — Complete Tube Map](/images/ai-security-tube-map.svg)](/images/ai-security-tube-map.svg)
+[![Enterprise AI Security Framework — Complete Tube Map](images/ai-security-tube-map.svg)](images/ai-security-tube-map.svg)
 
 ---
 

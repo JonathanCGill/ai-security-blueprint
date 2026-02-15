@@ -20,7 +20,7 @@ This framework adopts PACE as a **core design principle**, not an optional overl
 
 PACE applies to AI security controls on two axes simultaneously:
 
-![Two-Axis PACE Model](/images/pace-two-axis-model.svg)
+![Two-Axis PACE Model](images/pace-two-axis-model.svg)
 
 **Horizontal PACE** operates across the three control layers. If Guardrails fail, the LLM-as-Judge becomes the primary defence. If the Judge fails, Human Oversight absorbs more. If Human Oversight is overwhelmed, the Circuit Breaker activates and routes to a non-AI path. This is the architecture-level resilience plan.
 
@@ -54,7 +54,7 @@ When a control layer degrades, it must do one of two things:
 
 This decision is the single most important resilience choice an architect makes for each control at each tier.
 
-![Fail Posture Decision Tree](/images/pace-fail-posture-decision.svg)
+![Fail Posture Decision Tree](images/pace-fail-posture-decision.svg)
 
 **The rule of thumb:**
 - Tier 1 (internal, no customer impact): Fail-open is acceptable. Log everything. Fix next business day.

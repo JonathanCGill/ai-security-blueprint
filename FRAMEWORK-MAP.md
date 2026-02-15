@@ -8,11 +8,11 @@ Navigate the framework by role or goal. Pick a reading path, follow it, branch w
 
 This framework has two halves. The **Foundation** covers single-model AI deployments. **MASO** extends it to multi-agent orchestration. Both share the same three-layer pattern (Guardrails → Judge → Human Oversight) and PACE resilience methodology — MASO adds the controls needed when agents communicate, delegate, and act across trust boundaries.
 
-[![Single-Agent Architecture](/images/single-agent-architecture.svg)](/images/single-agent-architecture.svg)
+[![Single-Agent Architecture](images/single-agent-architecture.svg)](images/single-agent-architecture.svg)
 
 **Foundation** — Three-layer runtime security for single-model AI. Risk classification, 80 infrastructure controls, PACE resilience, fast lane for low-risk deployments. **→ [Start here](foundations/)**
 
-[![MASO Tube Map](/images/maso-tube-map.svg)](/images/maso-tube-map.svg)
+[![MASO Tube Map](images/maso-tube-map.svg)](images/maso-tube-map.svg)
 
 **MASO** — Six control domains, 93 controls, three implementation tiers, dual OWASP coverage. For systems where multiple agents collaborate autonomously. **→ [Start here](maso/)**
 

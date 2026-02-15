@@ -11,7 +11,7 @@
 
 ## Architecture
 
-![Single-Agent Security Architecture](/images/single-agent-architecture.svg)
+![Single-Agent Security Architecture](../images/single-agent-architecture.svg)
 
 Three layers, one principle: **you can't fully test a non-deterministic system before deployment, so you continuously verify behaviour in production.**
 

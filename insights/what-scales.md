@@ -138,7 +138,7 @@ For completeness and honesty:
 
 The patterns that scale point toward a recognisable architecture. It's not the guardrail → judge → human pattern. It's closer to **how we already secure distributed systems at scale**:
 
-[![The Emerging Scalable Architecture](/images/scalable-architecture-stack.svg)](/images/scalable-architecture-stack.svg)
+[![The Emerging Scalable Architecture](../images/scalable-architecture-stack.svg)](../images/scalable-architecture-stack.svg)
 
 This is not radically new. It's **zero-trust network architecture applied to AI agents**. The CSA, OWASP, and AWS are converging on this independently. Enterprise security teams already have the conceptual vocabulary: trust zones are VLANs, the PDP is a next-gen firewall, cryptographic identity is PKI, circuit breakers are IDS/IPS, audit logs are SIEM.
 

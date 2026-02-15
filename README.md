@@ -18,7 +18,7 @@ You can't fully test an AI system before deployment. The question is: **how do y
 
 ## The Foundation
 
-![Single-Agent Security Architecture](/images/single-agent-architecture.svg)
+![Single-Agent Security Architecture](images/single-agent-architecture.svg)
 
 The industry is converging on an answer: **runtime behavioural monitoring.** Instead of proving correctness at design time, you continuously verify behaviour in production through three complementary layers.
 
@@ -59,7 +59,7 @@ Single-model controls don't address any of this. You need a framework designed f
 
 ## MASO: Multi-Agent Security Operations
 
-![MASO Tube Map](/images/maso-tube-map.svg)
+![MASO Tube Map](images/maso-tube-map.svg)
 
 The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestration. Six control domains. 93 controls. 99 tests. Three implementation tiers. Full PACE resilience integration. Coverage of all 20 OWASP risks across both the LLM Top 10 (2025) and Agentic Top 10 (2026), plus 30 emergent risks that have no OWASP equivalent.
 
@@ -100,7 +100,7 @@ The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestr
 | --- | --- |
 | **See the entire framework on one map** | **[Tube Map](TUBE-MAP.md)** |
 | **Secure a multi-agent system** | **[MASO Framework](maso/)** |
-| Understand MASO controls at a glance | [MASO Domain Map](/images/maso-tube-map.svg) |
+| Understand MASO controls at a glance | [MASO Domain Map](images/maso-tube-map.svg) |
 | See real incidents mapped to controls | [Incident Tracker](maso/threat-intelligence/incident-tracker.md) |
 | Run adversarial tests on your agents | [Red Team Playbook](maso/red-team/red-team-playbook.md) |
 | Implement MASO in LangGraph, AutoGen, CrewAI, or Bedrock | [Integration Guide](maso/integration/integration-guide.md) |

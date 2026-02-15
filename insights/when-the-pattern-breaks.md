@@ -8,7 +8,7 @@
 
 The three-layer pattern assumes a simple topology:
 
-[![The Three-Layer Pattern](/images/three-layer-pattern.svg)](/images/three-layer-pattern.svg)
+[![The Three-Layer Pattern](../images/three-layer-pattern.svg)](../images/three-layer-pattern.svg)
 
 One input. One model. One output. Clear trust boundaries. The guardrails know what "input" and "output" mean. The judge evaluates a single response. The human reviews a discrete decision.
 
@@ -103,7 +103,7 @@ At Stage 4, the system operates at machine speed across potentially thousands of
 
 The three-layer pattern doesn't need to be abandoned. It needs to be **augmented** for multi-agent architectures. The emerging consensus (from OWASP, AWS, and production deployments) points to several new architectural primitives:
 
-[![Multi-Agent Security Architecture](/images/multi-agent-security-architecture.svg)](/images/multi-agent-security-architecture.svg)
+[![Multi-Agent Security Architecture](../images/multi-agent-security-architecture.svg)](../images/multi-agent-security-architecture.svg)
 
 ### 1. System-Level Invariant Monitoring
 

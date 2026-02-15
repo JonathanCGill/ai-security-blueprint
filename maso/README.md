@@ -9,7 +9,7 @@
 
 ## Architecture
 
-![MASO Architecture](/images/maso-architecture.svg)
+![MASO Architecture](../images/maso-architecture.svg)
 
 MASO operates on a **three-layer defence model** adapted for multi-agent dynamics:
 
@@ -25,7 +25,7 @@ The critical addition for multi-agent systems is the **Secure Inter-Agent Messag
 
 ## Visual Navigation
 
-![MASO Tube Map](/images/maso-tube-map.svg)
+![MASO Tube Map](../images/maso-tube-map.svg)
 
 Six coloured lines represent six control domains. Stations are key controls. Zones are implementation tiers. Interchanges mark where domains share control points (Judge Gate, PACE Bridge, Agent Registry). River PACE flows through the centre, mapping resilience phases to tier progression.
 
@@ -75,7 +75,7 @@ Model provenance tracking and AIBOM generation for every model in the agent syst
 
 ## OWASP Risk Coverage
 
-![OWASP Dual Mapping](/images/owasp-dual-mapping.svg)
+![OWASP Dual Mapping](../images/owasp-dual-mapping.svg)
 
 Full mapping against both OWASP threat taxonomies relevant to multi-agent systems.
 
@@ -117,7 +117,7 @@ These risks are specific to autonomous agent behaviour — the primary threat su
 
 ## PACE Resilience for Multi-Agent Operations
 
-![PACE Multi-Agent Cycle](/images/pace-multi-agent-cycle.svg)
+![PACE Multi-Agent Cycle](../images/pace-multi-agent-cycle.svg)
 
 The [PACE methodology](../) (Primary, Alternate, Contingency, Emergency) from the parent framework is extended for multi-agent failure modes.
 

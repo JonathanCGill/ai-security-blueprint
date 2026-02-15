@@ -2,7 +2,7 @@
 
 > The [technical controls that scale](/insights/what-scales.md) — invariants, identity, budget caps, trust zones — constrain *mechanics*. They govern what agents **can** do. They do not evaluate whether what was **done** was coherent, appropriate, or aligned with the stated objective. That is a semantic problem, and it requires a different kind of control.
 
-[![Multi-Agent Security Architecture](/images/multi-agent-security-architecture.svg)](/images/multi-agent-security-architecture.svg)
+[![Multi-Agent Security Architecture](../images/multi-agent-security-architecture.svg)](../images/multi-agent-security-architecture.svg)
 
 ---
 
@@ -99,7 +99,7 @@ The per-agent LLM-as-Judge in the original three-layer pattern fails at multi-ag
 
 ## The Practical Architecture
 
-![The Intent Layer — Post-Execution Evaluation](images/intent-layer-architecture.svg)
+![The Intent Layer — Post-Execution Evaluation](../images/intent-layer-architecture.svg)
 
 ### Critical Design Decisions
 
