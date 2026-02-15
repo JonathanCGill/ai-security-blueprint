@@ -140,7 +140,7 @@ Every control in MASO is grounded in observed or demonstrated attack patterns. T
 
 ### Visual Navigation
 
-![MASO Tube Map](images/maso-tube-map.svg)
+![MASO Tube Map](/images/maso-tube-map.svg)
 
 Six coloured lines represent the six control domains. Stations are key controls. Zones are implementation tiers. Interchanges mark where domains share control points (Judge Gate, PACE Bridge, Agent Registry). River PACE flows through the centre, mapping resilience phases to tier progression.
 
