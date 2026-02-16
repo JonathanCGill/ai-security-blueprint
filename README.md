@@ -112,6 +112,7 @@ The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestr
 | Enforce controls at infrastructure level | [Infrastructure Controls](infrastructure/) |
 | Navigate by role | [Framework Map](FRAMEWORK-MAP.md) |
 | Understand what's validated and what's not | [Maturity & Validation](MATURITY.md) |
+| See all references, sources, and further reading | [References & Sources](REFERENCES.md) |
 
 ---
 

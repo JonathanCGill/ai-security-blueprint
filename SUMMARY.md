@@ -57,6 +57,11 @@
 * [Governance](GOVERNANCE.md)
 * [Security](SECURITY.md)
 
+## References
+
+* [References & Sources](REFERENCES.md)
+* [Citation](CITATION.md)
+
 ---
 
 *Enterprise AI Security Controls Framework, 2026 (Jonathan Gill).*
