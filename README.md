@@ -105,6 +105,7 @@ The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestr
 | Run adversarial tests on your agents | [Red Team Playbook](maso/red-team/red-team-playbook.md) |
 | Implement MASO in LangGraph, AutoGen, CrewAI, or Bedrock | [Integration Guide](maso/integration/integration-guide.md) |
 | See MASO applied in finance, healthcare, or energy | [Worked Examples](maso/examples/worked-examples.md) |
+| Govern agent identity and access | [IAM Governance](core/iam-governance.md) |
 | Deploy a single-model AI system | [Foundation Framework](foundations/) |
 | Deploy low-risk AI fast | [Fast Lane](FAST-LANE.md) |
 | Classify a system by risk | [Risk Tiers](core/risk-tiers.md) |
@@ -147,7 +148,7 @@ The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestr
 │   ├── integration/                   # LangGraph, AutoGen, CrewAI, AWS Bedrock patterns
 │   └── examples/                      # Financial services, healthcare, critical infrastructure
 ├── images/                            # All SVGs (tube map, architecture, OWASP coverage)
-├── core/                              # Risk tiers, controls, checklists
+├── core/                              # Risk tiers, controls, IAM governance, checklists
 ├── infrastructure/                    # 80 technical controls, 11 domains
 ├── extensions/                        # Regulatory, templates, worked examples
 └── insights/                          # Analysis articles and emerging challenges

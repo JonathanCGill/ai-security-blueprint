@@ -158,6 +158,44 @@ The agent proves its identity on every interaction. Not once at startup — ever
 
 **Standards:** NIST SP 800-207 (Zero Trust), OWASP NHI7 (Long-Lived Secrets), OWASP NHI4 (Insecure Authentication)
 
+#### Workload Identity: SPIFFE and SPIRE
+
+Traditional agent authentication relies on secrets — API keys, client certificates, or OAuth tokens that must be provisioned, stored, rotated, and eventually decommissioned. Every secret is a liability: it can be leaked, stolen, or forgotten.
+
+**SPIFFE** (Secure Production Identity Framework for Everyone) eliminates this problem by giving every workload — including AI agents — a cryptographically verifiable identity that is not a secret. Instead of "here is my password," the agent says "here is a signed attestation of what I am, where I run, and what created me." The identity is bound to the workload itself, not to a credential that can be copied.
+
+| Concept | What It Does |
+|---------|-------------|
+| **SPIFFE ID** | A URI-formatted identity (e.g., `spiffe://org.example/agent/research-bot/prod`) that uniquely identifies a workload. Not a secret — safe to log, inspect, and share |
+| **SVID** (SPIFFE Verifiable Identity Document) | A short-lived X.509 certificate or JWT that proves the workload holds a given SPIFFE ID. Issued automatically, rotated frequently, never touches disk in plaintext |
+| **Trust Domain** | A namespace boundary. Agents in `spiffe://bank.example/` cannot impersonate agents in `spiffe://partner.example/` without explicit federation |
+
+**SPIRE** (the SPIFFE Runtime Environment) is the production implementation. It runs as infrastructure — an attestation authority that verifies workload identity based on platform-level evidence (node attestation, process attestation, Kubernetes service account, cloud instance metadata) and issues short-lived SVIDs automatically.
+
+**Why this matters for AI agent IAM:**
+
+| Traditional Approach | SPIFFE/SPIRE Approach |
+|---------------------|----------------------|
+| Agent holds an API key. Key must be stored somewhere. Key can be copied. | Agent's identity is attested by the platform. Nothing to copy. |
+| Rotation requires updating every system that accepts the key | SVIDs rotate automatically (minutes to hours). No manual intervention |
+| Stolen key works from any location | SVID is bound to platform attestation — stolen certificate is useless without the matching workload environment |
+| Shared secrets between agents in the same cluster | Every agent gets a unique SPIFFE ID and unique SVID, even in the same cluster |
+| Cross-organisation trust requires shared credentials | Trust domain federation allows controlled cross-org identity verification without sharing secrets |
+
+**When to use SPIFFE/SPIRE:**
+
+- Containerised or orchestrated agent deployments (Kubernetes, cloud-managed compute)
+- Multi-agent systems where agents need to authenticate to each other
+- Cross-trust-boundary communication (agent in one environment calling tools in another)
+- Any Tier 2 or Tier 3 deployment where eliminating static secrets is a governance priority
+
+**When it doesn't apply:**
+
+- SaaS-only deployments where agent workloads run on a vendor's infrastructure (you don't control the attestation layer)
+- Single-agent systems using a managed API gateway with OAuth (the gateway handles identity)
+
+SPIFFE/SPIRE is vendor-neutral, CNCF-graduated, and supported across major cloud platforms. It is the closest the industry has to a universal standard for workload identity — and it solves the AI agent authentication problem at the infrastructure layer rather than the application layer.
+
 ### Phase 3: Authorisation
 
 The agent receives permissions scoped to the current task, evaluated dynamically at each request.
@@ -332,7 +370,7 @@ This governance model draws from internationally recognised standards and emergi
 | **OWASP Agentic Top 10 (2026)** | AI agent security risks — identity abuse, tool misuse, uncontrolled autonomy | ASI02, ASI03, ASI08, ASI10 |
 | **OWASP MCP Top 10** | Tool protocol security — token mismanagement, scope creep, shadow servers | MCP-specific IAM risks |
 | **OAuth 2.0/2.1** | Delegation standards — On-Behalf-Of, token exchange, DPoP, PKCE | Identity propagation through chains |
-| **SPIFFE/SVID** | Workload identity — platform-level agent authentication | Kubernetes, containerised, orchestrated |
+| **SPIFFE/SPIRE** | Workload identity — cryptographic attestation replaces static secrets for agent authentication. CNCF-graduated. See [Workload Identity](#workload-identity-spiffe-and-spire) | Kubernetes, containerised, orchestrated, cross-trust-boundary |
 | **CoSAI MCP Taxonomy** | 12 MCP threat categories with actionable controls — identity chains, zero-trust, sandboxing | Industry consortium (EY, Google, IBM, Meta, Microsoft, NVIDIA, PayPal) |
 
 ---
