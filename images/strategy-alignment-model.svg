@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="106%">
+      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5d6d7e"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#27ae60"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e74c3c"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="600" fill="#f8f9fa" rx="8"/>
+
+  <!-- Title -->
+  <text x="440" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#2c3e50">Business-AI Alignment Model</text>
+  <text x="440" y="50" text-anchor="middle" font-size="11" fill="#7f8c8d">Four questions, in order — skip none</text>
+
+  <!-- Question 1 -->
+  <rect x="260" y="70" width="360" height="72" rx="8" fill="#2c3e50" filter="url(#shadow)"/>
+  <text x="290" y="94" font-size="11" font-weight="bold" fill="#aeb6bf">Q1</text>
+  <text x="320" y="94" font-size="12" font-weight="bold" fill="#fff">What business problem are we solving?</text>
+  <text x="320" y="112" font-size="9" fill="#aeb6bf">Is there a real, measurable problem — or a technology</text>
+  <text x="320" y="124" font-size="9" fill="#aeb6bf">looking for a purpose?</text>
+
+  <!-- Arrow Q1 to Q2 -->
+  <line x1="440" y1="142" x2="440" y2="168" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <text x="452" y="160" font-size="9" font-weight="bold" fill="#27ae60">Real problem</text>
+
+  <!-- Q1 No branch -->
+  <line x1="620" y1="106" x2="730" y2="106" stroke="#e74c3c" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <rect x="733" y="88" width="130" height="36" rx="4" fill="#fdedec" stroke="#e74c3c" stroke-width="1.5"/>
+  <text x="798" y="107" text-anchor="middle" font-size="9" font-weight="bold" fill="#922b21">STOP</text>
+  <text x="798" y="119" text-anchor="middle" font-size="8" fill="#922b21">No problem to solve</text>
+
+  <!-- Question 2 -->
+  <rect x="260" y="170" width="360" height="72" rx="8" fill="#1a5276" filter="url(#shadow)"/>
+  <text x="290" y="194" font-size="11" font-weight="bold" fill="#aed6f1">Q2</text>
+  <text x="320" y="194" font-size="12" font-weight="bold" fill="#fff">Does AI provide a genuine advantage?</text>
+  <text x="320" y="212" font-size="9" fill="#aed6f1">Is AI the right tool — or just the fashionable one?</text>
+  <text x="320" y="224" font-size="9" fill="#aed6f1">Compare at least two non-AI alternatives</text>
+
+  <!-- Arrow Q2 to Q3 -->
+  <line x1="440" y1="242" x2="440" y2="268" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <text x="452" y="260" font-size="9" font-weight="bold" fill="#27ae60">AI wins on merit</text>
+
+  <!-- Q2 No branch -->
+  <line x1="620" y1="206" x2="730" y2="206" stroke="#e74c3c" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <rect x="733" y="188" width="130" height="36" rx="4" fill="#fdedec" stroke="#e74c3c" stroke-width="1.5"/>
+  <text x="798" y="207" text-anchor="middle" font-size="9" font-weight="bold" fill="#922b21">USE ALTERNATIVE</text>
+  <text x="798" y="219" text-anchor="middle" font-size="8" fill="#922b21">Rules, automation, etc.</text>
+
+  <!-- Question 3 -->
+  <rect x="260" y="270" width="360" height="72" rx="8" fill="#1e8449" filter="url(#shadow)"/>
+  <text x="290" y="294" font-size="11" font-weight="bold" fill="#a9dfbf">Q3</text>
+  <text x="320" y="294" font-size="12" font-weight="bold" fill="#fff">Can we deliver it?</text>
+  <text x="320" y="312" font-size="9" fill="#a9dfbf">Data ready? Skills available? Organisation prepared?</text>
+  <text x="320" y="324" font-size="9" fill="#a9dfbf">See: Data Reality, Human Factors</text>
+
+  <!-- Arrow Q3 to Q4 -->
+  <line x1="440" y1="342" x2="440" y2="368" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <text x="452" y="360" font-size="9" font-weight="bold" fill="#27ae60">Constraints met</text>
+
+  <!-- Q3 No branch -->
+  <line x1="620" y1="306" x2="730" y2="306" stroke="#f39c12" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="733" y="288" width="130" height="36" rx="4" fill="#fef9e7" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="798" y="307" text-anchor="middle" font-size="9" font-weight="bold" fill="#935116">FIX FIRST</text>
+  <text x="798" y="319" text-anchor="middle" font-size="8" fill="#935116">Data, skills, readiness</text>
+
+  <!-- Question 4 -->
+  <rect x="260" y="370" width="360" height="72" rx="8" fill="#7d3c98" filter="url(#shadow)"/>
+  <text x="290" y="394" font-size="11" font-weight="bold" fill="#d7bde2">Q4</text>
+  <text x="320" y="394" font-size="12" font-weight="bold" fill="#fff">Can we operate it safely?</text>
+  <text x="320" y="412" font-size="9" fill="#d7bde2">What tier? What controls? Who operates them?</text>
+  <text x="320" y="424" font-size="9" fill="#d7bde2">Is the full lifecycle cost in the business case?</text>
+
+  <!-- Arrow Q4 to GO -->
+  <line x1="440" y1="442" x2="440" y2="470" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <text x="452" y="462" font-size="9" font-weight="bold" fill="#27ae60">Funded + governed</text>
+
+  <!-- Q4 No branch -->
+  <line x1="620" y1="406" x2="730" y2="406" stroke="#f39c12" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="733" y="388" width="130" height="36" rx="4" fill="#fef9e7" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="798" y="407" text-anchor="middle" font-size="9" font-weight="bold" fill="#935116">REDUCE SCOPE</text>
+  <text x="798" y="419" text-anchor="middle" font-size="8" fill="#935116">Lower tier or fund controls</text>
+
+  <!-- GO -->
+  <rect x="340" y="472" width="200" height="44" rx="22" fill="#27ae60" filter="url(#shadow)"/>
+  <text x="440" y="491" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">PROCEED</text>
+  <text x="440" y="507" text-anchor="middle" font-size="9" fill="#d5f5e3">Deploy with appropriate controls</text>
+
+  <!-- Left annotation -->
+  <rect x="20" y="70" width="220" height="200" rx="6" fill="#fff" stroke="#bdc3c7" stroke-width="1" filter="url(#shadow)"/>
+  <text x="130" y="92" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3e50">Most organisations skip to here</text>
+  <line x1="32" y1="100" x2="228" y2="100" stroke="#d5dbdb" stroke-width="1"/>
+  <text x="32" y="120" font-size="9" fill="#5d6d7e">Common pattern:</text>
+  <text x="32" y="138" font-size="9" fill="#2c3e50">1. Identify a use case ✓</text>
+  <text x="32" y="154" font-size="9" fill="#e74c3c">2. Assume AI is the answer ✗</text>
+  <text x="32" y="170" font-size="9" fill="#e74c3c">3. Discover constraints during build ✗</text>
+  <text x="32" y="186" font-size="9" fill="#e74c3c">4. Discover costs at launch ✗</text>
+  <text x="32" y="210" font-size="9" fill="#5d6d7e">The four-question model prevents</text>
+  <text x="32" y="224" font-size="9" fill="#5d6d7e">expensive discoveries.</text>
+  <text x="32" y="248" font-size="9" font-style="italic" fill="#7f8c8d">"If any answer is 'we don't know'</text>
+  <text x="32" y="262" font-size="9" font-style="italic" fill="#7f8c8d">— that's your next step."</text>
+
+  <!-- Framework reference -->
+  <rect x="20" y="310" width="220" height="130" rx="6" fill="#eaf2f8" stroke="#2980b9" stroke-width="1" filter="url(#shadow)"/>
+  <text x="130" y="332" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a5276">Framework Connects At</text>
+  <line x1="32" y1="340" x2="228" y2="340" stroke="#aed6f1" stroke-width="1"/>
+  <text x="32" y="360" font-size="9" fill="#2c3e50">Q2: First Control (right tool?)</text>
+  <text x="32" y="378" font-size="9" fill="#2c3e50">Q3: Data Reality + Human Factors</text>
+  <text x="32" y="396" font-size="9" fill="#2c3e50">Q4: Risk Tiers + Control Matrix</text>
+  <text x="32" y="414" font-size="9" fill="#2c3e50">GO: Quick Start + PACE</text>
+  <text x="32" y="432" font-size="9" fill="#7f8c8d">Q1 is yours — not the framework's</text>
+
+  <text x="440" y="585" text-anchor="middle" font-size="9" fill="#95a5a6">AI Runtime Behaviour Security — Business-AI Alignment © Jonathan Gill 2025</text>
+</svg>
