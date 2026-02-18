@@ -137,6 +137,7 @@ The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestr
 | Understand PACE resilience | [PACE Methodology](PACE-RESILIENCE.md) |
 | Enforce controls at infrastructure level | [Infrastructure Controls](infrastructure/) |
 | Navigate by role | [Framework Map](FRAMEWORK-MAP.md) |
+| **Align AI with business strategy** | **[AI Strategy](strategy/)** |
 | Understand what's validated and what's not | [Maturity & Validation](MATURITY.md) |
 | See all references, sources, and further reading | [References & Sources](REFERENCES.md) |
 
@@ -176,7 +177,8 @@ The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestr
 ├── core/                              # Risk tiers, controls, IAM governance, checklists
 ├── infrastructure/                    # 80 technical controls, 11 domains
 ├── extensions/                        # Regulatory, templates, worked examples
-└── insights/                          # Analysis articles and emerging challenges
+├── insights/                          # Analysis articles and emerging challenges
+└── strategy/                          # AI strategy — alignment, data, human factors, progression
 ```
 
 ---
