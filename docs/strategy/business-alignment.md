@@ -2,7 +2,7 @@
 
 *How to match AI investments to business problems — and why most mismatches are strategic, not technical.*
 
-> Part of [AI Strategy](./)
+> Part of [From Strategy to Production](./)
 
 ---
 

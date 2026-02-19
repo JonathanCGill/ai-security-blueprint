@@ -127,7 +127,7 @@ The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestr
 
 Security controls answer *how to secure* AI. They don't answer *what to build*, *whether AI is the right tool*, or *whether the organisation can deliver and operate it safely*.
 
-The **[AI Strategy](strategy/)** section bridges this gap — connecting business strategy to the framework's controls through a defined process:
+The **[From Strategy to Production](strategy/)** section bridges this gap — connecting business strategy to the framework's controls through a defined process:
 
 | Stage | Question | Output |
 | --- | --- | --- |
@@ -164,7 +164,7 @@ The strategy section is honest about [where the framework helps and where it con
 | Understand PACE resilience | [PACE Methodology](PACE-RESILIENCE.md) |
 | Enforce controls at infrastructure level | [Infrastructure Controls](infrastructure/) |
 | Navigate by role | [Framework Map](FRAMEWORK-MAP.md) |
-| **Align AI with business strategy** | **[AI Strategy](strategy/)** |
+| **Align AI with business strategy** | **[From Strategy to Production](strategy/)** |
 | Understand what's validated and what's not | [Maturity & Validation](MATURITY.md) |
 | See all references, sources, and further reading | [References & Sources](REFERENCES.md) |
 

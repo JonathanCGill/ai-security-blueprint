@@ -2,7 +2,7 @@
 
 *What makes a good AI use case definition from a security and governance perspective — and how to translate one into a risk profile, control set, and operating model.*
 
-> Part of [AI Strategy](./)
+> Part of [From Strategy to Production](./)
 
 ---
 

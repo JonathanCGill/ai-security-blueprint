@@ -2,7 +2,7 @@
 
 *Skills, time, learning capacity, and the organisational readiness nobody wants to audit.*
 
-> Part of [AI Strategy](./)
+> Part of [From Strategy to Production](./)
 
 ---
 

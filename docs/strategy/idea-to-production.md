@@ -2,7 +2,7 @@
 
 *The end-to-end process: strategy to use case to tool selection to risk tiering to deployment to ongoing governance. One flow, no gaps.*
 
-> Part of [AI Strategy](./)
+> Part of [From Strategy to Production](./)
 
 ---
 

@@ -2,7 +2,7 @@
 
 *Where this framework supports strategy, where it's silent, and where it actively constrains strategic choices.*
 
-> Part of [AI Strategy](./)
+> Part of [From Strategy to Production](./)
 
 ---
 

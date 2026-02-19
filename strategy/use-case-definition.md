@@ -2,7 +2,7 @@
 
 *What makes a good AI use case definition from a security and governance perspective — and how to translate one into a risk profile, control set, and operating model.*
 
-> Part of [AI Strategy](./)
+> Part of [From Strategy to Production](./)
 
 ---
 
@@ -217,7 +217,7 @@ A well-defined use case produces specific, actionable outputs for every governan
 | Scope boundaries (Q1) | Guardrail topic rules | Negative scope → deny rules; positive scope → allow rules |
 | Data categories (Q3) | DLP rules, PII detection config | Data types → specific detection patterns |
 | User types (Q4) | Authentication requirements, access controls | Internal → SSO; external → MFA; public → rate limiting |
-| Tools/actions (Q8) | Agentic controls, sandbox configuration | API list → scoped permissions; write actions → approval gates |
+| Tools/actions (Q8) | Agentic controls, sandbox configuration | API list → scoped permissions; write actions → approval controls |
 | Integration points (Q9) | Attack surface map, trust boundaries | Upstream/downstream → threat model |
 | Error consequences (Q5) | PACE plan severity | Irreversible → fail-closed; reversible → fail-open acceptable |
 
@@ -429,71 +429,114 @@ Use Case Submitted → AI Drafts Definition → AI Scores Dimensions
 
 ## Use Case Definition Template
 
-For practical use. Copy and complete.
+For practical use. Complete each section before submitting for risk classification.
 
-```
-## AI Use Case Definition
+> **Instructions:** Every field is required unless marked optional. "TBD" is not an acceptable answer for sections 1–10. If you don't know yet, that's your next action — not submitting the form.
 
-### 1. System Identity
-- System name:
-- Business owner (named):
-- Technical owner (named):
-- Date:
-- Version:
+### Section 1 — System Identity
 
-### 2. Scope
-What it does:
-What it does NOT do:
+| Field | Value |
+|-------|-------|
+| **System name** | |
+| **Business owner** (named individual) | |
+| **Technical owner** (named individual) | |
+| **Date** | |
+| **Version** | |
+| **Status** | Draft / Under Review / Approved / In Production / Retired |
 
-### 3. Decision Authority
-Level: [ ] Informational [ ] Advisory [ ] Influential [ ] Autonomous
-Describe the specific decisions it makes or influences:
-What percentage of AI outputs are modified by humans before acting?
+### Section 2 — Scope
 
-### 4. Data Access
-| Data Source | Data Categories | Sensitivity | Access Type (read/write) |
+| | Description |
+|---|-------------|
+| **What it does** | *Specific, bounded description of system behaviour in this deployment* |
+| **What it does NOT do** | *Explicit negative scope — list capabilities the system is prevented from exercising* |
+
+### Section 3 — Decision Authority
+
+| Field | Value |
+|-------|-------|
+| **Authority level** | Informational / Advisory / Influential / Autonomous |
+| **Specific decisions made or influenced** | |
+| **Human modification rate** | *What percentage of AI outputs are changed by humans before acting on them?* |
+
+> **Honesty check:** If the human modification rate is below 10%, the system is functionally autonomous regardless of what the process document says. Score accordingly.
+
+### Section 4 — Data Access
+
+| Data Source | Data Categories | Sensitivity (Public / Internal / Confidential / PII / Sensitive PII / Regulated) | Access Type (Read / Write) |
 |-------------|----------------|-------------|--------------------------|
-|             |                |             |                          |
+| | | | |
+| | | | |
+| | | | |
 
-### 5. Users
-| User Type | Description | Estimated Volume |
-|-----------|-------------|------------------|
-|           |             |                  |
+> **Assess based on access, not intent.** If the system *can* reach sensitive data through its database connection, that's the risk profile — even if the use case only *needs* a subset.
 
-### 6. Error Consequences
-If the AI produces incorrect output, what happens?
-What is the worst realistic outcome?
-How is it detected?
-How is it corrected?
+### Section 5 — Users
 
-### 7. Volume
-Estimated interactions per day:
-Peak volume:
-Growth trajectory:
+| User Type | Description | Estimated Count |
+|-----------|-------------|-----------------|
+| | | |
+| | | |
 
-### 8. Regulatory Context
-Sector:
-Applicable regulations:
-Regulatory notification required for AI use? [ ] Yes [ ] No [ ] Unknown
+### Section 6 — Error Consequences
 
-### 9. Tools and Actions
-| Tool/API | What It Does | Access Level | Human Approval Required? |
-|----------|-------------|--------------|--------------------------|
-|          |             |              |                          |
+| Question | Answer |
+|----------|--------|
+| **If the AI produces incorrect output, what happens?** | |
+| **What is the worst realistic outcome?** | |
+| **How is an error detected?** | |
+| **How is an error corrected?** | |
+| **Is the error reversible?** | Fully / With effort / With difficulty / Irreversible |
 
-### 10. Business Process Position
-What feeds the AI (upstream):
-What consumes the AI output (downstream):
-What is the manual fallback if the AI is unavailable?
+### Section 7 — Volume
 
-### 11. Accountability
-Business owner (outcomes):
-Technical owner (operations):
-HITL reviewers (quality):
-Escalation path:
+| Metric | Value |
+|--------|-------|
+| **Estimated interactions per day** | |
+| **Peak volume** | |
+| **Growth trajectory** (6–12 month projection) | |
 
-### 12. Risk Classification (completed by risk function)
-| Dimension | Score | Justification |
+### Section 8 — Regulatory Context
+
+| Field | Value |
+|-------|-------|
+| **Sector** | |
+| **Applicable regulations** | |
+| **Regulatory notification required for AI use?** | Yes / No / Unknown |
+| **EU AI Act risk category** (if applicable) | Unacceptable / High-Risk / Limited / Minimal / Not Applicable |
+
+### Section 9 — Tools and Actions
+
+| Tool / API | What It Does | Access Level (Read / Write / Execute) | Human Approval Required? |
+|------------|-------------|---------------------------------------|--------------------------|
+| | | | |
+| | | | |
+
+> If the AI can call APIs, write to databases, send emails, or trigger workflows, it is **agentic** — even if nobody calls it that. [Agentic controls](../core/agentic.md) apply.
+
+### Section 10 — Business Process Position
+
+| Field | Value |
+|-------|-------|
+| **Upstream inputs** (what feeds the AI) | |
+| **Downstream consumers** (what acts on AI output) | |
+| **Manual fallback** (if the AI is unavailable) | |
+| **Integration dependencies** | |
+
+### Section 11 — Accountability
+
+| Role | Named Individual | Contact |
+|------|-----------------|---------|
+| **Business owner** (outcomes) | | |
+| **Technical owner** (operations) | | |
+| **HITL reviewers** (quality) | | |
+| **Escalation path** | | |
+
+### Section 12 — Risk Classification
+
+*Completed by risk function. Not self-assessed by the project team.*
+
+| Dimension | Score (LOW / MEDIUM / HIGH / CRITICAL) | Justification |
 |-----------|-------|---------------|
 | Decision Authority | | |
 | Reversibility | | |
@@ -501,13 +544,14 @@ Escalation path:
 | Audience | | |
 | Scale | | |
 | Regulatory | | |
-| **Overall Tier** | | |
+| **Overall Tier** | | *Highest dimension wins; three or more HIGH scores may escalate to CRITICAL* |
 
-Classified by:
-Approved by:
-Date:
-Next review:
-```
+| Field | Value |
+|-------|-------|
+| **Classified by** | |
+| **Approved by** | |
+| **Classification date** | |
+| **Next scheduled review** | |
 
 ---
 

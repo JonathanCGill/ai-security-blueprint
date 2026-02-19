@@ -2,7 +2,7 @@
 
 *Your data determines your strategy more than your ambition does.*
 
-> Part of [AI Strategy](./)
+> Part of [From Strategy to Production](./)
 
 ---
 
