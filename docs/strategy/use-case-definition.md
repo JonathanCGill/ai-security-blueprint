@@ -217,7 +217,7 @@ A well-defined use case produces specific, actionable outputs for every governan
 | Scope boundaries (Q1) | Guardrail topic rules | Negative scope → deny rules; positive scope → allow rules |
 | Data categories (Q3) | DLP rules, PII detection config | Data types → specific detection patterns |
 | User types (Q4) | Authentication requirements, access controls | Internal → SSO; external → MFA; public → rate limiting |
-| Tools/actions (Q8) | Agentic controls, sandbox configuration | API list → scoped permissions; write actions → approval gates |
+| Tools/actions (Q8) | Agentic controls, sandbox configuration | API list → scoped permissions; write actions → approval controls |
 | Integration points (Q9) | Attack surface map, trust boundaries | Upstream/downstream → threat model |
 | Error consequences (Q5) | PACE plan severity | Irreversible → fail-closed; reversible → fail-open acceptable |
 

@@ -26,18 +26,18 @@ This article defines the complete process. Every stage has a clear output that f
 
 ![Idea to Production Flow](../images/strategy-idea-to-production.svg)
 
-Eight stages. Each produces a defined output. Each has a gate before the next stage can begin.
+Eight stages. Each produces a defined output. Each has guardrails that prevent mistakes, detect gaps, and absorb failure if stages are rushed or skipped.
 
-| Stage | Activity | Output | Gate |
-|-------|----------|--------|------|
-| **1. Strategic Alignment** | Is this worth doing? | Business case | Value justified |
-| **2. Use Case Definition** | What exactly will it do? | Completed use case definition | All ten questions answered |
-| **3. Tool Selection** | Is AI the right approach? | Technology decision | Tool-fit confirmed |
-| **4. Risk Classification** | What tier does this sit at? | Scored risk profile + tier | Tier approved by governance |
-| **5. Control Design** | What controls does this tier need? | Control specification + PACE plan | Controls reviewed by security |
-| **6. Build & Test** | Implement the system and controls | Working system with controls | Pre-deployment checklist passed |
-| **7. Deploy & Operate** | Launch and run | Operating system with monitoring | Operational handover complete |
-| **8. Ongoing Governance** | Monitor, review, evolve | Continuous assurance | Periodic review cycle active |
+| Stage | Activity | Output | Guardrail |
+|-------|----------|--------|-----------|
+| **1. Strategic Alignment** | Is this worth doing? | Business case | Detect: systems without business cases surface in governance reviews |
+| **2. Use Case Definition** | What exactly will it do? | Completed use case definition | Prevent: ten questions steer toward complete definitions |
+| **3. Tool Selection** | Is AI the right approach? | Technology decision | Prevent: Use Case Filter steers to right tool early |
+| **4. Risk Classification** | What tier does this sit at? | Scored risk profile + tier | Detect: unclassified systems visible in registry |
+| **5. Control Design** | What controls does this tier need? | Control specification + PACE plan | Prevent: approved platforms inherit baseline controls |
+| **6. Build & Test** | Implement the system and controls | Working system with controls | Detect: pre-deployment checks surface gaps |
+| **7. Deploy & Operate** | Launch and run | Operating system with monitoring | Absorb: gradual rollout contains blast radius |
+| **8. Ongoing Governance** | Monitor, review, evolve | Continuous assurance | Detect: continuous monitoring surfaces drift |
 
 ---
 
@@ -68,7 +68,7 @@ Eight stages. Each produces a defined output. Each has a gate before the next st
 | Initial risk sense | Gut-level: is this low, medium, or high risk? |
 | Sponsor | Named executive sponsor |
 
-**Gate:** Business sponsor confirms this is a genuine priority worth investigating further. No technology commitment at this stage.
+**Guardrail:** Systems that reach production without a business case become visible during governance reviews — they can't demonstrate value and generate monitoring noise. The environment doesn't block teams from exploring, but it makes unjustified investment visible.
 
 **What can go wrong here:**
 - Skip this stage → technology investment without business justification
@@ -98,10 +98,7 @@ Eight stages. Each produces a defined output. Each has a gate before the next st
 
 The full template from [Use Case Definition](use-case-definition.md). All ten questions answered. No "TBD" in critical fields.
 
-**Gate:** Use case definition reviewed and accepted by:
-- Business owner (confirms scope accuracy)
-- Legal/compliance (confirms regulatory context)
-- Data owner (confirms data access is permissible)
+**Guardrail:** The ten questions are the preventive control — they steer teams toward completeness. If fields are left as "TBD," downstream controls will be misconfigured and monitoring will surface the mismatch. Review by business owner, legal/compliance, and data owner improves quality but isn't a hard stop — incomplete definitions reveal themselves in operation.
 
 **What can go wrong here:**
 - Incomplete definition → uncertain risk tier → wrong controls
@@ -170,7 +167,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Platform/provider | Managed service, self-hosted, vendor product |
 | Risk implication | How tool selection affects risk tier |
 
-**Gate:** Technical lead confirms tool fit. Business owner confirms the approach delivers the required value. If the decision is "not AI," the initiative exits this process and follows standard SDLC.
+**Guardrail:** The Use Case Filter is the preventive control — it steers teams to the right tool before investment begins. If a team skips it and builds AI where rules would suffice, the overhead becomes visible in operation: unnecessary guardrail tuning, Judge findings on deterministic tasks, governance cost that simpler tools wouldn't generate. If the decision is "not AI," the initiative exits to standard SDLC.
 
 ---
 
@@ -204,7 +201,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Regulatory | e.g., HIGH | PCI-DSS, banking regulations |
 | **Overall Tier** | **CRITICAL** | Data sensitivity drives the tier |
 
-**Gate:** Risk tier approved by AI governance body. For Fast Lane, self-certification by the deployment team. For MEDIUM, risk analyst approval. For HIGH/CRITICAL, governance committee approval.
+**Guardrail:** Unclassified systems are visible in the use case registry — they stand out because they have no tier, no controls, and no monitoring baseline. For Fast Lane, teams self-certify. For MEDIUM, a risk analyst reviews. For HIGH/CRITICAL, the governance committee reviews. The classification process is lightweight enough that skipping it costs more than doing it.
 
 **What can go wrong here:**
 - Optimistic scoring → system under-controlled
@@ -249,10 +246,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | **Monitoring** | Dashboards, alerts, anomaly thresholds |
 | **Incident response** | Playbook reference, severity mapping, notification requirements |
 
-**Gate:** Control specification reviewed and approved by:
-- Security architect (technical adequacy)
-- AI governance (policy compliance)
-- Business owner (operational feasibility)
+**Guardrail:** Teams building on approved platforms inherit baseline controls automatically — logging, monitoring, and standard guardrails come with the platform. The control specification adds use-case-specific configuration on top. Review by security architect, governance, and business owner strengthens the design, but the platform defaults mean even a rushed deployment starts with basic protection.
 
 ---
 
@@ -294,7 +288,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Kill switch operational | Engineering | |
 | Regulatory/compliance sign-off obtained | Legal/Compliance | |
 
-**Gate:** Pre-deployment checklist fully passed. All controls verified. HITL reviewers trained and ready. For HIGH/CRITICAL: governance committee approves go-live.
+**Guardrail:** The pre-deployment checklist is a detective control — it surfaces gaps before they reach production. Items that aren't verified generate findings, not blockers. For HIGH/CRITICAL systems, the governance committee reviews before go-live. For lower tiers, the checklist serves as the team's own quality signal. The feature flag and PACE plan mean a deployment that discovers problems can be rolled back quickly.
 
 **What can go wrong here:**
 - Controls implemented but not tested → false confidence
@@ -345,7 +339,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Operational review with business owner | Day 7, 14, 30 | All |
 | First PACE transition test | Day 30 | Engineering |
 
-**Gate:** System stable in production. Judge calibrated. HITL operating within SLA. Guardrails tuned. Operational handover to steady-state team confirmed.
+**Guardrail:** Gradual rollout is the absorb control — it contains the blast radius of unexpected behaviour. The first 30 days of monitoring generate the baseline that ongoing governance uses. If calibration reveals problems, the deployment can be paused or rolled back without affecting the full user population. Operational handover to the steady-state team happens when monitoring confirms stability, not on a fixed schedule.
 
 ---
 
@@ -434,46 +428,47 @@ Systems should be retired when:
 
 ```
 STAGE 1: STRATEGIC ALIGNMENT
-  Input:  Business problem
-  Output: Business case
-  Gate:   Worth investigating
+  Input:     Business problem
+  Output:    Business case
+  Guardrail: Detect — unjustified systems visible in governance reviews
      │
 STAGE 2: USE CASE DEFINITION
-  Input:  Business case
-  Output: Ten-question use case definition
-  Gate:   Complete, reviewed, no TBDs
+  Input:     Business case
+  Output:    Ten-question use case definition
+  Guardrail: Prevent — ten questions steer toward completeness
      │
 STAGE 3: TOOL SELECTION
-  Input:  Use case definition
-  Output: Technology decision (AI / RPA / traditional / hybrid)
-  Gate:   Tool fit confirmed
-  Exit:   If not AI → standard SDLC
+  Input:     Use case definition
+  Output:    Technology decision (AI / RPA / traditional / hybrid)
+  Guardrail: Prevent — Use Case Filter steers to right tool
+  Exit:      If not AI → standard SDLC
      │
 STAGE 4: RISK CLASSIFICATION
-  Input:  Use case definition + technology decision
-  Output: Six-dimension scored risk profile + tier
-  Gate:   Tier approved by governance
+  Input:     Use case definition + technology decision
+  Output:    Six-dimension scored risk profile + tier
+  Guardrail: Detect — unclassified systems visible in registry
      │
 STAGE 5: CONTROL DESIGN
-  Input:  Risk profile + use case + technology
-  Output: Control specification + PACE plan
-  Gate:   Controls reviewed by security + governance
+  Input:     Risk profile + use case + technology
+  Output:    Control specification + PACE plan
+  Guardrail: Prevent — approved platforms inherit baseline controls
      │
 STAGE 6: BUILD & TEST
-  Input:  Control specification
-  Output: Working system with verified controls
-  Gate:   Pre-deployment checklist passed
+  Input:     Control specification
+  Output:    Working system with verified controls
+  Guardrail: Detect — checklist surfaces gaps before production
      │
 STAGE 7: DEPLOY & OPERATE
-  Input:  Tested system
-  Output: Production system with active monitoring
-  Gate:   Stable operations confirmed (30-day review)
+  Input:     Tested system
+  Output:    Production system with active monitoring
+  Guardrail: Absorb — gradual rollout contains blast radius
      │
 STAGE 8: ONGOING GOVERNANCE
-  Input:  Production system
-  Output: Continuous assurance
-  Loop:   Periodic review → reassessment → control adjustment
-  Exit:   Retirement when appropriate
+  Input:     Production system
+  Output:    Continuous assurance
+  Guardrail: Detect — continuous monitoring surfaces drift
+  Loop:      Periodic review → reassessment → control adjustment
+  Exit:      Retirement when appropriate
 ```
 
 ---

@@ -114,7 +114,7 @@ A proven pattern is a reference architecture for a common AI use case type. It d
 | **Document Processing** | Extracting structured information from unstructured documents | Document parser + LLM + validation layer | Input validation, output schema enforcement, confidence scoring, human review for low-confidence |
 | **Classification / Routing** | Categorising inputs or routing to appropriate handlers | LLM or traditional NLP + rules engine | Classification accuracy monitoring, fallback routing, bias detection |
 | **Content Generation** | Producing text, summaries, or communications | LLM + output guardrails + human review | Tone/brand guardrails, factual accuracy evaluation, regulatory language checking |
-| **Agentic Workflow** | Multi-step tasks requiring tool use and autonomous action | Orchestrator + tools + [sandbox](../infrastructure/agentic/sandbox-patterns.md) + [delegation chain](../infrastructure/agentic/delegation-chains.md) | Action validation, sandbox enforcement, budget limits, human approval gates, [MASO controls](../maso/) |
+| **Agentic Workflow** | Multi-step tasks requiring tool use and autonomous action | Orchestrator + tools + [sandbox](../infrastructure/agentic/sandbox-patterns.md) + [delegation chain](../infrastructure/agentic/delegation-chains.md) | Action validation, sandbox enforcement, budget limits, human approval controls, [MASO controls](../maso/) |
 
 Each pattern includes:
 - **Architecture diagram** — how the components connect
@@ -248,10 +248,10 @@ The approved catalogue — platforms, models, patterns, connectors — needs gov
 
 ### How Items Enter the Catalogue
 
-| Step | Activity | Gate |
-|------|----------|------|
+| Step | Activity | Quality Signal |
+|------|----------|----------------|
 | 1 | **Request** — team identifies a need not met by current catalogue | Justified business need |
-| 2 | **Evaluate** — technical assessment against framework requirements | Meets all control requirements |
+| 2 | **Evaluate** — technical assessment against framework requirements | Meets control requirements |
 | 3 | **Security review** — threat model, attack surface, control mapping | Acceptable residual risk |
 | 4 | **Operational readiness** — logging configured, monitoring built, playbook written, team trained | Operations team sign-off |
 | 5 | **Approve and document** — added to catalogue with full documentation | Governance committee approval |
