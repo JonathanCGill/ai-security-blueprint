@@ -12,7 +12,7 @@ The strategy section has eight articles. Each one does its job. Business Alignme
 
 But readers tell us the same thing: they can follow each article individually, and still not see how they connect. The stages in [From Idea to Production](idea-to-production.md) define the process. This article tells the story — how decisions made early constrain what happens later, how monitoring findings feed back into strategy, and why the lifecycle is a loop, not a line.
 
-![The Thread](../../images/strategy-thread.svg)
+![The Thread](../images/strategy-thread.svg)
 
 ---
 
