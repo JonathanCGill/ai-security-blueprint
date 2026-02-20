@@ -192,6 +192,20 @@ For organisations adopting this framework, the following operating principles pr
 
 **6. The framework evolves through delivery, not through governance.** When the framework's controls conflict with delivery reality, the framework changes. The [Framework Tensions](../strategy/framework-tensions.md) section explicitly invites this. Strategy that tests the framework's limits is feedback, not non-compliance.
 
+**7. Removing controls is a product decision, not a security decision.** Controls exist by default. They are platform infrastructure. They are not optional because a delivery team finds them inconvenient — they are the baseline. If a product owner wants a control removed, weakened, or scoped differently, that is their prerogative. But it is *their* decision, made explicitly, with full understanding of what the control was preventing.
+
+This means the product owner must:
+
+- **Decide.** The request to remove or reduce a control must come from the person accountable for the product's outcomes. Not from a developer who finds the guardrail annoying. Not from a programme manager trying to hit a date. From the person who owns the product and will answer for its behaviour in production.
+- **Accept the risk.** Removing a control transfers residual risk from the platform to the product. The product owner must understand what that risk is — not in abstract terms, but in concrete terms: what class of failure does this control prevent, and what happens when that failure occurs without it?
+- **Accept the consequences.** If a product owner removes a PII detection guardrail and the system subsequently leaks customer data, that is the product owner's accountability. The security function built the control. The platform provided it by default. The product owner chose to remove it. Accountability follows the decision, not the infrastructure.
+
+This is not a punitive model. It is a clarity model. Security teams should never be in the position of arguing *for* controls against a product owner who wants them gone. The security team's job is to build the controls and make them available. The product owner's job is to decide which ones apply to their product. If they choose to operate with fewer controls than the framework recommends for their risk tier, that choice is documented, the residual risk is quantified, and the accountability is unambiguous.
+
+The alternative — where security teams own the decision about which controls are required — creates exactly the heckling dynamic Baker describes. Security becomes the function that says no from the sidelines. Product owners become the teams that negotiate around controls they had no part in selecting. Neither side carries the other's constraints. Both sides produce narratives. Nothing ships.
+
+Make the controls default. Make removal a product decision. Make the consequences visible. Then get out of the way.
+
 ---
 
 ## The Bottom Line
