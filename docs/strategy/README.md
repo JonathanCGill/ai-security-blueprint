@@ -1,3 +1,7 @@
+---
+description: Guided path from business problem identification through governed AI system deployment and continuous monitoring in production.
+---
+
 # From Strategy to Production
 
 *The guided path from "we have a business problem" to "we have a governed AI system in production" — and how to keep it honest after launch.*

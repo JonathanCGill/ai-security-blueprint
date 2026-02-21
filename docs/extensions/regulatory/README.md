@@ -1,3 +1,7 @@
+---
+description: Standards alignment for ISO 42001, ISO 27001, EU AI Act, and sector-specific regulatory requirements including financial services AI governance.
+---
+
 # Regulatory Extensions
 
 Standards alignment and sector-specific guidance.

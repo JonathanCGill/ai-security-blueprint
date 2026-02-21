@@ -1,3 +1,7 @@
+---
+description: AI risk tier classification system — CRITICAL, HIGH, MEDIUM, LOW — defining which security controls are required based on system impact and decision autonomy.
+---
+
 # Risk Tiers and Control Selection
 
 ---

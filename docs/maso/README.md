@@ -1,3 +1,7 @@
+---
+description: PACE-driven security operations framework for securing multi-model AI agent orchestration. Controls for agent identity, delegation, tool access, and emergent behaviour.
+---
+
 # Multi-Agent Security Operations (MASO) Framework
 
 **A PACE-Driven Approach to Securing Multi-Model Agent Orchestration**

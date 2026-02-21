@@ -1,3 +1,7 @@
+---
+description: Research insights on why runtime behavioural monitoring solves AI security challenges that pre-deployment testing alone cannot address.
+---
+
 # Insights
 
 The *why* before the *how*. Each article identifies a specific problem that the [core controls](../core) and [extensions](../extensions) then solve.

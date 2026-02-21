@@ -1,3 +1,7 @@
+---
+description: Operational templates for AI incident response, threat modelling, vendor assessment, testing guidance, and model documentation.
+---
+
 # Templates
 
 Operational templates and reference documents.

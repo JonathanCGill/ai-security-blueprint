@@ -1,3 +1,7 @@
+---
+description: Three-layer AI security control architecture — guardrails for input/output protection, LLM-as-Judge for behavioural detection, and human oversight for critical decisions.
+---
+
 # Controls: Guardrails, Judge, and Human Oversight
 
 ---

@@ -1,3 +1,7 @@
+---
+description: Security controls for autonomous AI agents — plan approval, action constraints, circuit breakers, and trajectory evaluation for systems that take real-world actions.
+---
+
 # Agentic AI Controls
 
 Additional controls for AI systems that take autonomous actions.

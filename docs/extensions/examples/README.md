@@ -1,3 +1,7 @@
+---
+description: Worked examples demonstrating AI security control implementations for customer service, document assistants, credit decisions, and fraud analytics.
+---
+
 # Worked Examples
 
 Control implementations for specific use cases.

@@ -1,3 +1,7 @@
+---
+description: Core implementation guide for AI behavioural controls including risk classification, control definitions, and specialised controls for production AI systems.
+---
+
 # AI Runtime Behaviour Security — Core
 
 Implementing behavioral controls for AI systems in production.

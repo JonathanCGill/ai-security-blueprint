@@ -1,3 +1,7 @@
+---
+description: Get from zero to working AI security controls in 30 minutes. Classify risk, deploy guardrails, configure LLM-as-Judge, and set up human oversight.
+---
+
 # Quick Start: Implementing Behavioral Controls for AI
 
 Get from zero to working controls in 30 minutes.

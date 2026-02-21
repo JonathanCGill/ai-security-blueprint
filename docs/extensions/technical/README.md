@@ -1,3 +1,7 @@
+---
+description: Deep technical references on AI control implementation, judge model selection, anomaly detection, RAG security, and SOC integration.
+---
+
 # Technical Extensions
 
 Deep dives on controls, infrastructure, and metrics.
