@@ -1,3 +1,7 @@
+---
+description: One-page AI security reference. Classify systems, select controls, define failure postures, and make rapid deployment decisions.
+---
+
 # AI Security Cheat Sheet
 
 *Classify. Control. Define fail posture. Test. One page.*

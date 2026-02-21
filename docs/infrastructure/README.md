@@ -1,3 +1,7 @@
+---
+description: Infrastructure controls that enforce AI behavioural security across identity, access, logging, network segmentation, and incident response.
+---
+
 # AI Security Infrastructure Controls
 
 **The infrastructure layer that makes behavioural AI security enforceable.**

@@ -1,3 +1,7 @@
+---
+description: Role-specific entry points into the AI security framework for CISOs, risk leaders, enterprise architects, product owners, AI engineers, and compliance teams.
+---
+
 # Stakeholder Views
 
 **Your role. Your risks. Your entry point into the framework.**

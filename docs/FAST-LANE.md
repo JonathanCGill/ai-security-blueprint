@@ -1,3 +1,7 @@
+---
+description: Pre-approved AI security controls for low-risk deployments. If your system qualifies, deploy without a security assessment.
+---
+
 # Secure AI Fast Lane
 
 *Pre-approved controls for low-risk AI. If your deployment qualifies, security has already said yes.*

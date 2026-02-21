@@ -1,3 +1,7 @@
+---
+description: Open-source framework for runtime behavioural security of AI systems. Guardrails, LLM-as-Judge, human oversight, and PACE resilience — from single-model deployments to autonomous multi-agent orchestration.
+---
+
 # AI Runtime Behaviour Security
 
 **Runtime behavioural security for AI systems — from single-model deployments to autonomous multi-agent orchestration.**
