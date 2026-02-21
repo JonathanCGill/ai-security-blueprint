@@ -121,19 +121,17 @@ The AIMS comprises:
 
 The AI Policy should address:
 
-```
-AI POLICY — KEY ELEMENTS
+!!! info "AI Policy — Key Elements"
 
-1. Purpose and scope
-2. Alignment with organisational values
-3. Commitment to responsible AI principles
-4. Risk-based approach to AI governance
-5. Roles and responsibilities
-6. Compliance with applicable laws and regulations
-7. Commitment to human oversight
-8. Continuous improvement commitment
-9. Review and update cycle
-```
+    1. Purpose and scope
+    2. Alignment with organisational values
+    3. Commitment to responsible AI principles
+    4. Risk-based approach to AI governance
+    5. Roles and responsibilities
+    6. Compliance with applicable laws and regulations
+    7. Commitment to human oversight
+    8. Continuous improvement commitment
+    9. Review and update cycle
 
 **5.3 Organisational roles, responsibilities, and authorities**
 
@@ -163,34 +161,32 @@ AI POLICY — KEY ELEMENTS
 
 **Risk Assessment Integration:**
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                  AI RISK ASSESSMENT PROCESS                  │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  1. IDENTIFY                                                 │
-│     • Use case analysis                                      │
-│     • Data sensitivity                                       │
-│     • Decision impact                                        │
-│     • Regulatory scope                                       │
-│                                                              │
-│  2. CLASSIFY                                                 │
-│     • Apply risk tier methodology                            │
-│     • Document classification rationale                      │
-│     • Obtain appropriate approval                            │
-│                                                              │
-│  3. TREAT                                                    │
-│     • Select controls per tier                               │
-│     • Implement guardrails, Judge, HITL                      │
-│     • Document residual risk                                 │
-│                                                              │
-│  4. MONITOR                                                  │
-│     • Judge ongoing evaluation                               │
-│     • HITL review findings                                   │
-│     • Periodic reassessment                                  │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-```
+!!! abstract "AI Risk Assessment Process"
+
+    **1. Identify**
+
+    - Use case analysis
+    - Data sensitivity
+    - Decision impact
+    - Regulatory scope
+
+    **2. Classify**
+
+    - Apply risk tier methodology
+    - Document classification rationale
+    - Obtain appropriate approval
+
+    **3. Treat**
+
+    - Select controls per tier
+    - Implement guardrails, Judge, HITL
+    - Document residual risk
+
+    **4. Monitor**
+
+    - Judge ongoing evaluation
+    - HITL review findings
+    - Periodic reassessment
 
 **6.2 AI objectives and planning to achieve them**
 
