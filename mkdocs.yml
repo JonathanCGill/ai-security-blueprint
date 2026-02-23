@@ -213,6 +213,8 @@ nav:
       - The Visibility Problem: insights/the-visibility-problem.md
     - Research & Evidence:
       - The Evidence Gap: insights/the-evidence-gap.md
+    - The Case for Runtime Security:
+      - Why AI Security Is a Runtime Problem: insights/why-ai-security-is-a-runtime-problem.md
     - Analysis:
       - State of Reality: insights/state-of-reality.md
       - Risk Stories: insights/risk-stories.md
