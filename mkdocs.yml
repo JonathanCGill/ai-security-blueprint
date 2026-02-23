@@ -191,6 +191,7 @@ nav:
     - insights/README.md
     - Fundamentals:
       - The First Control: insights/the-first-control.md
+      - The Model You Choose: insights/the-model-you-choose.md
       - Why Guardrails Aren't Enough: insights/why-guardrails-arent-enough.md
       - Practical Guardrails: insights/practical-guardrails.md
       - The Judge Detects, Not Decides: insights/judge-detects-not-decides.md

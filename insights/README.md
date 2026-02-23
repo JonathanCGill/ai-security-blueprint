@@ -15,6 +15,7 @@ These establish the foundational argument: AI systems are non-deterministic, so 
 | # | Article | One-Line Summary |
 |---|---------|-----------------|
 | 1 | [The First Control: Choosing the Right Tool](the-first-control.md) | The best way to reduce AI risk is to not use AI where it doesn't belong |
+| 1b | [The Model You Choose Is a Security Decision](the-model-you-choose.md) | Choosing a flawed model makes every control downstream harder — evaluate security posture, not just capability |
 | 2 | [Why Your AI Guardrails Aren't Enough](why-guardrails-arent-enough.md) | Guardrails block known-bad; you need detection for unknown-bad |
 | 2b | [Practical Guardrails](practical-guardrails.md) | What guardrails should catch, international PII, RAG filtering, exception governance |
 | 3 | [The Judge Detects. It Doesn't Decide.](judge-detects-not-decides.md) | Async evaluation beats real-time blocking for nuance |
