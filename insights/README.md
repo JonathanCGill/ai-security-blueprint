@@ -63,6 +63,16 @@ What the peer-reviewed literature says about runtime AI security controls.
 
 ---
 
+## The Case for Runtime Security
+
+The argument for why AI systems require a fundamentally different security model.
+
+| Article | One-Line Summary |
+|---------|-----------------|
+| [Why AI Security Is a Runtime Problem](why-ai-security-is-a-runtime-problem.md) | Non-deterministic systems cannot be fully tested before deployment — security must be continuous |
+
+---
+
 ## Analysis
 
 Deeper examinations of where the framework meets production reality — what works, what scales, and where the pattern breaks.
