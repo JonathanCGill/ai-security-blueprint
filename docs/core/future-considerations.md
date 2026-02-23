@@ -64,6 +64,12 @@ The report documents concerns about AI systems assisting in biological, chemical
 
 ---
 
+## The Architecture Extends
+
+While these topics may remain out of scope as domain-specific content, the framework's structural patterns — layered independence, risk tiering, PACE resilience, quantitative compounding — transfer directly to drift, fairness, explainability, and reliability as control domains. The architecture describes *how to control*, not *what to control*. See [Beyond Security](../insights/beyond-security.md) for how to read the framework's structure through a non-security lens.
+
+---
+
 ## Principles That Won't Change
 
 Regardless of which topics enter scope in future releases, the framework's core principles remain stable:
