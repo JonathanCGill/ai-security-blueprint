@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627" font-family="'Segoe UI', Arial, Helvetica, sans-serif">
+
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#64748b"/>
+    </marker>
+
+    <!-- Subtle grid pattern for background texture -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.5" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="627" fill="#f8fafc"/>
+  <rect width="1200" height="627" fill="url(#grid)"/>
+
+  <!-- Top accent bar -->
+  <rect width="1200" height="5" fill="#2563eb"/>
+
+  <!-- Title area -->
+  <text x="600" y="62" text-anchor="middle" font-size="32" font-weight="700" fill="#0f172a" letter-spacing="-0.5">You Already Know How to Secure AI</text>
+  <text x="600" y="92" text-anchor="middle" font-size="16" fill="#64748b">The security principles are the same. The implementation has to change.</text>
+
+  <!-- Divider line under title -->
+  <line x1="480" y1="110" x2="720" y2="110" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Column headers -->
+  <text x="280" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="#475569" letter-spacing="2">PRINCIPLES YOU KNOW</text>
+  <text x="880" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="#475569" letter-spacing="2">HOW THEY APPLY TO AI</text>
+
+  <!-- ==================== ROW 1: Defence in Depth ==================== -->
+
+  <!-- Left card -->
+  <rect x="60" y="172" width="440" height="84" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <rect x="60" y="172" width="6" height="84" rx="3" fill="#3b82f6"/>
+  <text x="84" y="200" font-size="17" font-weight="700" fill="#1e40af">Defence in Depth</text>
+  <text x="84" y="222" font-size="13" fill="#64748b">No single control is sufficient.</text>
+  <text x="84" y="240" font-size="13" fill="#64748b">Layer defences so each catches different failures.</text>
+
+  <!-- Arrow -->
+  <line x1="510" y1="214" x2="580" y2="214" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Right card -->
+  <rect x="600" y="172" width="540" height="84" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <rect x="600" y="172" width="6" height="84" rx="3" fill="#7c3aed"/>
+  <text x="624" y="200" font-size="17" font-weight="700" fill="#5b21b6">Three Failure Categories</text>
+  <text x="624" y="222" font-size="13" fill="#64748b">Layer 1: Guardrails catch <tspan font-weight="600" fill="#475569">known-bad</tspan> (real-time, &lt;10ms)</text>
+  <text x="624" y="240" font-size="13" fill="#64748b">Layer 2: Judge detects <tspan font-weight="600" fill="#475569">unknown-bad</tspan> (async, semantic)</text>
+
+  <!-- ==================== ROW 2: Least Privilege ==================== -->
+
+  <!-- Left card -->
+  <rect x="60" y="276" width="440" height="84" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <rect x="60" y="276" width="6" height="84" rx="3" fill="#3b82f6"/>
+  <text x="84" y="304" font-size="17" font-weight="700" fill="#1e40af">Least Privilege</text>
+  <text x="84" y="326" font-size="13" fill="#64748b">Grant only the minimum access</text>
+  <text x="84" y="344" font-size="13" fill="#64748b">required for the task.</text>
+
+  <!-- Arrow -->
+  <line x1="510" y1="318" x2="580" y2="318" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Right card -->
+  <rect x="600" y="276" width="540" height="84" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <rect x="600" y="276" width="6" height="84" rx="3" fill="#7c3aed"/>
+  <text x="624" y="304" font-size="17" font-weight="700" fill="#5b21b6">Scope Everything</text>
+  <text x="624" y="326" font-size="13" fill="#64748b">Data, actions, resources, delegation — enforced in</text>
+  <text x="624" y="344" font-size="13" fill="#64748b"><tspan font-weight="600" fill="#475569">infrastructure</tspan>, not in the prompt</text>
+
+  <!-- ==================== ROW 3: Separation of Duties ==================== -->
+
+  <!-- Left card -->
+  <rect x="60" y="380" width="440" height="84" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <rect x="60" y="380" width="6" height="84" rx="3" fill="#3b82f6"/>
+  <text x="84" y="408" font-size="17" font-weight="700" fill="#1e40af">Separation of Duties</text>
+  <text x="84" y="430" font-size="13" fill="#64748b">No single entity should control</text>
+  <text x="84" y="448" font-size="13" fill="#64748b">an entire process end-to-end.</text>
+
+  <!-- Arrow -->
+  <line x1="510" y1="422" x2="580" y2="422" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Right card -->
+  <rect x="600" y="380" width="540" height="84" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <rect x="600" y="380" width="6" height="84" rx="3" fill="#7c3aed"/>
+  <text x="624" y="408" font-size="17" font-weight="700" fill="#5b21b6">Independent Evaluation</text>
+  <text x="624" y="430" font-size="13" fill="#64748b">The model that <tspan font-weight="600" fill="#475569">generates</tspan> is not the model</text>
+  <text x="624" y="448" font-size="13" fill="#64748b">that <tspan font-weight="600" fill="#475569">evaluates</tspan> — different model, different provider</text>
+
+  <!-- ==================== ROW 4: Fail-Safe Defaults ==================== -->
+
+  <!-- Left card -->
+  <rect x="60" y="484" width="440" height="84" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <rect x="60" y="484" width="6" height="84" rx="3" fill="#3b82f6"/>
+  <text x="84" y="512" font-size="17" font-weight="700" fill="#1e40af">Fail-Safe Defaults</text>
+  <text x="84" y="534" font-size="13" fill="#64748b">When a system fails, it should</text>
+  <text x="84" y="552" font-size="13" fill="#64748b">fail to a secure state.</text>
+
+  <!-- Arrow -->
+  <line x1="510" y1="526" x2="580" y2="526" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Right card -->
+  <rect x="600" y="484" width="540" height="84" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <rect x="600" y="484" width="6" height="84" rx="3" fill="#7c3aed"/>
+  <text x="624" y="512" font-size="17" font-weight="700" fill="#5b21b6">Restrict, Don't Loosen</text>
+  <text x="624" y="534" font-size="13" fill="#64748b">When controls degrade, <tspan font-weight="600" fill="#475569">tighten scope</tspan> — circuit breaker</text>
+  <text x="624" y="552" font-size="13" fill="#64748b">activates safe fallback, pre-decided before the incident</text>
+
+  <!-- ==================== Footer ==================== -->
+  <line x1="60" y1="590" x2="1140" y2="590" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="60" y="614" font-size="13" font-weight="600" fill="#94a3b8">AI Runtime Behaviour Security</text>
+  <text x="1140" y="614" text-anchor="end" font-size="13" fill="#94a3b8">Jonathan Gill, 2026</text>
+
+</svg>
