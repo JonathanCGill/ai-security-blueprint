@@ -68,15 +68,31 @@ Each layer catches what the others miss. Remove any layer and you have a gap. Th
 | **Get started in 30 minutes** | **[Quick Start](QUICK_START.md)** — from zero to working controls |
 | **Secure a single-model AI system** | **[Foundation Framework](foundations/)** — 80 controls, risk tiers, PACE resilience |
 | **Secure a multi-agent system** | **[MASO Framework](maso/)** — 93 controls, 6 domains, 3 tiers |
+| **Deploy low-risk AI fast** | **[Fast Lane](FAST-LANE.md)** — self-certification for internal, read-only, no regulated data |
 
 <details>
-<summary><strong>More paths</strong> — fast lane, risk classification, red teaming, compliance, strategy, worked examples</summary>
+<summary><strong>Common questions</strong> — cost, Judge reliability, supply chain, human factors, compliance</summary>
+
+<br>
+
+| I'm asking about... | Start here |
+| --- | --- |
+| What these controls cost and how to manage latency | [Cost & Latency](extensions/technical/cost-and-latency.md) — sampling strategies, latency budgets, tiered evaluation cascade |
+| What happens when the Judge is wrong | [Judge Assurance](core/judge-assurance.md) — accuracy metrics, calibration, adversarial testing, fail-safe mechanisms |
+| How the Judge can be attacked | [When the Judge Can Be Fooled](core/when-the-judge-can-be-fooled.md) — output crafting, judge manipulation, mitigations by tier |
+| Securing the AI supply chain | [Supply Chain Controls](maso/controls/supply-chain.md) — AIBOM, signed manifests, MCP vetting, model provenance |
+| Human operator fatigue and automation bias | [Human Factors](strategy/human-factors.md) — skill development, alert fatigue, challenge rate testing |
+| Risks that emerge when agents collaborate | [Emergent Risk Register](maso/controls/risk-register.md) — 33 risks across 9 categories, with coverage assessment |
+
+</details>
+
+<details>
+<summary><strong>More paths</strong> — risk classification, red teaming, strategy, worked examples</summary>
 
 <br>
 
 | I want to... | Start here |
 | --- | --- |
-| Deploy low-risk AI with no security review | [Fast Lane](FAST-LANE.md) — self-certification for internal, read-only, no regulated data |
 | Get the one-page reference | [Cheat Sheet](CHEATSHEET.md) — classify, control, fail posture, test |
 | Classify a system by risk | [Risk Tiers](core/risk-tiers.md) |
 | Quantify AI risk for board reporting | [Risk Assessment](core/risk-assessment.md) |
