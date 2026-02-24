@@ -70,47 +70,37 @@ Each layer catches what the others miss. Remove any layer and you have a gap. Th
 | **Secure a multi-agent system** | **[MASO Framework](maso/)** — 93 controls, 6 domains, 3 tiers |
 | **Deploy low-risk AI fast** | **[Fast Lane](FAST-LANE.md)** — self-certification for internal, read-only, no regulated data |
 
-<details>
-<summary><strong>Common questions</strong> — cost, Judge reliability, supply chain, human factors, compliance</summary>
+??? question "Common questions — cost, Judge reliability, supply chain, human factors, compliance"
 
-<br>
+    | I'm asking about... | Start here |
+    | --- | --- |
+    | What these controls cost and how to manage latency | [Cost & Latency](extensions/technical/cost-and-latency.md) — sampling strategies, latency budgets, tiered evaluation cascade |
+    | What happens when the Judge is wrong | [Judge Assurance](core/judge-assurance.md) — accuracy metrics, calibration, adversarial testing, fail-safe mechanisms |
+    | How the Judge can be attacked | [When the Judge Can Be Fooled](core/when-the-judge-can-be-fooled.md) — output crafting, judge manipulation, mitigations by tier |
+    | Securing the AI supply chain | [Supply Chain Controls](maso/controls/supply-chain.md) — AIBOM, signed manifests, MCP vetting, model provenance |
+    | Human operator fatigue and automation bias | [Human Factors](strategy/human-factors.md) — skill development, alert fatigue, challenge rate testing |
+    | Risks that emerge when agents collaborate | [Emergent Risk Register](maso/controls/risk-register.md) — 33 risks across 9 categories, with coverage assessment |
 
-| I'm asking about... | Start here |
-| --- | --- |
-| What these controls cost and how to manage latency | [Cost & Latency](extensions/technical/cost-and-latency.md) — sampling strategies, latency budgets, tiered evaluation cascade |
-| What happens when the Judge is wrong | [Judge Assurance](core/judge-assurance.md) — accuracy metrics, calibration, adversarial testing, fail-safe mechanisms |
-| How the Judge can be attacked | [When the Judge Can Be Fooled](core/when-the-judge-can-be-fooled.md) — output crafting, judge manipulation, mitigations by tier |
-| Securing the AI supply chain | [Supply Chain Controls](maso/controls/supply-chain.md) — AIBOM, signed manifests, MCP vetting, model provenance |
-| Human operator fatigue and automation bias | [Human Factors](strategy/human-factors.md) — skill development, alert fatigue, challenge rate testing |
-| Risks that emerge when agents collaborate | [Emergent Risk Register](maso/controls/risk-register.md) — 33 risks across 9 categories, with coverage assessment |
+??? example "More paths — risk classification, red teaming, strategy, worked examples"
 
-</details>
-
-<details>
-<summary><strong>More paths</strong> — risk classification, red teaming, strategy, worked examples</summary>
-
-<br>
-
-| I want to... | Start here |
-| --- | --- |
-| Get the one-page reference | [Cheat Sheet](CHEATSHEET.md) — classify, control, fail posture, test |
-| Classify a system by risk | [Risk Tiers](core/risk-tiers.md) |
-| Quantify AI risk for board reporting | [Risk Assessment](core/risk-assessment.md) |
-| Align AI with business strategy | [From Strategy to Production](strategy/) |
-| See the entire framework on one map | [Tube Map](TUBE-MAP.md) |
-| Understand PACE resilience | [PACE Methodology](PACE-RESILIENCE.md) |
-| Run adversarial tests on agents | [Red Team Playbook](maso/red-team/red-team-playbook.md) |
-| Implement in LangGraph, AutoGen, CrewAI, or Bedrock | [Integration Guide](maso/integration/integration-guide.md) |
-| See one transaction end-to-end with every log event | [Runtime Telemetry Reference](extensions/technical/runtime-telemetry-reference.md) |
-| Enforce controls at infrastructure level | [Infrastructure Controls](infrastructure/) |
-| See real incidents mapped to controls | [Incident Tracker](maso/threat-intelligence/incident-tracker.md) |
-| See MASO applied in finance, healthcare, or energy | [Worked Examples](maso/examples/worked-examples.md) |
-| Navigate by role | [Framework Map](FRAMEWORK-MAP.md) |
-| Understand what's validated and what's not | [Maturity & Validation](MATURITY.md) |
-| Map to compliance requirements | [Compliance & Legal view](stakeholders/compliance-and-legal.md) |
-| See all references and further reading | [References & Sources](REFERENCES.md) |
-
-</details>
+    | I want to... | Start here |
+    | --- | --- |
+    | Get the one-page reference | [Cheat Sheet](CHEATSHEET.md) — classify, control, fail posture, test |
+    | Classify a system by risk | [Risk Tiers](core/risk-tiers.md) |
+    | Quantify AI risk for board reporting | [Risk Assessment](core/risk-assessment.md) |
+    | Align AI with business strategy | [From Strategy to Production](strategy/) |
+    | See the entire framework on one map | [Tube Map](TUBE-MAP.md) |
+    | Understand PACE resilience | [PACE Methodology](PACE-RESILIENCE.md) |
+    | Run adversarial tests on agents | [Red Team Playbook](maso/red-team/red-team-playbook.md) |
+    | Implement in LangGraph, AutoGen, CrewAI, or Bedrock | [Integration Guide](maso/integration/integration-guide.md) |
+    | See one transaction end-to-end with every log event | [Runtime Telemetry Reference](extensions/technical/runtime-telemetry-reference.md) |
+    | Enforce controls at infrastructure level | [Infrastructure Controls](infrastructure/) |
+    | See real incidents mapped to controls | [Incident Tracker](maso/threat-intelligence/incident-tracker.md) |
+    | See MASO applied in finance, healthcare, or energy | [Worked Examples](maso/examples/worked-examples.md) |
+    | Navigate by role | [Framework Map](FRAMEWORK-MAP.md) |
+    | Understand what's validated and what's not | [Maturity & Validation](MATURITY.md) |
+    | Map to compliance requirements | [Compliance & Legal view](stakeholders/compliance-and-legal.md) |
+    | See all references and further reading | [References & Sources](REFERENCES.md) |
 
 ---
 
@@ -165,60 +155,50 @@ Three constraints strategies routinely underestimate: **[Data Reality](strategy/
 
 ## About This Framework
 
-<details>
-<summary><strong>What it provides, what it doesn't, and how to use it</strong></summary>
+??? abstract "What it provides, what it doesn't, and how to use it"
 
-<br>
+    **What it provides:**
 
-**What it provides:**
+    - **A way of thinking about controls, not a prescription for them.** The framework describes *what* needs to be true and *why* it matters. It does not mandate a specific product, vendor, or architecture. If your existing tools already satisfy a control, you don't need new ones.
+    - **Help deciding where to invest.** Not every control matters equally. Risk tiers, PACE resilience levels, and the distinction between foundation and multi-agent controls exist so you can reason about priority.
+    - **Defence in depth as a design principle.** The layered approach exists because each layer covers gaps in the others. The question isn't "which layer do we need?" but "what happens when each layer fails?"
+    - **Resilience thinking for AI products.** Traditional security asks "how do we prevent bad things?" This framework also asks "what happens when prevention fails?"
+    - **Clarity on when tools are *not* needed.** Some controls are already handled by your existing infrastructure. The framework should help you see where you already have coverage, not convince you to buy something new.
 
-- **A way of thinking about controls, not a prescription for them.** The framework describes *what* needs to be true and *why* it matters. It does not mandate a specific product, vendor, or architecture. If your existing tools already satisfy a control, you don't need new ones.
-- **Help deciding where to invest.** Not every control matters equally. Risk tiers, PACE resilience levels, and the distinction between foundation and multi-agent controls exist so you can reason about priority.
-- **Defence in depth as a design principle.** The layered approach exists because each layer covers gaps in the others. The question isn't "which layer do we need?" but "what happens when each layer fails?"
-- **Resilience thinking for AI products.** Traditional security asks "how do we prevent bad things?" This framework also asks "what happens when prevention fails?"
-- **Clarity on when tools are *not* needed.** Some controls are already handled by your existing infrastructure. The framework should help you see where you already have coverage, not convince you to buy something new.
+    **What it is not:**
 
-**What it is not:**
-
-- Not a certification or audit standard. You cannot be "compliant with" this framework.
-- Not a product recommendation. Tool and vendor references are illustrative, not endorsements.
-- Not a substitute for professional security assessment of your specific deployment.
-- Not a finished document. AI security is moving fast. This framework will evolve as the landscape does.
-
-</details>
+    - Not a certification or audit standard. You cannot be "compliant with" this framework.
+    - Not a product recommendation. Tool and vendor references are illustrative, not endorsements.
+    - Not a substitute for professional security assessment of your specific deployment.
+    - Not a finished document. AI security is moving fast. This framework will evolve as the landscape does.
 
 ---
 
 ## Repository Structure
 
-<details>
-<summary><strong>Expand to see the full repository layout</strong></summary>
+??? info "Repository structure"
 
-<br>
-
-```
-├── README.md                          # This document — start here
-├── TUBE-MAP.md                        # Complete framework tube map with guide
-├── foundations/
-│   └── README.md                      # Single-model AI security framework
-├── maso/
-│   ├── README.md                      # Multi-Agent Security Operations
-│   ├── controls/                      # 6 domain specifications + risk register
-│   ├── implementation/                # 3 tier guides (supervised, managed, autonomous)
-│   ├── threat-intelligence/           # Incident tracker + emerging threats
-│   ├── red-team/                      # Adversarial test playbook (13 scenarios)
-│   ├── integration/                   # LangGraph, AutoGen, CrewAI, AWS Bedrock patterns
-│   └── examples/                      # Financial services, healthcare, critical infrastructure
-├── stakeholders/                      # Role-based entry points (security, risk, architecture, product, engineering, compliance)
-├── images/                            # All SVGs (tube map, architecture, OWASP coverage, stakeholder map)
-├── core/                              # Risk tiers, controls, IAM governance, checklists
-├── infrastructure/                    # 80 technical controls, 11 domains
-├── extensions/                        # Regulatory, templates, worked examples
-├── insights/                          # Analysis articles and emerging challenges
-└── strategy/                          # AI strategy — alignment, data, human factors, progression
-```
-
-</details>
+    ```
+    ├── README.md                          # This document — start here
+    ├── TUBE-MAP.md                        # Complete framework tube map with guide
+    ├── foundations/
+    │   └── README.md                      # Single-model AI security framework
+    ├── maso/
+    │   ├── README.md                      # Multi-Agent Security Operations
+    │   ├── controls/                      # 6 domain specifications + risk register
+    │   ├── implementation/                # 3 tier guides (supervised, managed, autonomous)
+    │   ├── threat-intelligence/           # Incident tracker + emerging threats
+    │   ├── red-team/                      # Adversarial test playbook (13 scenarios)
+    │   ├── integration/                   # LangGraph, AutoGen, CrewAI, AWS Bedrock patterns
+    │   └── examples/                      # Financial services, healthcare, critical infrastructure
+    ├── stakeholders/                      # Role-based entry points (security, risk, architecture, product, engineering, compliance)
+    ├── images/                            # All SVGs (tube map, architecture, OWASP coverage, stakeholder map)
+    ├── core/                              # Risk tiers, controls, IAM governance, checklists
+    ├── infrastructure/                    # 80 technical controls, 11 domains
+    ├── extensions/                        # Regulatory, templates, worked examples
+    ├── insights/                          # Analysis articles and emerging challenges
+    └── strategy/                          # AI strategy — alignment, data, human factors, progression
+    ```
 
 ---
 
