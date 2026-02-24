@@ -135,6 +135,7 @@ nav:
       - Execution Control: maso/controls/execution-control.md
       - Observability: maso/controls/observability.md
       - Supply Chain: maso/controls/supply-chain.md
+      - Privileged Agent Governance: maso/controls/privileged-agent-governance.md
       - Emergent Risk Register: maso/controls/risk-register.md
     - Implementation Tiers:
       - Tier 1 - Supervised: maso/implementation/tier-1-supervised.md
@@ -207,6 +208,7 @@ nav:
       - When Agents Talk to Agents: insights/when-agents-talk-to-agents.md
       - The Memory Problem: insights/the-memory-problem.md
       - Validating Unfinished Output: insights/you-cant-validate-unfinished.md
+      - The Orchestrator Problem: insights/the-orchestrator-problem.md
     - Operational Gaps:
       - The Supply Chain Problem: insights/the-supply-chain-problem.md
       - RAG Is Your Biggest Attack Surface: insights/rag-is-your-biggest-attack-surface.md
