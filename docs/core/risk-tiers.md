@@ -1,7 +1,3 @@
----
-description: AI risk tier classification system — CRITICAL, HIGH, MEDIUM, LOW — defining which security controls are required based on system impact and decision autonomy.
----
-
 # Risk Tiers and Control Selection
 
 ---
@@ -154,6 +150,17 @@ The [MASO Framework](../maso/) also uses Tier 1/2/3 for multi-agent **autonomy l
 
 ---
 
+## Related
+
+| If you need... | Go to |
+|----------------|-------|
+| Low-risk systems that skip the full review | [Fast Lane](../FAST-LANE.md) — self-certification for internal, read-only, no regulated data |
+| Cost implications of each tier | [Cost & Latency](../extensions/technical/cost-and-latency.md) — security overhead is 15–40% at Tier 2, 40–100% at Tier 3 |
+| Quantitative risk scoring | [Risk Assessment](risk-assessment.md) — six-dimension scoring for board reporting |
+| Multi-agent tier progression | [MASO Implementation Tiers](../maso/) — Supervised → Managed → Autonomous |
+
+---
+
 ## Tier Changes
 
 **Upgrade triggers:**
@@ -166,7 +173,7 @@ The [MASO Framework](../maso/) also uses Tier 1/2/3 for multi-agent **autonomy l
 - 6+ months stable operation
 - No significant incidents
 - Reduced scope documented
-- Governance approval
+- Product owner decision (documented with risk acceptance)
 
 ---
 

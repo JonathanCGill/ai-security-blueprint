@@ -204,6 +204,20 @@ MASO inherits the parent framework's regulatory mappings and extends them to mul
 
 ---
 
+## Operational Concerns
+
+These questions come up in every MASO deployment. The answers sit across the framework — collected here so you don't have to hunt.
+
+| Question | Where It's Answered |
+|----------|-------------------|
+| What does the Judge layer cost? When should it run async? | [Cost & Latency](../extensions/technical/cost-and-latency.md) — sampling rates, latency budgets, tiered evaluation cascade |
+| What if the Judge is wrong or manipulated? | [Judge Assurance](../core/judge-assurance.md) · [When the Judge Can Be Fooled](../core/when-the-judge-can-be-fooled.md) · [Privileged Agent Governance](controls/privileged-agent-governance.md) |
+| How do we prevent operator fatigue at scale? | [Human Factors](../strategy/human-factors.md) — skill development, alert fatigue, canary testing, challenge rates |
+| How do we vet models, tools, and MCP servers? | [Supply Chain Controls](controls/supply-chain.md) — AIBOM, signed manifests, model provenance, dependency scanning |
+| What emergent risks have no OWASP equivalent? | [Emergent Risk Register](controls/risk-register.md) — 33 risks across 9 categories including epistemic, coordination, and inference-side attacks |
+
+---
+
 ## Relationship to Parent Framework
 
 MASO is the multi-agent extension of [AI Runtime Behaviour Security](../). It inherits the three-layer defence model, PACE resilience methodology, risk classification matrix, and regulatory mapping framework.
