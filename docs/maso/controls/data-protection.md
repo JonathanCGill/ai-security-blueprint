@@ -2,7 +2,7 @@
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Covers: LLM02 (Sensitive Info Disclosure) · LLM04 (Data/Model Poisoning) · ASI06 (Memory & Context Poisoning) · LLM08 (Vector/Embedding Weaknesses)
-> Also covers: DR-02 (RAG Poisoning/Corpus Drift)
+> Also covers: DR-02 (RAG Poisoning/Corpus Drift) · DR-03 (Derived Data Elevation)
 
 ---
 
@@ -24,6 +24,8 @@ In a multi-agent system, every inter-agent message is a data transfer across a t
 
 **Cross-classification data mixing.** Different agents may legitimately operate at different data classification levels — one processes public data, another processes confidential customer records. Without explicit fencing, the message bus becomes a channel for data to flow from high-classification agents to low-classification agents.
 
+**Derived data elevation (DR-03).** An agent combines two individually non-sensitive data fields — customer ID and purchase history — and the result is PII. An analyst agent aggregates anonymised records and the output is re-identifiable. In multi-agent systems, data passes through multiple processing stages, and each stage can increase the effective classification of the output without any agent recognising the transition. The output is treated at the classification of the inputs, when it should be treated higher. Classification must be reassessed after processing, not just inherited from source data.
+
 ---
 
 ## Controls by Tier
@@ -37,6 +39,7 @@ In a multi-agent system, every inter-agent message is a data transfer across a t
 | **DP-1.3** Output logging | All agent outputs captured and available for review | Enables post-hoc detection of sensitive data leakage. |
 | **DP-1.4** RAG inventory | RAG data sources inventoried per agent | Organisation knows which knowledge bases each agent accesses. |
 | **DP-1.5** Data flow diagram | Documented diagram showing what data moves between which agents | Must be maintained when agents or data sources change. |
+| **DP-1.6** Classification metadata propagation | Data classification tags travel with data through inter-agent messages | Messages without classification metadata are rejected by the bus. Prevents classification from being lost between agents. |
 
 ### Tier 2 — Managed
 
@@ -48,6 +51,7 @@ All Tier 1 controls remain active, plus:
 | **DP-2.2** RAG integrity and freshness validation | Knowledge base content checksummed at ingestion; periodic verification including content currency | Changes trigger automated review. Recommended: daily integrity checks. Freshness metadata tracks whether content has been superseded; documents past defined freshness window flagged for review (Amendment: DR-02). |
 | **DP-2.3** Infrastructure data fencing | Cross-agent data isolation enforced at platform level | Agent A at "confidential" cannot access Agent B's "restricted" data store, even with application-layer compromise. |
 | **DP-2.4** Memory isolation | Per-agent persistent memory isolated; agents cannot read/write other agents' memory | Shared state mediated exclusively through the message bus with DLP scanning. |
+| **DP-2.5** Derived data reclassification | Agent outputs are assessed for classification elevation when combining or enriching data from multiple sources | DLP evaluates whether the output classification should be higher than the input classification. Elevation rules defined per data type (e.g., combining identifiers with behavioural data = PII). Elevated data is tagged at the new classification before it enters the message bus (DR-03). |
 
 ### Tier 3 — Autonomous
 
@@ -72,6 +76,7 @@ All Tier 2 controls remain active, plus:
 | DP-T1.2 | Cross-classification review | Verify no agent processing confidential data shares context with agents at lower classification without explicit approval. |
 | DP-T1.3 | Output log completeness | Perform 20 agent actions. Verify all 20 outputs appear in the audit log. |
 | DP-T1.4 | RAG inventory accuracy | Compare documented RAG inventory against actual agent configurations. No undocumented sources. |
+| DP-T1.5 | Classification metadata | Send 10 inter-agent messages. Verify each carries classification metadata. Send a message without classification metadata and verify it is rejected by the bus. |
 
 ### Tier 2 Tests
 
@@ -82,6 +87,7 @@ All Tier 2 controls remain active, plus:
 | DP-T2.3 | RAG integrity and freshness | Modify a document in the RAG store. Verify the integrity check detects the modification within the defined schedule. Also: mark a document as superseded. Verify the freshness check flags it for review. |
 | DP-T2.4 | Cross-agent data fencing | From within an agent's execution environment, attempt to access another agent's data store. Access is blocked at the infrastructure level. |
 | DP-T2.5 | Memory isolation | From within an agent, attempt to read another agent's persistent memory. Read is blocked. |
+| DP-T2.6 | Derived data elevation | Agent combines two non-sensitive fields (e.g., anonymised ID + location history) that together constitute PII. Verify the output is reclassified at the higher level before entering the message bus. |
 
 ### Tier 3 Tests
 
@@ -115,6 +121,10 @@ All Tier 2 controls remain active, plus:
 **Assuming memory isolation from model provider guarantees.** Model providers may offer session isolation, but if your orchestration framework maintains its own context store (which most do), that store is the actual memory surface. The provider's isolation guarantees don't cover your framework's state management.
 
 **Scanning outputs but not inter-agent messages.** DLP on final outputs catches data leakage to end users. But in a multi-agent system, the more dangerous leak path is agent-to-agent — where sensitive data crosses trust boundaries invisibly within the orchestration.
+
+**Inheriting input classification without reassessment.** An agent that combines public customer IDs with internal behavioural data produces output that is neither public nor internal — it's PII. If the output inherits the classification of the higher input ("internal"), it's still under-classified. Classification must be reassessed after processing, particularly when agents combine, enrich, or aggregate data from multiple sources. The output classification may be higher than any individual input.
+
+**Dropping classification metadata between agents.** If classification tags don't travel with data through the message bus, downstream agents and DLP controls have no basis for enforcement. A message arriving without a classification tag should be treated as an error, not as unclassified.
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

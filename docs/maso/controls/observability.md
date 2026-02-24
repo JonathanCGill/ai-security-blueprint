@@ -50,6 +50,7 @@ All Tier 1 controls remain active, plus:
 | **OB-2.5** Cost and consumption monitoring | Per-agent token usage, API costs, and execution time tracked with alerting thresholds | Detects runaway loops and unbounded consumption (LLM10) before budget limits are reached. |
 | **OB-2.6** Log security | Logs classified, encrypted at rest and in transit, access-restricted to security operations, retention-limited | Full context capture stored in a separate higher-classification log tier from operational monitoring. Prevents logging from becoming a breach vector (SR-06). |
 | **OB-2.7** Accountable human | Every workflow has a designated human owner recorded in the decision chain and AIBOM | `accountable_human` field mandatory in decision chain log. Judge approval does not transfer responsibility from the human owner. Prevents accountability blur (HF-02). |
+| **OB-2.8** Emergent failure accountability | For failures that arise from agent-to-agent interaction (hallucination amplification, consensus failures, transitive delegation errors), the workflow owner is accountable, not individual agent owners | Prevents accountability gaps where no single agent "failed" but the system produced a harmful outcome. Workflow owner is responsible for the orchestration design that permitted the emergent failure. |
 
 ### Tier 3 — Autonomous
 
