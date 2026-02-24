@@ -118,6 +118,20 @@ When the Judge is unavailable, degraded, or untrusted:
 Even with all these controls, you cannot prove the Judge is correct. You can only measure its accuracy against human judgment, track its consistency over time, and react when it drifts.
 
 This is the same epistemic limitation identified in [The Verification Gap](../insights/the-verification-gap.md). The Judge doesn't solve it — it manages it. Judge Assurance ensures you know how well it's managing.
+
+---
+
+## Related Documents
+
+The Judge layer is covered across several documents. If you're here, you probably need these too:
+
+| Document | What It Covers |
+|----------|---------------|
+| [When the Judge Can Be Fooled](when-the-judge-can-be-fooled.md) | Adversarial failure modes: output crafting, judge manipulation, judge limitations. Tier-specific mitigations. |
+| [Cost and Latency](../extensions/technical/cost-and-latency.md) | Judge latency budgets (500ms–5s per evaluation), sync vs async guidance, sampling strategies by risk tier, tiered evaluation cascade (rule-based → small model → large model → human). |
+| [Privileged Agent Governance](../maso/controls/privileged-agent-governance.md) | MASO controls for the Judge as a privileged agent: calibration testing (PA-2.2), criteria versioning (PA-2.3), model rotation (PA-3.4), continuous calibration (PA-3.5). |
+| [Execution Control — EC-2.5](../maso/controls/execution-control.md) | Judge as the gate for agent actions. Action classification rules. Cross-validation at Tier 3 (EC-3.3). |
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

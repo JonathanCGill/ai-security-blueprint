@@ -7,7 +7,7 @@
 
 ## Review Findings
 
-The source risk table identifies 29 emergent risks across eight categories. Comparison against the five MASO control domains and the OWASP dual mapping reveals three classes of coverage:
+The source risk table identifies 30 emergent risks across nine categories. Comparison against the five MASO control domains and the OWASP dual mapping reveals three classes of coverage:
 
 **MASO already strong (no new controls needed):** Cross-agent prompt injection, confused deputy, privilege escalation by delegation, tool-chain injection, role drift, goal drift, memory poisoning, provenance loss, cost blowouts. These map directly to existing MASO controls that are equal to or stronger than the source table's mitigations.
 
@@ -111,9 +111,21 @@ These overlap significantly with the OWASP Agentic Top 10. MASO controls are gen
 
 ---
 
+### Inference-Side Attacks
+
+These target the model's inference endpoint rather than its behaviour. They sit at the boundary of this framework's scope — they are runtime attacks but not behavioural ones. Infrastructure controls partially mitigate them; the residual risk requires model-layer defences.
+
+| ID | Risk | Scenario | Prevent | Detect | Judge/Challenger Role | MASO Status | Control |
+|----|------|----------|---------|--------|----------------------|-------------|---------|
+| IS-01 | **Model extraction** | Attacker queries the API systematically to reconstruct a functionally equivalent model. Steals proprietary fine-tuning, bypasses licensing, and enables offline attack development against a local copy. | Rate limiting per user and per session. Query diversity limits: detect and throttle systematic exploration patterns (grid search, boundary probing). Differential privacy on outputs to reduce information leakage per query. | Monitor for extraction signatures: high query volumes with low semantic diversity, systematic parameter sweeps, requests targeting decision boundaries. | Judge is not relevant. This is infrastructure-layer prevention. | **Partial.** EC-1.3 (rate limits) and IA-2.2 (short-lived credentials) limit throughput. No extraction-specific detection pattern. | **AMEND:** Add extraction-pattern detection to monitoring rules. Throttle or block users exhibiting systematic query patterns with low semantic diversity. |
+| IS-02 | **Membership inference** | Attacker determines whether specific data was in the model's training set. Reveals that an individual's data was used, which may violate privacy regulations (GDPR, HIPAA) even if the data itself is not disclosed. | Differential privacy during training (if you control training). Output calibration to reduce confidence signal leakage. Avoid returning raw confidence scores or logprobs to end users unless required. | Difficult to detect in real-time. Post-hoc audit: monitor for queries that appear to probe membership (repeated variations of the same data point with slight perturbations). | Judge is not relevant. This is a statistical attack on the model, not a behavioural one. | **Gap.** No existing controls address this. Rate limits slow the attack but do not prevent it. | **NEW: IS-C01** Confidence signal minimisation. Do not expose raw logprobs, confidence scores, or token probabilities to end users unless there is a documented business requirement. Where exposed, apply calibration to reduce information leakage. |
+| IS-03 | **Timing and side-channel attacks** | Attacker infers information about inputs, outputs, or model architecture by measuring response times, token generation patterns, or resource consumption. Longer responses to certain queries may reveal the presence of specific content in context or RAG retrieval. | Consistent response padding: normalise response times for sensitive operations. Avoid exposing per-token timing to untrusted clients. Use streaming with consistent chunk sizes where possible. | Monitor for timing-probe patterns: high-frequency requests with minimal semantic content designed to measure response characteristics rather than generate useful output. | Judge is not relevant. This is infrastructure-layer defence. | **Gap.** No existing controls address inference-side timing attacks. | **NEW: IS-C02** Response normalisation for sensitive tiers. For Tier 3 systems handling classified or regulated data, normalise response timing and chunk sizes to reduce side-channel information leakage. |
+
+---
+
 ## Consolidated Amendment Summary
 
-### New Controls (15)
+### New Controls (17)
 
 | ID | Name | Domain | Tier | Source Risk |
 |----|------|--------|------|-------------|
@@ -132,8 +144,10 @@ These overlap significantly with the OWASP Agentic Top 10. MASO controls are gen
 | GV-C01 | Decision traceability | Observability | 2+ | GV-01 Non-determinism |
 | GV-C02 | Quality-over-completion evaluation | Execution Control | 2+ | GV-02 Metric gaming |
 | OP-C01 | Tool completion attestation | Execution Control | 2+ | OP-03 Partial failure |
+| IS-C01 | Confidence signal minimisation | Data Protection | 2+ | IS-02 Membership inference |
+| IS-C02 | Response normalisation | Execution Control | 3 | IS-03 Timing side-channel |
 
-### Amendments to Existing Controls (8)
+### Amendments to Existing Controls (9)
 
 | Existing Control | Amendment | Source Risk |
 |-----------------|-----------|-------------|
@@ -145,6 +159,7 @@ These overlap significantly with the OWASP Agentic Top 10. MASO controls are gen
 | EC domain | Add per-orchestration latency SLOs. Classify control layers as sync/async | OP-02 Latency |
 | Tier 1 test suite | Add periodic challenge rate test (deliberate errors, target > 80% detection) | HF-01 Automation bias |
 | OB-2.1 decision chain + SC-2.1 AIBOM | Add `accountable_human` field to decision chain. Designated human owner in AIBOM | HF-02 Accountability blur |
+| EC-1.3 rate limits + OB monitoring | Add extraction-pattern detection: throttle or block systematic query patterns with low semantic diversity | IS-01 Model extraction |
 
 ---
 
@@ -160,7 +175,8 @@ These overlap significantly with the OWASP Agentic Top 10. MASO controls are gen
 | Governance | 2 | 0 | 0 | 2 |
 | Operational | 3 | 1 | 1 | 1 |
 | Human Factors | 2 | 0 | 2 | 0 |
-| **Total** | **30** | **9** | **8** | **15** |
+| Inference-Side | 3 | 0 | 1 | 2 |
+| **Total** | **33** | **9** | **9** | **17** |
 
 ---
 
