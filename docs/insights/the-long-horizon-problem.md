@@ -93,6 +93,18 @@ The controls assume the baseline is trustworthy. If the baseline drifts, the ano
 
 ---
 
+## Research Context
+
+Long-horizon security is identified as a distinct challenge across recent agentic AI security research.
+
+[Datta, Nahin, Chhabra, and Mohapatra (2025)](https://arxiv.org/abs/2510.23883) explicitly name it as an open problem: "Securing an agent during a single task is one thing. Securing it over weeks or months as it learns and adapts is another challenge entirely." Their survey documents memory poisoning as a stealthy long-term attack vector and identifies the adversarial arms race — where defenders face adaptive, evolving attacks — as a challenge that intensifies with time. They also note that current evaluation benchmarks (AgentDojo, InjectAgent, ASB) test short trajectories with an average length of only three steps, leaving long-horizon defence effectiveness unmeasured.
+
+[Arora and Hastings (2025)](https://arxiv.org/abs/2512.18043) address the lifecycle dimension through their MAAIS framework, which structures security across development, deployment, operations, and governance phases. Their lifecycle-aware approach implicitly acknowledges that security properties established at deployment must be maintained through operations — though their framework focuses more on the structural layers than on temporal degradation patterns.
+
+[Dal Cin, Kendzior, Seedat, and Marinho (2025)](https://www.proquest.com/openview/d82e8ca1463253c1aeaf55c6dde38841/1?pq-origsite=gscholar&cbl=6831990) document runtime protections as one of their three essentials, noting that continuous monitoring and anomaly detection are necessary complements to pre-deployment testing. Their healthcare case study — where AI agents operate across OCR, LLMs, cloud APIs, and billing systems — illustrates the kind of long-running, multi-system workflow where temporal security degradation is most likely to occur.
+
+---
+
 ## The Uncomfortable Implication
 
 Long-horizon security means that "the system passed testing" has an expiry date. The confidence you have in the agent's security posture degrades over time unless you actively maintain it.
