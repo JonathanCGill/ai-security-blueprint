@@ -39,6 +39,7 @@ Where the three-layer pattern meets its limits — and what to do about it.
 | 12 | [The Memory Problem](the-memory-problem.md) | Long context and persistent memory create new risks | [Memory and Context Controls](../core/memory-and-context.md) |
 | 13 | [You Can't Validate What Hasn't Finished](you-cant-validate-unfinished.md) | Real-time streaming breaks the validation model | [Streaming Controls](../core/streaming-controls.md) |
 | 14 | [The Orchestrator Problem](the-orchestrator-problem.md) | The most powerful agents in your system have the least controls applied to them | [Privileged Agent Governance](../maso/controls/privileged-agent-governance.md) |
+| 15 | [The MCP Problem](the-mcp-problem.md) | The protocol everyone's adopting gives agents universal tool access — without authentication, authorisation, or monitoring | [Tool Access Controls](../infrastructure/agentic/tool-access-controls.md) |
 
 ---
 
