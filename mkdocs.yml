@@ -210,6 +210,8 @@ nav:
       - Validating Unfinished Output: insights/you-cant-validate-unfinished.md
       - The Orchestrator Problem: insights/the-orchestrator-problem.md
       - The MCP Problem: insights/the-mcp-problem.md
+      - The Long-Horizon Problem: insights/the-long-horizon-problem.md
+      - Process-Aware Evaluation: insights/process-aware-evaluation.md
     - Operational Gaps:
       - The Supply Chain Problem: insights/the-supply-chain-problem.md
       - RAG Is Your Biggest Attack Surface: insights/rag-is-your-biggest-attack-surface.md
