@@ -128,11 +128,25 @@ Examines security challenges when frontier model agents interact via direct comm
 
 - [Open Challenges in Multi-Agent Security (arXiv)](https://arxiv.org/html/2505.02077v1)
 
-### "Agentic AI Security: Threats, Defences, Evaluation, and Open Challenges" (October 2025)
+### "Agentic AI Security: Threats, Defences, Evaluation, and Open Challenges" — Datta, Nahin, Chhabra, Mohapatra (October 2025)
 
-Comprehensive survey outlining a taxonomy of threats specific to agentic AI, reviewing benchmarks, evaluation methodologies, and defence strategies from both technical and governance perspectives. Covers planning, tool use, memory, and autonomy risks.
+Comprehensive survey outlining a five-category taxonomy of threats specific to agentic AI (prompt injection/jailbreaks, autonomous cyber-exploitation/tool abuse, multi-agent/protocol-level, interface/environment, governance/autonomy), reviewing benchmarks (AgentDojo, InjectAgent, ASB), evaluation methodologies, and defence strategies from both technical and governance perspectives. Identifies process-aware evaluation, long-horizon security, and securing the human-agent interface as open challenges. Finding that 94.4% of LLM agents are vulnerable to prompt injection validates the framework's assumption that prompt injection is unsolved.
 
-- [Agentic AI Security Survey (arXiv)](https://arxiv.org/html/2510.23883v1)
+This framework's [Process-Aware Evaluation](docs/insights/process-aware-evaluation.md) and [Long-Horizon Problem](docs/insights/the-long-horizon-problem.md) insights draw directly on this survey's identification of those areas as research frontiers. The human-as-attack-vector section of [Oversight Readiness](docs/core/oversight-readiness-problem.md) builds on its framing of the human-agent interface as a critical attack surface.
+
+- [Agentic AI Security Survey (arXiv)](https://arxiv.org/abs/2510.23883)
+
+### "Securing Agentic AI Systems — A Multilayer Security Framework" — Arora, Hastings (December 2025)
+
+Introduces MAAIS (Multilayer Agentic AI Security), a seven-layer defence-in-depth framework extending the CIA triad to CIAA (Confidentiality, Integrity, Availability, Accountability). Validated against MITRE ATLAS. Lifecycle-aware approach spanning development, deployment, operations, and governance. The CIAA extension — adding accountability as a first-class security property — aligns with this framework's emphasis on decision traceability and accountable humans throughout the observability controls.
+
+- [MAAIS Framework (arXiv)](https://arxiv.org/abs/2512.18043)
+
+### "Three Essentials for Agentic AI Security" — Dal Cin, Kendzior, Seedat, Marinho (July 2025)
+
+Practitioner-oriented article (MIT Sloan Management Review / Accenture) identifying three phases for securing agentic AI: threat modelling, security testing, and runtime protections. Uses a Brazilian healthcare case study where AI agents process patient exam requests across OCR, LLMs, cloud APIs, legacy databases, and billing platforms. Identifies data poisoning and prompt injection as the primary threats. Validates the general direction of this framework's three-layer approach at a higher level of abstraction.
+
+- [Three Essentials for Agentic AI Security (ProQuest)](https://www.proquest.com/openview/d82e8ca1463253c1aeaf55c6dde38841/1?pq-origsite=gscholar&cbl=6831990)
 
 ### "Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training" — Anthropic (January 2024)
 

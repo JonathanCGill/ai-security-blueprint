@@ -228,6 +228,8 @@ The oversight readiness mechanisms above — synthetic probes, forced reasoning,
 
 The uncomfortable truth: if your security model assumes the human reviewer is trustworthy, competent, and operating with accurate information, you have three assumptions that an attacker can target. Defence-in-depth applies to the human layer too.
 
+The framing of humans as attack vectors — not just fallible reviewers — is identified across recent agentic AI security research. [Datta, Nahin, Chhabra, and Mohapatra (2025)](https://arxiv.org/abs/2510.23883) classify "securing the human-agent interface" as a critical and often overlooked open challenge, noting that phishing, social engineering, and user error are all vectors for compromising an agent through its human oversight layer. Their survey also documents weaknesses in human-in-the-loop interfaces, escalation policies, and audit mechanisms that permit system-wide compromise — including agent workflows that skip human approval on high-risk actions.
+
 ---
 
 ## Implementation Priorities

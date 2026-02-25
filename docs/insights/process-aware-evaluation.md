@@ -128,7 +128,13 @@ The key insight from recent research is that the agent's decision-making trace i
 
 ## Research Context
 
-The concept of process-aware evaluation is emerging across the agentic AI security literature. Chhabra et al. (2025) identify the shift toward "process-aware evaluation" as a frontier in security benchmarking — analysing not just whether an agent succeeded or failed, but *how* it reached its outcome. They note that current benchmarks like AgentDojo, InjectAgent, and Agent Security Bench primarily evaluate outcomes, and that trace-level analysis is necessary to identify subtle vulnerabilities that output checks would miss.
+The concept of process-aware evaluation is emerging across the agentic AI security literature.
+
+[Datta, Nahin, Chhabra, and Mohapatra (2025)](https://arxiv.org/abs/2510.23883) identify the shift toward "process-aware evaluation" as a frontier in security benchmarking — analysing not just whether an agent succeeded or failed, but *how* it reached its outcome. Their survey notes that current benchmarks like AgentDojo, InjectAgent, and Agent Security Bench primarily evaluate outcomes, and that trace-level analysis is necessary to identify subtle vulnerabilities that output checks would miss. The finding that 94.4% of LLM agents are vulnerable to prompt injection reinforces the need to examine *how* agents process inputs, not just what they produce.
+
+[Arora and Hastings (2025)](https://arxiv.org/abs/2512.18043) reach a complementary conclusion through their MAAIS (Multilayer Agentic AI Security) framework, which extends the CIA triad to CIAA — adding Accountability as a first-class security property. Accountability requires traceability, and traceability requires the trace to be evaluated, not merely stored. Their lifecycle-aware approach — spanning development, deployment, operations, and governance — provides additional context for where in the agent lifecycle process-aware evaluation adds the most value.
+
+[Dal Cin, Kendzior, Seedat, and Marinho (2025)](https://www.proquest.com/openview/d82e8ca1463253c1aeaf55c6dde38841/1?pq-origsite=gscholar&cbl=6831990) frame the practitioner case through a healthcare deployment where AI agents process patient exam requests across OCR, LLMs, cloud APIs, legacy databases, and billing platforms. Their three-phase model (threat modelling, security testing, runtime protections) identifies data poisoning and prompt injection as the primary risks — both of which manifest in the trace before they manifest in the output.
 
 This aligns with the broader trajectory in AI evaluation: moving from "did it get the right answer?" to "did it get the right answer for the right reasons?" — a question that matters not just for accuracy, but for security.
 
