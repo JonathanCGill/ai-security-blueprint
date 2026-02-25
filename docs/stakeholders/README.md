@@ -1,5 +1,5 @@
 ---
-description: Role-specific entry points into the AI security framework for CISOs, risk leaders, enterprise architects, product owners, AI engineers, and compliance teams.
+description: Role-specific entry points into the AI security framework for CISOs, risk leaders, enterprise architects, product owners, AI engineers, compliance teams, and insider threat teams.
 ---
 
 # Stakeholder Views
@@ -28,6 +28,7 @@ These pages tell you **what matters for your role**, **why you should care**, an
 | **[Product Owners](product-owners.md)** | Product Managers, Business Owners, Delivery Leads | *What controls are required to ship AI, and what do they cost in time and money?* |
 | **[AI Engineers](ai-engineers.md)** | ML Engineers, AI Developers, Data Scientists, Platform Engineers | *What do I actually build? Give me implementation patterns, not governance theory.* |
 | **[Compliance & Legal](compliance-and-legal.md)** | Compliance Officers, Legal Counsel, DPOs, Audit Teams | *How do I demonstrate that AI deployments meet regulatory obligations — with evidence?* |
+| **[Insider Threat Teams](insider-threat-teams.md)** | Insider Risk Analysts, UEBA Engineers, Behavioral Analytics Teams | *Your programme already solves the problem AI agents create — how do you extend it?* |
 
 ---
 
