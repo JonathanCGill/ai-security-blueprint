@@ -81,9 +81,11 @@ The framework addresses long-horizon risk across several controls:
 - **Cross-agent correlation** ([OB-3.4](../maso/controls/observability.md)): Coordinated anomaly detection across agents at Tier 3.
 - **Independent observability** ([OB-3.3](../maso/controls/observability.md)): Separate monitoring agent on separate infrastructure.
 
-### The gap: anchored baselines
+### The gap: anchored baselines and insider risk monitoring
 
-The controls assume the baseline is trustworthy. If the baseline drifts, the anomaly detection drifts with it. Long-horizon security requires:
+The controls assume the baseline is trustworthy. If the baseline drifts, the anomaly detection drifts with it. And the current signals — while comprehensive for short-window detection — miss temporal and peer-group patterns that insider risk programs have been catching for over a decade. An agent that starts operating at weekends when it has no weekend triggers, or one agent in a fleet that diverges while its peers remain stable, should generate alerts through the same UEBA (User and Entity Behavior Analytics) mechanisms that flag compromised human accounts. See [The Insider Risk Parallel](behavioral-anomaly-detection.md#the-insider-risk-parallel) for the full mapping.
+
+Long-horizon security requires:
 
 **Anchored reference points.** Capture a behavioural snapshot at a known-good state (post-deployment validation, post-audit). Preserve it independently. Compare not just against the rolling baseline but against the anchor. If the rolling baseline has diverged significantly from the anchor, that itself is an alert — even if week-over-week change is within tolerance.
 

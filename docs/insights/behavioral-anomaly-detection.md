@@ -251,6 +251,65 @@ Monitoring depth should match risk:
 
 ---
 
+## The Insider Risk Parallel
+
+Enterprise security has been solving this exact problem for humans since 2015. User and Entity Behavior Analytics (UEBA) — originally UBA before Gartner added the "E" — monitors users and non-human entities against behavioural baselines, flags deviations, and scores risk across multiple dimensions.
+
+The "E" is the key. UEBA was extended specifically to cover non-human entities: service accounts, bots, IoT devices, automated processes. Agents are the next entity type. The entire analytical framework transfers.
+
+### Three insider threat categories → three agent threat categories
+
+Insider risk programs classify threats into three types. Each maps to an agent equivalent:
+
+| Insider Type | Human Example | Agent Equivalent |
+|---|---|---|
+| **Negligent insider** | Employee accidentally exposes data through carelessness | Agent drifting through accumulated context — not malicious, but degrading from policy through noise, stale memory, or unchecked context growth |
+| **Compromised insider** | Employee whose credentials are stolen by an external attacker | Agent that's been prompt-injected, memory-poisoned, or whose NHI credentials are being used from an unexpected context |
+| **Malicious insider** | Employee deliberately exfiltrating data | Agent with misaligned objectives — a sleeper agent, a training-time backdoor, or an agent that has been deliberately reprogrammed through persistent manipulation |
+
+The detection challenge is the same in all three cases: the entity has legitimate access. The activity looks authorised. The anomaly is behavioural, not structural.
+
+### UEBA indicators that apply directly to agents
+
+Insider risk programs monitor specific behavioural dimensions. Each translates to agent monitoring:
+
+| UEBA Indicator (Humans) | Agent Equivalent | What It Catches |
+|---|---|---|
+| **Unusual working hours** — logins at 3am, weekend activity | Agent activity at unusual times — processing requests when no users or scheduled triggers should be activating it | Compromised agent being used out-of-band; unauthorised automation; external attacker operating in a different timezone |
+| **Access beyond role** — accessing data irrelevant to job function | Agent accessing tools, data sources, or APIs outside its declared scope | Scope creep through prompt injection; memory-driven misrouting; tool-chain exploitation |
+| **Privilege escalation** — requesting elevated permissions | Agent requesting broader tool access, higher-tier APIs, or cross-tenant data | Prompt injection attempting to widen blast radius; delegated authority abuse |
+| **Data volume anomalies** — bulk downloads, unusual transfer volumes | Agent processing or transmitting significantly more data than baseline | Data exfiltration; RAG over-retrieval; runaway loops |
+| **New communication destinations** — emails to unknown external addresses | Agent calling new external APIs, unknown endpoints, or previously unused tools | Exfiltration via tool invocation; supply chain compromise through redirected API calls |
+| **Peer group deviation** — behaving differently from colleagues in the same role | Agent behaving differently from other agents with the same role and configuration | Individual agent compromise when peers remain normal; configuration drift; selective poisoning |
+| **Session anomalies** — unusual duration, frequency, concurrency | Unusual session length, invocation frequency, or concurrent execution patterns | Agent being driven by an attacker with different usage patterns than legitimate users |
+| **Behavioural change after events** — behaviour shift correlating with known events | Agent behaviour shift correlating with model updates, config changes, or memory additions | Regression from model update; memory poisoning taking effect; configuration tampering |
+
+The temporal dimension deserves emphasis. Your example — the agent starts working at weekends when it did not before — is a classic UEBA indicator. In human insider risk, unusual working hours are one of the strongest early signals of compromised credentials or malicious intent. For agents, the same logic applies: if an agent's activity pattern changes without a corresponding change in its triggering conditions, something has changed about *who or what is driving it*.
+
+### Peer group comparison: the signal UEBA adds that we don't have
+
+The most powerful UEBA technique that's missing from the current framework is **peer group comparison**. In human insider risk, an individual's behaviour is compared not just against their own baseline but against the baseline of their peer group — people in the same role, department, and access tier.
+
+For agents, this means: if you run five customer service agents with the same configuration, and one starts behaving differently from the other four, that's a stronger signal than any individual-baseline deviation. The peer group filters out environmental changes (new data, seasonal patterns, updated prompts) that affect all agents equally, isolating the anomaly to the individual.
+
+Peer comparison catches what individual baselines miss:
+
+- A global shift in query patterns (new product launch, news event) moves all agents' baselines together — **not anomalous**
+- A model update changes all agents' response patterns equally — **not anomalous**
+- One agent's responses diverge while its peers remain stable — **anomalous, investigate**
+
+Microsoft Sentinel's UEBA builds both individual entity profiles and peer group profiles specifically for this purpose. The same architecture applies to agent fleets.
+
+### What this means for the framework
+
+The insider risk parallel is not a metaphor. It is a direct technical mapping. Agents are entities with identities, access privileges, behavioural baselines, and the potential for compromise. The 15+ years of UEBA engineering that enterprise security has invested in detecting compromised, negligent, and malicious humans transfers directly to detecting the same patterns in agents.
+
+The practical implication: organisations that already run insider risk programs — with UEBA, SIEM correlation, and behavioural baselines — should extend those programs to cover agent identities. The agent's NHI should be enrolled in the same behavioural analytics pipeline as human user accounts. The same SIEM rules that flag "service account active at unusual hours" should flag "agent active at unusual hours."
+
+This is not a new capability to build. It is an existing capability to extend.
+
+---
+
 ## Key Takeaways
 
 1. **Individual safety layers are necessary but not sufficient** — aggregation reveals patterns invisible to any single layer
