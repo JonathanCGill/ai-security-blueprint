@@ -193,6 +193,43 @@ These signals mean the human oversight layer is not functioning and should be tr
 
 **Non-zero override rate** that correlates with system changes. When models are updated, new features deployed, or input patterns shift, the override rate should temporarily increase as the human layer catches cases the automated layer hasn't yet adapted to.
 
+## The Inverse Problem: Humans as Attack Vector
+
+Everything above addresses the scenario where humans fail at their oversight role — they miss things, rubber-stamp approvals, lose vigilance. The human is the weak link in the *review* chain.
+
+But there is an inverse problem that is equally dangerous: the human can be the weak link in the *security* chain. Not because they fail to catch a problem, but because an attacker deliberately targets the human to compromise the agent.
+
+### How humans become the entry point
+
+The human-in-the-loop is not just a reviewer. They are an **authorisation mechanism**. When the agent escalates a decision, the human's approval is the signal that unlocks the next action. This makes the human a high-value target.
+
+**Social engineering the approver.** An attacker who understands the escalation workflow can craft agent inputs designed to produce escalations that look routine. The human sees what appears to be a standard approval request. They approve it. The approval unlocks a malicious action that the agent was constrained from taking autonomously.
+
+This is prompt injection with an extra step. Instead of convincing the model directly, the attacker crafts a scenario that convinces the *human* to approve what the model correctly flagged as requiring oversight.
+
+**Exploiting approval fatigue as an attack strategy.** Alert fatigue is not just an operational problem — it is an exploitable vulnerability. An adversary who can generate a high volume of false-positive escalations degrades the human's review quality for all escalations, including the one genuine attack buried in the noise.
+
+This transforms the oversight mechanism into a denial-of-security attack. The defence is overwhelmed not by bypassing it, but by exhausting it.
+
+**Compromising the human's decision context.** The human reviewer makes decisions based on the information presented to them. If an attacker can influence what the reviewer sees — by manipulating the escalation summary, the supporting evidence, or the agent's stated reasoning — they can steer the human toward the wrong decision while the human believes they are exercising independent judgement.
+
+This is particularly dangerous because it defeats the purpose of human oversight entirely. The human is "in the loop" but the loop has been compromised.
+
+### What this means for the architecture
+
+The oversight readiness mechanisms above — synthetic probes, forced reasoning, rotation, feedback loops — primarily address human *capability* degradation. The attack-vector problem requires additional considerations:
+
+| Risk | Mitigation |
+|------|------------|
+| Social engineering of approval decisions | Ensure escalation context includes raw data, not just agent-summarised explanations. The reviewer must see what the agent saw, not just what the agent concluded. |
+| Approval fatigue as attack strategy | Monitor escalation volume anomalies. A sudden spike in escalations — particularly from a single source or input pattern — should itself trigger investigation, not just individual review. |
+| Manipulated decision context | Present the Judge's independent assessment alongside the agent's reasoning. Disagreement between the two is a signal that the reviewer should examine more closely, not less. |
+| Credential compromise of the reviewer | Treat human-in-the-loop approval as a privileged action requiring appropriate authentication. MFA for high-consequence approvals. Approval tokens that are scoped and time-limited. |
+
+The uncomfortable truth: if your security model assumes the human reviewer is trustworthy, competent, and operating with accurate information, you have three assumptions that an attacker can target. Defence-in-depth applies to the human layer too.
+
+---
+
 ## Implementation Priorities
 
 For organisations building or operating AI systems with human oversight requirements, the recommended implementation sequence is:
