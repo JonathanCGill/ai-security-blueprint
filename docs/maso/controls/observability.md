@@ -74,13 +74,15 @@ The anomaly score is a composite metric that drives PACE escalation decisions. I
 
 | Signal | Weight (example) | Description |
 |--------|------------------|-------------|
-| Tool usage pattern | 0.20 | Deviation from baseline tool invocation distribution |
-| Output quality | 0.25 | LLM-as-Judge scores vs. baseline |
+| Tool usage pattern | 0.15 | Deviation from baseline tool invocation distribution |
+| Output quality | 0.20 | LLM-as-Judge scores vs. baseline |
 | Response latency | 0.05 | Significant changes in processing time |
 | Message volume | 0.10 | Inter-agent message frequency vs. baseline |
-| Error rate | 0.15 | Guardrail blocks, tool failures, timeouts |
+| Error rate | 0.10 | Guardrail blocks, tool failures, timeouts |
 | Content drift | 0.15 | Semantic similarity of outputs vs. baseline |
-| Cost trajectory | 0.10 | Token usage trend vs. baseline |
+| Cost trajectory | 0.05 | Token usage trend vs. baseline |
+| Temporal profile | 0.10 | Activity timing vs. established schedule — flags weekend, off-hours, or out-of-cycle invocations that deviate from the agent's historical activation pattern. Borrowed from [insider risk UEBA](../../insights/behavioral-anomaly-detection.md#the-insider-risk-parallel): unusual working hours are one of the strongest early signals of compromised credentials. |
+| Peer group deviation | 0.10 | Behavioural divergence from other agents with the same role and configuration. If one agent in a fleet of five starts behaving differently while its peers remain stable, the individual agent is flagged. Filters out environmental changes that affect all agents equally. |
 
 **Thresholds (configurable per agent):**
 
