@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BNXDE3EJ7E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BNXDE3EJ7E');
+</script>
 {% if page and page.meta %}
   <!-- Open Graph / LinkedIn -->
   <meta property="og:type" content="website" />
