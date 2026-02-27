@@ -5,40 +5,53 @@ description: Open-source framework for runtime behavioural security of AI system
 
 # AI Runtime Behaviour Security
 
-> Your AI passed every test. Then it hallucinated a medical dosage, leaked customer data, or approved a transaction it shouldn't have.
+AI systems break quietly. The failures that matter most — hallucinated data, leaked context, unauthorised actions — look like normal responses. Your testing can't catch them all. **This framework gives you the runtime controls that do.**
 
-AI isn't deterministic. Same prompt, different response, every time. Your test suite proves the system *can* behave correctly. It cannot prove it *will* on the next request. **You need runtime controls — not just pre-deployment testing.**
+For architects, security leaders, and risk owners of AI-driven systems. Single-agent and multi-agent. Because silent failures are already happening in production.
 
-This framework covers **single-agent and multi-agent AI systems** — from a chatbot with guardrails to autonomous agent swarms with per-agent identity, epistemic integrity controls, and kill switch architecture.
-
-173 controls. 10 real incidents mapped. 8 standards aligned. MIT licensed.
+[**Explore the Framework**](ARCHITECTURE.md) | [**Quick Start Guide**](QUICK_START.md)
 
 ---
 
-## Who This Is For
+## Built on Evidence
 
-**Security leaders** writing an AI security strategy and finding that existing frameworks describe *what* should be true without specifying *how* to make it true in production.
-**→** [Security Leaders](stakeholders/security-leaders.md) | [Risk & Governance](stakeholders/risk-and-governance.md)
-
-**Architects** working out where controls go in the AI pipeline, what they cost, and what happens when they fail.
-**→** [Enterprise Architects](stakeholders/enterprise-architects.md) | [Architecture Overview](ARCHITECTURE.md)
-
-**Engineers** building AI systems who want implementation patterns, not slide decks. Guardrail configs, Judge prompts, integration code.
-**→** [AI Engineers](stakeholders/ai-engineers.md) | [Quick Start](QUICK_START.md) — zero to working controls in 30 minutes
+173 controls across single-agent and multi-agent systems. 10 real-world AI incidents mapped to specific controls. Aligned with OWASP LLM Top 10, OWASP Agentic Top 10, NIST AI RMF, ISO 42001, EU AI Act, and DORA. MIT licensed. Built for practitioners, not for slides.
 
 ---
 
-## Start Here
+## What You Get
+
+- **A way to classify risk and right-size controls** — not every AI system needs the same governance. Tier your deployments from [fast-lane self-certification](FAST-LANE.md) to full human-in-the-loop oversight.
+- **Controls that work at runtime** — [guardrails](ARCHITECTURE.md#single-agent-architecture) for known threats, LLM-as-Judge for unknown threats, human oversight for edge cases, circuit breakers for when everything else fails.
+- **Resilience when controls fail** — every control has a defined failure mode and a predetermined safe state. [PACE methodology](PACE-RESILIENCE.md): Primary, Alternate, Contingency, Emergency.
+
+---
+
+## Start by Role
+
+**Security leaders** — writing AI security strategy. Existing frameworks say *what* should be true but not *how*. Start here.
+**→** [Security Leaders](stakeholders/security-leaders.md) | [Cheat Sheet](CHEATSHEET.md) — *5 minutes*
+
+**Architects** — working out where controls go, what they cost, and what happens when they fail.
+**→** [Enterprise Architects](stakeholders/enterprise-architects.md) | [Architecture Overview](ARCHITECTURE.md) — *10 minutes*
+
+**Engineers** — want implementation patterns, not slide decks. Guardrail configs, Judge prompts, integration code.
+**→** [AI Engineers](stakeholders/ai-engineers.md) | [Quick Start](QUICK_START.md) — *30 minutes*
+
+---
+
+## Navigate
 
 | I want to... | Go to |
 | --- | --- |
-| **See how the layers work** | **[Architecture Overview](ARCHITECTURE.md)** — single-agent and multi-agent patterns |
-| **Get started in 30 minutes** | **[Quick Start](QUICK_START.md)** — from zero to working controls |
-| **Secure a single-model AI system** | **[Foundation Framework](foundations/)** — 80 controls, risk tiers, PACE resilience |
-| **Secure a multi-agent system** | **[MASO Framework](maso/)** — 93 controls, 6 domains, 3 tiers |
-| **Deploy low-risk AI fast** | **[Fast Lane](FAST-LANE.md)** — self-certification for internal, read-only, no regulated data |
+| **See how the layers work** | [Architecture Overview](ARCHITECTURE.md) — single-agent and multi-agent patterns |
+| **Secure a single-model AI system** | [Foundation Framework](foundations/) — 80 controls, risk tiers, PACE resilience |
+| **Secure a multi-agent system** | [MASO Framework](maso/) — 93 controls, 6 domains, 3 tiers |
+| **Deploy low-risk AI fast** | [Fast Lane](FAST-LANE.md) — self-certification for internal, read-only, no regulated data |
+| **Classify a system by risk** | [Risk Tiers](core/risk-tiers.md) — six-dimension scored profile |
+| **Map to compliance requirements** | [Compliance & Legal](stakeholders/compliance-and-legal.md) — ISO 42001, EU AI Act, DORA |
 
-??? question "Common questions — cost, Judge reliability, supply chain, human factors, compliance"
+??? question "Common questions — cost, Judge reliability, supply chain, human factors"
 
     | I'm asking about... | Start here |
     | --- | --- |
@@ -49,12 +62,11 @@ This framework covers **single-agent and multi-agent AI systems** — from a cha
     | Human operator fatigue and automation bias | [Human Factors](strategy/human-factors.md) — skill development, alert fatigue, challenge rate testing |
     | Risks that emerge when agents collaborate | [Emergent Risk Register](maso/controls/risk-register.md) — 33 risks across 9 categories, with coverage assessment |
 
-??? example "More paths — risk classification, red teaming, strategy, worked examples"
+??? example "More paths — strategy, red teaming, worked examples, full reference"
 
     | I want to... | Start here |
     | --- | --- |
     | Get the one-page reference | [Cheat Sheet](CHEATSHEET.md) — classify, control, fail posture, test |
-    | Classify a system by risk | [Risk Tiers](core/risk-tiers.md) |
     | Quantify AI risk for board reporting | [Risk Assessment](core/risk-assessment.md) |
     | Align AI with business strategy | [From Strategy to Production](strategy/) |
     | See the entire framework on one map | [Tube Map](TUBE-MAP.md) |
@@ -67,23 +79,23 @@ This framework covers **single-agent and multi-agent AI systems** — from a cha
     | See MASO applied in finance, healthcare, or energy | [Worked Examples](maso/examples/worked-examples.md) |
     | Navigate by role | [Framework Map](FRAMEWORK-MAP.md) |
     | Understand what's validated and what's not | [Maturity & Validation](MATURITY.md) |
-    | Map to compliance requirements | [Compliance & Legal view](stakeholders/compliance-and-legal.md) |
     | See all references and further reading | [References & Sources](REFERENCES.md) |
+
+---
+
+## See Inside
+
+> *Your AI system returns a confident, well-formatted answer. It's wrong. Your guardrail didn't catch it — it looked normal. Your test suite didn't cover it — the input was novel. Now what?*
+
+That's the problem this framework solves. The [Architecture Overview](ARCHITECTURE.md) shows the four-layer pattern. The [Quick Start](QUICK_START.md) gets you from zero to working controls. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) shows where real systems failed — and which controls would have caught it.
 
 ---
 
 ## Standards Alignment
 
-| Standard | Coverage |
-| --- | --- |
-| [OWASP LLM Top 10 (2025)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) | Full mapping across foundation + MASO |
-| [OWASP Agentic Top 10 (2026)](https://genai.owasp.org/) | Full mapping in MASO |
-| [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework) | Govern, Map, Measure, Manage |
-| [ISO 42001](https://www.iso.org/standard/81230.html) | AI management system alignment |
-| [NIST SP 800-218A](https://csrc.nist.gov/pubs/sp/800/218/a/final) | Pre-deployment complement |
-| [MITRE ATLAS](https://atlas.mitre.org/) | Agent-focused threat intelligence |
-| [EU AI Act](https://artificialintelligenceact.eu/) | Art. 9, 14, 15 — risk management, oversight, robustness |
-| [DORA](https://www.digital-operational-resilience-act.com/) | Digital operational resilience for financial services |
+OWASP LLM Top 10 · OWASP Agentic Top 10 · NIST AI RMF · ISO 42001 · NIST SP 800-218A · MITRE ATLAS · EU AI Act · DORA
+
+→ [Full standards mapping](infrastructure/mappings/controls-to-three-layers.md)
 
 ---
 
