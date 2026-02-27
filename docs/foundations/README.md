@@ -131,6 +131,18 @@ This framework defines *what* to enforce. The [infrastructure](../infrastructure
 
 ---
 
+## Defence in Depth Beyond the AI Layer
+
+![Defence in Depth Beyond the AI Layer](../images/defence-in-depth-beyond-ai.svg)
+
+The three-layer model above — guardrails, judge, human oversight — addresses controls specific to non-deterministic AI behaviour. It does not replace the security controls your organisation already has. It sits inside them.
+
+Your existing DLP systems apply to data flowing into and out of AI systems — both preventing sensitive data from reaching models and catching leakage that AI-specific controls miss. API gateways validate requests and enforce schemas regardless of whether the caller is human or AI. Database access controls and parameterised queries prevent injection even if an agent constructs a malicious query. IAM governs who can invoke AI systems in the first place. SIEM correlates AI events with network, endpoint, and application events. Secure coding practices in the systems agents interact with still matter — arguably more, because the caller is now non-deterministic.
+
+These controls are outside the scope of this framework, but they are part of your defence. When you assess your AI security posture, include them. When you threat-model, include them. When one of this framework's controls misses something, they are your safety net.
+
+---
+
 ## When You Need Multi-Agent
 
 When AI agents collaborate, delegate tasks, and take autonomous actions across trust boundaries, the single-agent controls on this page are necessary but not sufficient. The **[MASO Framework](../maso/)** extends this architecture into multi-agent orchestration.

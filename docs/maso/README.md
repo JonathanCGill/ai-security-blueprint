@@ -223,6 +223,7 @@ These questions come up in every MASO deployment. The answers sit across the fra
 | How do we prevent operator fatigue at scale? | [Human Factors](../strategy/human-factors.md) — skill development, alert fatigue, canary testing, challenge rates |
 | How do we vet models, tools, and MCP servers? | [Supply Chain Controls](controls/supply-chain.md) — AIBOM, signed manifests, model provenance, dependency scanning |
 | What emergent risks have no OWASP equivalent? | [Emergent Risk Register](controls/risk-register.md) — 33 risks across 9 categories including epistemic, coordination, and inference-side attacks |
+| What about DLP, API validation, database controls, and existing IAM? | [Defence in Depth Beyond the AI Layer](../foundations/README.md#defence-in-depth-beyond-the-ai-layer) — MASO controls are a layer within your wider security architecture, not a replacement for it. External DLP (inbound and outbound), API gateways, database access controls, SIEM, and secure coding practices all apply |
 
 ---
 

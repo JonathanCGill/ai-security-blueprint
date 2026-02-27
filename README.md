@@ -174,6 +174,7 @@ Three constraints strategies routinely underestimate: **[Data Reality](strategy/
 - **Defence in depth as a design principle.** The layered approach exists because each layer covers gaps in the others. The question isn't "which layer do we need?" but "what happens when each layer fails?"
 - **Resilience thinking for AI products.** Traditional security asks "how do we prevent bad things?" This framework also asks "what happens when prevention fails?"
 - **Clarity on when tools are *not* needed.** Some controls are already handled by your existing infrastructure. The framework should help you see where you already have coverage, not convince you to buy something new.
+- **An AI-specific layer, not a replacement for everything else.** This framework addresses the controls that are unique to non-deterministic AI behaviour. It does not replace your existing DLP, API validation, database access controls, IAM, SIEM, secure coding practices, or incident response capabilities. Those controls still matter — arguably more than ever, because they are your safety net when AI-specific controls miss something.
 
 **What it is not:**
 
