@@ -16,7 +16,7 @@ That's an important fact and we're stating it clearly rather than hoping no one 
 What the framework *is*:
 
 - **A practitioner's synthesis.** 30+ years in IT, 20+ in enterprise security, applied to the specific problem of runtime AI security. The architecture draws on real operational experience in financial services, government, and critical infrastructure — applied to AI, not invented from theory.
-- **Grounded in real incidents.** Every major control addresses a documented, public security failure. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps 10 real-world incidents to specific controls. The [Validated Against Real Incidents](VALIDATED-AGAINST.md) page inverts this — showing which controls have the strongest evidence base.
+- **Aligned to real incidents.** Every major control addresses a documented, public security failure — retroactively analysed, not empirically tested. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps 10 real-world incidents to specific controls. The [Validated Against Real Incidents](VALIDATED-AGAINST.md) page inverts this — showing which controls align to the most documented incidents.
 - **Aligned to established standards.** Full crosswalks to OWASP LLM Top 10 (2025), OWASP Agentic Top 10 (2026), NIST AI RMF, ISO 42001, EU AI Act, NIST SP 800-218A, and MITRE ATLAS. These aren't surface-level mappings — they're control-by-control alignments.
 - **Consistent with production patterns.** The three-layer model (Guardrails, Judge, Human Oversight) exists in production at NVIDIA NeMo, AWS Bedrock, Azure AI Content Safety, LangChain, and Guardrails AI. This framework didn't invent the pattern — it codified it.
 
@@ -48,7 +48,7 @@ Controls retroactively mapped to real-world security incidents, showing they wou
 
 See: [Validated Against Real Incidents](VALIDATED-AGAINST.md)
 
-This is the framework's strongest current evidence base. It doesn't prove the controls *will* work in your environment — but it demonstrates they address real attack patterns, not theoretical ones.
+This is the framework's strongest current basis for credibility — but it is retroactive analysis, not empirical evidence from running systems. It demonstrates the controls address real attack patterns, not theoretical ones. It does not prove the controls *will* work in your environment.
 
 ### 3. Standards Alignment
 

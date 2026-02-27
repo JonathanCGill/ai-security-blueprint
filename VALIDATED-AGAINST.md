@@ -1,6 +1,6 @@
 # Validated Against Real Incidents
 
-**Every major control in this framework addresses a documented, public AI security failure. This page is the evidence.**
+**Every major control in this framework addresses a documented, public AI security failure. This page shows how.**
 
 > Part of [AI Runtime Behaviour Security](./)
 > Last updated: February 2026
@@ -9,9 +9,9 @@
 
 ## How to Read This Page
 
-The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) is organised by incident — "here's what happened, here are the controls." This page inverts that view. It's organised by **control** — "here's the control, here's the evidence it addresses real threats."
+The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) is organised by incident — "here's what happened, here are the controls." This page inverts that view. It's organised by **control** — "here's the control, here are the real-world incidents it addresses."
 
-Each control is mapped to the incidents it would have prevented or detected, with the specific mechanism explained. Controls validated against more incidents have a stronger evidence base. Controls validated against zero incidents are flagged — they may still be valuable, but they're based on threat modelling rather than observed attacks.
+Each control is mapped to the incidents it would have prevented or detected, with the specific mechanism explained. Controls aligned to more incidents address a wider range of known attack patterns. Controls aligned to zero incidents are flagged — they may still be valuable, but they're based on threat modelling rather than observed attacks.
 
 **Validation does not mean proven.** It means the control addresses a documented attack pattern. Whether the control would have *actually* prevented the incident in your environment depends on your implementation. This is retroactive analysis, not a guarantee.
 
@@ -19,19 +19,19 @@ Each control is mapped to the incidents it would have prevented or detected, wit
 
 ## Validation Summary
 
-### Controls by Evidence Strength
+### Controls by Incident Alignment
 
-| Evidence Level | Criteria | Control Count |
+| Alignment Level | Criteria | Control Count |
 |---------------|----------|---------------|
 | **Strong** | Addresses 3+ real incidents | 5 controls |
 | **Moderate** | Addresses 1–2 real incidents | 18 controls |
 | **Threat-modelled** | Based on emerging threat analysis, not yet observed in production | Remaining controls |
 
-### Most-Validated Controls
+### Most-Aligned Controls
 
-These controls are referenced across the highest number of documented incidents. They form the minimum credible defence.
+These controls are referenced across the highest number of documented incidents. They address the widest range of known attack patterns.
 
-| Rank | Control | Incidents | Evidence Base |
+| Rank | Control | Incidents | Incident Alignment |
 |------|---------|-----------|---------------|
 | 1 | **PG-1.1** Input guardrails per agent | 8 of 10 | INC-01, 02, 03, 04, 05, 07, 08, 09 |
 | 2 | **EC-2.5** LLM-as-Judge gate | 5 of 10 | INC-01, 02, 05, 09, 10 |
@@ -49,7 +49,7 @@ These controls are referenced across the highest number of documented incidents.
 
 #### PG-1.1 — Input Guardrails Per Agent
 
-**Evidence strength: Strong (8 incidents)**
+**Incident alignment: Strong (8 incidents)**
 
 The single most broadly validated control. Addresses the widest range of attack vectors because prompt injection — direct and indirect — is the most common AI attack primitive.
 
@@ -70,7 +70,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### PG-1.2 — System Prompt Isolation
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-1.2 Helps |
 |----------|-------------------|
@@ -82,7 +82,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### PG-1.3 — Immutable Task Specification
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-1.3 Helps |
 |----------|-------------------|
@@ -92,7 +92,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### PG-1.4 — Message Source Tagging
 
-**Evidence strength: Moderate (2 incidents)**
+**Incident alignment: Moderate (2 incidents)**
 
 | Incident | How PG-1.4 Helps |
 |----------|-------------------|
@@ -105,7 +105,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### PG-2.1 — Inter-Agent Injection Detection
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-2.1 Helps |
 |----------|-------------------|
@@ -117,7 +117,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### PG-2.5 — Claim Provenance Enforcement
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-2.5 Helps |
 |----------|-------------------|
@@ -127,7 +127,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### PG-2.6 — Self-Referential Evidence Prohibition
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-2.6 Helps |
 |----------|-------------------|
@@ -137,7 +137,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### PG-2.7 — Uncertainty Preservation
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-2.7 Helps |
 |----------|-------------------|
@@ -147,7 +147,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### PG-2.9 — Model Diversity Policy
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-2.9 Helps |
 |----------|-------------------|
@@ -159,7 +159,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### PG-3.5 — Challenger Agent
 
-**Evidence strength: Moderate (2 incidents)**
+**Incident alignment: Moderate (2 incidents)**
 
 | Incident | How PG-3.5 Helps |
 |----------|-------------------|
@@ -172,7 +172,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### IA-1.4 — Scoped Tool Permissions
 
-**Evidence strength: Moderate (2 incidents)**
+**Incident alignment: Moderate (2 incidents)**
 
 | Incident | How IA-1.4 Helps |
 |----------|-------------------|
@@ -183,7 +183,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### IA-2.6 — Secrets Exclusion from Context
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How IA-2.6 Helps |
 |----------|-------------------|
@@ -195,7 +195,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### DP-1.1 — Data Classification Labels
 
-**Evidence strength: Moderate (2 incidents)**
+**Incident alignment: Moderate (2 incidents)**
 
 | Incident | How DP-1.1 Helps |
 |----------|-------------------|
@@ -206,7 +206,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### DP-1.3 — Memory Isolation
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How DP-1.3 Helps |
 |----------|-------------------|
@@ -216,7 +216,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### DP-2.1 — DLP on Message Bus
 
-**Evidence strength: Strong (3 incidents)**
+**Incident alignment: Strong (3 incidents)**
 
 | Incident | How DP-2.1 Helps |
 |----------|-------------------|
@@ -228,7 +228,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### DP-2.2 — RAG Integrity with Freshness
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How DP-2.2 Helps |
 |----------|-------------------|
@@ -240,7 +240,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### EC-1.1 — Human Approval for Write Operations
 
-**Evidence strength: Strong (3 incidents)**
+**Incident alignment: Strong (3 incidents)**
 
 | Incident | How EC-1.1 Helps |
 |----------|-------------------|
@@ -254,7 +254,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### EC-1.2 — Tool Allow-Lists
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How EC-1.2 Helps |
 |----------|-------------------|
@@ -264,7 +264,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### EC-1.4 — Blast Radius Caps
 
-**Evidence strength: Moderate (2 incidents)**
+**Incident alignment: Moderate (2 incidents)**
 
 | Incident | How EC-1.4 Helps |
 |----------|-------------------|
@@ -275,7 +275,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### EC-1.5 — Interaction Timeout
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How EC-1.5 Helps |
 |----------|-------------------|
@@ -285,7 +285,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 #### EC-2.5 — LLM-as-Judge Gate
 
-**Evidence strength: Strong (5 incidents)**
+**Incident alignment: Strong (5 incidents)**
 
 The second most broadly validated control after input guardrails.
 
@@ -303,7 +303,7 @@ The second most broadly validated control after input guardrails.
 
 #### EC-2.6 — Decision Commit Protocol
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How EC-2.6 Helps |
 |----------|-------------------|
@@ -313,7 +313,7 @@ The second most broadly validated control after input guardrails.
 
 #### EC-3.1 — Multi-Judge Consensus
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How EC-3.1 Helps |
 |----------|-------------------|
@@ -325,7 +325,7 @@ The second most broadly validated control after input guardrails.
 
 #### OB-2.1 — Anomaly Scoring
 
-**Evidence strength: Moderate (2 incidents)**
+**Incident alignment: Moderate (2 incidents)**
 
 | Incident | How OB-2.1 Helps |
 |----------|-------------------|
@@ -336,7 +336,7 @@ The second most broadly validated control after input guardrails.
 
 #### OB-3.1 — Independent Observability Agent
 
-**Evidence strength: Strong (3 incidents)**
+**Incident alignment: Strong (3 incidents)**
 
 | Incident | How OB-3.1 Helps |
 |----------|-------------------|
@@ -348,7 +348,7 @@ The second most broadly validated control after input guardrails.
 
 #### OB-3.2 — Circuit Breaker
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How OB-3.2 Helps |
 |----------|-------------------|
@@ -360,7 +360,7 @@ The second most broadly validated control after input guardrails.
 
 #### SC-1.1 — Component Inventory (AIBOM)
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How SC-1.1 Helps |
 |----------|-------------------|
@@ -370,7 +370,7 @@ The second most broadly validated control after input guardrails.
 
 #### SC-1.2 — Signed Tool Manifests
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How SC-1.2 Helps |
 |----------|-------------------|
@@ -380,7 +380,7 @@ The second most broadly validated control after input guardrails.
 
 #### SC-2.1 — AIBOM with Provider Mapping
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How SC-2.1 Helps |
 |----------|-------------------|
@@ -390,7 +390,7 @@ The second most broadly validated control after input guardrails.
 
 #### SC-2.2 — MCP Server Vetting
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How SC-2.2 Helps |
 |----------|-------------------|
@@ -400,7 +400,7 @@ The second most broadly validated control after input guardrails.
 
 #### SC-2.3 — Runtime Component Audit
 
-**Evidence strength: Moderate (1 incident)**
+**Incident alignment: Moderate (1 incident)**
 
 | Incident | How SC-2.3 Helps |
 |----------|-------------------|
