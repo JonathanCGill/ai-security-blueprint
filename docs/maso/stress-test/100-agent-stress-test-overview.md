@@ -1,214 +1,350 @@
-# 100-Agent Stress Test: Framework Validation at Scale
+# Stress Testing MASO at Scale
 
-**Does MASO hold when you go from 5 agents to 100?**
+**A Tabletop Methodology for Finding Framework Breakpoints**
 
 > Part of the [MASO Framework](../README.md) · Stress Testing
-> Version 0.1 (Overview) · February 2026
+> Version 1.0 · February 2026
 
 ---
 
-## Why This Document Exists
+## What This Is (And What It Is Not)
 
-The MASO framework's worked examples use 5-agent systems. The red team playbook tests individual control behaviours. Neither answers the question that enterprise architects actually ask:
+This is a **tabletop stress test** — a structured thought exercise for identifying where MASO's controls, assumptions, and architectural patterns encounter their limits as agent count increases from single digits to triple digits.
 
-**What happens when 100 agents, spanning 6 orchestration clusters, 4 model providers, and 3 trust boundaries, operate simultaneously under adversarial pressure?**
+It is not a report on a system we built and tested. No 100-agent system was deployed. The value here is in the reasoning: taking the framework's controls and asking, methodically, *does this still work when the numbers change by an order of magnitude?*
 
-This stress test is designed to find out. It subjects the full MASO control stack to conditions that cannot emerge in small-scale deployments: cascading failures across orchestration boundaries, epistemic corruption that compounds through long agent chains, delegation graphs deep enough to launder authority, and observability systems that must process thousands of inter-agent messages per second.
-
-The purpose is not to prove that MASO works. It is to find where MASO breaks — or where the cost of making it work becomes operationally prohibitive.
+The [worked examples](examples/worked-examples.md) validate MASO against realistic 5-agent systems. This document asks what happens next — when organisations move from pilot to platform, and agent count grows from a handful to a fleet.
 
 ---
 
-## Scenario: Global Investment Bank — Autonomous Trading Operations
+## Why Tabletop Stress Testing Matters
 
-### Why Financial Services
+MASO's controls were designed with scalability in mind, but design intent and operational reality diverge in predictable ways:
 
-Financial services is the hardest test case for MASO because it combines every stress factor simultaneously:
+- **Linear controls hit quadratic problems.** A control that inspects each agent's output scales linearly. A control that monitors communication *between* agents scales with the number of agent pairs — quadratically.
+- **Composition creates emergent behaviour.** Five agents with well-tested PACE transitions do not guarantee that fifty agents degrade gracefully when a shared dependency fails. Cascade dynamics only emerge at scale.
+- **Operational cost becomes a constraint.** A Judge evaluation on every inter-agent message is sound security architecture. Whether the organisation can afford the compute and latency at 10,000 messages per second is an operational question the framework should help teams answer before they discover it in production.
 
-- **Regulatory exposure** — MiFID II, SEC, FCA, DORA all impose explainability, audit, and resilience requirements
-- **Latency sensitivity** — some decisions must complete in under 500ms; security controls that add 5 seconds are not viable
-- **Data classification complexity** — Chinese walls, material non-public information (MNPI), client confidentiality, market data licensing
-- **Consequence severity** — a wrong trade, a leaked position, or a corrupted recommendation has immediate financial and regulatory impact
-- **Multi-jurisdiction operation** — agents in London, New York, Singapore, and Tokyo operating under different regulatory regimes simultaneously
-
-### System Overview
-
-The bank deploys 100 AI agents organised into 6 operational clusters, each with its own orchestrator, operating at MASO Tier 2 (Managed) with select Tier 3 (Autonomous) capabilities for pre-approved, time-critical functions.
+The purpose of this exercise is to help architects and security teams anticipate these breakpoints *before* they scale — not after an incident teaches them where the limits were.
 
 ---
 
-## Agent Architecture: 6 Clusters, 100 Agents
+## How to Run This Exercise
 
-### Cluster 1 — Market Intelligence (18 agents)
+### Audience
 
-| Sub-Group | Agents | Role | Provider |
-|-----------|--------|------|----------|
-| Data Ingest | 6 | Real-time feeds: equities, FX, rates, commodities, credit, crypto | Provider A |
-| News & Sentiment | 4 | Financial news, social media, regulatory filings, earnings calls | Provider B |
-| Research Synthesis | 4 | Cross-asset analysis, trend identification, signal generation | Provider C |
-| Macro Analysis | 2 | Economic indicators, central bank signals, geopolitical risk | Provider B |
-| Data Quality | 2 | Cross-validate feeds, detect stale/anomalous data, flag conflicts | Provider A |
+This tabletop is designed for the team responsible for a multi-agent deployment that is growing (or planned to grow) beyond a single orchestration cluster. The ideal participants include:
 
-**Key risk:** This cluster is the epistemic root of the entire system. Every downstream decision depends on the integrity of market intelligence. A poisoned data feed or hallucinated trend propagates to all 5 other clusters.
+- The AI/ML engineering lead responsible for agent architecture
+- The security architect or CISO responsible for MASO control implementation
+- The platform/infrastructure lead responsible for observability and operations
+- The risk owner who will sign off on the deployment
 
-### Cluster 2 — Trading Strategy (22 agents)
+### Format
 
-| Sub-Group | Agents | Role | Provider |
-|-----------|--------|------|----------|
-| Alpha Generation | 6 | Signal-based strategy proposals across asset classes | Provider C |
-| Risk Modelling | 4 | VaR, stress testing, scenario analysis, tail risk | Provider A |
-| Portfolio Optimisation | 4 | Position sizing, correlation management, rebalancing | Provider C |
-| Execution Strategy | 4 | Order routing, timing, venue selection, slippage estimation | Provider A |
-| Backtesting | 4 | Historical validation of proposed strategies | Provider B |
+Work through each stress dimension below. For each one:
 
-**Key risk:** Strategy agents make recommendations that directly translate to trades. The delegation chain from signal → strategy → sizing → execution is 4 agents deep — long enough for semantic drift (EP-05) and uncertainty stripping (EP-06) to transform a tentative signal into a firm order.
+1. **Map it to your system.** Which agents, clusters, and communication paths are affected?
+2. **Identify the MASO controls involved.** Use the control references provided.
+3. **Assess: linear, quadratic, or breaking?** Does the control scale with agent count, with agent pairs, or does it hit a hard limit?
+4. **Determine your threshold.** At what agent count (or message volume, or delegation depth) does the control need architectural adaptation?
+5. **Document the adaptation.** What changes — additional infrastructure, modified control parameters, architectural segmentation — would you need?
 
-### Cluster 3 — Trade Execution (20 agents)
-
-| Sub-Group | Agents | Role | Provider |
-|-----------|--------|------|----------|
-| Order Management | 4 | Order lifecycle: creation, amendment, cancellation | Provider A |
-| Smart Routing | 4 | Venue selection, dark pool access, best execution | Provider A |
-| Position Tracking | 4 | Real-time P&L, exposure tracking, limit monitoring | Provider B |
-| Settlement | 4 | Trade matching, fails management, reconciliation | Provider B |
-| Market Making | 4 | Automated quoting, spread management, inventory control | Provider A (on-prem, latency-critical) |
-
-**Key risk:** This is the only cluster with direct write access to external systems (exchanges, counterparties). Blast radius is measured in currency. A single rogue order can move markets and trigger regulatory investigation.
-
-### Cluster 4 — Risk & Compliance (16 agents)
-
-| Sub-Group | Agents | Role | Provider |
-|-----------|--------|------|----------|
-| Pre-Trade Compliance | 4 | Regulatory checks before order submission (MiFID II, SEC) | Provider C |
-| Position Limits | 2 | Real-time limit monitoring across all portfolios | Provider A |
-| Chinese Wall Monitor | 2 | Information barrier enforcement, MNPI detection | Provider C |
-| Regulatory Reporting | 4 | Transaction reporting, best execution reports, RTS 25/28 | Provider B |
-| Conduct Surveillance | 4 | Market abuse detection, insider trading patterns, wash trading | Provider C |
-
-**Key risk:** These agents are the Judge layer for trading operations. If they are compromised, bypassed, or simply overwhelmed by volume, every other cluster operates without regulatory guardrails. The Chinese Wall Monitor must track information flow across all 100 agents — every inter-agent message is a potential MNPI leak.
-
-### Cluster 5 — Client Operations (14 agents)
-
-| Sub-Group | Agents | Role | Provider |
-|-----------|--------|------|----------|
-| Client Reporting | 4 | Portfolio reports, performance attribution, risk summaries | Provider B |
-| Client Queries | 4 | Natural language query handling, account inquiries | Provider C |
-| Onboarding | 2 | KYC/AML document processing, suitability assessment | Provider B |
-| Suitability | 4 | Match recommendations to client risk profiles and mandates | Provider C |
-
-**Key risk:** Client-facing outputs cross the institutional boundary. Every report, recommendation, and response is a potential regulatory document. Data that is internal-only (trading signals, position data, risk models) must never leak into client-facing outputs.
-
-### Cluster 6 — Infrastructure & Ops (10 agents)
-
-| Sub-Group | Agents | Role | Provider |
-|-----------|--------|------|----------|
-| System Monitoring | 4 | Agent health, latency, throughput, error rates | Provider A |
-| Incident Response | 2 | Automated PACE transitions, isolation, failover | Provider A (on-prem) |
-| Capacity Management | 2 | Token budget tracking, model endpoint scaling, queue management | Provider A |
-| Audit & Forensics | 2 | Decision chain recording, tamper-evident logging, trace reconstruction | Provider B |
-
-**Key risk:** This cluster controls the control plane. The Incident Response agents execute PACE transitions — if they are compromised, the system cannot degrade safely. These agents must be architecturally isolated from all task clusters.
+The stress dimensions are ordered from most likely to surface first (epistemic cascade) to most consequential if missed (kill switch at scale).
 
 ---
 
-## What This Stress Test Is Designed to Find
+## Stress Dimension 1: Epistemic Cascade Depth
 
-The test targets 8 areas where scale changes the problem qualitatively, not just quantitatively.
+### The 5-Agent Reality
 
-### 1. Epistemic Cascade at Depth
+In MASO's worked examples, an epistemic failure (hallucinated claim, corrupted data source) passes through at most 4 agents before reaching an output boundary. Controls PG-2.5 (claim provenance), PG-2.7 (uncertainty preservation), and PG-2.4 (consensus diversity gate) are designed to catch degradation within this depth.
 
-In a 5-agent chain, a hallucinated claim passes through 4 agents. In a 100-agent system, a single corrupted market data point from Cluster 1 can propagate through Cluster 2 (strategy), Cluster 3 (execution), Cluster 4 (reporting), and Cluster 5 (client output) — touching 30+ agents before reaching an external boundary. Each handoff strips uncertainty and adds apparent corroboration.
+### The Scale Question
 
-**The question:** Do MASO's epistemic controls (PG-2.5 claim provenance, PG-2.7 uncertainty preservation, PG-2.4 consensus diversity gate) still function when the chain is 8–12 agents deep and spans 4 clusters?
+In a system with 50–100 agents organised into functional clusters, a data point may traverse 8–12 agents across 3–4 clusters before it reaches an external boundary. At each handoff:
 
-### 2. Delegation Graph Explosion
+- **Uncertainty is stripped** (EP-06). Agent A reports "estimated at 85% (single source, unverified)." Agent B summarises as "approximately 85%." Agent C states "85%." By Agent D, it is treated as established fact.
+- **Provenance thins.** Claim provenance tags (PG-2.5) carry source metadata, but each summarisation step abstracts away detail. By the fourth summarisation, the provenance may say "derived from Cluster 1 analysis" — technically accurate but useless for verification.
+- **Corroboration is synthetic** (EP-04). If agents in Cluster 2 and Cluster 3 both derive their analysis from Cluster 1's output, their agreement is not independent validation — it is the same source presenting as two. The consensus diversity gate (PG-2.4) catches this if it tracks data lineage, but not if it only checks model diversity.
 
-With 100 agents, the potential delegation graph has ~10,000 edges. MASO control IA-2.3 (no transitive permissions) must be enforced on every edge. At 5 agents, this is 20 edges — manageable. At 100 agents, the enforcement overhead, the policy complexity, and the risk of misconfiguration all increase by orders of magnitude.
+### What to Assess
 
-**The question:** Can the delegation contract model (Tier 3) scale to 100 agents without becoming either a performance bottleneck or a policy maintenance nightmare?
+- What is the maximum handoff depth in your system from data ingestion to external output?
+- At that depth, does PG-2.7 (uncertainty preservation) still carry meaningful confidence metadata, or has it been summarised into meaninglessness?
+- Does your PG-2.4 (consensus diversity gate) check data lineage, or only model provider diversity?
+- At what depth would you need to introduce a mandatory re-verification checkpoint — an agent that goes back to primary sources rather than trusting the chain?
 
-### 3. Cross-Cluster PACE Cascades
+### MASO Controls Under Stress
 
-When Cluster 1 (Market Intelligence) enters PACE Alternate, what happens to the 82 agents in Clusters 2–6 that depend on its outputs? Do they all cascade to Alternate? Do some continue on stale data? Is there a coordinated degradation plan, or does each cluster manage independently?
-
-**The question:** Does PACE's three-axis model (horizontal, vertical, orchestration) actually compose across cluster boundaries, or does it require a fourth axis — inter-cluster coordination — that the framework doesn't yet define?
-
-### 4. Observability at Volume
-
-100 agents producing inter-agent messages at operational tempo generate thousands of messages per second. The Observability domain (OB-2.1 anomaly scoring, OB-2.2 drift detection, OB-2.3 communication profiling) must process this volume in near-real-time. The Chinese Wall Monitor must inspect every message for MNPI content. The Audit & Forensics agents must record complete decision chains.
-
-**The question:** What are the latency and compute costs of full MASO observability at 100-agent scale? At what point does the monitoring infrastructure become more expensive than the task infrastructure?
-
-### 5. Provider Concentration Under Stress
-
-The architecture uses 3 providers across 100 agents. Provider A serves 40 agents (including all execution and infrastructure agents). If Provider A experiences degradation (rate limiting, increased latency, outage), 40% of the system is simultaneously affected — including the agents responsible for PACE transitions.
-
-**The question:** Does MASO's model diversity policy (PG-2.9) adequately address concentration risk when one provider underpins both task agents and control-plane agents?
-
-### 6. Chinese Wall Enforcement at Scale
-
-Information barriers in a 5-agent system require monitoring ~20 communication paths. In a 100-agent system, the Chinese Wall Monitor must enforce barriers across ~10,000 potential paths, with different rules per barrier (equity research vs. M&A advisory vs. proprietary trading). A single message that crosses a barrier is a regulatory violation.
-
-**The question:** Is MASO's data protection model (DP-1.1 classification, DP-2.1 DLP on message bus) computationally viable when the number of classification rules scales quadratically with agent count?
-
-### 7. Kill Switch Practicality
-
-MASO Tier 3 requires a physically isolated kill switch (OB-3.2) that can terminate all agents. At 100 agents across 4 geographic regions, "terminate all agents" means coordinating shutdown across multiple data centres, resolving in-flight transactions, and ensuring no orphaned orders remain on exchanges.
-
-**The question:** What is the realistic time-to-halt for a 100-agent system with in-flight financial transactions? Is the MASO requirement of "immediate termination" achievable, or does it need to be redefined as "controlled halt within N seconds"?
-
-### 8. Adversarial Red Team at Scale
-
-The red team playbook's 13 scenarios are designed for testing individual controls. At 100-agent scale, the attack surface includes combinations: a prompt injection (RT-01) that exploits a transitive permission chain (RT-02) to bypass a judge (RT-06) while evading anomaly detection (RT-10). The compound attack paths are exponentially more numerous.
-
-**The question:** Does MASO's layered defence model (guardrails → judge → human → circuit breaker) hold against compound, multi-vector attacks that exploit the interaction between 100 agents?
+| Control | Designed For | Stress Point |
+|---------|-------------|-------------|
+| PG-2.5 Claim provenance | Tracing claims to sources | Provenance metadata degrades through successive summarisation |
+| PG-2.7 Uncertainty preservation | Carrying confidence levels | Confidence qualifiers stripped at each handoff |
+| PG-2.4 Consensus diversity gate | Detecting false consensus | May check model diversity but miss shared data lineage |
+| PG-2.6 Self-referential evidence prohibition | Preventing circular validation | Harder to detect when the circle spans 4 clusters |
 
 ---
 
-## Proposed Deliverables
+## Stress Dimension 2: Delegation Graph Complexity
 
-This overview is the starting point. The full stress test can be developed in the following independent sections, each useful on its own:
+### The 5-Agent Reality
 
-| # | Deliverable | What It Contains | Depends On |
-|---|-------------|-----------------|------------|
-| **A** | **Agent Roster & Trust Architecture** | Full 100-agent specification: NHI assignments, permission matrices, delegation contracts, provider mapping, geographic distribution | This overview |
-| **B** | **Control Mapping at Scale** | Every MASO control evaluated for 100-agent viability: which scale linearly, which scale quadratically, which break. Includes compute/latency cost estimates | This overview |
-| **C** | **Cross-Cluster PACE Scenarios** | 6 detailed failure scenarios showing cascading PACE transitions across clusters, with expected vs. actual degradation paths | A |
-| **D** | **Compound Attack Scenarios** | 5 multi-vector red team scenarios designed for 100-agent scale, combining 2–3 existing RT playbook attacks into chain attacks | A, B |
-| **E** | **Observability Stress Analysis** | Message volume modelling, monitoring infrastructure sizing, latency budget analysis, cost projections for full MASO observability at scale | A, B |
-| **F** | **Framework Gap Analysis & Recommendations** | Where MASO needs extension for 100+ agent systems: new controls, modified requirements, architectural patterns not yet covered | B, C, D, E |
+MASO's identity and access controls (IA-2.3 no transitive permissions, IA-2.1 zero-trust credentials) are demonstrated against delegation graphs with ~20 edges. Permission policies can be reviewed manually. Misconfiguration is visible.
+
+### The Scale Question
+
+At 100 agents, the potential delegation graph has up to ~10,000 edges. Even if most are unused, the *policy surface* — the set of rules defining who can delegate what to whom — grows with the number of agent pairs. Consider:
+
+- **Policy complexity.** Each delegation rule specifies: source agent, target agent, permitted scope, maximum permissions, time limit. At 100 agents, the policy set may contain thousands of rules. Auditing this manually is not feasible.
+- **Delegation contracts at speed.** At Tier 3, every delegation creates a cryptographically signed contract (source, scope, permissions, time limit, expected output). If agents delegate tasks hundreds of times per minute, the signing and validation overhead may become a latency bottleneck.
+- **Transitive path detection.** IA-2.3 prohibits transitive permissions, but detecting a transitive path through 4–5 intermediate agents requires graph analysis on every delegation request. The computational cost of this analysis grows with graph size.
+
+### What to Assess
+
+- How many active delegation paths does your system have? (Not theoretical maximum — actual observed paths.)
+- Can your policy engine evaluate delegation requests within your latency budget?
+- Do you have automated tooling to detect transitive permission paths, or is this a manual review?
+- At what agent count would you need to move from point-to-point delegation policies to role-based or cluster-based delegation models?
+
+### MASO Controls Under Stress
+
+| Control | Designed For | Stress Point |
+|---------|-------------|-------------|
+| IA-2.3 No transitive permissions | Preventing privilege laundering | Graph analysis cost grows with delegation depth |
+| IA-2.1 Zero-trust credentials | Per-agent authentication | Credential management overhead at 100+ agents |
+| Tier 3 delegation contracts | Scoped, time-limited delegation | Signing and validation latency at high delegation frequency |
+| EC-2.6 Decision commit protocol | Validating action authority | Must trace authority chain through potentially deep delegation graph |
 
 ---
 
-## Initial Hypotheses
+## Stress Dimension 3: Cross-Cluster PACE Cascades
 
-Based on the framework analysis, these are the areas most likely to produce findings:
+### The 5-Agent Reality
 
-1. **PACE needs an inter-cluster coordination axis.** The current three-axis model (horizontal, vertical, orchestration) assumes a single orchestrator. Multi-cluster architectures need defined cascade behaviour between orchestrators.
+PACE transitions in the worked examples affect a single orchestration cluster. When one agent enters Alternate, the orchestrator manages the transition. The blast radius is contained within the cluster.
 
-2. **Observability costs will dominate at scale.** Full message-level DLP, anomaly scoring, and decision chain recording for 100 agents may cost more in compute than the agents themselves. The framework may need a risk-tiered observability model — not every message needs every check.
+### The Scale Question
 
-3. **Delegation contract overhead becomes a bottleneck.** Cryptographically signed delegation contracts for every inter-agent task assignment at Tier 3, across 100 agents operating at trading speed, may introduce unacceptable latency. The framework may need a "pre-approved delegation path" concept analogous to the Fast Lane for low-risk tasks.
+When agents are organised into multiple clusters with dependencies between them, a PACE transition in one cluster may force transitions in others:
 
-4. **Chinese wall enforcement needs a different architecture.** Point-to-point message inspection doesn't scale quadratically. The framework may need to recommend network-level segmentation (separate message buses per information barrier) rather than message-level DLP for large-scale deployments.
+- **Upstream dependency failure.** If a data-producing cluster (e.g., market intelligence) enters Contingency and stops producing outputs, every downstream cluster that depends on those outputs must decide: operate on stale data, degrade to a fallback data source, or cascade to Contingency themselves.
+- **Coordinated degradation.** MASO's three-axis PACE model (horizontal across layers, vertical within layers, orchestration across agents) operates within a single orchestration boundary. It does not define how multiple orchestrators coordinate their PACE states. Does Cluster B's orchestrator even *know* that Cluster A has entered Alternate?
+- **Recovery sequencing.** Stepping back up from Contingency to Primary requires confirmed stability. If Cluster A recovers but Cluster B is still degraded because it cascaded from Cluster A's failure, the recovery sequence must be coordinated. The current PACE model does not specify inter-cluster recovery ordering.
 
-5. **The kill switch needs a "controlled halt" specification.** Immediate termination of 100 agents with in-flight financial transactions is not safe. The framework needs a graduated shutdown protocol that resolves in-flight work before termination.
+### What to Assess
 
-6. **Provider concentration creates single points of failure in the control plane.** If the same provider serves both task agents and PACE transition agents, a provider outage simultaneously disables the system and the system's ability to degrade safely.
+- Map the dependencies between your clusters. Which clusters produce data that other clusters consume?
+- For each dependency: what happens to the consuming cluster if the producing cluster enters each PACE phase (A, C, E)?
+- Do your cluster orchestrators share PACE state? Is there a system-level PACE coordinator, or does each cluster manage independently?
+- Define the cascade rules: does a producing cluster entering Contingency automatically cascade, or does each consuming cluster make its own assessment?
+- What is the recovery sequence? Which clusters must recover first?
+
+### MASO Controls Under Stress
+
+| Control | Designed For | Stress Point |
+|---------|-------------|-------------|
+| PACE three-axis model | Resilience within an orchestration | No defined behaviour for inter-cluster cascade |
+| OB-3.2 Circuit breaker | Emergency halt for one cluster | Coordinated halt across multiple clusters undefined |
+| OB-2.2 Drift detection | Per-agent behavioural baseline | Baseline behaviour changes when upstream clusters degrade |
+
+### Potential Framework Extension
+
+MASO may need a **fourth PACE axis: inter-cluster coordination**. This would define:
+- Cluster dependency declarations (which clusters depend on which)
+- Cascade policies (automatic cascade vs. independent assessment)
+- A system-level PACE state that aggregates cluster states
+- Recovery sequencing rules
 
 ---
 
-## How to Read What Comes Next
+## Stress Dimension 4: Observability at Volume
 
-Each deliverable (A–F) will follow the same structure:
+### The 5-Agent Reality
 
-- **Scenario specification** — exactly what is being tested, with enough detail to reproduce
-- **MASO control mapping** — which controls apply, at which tier, with which configuration
-- **Stress point analysis** — where the framework is expected to hold, bend, or break
-- **Findings** — what actually happens (or what analysis predicts will happen)
-- **Recommendations** — proposed framework extensions or modifications
+MASO's observability controls (OB-2.1 anomaly scoring, OB-2.2 drift detection, OB-2.3 communication profiling) are designed to process every inter-agent message. At 5 agents with ~20 communication paths, this is straightforward.
 
-The goal is not to weaken MASO. It is to strengthen it by finding the scale boundaries that 5-agent examples cannot reveal.
+### The Scale Question
+
+At 100 agents, the message volume changes the problem:
+
+- **Message throughput.** If each agent sends an average of 10 messages per minute to other agents, the system generates ~1,000 messages per minute. At peak (e.g., market open, incident response), this may spike to 10,000+ per minute. Every message needs anomaly scoring, drift comparison, and potentially DLP scanning.
+- **Anomaly baseline complexity.** Behavioural baselines at 5 agents are 5 profiles. At 100 agents, it is 100 profiles — plus the interaction patterns between agents, which is combinatorial. What constitutes "anomalous" for Agent 47's communication pattern with Agent 83?
+- **Alert fatigue.** More agents means more anomaly signals. If each agent generates a false positive alert once per day, 100 agents generate 100 false positives per day. The human review capacity for PACE escalation decisions becomes the bottleneck.
+- **Cost.** If every message is evaluated by a Judge model, the observability compute cost may exceed the task compute cost. The framework's [cost and latency guidance](../extensions/technical/cost-and-latency.md) discusses sampling rates for single-model systems — the same logic applies at scale, but the trade-offs are sharper.
+
+### What to Assess
+
+- What is your expected message volume at steady state and at peak?
+- Can your observability infrastructure process this volume within your latency budget?
+- What is your anomaly alert rate, and does your team have capacity to review escalations?
+- At what volume would you need to move from per-message evaluation to statistical sampling — and what is the risk trade-off of sampling?
+- What is the compute cost of full observability vs. the compute cost of the agents themselves?
+
+### MASO Controls Under Stress
+
+| Control | Designed For | Stress Point |
+|---------|-------------|-------------|
+| OB-2.1 Anomaly scoring | Per-agent anomaly detection | 100 baselines + interaction pattern baselines |
+| OB-2.2 Drift detection | Behavioural change detection | Drift thresholds harder to calibrate at scale |
+| OB-2.3 Communication profiling | Inter-agent traffic analysis | Volume may require sampling rather than full inspection |
+| EC-2.5 LLM-as-Judge | Per-action evaluation | Cost scales linearly with message count |
+
+---
+
+## Stress Dimension 5: Provider Concentration
+
+### The 5-Agent Reality
+
+MASO's model diversity policy (PG-2.9) flags concentration risk when multiple agents use the same provider. At 5 agents across 2–3 providers, diversity is manageable and the risk is limited to correlated errors.
+
+### The Scale Question
+
+At 100 agents, provider allocation becomes a strategic decision with systemic implications:
+
+- **Correlated failure.** If 40 agents use Provider A and Provider A experiences an outage, 40% of the system fails simultaneously. If those 40 agents include infrastructure agents (monitoring, incident response), the system loses both its operational capability and its ability to manage the degradation.
+- **Correlated errors.** Agents using the same model produce correlated reasoning errors. At 5 agents, PG-2.4 (consensus diversity gate) catches this. At 40 agents on the same provider, the "consensus" of 40 agents agreeing on a wrong answer is overwhelming — and the 10 agents on other providers that disagree look like outliers, not correctors.
+- **Rate limiting cascade.** Providers impose rate limits. At 100 agents making concurrent API calls, a single provider's rate limit may throttle operations across multiple clusters simultaneously, creating correlated latency spikes that look like system degradation.
+
+### What to Assess
+
+- Map your provider allocation. What percentage of agents (and which clusters) depend on each provider?
+- If your most-used provider has a full outage, what percentage of your system is affected? Does that include control-plane agents?
+- Are your PACE transition agents on a different provider than your task agents?
+- At what provider concentration level does PG-2.9 require architectural intervention (separate providers for task vs. control plane)?
+
+### MASO Controls Under Stress
+
+| Control | Designed For | Stress Point |
+|---------|-------------|-------------|
+| PG-2.9 Model diversity policy | Preventing correlated reasoning errors | Concentration risk amplified at scale |
+| PG-2.4 Consensus diversity gate | Detecting false consensus | May be overwhelmed when majority of agents share a provider |
+| PACE transition agents | Managing degradation | Must not share providers with task agents |
+
+---
+
+## Stress Dimension 6: Data Boundary Enforcement
+
+### The 5-Agent Reality
+
+MASO's data protection controls (DP-1.1 classification, DP-2.1 DLP on message bus) enforce data boundaries between agents. At 5 agents with clear roles, the classification rules are straightforward: Agent A handles classified data, Agent B does not, the boundary is between them.
+
+### The Scale Question
+
+In regulated environments with complex information barriers (financial services Chinese walls, healthcare PHI boundaries, legal privilege), the number of boundary rules scales with the complexity of the regulatory environment *and* the number of agent pairs:
+
+- **Rule explosion.** A financial services firm may have 10 information barriers (equity research, M&A, proprietary trading, etc.). At 100 agents, each barrier must be enforced on every relevant communication path. The rule set becomes thousands of entries.
+- **Classification propagation.** When Agent A (with access to restricted data) sends a summary to Agent B (without access), has the restricted data been adequately transformed? At each hop, the question of whether derived data inherits the classification of source data requires judgement — and the framework relies on DLP scanning to enforce it.
+- **Latency of enforcement.** If every inter-agent message must be scanned against thousands of DLP rules before delivery, the scanning latency becomes a bottleneck on inter-agent communication speed.
+
+### What to Assess
+
+- How many distinct information barriers or data boundaries does your regulatory environment require?
+- How many agent pairs cross those boundaries?
+- Is message-level DLP scanning viable at your message volume, or do you need architectural segmentation (separate message buses per boundary)?
+- How do you handle derived data — does a summary of restricted data inherit the restriction?
+
+### MASO Controls Under Stress
+
+| Control | Designed For | Stress Point |
+|---------|-------------|-------------|
+| DP-1.1 Data classification | Labelling data by sensitivity | Classification rules scale with barriers x agent pairs |
+| DP-2.1 DLP on message bus | Preventing data leakage | Scanning latency at high message volume with many rules |
+| DP-1.3 Memory isolation | Preventing cross-boundary data persistence | Memory management complexity grows with agent count |
+
+---
+
+## Stress Dimension 7: Kill Switch at Scale
+
+### The 5-Agent Reality
+
+MASO's kill switch (OB-3.2) terminates all agents in a confirmed Emergency. At 5 agents in one cluster, termination is fast and the blast radius of in-flight work is manageable.
+
+### The Scale Question
+
+At 100 agents across multiple clusters and potentially multiple geographic regions:
+
+- **In-flight work.** At the moment of kill switch activation, dozens of agents may be mid-task. In financial services, this means in-flight orders, partial settlements, and uncommitted position changes. Killing agents without resolving in-flight work may leave external systems in an inconsistent state.
+- **Coordination time.** Terminating 100 agents across 4 data centres is not instantaneous. Network latency alone introduces seconds of delay. During that window, agents that have not yet received the kill signal continue operating.
+- **Recovery complexity.** After a kill switch event, every agent's state must be captured, every in-flight transaction must be resolved, and every external system must be reconciled. At 100 agents, this is a major operational event, not a button press.
+
+### What to Assess
+
+- What is the maximum time between kill switch activation and the last agent terminating?
+- What in-flight work exists at any given moment, and what is the consequence of abandoning it?
+- Do you need a "controlled halt" (resolve in-flight work, then stop) rather than "immediate kill" (stop everything now)?
+- Is the kill switch infrastructure itself independent of the agent infrastructure? (If the kill switch runs on the same platform as the agents, a platform failure disables both.)
+
+### MASO Controls Under Stress
+
+| Control | Designed For | Stress Point |
+|---------|-------------|-------------|
+| OB-3.2 Circuit breaker / kill switch | Emergency termination | Coordination delay across regions; in-flight work resolution |
+| Tier 3 isolated kill switch | Independence from agent control plane | Must cover multiple data centres, not just one cluster |
+
+### Potential Framework Extension
+
+MASO may need a **graduated shutdown protocol** for large-scale deployments:
+1. **Halt new work** — no new tasks accepted
+2. **Drain in-flight work** — allow active tasks to complete within a time limit (e.g., 30 seconds)
+3. **Force terminate** — kill remaining agents after the drain window
+4. **Reconcile** — automated check of external system state against expected state
+
+---
+
+## Stress Dimension 8: Compound Attack Surface
+
+### The 5-Agent Reality
+
+The [red team playbook](red-team/red-team-playbook.md) tests individual attack vectors: prompt injection propagation (RT-01), transitive permission exploitation (RT-02), judge bypass (RT-06), anomaly evasion (RT-10). Each scenario tests one control or control chain.
+
+### The Scale Question
+
+At 100 agents, the attack surface is not 20x larger — it is combinatorially larger. An attacker can chain techniques:
+
+- **Injection + delegation laundering.** Inject a payload into a low-privilege agent (RT-01). The payload instructs the agent to delegate a seemingly benign task to a high-privilege agent (RT-02). The delegated task, once accepted, exploits the high-privilege agent's tool access. The attack crosses 3 agents and 2 control domains (prompt integrity, identity & access).
+- **Slow drift + judge evasion.** Gradually shift an agent's behaviour over hundreds of interactions (RT-07) while keeping each individual interaction within the anomaly detection threshold (RT-10). Once the agent's behavioural baseline has been sufficiently shifted, exploit the new baseline as "normal."
+- **Supply chain + epistemic cascade.** Poison an MCP server (ET-04) that feeds data to a cluster of agents. The poisoned data propagates through the epistemic chain (ET-05) and is corroborated by multiple agents using the same poisoned source. The consensus diversity gate (PG-2.4) does not trigger because the agents use different models — the correlation is in the data, not the models.
+
+### What to Assess
+
+- Have you tested compound attack scenarios, or only individual red team playbook scenarios?
+- At your agent count, how many distinct 3-step attack paths exist? (This is a graph analysis problem on your delegation and communication graph.)
+- Do your controls detect attack *chains*, or only individual attack *steps*? For example, does your anomaly detection correlate a suspicious delegation request with a prior injection attempt on the delegating agent?
+- At what scale would you invest in a dedicated attack-path analysis tool (graph-based threat modelling on your actual agent topology)?
+
+### MASO Controls Under Stress
+
+| Control | Designed For | Stress Point |
+|---------|-------------|-------------|
+| All RT-01 through RT-13 | Individual attack vector testing | Compound attacks exploit gaps between controls |
+| OB-2.1 Anomaly scoring | Per-agent anomaly detection | Does not natively correlate anomalies across agents |
+| OB-3.5 Decision traceability | Post-incident chain reconstruction | Useful for forensics, but does not prevent compound attacks in real-time |
+
+---
+
+## Using This Exercise to Plan Your Deployment
+
+After working through the 8 dimensions, you should have:
+
+1. **A scaling profile for each MASO control** — which controls scale linearly with agent count, which scale quadratically with agent pairs, and which hit hard limits.
+2. **Your breakpoints** — the agent count or message volume at which you need to adapt the framework's standard implementation.
+3. **Architectural decisions** — where you need segmentation (separate message buses, separate providers for task vs. control plane), where you need sampling (observability at volume), and where you need new coordination mechanisms (cross-cluster PACE).
+4. **Cost projections** — the operational cost of full MASO compliance at your target scale, so you can make informed trade-offs.
+
+These findings should feed directly into your MASO implementation planning and your risk owner's sign-off process. The framework's controls are the *what*. This exercise helps you plan the *how much* and *at what cost* for your specific scale.
+
+---
+
+## Relationship to Other MASO Documents
+
+| Document | Relationship |
+|----------|-------------|
+| [Worked Examples](examples/worked-examples.md) | Validates MASO at 5-agent scale. This document extends that thinking to 50–100+ agents |
+| [Red Team Playbook](red-team/red-team-playbook.md) | Tests individual controls. Stress Dimension 8 asks what happens when those attacks are combined |
+| [Tier 3 — Autonomous](implementation/tier-3-autonomous.md) | Defines the controls required for high autonomy. This document asks which of those controls need adaptation at scale |
+| [Cost & Latency](../extensions/technical/cost-and-latency.md) | Provides single-model cost analysis. Stress Dimension 4 extends that to multi-agent observability cost |
+| [PACE Resilience](../../PACE-RESILIENCE.md) | Defines the three-axis PACE model. Stress Dimension 3 identifies the need for a potential fourth axis |
 
 ---
 
