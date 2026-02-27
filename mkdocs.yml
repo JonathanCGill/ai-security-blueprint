@@ -91,6 +91,7 @@ nav:
     - Insider Threat Teams: stakeholders/insider-threat-teams.md
 
   - Guide:
+    - Architecture Overview: ARCHITECTURE.md
     - Tube Map: TUBE-MAP.md
     - Framework Map: FRAMEWORK-MAP.md
     - Cheat Sheet: CHEATSHEET.md

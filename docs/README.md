@@ -5,59 +5,26 @@ description: Open-source framework for runtime behavioural security of AI system
 
 # AI Runtime Behaviour Security
 
-> You tested your AI before deployment. You proved it worked. Then it hallucinated a medical dosage, leaked customer data, or approved a transaction it shouldn't have.
+> Your AI passed every test. Then it hallucinated a medical dosage, leaked customer data, or approved a transaction it shouldn't have.
 
-Traditional security assumes deterministic systems — same input, same output, testable, provable. AI isn't deterministic. The same prompt produces different responses every time. Your test suite proves the system *can* behave correctly. It cannot prove it *will* on the next request.
+AI isn't deterministic. Same prompt, different response, every time. Your test suite proves the system *can* behave correctly. It cannot prove it *will* on the next request. **You need runtime controls — not just pre-deployment testing.**
 
-**This is a thinking tool** — not a product, not a vendor pitch, not a compliance checklist. It's an open-source framework for reasoning about what controls your AI systems actually need, given your threat model, risk appetite, and regulatory context. Two organisations reading this should arrive at different implementations, because they have different contexts. That's the point.
+This framework covers **single-agent and multi-agent AI systems** — from a chatbot with guardrails to autonomous agent swarms with per-agent identity, epistemic integrity controls, and kill switch architecture.
 
 173 controls. 10 real incidents mapped. 8 standards aligned. MIT licensed.
 
 ---
 
-## The Problem You're Solving
-
-You can't fully test an AI system before deployment. The input space is natural language — effectively infinite. Emergent behaviour can't be predicted through conventional test suites. And adversarial inputs will find edge cases no QA team imagined.
-
-So how do you know it's working correctly in production?
-
-Most enterprise "AI security" today is guardrails: input/output filters that block known-bad patterns. That catches what you can define in advance. It doesn't catch the response that's fluent, confident, and wrong. The recommendation based on hallucinated data. The action that's technically authorised but contextually dangerous.
-
-**You need layered runtime controls — not just faster pattern matching.**
-
----
-
-## The Architecture
-
-The industry is converging on the same answer independently. NVIDIA NeMo, AWS Bedrock, Azure AI, LangChain, Guardrails AI — all implement variants of the same pattern:
-
-| Layer | What It Does | Speed |
-| --- | --- | --- |
-| **Guardrails** | Block known-bad inputs and outputs — PII, injection patterns, policy violations | Real-time (~10ms) |
-| **LLM-as-Judge** | Detect unknown-bad — an independent model evaluating whether responses are appropriate | Async (~500ms–5s) |
-| **Human Oversight** | Decide genuinely ambiguous cases that automated layers can't resolve | As needed |
-| **Circuit Breaker** | Stop all AI traffic and activate a safe fallback when controls themselves fail | Immediate |
-
-**Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain.**
-
-Each layer catches what the others miss. Remove any layer and you have a gap. The framework pairs every control with a **[PACE resilience architecture](PACE-RESILIENCE.md)** — Primary, Alternate, Contingency, Emergency — so when a layer degrades, the system transitions to a predetermined safe state rather than failing silently.
-
-![Single-Agent Security Architecture](images/single-agent-architecture.svg)
-
----
-
 ## Who This Is For
 
-!!! tip "If you recognise your situation below, this framework was built for you."
-
-**Security leaders** writing an AI security strategy and finding that existing frameworks describe what should be true without specifying how to make it true in production.
-**→** [Security Leaders view](stakeholders/security-leaders.md) | [Risk & Governance view](stakeholders/risk-and-governance.md)
+**Security leaders** writing an AI security strategy and finding that existing frameworks describe *what* should be true without specifying *how* to make it true in production.
+**→** [Security Leaders](stakeholders/security-leaders.md) | [Risk & Governance](stakeholders/risk-and-governance.md)
 
 **Architects** working out where controls go in the AI pipeline, what they cost, and what happens when they fail.
-**→** [Enterprise Architects view](stakeholders/enterprise-architects.md) | [Quick Start](QUICK_START.md) — zero to working controls in 30 minutes
+**→** [Enterprise Architects](stakeholders/enterprise-architects.md) | [Architecture Overview](ARCHITECTURE.md)
 
 **Engineers** building AI systems who want implementation patterns, not slide decks. Guardrail configs, Judge prompts, integration code.
-**→** [AI Engineers view](stakeholders/ai-engineers.md) | [Integration Guide](maso/integration/integration-guide.md) — LangGraph, AutoGen, CrewAI, Bedrock
+**→** [AI Engineers](stakeholders/ai-engineers.md) | [Quick Start](QUICK_START.md) — zero to working controls in 30 minutes
 
 ---
 
@@ -65,6 +32,7 @@ Each layer catches what the others miss. Remove any layer and you have a gap. Th
 
 | I want to... | Go to |
 | --- | --- |
+| **See how the layers work** | **[Architecture Overview](ARCHITECTURE.md)** — single-agent and multi-agent patterns |
 | **Get started in 30 minutes** | **[Quick Start](QUICK_START.md)** — from zero to working controls |
 | **Secure a single-model AI system** | **[Foundation Framework](foundations/)** — 80 controls, risk tiers, PACE resilience |
 | **Secure a multi-agent system** | **[MASO Framework](maso/)** — 93 controls, 6 domains, 3 tiers |
@@ -101,40 +69,6 @@ Each layer catches what the others miss. Remove any layer and you have a gap. Th
     | Understand what's validated and what's not | [Maturity & Validation](MATURITY.md) |
     | Map to compliance requirements | [Compliance & Legal view](stakeholders/compliance-and-legal.md) |
     | See all references and further reading | [References & Sources](REFERENCES.md) |
-
----
-
-## When Agents Talk to Agents
-
-Single-model controls assume one AI, one context window, one trust boundary. Multi-agent systems break every one of those assumptions.
-
-When multiple LLMs collaborate, delegate, and take autonomous actions, new failure modes emerge that single-agent frameworks don't address:
-
-- **Prompt injection propagates** across agent chains — one poisoned document becomes instructions for every downstream agent
-- **Hallucinations compound** — Agent A hallucinates a claim, Agent B cites it as fact, Agent C elaborates with high confidence
-- **Delegation creates transitive authority** — permissions transfer implicitly through delegation chains nobody designed
-- **Failures look like success** — the most dangerous outputs are well-formatted, confident, unanimously agreed, and wrong
-
-The **[MASO Framework](maso/)** extends the foundation into multi-agent orchestration: 93 controls across 6 domains, 3 implementation tiers (supervised → managed → autonomous), full OWASP coverage for both LLM and Agentic top 10s, plus 30 emergent risks that have no OWASP equivalent — including epistemic failures like groupthink and synthetic corroboration that no other framework formally addresses.
-
-**→ [Enter MASO](maso/)**
-
----
-
-## Strategy: From Ideas to Running Systems
-
-Security controls answer *how to secure* AI. They don't answer *what to build*, *whether AI is the right tool*, or *whether the organisation can deliver and operate it safely*.
-
-The **[From Strategy to Production](strategy/)** section bridges this gap:
-
-| Stage | Question | Output |
-| --- | --- | --- |
-| [Business Alignment](strategy/business-alignment.md) | Is this worth doing? Is AI the right tool? | Business case with alternatives assessed |
-| [Use Case Definition](strategy/use-case-definition.md) | What exactly will it do? | Ten-question definition that feeds risk classification |
-| [Risk Classification](core/risk-tiers.md) | What tier? What controls? | Six-dimension scored profile with governance approval |
-| [From Idea to Production](strategy/idea-to-production.md) | How do we get from idea to safe operation? | Eight-stage lifecycle with gates and owners |
-
-Three constraints strategies routinely underestimate: **[Data Reality](strategy/data-reality.md)** — your data determines your strategy more than your ambition does. **[Human Factors](strategy/human-factors.md)** — controls don't work if the people operating them aren't ready. **[Progression](strategy/progression.md)** — moving from low to high risk takes 2–3 years; skipping steps is the most common strategic failure.
 
 ---
 
