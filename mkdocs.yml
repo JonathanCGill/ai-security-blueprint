@@ -17,13 +17,13 @@ theme:
   custom_dir: overrides
   palette:
     - scheme: default
-      primary: indigo
+      primary: black
       accent: teal
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - scheme: slate
-      primary: indigo
+      primary: black
       accent: teal
       toggle:
         icon: material/brightness-4
