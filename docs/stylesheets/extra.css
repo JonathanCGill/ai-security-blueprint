@@ -1,0 +1,29 @@
+/* SVG images: scale to container instead of overflowing */
+img[src$=".svg"] {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mobile: tighten tables so 3-4 column tables remain readable */
+@media (max-width: 768px) {
+  .md-typeset table:not([class]) {
+    font-size: 0.8rem;
+  }
+
+  .md-typeset table:not([class]) td,
+  .md-typeset table:not([class]) th {
+    padding: 0.4em 0.5em;
+  }
+}
+
+/* Small phones: further reduce for 5-column tables */
+@media (max-width: 480px) {
+  .md-typeset table:not([class]) {
+    font-size: 0.72rem;
+  }
+
+  .md-typeset table:not([class]) td,
+  .md-typeset table:not([class]) th {
+    padding: 0.3em 0.4em;
+  }
+}
