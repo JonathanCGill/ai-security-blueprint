@@ -189,6 +189,14 @@ Every control in MASO is grounded in observed or demonstrated attack patterns:
 
 ---
 
+## Stress Testing at Scale
+
+| Document | Purpose |
+|----------|---------|
+| [Stress Testing MASO at Scale](stress-test/100-agent-stress-test-overview.md) | Tabletop methodology for identifying framework breakpoints as agent count grows from single digits to 100+. Eight stress dimensions covering epistemic cascade depth, delegation graph complexity, cross-cluster PACE cascades, observability volume, provider concentration, data boundary enforcement, kill switch practicality, and compound attack surfaces |
+
+---
+
 ## Regulatory Alignment
 
 MASO inherits the parent framework's regulatory mappings and extends them to multi-agent-specific requirements:
@@ -251,6 +259,8 @@ implementation/
 ├── tier-1-supervised.md
 ├── tier-2-managed.md
 └── tier-3-autonomous.md
+stress-test/
+└── 100-agent-stress-test-overview.md
 ```
 
 ---
