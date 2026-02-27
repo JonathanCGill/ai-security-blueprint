@@ -5,7 +5,7 @@ description: Open-source framework for runtime behavioural security of AI system
 
 # AI Runtime Behaviour Security
 
-AI systems break quietly. The failures that matter most — hallucinated data, leaked context, unauthorised actions — look like normal responses. Your testing can't catch them all. **This framework gives you the runtime controls that do.**
+AI systems break quietly. The failures that matter most — hallucinated data, leaked context, unauthorised actions — appear to be normal responses. Your testing can't catch them all. **This framework gives you the runtime controls that do.**
 
 For architects, security leaders, and risk owners of AI-driven systems. Single-agent and multi-agent. Because silent failures are already happening in production.
 
