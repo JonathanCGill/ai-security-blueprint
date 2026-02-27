@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="800" fill="#fafbfc" rx="8"/>
+
+  <!-- Title -->
+  <text x="400" y="36" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">Defence in Depth Beyond the AI Layer</text>
+  <text x="400" y="56" text-anchor="middle" font-size="12" fill="#64748b">AI runtime controls sit within a wider ecosystem of organisational security controls</text>
+
+  <!-- Outer ring background -->
+  <circle cx="400" cy="420" r="320" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+
+  <!-- Outer ring label -->
+  <text x="400" y="115" text-anchor="middle" font-size="13" font-weight="600" fill="#64748b">Organisational Security Controls</text>
+
+  <!-- Segment lines (subtle dividers) -->
+  <line x1="400" y1="100" x2="400" y2="175" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="400" y1="665" x2="400" y2="740" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Outer ring items — positioned around the circle -->
+
+  <!-- Top: Network DLP -->
+  <rect x="280" y="128" width="240" height="52" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="400" y="150" text-anchor="middle" font-size="12" font-weight="600" fill="#7c3aed">Network &amp; Email DLP</text>
+  <text x="400" y="168" text-anchor="middle" font-size="10" fill="#64748b">Inbound and outbound data loss prevention</text>
+
+  <!-- Top-right: API Validation -->
+  <rect x="575" y="185" width="200" height="52" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="675" y="207" text-anchor="middle" font-size="12" font-weight="600" fill="#0e7490">API Validation</text>
+  <text x="675" y="225" text-anchor="middle" font-size="10" fill="#64748b">Schema enforcement, rate limits</text>
+
+  <!-- Right: Database Controls -->
+  <rect x="610" y="310" width="175" height="52" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#059669" stroke-width="1.5"/>
+  <text x="697" y="332" text-anchor="middle" font-size="12" font-weight="600" fill="#047857">Database Controls</text>
+  <text x="697" y="350" text-anchor="middle" font-size="10" fill="#64748b">SQL validation, access controls</text>
+
+  <!-- Bottom-right: Logging & SIEM -->
+  <rect x="590" y="460" width="190" height="52" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#d97706" stroke-width="1.5"/>
+  <text x="685" y="482" text-anchor="middle" font-size="12" font-weight="600" fill="#b45309">Logging &amp; SIEM</text>
+  <text x="685" y="500" text-anchor="middle" font-size="10" fill="#64748b">Audit trails, event correlation</text>
+
+  <!-- Bottom: IAM & Access Controls -->
+  <rect x="275" y="680" width="250" height="52" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="400" y="702" text-anchor="middle" font-size="12" font-weight="600" fill="#b91c1c">IAM &amp; Access Controls</text>
+  <text x="400" y="720" text-anchor="middle" font-size="10" fill="#64748b">Human and service account permissions</text>
+
+  <!-- Bottom-left: Secure Code Practices -->
+  <rect x="20" y="460" width="195" height="52" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#be185d" stroke-width="1.5"/>
+  <text x="117" y="482" text-anchor="middle" font-size="12" font-weight="600" fill="#9d174d">Secure Code Practices</text>
+  <text x="117" y="500" text-anchor="middle" font-size="10" fill="#64748b">OWASP Top 10, code review, SAST</text>
+
+  <!-- Left: Endpoint Protection -->
+  <rect x="15" y="310" width="185" height="52" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="107" y="332" text-anchor="middle" font-size="12" font-weight="600" fill="#4338ca">Endpoint Protection</text>
+  <text x="107" y="350" text-anchor="middle" font-size="10" fill="#64748b">EDR, host-based controls</text>
+
+  <!-- Top-left: Network Segmentation -->
+  <rect x="25" y="185" width="210" height="52" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="130" y="207" text-anchor="middle" font-size="12" font-weight="600" fill="#0369a1">Network Segmentation</text>
+  <text x="130" y="225" text-anchor="middle" font-size="10" fill="#64748b">Zones, firewalls, micro-segmentation</text>
+
+  <!-- Bottom-left 2: Incident Response -->
+  <rect x="40" y="580" width="190" height="52" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="135" y="602" text-anchor="middle" font-size="12" font-weight="600" fill="#c2410c">Incident Response</text>
+  <text x="135" y="620" text-anchor="middle" font-size="10" fill="#64748b">Playbooks, escalation, forensics</text>
+
+  <!-- Bottom-right 2: Change Management -->
+  <rect x="570" y="580" width="200" height="52" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#65a30d" stroke-width="1.5"/>
+  <text x="670" y="602" text-anchor="middle" font-size="12" font-weight="600" fill="#4d7c0f">Change Management</text>
+  <text x="670" y="620" text-anchor="middle" font-size="10" fill="#64748b">CI/CD pipelines, approval gates</text>
+
+  <!-- Inner ring background -->
+  <circle cx="400" cy="420" r="170" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+
+  <!-- Inner ring label -->
+  <text x="400" y="268" text-anchor="middle" font-size="12" font-weight="600" fill="#3b82f6">AI Runtime Controls (This Framework)</text>
+
+  <!-- Inner ring items -->
+
+  <!-- Guardrails -->
+  <rect x="310" y="285" width="180" height="36" rx="6" fill="#ffffff" filter="url(#shadow)" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="400" y="308" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">Guardrails</text>
+
+  <!-- LLM-as-Judge -->
+  <rect x="475" y="345" width="120" height="36" rx="6" fill="#ffffff" filter="url(#shadow)" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="535" y="368" text-anchor="middle" font-size="11" font-weight="600" fill="#b45309">LLM-as-Judge</text>
+
+  <!-- Human Oversight -->
+  <rect x="475" y="430" width="120" height="36" rx="6" fill="#ffffff" filter="url(#shadow)" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="535" y="453" text-anchor="middle" font-size="11" font-weight="600" fill="#4f46e5">Human Oversight</text>
+
+  <!-- PACE Resilience -->
+  <rect x="205" y="345" width="130" height="36" rx="6" fill="#ffffff" filter="url(#shadow)" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="270" y="368" text-anchor="middle" font-size="11" font-weight="600" fill="#be185d">PACE Resilience</text>
+
+  <!-- MASO Controls -->
+  <rect x="205" y="430" width="130" height="36" rx="6" fill="#ffffff" filter="url(#shadow)" stroke="#14b8a6" stroke-width="1.5"/>
+  <text x="270" y="453" text-anchor="middle" font-size="11" font-weight="600" fill="#0d9488">MASO Controls</text>
+
+  <!-- Circuit Breaker -->
+  <rect x="310" y="505" width="180" height="36" rx="6" fill="#ffffff" filter="url(#shadow)" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="400" y="528" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">Circuit Breaker</text>
+
+  <!-- Centre: AI System -->
+  <circle cx="400" cy="420" r="55" fill="#1e293b" filter="url(#shadow)"/>
+  <circle cx="400" cy="420" r="52" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+  <text x="400" y="414" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">AI</text>
+  <text x="400" y="434" text-anchor="middle" font-size="11" fill="#93c5fd">System</text>
+
+  <!-- Footer -->
+  <text x="400" y="765" text-anchor="middle" font-size="11" fill="#64748b">AI-specific controls do not replace existing security. They add a layer purpose-built for non-deterministic behaviour.</text>
+  <text x="400" y="783" text-anchor="middle" font-size="11" fill="#64748b">Defence in depth means making the best use of every control your organisation already has.</text>
+</svg>

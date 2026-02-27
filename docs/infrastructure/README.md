@@ -244,6 +244,7 @@ Fourteen SVG diagrams covering IAM architecture, logging pipelines, network zone
 4. **Practitioner-focused.** Written for security architects and engineers, not executive summaries.
 5. **Agentic-aware.** Agent-specific controls are treated as first-class concerns, not afterthoughts.
 6. **Infrastructure beats instructions.** Security controls are enforced via deterministic infrastructure (gateways, network policy, vaults), never via prompt instructions that can be overridden.
+7. **AI controls add to your existing security, they don't replace it.** These 80 controls address AI-specific risks. Your organisation's existing DLP (inbound and outbound), API gateways, database access controls, IAM, SIEM, network segmentation, secure coding practices, and incident response capabilities all still apply — and all still catch failures that AI-specific controls miss. Defence in depth includes everything outside this framework.
 
 ---
 

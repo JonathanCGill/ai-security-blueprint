@@ -112,6 +112,20 @@ All Tier 2 controls remain active, plus:
 
 ---
 
+## DLP Beyond the Message Bus
+
+MASO's DLP controls (DP-2.1) scan inter-agent messages within the orchestration. This is necessary but not sufficient. DLP applies in both directions — inbound and outbound — and the controls outside the AI system play an equally important role.
+
+**Inbound DLP.** Your organisation's network DLP, email DLP, and endpoint DLP should prevent sensitive data from reaching agents that shouldn't have it. If a user pastes classified material into an agent's input, network-level DLP catching it before it reaches the model is a faster and more reliable defence than relying on the agent's input guardrails alone.
+
+**Outbound DLP.** If an agent exfiltrates data through a tool call, API request, or generated output, the message bus DLP (DP-2.1) is the first catch point. But network-level DLP, API gateway validation, and database access controls are the second. An agent that constructs a malformed API call or an overly broad database query should be stopped by the target system's own validation — not just by the orchestration's controls.
+
+**Reporting.** External DLP systems that detect AI-originated data incidents provide a feedback loop. If network DLP catches sensitive data that the message bus DLP missed, that is a signal to tighten DP-2.1 rules. DLP is not a single control — it is a layered strategy, and the AI-specific layer is one part of it.
+
+These external controls are outside the scope of this framework, but they should be included in your threat model, your data flow diagrams (DP-1.5), and your design reviews.
+
+---
+
 ## Common Pitfalls
 
 **Classifying agents instead of data flows.** An agent is not "confidential" — it processes data that is confidential. The same agent might process both internal and confidential data depending on the task. Classification must be applied to the data flows, not the agent itself.
