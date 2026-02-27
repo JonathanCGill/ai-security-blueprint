@@ -1,3 +1,24 @@
+/* Font: Inter for all text including headings */
+:root {
+  --md-text-font: "Inter", sans-serif;
+  --md-code-font: "Roboto Mono", monospace;
+}
+
+.md-typeset {
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6,
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  font-family: "Inter", sans-serif;
+}
+
 /* SVG images: scale to container instead of overflowing */
 img[src$=".svg"] {
   max-width: 100%;
