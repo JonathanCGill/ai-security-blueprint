@@ -40,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changelog now links to narrative Evolution page for context
 
 ### Rationale
-The framework is comprehensive but has no production deployments. Rather than ignoring this gap, these additions address it directly: honest status assessment, evidence-based validation against real incidents, and a living record of how the framework evolves in response to real-world events. Credibility comes from transparency, not claims.
+The framework is comprehensive but has no production deployments. Rather than ignoring this gap, these additions address it directly: honest status assessment, retroactive alignment against real incidents, and a living record of how the framework evolves in response to real-world events. Credibility comes from transparency, not claims.
 
 ---
 
