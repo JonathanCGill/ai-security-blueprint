@@ -4,27 +4,28 @@ description: Runtime behavioural security controls for single-model AI deploymen
 
 # AI Runtime Behaviour Security — Single-Agent Controls
 
-**Runtime behavioural security for single-model AI deployments. Guardrails, LLM-as-Judge, and human oversight — scaled to the risk.**
+> Most AI governance frameworks assume you can test your way to safety.
+> You cannot.
 
-> *Part of the [AI Runtime Behaviour Security](../)*
-> Version 1.0 · February 2026 · Jonathan Gill
+AI systems are non-deterministic. Same prompt, same model, same parameters — different response. Every time. Your test suite proves the system *can* behave correctly. It cannot prove it *will* on the next request.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+- **AI systems are non-deterministic** — same input, different output, by design
+- **Guardrails fail silently** — the most dangerous outputs look perfectly normal
+- **Multi-agent systems amplify errors** — hallucinations compound, permissions propagate, failures correlate
+
+**Guardrails** → **Judge** → **Human Oversight** → **Circuit Breaker**
+
+*Block known-bad → Detect unknown-bad → Decide edge cases → Fail safely*
+
+**Start here:**
+
+- [Read the 5-minute executive summary](../CHEATSHEET.md) — the entire framework on one page
+- [Explore the technical architecture](#architecture) — three layers, what fails when
+- [Get working controls in 30 minutes](../QUICK_START.md) — from zero to deployed
 
 ---
 
-## How This Section Is Organised
-
-This page is the **conceptual overview** — it explains the architecture, the risk-scaling model, and how the pieces connect. The implementation details — risk classification criteria, specific control definitions, checklists, and specialised controls for multimodal, reasoning, streaming, and memory — live in the **[Core](../core/)** directory.
-
-| If you want to... | Go here |
-| --- | --- |
-| Understand the architecture and principles | **You're in the right place** — keep reading |
-| Classify a system and select controls | [Core: Risk Tiers](../core/risk-tiers.md) → [Controls](../core/controls.md) |
-| See the implementation checklist | [Core: Checklist](../core/checklist.md) |
-| Read specialised controls (multimodal, reasoning, streaming, memory) | [Core: Specialised Controls](../core/README.md#specialized-controls) |
-
----
+> *Part of [AI Runtime Behaviour Security](../) · Version 1.0 · February 2026 · Jonathan Gill · [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)*
 
 ## Architecture
 
