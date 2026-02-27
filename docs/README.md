@@ -13,7 +13,7 @@ For architects, security leaders, and risk owners of AI-driven systems. Single-a
 
 ---
 
-## Built on Evidence
+## Built on Best Practices, and Some Real World Incidents
 
 173 controls across single-agent and multi-agent systems. 10 real-world AI incidents mapped to specific controls. Aligned with OWASP LLM Top 10, OWASP Agentic Top 10, NIST AI RMF, ISO 42001, EU AI Act, and DORA. MIT licensed. Built for practitioners, not for slides.
 
