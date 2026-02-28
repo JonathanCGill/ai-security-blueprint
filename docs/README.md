@@ -1,6 +1,9 @@
 ---
 title: AI Runtime Behaviour Security
 description: A practitioner's reference for runtime AI security. Guardrails, LLM-as-Judge, human oversight, and PACE resilience — from single-model deployments to autonomous multi-agent orchestration. Take what's useful, adapt it, ignore what doesn't fit.
+hide:
+  - toc
+  - path
 ---
 
 # AI Runtime Behaviour Security
@@ -11,7 +14,10 @@ AI systems break quietly. The failures that matter most — hallucinated data, l
 
 For architects, security leaders, and risk owners of AI-driven systems. Single-agent and multi-agent. Because silent failures are already happening in production.
 
-[**See the Architecture**](ARCHITECTURE.md) | [**Quick Start Guide**](QUICK_START.md)
+[See the Architecture](ARCHITECTURE.md){ .md-button .md-button--primary }
+[Quick Start Guide](QUICK_START.md){ .md-button }
+
+**Executives** — [2-minute overview](CHEATSHEET.md) · **Architects** — [Control architecture](ARCHITECTURE.md) · **Practitioners** — [Quick start guide](QUICK_START.md)
 
 ---
 
@@ -28,19 +34,6 @@ For architects, security leaders, and risk owners of AI-driven systems. Single-a
 - **Resilience when controls fail** — every control has a defined failure mode and a predetermined safe state. [PACE methodology](PACE-RESILIENCE.md): Primary, Alternate, Contingency, Emergency.
 
 Use the parts that fit your environment. Skip the parts that don't. If your existing tools already satisfy a control, you don't need new ones.
-
----
-
-## Start by Role
-
-**Security leaders** — writing AI security strategy. Most guidance says *what* should be true but not *how*. Start here.
-**→** [Security Leaders](stakeholders/security-leaders.md) | [Cheat Sheet](CHEATSHEET.md) — *5 minutes*
-
-**Architects** — working out where controls go, what they cost, and what happens when they fail.
-**→** [Enterprise Architects](stakeholders/enterprise-architects.md) | [Architecture Overview](ARCHITECTURE.md) — *10 minutes*
-
-**Engineers** — want implementation patterns, not slide decks. Guardrail configs, Judge prompts, integration code.
-**→** [AI Engineers](stakeholders/ai-engineers.md) | [Quick Start](QUICK_START.md) — *30 minutes*
 
 ---
 
