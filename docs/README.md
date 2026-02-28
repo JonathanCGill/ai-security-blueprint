@@ -5,6 +5,7 @@ hide:
   - toc
   - path
   - navigation
+  - feedback
 ---
 
 # AI Runtime Behaviour Security
