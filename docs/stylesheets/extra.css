@@ -28,6 +28,16 @@ h1, h2, h3, h4, h5, h6,
   margin-right: auto;
 }
 
+/* Tighten h1 bottom margin so hero content sits closer */
+.md-typeset h1 {
+  margin-bottom: 0.25em;
+}
+
+/* First paragraph after h1: reduce top gap */
+.md-typeset h1 + p {
+  margin-top: 0;
+}
+
 /* Hide heading permalink anchors until hover */
 .headerlink { opacity: 0; transition: opacity 0.2s; }
 *:hover > .headerlink { opacity: 1; }
@@ -38,11 +48,11 @@ img[src$=".svg"] {
   height: auto;
 }
 
-/* Hero concept diagram: compact, centred, breathing room */
+/* Hero concept diagram: compact, centred, tight vertical spacing */
 img[src*="runtime-layers"] {
   display: block;
-  margin: 1rem auto 0.5rem;
-  max-width: 28rem;
+  margin: 0.5rem auto 0.25rem;
+  max-width: 26rem;
 }
 
 /* Mobile: tighten tables so 3-4 column tables remain readable */
