@@ -4,7 +4,7 @@ description: Runtime behavioural security controls for single-model AI deploymen
 
 # AI Runtime Behaviour Security — Single-Agent Controls
 
-> Most AI governance frameworks assume you can test your way to safety.
+> Most AI governance guidance assumes you can test your way to safety.
 > You cannot.
 
 AI systems are non-deterministic. Same prompt, same model, same parameters — different response. Every time. Your test suite proves the system *can* behave correctly. It cannot prove it *will* on the next request.
@@ -41,7 +41,7 @@ Three layers, one principle: **you can't fully test a non-deterministic system b
 
 **Circuit Breaker** stops all AI traffic and activates a non-AI fallback when any layer fails. Not a degradation — a full stop with a predetermined safe state.
 
-This pattern already exists in production at major platforms: NVIDIA NeMo, AWS Bedrock, Azure AI, LangChain, Guardrails AI, and others. This framework provides the vendor-neutral implementation: risk classification, controls, fail postures, and tested fallback paths.
+This pattern already exists in production at major platforms: NVIDIA NeMo, AWS Bedrock, Azure AI, LangChain, Guardrails AI, and others. This reference provides the vendor-neutral implementation: risk classification, controls, fail postures, and tested fallback paths.
 
 ---
 
@@ -122,7 +122,7 @@ Even at the lowest risk tier, there's a fallback plan. At the highest, there's a
 
 ## Infrastructure Controls
 
-This framework defines *what* to enforce. The [infrastructure](../infrastructure/) section defines *how* — 80 technical controls across 11 domains, with standards mappings and platform-specific patterns.
+This section defines *what* to enforce. The [infrastructure](../infrastructure/) section defines *how* — 80 technical controls across 11 domains, with standards mappings and platform-specific patterns.
 
 **Domains:** Identity & Access Management (8), Logging & Observability (10), Network & Segmentation (8), Data Protection (8), Secrets & Credentials (8), Supply Chain (8), Incident Response (8), Tool Access (6), Session & Scope (5), Delegation Chains (5), Sandbox Patterns (6).
 
@@ -140,7 +140,7 @@ The three-layer model above — guardrails, judge, human oversight — addresses
 
 Your existing DLP systems apply to data flowing into and out of AI systems — both preventing sensitive data from reaching models and catching leakage that AI-specific controls miss. API gateways validate requests and enforce schemas regardless of whether the caller is human or AI. Database access controls and parameterised queries prevent injection even if an agent constructs a malicious query. IAM governs who can invoke AI systems in the first place. SIEM correlates AI events with network, endpoint, and application events. Secure coding practices in the systems agents interact with still matter — arguably more, because the caller is now non-deterministic.
 
-These controls are outside the scope of this framework, but they are part of your defence. When you assess your AI security posture, include them. When you threat-model, include them. When one of this framework's controls misses something, they are your safety net.
+These controls are outside the scope of this reference, but they are part of your defence. When you assess your AI security posture, include them. When you threat-model, include them. When one of these controls misses something, they are your safety net.
 
 ---
 
@@ -212,7 +212,7 @@ When AI agents collaborate, delegate tasks, and take autonomous actions across t
 
 ## Platforms Implementing This Pattern
 
-This isn't a theoretical proposal. These platforms already implement variants of the three-layer pattern:
+This isn't a theoretical proposal. These platforms already implement variants of this pattern:
 
 | Platform | Approach |
 | --- | --- |
