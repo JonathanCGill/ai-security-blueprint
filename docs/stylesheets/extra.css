@@ -26,10 +26,6 @@ h1, h2, h3, h4, h5, h6,
   max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
-}
-
-/* Reduce whitespace above h1 (Material default is generous) */
-.md-content__inner {
   padding-top: 0.5rem;
 }
 
@@ -56,10 +52,21 @@ img[src$=".svg"] {
 }
 
 /* Hero concept diagram: compact, centred, minimal vertical spacing */
-img[src*="runtime-layers"] {
+.md-typeset img[src*="runtime-layers"] {
   display: block;
   margin: 0.15rem auto 0.15rem;
-  max-width: 26rem;
+  max-width: 26rem !important;
+}
+
+/* Homepage only: hide h1 (site name already in navbar) and edit/view icons.
+   The homepage is the only page that hides navigation, so when there is no
+   left sidebar the main grid shifts — we detect that via :only-child on
+   the content area within .md-main__inner. */
+.md-main__inner > .md-content:only-child .md-content__inner > h1:first-child {
+  display: none;
+}
+.md-main__inner > .md-content:only-child .md-source-file {
+  display: none;
 }
 
 /* Mobile: tighten tables so 3-4 column tables remain readable */
