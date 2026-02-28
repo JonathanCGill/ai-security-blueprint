@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jonathancgill.github.io/ai-runtime-behaviour-security/sitemap.xml
+# Raw source files — content is served as HTML, not markdown
+Disallow: /*.md$
+Disallow: /*.docx$
+
+# Internal/theme files — not content pages
+Disallow: /overrides/
+Disallow: /LinkedIn_Sharing_Strategy.docx
+
+# Junk/test paths (crawled but non-existent)
+Disallow: /edfsafdsfasd
+Disallow: /insights/kdfdfd
+
+Sitemap: https://airuntimesecurity.co.za/sitemap.xml

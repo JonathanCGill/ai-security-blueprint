@@ -12,22 +12,30 @@ hide:
 
 AI systems fail quietly. The worst failures look like normal responses. Testing alone cannot catch them. **Runtime controls can.**
 
+**173 controls. 10 real-world incidents. Open-source practitioner's reference.** Covers single-model deployments through autonomous multi-agent orchestration — aligned to OWASP, NIST, ISO 42001, EU AI Act, and DORA.
+
 ![Four-layer runtime security: Guardrails → Judge → Human → Circuit Breaker](images/runtime-layers.svg)
 
 <div style="text-align: center" markdown>
 
-[See the Architecture](ARCHITECTURE.md){ .md-button .md-button--primary }
-[Quick Start Guide](QUICK_START.md){ .md-button }
+[Quick Start Guide](QUICK_START.md){ .md-button .md-button--primary }
+[See the Architecture](ARCHITECTURE.md){ .md-button }
 
 </div>
 
-**Executives** — [2-minute overview](CHEATSHEET.md) · **Architects** — [Control architecture](ARCHITECTURE.md) · **Practitioners** — [Quick start](QUICK_START.md)
+!!! tip "Start here"
+
+    **Executives** — [2-minute cheat sheet](CHEATSHEET.md) covers risk tiers, control layers, and what to ask your team.
+
+    **Architects** — [Architecture overview](ARCHITECTURE.md) shows the four-layer pattern and how single-agent extends to multi-agent.
+
+    **Practitioners** — [Quick start](QUICK_START.md) gets you from zero to working controls.
 
 ---
 
 ## Built on Real Incidents, Not Theory
 
-173 controls. 10 real-world AI incidents mapped to specific controls. Aligned with OWASP, NIST AI RMF, ISO 42001, EU AI Act, and DORA. Take what's useful, adapt it, ignore what doesn't fit.
+Every control maps to a real failure mode. 10 documented AI incidents traced to specific controls that would have caught them. Take what's useful, adapt it, ignore what doesn't fit.
 
 ---
 
