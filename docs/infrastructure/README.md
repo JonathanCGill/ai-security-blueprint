@@ -8,8 +8,6 @@ description: Infrastructure controls that enforce AI behavioural security across
 
 Companion to [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security), which defines the three-layer behavioural security pattern (Guardrails → LLM-as-Judge → Human Oversight). This repo defines the 80 technical infrastructure controls that underpin that pattern.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 ---
 
 ## The Problem
@@ -266,6 +264,8 @@ Feedback, corrections, and extensions welcome. This is a living framework.
 
 - GitHub: [@JonathanCGill](https://github.com/JonathanCGill)
 - LinkedIn: [Jonathan Gill](https://www.linkedin.com/in/jonathancgill/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*
