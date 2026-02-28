@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 220" role="img" aria-label="Four runtime security layers: Guardrails, Judge, Human Oversight, Circuit Breaker">
+  <style>
+    text { font-family: Inter, system-ui, sans-serif; }
+    .label { font-size: 11.5px; font-weight: 600; fill: #fff; }
+    .sub { font-size: 9px; fill: rgba(255,255,255,0.78); }
+    .centre-label { font-size: 12px; font-weight: 700; fill: #111; }
+    .centre-sub { font-size: 9px; fill: #555; }
+    .arrow { fill: none; stroke: #b0b0b0; stroke-width: 1.2; marker-end: url(#ah); }
+    .flow-label { font-size: 8px; fill: #888; }
+  </style>
+  <defs>
+    <marker id="ah" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+      <path d="M0,0 L6,2.5 L0,5" fill="none" stroke="#b0b0b0" stroke-width="1"/>
+    </marker>
+  </defs>
+
+  <!-- Layer 4 (outermost): Circuit Breaker -->
+  <rect x="10" y="10" width="500" height="200" rx="18" fill="#1a1a2e" opacity="0.92"/>
+  <text x="260" y="32" text-anchor="middle" class="label" style="font-size:10px; fill:rgba(255,255,255,0.55);">CIRCUIT BREAKER — kill switch when all else fails</text>
+
+  <!-- Layer 3: Human Oversight -->
+  <rect x="42" y="42" width="436" height="142" rx="14" fill="#16213e"/>
+  <text x="260" y="62" text-anchor="middle" class="label" style="font-size:10px; fill:rgba(255,255,255,0.6);">HUMAN OVERSIGHT — edge cases, high-risk decisions</text>
+
+  <!-- Layer 2: LLM-as-Judge -->
+  <rect x="78" y="72" width="364" height="88" rx="11" fill="#0f3460"/>
+  <text x="260" y="91" text-anchor="middle" class="label" style="font-size:10px; fill:rgba(255,255,255,0.7);">LLM-AS-JUDGE — catches what rules can't</text>
+
+  <!-- Layer 1 (innermost): Guardrails -->
+  <rect x="120" y="100" width="280" height="38" rx="8" fill="#009688"/>
+  <text x="260" y="124" text-anchor="middle" class="label">GUARDRAILS — blocks known threats</text>
+
+  <!-- AI System dot at centre -->
+  <circle cx="260" cy="168" r="16" fill="#fff" stroke="#e0e0e0" stroke-width="1.5"/>
+  <text x="260" y="165" text-anchor="middle" class="centre-label" style="font-size:9.5px;">AI</text>
+  <text x="260" y="175" text-anchor="middle" class="centre-sub" style="font-size:7.5px;">system</text>
+
+  <!-- Flow arrows: input on left, output on right -->
+  <path class="arrow" d="M18,168 L100,168"/>
+  <text x="56" y="162" text-anchor="middle" class="flow-label">input</text>
+
+  <path class="arrow" d="M420,168 L502,168"/>
+  <text x="464" y="162" text-anchor="middle" class="flow-label">output</text>
+
+  <!-- Up arrow from AI to guardrails -->
+  <path class="arrow" d="M260,152 L260,140"/>
+</svg>
