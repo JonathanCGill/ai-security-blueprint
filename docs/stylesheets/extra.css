@@ -38,6 +38,13 @@ img[src$=".svg"] {
   height: auto;
 }
 
+/* Hero concept diagram: compact, centred, breathing room */
+img[src*="runtime-layers"] {
+  display: block;
+  margin: 1rem auto 0.5rem;
+  max-width: 28rem;
+}
+
 /* Mobile: tighten tables so 3-4 column tables remain readable */
 @media (max-width: 768px) {
   .md-typeset table:not([class]) {
