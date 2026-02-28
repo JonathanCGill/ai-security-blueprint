@@ -150,13 +150,17 @@ nav:
       - Threat Intelligence:
         - Incident Tracker: maso/threat-intelligence/incident-tracker.md
         - Emerging Threats: maso/threat-intelligence/emerging-threats.md
+        - Threat Intelligence Review: maso/threat-intelligence/threat-intelligence-review.md
         - Red Team Playbook: maso/red-team/red-team-playbook.md
+      - Stress Testing:
+        - 100-Agent Stress Test: maso/stress-test/100-agent-stress-test-overview.md
       - Integration & Examples:
         - Integration Guide: maso/integration/integration-guide.md
         - Worked Examples: maso/examples/worked-examples.md
 
   - Infrastructure:
     - infrastructure/README.md
+    - Repository Structure: infrastructure/REPO-STRUCTURE.md
     - Controls:
       - Identity & Access: infrastructure/controls/identity-and-access.md
       - Logging & Observability: infrastructure/controls/logging-and-observability.md
@@ -266,9 +270,12 @@ nav:
       - Novel AI Risks: extensions/technical/novel-ai-risks.md
       - Operational Metrics: extensions/technical/operational-metrics.md
       - SOC Integration: extensions/technical/soc-integration.md
+      - SOC Content Pack: extensions/technical/soc-content-pack.md
       - Supply Chain: extensions/technical/supply-chain.md
       - Support Systems Risk: extensions/technical/support-systems-risk.md
       - Technical Controls: extensions/technical/technical-controls.md
+      - AI Endpoint Hardening: extensions/technical/ai-endpoint-hardening.md
+      - Runtime Telemetry Reference: extensions/technical/runtime-telemetry-reference.md
     - Templates:
       - extensions/templates/README.md
       - AI Incident Playbook: extensions/templates/ai-incident-playbook.md
