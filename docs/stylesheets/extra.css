@@ -19,6 +19,15 @@ h1, h2, h3, h4, h5, h6,
   font-family: "Inter", sans-serif;
 }
 
+/* Centre content on pages with hidden sidebars (e.g. homepage).
+   On inner pages the sidebars already constrain the width,
+   so this max-width has no visible effect there. */
+.md-content__inner {
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* SVG images: scale to container instead of overflowing */
 img[src$=".svg"] {
   max-width: 100%;
