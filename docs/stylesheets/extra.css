@@ -28,6 +28,10 @@ h1, h2, h3, h4, h5, h6,
   margin-right: auto;
 }
 
+/* Hide heading permalink anchors until hover */
+.headerlink { opacity: 0; transition: opacity 0.2s; }
+*:hover > .headerlink { opacity: 1; }
+
 /* SVG images: scale to container instead of overflowing */
 img[src$=".svg"] {
   max-width: 100%;
