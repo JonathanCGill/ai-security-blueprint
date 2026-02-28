@@ -4,6 +4,7 @@ description: A practitioner's reference for runtime AI security. Guardrails, LLM
 hide:
   - toc
   - path
+  - navigation
 ---
 
 # AI Runtime Behaviour Security
