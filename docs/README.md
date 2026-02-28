@@ -168,7 +168,7 @@ His current focus is AI security governance: designing control architectures tha
 
 ## Disclaimer
 
-This reference is provided as-is under the [MIT License](LICENSE). As described in [How to Use This](#how-to-use-this), it is a thinking tool — not a standard, certification, or guarantee of security. It reflects one practitioner's synthesis of industry patterns, regulatory requirements, and operational experience.
+This reference is provided as-is under the [MIT License](../LICENSE). As described in [How to Use This](#how-to-use-this), it is a thinking tool — not a standard, certification, or guarantee of security. It reflects one practitioner's synthesis of industry patterns, regulatory requirements, and operational experience.
 
 If you adopt any part of this, you are responsible for validating it against your own threat model, environment, and regulatory obligations.
 
