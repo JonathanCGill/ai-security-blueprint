@@ -1,26 +1,26 @@
 # Maturity & Validation
 
-**An honest assessment of what this framework is, what it's validated against, and where the gaps are.**
+**An honest assessment of what this reference is, what it's validated against, and where the gaps are.**
 
 > Part of [AI Runtime Behaviour Security](./)
 > Last updated: February 2026
 
 ---
 
-## Framework Status
+## Status
 
-This framework has **not been deployed end-to-end in a production environment.** No organisation has implemented the full control set and reported back on operational results. The adopters list is empty.
+This reference has **not been deployed end-to-end in a production environment.** No organisation has implemented the full control set and reported back on operational results. The adopters list is empty.
 
 That's an important fact and we're stating it clearly rather than hoping no one notices.
 
-What the framework *is*:
+What this reference *is*:
 
 - **A practitioner's synthesis.** 30+ years in IT, 20+ in enterprise security, applied to the specific problem of runtime AI security. The architecture draws on real operational experience in financial services, government, and critical infrastructure — applied to AI, not invented from theory.
 - **Aligned to real incidents.** Every major control addresses a documented, public security failure — retroactively analysed, not empirically tested. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps 10 real-world incidents to specific controls. The [Validated Against Real Incidents](VALIDATED-AGAINST.md) page inverts this — showing which controls align to the most documented incidents.
 - **Aligned to established standards.** Full crosswalks to OWASP LLM Top 10 (2025), OWASP Agentic Top 10 (2026), NIST AI RMF, ISO 42001, EU AI Act, NIST SP 800-218A, and MITRE ATLAS. These aren't surface-level mappings — they're control-by-control alignments.
-- **Consistent with production patterns.** The three-layer model (Guardrails, Judge, Human Oversight) exists in production at NVIDIA NeMo, AWS Bedrock, Azure AI Content Safety, LangChain, and Guardrails AI. This framework didn't invent the pattern — it codified it.
+- **Consistent with production patterns.** The three-layer model (Guardrails, Judge, Human Oversight) exists in production at NVIDIA NeMo, AWS Bedrock, Azure AI Content Safety, LangChain, and Guardrails AI. This reference didn't invent the pattern — it codified it.
 
-What the framework *is not*:
+What this reference *is not*:
 
 - **Not battle-tested at scale.** No one has run this at 100K+ daily interactions and reported back on false positive rates, Judge accuracy, operational overhead, or PACE failover performance.
 - **Not a certification or audit standard.** Implementing this does not constitute compliance with any regulation. It may support compliance — the regulatory crosswalks show how — but that's your assessment to make, not ours.
@@ -48,7 +48,7 @@ Controls retroactively mapped to real-world security incidents, showing they wou
 
 See: [Validated Against Real Incidents](VALIDATED-AGAINST.md)
 
-This is the framework's strongest current basis for credibility — but it is retroactive analysis, not empirical evidence from running systems. It demonstrates the controls address real attack patterns, not theoretical ones. It does not prove the controls *will* work in your environment.
+This is the strongest current basis for credibility — but it is retroactive analysis, not empirical evidence from running systems. It demonstrates the controls address real attack patterns, not theoretical ones. It does not prove the controls *will* work in your environment.
 
 ### 3. Standards Alignment
 
@@ -67,7 +67,7 @@ Controls mapped to established international standards and industry frameworks.
 | NIST SP 800-218A | Pre-deployment complement |
 | MITRE ATLAS | Agent threat intelligence alignment |
 
-Standards alignment doesn't validate effectiveness — it validates *relevance*. These mappings show the framework addresses the same risk categories that international bodies have independently identified as critical.
+Standards alignment doesn't validate effectiveness — it validates *relevance*. These mappings show the reference addresses the same risk categories that international bodies have independently identified as critical.
 
 ### 4. Pattern Consistency
 
@@ -82,7 +82,7 @@ The architectural patterns used in this framework exist independently in product
 | Agent sandboxing | Docker/gVisor patterns in LangGraph, CrewAI |
 | Non-Human Identity | Service account patterns extended to agents |
 
-Pattern consistency doesn't prove this framework's *specific implementation* works — but it demonstrates the architectural approach is sound and independently adopted.
+Pattern consistency doesn't prove this reference's *specific implementation* works — but it demonstrates the architectural approach is sound and independently adopted.
 
 ---
 
@@ -104,9 +104,9 @@ We track what we know we don't know.
 
 ## How You Can Help
 
-### Pilot the Framework
+### Pilot It
 
-The single most valuable thing for this framework's credibility is a real deployment. If your organisation is implementing AI security controls — even partially — and would be willing to share results (anonymised is fine), we want to hear from you.
+The single most valuable thing for this reference's credibility is a real deployment. If your organisation is implementing AI security controls — even partially — and would be willing to share results (anonymised is fine), we want to hear from you.
 
 What a pilot looks like:
 
@@ -119,7 +119,7 @@ Even negative results are valuable. "We implemented X and it didn't work because
 
 ### Peer Review
 
-If you're an AI security practitioner, red teamer, or compliance professional — review the framework and tell us what's wrong, what's missing, or what doesn't match your experience. Open an issue or submit a PR.
+If you're an AI security practitioner, red teamer, or compliance professional — review the reference and tell us what's wrong, what's missing, or what doesn't match your experience. Open an issue or submit a PR.
 
 Specific areas where expert review would be most valuable:
 
@@ -136,11 +136,11 @@ If you're aware of a public AI security incident not in our [Incident Tracker](m
 
 ## A Note on Honesty
 
-This section exists because too many frameworks present themselves as established when they're theoretical, proven when they're proposed, and comprehensive when they're partial.
+This section exists because too much guidance presents itself as established when it's theoretical, proven when it's proposed, and comprehensive when it's partial.
 
-We'd rather be honest about where this framework stands and let you judge whether it's useful in its current state, than pretend it has an evidence base it doesn't.
+We'd rather be honest about where this reference stands and let you judge whether it's useful in its current state, than pretend it has an evidence base it doesn't.
 
-The architecture is sound — the patterns exist independently in production. The controls are grounded — they address real incidents. The standards alignment is thorough. What's missing is the operational proof that comes only from deployment.
+The architecture is sound — the patterns exist independently in production. The controls are grounded — they address real incidents. The standards alignment is thorough. What's missing is the operational proof that comes only from real deployment.
 
 Help us close that gap.
 

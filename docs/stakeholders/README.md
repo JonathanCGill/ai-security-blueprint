@@ -1,18 +1,18 @@
 ---
-description: Role-specific entry points into the AI security framework for CISOs, risk leaders, enterprise architects, product owners, AI engineers, compliance teams, and insider threat teams.
+description: Role-specific entry points into the AI runtime security reference for CISOs, risk leaders, enterprise architects, product owners, AI engineers, compliance teams, and insider threat teams.
 ---
 
 # Stakeholder Views
 
-**Your role. Your risks. Your entry point into the framework.**
+**Your role. Your risks. Your entry point.**
 
 > *Part of the [AI Runtime Behaviour Security](../)*
 
 ---
 
-This framework covers a lot of ground — risk tiers, three-layer controls, PACE resilience, MASO multi-agent security, infrastructure controls, regulatory mappings, strategy. Nobody needs all of it.
+This reference covers a lot of ground — risk tiers, three-layer controls, PACE resilience, MASO multi-agent security, infrastructure controls, regulatory mappings, strategy. Nobody needs all of it.
 
-These pages tell you **what matters for your role**, **why you should care**, and **where to start reading**. Each one is a window into the framework from your perspective — not a summary of everything, but a filter for what's relevant to your work.
+These pages tell you **what matters for your role**, **why you should care**, and **where to start reading**. Each one is a window from your perspective — not a summary of everything, but a filter for what's relevant to your work.
 
 ![Stakeholder Map](../images/stakeholder-map.svg)
 
@@ -37,12 +37,12 @@ These pages tell you **what matters for your role**, **why you should care**, an
 Each stakeholder page follows the same structure:
 
 1. **The problem from your perspective** — why AI security isn't like the security you already know
-2. **What this framework gives you** — the specific parts relevant to your work
+2. **What this reference gives you** — the specific parts relevant to your work
 3. **Your starting path** — ordered reading list, 3-5 documents deep
 4. **What you can do Monday morning** — concrete first actions
 5. **Common objections addressed** — the pushback you'll get, with answers
 
-These are entry points, not destinations. Follow the links into the full framework when you need depth.
+These are entry points, not destinations. Follow the links deeper when you need depth.
 
 ---
 
