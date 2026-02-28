@@ -13,7 +13,7 @@ This is a **tabletop stress test** — a structured thought exercise for identif
 
 It is not a report on a system we built and tested. No 100-agent system was deployed. The value here is in the reasoning: taking the framework's controls and asking, methodically, *does this still work when the numbers change by an order of magnitude?*
 
-The [worked examples](examples/worked-examples.md) validate MASO against realistic 5-agent systems. This document asks what happens next — when organisations move from pilot to platform, and agent count grows from a handful to a fleet.
+The [worked examples](../examples/worked-examples.md) validate MASO against realistic 5-agent systems. This document asks what happens next — when organisations move from pilot to platform, and agent count grows from a handful to a fleet.
 
 ---
 
@@ -171,7 +171,7 @@ At 100 agents, the message volume changes the problem:
 - **Message throughput.** If each agent sends an average of 10 messages per minute to other agents, the system generates ~1,000 messages per minute. At peak (e.g., market open, incident response), this may spike to 10,000+ per minute. Every message needs anomaly scoring, drift comparison, and potentially DLP scanning.
 - **Anomaly baseline complexity.** Behavioural baselines at 5 agents are 5 profiles. At 100 agents, it is 100 profiles — plus the interaction patterns between agents, which is combinatorial. What constitutes "anomalous" for Agent 47's communication pattern with Agent 83?
 - **Alert fatigue.** More agents means more anomaly signals. If each agent generates a false positive alert once per day, 100 agents generate 100 false positives per day. The human review capacity for PACE escalation decisions becomes the bottleneck.
-- **Cost.** If every message is evaluated by a Judge model, the observability compute cost may exceed the task compute cost. The framework's [cost and latency guidance](../extensions/technical/cost-and-latency.md) discusses sampling rates for single-model systems — the same logic applies at scale, but the trade-offs are sharper.
+- **Cost.** If every message is evaluated by a Judge model, the observability compute cost may exceed the task compute cost. The framework's [cost and latency guidance](../../extensions/technical/cost-and-latency.md) discusses sampling rates for single-model systems — the same logic applies at scale, but the trade-offs are sharper.
 
 ### What to Assess
 
@@ -296,7 +296,7 @@ MASO may need a **graduated shutdown protocol** for large-scale deployments:
 
 ### The 5-Agent Reality
 
-The [red team playbook](red-team/red-team-playbook.md) tests individual attack vectors: prompt injection propagation (RT-01), transitive permission exploitation (RT-02), judge bypass (RT-06), anomaly evasion (RT-10). Each scenario tests one control or control chain.
+The [red team playbook](../red-team/red-team-playbook.md) tests individual attack vectors: prompt injection propagation (RT-01), transitive permission exploitation (RT-02), judge bypass (RT-06), anomaly evasion (RT-10). Each scenario tests one control or control chain.
 
 ### The Scale Question
 
@@ -340,10 +340,10 @@ These findings should feed directly into your MASO implementation planning and y
 
 | Document | Relationship |
 |----------|-------------|
-| [Worked Examples](examples/worked-examples.md) | Validates MASO at 5-agent scale. This document extends that thinking to 50–100+ agents |
-| [Red Team Playbook](red-team/red-team-playbook.md) | Tests individual controls. Stress Dimension 8 asks what happens when those attacks are combined |
-| [Tier 3 — Autonomous](implementation/tier-3-autonomous.md) | Defines the controls required for high autonomy. This document asks which of those controls need adaptation at scale |
-| [Cost & Latency](../extensions/technical/cost-and-latency.md) | Provides single-model cost analysis. Stress Dimension 4 extends that to multi-agent observability cost |
+| [Worked Examples](../examples/worked-examples.md) | Validates MASO at 5-agent scale. This document extends that thinking to 50–100+ agents |
+| [Red Team Playbook](../red-team/red-team-playbook.md) | Tests individual controls. Stress Dimension 8 asks what happens when those attacks are combined |
+| [Tier 3 — Autonomous](../implementation/tier-3-autonomous.md) | Defines the controls required for high autonomy. This document asks which of those controls need adaptation at scale |
+| [Cost & Latency](../../extensions/technical/cost-and-latency.md) | Provides single-model cost analysis. Stress Dimension 4 extends that to multi-agent observability cost |
 | [PACE Resilience](../../PACE-RESILIENCE.md) | Defines the three-axis PACE model. Stress Dimension 3 identifies the need for a potential fourth axis |
 
 ---

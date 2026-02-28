@@ -27,7 +27,7 @@ If you use, reference, or build upon this framework in academic papers, industry
 
 ## CITATION.cff
 
-This repository includes a [`CITATION.cff`](CITATION.cff) file for automated citation tools. GitHub will display a "Cite this repository" option in the sidebar using this format.
+This repository includes a [`CITATION.cff`](../CITATION.cff) file for automated citation tools. GitHub will display a "Cite this repository" option in the sidebar using this format.
 
 ---
 
