@@ -25,8 +25,6 @@ AI systems are non-deterministic. Same prompt, same model, same parameters — d
 
 ---
 
-> *Part of [AI Runtime Behaviour Security](../) · Version 1.0 · February 2026 · Jonathan Gill · [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)*
-
 ## Architecture
 
 ![Single-Agent Security Architecture](../images/single-agent-architecture.svg)
@@ -255,6 +253,9 @@ This isn't a theoretical proposal. These platforms already implement variants of
 ## Contributing
 
 Feedback, corrections, and extensions welcome. See [CONTRIBUTING.md](../CONTRIBUTING.md).
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*
