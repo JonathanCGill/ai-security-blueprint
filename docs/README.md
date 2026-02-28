@@ -9,11 +9,13 @@ hide:
 
 # AI Runtime Behaviour Security
 
-A practitioner's reference for runtime AI security. Take what's useful, adapt it, ignore what doesn't fit.
+Runtime controls for AI systems that behave unpredictably in production.
 
-AI systems break quietly. The failures that matter most — hallucinated data, leaked context, unauthorised actions — appear to be normal responses. Your testing can't catch them all. **This reference gives you the runtime controls that do.**
+AI systems fail quietly. The worst failures look like normal responses. Testing cannot catch them all. **Runtime controls can.**
 
-For architects, security leaders, and risk owners of AI-driven systems. Single-agent and multi-agent. Because silent failures are already happening in production.
+For architects, security leaders, and risk owners. Single-agent and multi-agent.
+
+**Guardrails** → **Judge** → **Human** → **Circuit Breaker**
 
 [See the Architecture](ARCHITECTURE.md){ .md-button .md-button--primary }
 [Quick Start Guide](QUICK_START.md){ .md-button }
@@ -24,9 +26,11 @@ For architects, security leaders, and risk owners of AI-driven systems. Single-a
 
 ---
 
-## Built on Best Practices and Real World Incidents
+## Built on Real Incidents, Not Theory
 
-173 controls across single-agent and multi-agent systems. 10 real-world AI incidents mapped to specific controls. Aligned with OWASP LLM Top 10, OWASP Agentic Top 10, NIST AI RMF, ISO 42001, EU AI Act, and DORA. MIT licensed. One practitioner's synthesis of what actually works — not a standard, not a product pitch, not a slide deck.
+A practitioner's reference. Take what's useful, adapt it, ignore what doesn't fit.
+
+173 controls. 10 real-world AI incidents mapped to specific controls. Aligned with OWASP LLM Top 10, OWASP Agentic Top 10, NIST AI RMF, ISO 42001, EU AI Act, and DORA. MIT licensed.
 
 ---
 
