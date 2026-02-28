@@ -17,7 +17,9 @@ For architects, security leaders, and risk owners of AI-driven systems. Single-a
 [See the Architecture](ARCHITECTURE.md){ .md-button .md-button--primary }
 [Quick Start Guide](QUICK_START.md){ .md-button }
 
-**Executives** — [2-minute overview](CHEATSHEET.md) · **Architects** — [Control architecture](ARCHITECTURE.md) · **Practitioners** — [Quick start guide](QUICK_START.md)
+**Executives** — [2-minute overview](CHEATSHEET.md)<br>
+**Architects** — [Control architecture](ARCHITECTURE.md)<br>
+**Practitioners** — [Quick start guide](QUICK_START.md)
 
 ---
 
