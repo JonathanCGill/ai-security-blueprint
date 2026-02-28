@@ -8,7 +8,7 @@
 >
 > AI breaks that contract. Same prompt, different answer. By design. Which means your pre-deployment security model — no matter how thorough — proves the system *can* behave correctly. Not that it *will*.
 >
-> So I built a thinking space. Not a product. Not a vendor pitch. An open framework for applying security principles we already trust — defence in depth, least privilege, separation of duties, fail-safe defaults — to systems that don't behave like anything we've secured before.
+> So I built a practitioner's reference. Not a product. Not a vendor pitch. A practical reference for applying security principles we already trust — defence in depth, least privilege, separation of duties, fail-safe defaults — to systems that don't behave like anything we've secured before. Take what's useful, adapt it, ignore what doesn't fit.
 >
 > The article below walks through the thinking. Where the old principles still hold. Where they break. And what to do about the gap.
 >
@@ -34,7 +34,7 @@ I've worked in enterprise security for over two decades. Networks, applications,
 
 AI breaks that contract.
 
-And when I realised *how* it breaks it, I started building a framework. Not a product. Not a compliance checklist. A thinking space — a place to work through how security principles we already trust apply to systems that don't behave like anything we've secured before.
+And when I realised *how* it breaks it, I started building a practical reference. Not a product. Not a compliance checklist. A practitioner's reference for applying security principles we already trust to systems that don't behave like anything we've secured before. Take what's useful, adapt it, ignore what doesn't fit.
 
 This article is about that thinking. Where the old principles hold. Where they fracture. And what fills the gap.
 

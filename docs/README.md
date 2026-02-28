@@ -1,6 +1,6 @@
 ---
 title: AI Runtime Behaviour Security
-description: Open-source framework for runtime behavioural security of AI systems. Guardrails, LLM-as-Judge, human oversight, and PACE resilience — from single-model deployments to autonomous multi-agent orchestration.
+description: A practitioner's reference for runtime AI security. Guardrails, LLM-as-Judge, human oversight, and PACE resilience — from single-model deployments to autonomous multi-agent orchestration. Take what's useful, adapt it, ignore what doesn't fit.
 ---
 
 # AI Runtime Behaviour Security
@@ -9,7 +9,7 @@ description: Open-source framework for runtime behavioural security of AI system
 
 Traditional security assumes deterministic systems — same input, same output, testable, provable. AI isn't deterministic. The same prompt produces different responses every time. Your test suite proves the system *can* behave correctly. It cannot prove it *will* on the next request.
 
-**This is a thinking tool** — not a product, not a vendor pitch, not a compliance checklist. It's an open-source framework for reasoning about what controls your AI systems actually need, given your threat model, risk appetite, and regulatory context. Two organisations reading this should arrive at different implementations, because they have different contexts. That's the point.
+**This is a practitioner's reference for runtime AI security** — not a product, not a vendor pitch, not a compliance checklist. Take what's useful, adapt it to your context, ignore what doesn't fit. Two organisations reading this should arrive at different implementations, because they have different threat models, risk appetites, and regulatory obligations. That's the point.
 
 173 controls. 10 real incidents mapped. 8 standards aligned. MIT licensed.
 
@@ -40,7 +40,7 @@ The industry is converging on the same answer independently. NVIDIA NeMo, AWS Be
 
 **Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain.**
 
-Each layer catches what the others miss. Remove any layer and you have a gap. The framework pairs every control with a **[PACE resilience architecture](PACE-RESILIENCE.md)** — Primary, Alternate, Contingency, Emergency — so when a layer degrades, the system transitions to a predetermined safe state rather than failing silently.
+Each layer catches what the others miss. Remove any layer and you have a gap. Every control pairs with a **[PACE resilience architecture](PACE-RESILIENCE.md)** — Primary, Alternate, Contingency, Emergency — so when a layer degrades, the system transitions to a predetermined safe state rather than failing silently.
 
 ![Single-Agent Security Architecture](images/single-agent-architecture.svg)
 
@@ -48,7 +48,7 @@ Each layer catches what the others miss. Remove any layer and you have a gap. Th
 
 ## Who This Is For
 
-!!! tip "If you recognise your situation below, this framework was built for you."
+!!! tip "If you recognise your situation below, this was written for you."
 
 **Security leaders** writing an AI security strategy and finding that existing frameworks describe what should be true without specifying how to make it true in production.
 **→** [Security Leaders view](stakeholders/security-leaders.md) | [Risk & Governance view](stakeholders/risk-and-governance.md)
@@ -153,24 +153,24 @@ Three constraints strategies routinely underestimate: **[Data Reality](strategy/
 
 ---
 
-## About This Framework
+## How to Use This
 
-??? abstract "What it provides, what it doesn't, and how to use it"
+??? abstract "What it provides, what it doesn't, and how to approach it"
 
     **What it provides:**
 
-    - **A way of thinking about controls, not a prescription for them.** The framework describes *what* needs to be true and *why* it matters. It does not mandate a specific product, vendor, or architecture. If your existing tools already satisfy a control, you don't need new ones.
+    - **A reference, not a prescription.** This describes *what* needs to be true and *why* it matters. It does not mandate a specific product, vendor, or architecture. If your existing tools already satisfy a control, you don't need new ones.
     - **Help deciding where to invest.** Not every control matters equally. Risk tiers, PACE resilience levels, and the distinction between foundation and multi-agent controls exist so you can reason about priority.
     - **Defence in depth as a design principle.** The layered approach exists because each layer covers gaps in the others. The question isn't "which layer do we need?" but "what happens when each layer fails?"
-    - **Resilience thinking for AI products.** Traditional security asks "how do we prevent bad things?" This framework also asks "what happens when prevention fails?"
-    - **Clarity on when tools are *not* needed.** Some controls are already handled by your existing infrastructure. The framework should help you see where you already have coverage, not convince you to buy something new.
+    - **Resilience thinking for AI products.** Traditional security asks "how do we prevent bad things?" This also asks "what happens when prevention fails?"
+    - **Clarity on when tools are *not* needed.** Some controls are already handled by your existing infrastructure. This should help you see where you already have coverage, not convince you to buy something new.
 
     **What it is not:**
 
-    - Not a certification or audit standard. You cannot be "compliant with" this framework.
+    - Not a certification or audit standard. You cannot be "compliant with" this.
     - Not a product recommendation. Tool and vendor references are illustrative, not endorsements.
     - Not a substitute for professional security assessment of your specific deployment.
-    - Not a finished document. AI security is moving fast. This framework will evolve as the landscape does.
+    - Not a finished document. AI security is moving fast. This will evolve as the landscape does.
 
 ---
 
@@ -215,11 +215,11 @@ His current focus is AI security governance: designing control architectures tha
 
 ## Disclaimer
 
-This framework is provided as-is under the [MIT License](LICENSE). As described in [About This Framework](#about-this-framework), it is a thinking tool — not a standard, certification, or guarantee of security. It reflects one practitioner's synthesis of industry patterns, regulatory requirements, and operational experience.
+This is provided as-is under the [MIT License](LICENSE). It is a practitioner's reference — not a standard, certification, or guarantee of security. It reflects one practitioner's synthesis of industry patterns, regulatory requirements, and operational experience.
 
-If you adopt any part of this framework, you are responsible for validating it against your own threat model, environment, and regulatory obligations.
+If you adopt any part of this, you are responsible for validating it against your own threat model, environment, and regulatory obligations.
 
-This framework was written with AI assistance (Claude and ChatGPT) for drafting, structuring, and research synthesis. Architecture, control design, risk analysis, and editorial judgment are the author's.
+This was written with AI assistance (Claude and ChatGPT) for drafting, structuring, and research synthesis. Architecture, control design, risk analysis, and editorial judgment are the author's.
 
 This is a personal project. It is not affiliated with, endorsed by, or representative of any employer, organisation, or other entity. The views and opinions expressed are the author's own and should not be construed as reflecting the position or policy of any company or institution with which the author is or has been associated.
 
