@@ -14,8 +14,12 @@ AI systems fail quietly. The worst failures look like normal responses. Testing 
 
 ![Four-layer runtime security: Guardrails → Judge → Human → Circuit Breaker](images/runtime-layers.svg)
 
+<div style="text-align: center" markdown>
+
 [See the Architecture](ARCHITECTURE.md){ .md-button .md-button--primary }
 [Quick Start Guide](QUICK_START.md){ .md-button }
+
+</div>
 
 **Executives** — [2-minute overview](CHEATSHEET.md) · **Architects** — [Control architecture](ARCHITECTURE.md) · **Practitioners** — [Quick start](QUICK_START.md)
 
