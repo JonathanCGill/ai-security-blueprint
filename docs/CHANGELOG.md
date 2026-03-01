@@ -18,6 +18,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.8.1] - 2026-03-01
+
+### Added
+- **E-Commerce 10K Stress Test** - New MASO stress test scenario: 6 agent types, 10,000 concurrent customers, 60,000 agent instances on EKS. Complements the 100-agent breadth test with a depth-and-volume test covering type-level observability, risk-tiered Judge sampling, exception-driven human oversight, Kubernetes-native identity, PCI scope containment, two-level PACE, graduated shutdown, and volume-based compound attacks.
+
+### Changed
+- **100-Agent Stress Test** - Added cross-reference to the new e-commerce stress test in the relationship table.
+
+---
+
 ## [0.8.0] - 2026-03-01
 
 ### Added

@@ -154,6 +154,7 @@ nav:
         - Red Team Playbook: maso/red-team/red-team-playbook.md
       - Stress Testing:
         - 100-Agent Stress Test: maso/stress-test/100-agent-stress-test-overview.md
+        - E-Commerce 10K Stress Test: maso/stress-test/ecommerce-10k-stress-test.md
       - Integration & Examples:
         - Integration Guide: maso/integration/integration-guide.md
         - Worked Examples: maso/examples/worked-examples.md
