@@ -52,6 +52,7 @@ If you're implementing this framework:
 ## Acknowledgments
 
 We appreciate responsible disclosure and will acknowledge security researchers who report valid issues (unless they prefer to remain anonymous).
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

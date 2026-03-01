@@ -139,6 +139,7 @@ These external controls are outside the scope of this framework, but they should
 **Inheriting input classification without reassessment.** An agent that combines public customer IDs with internal behavioural data produces output that is neither public nor internal — it's PII. If the output inherits the classification of the higher input ("internal"), it's still under-classified. Classification must be reassessed after processing, particularly when agents combine, enrich, or aggregate data from multiple sources. The output classification may be higher than any individual input.
 
 **Dropping classification metadata between agents.** If classification tags don't travel with data through the message bus, downstream agents and DLP controls have no basis for enforcement. A message arriving without a classification tag should be treated as an error, not as unclassified.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

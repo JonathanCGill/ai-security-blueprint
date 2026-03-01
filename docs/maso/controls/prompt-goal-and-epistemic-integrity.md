@@ -205,6 +205,7 @@ This schema enables the judge to enforce provenance checks, uncertainty preserva
 **Checking goal integrity at the output, not along the chain.** A goal hijack that occurs at step 2 of a 10-step chain will produce 8 steps of corrupted work before the final output is evaluated. Goal integrity must be monitored continuously, not just at the endpoint.
 
 **Treating agent confidence as task clarity.** An agent that executes confidently is not an agent that understood the task correctly. Ambiguous instructions produce high-confidence outputs for the wrong interpretation. The absence of an error is not evidence of correct understanding — agents must be required to flag ambiguity explicitly rather than defaulting to the most probable interpretation.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

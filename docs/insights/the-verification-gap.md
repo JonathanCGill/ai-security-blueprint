@@ -261,6 +261,7 @@ The question isn't "which verification method should we use?" It's "which verifi
 - [Why Guardrails Aren't Enough](./why-guardrails-arent-enough.md)
 - [Judge Detects, Not Decides](./judge-detects-not-decides.md)
 - [Current Solutions Reference](../extensions/technical/current-solutions.md)
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

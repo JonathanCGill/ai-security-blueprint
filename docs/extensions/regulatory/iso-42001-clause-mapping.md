@@ -392,6 +392,7 @@ The framework's technical controls directly support ISO 42001 compliance:
 | Improvement (10.2) | Feedback loops | All controls |
 
 **Key message:** Technical controls are not separate from governance—they ARE the operational implementation of ISO 42001 requirements.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

@@ -105,6 +105,7 @@ Instead, build a Judge that:
 Then let humans decide.
 
 The Judge detects. Humans decide. Keep it that way.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

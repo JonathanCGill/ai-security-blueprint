@@ -501,6 +501,7 @@ Centralised AI governance across multiple platforms requires:
 5. **Consistent operations** — Same SLAs, same escalation paths, same reporting
 
 **The goal:** Governance Committee sees ONE risk view, regardless of how many platforms are in use. 1st line teams operate within consistent standards. AGO ensures consistency across all.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

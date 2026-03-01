@@ -182,6 +182,7 @@ The inspect-then-deliver model assumes time we don't have.
 Security approaches will adapt: more prevention, probabilistic intervention, faster detection, graceful degradation. But the fundamental tension — validation takes time, streaming doesn't wait — won't disappear.
 
 Build for imperfect control. Design for fast recovery.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

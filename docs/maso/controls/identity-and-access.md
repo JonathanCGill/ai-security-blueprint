@@ -126,6 +126,7 @@ All Tier 2 controls remain active, plus:
 **Forgetting about dynamic agent creation.** In systems that spin up agents on demand, the identity provisioning must be automated and scoped. A new agent instance should receive a fresh NHI with the minimum permissions for its role, not a clone of an existing agent's identity.
 
 **Assuming the message bus is internal and therefore trusted.** Any component that can reach the bus can send messages. Without mutual authentication, the bus is an open injection point for inter-agent prompt injection (ASI01) and message spoofing (ASI07).
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

@@ -132,6 +132,7 @@ Reasoning capability will improve. Models will think longer and more effectively
 Security and governance approaches that assume transparent, fast, input-output models will age poorly.
 
 The framework needs to evolve to handle systems that think — even when we can't watch them do it.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

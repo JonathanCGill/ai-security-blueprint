@@ -124,6 +124,7 @@ Every AI deployment must answer these before production:
 6. **Is this multi-agent?** If yes → apply [MASO controls](maso/) on top of the foundation.
 
 If you can answer all six, you're ready. If you can't, you're not.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

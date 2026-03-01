@@ -143,6 +143,7 @@ Judge evaluations on identical or near-identical inputs can be cached:
 | **As % of generator cost** | **____%** |
 
 **Rule of thumb:** Security overhead is typically 15–40% of generator cost for Tier 2, and 40–100% for Tier 3.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

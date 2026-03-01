@@ -253,6 +253,7 @@ Treat inter-agent messages as untrusted: **Agent A → Guardrails → Agent B**
 5. Share learnings
 
 **When controls fail:** Fall back to tighter constraints, narrower scope, more human oversight.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

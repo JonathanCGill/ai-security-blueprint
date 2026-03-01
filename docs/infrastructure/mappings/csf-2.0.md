@@ -224,6 +224,7 @@ The following CSF 2.0 subcategory areas have no direct mapping to this framework
 **For CSF gap assessments:** This mapping shows where AI deployments introduce new control requirements within existing CSF subcategories. PR.DS-10 (data-in-use), DE.CM-09 (runtime monitoring), and the GV.SC supply chain subcategories are most significantly affected by AI.
 
 **For audit and compliance:** The mapping provides traceability from this framework's 80 infrastructure controls to CSF 2.0 outcomes, supporting compliance evidence for organisations that report against CSF.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

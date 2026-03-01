@@ -444,6 +444,7 @@ rules:
 ## Architecture Diagram
 
 ![Fraud Analytics Architecture](../../images/example-fraud-architecture.svg)
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

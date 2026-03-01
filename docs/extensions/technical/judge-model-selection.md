@@ -261,6 +261,7 @@ Key research informing these recommendations:
 - CALM Framework — Systematic bias quantification
 - Multiple practitioner sources on self-enhancement and position bias
 - Industry guidance from Arize, Evidently, Patronus AI, and others
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

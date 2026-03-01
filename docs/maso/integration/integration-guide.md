@@ -187,6 +187,7 @@ Regardless of framework, implement these controls first:
 | Research / experimentation | LangGraph or AutoGen |
 
 No framework provides complete MASO coverage out of the box. Every implementation will require custom security controls beyond what the framework provides natively. The framework's role is to provide extension points — the security architecture is your responsibility.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

@@ -173,6 +173,7 @@ That's what the [AI Runtime Behaviour Security](../README.md) provides — a pra
 For practical implementation guidance on the guardrail layer itself — what to detect, international PII patterns, RAG ingestion filtering, alerting, and governance of exceptions — see **[Practical Guardrails](practical-guardrails.md)**.
 
 > **Design reviews prove intent. Behavioral monitoring proves reality.**
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

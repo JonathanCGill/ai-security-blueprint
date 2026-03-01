@@ -478,6 +478,7 @@ Be honest about what's impossible:
 - [ ] Reviewer metrics and monitoring
 - [ ] Separation of duties for config
 - [ ] Configuration drift detection
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

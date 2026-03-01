@@ -180,6 +180,7 @@ Context windows will keep growing. Memory capabilities will become standard. The
 Frameworks designed for stateless systems will struggle. The security model needs to evolve from "inspect the transaction" to "govern the state."
 
 We're early in that evolution.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

@@ -153,6 +153,7 @@ Multi-agent architectures will become common. They solve problems single agents 
 The security and governance models will lag. We're building single-agent controls for multi-agent systems.
 
 Expect failures. Design for them. Learn from them.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

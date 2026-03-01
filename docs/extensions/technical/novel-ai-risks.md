@@ -412,6 +412,7 @@ The correct response is not to avoid AI. It's to:
 5. **Be honest** — with regulators, customers, and executives about what AI can and can't guarantee
 
 Several of these risks — drift (#11), opacity (#5), bias (#6), confidence calibration (#10) — are not purely security problems. They are broader AI risk domains that the framework's control architecture addresses structurally. See [Beyond Security](../../insights/beyond-security.md) for how the three-layer pattern, PACE resilience, and risk tiering apply to AI risks beyond security.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

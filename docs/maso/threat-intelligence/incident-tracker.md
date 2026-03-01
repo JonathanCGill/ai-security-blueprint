@@ -287,6 +287,7 @@ Incidents are classified by the OWASP risk they exploit and the MASO tier at whi
 **For executive briefings:** The incident statistics and dollar-value losses (INC-09: $250K) provide concrete evidence for security investment decisions.
 
 **For control gap analysis:** If your deployment lacks any control referenced in the "MASO controls that address this" column, you have a known exposure to a real-world attack pattern.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

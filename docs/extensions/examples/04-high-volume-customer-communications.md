@@ -471,6 +471,7 @@ S3 stores message logs. Step Functions selects samples for Bedrock judge evaluat
 ## Architecture Diagram
 
 ![High-Volume Communications Architecture](../../images/example-comms-architecture.svg)
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

@@ -186,6 +186,7 @@ The action classification engine is the core mechanism that replaces per-action 
 **No failover for the agent everyone depends on.** The most critical agent in the orchestration is often the one with no backup — because it was deployed as a singleton and nobody defined what happens when it's unavailable. Agent criticality should be assessed at design time, and critical agents must have a failover path: backup agent, graceful degradation, or controlled halt. "The orchestration waits indefinitely" is not a failover strategy.
 
 **Applying text guardrails to multimodal inter-agent data.** When an image, audio file, or document crosses an agent boundary, text-based DLP and injection detection are insufficient. Each modality requires modality-specific validation at the receiving agent's boundary — not just at the system's external input layer.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

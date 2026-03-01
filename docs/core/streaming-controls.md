@@ -149,6 +149,7 @@ The client must support retraction. This means:
 | Deterministic safety | You cannot guarantee no user ever sees problematic content in a stream |
 
 This is an inherent trade-off. If you need deterministic safety, don't stream.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

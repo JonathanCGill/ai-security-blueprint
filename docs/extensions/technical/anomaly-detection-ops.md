@@ -132,6 +132,7 @@ Anomaly detection will generate false positives. Plan for this:
 3. **Week 4:** Implement 3–5 highest-value detection rules (start with user-level volume anomalies and system-level block rate)
 4. **Week 5–8:** Tune thresholds based on false positive rate
 5. **Ongoing:** Add detection rules as new patterns emerge
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

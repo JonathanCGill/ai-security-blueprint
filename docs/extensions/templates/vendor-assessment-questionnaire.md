@@ -259,6 +259,7 @@ Use this questionnaire when assessing AI vendors, foundation model providers, an
 **Assessor:** ____________________  
 **Date:** ____________________  
 **Review date:** ____________________
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

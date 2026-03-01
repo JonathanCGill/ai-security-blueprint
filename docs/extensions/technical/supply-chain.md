@@ -172,6 +172,7 @@ Teams will deploy AI without going through your controls. Find it.
 | **Procurement records** | AI tool subscriptions purchased outside IT |
 
 **Don't just block it.** Understand why teams are using shadow AI, and provide a sanctioned path that meets their needs with appropriate controls.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*
