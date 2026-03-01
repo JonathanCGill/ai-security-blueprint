@@ -29,15 +29,17 @@ AI systems are non-deterministic. Same prompt, same model, same parameters - dif
 
 ![Single-Agent Security Architecture](../images/single-agent-architecture.svg)
 
-Three layers, one principle: **you can't fully test a non-deterministic system before deployment, so you continuously verify behaviour in production.**
+Three layers, one principle: **you can't fully test a non-deterministic system before deployment, so you continuously verify behaviour in production.** This is a [closed-loop control system](../insights/why-containment-beats-evaluation.md) - not evaluate-once-and-deploy, but constrain-and-continuously-verify.
 
-**Layer 1 - Guardrails** block known-bad inputs and outputs at machine speed (~10ms). Deterministic pattern matching: content filters, PII detection, topic restrictions, rate limits. Every request passes through. No exceptions.
+**Layer 1 - Guardrails** (containment boundaries) block known-bad inputs and outputs at machine speed (~10ms). Deterministic pattern matching: content filters, PII detection, topic restrictions, rate limits. Permissions derive from business intent - what the use case requires - not from evaluation of the model's capabilities. These are **action-space constraints** that leave the model's reasoning unconstrained. Every request passes through. No exceptions.
 
-**Layer 2 - LLM-as-Judge** catches unknown-bad through independent model evaluation (~500ms–5s). A separate LLM evaluates task agent outputs against policy, factual grounding, tone, and safety criteria. Catches what guardrails can't pattern-match.
+**Layer 2 - LLM-as-Judge** catches unknown-bad through independent model evaluation (~500ms–5s). A separate LLM, **enterprise-owned and configured**, evaluates task agent outputs against policy, factual grounding, tone, and safety criteria. Catches what guardrails can't pattern-match - including within-bounds adversarial behaviour that containment alone cannot address.
 
-**Layer 3 - Human Oversight** provides the accountability backstop. Scope scales with risk: low-risk systems get spot checks, high-risk systems get human approval before commit. Humans decide edge cases. Humans own outcomes.
+**Layer 3 - Human Oversight** provides the accountability backstop. Scope scales with risk: low-risk systems get spot checks, high-risk systems get human approval before commit. Humans decide edge cases. Humans own outcomes. Handles what neither containment nor the Judge can resolve autonomously.
 
 **Circuit Breaker** stops all AI traffic and activates a non-AI fallback when any layer fails. Not a degradation - a full stop with a predetermined safe state.
+
+Each layer is specifically designed to catch what the previous layer misses. This is compound defence by design - not defence-in-depth by coincidence. For the full argument, see [Why Containment Beats Evaluation](../insights/why-containment-beats-evaluation.md).
 
 This pattern already exists in production at major platforms: NVIDIA NeMo, AWS Bedrock, Azure AI, LangChain, Guardrails AI, and others. This reference provides the vendor-neutral implementation: risk classification, controls, fail postures, and tested fallback paths.
 

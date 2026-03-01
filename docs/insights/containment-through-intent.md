@@ -14,7 +14,11 @@ That knowledge - declared, codified, and enforced - is the foundation of every c
 
 **The thesis:** If intent is properly articulated upfront, and downstream systems enforce hard limits aligned with that intent, agent behaviour is confined to predictable parameters. Not perfectly. Not absolutely. But within limits that are monitorable, auditable, and defensible.
 
-Think of it as confinement. A well-built cell does not guarantee the prisoner cannot escape. But it makes escape difficult, detectable, and containable. The walls are guardrails. The surveillance is the Judge. The guards are human oversight. The lockdown protocol is PACE. And the architectural plans - the reason the cell exists and what it is designed to contain - that is the declared intent.
+This is a **constrain-regardless** architecture. Permissions derive from declared business intent - what the use case requires - not from evaluation of what the model can do. If the model's hidden capabilities cannot manifest because the containment boundary prevents them, those capabilities are operationally irrelevant as a breakout vector. This is why [containment beats evaluation](why-containment-beats-evaluation.md) as the primary security control.
+
+Critically, containment operates on the **action space** (what the model may *do*) while leaving the **reasoning space** unconstrained (how the model may *think*). This is the key distinction. The entire value of deploying AI lies in its ability to handle ambiguity, generalise, and synthesise. None of that requires unrestricted action. A model summarising customer complaints needs full reasoning freedom. It does not need the ability to call external APIs or modify databases. Containment preserves the value of AI precisely because it does not attempt to control AI's reasoning - only its actions.
+
+Think of it as parental. A good parent does not script what a child says or thinks. They set boundaries - don't cross the road, don't touch the stove, come home before dark. Within those boundaries, the child has full autonomy. The boundaries are non-negotiable. The behaviour within them is free. And the parent watches - not to control every action, but to notice when something looks wrong. Containment is the boundary. The Judge is the parent watching. Human oversight is the parent stepping in when passive observation is insufficient.
 
 ---
 
@@ -113,7 +117,9 @@ Put together, the defence stack creates a confinement model:
 
 ## Why This Works (Most of the Time)
 
-The confinement model works because it operates on **defence in depth with a shared reference point**. Each layer is independent - guardrails do not depend on the Judge, the Judge does not depend on human reviewers, monitoring operates regardless of whether PACE is active. But all layers share the same reference: the declared intent.
+The confinement model works because it operates as a **closed-loop control system with a shared reference point**. The declared intent is the setpoint. The Judge and observability are the sensors. Drift detection is the comparator. Human oversight and PACE are the actuators. The system continuously measures actual behaviour against the desired state and applies corrective action - unlike open-loop evaluate-then-permit approaches that assess once and hope.
+
+Each layer is independent - guardrails do not depend on the Judge, the Judge does not depend on human reviewers, monitoring operates regardless of whether PACE is active. But all layers share the same reference: the declared intent. And each layer is specifically designed to catch what the previous layer misses - compound defence by design, not by coincidence.
 
 This means:
 
@@ -174,6 +180,7 @@ That is what regulators ask for. That is what auditors examine. That is what inc
 | [PG Controls](../maso/controls/prompt-goal-and-epistemic-integrity.md) | The specific MASO controls that protect intent specifications (PG-1.3, PG-2.2, PG-3.2) |
 | [Execution Control](../maso/controls/execution-control.md) | Infrastructure enforcement of intent-derived boundaries |
 | [Observability](../maso/controls/observability.md) | Monitoring agent behaviour against intent-derived baselines |
+| [Why Containment Beats Evaluation](why-containment-beats-evaluation.md) | The position paper: why constrain-regardless architectures are structurally superior to evaluate-then-permit for regulated environments |
 
 ---
 
