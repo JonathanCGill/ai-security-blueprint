@@ -23,6 +23,8 @@ An organisation calling GPT-4o or Claude via API operates in a fundamentally dif
 
 The 2026 International AI Safety Report makes this point clearly: open-weight models cannot be recalled once released, their safeguards are easier to remove, and actors can use them outside monitored environments. This isn't a theoretical concern — it's the operating reality for any enterprise deploying open-weight models for cost, latency, or data sovereignty reasons.
 
+The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) confirms this with empirical data: safeguards on open-weight models can be **"quickly and cheaply removed."** The open-to-closed source capability gap has narrowed to **4–8 months**, meaning the most capable open-weight models are approaching parity with closed API models — but without the provider-maintained safety infrastructure. This makes runtime monitoring the primary control when model weights are accessible, because you cannot rely on the model's built-in safeguards surviving deployment.
+
 ---
 
 ## What This Means for the Three-Layer Pattern

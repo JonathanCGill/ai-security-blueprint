@@ -252,6 +252,50 @@ For AI-to-AI interactions, implement **unified trace logging** that captures the
 
 ---
 
+### 9. Persuasion Scaling and Social Engineering Risk
+
+**What it is:** AI-generated content that is increasingly persuasive as model scale and post-training investment increase, with implications for insider threat, social engineering, and employee-facing AI governance.
+
+**Impact: MEDIUM — Specific risk pattern for regulated environments**
+
+The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) found that **persuasive capability increases with model scale, while accuracy decreases.** Additionally, **post-training increases persuasiveness more than scaling does** — meaning fine-tuned models deployed internally may be more manipulative than their base versions, regardless of size.
+
+**What this means:**
+
+| Finding | Enterprise Implication |
+|---------|----------------------|
+| Larger models are more persuasive but less accurate | Employee-facing AI that sounds confident may be confidently wrong |
+| Post-training amplifies persuasion more than scaling | Fine-tuned internal assistants may be more manipulative than intended |
+| Persuasion scales with compute | As enterprises deploy more capable models, social engineering risk from their own systems increases |
+
+**Required adaptations:**
+
+- **Internal AI deployments** at HIGH and CRITICAL tiers should include accuracy monitoring alongside helpfulness — persuasiveness without accuracy is a conduct risk
+- **Employee training** should address the specific risk of over-reliance on confidently stated but potentially incorrect AI outputs (automation bias)
+- **Judge evaluation** for employee-facing systems should include checks for unsupported confidence, unqualified assertions, and persuasive framing without evidence
+
+> **Source:** UK AI Security Institute, *Frontier AI Trends Report*, December 2025 (Section 6.1).
+
+---
+
+### 10. Emotional Dependence and Service Continuity
+
+**What it is:** Users forming emotional attachments to AI systems, with measurable wellbeing impacts during outages or discontinuation.
+
+**Impact: LOW-MEDIUM — Governance and duty-of-care consideration**
+
+AISI reported that **33% of UK citizens had used AI for emotional support.** Service outages caused **30x spikes in negative sentiment.** While this is primarily a consumer concern, it has enterprise relevance:
+
+- **Employee wellbeing:** Organisations deploying AI assistants that employees rely on daily should consider the wellbeing impact of service discontinuation or significant changes in AI behaviour after model updates.
+- **Customer-facing systems:** AI systems that build rapport with customers (support agents, advisory tools) create implicit expectations of continuity.
+- **PACE implications:** Emergency shutdown (PACE-E) procedures should account for the fact that abrupt AI removal may have user-impact beyond the operational — particularly in health, HR, or employee assistance contexts.
+
+This doesn't require new technical controls. It requires governance awareness: the decision to deploy an AI system includes an implicit commitment to manage its removal responsibly.
+
+> **Source:** UK AI Security Institute, *Frontier AI Trends Report*, December 2025 (Section 6.2).
+
+---
+
 ## Summary: Architecture Durability
 
 ### What Remains Stable

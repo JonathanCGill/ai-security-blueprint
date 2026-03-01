@@ -220,6 +220,7 @@ nav:
         - Validating Unfinished Output: insights/you-cant-validate-unfinished.md
         - The Orchestrator Problem: insights/the-orchestrator-problem.md
         - The MCP Problem: insights/the-mcp-problem.md
+        - Evaluation Integrity Risks: insights/evaluation-integrity-risks.md
         - The Long-Horizon Problem: insights/the-long-horizon-problem.md
         - Process-Aware Evaluation: insights/process-aware-evaluation.md
       - Operational Gaps:

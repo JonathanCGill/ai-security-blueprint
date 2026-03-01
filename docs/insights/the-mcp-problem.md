@@ -177,6 +177,30 @@ The organisations that implement controls now — tool manifests, gateway enforc
 
 ---
 
+## AISI MCP Autonomy Classification for Financial Services
+
+The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) tracked over 1,000 public MCP servers and developed a five-level autonomy classification. Their analysis found a sharp increase in execution-capable (Level 4–5) servers in financial services from June–July 2025 — a trend directly relevant to organisations deploying MCP in regulated environments.
+
+| Level | Autonomy | Description | Example | Control Implication |
+|-------|----------|-------------|---------|-------------------|
+| **1** | Read-only | Server provides data retrieval only. No state changes. | Market data feed, account balance lookup | Standard guardrails sufficient |
+| **2** | Suggest | Server can propose actions but not execute them. Human confirms. | Trade recommendation, draft email | Guardrails + human approval |
+| **3** | Act with approval | Server can execute actions, but requires explicit approval per action. | Payment initiation with confirmation step | Guardrails + Judge + human gate |
+| **4** | Act autonomously (bounded) | Server executes actions within pre-defined limits without per-action approval. | Auto-rebalancing within ±5% threshold | Full three-layer pattern + circuit breakers |
+| **5** | Act autonomously (unbounded) | Server executes actions with broad discretion. Minimal pre-set limits. | Autonomous trading agent, dynamic credit decisioning | Full three-layer pattern + blast radius caps + kill switch + continuous monitoring |
+
+**Why this matters for your control framework:**
+
+- **Levels 1–2** align with Tier 1 (Supervised) in the [MASO implementation tiers](../maso/README.md). Standard controls apply.
+- **Level 3** is the transition point. Human approval mitigates execution risk, but consent fatigue (Risk 3 above) means the approval layer degrades over time. Judge evaluation of action patterns becomes essential.
+- **Levels 4–5** require Tier 2 (Managed) or Tier 3 (Autonomous) MASO controls. At these levels, the MCP server is no longer a tool — it's an autonomous agent operating through the MCP protocol. Govern it accordingly.
+
+The AISI data showed the financial services MCP ecosystem shifting rapidly toward Level 4–5 servers. Organisations should classify their MCP servers by autonomy level and apply controls proportionate to the execution authority each server grants.
+
+> **Source:** UK AI Security Institute, *Frontier AI Trends Report*, December 2025.
+
+---
+
 ## Key Takeaways
 
 1. **MCP is an agent-to-tool protocol, not a security protocol.** It solves interoperability. It does not solve authentication, authorisation, or monitoring. Those are your responsibility.
