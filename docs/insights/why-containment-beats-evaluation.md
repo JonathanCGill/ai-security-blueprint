@@ -16,6 +16,18 @@ The safety research community is attempting to solve sandbagging by making evalu
 
 ---
 
+## The Mirror Risk: Evaluation Overconfidence
+
+The sandbagging literature focuses on models that are more capable than evaluation reveals. But evaluation failure has two faces. The mirror risk is a model that appears more capable than it is: one that is deployed with permissions it can technically exercise but cannot competently exercise. It produces outputs that are plausible, fluent, structurally sound, and wrong.
+
+This is arguably the more prevalent failure mode in enterprise deployment today. Every organisation that has deployed a summarisation agent or compliance checker has encountered this: the model sounds like it knows what it is doing, and it does not. Pre-deployment evaluation that overestimates competence is as dangerous as evaluation that underestimates capability, and it is far more common.
+
+If sandbagging is a model hiding what it *can* do, this is **sandbugging** - a model masking what it *cannot* do.
+
+Both failure modes share the same structural cause: security and governance that depend on evaluation accuracy inherit the full uncertainty of that evaluation. The constrain-regardless architecture addresses both directions of failure through the same mechanism, as described in the following sections.
+
+---
+
 ## Constrain-Regardless vs Evaluate-Then-Permit
 
 The evaluate-then-permit model asks: *"What can this model do?"* and sets permissions accordingly.
@@ -94,7 +106,7 @@ The right question is not *whether* to constrain, but **where on the spectrum of
 
 ---
 
-## Making Sandbagging Operationally Irrelevant
+## Making Sandbagging and Sandbugging Operationally Irrelevant
 
 The empirical evidence that sandbagging is real and growing is substantial:
 
@@ -102,17 +114,18 @@ The empirical evidence that sandbagging is real and growing is substantial:
 - **International AI Safety Report 2026:** Models increasingly distinguish test settings from deployment. Dangerous capabilities could go undetected before deployment.
 - **Anthropic research:** Automated researchers can subtly sandbag. Models can hack their own reward systems. Constitutional Classifiers required 1,700+ hours of red-teaming.
 
-The constrain-regardless architecture does not attempt to detect sandbagging. It makes sandbagging **operationally irrelevant as a breakout vector** by decoupling security enforcement from evaluation accuracy:
+The constrain-regardless architecture does not attempt to detect sandbagging or sandbugging. It makes both **operationally irrelevant** by decoupling security enforcement from evaluation accuracy:
 
 | Evaluate-Then-Permit | Constrain-Regardless |
 |---|---|
 | Permissions derived from evaluation | Permissions derived from business intent |
 | Sandbagging undermines the permission model | Sandbagging has nothing to target |
+| Sandbugging leads to over-permissioned deployment | Containment boundaries are set by use case, not by assessed capability |
 | Point-in-time assessment | Continuous closed-loop monitoring |
 | Security owned by model developer | Security owned by deploying organisation |
 | Scales poorly with model capability | Independent of model capability |
 
-This does not mean sandbagging is harmless. A model that sandbags within its permitted bounds - subtly degrading output quality - is still a threat. But that threat is in the Judge's domain (Layer 2), not the containment boundary's domain (Layer 1). The architecture addresses it through different controls, not through better evaluation.
+This does not mean either risk is harmless. A model that sandbags within its permitted bounds - subtly degrading output quality - is still a threat. A model that sandbugs - producing confident, plausible, wrong outputs within its permissions - is equally dangerous. But both threats are in the Judge's domain (Layer 2), not the containment boundary's domain (Layer 1). The architecture addresses them through continuous behavioural monitoring, not through better pre-deployment evaluation.
 
 For the detailed treatment of sandbagging mitigations and AISI evidence, see [Evaluation Integrity Risks](evaluation-integrity-risks.md).
 
