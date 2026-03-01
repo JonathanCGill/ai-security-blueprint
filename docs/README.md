@@ -16,6 +16,8 @@ AI systems fail quietly. The worst failures look like normal responses. Testing 
 
 ![Four-layer runtime security: Guardrails → Judge → Human → Circuit Breaker](images/runtime-layers.svg)
 
+**The organising principle:** If you declare what an agent is supposed to do - its intent, constraints, and boundaries - every control layer has a reference point. [Guardrails](ARCHITECTURE.md#single-agent-architecture) enforce hard limits derived from that intent. The [Judge](core/judge-assurance.md) evaluates whether actions align with it. [Humans](insights/humans-remain-accountable.md) handle the exceptions. [Monitoring](maso/controls/observability.md) detects when behaviour deviates from it. [PACE](PACE-RESILIENCE.md) manages what happens when the intent cannot be fulfilled safely. No single layer is sufficient. No single layer needs to be. Together, underpinned by declared intent, they [confine AI behaviour to defensible limits](insights/containment-through-intent.md).
+
 <div style="text-align: center" markdown>
 
 [Quick Start Guide](QUICK_START.md){ .md-button .md-button--primary }
