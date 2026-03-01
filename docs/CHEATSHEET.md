@@ -80,7 +80,7 @@ For each tool the agent uses, answer: Can the action be rolled back? Completed w
 
 ## 4b. Multi-Agent Systems
 
-If deploying **multiple agents** that communicate, delegate, or act across trust boundaries, single-agent controls are necessary but not sufficient. The **[MASO Framework](maso/)** adds six control domains on top of the foundation.
+If deploying **multiple agents** that communicate, delegate, or act across trust boundaries, single-agent controls are necessary but not sufficient. The **[MASO Framework](maso/)** adds seven control domains on top of the foundation.
 
 | MASO Control | What It Addresses |
 |---|---|

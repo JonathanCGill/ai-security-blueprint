@@ -12,7 +12,7 @@ hide:
 
 AI systems fail quietly. The worst failures look like normal responses. Testing alone cannot catch them. **Runtime controls can.**
 
-**173 controls. 10 real-world incidents. Open-source practitioner's reference.** Covers single-model deployments through autonomous multi-agent orchestration - aligned to OWASP, NIST, ISO 42001, EU AI Act, and DORA.
+**203 controls. 10 real-world incidents. Open-source practitioner's reference.** Covers single-model deployments through autonomous multi-agent orchestration - aligned to OWASP, NIST, ISO 42001, EU AI Act, and DORA.
 
 ![Four-layer runtime security: Guardrails → Judge → Human → Circuit Breaker](images/runtime-layers.svg)
 
@@ -57,7 +57,7 @@ Use the parts that fit your environment. Skip the parts that don't. If your exis
 | --- | --- |
 | **See how the layers work** | [Architecture Overview](ARCHITECTURE.md) - single-agent and multi-agent patterns |
 | **Secure a single-model AI system** | [Foundation Controls](foundations/) - 80 controls, risk tiers, PACE resilience |
-| **Secure a multi-agent system** | [Multi-Agent Controls (MASO)](maso/) - 93 controls, 6 domains, 3 tiers |
+| **Secure a multi-agent system** | [Multi-Agent Controls (MASO)](maso/) - 123 controls, 7 domains, 3 tiers |
 | **Deploy low-risk AI fast** | [Fast Lane](FAST-LANE.md) - self-certification for internal, read-only, no regulated data |
 | **Classify a system by risk** | [Risk Tiers](core/risk-tiers.md) - six-dimension scored profile |
 | **Map to compliance requirements** | [Compliance & Legal](stakeholders/compliance-and-legal.md) - ISO 42001, EU AI Act, DORA |

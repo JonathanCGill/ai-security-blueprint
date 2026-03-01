@@ -28,7 +28,7 @@
   <rect x="28" y="34" width="60" height="16" fill="#003688" rx="2"/>
   <text x="58" y="47" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" letter-spacing="2">MASO</text>
   <text x="800" y="36" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" letter-spacing="1.5">MULTI-AGENT SECURITY OPERATIONS</text>
-  <text x="800" y="56" text-anchor="middle" fill="#ff6b35" font-size="9" letter-spacing="1">CONTROL MAP · 6 DOMAINS · 93 CONTROLS · 3 IMPLEMENTATION TIERS</text>
+  <text x="800" y="56" text-anchor="middle" fill="#ff6b35" font-size="9" letter-spacing="1">CONTROL MAP · 7 DOMAINS · 123 CONTROLS · 3 IMPLEMENTATION TIERS</text>
   <path d="M 40,470 C 200,450 400,490 600,470 S 1000,450 1200,470 S 1450,485 1560,470" fill="none" stroke="url(#river)" stroke-width="28" stroke-linecap="round"/>
   <path d="M 40,470 C 200,450 400,490 600,470 S 1000,450 1200,470 S 1450,485 1560,470" fill="none" stroke="#00c9ff" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="4,8"/>
   <circle cx="250" cy="470" r="14" fill="#0a0e1a" stroke="#00c9ff" stroke-width="1.5" stroke-opacity="0.5"/>

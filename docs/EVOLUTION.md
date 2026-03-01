@@ -84,7 +84,7 @@ Simultaneously added the Implementation Guide: ~1,500 lines of copy-paste-ready 
 
 ### February 2026 - MASO: The Multi-Agent Problem
 
-**The biggest addition: 93 controls for multi-agent orchestration.**
+**The biggest addition: 123 controls for multi-agent orchestration.**
 
 The Multi-Agent Security Operations (MASO) framework was the response to a fundamental architectural shift. Single-agent controls assume one AI, one context window, one trust boundary. Multi-agent systems break all three assumptions.
 
