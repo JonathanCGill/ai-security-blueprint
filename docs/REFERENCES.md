@@ -78,9 +78,31 @@ The four-pillar structure parallels this framework's lifecycle approach, though 
 
 ### Coalition for Secure AI (CoSAI)
 
-Industry coalition founded by Amazon, Anthropic, Cisco, IBM, Intel, Microsoft, NVIDIA, OpenAI, PayPal, Wiz, and others. Housed under OASIS Open. Has released frameworks for AI model signing and incident response, plus guidance on identity, access control, and isolation risks in MCP deployments.
+Industry coalition founded by Amazon, Anthropic, Cisco, IBM, Intel, Microsoft, NVIDIA, OpenAI, PayPal, Wiz, and others. Housed under OASIS Open. Premier sponsors include EY, Google, IBM, Microsoft, NVIDIA, Palo Alto Networks, PayPal, Protect AI, Snyk, Trend Micro, and Zscaler. Has released frameworks for AI model signing and incident response, plus guidance on identity, access control, and isolation risks in MCP deployments.
+
+In July 2025, CoSAI published the **Principles for Secure-by-Design Agentic Systems**, establishing three foundational principles for autonomous AI security:
+
+1. **Human-Governed and Accountable** - meaningful control with clear accountability, risk-based controls aligned with business outcomes, well-defined authority boundaries.
+2. **Bounded and Resilient** - purpose-specific entitlements, AI-specific defensive measures, continuous validation with predefined failure modes.
+3. **Transparent and Verifiable** - secure AI supply chain controls with SLSA-style provenance, comprehensive telemetry of all system activities, real-time monitoring for oversight and incident response.
+
+CoSAI introduces a **producer/implementer/principal** accountability model that distributes responsibility across technology producers (who build AI components), service implementers (who deploy and configure them), and human principals (who authorise and bear accountability for outcomes). This complements the three-lines governance model used in this framework's [AI Governance Operating Model](extensions/regulatory/ai-governance-operating-model.md).
+
+This framework's three-layer pattern (guardrails, Judge, human oversight), PACE resilience, MASO observability controls, and risk tier classification operationalise what CoSAI describes at a principles level. Alignment mapping:
+
+| CoSAI Principle | This Framework's Implementation |
+|---|---|
+| Meaningful control | [Humans Remain Accountable](insights/humans-remain-accountable.md), Judge-as-assurance pattern, HITL queue design |
+| Risk-based controls | [Risk Tiers](core/risk-tiers.md) (CRITICAL/HIGH/MEDIUM/LOW with tier-specific control requirements) |
+| Purpose-specific entitlements | MASO IA-2.3 (no transitive permissions), tool scoping, execution control boundaries |
+| Predefined failure modes | [PACE Resilience](PACE-RESILIENCE.md) (Primary, Alternate, Contingency, Emergency) |
+| Comprehensive telemetry | MASO [Observability Controls](maso/controls/observability.md) OB-1.1 through OB-3.5 |
+| Supply chain provenance | MASO SC-1.2 (signed tool manifests), SC-3.1 (cryptographic trust chain), [ET-04](maso/threat-intelligence/emerging-threats.md) |
+| Threat models and playbooks | MASO [Red Team Playbook](maso/red-team/red-team-playbook.md) RT-01 through RT-13 |
 
 - [Coalition for Secure AI](https://www.coalitionforsecureai.org/)
+- [Principles for Secure-by-Design Agentic Systems (GitHub)](https://github.com/cosai-oasis/cosai-tsc/blob/main/security-principles-for-agentic-systems.md)
+- [CoSAI Workstream 4: Secure Design Patterns for Agentic Systems](https://github.com/cosai-oasis/ws4-secure-design-agentic-systems)
 
 ---
 
