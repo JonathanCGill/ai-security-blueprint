@@ -41,7 +41,7 @@ Incidents are classified by the OWASP risk they exploit and the MASO tier at whi
 
 ---
 
-### INC-02: GitHub Copilot RCE — CVE-2025-53773 (2025)
+### INC-02: GitHub Copilot RCE - CVE-2025-53773 (2025)
 
 **What happened:** An attacker embedded prompt injection in public repository code comments. When a developer opened the repository with Copilot active, the injected prompt instructed Copilot to modify `.vscode/settings.json` to enable YOLO mode (auto-approve all commands). Subsequent commands executed without user approval, achieving arbitrary code execution on the developer's machine.
 
@@ -65,7 +65,7 @@ Incidents are classified by the OWASP risk they exploit and the MASO tier at whi
 
 ---
 
-### INC-03: Cursor IDE Agentic RCE — CVE-2025-59944 (2025)
+### INC-03: Cursor IDE Agentic RCE - CVE-2025-59944 (2025)
 
 **What happened:** A case-sensitivity bug in a protected file path allowed an attacker to influence Cursor's agentic behaviour. The agent read the wrong configuration file containing hidden instructions, which escalated into remote code execution. The root cause was that the agent trusted unverified external content and treated it as authoritative.
 
@@ -111,9 +111,9 @@ Incidents are classified by the OWASP risk they exploit and the MASO tier at whi
 
 ---
 
-### INC-05: PoisonedRAG — Knowledge Base Contamination (2024)
+### INC-05: PoisonedRAG - Knowledge Base Contamination (2024)
 
-**What happened:** Researchers demonstrated that adding just 5 malicious documents to a corpus of millions caused the targeted AI to return attacker-desired false answers 90% of the time for specific trigger queries. The poisoning was undetectable because the AI was technically performing retrieval correctly — the retrieved content itself was compromised.
+**What happened:** Researchers demonstrated that adding just 5 malicious documents to a corpus of millions caused the targeted AI to return attacker-desired false answers 90% of the time for specific trigger queries. The poisoning was undetectable because the AI was technically performing retrieval correctly - the retrieved content itself was compromised.
 
 **Attack vector:** Data poisoning via RAG corpus → misinformation delivery
 
@@ -158,7 +158,7 @@ Incidents are classified by the OWASP risk they exploit and the MASO tier at whi
 
 ---
 
-### INC-07: AI Worm Proof-of-Concept — Morris II (February 2025)
+### INC-07: AI Worm Proof-of-Concept - Morris II (February 2025)
 
 **What happened:** Researchers demonstrated a self-replicating AI worm that spread between autonomous agents through prompt injection. The worm injected itself into AI-generated content. When a compromised agent communicated with another through email or chat, hidden instructions in the message infected the receiving agent, which then propagated the worm to other agents it communicated with.
 
@@ -166,7 +166,7 @@ Incidents are classified by the OWASP risk they exploit and the MASO tier at whi
 
 **OWASP mapping:** LLM01 (Prompt Injection), ASI01 (Agent Goal Hijack), ASI03 (Insecure Agent Communication), ASI08 (Agent Memory Poisoning)
 
-**Multi-agent amplification:** This attack is inherently multi-agent. It cannot exist in a single-agent system. The worm exploits the communication channel between agents — exactly the inter-agent message bus that MASO treats as a first-class security control point. Every agent in the chain becomes both victim and vector.
+**Multi-agent amplification:** This attack is inherently multi-agent. It cannot exist in a single-agent system. The worm exploits the communication channel between agents - exactly the inter-agent message bus that MASO treats as a first-class security control point. Every agent in the chain becomes both victim and vector.
 
 **MASO controls that address this:**
 
@@ -191,7 +191,7 @@ Incidents are classified by the OWASP risk they exploit and the MASO tier at whi
 
 **OWASP mapping:** LLM03 (Supply Chain Vulnerabilities), LLM01 (Prompt Injection), ASI02 (Unrestricted Tool Access)
 
-**Multi-agent amplification:** Multi-agent systems consume multiple MCP servers — one per specialist agent is a common pattern. A single poisoned MCP server can compromise the agent that uses it, which then becomes a vector for poisoning other agents through the message bus. The supply chain risk scales multiplicatively with the number of MCP integrations.
+**Multi-agent amplification:** Multi-agent systems consume multiple MCP servers - one per specialist agent is a common pattern. A single poisoned MCP server can compromise the agent that uses it, which then becomes a vector for poisoning other agents through the message bus. The supply chain risk scales multiplicatively with the number of MCP integrations.
 
 **MASO controls that address this:**
 
@@ -215,7 +215,7 @@ Incidents are classified by the OWASP risk they exploit and the MASO tier at whi
 
 **OWASP mapping:** LLM01 (Prompt Injection), LLM06 (Excessive Agency), ASI09 (Inadequate Human Oversight)
 
-**Multi-agent amplification:** In a multi-agent banking system, a compromised customer-facing agent could delegate fraudulent transactions to a back-office execution agent, using legitimate delegation channels. The execution agent would see a properly formatted request from an authorised agent — the fraud would be invisible at the execution layer.
+**Multi-agent amplification:** In a multi-agent banking system, a compromised customer-facing agent could delegate fraudulent transactions to a back-office execution agent, using legitimate delegation channels. The execution agent would see a properly formatted request from an authorised agent - the fraud would be invisible at the execution layer.
 
 **MASO controls that address this:**
 
@@ -227,11 +227,11 @@ Incidents are classified by the OWASP risk they exploit and the MASO tier at whi
 | PG-1.1 Input guardrails per agent | Prompt & Goal Integrity | Detect injection patterns in customer messages |
 | OB-2.1 Anomaly scoring | Observability | Flag unusual transaction patterns |
 
-**Minimum effective tier:** Tier 1 (human approval for writes is the minimum — no AI should autonomously approve financial transactions without it)
+**Minimum effective tier:** Tier 1 (human approval for writes is the minimum - no AI should autonomously approve financial transactions without it)
 
 ---
 
-### INC-10: LLM-as-Judge Manipulation — JudgeDeceiver (2024–2025)
+### INC-10: LLM-as-Judge Manipulation - JudgeDeceiver (2024–2025)
 
 **What happened:** Researchers demonstrated JudgeDeceiver, an optimisation-based attack that injects a crafted sequence into a candidate response such that an LLM-as-Judge selects the attacker's response regardless of quality. This has implications for LLM-powered search ranking, reinforcement learning with AI feedback, and tool selection systems.
 
@@ -239,7 +239,7 @@ Incidents are classified by the OWASP risk they exploit and the MASO tier at whi
 
 **OWASP mapping:** LLM01 (Prompt Injection), ASI07 (Insecure AI Evaluation)
 
-**Multi-agent amplification:** If the Judge layer itself is compromised, every control that depends on Judge evaluation is bypassed simultaneously. In MASO, the Judge gate (EC-2.5) is a critical control point — manipulating it undermines execution control, goal integrity monitoring, and output validation across the entire multi-agent system.
+**Multi-agent amplification:** If the Judge layer itself is compromised, every control that depends on Judge evaluation is bypassed simultaneously. In MASO, the Judge gate (EC-2.5) is a critical control point - manipulating it undermines execution control, goal integrity monitoring, and output validation across the entire multi-agent system.
 
 **MASO controls that address this:**
 
@@ -251,7 +251,7 @@ Incidents are classified by the OWASP risk they exploit and the MASO tier at whi
 | PG-3.5 Challenger agent | Prompt & Goal Integrity | Adversarial agent tests Judge decisions |
 | EC-3.1 Multi-judge consensus | Execution Control | Multiple independent judges for high-risk decisions |
 
-**Minimum effective tier:** Tier 3 (defending the Judge requires model diversity, independent observability, and challenger agents — this is an advanced threat)
+**Minimum effective tier:** Tier 3 (defending the Judge requires model diversity, independent observability, and challenger agents - this is an advanced threat)
 
 ---
 

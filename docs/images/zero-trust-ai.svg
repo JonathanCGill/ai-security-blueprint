@@ -20,7 +20,7 @@
   
   <rect width="900" height="300" fill="#f8fafc"/>
   
-  <text x="450" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="middle">Zero Trust for AI — "Never Trust, Always Verify"</text>
+  <text x="450" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="middle">Zero Trust for AI - "Never Trust, Always Verify"</text>
   
   <!-- User -->
   <g>
@@ -92,7 +92,7 @@
   <!-- Monitoring bar -->
   <g>
     <rect x="150" y="200" width="520" height="50" rx="8" fill="url(#monitorGrad)"/>
-    <text x="410" y="225" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">CONTINUOUS MONITORING — Log Everything • Assume Breach • Verify Continuously</text>
+    <text x="410" y="225" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">CONTINUOUS MONITORING - Log Everything • Assume Breach • Verify Continuously</text>
     <text x="410" y="242" font-family="Arial, sans-serif" font-size="9" fill="#bfdbfe" text-anchor="middle">Every step logged • Anomaly detection • Real-time alerting</text>
   </g>
   

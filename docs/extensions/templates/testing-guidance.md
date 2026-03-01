@@ -99,10 +99,10 @@ This means:
 | Output manipulation | Forcing disclosure, bypassing filters |
 
 **Resources:**
-- OWASP LLM Top 10 — documented vulnerability categories
-- Garak — open-source LLM vulnerability scanner
-- Microsoft Counterfit — adversarial ML testing
-- MITRE ATLAS — adversarial threat landscape
+- OWASP LLM Top 10 - documented vulnerability categories
+- Garak - open-source LLM vulnerability scanner
+- Microsoft Counterfit - adversarial ML testing
+- MITRE ATLAS - adversarial threat landscape
 
 **What "working" looks like:**
 - You find vulnerabilities (if you don't, you're not trying hard enough)
@@ -358,7 +358,7 @@ For more comprehensive guidance:
 
 ## Continuous Validation
 
-Testing isn't a phase — it's a practice.
+Testing isn't a phase - it's a practice.
 
 **Ongoing activities:**
 
@@ -374,12 +374,12 @@ Testing isn't a phase — it's a practice.
 
 ## Key Takeaways
 
-1. **Test the full chain** — upstream, AI, downstream, humans
-2. **Validate alerts reach humans** — an undelivered alert is useless
-3. **Adversarial testing is mandatory** — if you're not attacking yourself, others will
-4. **Playbooks need practice** — untested playbooks fail under pressure
-5. **Testing is continuous** — one-time validation is insufficient
-6. **Accept imperfection** — testing reduces risk, it doesn't eliminate it
+1. **Test the full chain** - upstream, AI, downstream, humans
+2. **Validate alerts reach humans** - an undelivered alert is useless
+3. **Adversarial testing is mandatory** - if you're not attacking yourself, others will
+4. **Playbooks need practice** - untested playbooks fail under pressure
+5. **Testing is continuous** - one-time validation is insufficient
+6. **Accept imperfection** - testing reduces risk, it doesn't eliminate it
 
 ---
 
@@ -403,9 +403,9 @@ This testing guidance is a starting point, not a prescription. You'll need to ad
 - What human processes depend on it?
 
 **The core principles remain constant:**
-1. **Guardrails** — Test that they block what they should
-2. **Judge** — Test that it detects what guardrails miss
-3. **Human oversight** — Test that findings reach humans who can act
+1. **Guardrails** - Test that they block what they should
+2. **Judge** - Test that it detects what guardrails miss
+3. **Human oversight** - Test that findings reach humans who can act
 
 How you implement these tests will vary. The need to test them will not.
 

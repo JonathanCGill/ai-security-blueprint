@@ -83,5 +83,5 @@
   <line x1="150" y1="150" x2="150" y2="243" stroke="#8b949e" stroke-width="1" stroke-dasharray="3 2"/>
 
   <!-- Footer -->
-  <text x="390" y="330" text-anchor="middle" fill="#484f58" font-size="9">IAM-04 · The gateway is infrastructure, not a prompt instruction — the agent does not enforce its own permissions</text>
+  <text x="390" y="330" text-anchor="middle" fill="#484f58" font-size="9">IAM-04 · The gateway is infrastructure, not a prompt instruction - the agent does not enforce its own permissions</text>
 </svg>

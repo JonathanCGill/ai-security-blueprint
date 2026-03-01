@@ -32,7 +32,7 @@
   <rect width="1100" height="850" rx="8" fill="#0d1117"/>
 
   <!-- Title -->
-  <text x="550" y="40" text-anchor="middle" fill="#e6e6e6" font-size="22" font-weight="700">Logging &amp; Observability — AI System Architecture</text>
+  <text x="550" y="40" text-anchor="middle" fill="#e6e6e6" font-size="22" font-weight="700">Logging &amp; Observability - AI System Architecture</text>
   <text x="550" y="62" text-anchor="middle" fill="#8b949e" font-size="13">Capture Points · Pipeline · Detection · Correlation</text>
 
   <!-- ===== SECTION 1: LOG CAPTURE POINTS ===== -->
@@ -244,5 +244,5 @@
   <text x="1030" y="812" fill="#c084fc" font-size="9">LOG-10 SIEM</text>
 
   <!-- Footer -->
-  <text x="550" y="845" text-anchor="middle" fill="#484f58" font-size="10">AI Runtime Behaviour Security — Technical Controls · Logging &amp; Observability · github.com/JonathanCGill</text>
+  <text x="550" y="845" text-anchor="middle" fill="#484f58" font-size="10">AI Runtime Behaviour Security - Technical Controls · Logging &amp; Observability · github.com/JonathanCGill</text>
 </svg>

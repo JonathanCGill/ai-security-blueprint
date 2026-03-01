@@ -24,7 +24,7 @@
   <rect x="80" y="90" width="740" height="80" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#22c55e" stroke-width="2"/>
   <rect x="80" y="90" width="6" height="80" rx="3" fill="#22c55e"/>
 
-  <text x="108" y="115" font-size="14" font-weight="700" fill="#15803d">Layer 1 — Guardrails</text>
+  <text x="108" y="115" font-size="14" font-weight="700" fill="#15803d">Layer 1 - Guardrails</text>
   <text x="750" y="115" text-anchor="end" font-size="11" fill="#22c55e" font-weight="600">~10ms</text>
 
   <text x="108" y="136" font-size="11" fill="#475569">Input validation</text>
@@ -43,7 +43,7 @@
   <rect x="80" y="200" width="740" height="80" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#f59e0b" stroke-width="2"/>
   <rect x="80" y="200" width="6" height="80" rx="3" fill="#f59e0b"/>
 
-  <text x="108" y="225" font-size="14" font-weight="700" fill="#b45309">Layer 2 — LLM-as-Judge</text>
+  <text x="108" y="225" font-size="14" font-weight="700" fill="#b45309">Layer 2 - LLM-as-Judge</text>
   <text x="750" y="225" text-anchor="end" font-size="11" fill="#f59e0b" font-weight="600">~500ms–5s</text>
 
   <text x="108" y="246" font-size="11" fill="#475569">Policy compliance</text>
@@ -62,7 +62,7 @@
   <rect x="80" y="310" width="740" height="80" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#8b5cf6" stroke-width="2"/>
   <rect x="80" y="310" width="6" height="80" rx="3" fill="#8b5cf6"/>
 
-  <text x="108" y="335" font-size="14" font-weight="700" fill="#6d28d9">Layer 3 — Human Oversight</text>
+  <text x="108" y="335" font-size="14" font-weight="700" fill="#6d28d9">Layer 3 - Human Oversight</text>
   <text x="750" y="335" text-anchor="end" font-size="11" fill="#8b5cf6" font-weight="600">As needed</text>
 
   <text x="108" y="356" font-size="11" fill="#475569">Edge case decisions</text>
@@ -75,7 +75,7 @@
 
   <!-- === CIRCUIT BREAKER === -->
   <rect x="80" y="410" width="740" height="40" rx="8" fill="#fef2f2" filter="url(#shadow)" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,3"/>
-  <text x="450" y="435" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">Circuit Breaker — stops AI traffic, activates non-AI fallback when any layer fails</text>
+  <text x="450" y="435" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">Circuit Breaker - stops AI traffic, activates non-AI fallback when any layer fails</text>
 
   <!-- === PACE sidebar === -->
   <rect x="835" y="85" width="50" height="365" rx="6" fill="#1e293b"/>
@@ -109,5 +109,5 @@
 
   <!-- Bottom summary -->
   <text x="450" y="498" text-anchor="middle" font-size="12" fill="#1e293b" font-weight="600">Guardrails prevent · Judge detects · Humans decide · Circuit breakers contain</text>
-  <text x="450" y="514" text-anchor="middle" font-size="10" fill="#64748b">AI Runtime Behaviour Security — foundations/</text>
+  <text x="450" y="514" text-anchor="middle" font-size="10" fill="#64748b">AI Runtime Behaviour Security - foundations/</text>
 </svg>

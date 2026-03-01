@@ -8,7 +8,7 @@ This document maps the AI Runtime Behaviour Security to ISO 27001:2022 informati
 
 **The AI framework is complementary to, not a replacement for, ISO 27001.**
 
-ISO 27001 provides the Information Security Management System (ISMS). The AI framework addresses AI-specific risks within that ISMS. Most ISO 27001 controls apply to AI systems — they're information systems. The AI framework adds controls for AI-specific risks that ISO 27001 doesn't explicitly address.
+ISO 27001 provides the Information Security Management System (ISMS). The AI framework addresses AI-specific risks within that ISMS. Most ISO 27001 controls apply to AI systems - they're information systems. The AI framework adds controls for AI-specific risks that ISO 27001 doesn't explicitly address.
 
 | Standard | Scope | Relationship |
 |----------|-------|--------------|
@@ -28,10 +28,10 @@ ISO 27001:2022 has:
 
 | Theme | Controls | AI Relevance |
 |-------|----------|--------------|
-| Organizational (A.5) | 37 | High — governance, policy, supplier management |
-| People (A.6) | 8 | Medium — awareness, responsibilities |
-| Physical (A.7) | 14 | Low — standard physical security applies |
-| Technological (A.8) | 34 | High — access, logging, development, data protection |
+| Organizational (A.5) | 37 | High - governance, policy, supplier management |
+| People (A.6) | 8 | Medium - awareness, responsibilities |
+| Physical (A.7) | 14 | Low - standard physical security applies |
+| Technological (A.8) | 34 | High - access, logging, development, data protection |
 
 ---
 
@@ -41,7 +41,7 @@ ISO 27001:2022 has:
 
 | Control | ISO 27001 Requirement | AI Framework Mapping | Gap? |
 |---------|----------------------|---------------------|------|
-| **A.5.1** Policies for information security | Establish information security policy | AI.1.1 AI Policy Framework | ✅ Aligned — AI policy extends infosec policy |
+| **A.5.1** Policies for information security | Establish information security policy | AI.1.1 AI Policy Framework | ✅ Aligned - AI policy extends infosec policy |
 | **A.5.2** Information security roles | Define and allocate roles | AI.1.2 Governance Structure, AI.1.3 Accountability | ✅ Aligned |
 | **A.5.3** Segregation of duties | Separate conflicting duties | Implicit in risk tiers and approval workflows | ✅ Aligned |
 | **A.5.4** Management responsibilities | Management enforce policy | AI Governance Committee | ✅ Aligned |
@@ -60,8 +60,8 @@ ISO 27001:2022 has:
 | **A.5.17** Authentication information | Protect credentials | Standard applies; API keys for AI services | ✅ Standard |
 | **A.5.18** Access rights | Provision access appropriately | Risk tier determines access requirements | ✅ Aligned |
 | **A.5.19** Information security in supplier relationships | Manage supplier security | See "Vendor AI" in scope section | ⚠️ Needs AI-specific supplier requirements |
-| **A.5.20** Addressing security in supplier agreements | Include security in contracts | Not explicit for AI vendors/APIs | ⚠️ Gap — add AI supplier requirements |
-| **A.5.21** Managing information security in ICT supply chain | Secure supply chain | Model supply chain (foundation models) | ⚠️ Gap — add model provenance |
+| **A.5.20** Addressing security in supplier agreements | Include security in contracts | Not explicit for AI vendors/APIs | ⚠️ Gap - add AI supplier requirements |
+| **A.5.21** Managing information security in ICT supply chain | Secure supply chain | Model supply chain (foundation models) | ⚠️ Gap - add model provenance |
 | **A.5.22** Monitoring, review of supplier services | Monitor suppliers | API/model monitoring | ⚠️ Needs explicit coverage |
 | **A.5.23** Information security for cloud services | Secure cloud use | Platform guidance (Bedrock, Databricks, etc.) | ✅ Aligned |
 | **A.5.24** Information security incident management planning | Plan incident response | AI.12 Incident Response | ✅ Aligned |
@@ -69,10 +69,10 @@ ISO 27001:2022 has:
 | **A.5.26** Response to information security incidents | Respond to incidents | AI.12 Incident Response | ✅ Aligned |
 | **A.5.27** Learning from information security incidents | Learn from incidents | Feedback loops, guardrail updates | ✅ Aligned |
 | **A.5.28** Collection of evidence | Collect evidence | AI.11 Logging (tamper-evident for CRITICAL) | ✅ Aligned |
-| **A.5.29** Information security during disruption | Maintain security in disruption | Not explicit | ⚠️ Gap — add AI continuity |
-| **A.5.30** ICT readiness for business continuity | ICT continuity | Not explicit for AI | ⚠️ Gap — add AI continuity |
+| **A.5.29** Information security during disruption | Maintain security in disruption | Not explicit | ⚠️ Gap - add AI continuity |
+| **A.5.30** ICT readiness for business continuity | ICT continuity | Not explicit for AI | ⚠️ Gap - add AI continuity |
 | **A.5.31** Legal, statutory, regulatory requirements | Identify requirements | Regulatory alignment sections | ✅ Aligned |
-| **A.5.32** Intellectual property rights | Protect IP | Not explicit | ⚠️ Gap — add AI/model IP |
+| **A.5.32** Intellectual property rights | Protect IP | Not explicit | ⚠️ Gap - add AI/model IP |
 | **A.5.33** Protection of records | Protect records | AI.11 Logging retention | ✅ Aligned |
 | **A.5.34** Privacy and protection of PII | Protect personal data | Guardrails (PII filtering), GDPR alignment | ✅ Aligned |
 | **A.5.35** Independent review of information security | Independent review | Internal audit in ISO 42001 section | ✅ Aligned |
@@ -87,7 +87,7 @@ ISO 27001:2022 has:
 |---------|----------------------|---------------------|------|
 | **A.6.1** Screening | Screen personnel | Standard HR applies | ✅ Standard |
 | **A.6.2** Terms and conditions of employment | Include security in contracts | Standard HR applies | ✅ Standard |
-| **A.6.3** Information security awareness | Security training | Not explicit for AI | ⚠️ Gap — add AI security training |
+| **A.6.3** Information security awareness | Security training | Not explicit for AI | ⚠️ Gap - add AI security training |
 | **A.6.4** Disciplinary process | Enforce policy | Standard HR applies | ✅ Standard |
 | **A.6.5** Responsibilities after termination | Post-employment duties | Standard HR applies | ✅ Standard |
 | **A.6.6** Confidentiality or non-disclosure agreements | Require NDAs | Standard applies | ✅ Standard |
@@ -98,7 +98,7 @@ ISO 27001:2022 has:
 
 ### A.7 Physical Controls
 
-Physical controls (A.7.1 - A.7.14) apply to AI systems as they do to any information system. No AI-specific mapping needed — standard physical security controls apply to:
+Physical controls (A.7.1 - A.7.14) apply to AI systems as they do to any information system. No AI-specific mapping needed - standard physical security controls apply to:
 - Data centres hosting AI infrastructure
 - Endpoints accessing AI systems
 - Physical security of on-premise GPU/TPU infrastructure
@@ -140,7 +140,7 @@ Physical controls (A.7.1 - A.7.14) apply to AI systems as they do to any informa
 | **A.8.27** Secure system architecture | Design secure architecture | Three-layer control model | ✅ Aligned |
 | **A.8.28** Secure coding | Code securely | AI.4 Development Security | ✅ Aligned |
 | **A.8.29** Security testing | Test security | AI.4.2 Testing, Judge validation | ✅ Aligned |
-| **A.8.30** Outsourced development | Secure outsourced dev | Not explicit for AI | ⚠️ Gap — add outsourced AI dev |
+| **A.8.30** Outsourced development | Secure outsourced dev | Not explicit for AI | ⚠️ Gap - add outsourced AI dev |
 | **A.8.31** Separation of environments | Separate dev/test/prod | AI.4.3 Deployment Security | ✅ Aligned |
 | **A.8.32** Change management | Manage changes | Model versioning, guardrail changes | ✅ Aligned |
 | **A.8.33** Test information | Protect test data | Standard applies | ✅ Standard |
@@ -166,7 +166,7 @@ Physical controls (A.7.1 - A.7.14) apply to AI systems as they do to any informa
 |---------|------------------------|---------------------------|
 | **A.5.7** Threat intelligence | General threat intel | OWASP LLM Top 10, MITRE ATLAS, prompt injection trends |
 | **A.5.9** Asset inventory | IT asset inventory | AI system inventory including models, agents, tools |
-| **A.5.21** Supply chain | Software supply chain | Model supply chain — foundation model provenance |
+| **A.5.21** Supply chain | Software supply chain | Model supply chain - foundation model provenance |
 | **A.8.7** Malware protection | Detect malicious software | Detect malicious prompts, adversarial inputs |
 | **A.8.11** Data masking | Mask data in storage/transit | PII filtering in prompts and responses |
 | **A.8.12** Data leakage prevention | Prevent data exfiltration | Prevent model leaking training data, sensitive context |
@@ -392,8 +392,8 @@ Physical controls (A.7.1 - A.7.14) apply to AI systems as they do to any informa
 | AI.4 | Development Security | Secure development, testing, deployment |
 | AI.5 | Data Governance | Data quality, privacy, protection |
 | AI.6 | Model Security | Model protection, validation, monitoring |
-| AI.7 | Runtime Controls — Guardrails | Inline input/output validation |
-| AI.8 | Runtime Controls — LLM-as-Judge | Async assurance and monitoring |
+| AI.7 | Runtime Controls - Guardrails | Inline input/output validation |
+| AI.8 | Runtime Controls - LLM-as-Judge | Async assurance and monitoring |
 | AI.9 | Human Oversight | HITL, escalation, accountability |
 | AI.10 | Agentic Controls | Agent-specific safeguards |
 | AI.11 | Logging & Monitoring | Observability, alerting, audit |
@@ -425,20 +425,20 @@ When documenting AI systems in your Statement of Applicability (SoA):
 
 ### If You Have Existing ISO 27001 Certification
 
-1. **Extend, don't replace** — AI controls integrate into existing ISMS
-2. **Update risk assessment** — Add AI-specific threats and risks
-3. **Update asset inventory** — Add AI systems, models, agents
-4. **Update policies** — Add AI policy as extension of infosec policy
-5. **Update SoA** — Document AI-specific control implementation
-6. **Update supplier management** — Add AI vendor requirements
-7. **Update training** — Add AI security awareness
-8. **Update BCP** — Include AI systems
+1. **Extend, don't replace** - AI controls integrate into existing ISMS
+2. **Update risk assessment** - Add AI-specific threats and risks
+3. **Update asset inventory** - Add AI systems, models, agents
+4. **Update policies** - Add AI policy as extension of infosec policy
+5. **Update SoA** - Document AI-specific control implementation
+6. **Update supplier management** - Add AI vendor requirements
+7. **Update training** - Add AI security awareness
+8. **Update BCP** - Include AI systems
 
 ### If You're Implementing Both
 
-1. **Implement ISO 27001 first** — Foundation for all information security
-2. **Layer AI controls on top** — AI framework extends ISMS
-3. **Single integrated audit** — Cover both in one management system
+1. **Implement ISO 27001 first** - Foundation for all information security
+2. **Layer AI controls on top** - AI framework extends ISMS
+3. **Single integrated audit** - Cover both in one management system
 
 ---
 
@@ -448,15 +448,15 @@ When documenting AI systems in your Statement of Applicability (SoA):
 
 | Category | Status |
 |----------|--------|
-| Core security controls | ✅ Well aligned — AI systems are information systems |
-| Logging and monitoring | ✅ Well aligned — AI.11 exceeds baseline |
-| Development security | ✅ Well aligned — AI.4 covers SDLC |
-| Access control | ✅ Well aligned — risk tier drives access |
-| Incident response | ✅ Well aligned — AI.12 covers AI incidents |
-| Supplier management | ⚠️ Gap — Added AI.13 |
-| Training | ⚠️ Gap — Added AI.14 |
-| Business continuity | ⚠️ Gap — Added AI.15 |
-| Intellectual property | ⚠️ Gap — Added AI.16 |
+| Core security controls | ✅ Well aligned - AI systems are information systems |
+| Logging and monitoring | ✅ Well aligned - AI.11 exceeds baseline |
+| Development security | ✅ Well aligned - AI.4 covers SDLC |
+| Access control | ✅ Well aligned - risk tier drives access |
+| Incident response | ✅ Well aligned - AI.12 covers AI incidents |
+| Supplier management | ⚠️ Gap - Added AI.13 |
+| Training | ⚠️ Gap - Added AI.14 |
+| Business continuity | ⚠️ Gap - Added AI.15 |
+| Intellectual property | ⚠️ Gap - Added AI.16 |
 
 ### Changes Made
 

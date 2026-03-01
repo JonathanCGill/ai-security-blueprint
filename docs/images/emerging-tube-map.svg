@@ -16,7 +16,7 @@
   
   <!-- Title -->
   <text x="550" y="35" text-anchor="middle" class="title">EMERGING CONTROLS MAP</text>
-  <text x="550" y="55" text-anchor="middle" class="subtitle">Theoretical Extensions — Multimodal, Reasoning, State, Streaming, Multi-Agent</text>
+  <text x="550" y="55" text-anchor="middle" class="subtitle">Theoretical Extensions - Multimodal, Reasoning, State, Streaming, Multi-Agent</text>
   
   <!-- Status badge -->
   <rect x="470" y="62" width="160" height="18" rx="9" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>

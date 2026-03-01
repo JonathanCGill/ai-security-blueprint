@@ -13,13 +13,13 @@
 
 MASO operates on a **three-layer defence model** adapted for multi-agent dynamics:
 
-**Layer 1 — Guardrails** enforce hard boundaries: input validation, output sanitisation, tool permission scoping, and rate limiting. Deterministic, non-negotiable, machine-speed.
+**Layer 1 - Guardrails** enforce hard boundaries: input validation, output sanitisation, tool permission scoping, and rate limiting. Deterministic, non-negotiable, machine-speed.
 
-**Layer 2 — LLM-as-Judge Evaluation** uses a dedicated evaluation model (distinct from task agents) to assess quality, safety, and policy compliance of agent actions and outputs before they are committed. In multi-agent systems, this layer also evaluates inter-agent communications for goal integrity and instruction injection.
+**Layer 2 - LLM-as-Judge Evaluation** uses a dedicated evaluation model (distinct from task agents) to assess quality, safety, and policy compliance of agent actions and outputs before they are committed. In multi-agent systems, this layer also evaluates inter-agent communications for goal integrity and instruction injection.
 
-**Layer 3 — Human Oversight** provides the governance backstop. Scope scales inversely with demonstrated trustworthiness and directly with consequence severity. Write operations, external API calls, and irreversible actions escalate based on risk classification.
+**Layer 3 - Human Oversight** provides the governance backstop. Scope scales inversely with demonstrated trustworthiness and directly with consequence severity. Write operations, external API calls, and irreversible actions escalate based on risk classification.
 
-The critical addition for multi-agent systems is the **Secure Inter-Agent Message Bus** — a validated, signed, rate-limited communication channel through which all agent-to-agent interaction must pass. No direct agent-to-agent communication is permitted outside this bus.
+The critical addition for multi-agent systems is the **Secure Inter-Agent Message Bus** - a validated, signed, rate-limited communication channel through which all agent-to-agent interaction must pass. No direct agent-to-agent communication is permitted outside this bus.
 
 ---
 
@@ -33,11 +33,11 @@ Six coloured lines represent six control domains. Stations are key controls. Zon
 
 ## Control Domains
 
-The framework organises 93 controls into six domains. The first five map to specific OWASP risks. The sixth — Prompt, Goal & Epistemic Integrity — addresses both the three OWASP risks that require cross-cutting controls and the eight epistemic risks identified in the [Emergent Risk Register](controls/risk-register.md) that have no OWASP equivalent.
+The framework organises 93 controls into six domains. The first five map to specific OWASP risks. The sixth - Prompt, Goal & Epistemic Integrity - addresses both the three OWASP risks that require cross-cutting controls and the eight epistemic risks identified in the [Emergent Risk Register](controls/risk-register.md) that have no OWASP equivalent.
 
 ### 0. [Prompt, Goal & Epistemic Integrity](controls/prompt-goal-and-epistemic-integrity.md)
 
-Every agent's instructions, objectives, and information chain must be trustworthy and verifiable. Input sanitisation on all channels — not just user-facing. System prompt isolation prevents cross-agent extraction. Immutable task specifications with continuous goal integrity monitoring. Epistemic controls prevent groupthink, hallucination amplification, uncertainty stripping, and semantic drift across agent chains.
+Every agent's instructions, objectives, and information chain must be trustworthy and verifiable. Input sanitisation on all channels - not just user-facing. System prompt isolation prevents cross-agent extraction. Immutable task specifications with continuous goal integrity monitoring. Epistemic controls prevent groupthink, hallucination amplification, uncertainty stripping, and semantic drift across agent chains.
 
 *Covers: LLM01, LLM07, ASI01, plus Epistemic Risks EP-01 through EP-08*
 
@@ -98,7 +98,7 @@ These risks apply to each individual agent. In a multi-agent context, each risk 
 
 ### OWASP Top 10 for Agentic Applications (2026)
 
-These risks are specific to autonomous agent behaviour — the primary threat surface for MASO.
+These risks are specific to autonomous agent behaviour - the primary threat surface for MASO.
 
 | Risk | Description | MASO Controls |
 |------|-------------|--------------|
@@ -121,13 +121,13 @@ These risks are specific to autonomous agent behaviour — the primary threat su
 
 The [PACE methodology](../) (Primary, Alternate, Contingency, Emergency) from the parent framework is extended for multi-agent failure modes.
 
-**Primary — Normal Operations.** All agents active within designated roles. Full three-layer security stack operational. Inter-agent communication through the signed message bus. Behavioural baselines actively monitored.
+**Primary - Normal Operations.** All agents active within designated roles. Full three-layer security stack operational. Inter-agent communication through the signed message bus. Behavioural baselines actively monitored.
 
-**Alternate — Agent Failover.** Triggered when a single agent shows anomalous behaviour. The anomalous agent is isolated. A backup agent (potentially from a different provider) is activated. Tool permissions tightened to read-only. All write operations require human approval. Transition authority: automated (monitoring agent or orchestrator can initiate P→A without human approval, but must notify).
+**Alternate - Agent Failover.** Triggered when a single agent shows anomalous behaviour. The anomalous agent is isolated. A backup agent (potentially from a different provider) is activated. Tool permissions tightened to read-only. All write operations require human approval. Transition authority: automated (monitoring agent or orchestrator can initiate P→A without human approval, but must notify).
 
-**Contingency — Degraded Mode.** Triggered when multiple agents are compromised, message bus integrity is questioned, or the alternate agent also exhibits anomalous behaviour. Multi-agent orchestration is suspended. Single pre-validated agent operates in fully supervised mode. All agent state captured for forensics. Transition authority: security team or AI security officer.
+**Contingency - Degraded Mode.** Triggered when multiple agents are compromised, message bus integrity is questioned, or the alternate agent also exhibits anomalous behaviour. Multi-agent orchestration is suspended. Single pre-validated agent operates in fully supervised mode. All agent state captured for forensics. Transition authority: security team or AI security officer.
 
-**Emergency — Full Shutdown.** Triggered by cascading failures, confirmed exfiltration, coordinated manipulation, or rogue behaviour. All agents terminated. Tool access revoked. Memory and context snapshots preserved in immutable storage. Full rollback initiated. Transition authority: CISO or incident commander.
+**Emergency - Full Shutdown.** Triggered by cascading failures, confirmed exfiltration, coordinated manipulation, or rogue behaviour. All agents terminated. Tool access revoked. Memory and context snapshots preserved in immutable storage. Full rollback initiated. Transition authority: CISO or incident commander.
 
 **Recovery (E→P):** Requires post-incident review confirming root cause identification, control remediation, and updated baselines before returning to Primary.
 
@@ -135,19 +135,19 @@ The [PACE methodology](../) (Primary, Alternate, Contingency, Emergency) from th
 
 ## Implementation Tiers
 
-### [Tier 1 — Supervised](implementation/tier-1-supervised.md) (Low Autonomy)
+### [Tier 1 - Supervised](implementation/tier-1-supervised.md) (Low Autonomy)
 
 All agent actions require human approval. Inter-agent communication is logged but not encrypted. Behavioural monitoring is periodic (batch review). Suitable for pilot deployments and low-consequence use cases.
 
 **Minimum controls:** Guardrails layer, basic tool scoping, human-in-the-loop for all writes, action audit log.
 
-### [Tier 2 — Managed](implementation/tier-2-managed.md) (Medium Autonomy)
+### [Tier 2 - Managed](implementation/tier-2-managed.md) (Medium Autonomy)
 
 Agents execute read operations and low-consequence writes autonomously. High-consequence actions escalate to human oversight. Inter-agent communication is signed and validated. Behavioural monitoring is continuous with automated anomaly alerting. PACE Alternate and Contingency fully configured.
 
 **Required controls:** All three security layers, per-agent NHI, signed message bus, LLM-as-Judge evaluation, continuous anomaly scoring, PACE A and C configured and tested.
 
-### [Tier 3 — Autonomous](implementation/tier-3-autonomous.md) (High Autonomy)
+### [Tier 3 - Autonomous](implementation/tier-3-autonomous.md) (High Autonomy)
 
 Agents operate with minimal human intervention for pre-approved task categories. Human oversight focuses on exception handling and strategic review. Full PACE cycle operational and tested through regular red-team exercises. All six control domains fully implemented.
 
@@ -176,7 +176,7 @@ Every control in MASO is grounded in observed or demonstrated attack patterns:
 
 | Document | Purpose |
 |----------|---------|
-| [Red Team Playbook](red-team/red-team-playbook.md) | 13 structured test scenarios across three tiers — from inter-agent injection propagation to PACE transition under attack. Includes test results template and reporting metrics |
+| [Red Team Playbook](red-team/red-team-playbook.md) | 13 structured test scenarios across three tiers - from inter-agent injection propagation to PACE transition under attack. Includes test results template and reporting metrics |
 
 ---
 
@@ -214,16 +214,16 @@ MASO inherits the parent framework's regulatory mappings and extends them to mul
 
 ## Operational Concerns
 
-These questions come up in every MASO deployment. The answers sit across the framework — collected here so you don't have to hunt.
+These questions come up in every MASO deployment. The answers sit across the framework - collected here so you don't have to hunt.
 
 | Question | Where It's Answered |
 |----------|-------------------|
-| What does the Judge layer cost? When should it run async? | [Cost & Latency](../extensions/technical/cost-and-latency.md) — sampling rates, latency budgets, tiered evaluation cascade |
+| What does the Judge layer cost? When should it run async? | [Cost & Latency](../extensions/technical/cost-and-latency.md) - sampling rates, latency budgets, tiered evaluation cascade |
 | What if the Judge is wrong or manipulated? | [Judge Assurance](../core/judge-assurance.md) · [When the Judge Can Be Fooled](../core/when-the-judge-can-be-fooled.md) · [Privileged Agent Governance](controls/privileged-agent-governance.md) |
-| How do we prevent operator fatigue at scale? | [Human Factors](../strategy/human-factors.md) — skill development, alert fatigue, canary testing, challenge rates |
-| How do we vet models, tools, and MCP servers? | [Supply Chain Controls](controls/supply-chain.md) — AIBOM, signed manifests, model provenance, dependency scanning |
-| What emergent risks have no OWASP equivalent? | [Emergent Risk Register](controls/risk-register.md) — 33 risks across 9 categories including epistemic, coordination, and inference-side attacks |
-| What about DLP, API validation, database controls, and existing IAM? | [Defence in Depth Beyond the AI Layer](../foundations/README.md#defence-in-depth-beyond-the-ai-layer) — MASO controls are a layer within your wider security architecture, not a replacement for it. External DLP (inbound and outbound), API gateways, database access controls, SIEM, and secure coding practices all apply |
+| How do we prevent operator fatigue at scale? | [Human Factors](../strategy/human-factors.md) - skill development, alert fatigue, canary testing, challenge rates |
+| How do we vet models, tools, and MCP servers? | [Supply Chain Controls](controls/supply-chain.md) - AIBOM, signed manifests, model provenance, dependency scanning |
+| What emergent risks have no OWASP equivalent? | [Emergent Risk Register](controls/risk-register.md) - 33 risks across 9 categories including epistemic, coordination, and inference-side attacks |
+| What about DLP, API validation, database controls, and existing IAM? | [Defence in Depth Beyond the AI Layer](../foundations/README.md#defence-in-depth-beyond-the-ai-layer) - MASO controls are a layer within your wider security architecture, not a replacement for it. External DLP (inbound and outbound), API gateways, database access controls, SIEM, and secure coding practices all apply |
 
 ---
 
@@ -271,8 +271,8 @@ stress-test/
 The framework core, implementation tiers, control domain specifications, threat intelligence, red team playbook, integration guide, and worked examples are complete. Planned extensions:
 
 1. **Terraform/CloudFormation modules** for automated MASO infrastructure deployment on AWS and Azure.
-2. **Compliance evidence packs** — pre-built documentation sets for ISO 42001, NIST AI RMF, and EU AI Act audits.
-3. **Agent orchestration security benchmark** — quantitative scoring methodology for multi-agent system security posture.
+2. **Compliance evidence packs** - pre-built documentation sets for ISO 42001, NIST AI RMF, and EU AI Act audits.
+3. **Agent orchestration security benchmark** - quantitative scoring methodology for multi-agent system security posture.
 
 ---
 

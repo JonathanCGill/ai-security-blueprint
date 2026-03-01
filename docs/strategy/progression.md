@@ -1,6 +1,6 @@
 # Progression
 
-*Moving from low-risk to high-risk AI — and why skipping steps is the most common strategic failure.*
+*Moving from low-risk to high-risk AI - and why skipping steps is the most common strategic failure.*
 
 > Part of [From Strategy to Production](./)
 
@@ -10,7 +10,7 @@
 
 Organisations want to be at Tier 3. Autonomous agents making decisions, driving efficiency, transforming operations. The business case for full autonomy is always more compelling than the business case for decision support.
 
-So they skip. They go from no AI directly to autonomous AI. Sometimes it works — usually because the specific use case is forgiving and the data is good. More often it fails, and the failure is expensive, visible, and corrosive to future AI investment.
+So they skip. They go from no AI directly to autonomous AI. Sometimes it works - usually because the specific use case is forgiving and the data is good. More often it fails, and the failure is expensive, visible, and corrosive to future AI investment.
 
 The framework provides a progression path. This article explains why it exists, how to use it, and where it breaks down.
 
@@ -24,7 +24,7 @@ The framework supports five positions on a progression from no AI to autonomous 
 
 | Position | Framework Equivalent | What the AI Does | Who Decides |
 |----------|---------------------|------------------|-------------|
-| **No AI** | Pre-framework | Nothing — manual processes | Humans |
+| **No AI** | Pre-framework | Nothing - manual processes | Humans |
 | **Assisted** | [Fast Lane](../FAST-LANE.md) | AI drafts, suggests, summarises | Human decides everything; AI is a tool |
 | **Supported** | Tier 1 (LOW/MEDIUM) | AI recommends; human acts | Human decides, informed by AI |
 | **Supervised** | Tier 2 (HIGH) | AI acts on routine cases; human handles exceptions | AI decides routine; human decides complex |
@@ -38,7 +38,7 @@ Each step up increases value. Each step up also increases risk, control requirem
 
 ### Step 1: No AI → Assisted (Fast Lane)
 
-**What you deploy:** Internal tools — drafting assistants, search helpers, summarisation tools. Fast Lane criteria apply: internal users, read-only, no regulated data, human reviews everything.
+**What you deploy:** Internal tools - drafting assistants, search helpers, summarisation tools. Fast Lane criteria apply: internal users, read-only, no regulated data, human reviews everything.
 
 **What you learn:**
 - How to deploy an AI system (engineering capability)
@@ -57,7 +57,7 @@ Each step up increases value. Each step up also increases risk, control requirem
 
 **Duration:** 1-3 months to first deployment. 3-6 months to establish patterns.
 
-**The mistake:** Staying here too long. "Innovation theatre" — endless pilots that never progress to value. If Fast Lane deployments don't lead to Tier 1 within 6-12 months, something is blocking progression.
+**The mistake:** Staying here too long. "Innovation theatre" - endless pilots that never progress to value. If Fast Lane deployments don't lead to Tier 1 within 6-12 months, something is blocking progression.
 
 ### Step 2: Assisted → Supported (Tier 1)
 
@@ -81,11 +81,11 @@ Each step up increases value. Each step up also increases risk, control requirem
 
 **Duration:** 3-6 months to first deployment. 6-12 months to operational maturity.
 
-**The mistake:** Treating Judge as a checkbox. Deploying a Judge that nobody monitors or calibrates. The Judge is only as good as its criteria and calibration. If nobody is reviewing Judge accuracy, you don't have a Judge — you have a log generator.
+**The mistake:** Treating Judge as a checkbox. Deploying a Judge that nobody monitors or calibrates. The Judge is only as good as its criteria and calibration. If nobody is reviewing Judge accuracy, you don't have a Judge - you have a log generator.
 
 ### Step 3: Supported → Supervised (Tier 2)
 
-**What you deploy:** Customer-facing AI with real capability — customer service with account access, document processing with outputs going to external parties, decision support with significant business impact. The AI handles routine cases; humans handle exceptions and high-impact decisions.
+**What you deploy:** Customer-facing AI with real capability - customer service with account access, document processing with outputs going to external parties, decision support with significant business impact. The AI handles routine cases; humans handle exceptions and high-impact decisions.
 
 **What changes:**
 - **External exposure.** AI outputs reach customers. Errors have reputational and regulatory consequences.
@@ -115,7 +115,7 @@ Each step up increases value. Each step up also increases risk, control requirem
 
 ### Step 4: Supervised → Autonomous (Tier 3)
 
-**What you deploy:** AI that makes independent decisions with real-world impact — automated lending decisions, autonomous trading within parameters, clinical decision support without mandatory clinician review, or multi-agent systems that plan and execute without human approval for routine actions.
+**What you deploy:** AI that makes independent decisions with real-world impact - automated lending decisions, autonomous trading within parameters, clinical decision support without mandatory clinician review, or multi-agent systems that plan and execute without human approval for routine actions.
 
 **What changes:**
 - **Decisions are AI-made.** The human is a monitor, not a decision-maker.
@@ -137,7 +137,7 @@ Each step up increases value. Each step up also increases risk, control requirem
 
 **Duration:** 12-18 months to first deployment (after Tier 2 maturity). Ongoing.
 
-**The mistake:** Treating autonomous AI as a cost-saving measure. If the business case depends on eliminating human review, the business case is wrong. Autonomous AI reduces human decision-making but increases human monitoring, governance, and incident response. The human cost shifts — it doesn't disappear.
+**The mistake:** Treating autonomous AI as a cost-saving measure. If the business case depends on eliminating human review, the business case is wrong. Autonomous AI reduces human decision-making but increases human monitoring, governance, and incident response. The human cost shifts - it doesn't disappear.
 
 ---
 
@@ -172,7 +172,7 @@ This feels slow. It is slow. It's also realistic. Organisations that claim to go
 | Low-risk domain | Tier 3 may not be needed; Tier 2 is the ceiling |
 | Small scale | Fewer interactions = simpler operations = faster maturation |
 
-Even accelerated, the progression from nothing to Tier 3 is 12-18 months. The reason is that operational maturity — the ability to detect and respond to AI failures — can't be compressed below the time it takes to actually operate systems and encounter real problems.
+Even accelerated, the progression from nothing to Tier 3 is 12-18 months. The reason is that operational maturity - the ability to detect and respond to AI failures - can't be compressed below the time it takes to actually operate systems and encounter real problems.
 
 ---
 
@@ -265,7 +265,7 @@ The tiered model is inherently progressive:
 | **Assisted** | Literature search, administrative summarisation, scheduling | Low; no clinical impact |
 | **Supported** | Clinical documentation assistance, diagnostic research | Moderate; informs clinical decisions |
 | **Supervised** | Triage support, treatment recommendation, imaging analysis | High; directly affects patient care |
-| **Autonomous** | Very limited — monitoring alarms, drug interaction checking | Maximum; medical device regulations may apply |
+| **Autonomous** | Very limited - monitoring alarms, drug interaction checking | Maximum; medical device regulations may apply |
 
 **Typical progression:** 24-36 months to reach Supervised. Autonomous is rare and highly constrained by medical device regulation and clinical safety requirements.
 
@@ -308,7 +308,7 @@ Not every organisation needs to reach Tier 3. Not every organisation should.
 - Regulatory environment supports it
 - The business case includes full operational cost, not just the technology cost
 
-The strategic goal is not "highest tier possible." It's "right tier for the business, operated safely." For many organisations, that's Tier 1 or Tier 2 — and that's fine.
+The strategic goal is not "highest tier possible." It's "right tier for the business, operated safely." For many organisations, that's Tier 1 or Tier 2 - and that's fine.
 
 ---
 

@@ -45,13 +45,13 @@
   <!-- ============================================ -->
   <!-- TITLE -->
   <!-- ============================================ -->
-  <text x="550" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Automated Risk Tiering — From Classification to Continuous Monitoring</text>
+  <text x="550" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Automated Risk Tiering - From Classification to Continuous Monitoring</text>
   <text x="550" y="52" text-anchor="middle" font-size="11" fill="#7f8c8d">Self-service classification. Auto-applied controls. Dynamic tier adjustment. No governance meetings required.</text>
 
   <!-- ============================================ -->
   <!-- PHASE 1: SELF-SERVICE CLASSIFICATION -->
   <!-- ============================================ -->
-  <text x="30" y="82" font-size="12" font-weight="bold" fill="#2c3e50" letter-spacing="1">PHASE 1 — SELF-SERVICE CLASSIFICATION</text>
+  <text x="30" y="82" font-size="12" font-weight="bold" fill="#2c3e50" letter-spacing="1">PHASE 1 - SELF-SERVICE CLASSIFICATION</text>
   <line x1="30" y1="88" x2="1070" y2="88" stroke="#d5dbdb" stroke-width="1"/>
 
   <!-- Start node -->
@@ -62,7 +62,7 @@
 
   <!-- Self-service form -->
   <rect x="340" y="160" width="420" height="120" rx="6" fill="#fff" stroke="#2980b9" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="550" y="180" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a5276">Six Questions — Self-Service Form (2 minutes)</text>
+  <text x="550" y="180" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a5276">Six Questions - Self-Service Form (2 minutes)</text>
   <line x1="360" y1="188" x2="740" y2="188" stroke="#d6eaf8" stroke-width="1"/>
 
   <text x="370" y="206" font-size="9.5" fill="#2c3e50">Q1. Does the system make decisions, or inform them?</text>
@@ -89,13 +89,13 @@
 
   <!-- Fast Lane YES -->
   <line x1="420" y1="413" x2="160" y2="413" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
-  <text x="300" y="406" font-size="9" font-weight="bold" fill="#27ae60">Yes — all 4 pass</text>
+  <text x="300" y="406" font-size="9" font-weight="bold" fill="#27ae60">Yes - all 4 pass</text>
 
   <rect x="30" y="388" width="128" height="50" rx="6" fill="url(#fastLaneGrad)" stroke="#27ae60" stroke-width="1.5" filter="url(#shadow)"/>
   <text x="94" y="408" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e8449">Fast Lane</text>
   <text x="94" y="422" text-anchor="middle" font-size="8.5" fill="#1e8449">Self-certify. Deploy.</text>
 
-  <!-- No — score determines tier -->
+  <!-- No - score determines tier -->
   <line x1="550" y1="448" x2="550" y2="470" stroke="#e74c3c" stroke-width="1.5" marker-end="url(#arrowRed)"/>
   <text x="564" y="464" font-size="9" font-weight="bold" fill="#e74c3c">No</text>
 
@@ -110,7 +110,7 @@
 
   <!-- Tier 1 box -->
   <rect x="80" y="547" width="240" height="100" rx="6" fill="url(#tier1Grad)" stroke="#2980b9" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="200" y="567" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a5276">Tier 1 — LOW / MEDIUM</text>
+  <text x="200" y="567" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a5276">Tier 1 - LOW / MEDIUM</text>
   <line x1="100" y1="573" x2="300" y2="573" stroke="#aed6f1" stroke-width="1"/>
   <text x="110" y="590" font-size="9" fill="#2c3e50">✓ Basic guardrails auto-deployed</text>
   <text x="110" y="604" font-size="9" fill="#2c3e50">✓ Judge at 5–10% sampling</text>
@@ -119,7 +119,7 @@
 
   <!-- Tier 2 box -->
   <rect x="430" y="547" width="240" height="100" rx="6" fill="url(#tier2Grad)" stroke="#d97706" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="550" y="567" text-anchor="middle" font-size="11" font-weight="bold" fill="#935116">Tier 2 — HIGH</text>
+  <text x="550" y="567" text-anchor="middle" font-size="11" font-weight="bold" fill="#935116">Tier 2 - HIGH</text>
   <line x1="450" y1="573" x2="650" y2="573" stroke="#fdebd0" stroke-width="1"/>
   <text x="452" y="590" font-size="9" fill="#2c3e50">✓ Enhanced guardrails + PII block</text>
   <text x="452" y="604" font-size="9" fill="#2c3e50">✓ Judge at 20–50%, near real-time</text>
@@ -128,7 +128,7 @@
 
   <!-- Tier 3 box -->
   <rect x="780" y="547" width="240" height="100" rx="6" fill="url(#tier3Grad)" stroke="#e74c3c" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="900" y="567" text-anchor="middle" font-size="11" font-weight="bold" fill="#922b21">Tier 3 — CRITICAL</text>
+  <text x="900" y="567" text-anchor="middle" font-size="11" font-weight="bold" fill="#922b21">Tier 3 - CRITICAL</text>
   <line x1="800" y1="573" x2="1000" y2="573" stroke="#fadbd8" stroke-width="1"/>
   <text x="802" y="590" font-size="9" fill="#2c3e50">✓ Multi-layer guardrails</text>
   <text x="802" y="604" font-size="9" fill="#2c3e50">✓ Judge at 100%, real-time</text>
@@ -138,12 +138,12 @@
   <!-- ============================================ -->
   <!-- PHASE 2: CONTINUOUS MONITORING -->
   <!-- ============================================ -->
-  <text x="30" y="690" font-size="12" font-weight="bold" fill="#2c3e50" letter-spacing="1">PHASE 2 — CONTINUOUS RISK MONITORING</text>
+  <text x="30" y="690" font-size="12" font-weight="bold" fill="#2c3e50" letter-spacing="1">PHASE 2 - CONTINUOUS RISK MONITORING</text>
   <line x1="30" y1="696" x2="1070" y2="696" stroke="#d5dbdb" stroke-width="1"/>
 
   <!-- Monitoring pipeline -->
   <rect x="60" y="710" width="980" height="180" rx="8" fill="url(#monitorGrad)" stroke="#aeb6bf" stroke-width="1" filter="url(#shadow)"/>
-  <text x="550" y="732" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3e50">Seven Signal Aggregation — Continuous Anomaly Scoring</text>
+  <text x="550" y="732" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3e50">Seven Signal Aggregation - Continuous Anomaly Scoring</text>
 
   <!-- Seven signals as small boxes -->
   <rect x="80" y="745" width="120" height="40" rx="4" fill="#fdedec" stroke="#e74c3c" stroke-width="1"/>
@@ -204,7 +204,7 @@
   <!-- ============================================ -->
   <!-- PHASE 3: DYNAMIC TIER ADJUSTMENT -->
   <!-- ============================================ -->
-  <text x="30" y="920" font-size="12" font-weight="bold" fill="#2c3e50" letter-spacing="1">PHASE 3 — DYNAMIC TIER ADJUSTMENT</text>
+  <text x="30" y="920" font-size="12" font-weight="bold" fill="#2c3e50" letter-spacing="1">PHASE 3 - DYNAMIC TIER ADJUSTMENT</text>
   <line x1="30" y1="926" x2="1070" y2="926" stroke="#d5dbdb" stroke-width="1"/>
 
   <!-- Escalation path (left side) -->
@@ -246,7 +246,7 @@
   <!-- The flaw callout -->
   <rect x="60" y="1178" width="980" height="70" rx="6" fill="#fef9e7" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
   <text x="80" y="1198" font-size="11" font-weight="bold" fill="#935116">⚠  The Flaw: Classification Is Only as Good as the Answers</text>
-  <text x="80" y="1216" font-size="9.5" fill="#2c3e50">The self-service form assumes the person completing it knows their system's data flows, audience reach, and regulatory status. In practice, teams understate risk —</text>
+  <text x="80" y="1216" font-size="9.5" fill="#2c3e50">The self-service form assumes the person completing it knows their system's data flows, audience reach, and regulatory status. In practice, teams understate risk -</text>
   <text x="80" y="1232" font-size="9.5" fill="#2c3e50">not maliciously, but because they classify intent rather than actual behaviour. Continuous monitoring exists to catch this gap: the system you described is not the</text>
   <text x="80" y="1248" font-size="9.5" fill="#1a5276; font-weight: bold">system that shipped. Runtime signals are the corrective layer. Classification starts the conversation. Monitoring finishes it.</text>
 

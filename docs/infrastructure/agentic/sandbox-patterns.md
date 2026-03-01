@@ -1,6 +1,6 @@
 # Sandbox Patterns for Agentic AI
 
-> **Control Domain:** Agentic — Execution Controls  
+> **Control Domain:** Agentic - Execution Controls  
 > **Purpose:** Contain the execution environment for agents that generate and run code, interact with file systems, or manipulate infrastructure.  
 > **Extends:** NET-01 (network zones) and SESS-02 (session isolation) with execution-specific depth.
 
@@ -8,7 +8,7 @@
 
 ## The Problem
 
-Code-generating agents (coding assistants, data analysis agents, automation agents) don't just produce text — they produce executable code and then run it. This means a prompt injection or model error can result in:
+Code-generating agents (coding assistants, data analysis agents, automation agents) don't just produce text - they produce executable code and then run it. This means a prompt injection or model error can result in:
 
 - Arbitrary code execution on infrastructure the agent has access to.
 - File system access (read, write, delete) beyond the intended scope.
@@ -16,7 +16,7 @@ Code-generating agents (coding assistants, data analysis agents, automation agen
 - Resource exhaustion (CPU, memory, disk, network).
 - Persistent changes that outlive the agent session.
 
-The standard controls (guardrails, tool permissions) are necessary but insufficient for code execution. Code is inherently unconstrained — a single line of Python can do anything the runtime environment permits. The sandbox is what limits what "anything" means.
+The standard controls (guardrails, tool permissions) are necessary but insufficient for code execution. Code is inherently unconstrained - a single line of Python can do anything the runtime environment permits. The sandbox is what limits what "anything" means.
 
 ---
 
@@ -127,7 +127,7 @@ Without resource limits, agent-generated code can cause denial of service throug
 
 ### Enforcement
 
-Use OS-level resource controls (cgroups, ulimits) rather than application-level checks. The code being executed is untrusted — application-level limits can be circumvented.
+Use OS-level resource controls (cgroups, ulimits) rather than application-level checks. The code being executed is untrusted - application-level limits can be circumvented.
 
 ---
 
@@ -137,7 +137,7 @@ Code execution within a sandbox must not create persistent state that survives t
 
 ### Requirements
 
-- Sandbox environments are **ephemeral** — created at execution start, destroyed at execution end.
+- Sandbox environments are **ephemeral** - created at execution start, destroyed at execution end.
 - Output files are returned to the agent via the authorized path, not left on a shared file system.
 - No installed packages, modified configurations, or created users persist beyond the execution.
 - Environment variables, process state, and temporary files are destroyed.
@@ -169,7 +169,7 @@ Before agent-generated code is executed, scan it for dangerous patterns.
 
 ### Limitations
 
-Code scanning catches known dangerous patterns but is inherently incomplete — the sandbox resource limits and isolation are the primary controls. Code scanning is defence in depth, not a replacement for sandboxing.
+Code scanning catches known dangerous patterns but is inherently incomplete - the sandbox resource limits and isolation are the primary controls. Code scanning is defence in depth, not a replacement for sandboxing.
 
 ---
 
@@ -181,7 +181,7 @@ Code scanning catches known dangerous patterns but is inherently incomplete — 
 - [ ] Default: no network access from sandbox
 - [ ] Network access (when required) allowlisted, proxied, and logged
 - [ ] Resource limits enforced at OS level (CPU, memory, disk, processes)
-- [ ] Sandbox environments ephemeral — no persistent state across executions
+- [ ] Sandbox environments ephemeral - no persistent state across executions
 - [ ] Pre-execution code scanning for dangerous patterns
 - [ ] Sandbox execution logged with code, output, resource usage, and duration
 - [ ] Sandbox escape attempts detected and classified as security incidents

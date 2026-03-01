@@ -84,7 +84,7 @@
   
   <!-- Step 6: Monitor (back to start) -->
   <rect x="100" y="370" width="500" height="50" rx="8" fill="url(#monitorGrad)" filter="url(#shadow)"/>
-  <text x="350" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">MONITOR — Watch for similar attempts</text>
+  <text x="350" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">MONITOR - Watch for similar attempts</text>
   <text x="350" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#e9d5ff">Loop back to detection with improved controls</text>
   
   <!-- Arrows from Monitor back up -->

@@ -13,7 +13,7 @@
 
   <!-- Title -->
   <text x="450" y="38" text-anchor="middle" fill="#e6edf3" font-size="18" font-weight="600">Data Classification Points in the AI Pipeline</text>
-  <text x="450" y="58" text-anchor="middle" fill="#8b949e" font-size="12">DAT-01 — Classification at every AI boundary</text>
+  <text x="450" y="58" text-anchor="middle" fill="#8b949e" font-size="12">DAT-01 - Classification at every AI boundary</text>
 
   <!-- Pipeline flow boxes -->
   <!-- User / Prompt -->

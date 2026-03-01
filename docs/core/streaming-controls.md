@@ -2,7 +2,7 @@
 
 > Validating output that hasn't finished yet.
 >
-> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers - Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
 
 ## The Problem
 
@@ -20,9 +20,9 @@ By the time evaluation is possible, the content is already on screen.
 
 ## Why This Matters
 
-For Tier 1 (low risk) — internal chatbots, content drafting — this is acceptable. Users understand they're interacting with a draft.
+For Tier 1 (low risk) - internal chatbots, content drafting - this is acceptable. Users understand they're interacting with a draft.
 
-For Tier 2–3 — customer-facing, regulated, consequential — delivering unevaluated content to users is a control gap.
+For Tier 2–3 - customer-facing, regulated, consequential - delivering unevaluated content to users is a control gap.
 
 ---
 
@@ -39,7 +39,7 @@ LLM → Buffer (N tokens) → Guardrail check → Release to client → Buffer n
 | Parameter | Setting | Trade-off |
 |-----------|---------|-----------|
 | Buffer size | 50–100 tokens (~1–2 sentences) | Larger = better detection, worse perceived latency |
-| Evaluation | Text guardrails on buffer content | Fast rules only — no LLM judge in the loop |
+| Evaluation | Text guardrails on buffer content | Fast rules only - no LLM judge in the loop |
 | Release trigger | Guardrail pass OR buffer timeout | Timeout prevents indefinite blocking |
 | Block action | Replace buffer content with safe message | User sees interruption, not harmful content |
 
@@ -81,8 +81,8 @@ LLM → Complete response → Guardrails → Judge → Deliver (or block)
 | Trade-off | Impact |
 |-----------|--------|
 | Latency | User waits 3–30s for response with no incremental feedback |
-| UX | Worse perceived performance — mitigate with loading indicators |
-| Safety | Full evaluation before delivery — strongest control |
+| UX | Worse perceived performance - mitigate with loading indicators |
+| Safety | Full evaluation before delivery - strongest control |
 
 **When to use:** Tier 3 and any Tier 2 use case where content reaches customers, regulators, or triggers consequential actions.
 
@@ -101,10 +101,10 @@ LLM → Complete response → Guardrails → Judge → Deliver (or block)
 
 ## Implementation Notes
 
-### Buffer and Release — Server-Side
+### Buffer and Release - Server-Side
 
 ```python
-# Pseudocode — adapt to your framework
+# Pseudocode - adapt to your framework
 buffer = []
 buffer_size = 75  # tokens
 
@@ -128,14 +128,14 @@ if buffer:
         yield chunk_text
 ```
 
-### Post-Hoc Retraction — Client-Side
+### Post-Hoc Retraction - Client-Side
 
 The client must support retraction. This means:
 
-1. **Response IDs** — Every streamed response has a unique ID
-2. **Retraction channel** — WebSocket or SSE channel for retraction messages
-3. **UI handling** — Client replaces or flags retracted content
-4. **Audit logging** — Both the original content and retraction are logged
+1. **Response IDs** - Every streamed response has a unique ID
+2. **Retraction channel** - WebSocket or SSE channel for retraction messages
+3. **UI handling** - Client replaces or flags retracted content
+4. **Audit logging** - Both the original content and retraction are logged
 
 ---
 
@@ -143,8 +143,8 @@ The client must support retraction. This means:
 
 | Capability | Impact on Streaming |
 |-----------|-------------------|
-| Full-response guardrails | Degraded — chunk-level only (Pattern 1) or post-hoc (Pattern 2) |
-| Judge evaluation | Async only — cannot block delivery in real-time |
+| Full-response guardrails | Degraded - chunk-level only (Pattern 1) or post-hoc (Pattern 2) |
+| Judge evaluation | Async only - cannot block delivery in real-time |
 | Consistent quality scoring | Scores apply to complete response, available only after stream ends |
 | Deterministic safety | You cannot guarantee no user ever sees problematic content in a stream |
 

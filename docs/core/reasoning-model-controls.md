@@ -1,8 +1,8 @@
 # Reasoning Model Controls
 
-> Addendum for [Emerging Controls](emerging-controls.md) — practical guidance for reasoning models.
+> Addendum for [Emerging Controls](emerging-controls.md) - practical guidance for reasoning models.
 >
-> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers - Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
 
 ## The Problem
 
@@ -19,7 +19,7 @@ Reasoning models (OpenAI o1/o3, Claude with extended thinking, Gemini with think
 
 | Provider | Reasoning Trace Access | Implication |
 |----------|----------------------|-------------|
-| OpenAI (o1/o3) | Not exposed via API | Cannot monitor reasoning — output-only evaluation |
+| OpenAI (o1/o3) | Not exposed via API | Cannot monitor reasoning - output-only evaluation |
 | Anthropic (extended thinking) | Exposed as `thinking` blocks | Can monitor, but content is explicitly marked as draft reasoning |
 | Google (Gemini thinking) | Partially exposed | Limited inspection capability |
 | Open-source (Qwen QwQ, etc.) | Fully visible | Full monitoring possible |
@@ -54,7 +54,7 @@ Additional controls become possible:
 
 Be honest about what you can't do:
 
-1. **Reasoning traces are not ground truth.** The model may "think" one thing and output another — this is by design (safety training teaches models to reason past harmful thoughts).
+1. **Reasoning traces are not ground truth.** The model may "think" one thing and output another - this is by design (safety training teaches models to reason past harmful thoughts).
 2. **Monitoring traces at scale is expensive.** Reasoning traces can be 10–100x longer than the final output.
 3. **Most reasoning traces are benign.** The signal-to-noise ratio for trace monitoring is very low.
 
@@ -64,7 +64,7 @@ Be honest about what you can't do:
 |-----------|------------------------|
 | **Tier 1** | Use reasoning models freely; output-only evaluation sufficient |
 | **Tier 2** | Output-focused evaluation with periodic behavioral testing |
-| **Tier 3** | If traces are accessible: sample-based trace monitoring. If not: enhanced output evaluation + adversarial testing. Consider whether a reasoning model is necessary — a non-reasoning model with stronger output controls may be more governable |
+| **Tier 3** | If traces are accessible: sample-based trace monitoring. If not: enhanced output evaluation + adversarial testing. Consider whether a reasoning model is necessary - a non-reasoning model with stronger output controls may be more governable |
 
 ---
 

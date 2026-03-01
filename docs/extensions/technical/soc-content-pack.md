@@ -19,7 +19,7 @@ Before deploying these rules, ensure:
 
 ## Detection Rules
 
-### 1. Prompt Injection — Repeated Attempts
+### 1. Prompt Injection - Repeated Attempts
 
 **What it detects:** A single user making multiple prompt injection attempts in a short window, indicating active adversarial probing.
 
@@ -50,13 +50,13 @@ service:ai_security @category:prompt_attack | stats count by @user_id,@src_ip | 
 | Field | Value |
 |---|---|
 | **Severity** | Medium–Critical (scales with volume) |
-| **MITRE ATLAS** | AML.T0051 — LLM Prompt Injection |
+| **MITRE ATLAS** | AML.T0051 - LLM Prompt Injection |
 | **Framework Control** | LOG-06, NET-02 |
 | **Response** | Block user after 10 attempts. Capture full payloads for threat intel. |
 
 ---
 
-### 2. Judge Flag Clustering — High-Severity Burst
+### 2. Judge Flag Clustering - High-Severity Burst
 
 **What it detects:** Multiple high-confidence Judge flags for the same user or endpoint in a short period, indicating sustained policy violation or coordinated attack.
 
@@ -87,7 +87,7 @@ AISecurity_CL
 
 ---
 
-### 3. Data Exfiltration — Anomalous Output Volume
+### 3. Data Exfiltration - Anomalous Output Volume
 
 **What it detects:** Model responses significantly larger than baseline, suggesting bulk data extraction or structured data exfiltration.
 
@@ -118,13 +118,13 @@ AISecurity_CL
 | Field | Value |
 |---|---|
 | **Severity** | High |
-| **MITRE ATLAS** | AML.T0024 — Exfiltration via ML Inference API |
+| **MITRE ATLAS** | AML.T0024 - Exfiltration via ML Inference API |
 | **Framework Control** | DAT-06, NET-04 |
 | **Response** | Investigate user activity. Check if output contains structured data, PII, or credential patterns. |
 
 ---
 
-### 4. Agent Boundary Violation — Unauthorised Tool Use
+### 4. Agent Boundary Violation - Unauthorised Tool Use
 
 **What it detects:** An agent attempting to invoke tools outside its declared permission set, indicating prompt injection, goal hijacking, or misconfiguration.
 
@@ -154,9 +154,9 @@ AISecurity_CL
 
 ---
 
-### 5. Guardrail Bypass — Successful Attack
+### 5. Guardrail Bypass - Successful Attack
 
-**What it detects:** A guardrail passed a request but the Judge subsequently flagged the same transaction as a policy violation — indicating the guardrail was bypassed.
+**What it detects:** A guardrail passed a request but the Judge subsequently flagged the same transaction as a policy violation - indicating the guardrail was bypassed.
 
 **Splunk SPL:**
 ```spl
@@ -182,9 +182,9 @@ AISecurity_CL
 
 ---
 
-### 6. Model Drift — Judge Accuracy Degradation
+### 6. Model Drift - Judge Accuracy Degradation
 
-**What it detects:** Judge evaluation metrics shifting over time — increasing false positive/negative rates or declining agreement with human reviewers.
+**What it detects:** Judge evaluation metrics shifting over time - increasing false positive/negative rates or declining agreement with human reviewers.
 
 **Splunk SPL:**
 ```spl
@@ -215,7 +215,7 @@ AISecurity_CL
 
 ---
 
-### 7. Credential Exposure — Secrets in Model I/O
+### 7. Credential Exposure - Secrets in Model I/O
 
 **What it detects:** Credential patterns (API keys, tokens, connection strings) appearing in model inputs or outputs despite guardrail scanning.
 
@@ -243,7 +243,7 @@ AISecurity_CL
 
 ---
 
-### 8. Anomalous Usage Pattern — Off-Hours / Geo Shift
+### 8. Anomalous Usage Pattern - Off-Hours / Geo Shift
 
 **What it detects:** AI system usage from a user during unusual hours or from an unexpected geographic location, correlated with AI-specific indicators.
 
@@ -393,12 +393,12 @@ AI security alerts look different from traditional security events. This referen
 
 | AI Concept | SOC Equivalent | Key Difference |
 |---|---|---|
-| Prompt injection | SQL injection / XSS | Attack is in natural language, not code. No signature match — requires semantic analysis. |
+| Prompt injection | SQL injection / XSS | Attack is in natural language, not code. No signature match - requires semantic analysis. |
 | Judge flag | IDS alert | Async detection, not inline blocking. May fire minutes after the event. |
 | Guardrail block | WAF block | Inline, deterministic. May have false positives for legitimate edge-case queries. |
 | Agent boundary violation | Privilege escalation alert | The "user" is an AI agent, not a human. The escalation may be caused by injected instructions. |
-| Model drift | Baseline deviation | The AI model's behaviour changed — could be provider update, adversarial manipulation, or data shift. |
-| Token volume spike | Data exfiltration alert | Large output doesn't always mean exfiltration — some queries legitimately produce long answers. Check content, not just volume. |
+| Model drift | Baseline deviation | The AI model's behaviour changed - could be provider update, adversarial manipulation, or data shift. |
+| Token volume spike | Data exfiltration alert | Large output doesn't always mean exfiltration - some queries legitimately produce long answers. Check content, not just volume. |
 | Credential in output | Secret exposure | Model may have memorised a credential from training data or tool output. Treat as compromised regardless of source. |
 
 ### Triage Decision Tree
@@ -439,10 +439,10 @@ AI Security Alert Received
 
 ## Related
 
-- [SOC Integration](soc-integration.md) — Architecture, alert taxonomy, and triage procedures
-- [Anomaly Detection Ops](anomaly-detection-ops.md) — Behavioural anomaly detection operations
-- [Operational Metrics](operational-metrics.md) — Metrics that feed SOC dashboards
-- [Logging & Observability](../../infrastructure/controls/logging-and-observability.md) — Infrastructure-level logging controls
+- [SOC Integration](soc-integration.md) - Architecture, alert taxonomy, and triage procedures
+- [Anomaly Detection Ops](anomaly-detection-ops.md) - Behavioural anomaly detection operations
+- [Operational Metrics](operational-metrics.md) - Metrics that feed SOC dashboards
+- [Logging & Observability](../../infrastructure/controls/logging-and-observability.md) - Infrastructure-level logging controls
 
 ---
 

@@ -6,9 +6,9 @@
 
 ## Why This Exists
 
-The framework describes guardrails as the first layer of defence — real-time controls that block known-bad inputs and outputs. [Why Guardrails Aren't Enough](why-guardrails-arent-enough.md) explains the theory. This article makes it practical.
+The framework describes guardrails as the first layer of defence - real-time controls that block known-bad inputs and outputs. [Why Guardrails Aren't Enough](why-guardrails-arent-enough.md) explains the theory. This article makes it practical.
 
-Most organisations deploying AI guardrails focus on prompt injection and content filtering. That's necessary but incomplete. Guardrails must also prevent personal information, sensitive data, secrets, and classified content from flowing into or out of AI systems — and they must do this across every nation whose citizens use the system. They must alert when triggered. And they must be governed: always on by default, with exceptions managed through a formal process.
+Most organisations deploying AI guardrails focus on prompt injection and content filtering. That's necessary but incomplete. Guardrails must also prevent personal information, sensitive data, secrets, and classified content from flowing into or out of AI systems - and they must do this across every nation whose citizens use the system. They must alert when triggered. And they must be governed: always on by default, with exceptions managed through a formal process.
 
 This article defines what guardrails should catch, how they should work at each layer, and what governance looks like when someone asks to turn one off.
 
@@ -36,7 +36,7 @@ Every guardrail works in both directions. If you filter PII from inputs but not 
 
 Not all guardrails are equal. Some protect against attack. Others protect against data exposure. The governance model is different for each.
 
-### Class 1: Security Guardrails — Always On
+### Class 1: Security Guardrails - Always On
 
 These protect the AI system from being compromised. They cannot be turned off. There is no exception process. Disabling them is a security incident.
 
@@ -50,20 +50,20 @@ These protect the AI system from being compromised. They cannot be turned off. T
 | **Input length limits** | Context stuffing, payload hiding | Forces guardrails to process unbounded input |
 | **Request signing / authentication** | Unsigned or unauthenticated API calls | Bypasses all application-level controls |
 
-**These guardrails must be deployed before the system is accessible.** Rate limits, authentication, and injection detection are not features you add after launch — they are preconditions for launch. An AI endpoint without rate limiting is an invitation for abuse. An AI system without injection detection is an unprotected attack surface.
+**These guardrails must be deployed before the system is accessible.** Rate limits, authentication, and injection detection are not features you add after launch - they are preconditions for launch. An AI endpoint without rate limiting is an invitation for abuse. An AI system without injection detection is an unprotected attack surface.
 
-### Class 2: Data Protection Guardrails — Always On, Exceptions Governed
+### Class 2: Data Protection Guardrails - Always On, Exceptions Governed
 
-These protect data — personal, sensitive, classified, or secret — from entering or leaving the AI system inappropriately. They are on by default. Turning one off requires justification and data owner approval.
+These protect data - personal, sensitive, classified, or secret - from entering or leaving the AI system inappropriately. They are on by default. Turning one off requires justification and data owner approval.
 
 | Guardrail | What It Catches | Default State |
 |-----------|----------------|---------------|
-| **PII detection** | Personal identifiers across all jurisdictions | On — input and output |
-| **Sensitive PII detection** | Health data, biometrics, financial records, criminal records | On — input and output |
-| **Secrets detection** | API keys, passwords, tokens, connection strings, private keys | On — input and output |
-| **Classification markers** | Content marked Confidential, Secret, or equivalent | On — input and output |
-| **Financial data detection** | Card numbers, account numbers, sort codes, IBANs | On — input and output |
-| **Credential patterns** | Usernames with passwords, bearer tokens, session IDs | On — input and output |
+| **PII detection** | Personal identifiers across all jurisdictions | On - input and output |
+| **Sensitive PII detection** | Health data, biometrics, financial records, criminal records | On - input and output |
+| **Secrets detection** | API keys, passwords, tokens, connection strings, private keys | On - input and output |
+| **Classification markers** | Content marked Confidential, Secret, or equivalent | On - input and output |
+| **Financial data detection** | Card numbers, account numbers, sort codes, IBANs | On - input and output |
+| **Credential patterns** | Usernames with passwords, bearer tokens, session IDs | On - input and output |
 
 ---
 
@@ -95,7 +95,7 @@ PII extends beyond government-issued identifiers:
 
 | Category | Examples | Detection Method |
 |----------|----------|-----------------|
-| **Names** | Full names, surnames combined with context | NER models (not regex — names are too variable) |
+| **Names** | Full names, surnames combined with context | NER models (not regex - names are too variable) |
 | **Addresses** | Street addresses, postcodes/ZIP codes | NER + postcode regex per country |
 | **Phone numbers** | International formats with country codes | Regex library (e.g., Google's libphonenumber patterns) |
 | **Email addresses** | Any email format | Standard regex |
@@ -110,11 +110,11 @@ PII extends beyond government-issued identifiers:
 
 ### Implementation Approach
 
-**Layer 1 — Regex (fast, deterministic):** Catches structured PII with known formats. Run first. Low latency.
+**Layer 1 - Regex (fast, deterministic):** Catches structured PII with known formats. Run first. Low latency.
 
-**Layer 2 — NER models (accurate, broader):** Catches unstructured PII (names, addresses, contextual identifiers). Run second. Higher latency but catches what regex misses.
+**Layer 2 - NER models (accurate, broader):** Catches unstructured PII (names, addresses, contextual identifiers). Run second. Higher latency but catches what regex misses.
 
-**Layer 3 — Classification models (semantic):** Catches sensitive information that isn't structured PII — health conditions described in natural language, financial distress indicators, legal matter descriptions. Run on higher-risk tiers.
+**Layer 3 - Classification models (semantic):** Catches sensitive information that isn't structured PII - health conditions described in natural language, financial distress indicators, legal matter descriptions. Run on higher-risk tiers.
 
 **Detection must be locale-aware.** If your system serves UK and US users, your PII detection must handle both NI numbers and SSNs, both NHS numbers and Medicare IDs, both sort codes and routing numbers. If you add users from a new country, update the detection library before launch.
 
@@ -164,7 +164,7 @@ A guardrail that blocks silently is a guardrail nobody learns from. Every guardr
 | **Classification boundary violation** | High | Data owner + security | Investigate data flow; adjust controls |
 | **Rate limit triggered** | Info → Warning at threshold | Security operations | Review for abuse pattern |
 | **Guardrail bypass detected** | Critical | Incident response | Immediate investigation |
-| **Unusual block rate** | Warning | Security + operations | Investigate — either new attack or false positive spike |
+| **Unusual block rate** | Warning | Security + operations | Investigate - either new attack or false positive spike |
 
 ### Alert Fatigue Prevention
 
@@ -180,7 +180,7 @@ A guardrail that blocks silently is a guardrail nobody learns from. Every guardr
 
 ## The Judge as a Data Protection Layer
 
-Guardrails catch known patterns. The [Judge](../core/controls.md) catches what guardrails miss — including sensitive data that doesn't match a regex.
+Guardrails catch known patterns. The [Judge](../core/controls.md) catches what guardrails miss - including sensitive data that doesn't match a regex.
 
 ### What the Judge Should Check For
 
@@ -213,7 +213,7 @@ DATA PROTECTION EVALUATION:
 
 ## Human Reviewers as the Final Data Protection Check
 
-HITL reviewers are the last line of defence. When they review AI interactions — whether triggered by the Judge, by sampling, or by user escalation — they should actively check for data protection issues.
+HITL reviewers are the last line of defence. When they review AI interactions - whether triggered by the Judge, by sampling, or by user escalation - they should actively check for data protection issues.
 
 ### What Human Reviewers Should Look For
 
@@ -228,7 +228,7 @@ HITL reviewers are the last line of defence. When they review AI interactions �
 
 ### Reviewer Training
 
-Reviewers must be trained to recognise data protection issues — not just content quality. Include:
+Reviewers must be trained to recognise data protection issues - not just content quality. Include:
 
 - Examples of PII that guardrails miss (contextual, aggregated, implied)
 - Examples of secrets in unexpected formats (connection strings in code blocks, tokens in URLs)
@@ -249,18 +249,18 @@ Guardrails are always on. But "always" meets reality when a legitimate business 
 
 | Step | Activity | Owner | Output |
 |------|----------|-------|--------|
-| 1 | **Request** — team identifies a guardrail that is blocking legitimate use | Use case owner | Written request naming the specific guardrail, the use case, and why it's blocking |
-| 2 | **Classify** — is this a security guardrail or a data protection guardrail? | Security | Classification determines the process |
-| 3a | **Security guardrail** — request denied. Security guardrails cannot be disabled. Find another approach. | Security | Denial with guidance on alternatives |
-| 3b | **Data protection guardrail** — assess the risk of the exception | Risk analyst | Risk assessment documenting what data is exposed, to whom, under what conditions |
-| 4 | **Data owner decision** — the data owner (not the use case owner, not IT) decides whether to accept the risk | Data owner | Signed acceptance or rejection |
-| 5 | **Implement with compensating controls** — if approved, disable the specific guardrail for the specific use case with compensating controls | Engineering + Security | Scoped exception with compensating controls documented |
-| 6 | **Monitor** — increased Judge sampling and human review for the excepted use case | Operations | Enhanced monitoring active |
-| 7 | **Review** — exception reviewed at defined interval (90 days maximum) | Governance | Exception renewed or retired |
+| 1 | **Request** - team identifies a guardrail that is blocking legitimate use | Use case owner | Written request naming the specific guardrail, the use case, and why it's blocking |
+| 2 | **Classify** - is this a security guardrail or a data protection guardrail? | Security | Classification determines the process |
+| 3a | **Security guardrail** - request denied. Security guardrails cannot be disabled. Find another approach. | Security | Denial with guidance on alternatives |
+| 3b | **Data protection guardrail** - assess the risk of the exception | Risk analyst | Risk assessment documenting what data is exposed, to whom, under what conditions |
+| 4 | **Data owner decision** - the data owner (not the use case owner, not IT) decides whether to accept the risk | Data owner | Signed acceptance or rejection |
+| 5 | **Implement with compensating controls** - if approved, disable the specific guardrail for the specific use case with compensating controls | Engineering + Security | Scoped exception with compensating controls documented |
+| 6 | **Monitor** - increased Judge sampling and human review for the excepted use case | Operations | Enhanced monitoring active |
+| 7 | **Review** - exception reviewed at defined interval (90 days maximum) | Governance | Exception renewed or retired |
 
 ### Principles
 
-- **Security guardrails have no exception process.** Prompt injection detection, jailbreak detection, rate limiting, and authentication controls cannot be disabled. If they're causing false positives, the fix is to improve the detection — not to remove it.
+- **Security guardrails have no exception process.** Prompt injection detection, jailbreak detection, rate limiting, and authentication controls cannot be disabled. If they're causing false positives, the fix is to improve the detection - not to remove it.
 - **Data protection exceptions require the data owner's decision.** Not the project team. Not IT. Not the CISO. The person accountable for the data decides whether the risk is acceptable. This is non-negotiable.
 - **Exceptions are scoped.** An exception applies to one guardrail, for one use case, for a defined period. It is not a general waiver.
 - **Exceptions require compensating controls.** If PII detection is disabled for a medical triage use case that legitimately needs health data, the compensating controls might include 100% Judge sampling, mandatory HITL review, enhanced logging, and a restricted user population.
@@ -283,7 +283,7 @@ What the governance function should track:
 
 ## Pre-Breach Controls: Rate Limits and Data Validation
 
-Some controls must be in place before an AI system is exposed to users — not as a response to an incident, but as a precondition for deployment. These are pre-breach controls: they exist to limit the blast radius when (not if) something goes wrong.
+Some controls must be in place before an AI system is exposed to users - not as a response to an incident, but as a precondition for deployment. These are pre-breach controls: they exist to limit the blast radius when (not if) something goes wrong.
 
 ### Rate Limiting
 
@@ -295,7 +295,7 @@ Some controls must be in place before an AI system is exposed to users — not a
 | **Cost-based limit** | Prevents unexpected spend | Daily/monthly token budget per user or use case |
 | **Escalating limits** | Tightens limits on suspicious behaviour | Normal → reduced → blocked as anomalies detected |
 
-**Deploy rate limits before launch.** Calibrate after launch based on usage data. Don't wait for abuse to add limits — by then, the damage is done.
+**Deploy rate limits before launch.** Calibrate after launch based on usage data. Don't wait for abuse to add limits - by then, the damage is done.
 
 ### Input Data Validation
 
@@ -374,7 +374,7 @@ Guardrails protect the front door. Data also leaks through side channels that gu
 
 ## Relationship to Other Articles
 
-- **[Why Guardrails Aren't Enough](why-guardrails-arent-enough.md)** explains the theory — guardrails are necessary but not sufficient. This article makes the guardrail layer practical.
+- **[Why Guardrails Aren't Enough](why-guardrails-arent-enough.md)** explains the theory - guardrails are necessary but not sufficient. This article makes the guardrail layer practical.
 - **[Data Protection](../infrastructure/controls/data-protection.md)** defines the formal DAT-01 through DAT-08 controls. This article provides implementation guidance for the guardrail components of those controls.
 - **[Bypass Prevention](../extensions/technical/bypass-prevention.md)** covers what happens when guardrails are circumvented. This article focuses on making them hard to circumvent in the first place.
 - **[RAG Security](../extensions/technical/rag-security.md)** covers RAG-specific controls. This article adds the ingestion filtering perspective.

@@ -8,7 +8,7 @@
 
 ## Principle
 
-Any agent with authority over other agents — to plan, evaluate, monitor, or terminate — requires controls proportionate to that authority. Orchestrators, evaluators, and observers are not exempt from the control architecture. They are subject to a version of it that matches their specific threat model.
+Any agent with authority over other agents - to plan, evaluate, monitor, or terminate - requires controls proportionate to that authority. Orchestrators, evaluators, and observers are not exempt from the control architecture. They are subject to a version of it that matches their specific threat model.
 
 The controls in other MASO domains secure task agents against each other and against external threats. This domain secures the system against failures in the agents that govern it.
 
@@ -18,9 +18,9 @@ The controls in other MASO domains secure task agents against each other and aga
 
 **Orchestrators influence outcomes through decisions, not tools.** A compromised orchestrator doesn't need tool access to cause harm. It causes harm through task decomposition, agent selection, and result interpretation. Existing controls (IA-2.5, tool scoping) don't address this class of threat because the orchestrator's power is in planning, not execution.
 
-**Evaluators are single points of trust.** The LLM-as-Judge approves or blocks every task agent output. If Judge criteria drift, or the Judge model is compromised, Layer 2 collapses silently — every output passes because the standard has shifted. The system reports healthy while the controls are effectively disabled.
+**Evaluators are single points of trust.** The LLM-as-Judge approves or blocks every task agent output. If Judge criteria drift, or the Judge model is compromised, Layer 2 collapses silently - every output passes because the standard has shifted. The system reports healthy while the controls are effectively disabled.
 
-**Observers with kill switch authority can be weaponised.** An over-sensitive observer repeatedly triggers emergency shutdowns, degrading the system into permanent contingency. Operators disable it to restore service. The system now runs without its safety net — and nobody formally accepted that risk.
+**Observers with kill switch authority can be weaponised.** An over-sensitive observer repeatedly triggers emergency shutdowns, degrading the system into permanent contingency. Operators disable it to restore service. The system now runs without its safety net - and nobody formally accepted that risk.
 
 **Nested orchestration multiplies these risks.** In hierarchical topologies, a compromised sub-orchestrator affects its entire agent cluster. Per-agent blast radius caps don't contain aggregate harm from a coordinated sub-tree.
 
@@ -37,13 +37,13 @@ Before applying controls, classify each agent in the orchestration by its govern
 | **Evaluator** | Approves, blocks, or escalates other agents' outputs | LLM-as-Judge, critic, reviewer, quality gate | Criteria drift, adversarial bypass, calibration decay |
 | **Observer** | Monitors, scores anomalies, triggers escalation or kill switch | Monitoring agent, anomaly detector, safety agent | Miscalibration, over/under-sensitivity, weaponised shutdown |
 
-An agent may hold multiple roles. An orchestrator that also evaluates intermediate outputs is both orchestrator and evaluator — and requires controls from both categories.
+An agent may hold multiple roles. An orchestrator that also evaluates intermediate outputs is both orchestrator and evaluator - and requires controls from both categories.
 
 ---
 
 ## Controls by Tier
 
-### Tier 1 — Supervised
+### Tier 1 - Supervised
 
 | Control | Requirement | Implementation Notes |
 |---------|-------------|---------------------|
@@ -54,7 +54,7 @@ An agent may hold multiple roles. An orchestrator that also evaluates intermedia
 
 **What you're building at Tier 1:** Visibility. You can answer: which agents have authority over other agents, what decisions are they making, and why?
 
-### Tier 2 — Managed
+### Tier 2 - Managed
 
 All Tier 1 controls remain active, plus:
 
@@ -71,13 +71,13 @@ All Tier 1 controls remain active, plus:
 
 **What you're building at Tier 2:** Measurement. You can answer: are our privileged agents still performing correctly, and how do we know?
 
-### Tier 3 — Autonomous
+### Tier 3 - Autonomous
 
 All Tier 2 controls remain active, plus:
 
 | Control | Requirement | Implementation Notes |
 |---------|-------------|---------------------|
-| **PA-3.1** Orchestrator output evaluation | Orchestrator's aggregated output — not just task agent outputs — is evaluated by the Judge | Catches failures smoothed over during aggregation: intermediate hallucinations, dropped caveats, selective emphasis. |
+| **PA-3.1** Orchestrator output evaluation | Orchestrator's aggregated output - not just task agent outputs - is evaluated by the Judge | Catches failures smoothed over during aggregation: intermediate hallucinations, dropped caveats, selective emphasis. |
 | **PA-3.2** Nested orchestration scoping | Each orchestration level has explicit permission boundaries; sub-orchestrators cannot exceed the scope delegated to them | Extends IA-2.4 (no transitive permissions) and IA-3.3 (delegation contracts) to orchestrator-to-sub-orchestrator boundaries. |
 | **PA-3.3** Sub-tree blast radius | Blast radius caps apply per orchestration sub-tree, not just per individual agent | A sub-orchestrator managing 5 agents with individual caps of 100 records each does not implicitly have a 500-record aggregate cap. Sub-tree cap is defined independently. |
 | **PA-3.4** Judge model rotation | Judge model is periodically rotated or supplemented with an alternative to prevent long-term adversarial adaptation | Rotation schedule based on risk tier. Prevents attackers from optimising against a static evaluator. |
@@ -139,7 +139,7 @@ All Tier 2 controls remain active, plus:
 
 ## Common Pitfalls
 
-**Treating the orchestrator as infrastructure, not as an agent.** If your orchestrator is an LLM, it has the same failure modes as any LLM — hallucination, injection susceptibility, goal drift. The fact that it plans rather than executes doesn't exempt it from monitoring.
+**Treating the orchestrator as infrastructure, not as an agent.** If your orchestrator is an LLM, it has the same failure modes as any LLM - hallucination, injection susceptibility, goal drift. The fact that it plans rather than executes doesn't exempt it from monitoring.
 
 **Calibrating the Judge once and forgetting it.** Judge accuracy decays. Models update. Criteria drift. The adversarial landscape shifts. A Judge that was 98% accurate at deployment may be 70% accurate six months later with no visible change in its configuration. Calibration must be ongoing.
 
@@ -147,9 +147,9 @@ All Tier 2 controls remain active, plus:
 
 **Setting blast radius caps per-agent but not per-sub-tree.** Five agents with a 100-record cap each can collectively modify 500 records if coordinated by a compromised sub-orchestrator. The sub-tree needs its own cap.
 
-**Disabling the observer to restore service.** When the observer triggers too many false positives, the operational pressure to disable it is real. The answer is not to disable the observer — it's to fix the calibration. If the observer is disabled, that fact must be logged, a human must formally accept the residual risk, and a remediation timeline must be defined. Running without the observer is a PACE Contingency state, not normal operations.
+**Disabling the observer to restore service.** When the observer triggers too many false positives, the operational pressure to disable it is real. The answer is not to disable the observer - it's to fix the calibration. If the observer is disabled, that fact must be logged, a human must formally accept the residual risk, and a remediation timeline must be defined. Running without the observer is a PACE Contingency state, not normal operations.
 
-**Building a meta-judge to watch the Judge.** The recursion problem is real but the solution is not more layers. It's calibration — periodic injection of known test cases to verify that each privileged agent is still performing as expected. Red team testing breaks the "who watches the watchmen" loop.
+**Building a meta-judge to watch the Judge.** The recursion problem is real but the solution is not more layers. It's calibration - periodic injection of known test cases to verify that each privileged agent is still performing as expected. Red team testing breaks the "who watches the watchmen" loop.
 
 ---
 
@@ -158,7 +158,7 @@ All Tier 2 controls remain active, plus:
 | Domain | Relationship |
 |--------|-------------|
 | [Identity & Access](identity-and-access.md) | PA extends IA-2.5 (orchestrator privilege separation) to cover orchestrator decision-making, not just tool access. PA-3.2 extends IA-2.4 (no transitive permissions) to nested orchestration levels. |
-| [Execution Control](execution-control.md) | PA extends EC-2.5 (LLM-as-Judge gate) with Judge governance — calibration, criteria versioning, disagreement procedures. PA-3.3 extends EC-2.3 (blast radius caps) to orchestration sub-trees. |
+| [Execution Control](execution-control.md) | PA extends EC-2.5 (LLM-as-Judge gate) with Judge governance - calibration, criteria versioning, disagreement procedures. PA-3.3 extends EC-2.3 (blast radius caps) to orchestration sub-trees. |
 | [Observability](observability.md) | PA extends OB-3.3 (independent observability agent) with observer self-test, precision monitoring, and kill switch dual authorisation. |
 | [Prompt, Goal & Epistemic Integrity](prompt-goal-and-epistemic-integrity.md) | PA-2.1 (orchestrator intent verification) complements PG-2.2 (goal integrity monitoring) by applying intent verification to the orchestrator's own decisions, not just task agents. |
 

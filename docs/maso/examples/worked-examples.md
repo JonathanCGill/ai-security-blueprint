@@ -37,11 +37,11 @@ A multi-agent system that produces investment research reports for portfolio man
 
 ### Key Risks
 
-**Epistemic cascading failure (ET-05).** The Data Collector ingests a news article containing a factual error about a company's revenue. The Research Analyst cites it. The Risk Assessor uses the Analyst's figure in its model. The Report Compiler produces a buy recommendation based on revenue growth that doesn't exist. Every agent operated correctly — the error was in the source, and it compounded through the chain.
+**Epistemic cascading failure (ET-05).** The Data Collector ingests a news article containing a factual error about a company's revenue. The Research Analyst cites it. The Risk Assessor uses the Analyst's figure in its model. The Report Compiler produces a buy recommendation based on revenue growth that doesn't exist. Every agent operated correctly - the error was in the source, and it compounded through the chain.
 
 **Hallucination amplification.** The Research Analyst hallucinates a correlation between two market indicators. The Risk Assessor, using a different model but the same training data distribution, produces a consistent finding. The Compliance Reviewer sees two independent agents agreeing and does not flag it. This is correlated hallucination presenting as independent corroboration.
 
-**Data boundary violations.** The Research Analyst has RAG access to proprietary analyst notes from all coverage sectors. The Report Compiler's output is distributed externally. If the Analyst includes insights from notes that are not cleared for external distribution, the Compiler may include them in the final report — breaching information barriers.
+**Data boundary violations.** The Research Analyst has RAG access to proprietary analyst notes from all coverage sectors. The Report Compiler's output is distributed externally. If the Analyst includes insights from notes that are not cleared for external distribution, the Compiler may include them in the final report - breaching information barriers.
 
 **Regulatory exposure.** Investment research in most jurisdictions requires disclosure of conflicts, clear basis for recommendations, and distinction between fact and opinion. A multi-agent system that presents hallucinated claims as facts, or that strips uncertainty from analyst assessments, creates regulatory liability.
 
@@ -50,9 +50,9 @@ A multi-agent system that produces investment research reports for portfolio man
 | Risk | Primary Controls | Tier |
 |------|-----------------|------|
 | Epistemic cascade | PG-2.5 (claim provenance), PG-2.7 (uncertainty preservation), PG-3.5 (challenger agent) | Tier 2 min, Tier 3 recommended |
-| Correlated hallucination | PG-2.4 (consensus diversity gate), PG-2.9 (model diversity — note Analyst and Risk Assessor share Provider A), PG-2.6 (self-referential evidence prohibition) | Tier 2 |
+| Correlated hallucination | PG-2.4 (consensus diversity gate), PG-2.9 (model diversity - note Analyst and Risk Assessor share Provider A), PG-2.6 (self-referential evidence prohibition) | Tier 2 |
 | Data boundary violation | DP-1.1 (data classification), DP-2.1 (DLP on message bus), DP-1.3 (memory isolation) | Tier 2 |
-| Regulatory compliance | EC-2.5 (LLM-as-Judge — evaluate regulatory compliance), EC-2.7 (aggregate harm assessment), OB-3.5 (decision traceability for regulatory explanation) | Tier 2 |
+| Regulatory compliance | EC-2.5 (LLM-as-Judge - evaluate regulatory compliance), EC-2.7 (aggregate harm assessment), OB-3.5 (decision traceability for regulatory explanation) | Tier 2 |
 
 ### Model Diversity Issue
 
@@ -64,7 +64,7 @@ The Risk Assessor and Data Collector both use Provider A. Under PG-2.9, this is 
 
 **Primary:** All agents operational. The Data Collector ingests a news article containing an incorrect revenue figure for Company X.
 
-**Detection (still in Primary):** The Research Analyst cites the figure. PG-2.5 (claim provenance) tags it as sourced from a single external news article — not from filings or verified data. PG-2.7 (uncertainty preservation) requires the Analyst to carry the source's confidence level (single unverified source = low confidence). The Report Compiler cannot present a low-confidence claim as established fact.
+**Detection (still in Primary):** The Research Analyst cites the figure. PG-2.5 (claim provenance) tags it as sourced from a single external news article - not from filings or verified data. PG-2.7 (uncertainty preservation) requires the Analyst to carry the source's confidence level (single unverified source = low confidence). The Report Compiler cannot present a low-confidence claim as established fact.
 
 **If detection fails → Alternate:** The Risk Assessor produces a model based on the incorrect figure. OB-2.2 (behavioural drift detection) flags that the Assessor's revenue growth assumption is significantly above consensus estimates. The Judge (EC-2.5) evaluates the discrepancy and escalates. The Risk Assessor is isolated. A backup assessment is produced using only verified filing data. All write operations (report publication) require human approval during Alternate.
 
@@ -96,7 +96,7 @@ A multi-agent system that assists clinicians with treatment planning for oncolog
 
 **Patient data exposure.** Patient records contain highly sensitive PHI. The Records Reviewer has access to the full patient record. If any downstream agent's model provider receives PHI in prompts, the data has left the institutional boundary. This is both a HIPAA violation and an ethical breach.
 
-**Evidence quality degradation.** The Literature Agent retrieves and summarises studies. If it conflates results from different study populations, or presents preliminary findings as established evidence, the treatment recommendation may be based on misleading evidence. In a multi-agent chain, the Synthesis Agent has no way to independently verify the Literature Agent's summaries — it trusts them as accurate representations of the source material.
+**Evidence quality degradation.** The Literature Agent retrieves and summarises studies. If it conflates results from different study populations, or presents preliminary findings as established evidence, the treatment recommendation may be based on misleading evidence. In a multi-agent chain, the Synthesis Agent has no way to independently verify the Literature Agent's summaries - it trusts them as accurate representations of the source material.
 
 **Hallucinated drug interactions.** The Protocol Agent checks drug interactions. If it hallucinates an interaction that doesn't exist, a viable treatment option is excluded. If it misses a real interaction, patient safety is at risk. Both failure modes are clinically significant.
 
@@ -106,26 +106,26 @@ A multi-agent system that assists clinicians with treatment planning for oncolog
 
 | Risk | Primary Controls | Tier |
 |------|-----------------|------|
-| Patient data exposure | DP-1.1 (data classification — PHI tagged), DP-2.1 (DLP on message bus — PHI patterns), DP-1.3 (memory isolation), IA-2.6 (secrets/PHI exclusion from external model context) | Tier 2 |
-| Evidence quality | PG-2.5 (claim provenance — every claim traced to source study), PG-2.7 (uncertainty preservation — study quality grades propagated), PG-3.5 (challenger agent — questions evidence interpretations) | Tier 3 |
-| Hallucinated interactions | EC-2.5 (LLM-as-Judge — verify interactions against authoritative database), PG-2.6 (self-referential evidence prohibition — Protocol Agent must cite database, not its own reasoning) | Tier 2 |
-| Explainability | OB-3.5 (decision traceability — full trace for regulatory explanation), OB-2.7 (accountable human — clinician designated as decision owner) | Tier 2 |
+| Patient data exposure | DP-1.1 (data classification - PHI tagged), DP-2.1 (DLP on message bus - PHI patterns), DP-1.3 (memory isolation), IA-2.6 (secrets/PHI exclusion from external model context) | Tier 2 |
+| Evidence quality | PG-2.5 (claim provenance - every claim traced to source study), PG-2.7 (uncertainty preservation - study quality grades propagated), PG-3.5 (challenger agent - questions evidence interpretations) | Tier 3 |
+| Hallucinated interactions | EC-2.5 (LLM-as-Judge - verify interactions against authoritative database), PG-2.6 (self-referential evidence prohibition - Protocol Agent must cite database, not its own reasoning) | Tier 2 |
+| Explainability | OB-3.5 (decision traceability - full trace for regulatory explanation), OB-2.7 (accountable human - clinician designated as decision owner) | Tier 2 |
 
 ### Critical Architecture Decision: PHI Containment
 
 The Records Reviewer and Protocol Agent both use Provider A and both handle PHI. Under MASO's data protection controls, PHI must be contained within institutional boundaries.
 
-**Option A — On-premises models for PHI agents:** Records Reviewer and Protocol Agent use locally-hosted models. No PHI leaves the institution. Literature Agent, Trial Matcher, and Synthesis Agent use cloud models but receive only de-identified patient characteristics (age range, cancer type, stage) — not direct PHI.
+**Option A - On-premises models for PHI agents:** Records Reviewer and Protocol Agent use locally-hosted models. No PHI leaves the institution. Literature Agent, Trial Matcher, and Synthesis Agent use cloud models but receive only de-identified patient characteristics (age range, cancer type, stage) - not direct PHI.
 
-**Option B — Data fencing with tokenisation:** All patient identifiers are tokenised before reaching any agent. Agents work with tokens. The final synthesis maps tokens back to patient data only at the presentation layer, which is internal. This allows cloud models but requires robust tokenisation and de-tokenisation infrastructure.
+**Option B - Data fencing with tokenisation:** All patient identifiers are tokenised before reaching any agent. Agents work with tokens. The final synthesis maps tokens back to patient data only at the presentation layer, which is internal. This allows cloud models but requires robust tokenisation and de-tokenisation infrastructure.
 
-MASO does not prescribe the solution — it requires that the data classification (DP-1.1) and DLP (DP-2.1) controls are in place to prevent PHI exposure regardless of architecture choice.
+MASO does not prescribe the solution - it requires that the data classification (DP-1.1) and DLP (DP-2.1) controls are in place to prevent PHI exposure regardless of architecture choice.
 
 ### Failure Scenario: PACE Response
 
 **Primary:** All agents operational. The Literature Agent retrieves a study and summarises it as showing 85% response rate for Treatment X. The actual study shows 85% response rate in a specific subpopulation (patients under 50 with no comorbidities). The patient is 72 with diabetes.
 
-**Detection (still in Primary):** PG-2.5 (claim provenance) requires the Literature Agent to include the study's population criteria in its output. PG-2.7 (uncertainty preservation) carries the applicability note. The Synthesis Agent sees the population mismatch and flags it. The treatment option is presented with a caveat: "Study population differs from patient profile — evidence applicability uncertain."
+**Detection (still in Primary):** PG-2.5 (claim provenance) requires the Literature Agent to include the study's population criteria in its output. PG-2.7 (uncertainty preservation) carries the applicability note. The Synthesis Agent sees the population mismatch and flags it. The treatment option is presented with a caveat: "Study population differs from patient profile - evidence applicability uncertain."
 
 **If detection fails → Alternate:** The Synthesis Agent presents Treatment X as strongly supported. The Protocol Agent (independent verification) checks the institutional protocol for Treatment X and notes a contraindication for patients over 65 with diabetes. The Judge (EC-2.5) detects the conflict between the Literature Agent's recommendation and the Protocol Agent's contraindication. Escalation to clinician. The Literature Agent is flagged for evidence quality review.
 
@@ -167,10 +167,10 @@ A multi-agent system that assists grid operators with load balancing, demand for
 
 | Risk | Primary Controls | Tier |
 |------|-----------------|------|
-| Safety-critical execution | EC-1.1 (human approval for all dispatch actions), EC-2.6 (decision commit protocol), EC-2.9 (latency SLOs — security controls must complete within operational time constraints) | Tier 2 |
-| Sensor data manipulation | DP-2.2 (RAG/data integrity — sensor data validated against physical constraints), PG-2.5 (claim provenance — trace every data point to source sensor), OB-2.1 (anomaly scoring — detect impossible sensor readings) | Tier 2 |
-| Air-gap tension | IA-2.1 (zero-trust credentials — cloud agents have no access to SCADA), DP-1.1 (data classification — SCADA data classified as restricted, never leaves on-prem boundary), SC-2.2 (MCP server vetting — cloud integrations pre-approved) | Tier 2 |
-| Latency | EC-2.9 (latency SLOs per orchestration), EC-1.2 (tool allow-lists — prevent slow tool chains), OB-2.1 (anomaly scoring must complete within latency budget) | Tier 1 |
+| Safety-critical execution | EC-1.1 (human approval for all dispatch actions), EC-2.6 (decision commit protocol), EC-2.9 (latency SLOs - security controls must complete within operational time constraints) | Tier 2 |
+| Sensor data manipulation | DP-2.2 (RAG/data integrity - sensor data validated against physical constraints), PG-2.5 (claim provenance - trace every data point to source sensor), OB-2.1 (anomaly scoring - detect impossible sensor readings) | Tier 2 |
+| Air-gap tension | IA-2.1 (zero-trust credentials - cloud agents have no access to SCADA), DP-1.1 (data classification - SCADA data classified as restricted, never leaves on-prem boundary), SC-2.2 (MCP server vetting - cloud integrations pre-approved) | Tier 2 |
+| Latency | EC-2.9 (latency SLOs per orchestration), EC-1.2 (tool allow-lists - prevent slow tool chains), OB-2.1 (anomaly scoring must complete within latency budget) | Tier 1 |
 
 ### Critical Architecture Decision: Network Segmentation
 
@@ -178,7 +178,7 @@ The on-premises agents (Sensor Monitor, Anomaly Detector, Dispatch Recommender) 
 
 **OT → IT:** Aggregated, non-identifying grid state data can flow to cloud agents for forecasting. Raw SCADA data never crosses the boundary. The Sensor Monitor produces a summary (total load, generation mix, frequency) that contains no equipment-specific identifiers or control system addresses.
 
-**IT → OT:** Forecast and market data flows into the OT network through a validated gateway. The gateway enforces schema validation — only expected data formats pass through. Any content that doesn't match the expected schema is dropped. This prevents prompt injection from propagating from cloud agents to OT agents.
+**IT → OT:** Forecast and market data flows into the OT network through a validated gateway. The gateway enforces schema validation - only expected data formats pass through. Any content that doesn't match the expected schema is dropped. This prevents prompt injection from propagating from cloud agents to OT agents.
 
 **Dispatch actions:** The Dispatch Recommender operates entirely within the OT network. It receives inputs from the Sensor Monitor (OT), Forecast Agent (via gateway), and Market Agent (via gateway). Its recommendations are presented to a human operator for approval before execution. Under no circumstances does an AI agent directly execute grid control actions.
 
@@ -186,9 +186,9 @@ The on-premises agents (Sensor Monitor, Anomaly Detector, Dispatch Recommender) 
 
 **Primary:** All agents operational. The Forecast Agent predicts high demand due to incoming heatwave. The Market Agent identifies favourable pricing for peaking generation. The Dispatch Recommender recommends pre-positioning peaking units.
 
-**Anomaly:** The Sensor Monitor reports a sudden 15% drop in load on a major feeder. The Anomaly Detector checks this against physical constraints — a 15% drop in 30 seconds is physically implausible without a major event that other sensors would also detect. Other sensors show normal readings. The Anomaly Detector flags this as a sensor malfunction, not a real load change.
+**Anomaly:** The Sensor Monitor reports a sudden 15% drop in load on a major feeder. The Anomaly Detector checks this against physical constraints - a 15% drop in 30 seconds is physically implausible without a major event that other sensors would also detect. Other sensors show normal readings. The Anomaly Detector flags this as a sensor malfunction, not a real load change.
 
-**Alternate (sensor failure):** The faulty sensor's data is excluded from all downstream calculations. The Sensor Monitor switches to backup sensors for that feeder. The Forecast Agent and Dispatch Recommender receive a note that sensor coverage is degraded for one feeder — their confidence intervals widen accordingly (PG-2.7, uncertainty preservation). The human operator is notified of the sensor fault.
+**Alternate (sensor failure):** The faulty sensor's data is excluded from all downstream calculations. The Sensor Monitor switches to backup sensors for that feeder. The Forecast Agent and Dispatch Recommender receive a note that sensor coverage is degraded for one feeder - their confidence intervals widen accordingly (PG-2.7, uncertainty preservation). The human operator is notified of the sensor fault.
 
 **If multiple sensor faults → Contingency:** If 3+ sensors on the same feeder show anomalous readings, the system cannot determine grid state for that section. Multi-agent orchestration for that feeder section is suspended. The operator manages that section manually using traditional SCADA displays. The rest of the grid continues under AI-assisted management.
 
@@ -200,7 +200,7 @@ The on-premises agents (Sensor Monitor, Anomaly Detector, Dispatch Recommender) 
 
 Three patterns emerge across all three examples:
 
-**1. Epistemic controls matter most in regulated industries.** All three sectors require explainability, traceability, and evidence quality. MASO's epistemic controls (PG-2.4 through PG-2.9, PG-3.5) are not optional in regulated environments — they are the controls that prevent the most dangerous failure mode: confident, well-formatted, unanimously agreed, and wrong.
+**1. Epistemic controls matter most in regulated industries.** All three sectors require explainability, traceability, and evidence quality. MASO's epistemic controls (PG-2.4 through PG-2.9, PG-3.5) are not optional in regulated environments - they are the controls that prevent the most dangerous failure mode: confident, well-formatted, unanimously agreed, and wrong.
 
 **2. Data boundaries define the architecture.** PHI containment (healthcare), information barriers (financial services), and OT/IT segmentation (critical infrastructure) all impose hard constraints on which agents can communicate with which. MASO's data protection controls (DP-1.1, DP-2.1, DP-1.3) map directly to these regulatory requirements.
 

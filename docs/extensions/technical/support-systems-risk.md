@@ -94,7 +94,7 @@ Your AI system depends on things you don't control.
 | **Schema change** | Upstream data format changes | Pipeline breaks silently |
 | **Source unavailable** | Data source goes offline | RAG returns no context, AI hallucinates |
 
-This is arguably the highest-probability, highest-impact category. When RAG data is wrong, the AI is confidently wrong — and users trust it.
+This is arguably the highest-probability, highest-impact category. When RAG data is wrong, the AI is confidently wrong - and users trust it.
 
 **Controls:**
 
@@ -240,7 +240,7 @@ The H in HITL is a single point of failure.
 | **Turnover** | Reviewers leave, replacements untrained | Assurance gap during transition |
 | **Complacency** | Low finding rate leads to inattention | Miss the one that matters |
 
-**This is a known failure mode in every human oversight system.** Aviation, nuclear, financial services — all have struggled with this.
+**This is a known failure mode in every human oversight system.** Aviation, nuclear, financial services - all have struggled with this.
 
 **Controls:**
 

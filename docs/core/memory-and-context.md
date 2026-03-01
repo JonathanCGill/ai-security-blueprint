@@ -1,16 +1,16 @@
 # Memory and Context Controls
 
-> Securing what the model remembers — across turns, sessions, and users.
+> Securing what the model remembers - across turns, sessions, and users.
 >
-> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers - Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
 
 ## The Problem
 
 The three-layer pattern evaluates individual requests and responses. But AI systems accumulate context:
 
-- **Within a conversation** — each turn adds to the context window
-- **Across conversations** — persistent memory, session history, user profiles
-- **Across users** — shared embeddings, cached responses, fine-tuned models
+- **Within a conversation** - each turn adds to the context window
+- **Across conversations** - persistent memory, session history, user profiles
+- **Across users** - shared embeddings, cached responses, fine-tuned models
 
 A single request-response pair may be safe. The accumulated context may not be.
 
@@ -21,10 +21,10 @@ A single request-response pair may be safe. The accumulated context may not be.
 | Threat | Vector | Impact |
 |--------|--------|--------|
 | **Gradual context poisoning** | Early turns inject instructions that influence later turns | Model behaviour changes over a long conversation without triggering per-turn guardrails |
-| **Cross-session leakage** | Persistent memory or shared cache surfaces User A's data for User B | Data breach — potentially regulated data |
+| **Cross-session leakage** | Persistent memory or shared cache surfaces User A's data for User B | Data breach - potentially regulated data |
 | **Memory manipulation** | Injecting false "memories" via conversation that persist across sessions | Ongoing manipulation of model behaviour for a user |
-| **Context window overflow** | Filling the context with irrelevant content to push out system instructions | Guardrail bypass — system prompt "forgotten" |
-| **Accumulated PII** | Individual turns are PII-free but the conversation as a whole builds a profile | Privacy violation — model holds more personal data than any individual turn reveals |
+| **Context window overflow** | Filling the context with irrelevant content to push out system instructions | Guardrail bypass - system prompt "forgotten" |
+| **Accumulated PII** | Individual turns are PII-free but the conversation as a whole builds a profile | Privacy violation - model holds more personal data than any individual turn reveals |
 
 ---
 
@@ -36,10 +36,10 @@ Every user session must be isolated. No shared state between users unless explic
 
 | Requirement | Implementation |
 |-------------|---------------|
-| **Separate context per user** | Each user gets their own conversation thread — no shared context window |
+| **Separate context per user** | Each user gets their own conversation thread - no shared context window |
 | **Separate memory per user** | Persistent memory is scoped to the authenticated user |
 | **No shared cache for generated responses** | Response caching (if used) must be keyed to user + input, not input alone |
-| **Session timeout** | Conversations expire after inactivity — context is not preserved indefinitely |
+| **Session timeout** | Conversations expire after inactivity - context is not preserved indefinitely |
 
 ### 2. Context Window Hygiene
 
@@ -48,7 +48,7 @@ Every user session must be isolated. No shared state between users unless explic
 | **System prompt anchoring** | Re-inject system instructions at intervals in long conversations, not just at the start |
 | **Context summarisation** | Periodically summarise old turns and replace verbose history with summaries |
 | **Turn limits** | Maximum number of turns per conversation before requiring a new session |
-| **Token budget monitoring** | Alert when context window approaches capacity — model behaviour degrades near limits |
+| **Token budget monitoring** | Alert when context window approaches capacity - model behaviour degrades near limits |
 
 ### 3. Persistent Memory Controls
 
@@ -58,7 +58,7 @@ For systems that maintain memory across sessions (user preferences, conversation
 |---------|-------------|
 | **Memory content filtering** | Apply guardrails to content before it's written to persistent memory |
 | **Memory access control** | Only the authenticated user (or authorised system) can read their memory |
-| **Memory expiry** | Set TTLs on stored memories — not everything should persist forever |
+| **Memory expiry** | Set TTLs on stored memories - not everything should persist forever |
 | **Memory audit trail** | Log what's written to and read from persistent memory |
 | **User memory controls** | Users can view, edit, and delete their stored memories |
 | **Memory injection prevention** | Validate that persistent memories are genuine (from real conversations) not injected |
@@ -79,8 +79,8 @@ Don't just evaluate individual turns. Periodically evaluate the full conversatio
 |-------------|---------------|
 | **Data classification** | Classify persistent memory content with the same scheme used for other data stores |
 | **Retention policies** | Apply your existing data retention policies to conversation history and memory |
-| **Right to deletion** | Implement memory deletion that actually deletes — not just soft-delete |
-| **Encryption** | Encrypt persistent memory at rest and in transit — same controls as any data store |
+| **Right to deletion** | Implement memory deletion that actually deletes - not just soft-delete |
+| **Encryption** | Encrypt persistent memory at rest and in transit - same controls as any data store |
 
 ---
 
@@ -102,7 +102,7 @@ Persistent memory scoped to user, with explicit controls.
 - Memory content is filtered before storage and before retrieval
 - Memory has TTLs and audit trails
 
-### Shared Knowledge Base (Tier 3 — requires careful design)
+### Shared Knowledge Base (Tier 3 - requires careful design)
 
 Shared embeddings or knowledge that multiple users access (e.g., company FAQ, product documentation).
 
@@ -114,7 +114,7 @@ Shared embeddings or knowledge that multiple users access (e.g., company FAQ, pr
 
 ## Behavioural Learning and Preference Data
 
-The controls above address what the model *remembers* — context windows, persistent memory, shared knowledge. But some systems are designed to *learn* from user behaviour: adapting communication style, building preference profiles, personalising recommendations based on interaction history.
+The controls above address what the model *remembers* - context windows, persistent memory, shared knowledge. But some systems are designed to *learn* from user behaviour: adapting communication style, building preference profiles, personalising recommendations based on interaction history.
 
 This is a different threat surface. Memory controls govern *storage and retrieval*. Behavioural learning controls govern *what you choose to extract, model, and act on*.
 
@@ -122,10 +122,10 @@ This is a different threat surface. Memory controls govern *storage and retrieva
 
 A system that learns customer preferences builds a behavioural profile. Over time, that profile becomes:
 
-- **Quasi-identifying** — Writing style, reading patterns, product preferences, and interaction timing can re-identify a user even without explicit PII
-- **Inferential** — The system can infer sensitive attributes (financial situation, health concerns, emotional state) from behavioural signals the user didn't intend to share
-- **Self-reinforcing** — Recommendation engines create feedback loops: the system shows you what it thinks you want, you interact with it, and that interaction confirms its model — even if the model was wrong
-- **Poisonable** — An adversary can inject false preference signals to manipulate future recommendations (showing a user competing products, biasing pricing, or shifting trust)
+- **Quasi-identifying** - Writing style, reading patterns, product preferences, and interaction timing can re-identify a user even without explicit PII
+- **Inferential** - The system can infer sensitive attributes (financial situation, health concerns, emotional state) from behavioural signals the user didn't intend to share
+- **Self-reinforcing** - Recommendation engines create feedback loops: the system shows you what it thinks you want, you interact with it, and that interaction confirms its model - even if the model was wrong
+- **Poisonable** - An adversary can inject false preference signals to manipulate future recommendations (showing a user competing products, biasing pricing, or shifting trust)
 
 ### Decision Framework
 
@@ -134,7 +134,7 @@ Before building a preference-learning system, answer these questions:
 | Question | If you can't answer clearly, stop |
 |----------|----------------------------------|
 | **What are you learning, and why?** | "User preferences" is too vague. Define exactly which signals you extract (product categories browsed, response length preference, time-of-day patterns) and the business purpose for each |
-| **Does the user know?** | Transparency isn't optional. The user should understand what the system has learned about them, in language they can read — not a JSON dump |
+| **Does the user know?** | Transparency isn't optional. The user should understand what the system has learned about them, in language they can read - not a JSON dump |
 | **Can the user see, correct, and delete what you've learned?** | If you store a preference model, users need the ability to inspect it, dispute incorrect inferences, and request deletion. This is regulatory in many jurisdictions and good practice in all of them |
 | **Is the learned data more sensitive than the raw data?** | Individual page views are low-sensitivity. An inferred health concern derived from browsing patterns is high-sensitivity. Classify the *output* of your learning, not just the input |
 | **How do you detect preference poisoning?** | If an attacker can shift your model of a user by injecting interactions, your recommendation engine becomes an attack surface. Define baselines and anomaly detection for profile changes |
@@ -154,14 +154,14 @@ Your existing controls from this document and the broader framework apply to the
 
 ### What the Framework Does Not Cover
 
-The *policy decisions* — what to learn, when to ask consent, how to explain inferences — are domain-specific. The framework gives you the security and governance infrastructure. You need domain expertise and legal guidance for:
+The *policy decisions* - what to learn, when to ask consent, how to explain inferences - are domain-specific. The framework gives you the security and governance infrastructure. You need domain expertise and legal guidance for:
 
-- **Consent design** — What does meaningful consent look like for behavioural learning? (Not "I agree to terms." Granular, revocable, specific.)
-- **Explainability** — How do you present a learned preference model to a non-technical user in a way they can understand and act on?
-- **Differential privacy** — How do you learn aggregate patterns without exposing individual behaviour? (Research-stage for most enterprises, but critical at scale.)
-- **Fairness and bias in recommendations** — If your preference model correlates with protected characteristics, your recommendations may discriminate. This is a fairness problem, not just a security problem.
+- **Consent design** - What does meaningful consent look like for behavioural learning? (Not "I agree to terms." Granular, revocable, specific.)
+- **Explainability** - How do you present a learned preference model to a non-technical user in a way they can understand and act on?
+- **Differential privacy** - How do you learn aggregate patterns without exposing individual behaviour? (Research-stage for most enterprises, but critical at scale.)
+- **Fairness and bias in recommendations** - If your preference model correlates with protected characteristics, your recommendations may discriminate. This is a fairness problem, not just a security problem.
 
-### Offramps — Go Here Next
+### Offramps - Go Here Next
 
 | Topic | Resource | Why |
 |-------|----------|-----|
@@ -174,7 +174,7 @@ The *policy decisions* — what to learn, when to ask consent, how to explain in
 
 **The framework's role:** Secure the storage, access, and lifecycle of preference data using existing memory and data protection controls. Detect anomalies in preference profiles. Evaluate recommendation quality through the Judge layer.
 
-**Your responsibility:** Decide *what* to learn, get *informed consent*, provide *transparency and user control*, and ensure *fairness*. These are design and policy decisions, not security controls — but they determine whether your security controls are protecting the right things.
+**Your responsibility:** Decide *what* to learn, get *informed consent*, provide *transparency and user control*, and ensure *fairness*. These are design and policy decisions, not security controls - but they determine whether your security controls are protecting the right things.
 
 ---
 

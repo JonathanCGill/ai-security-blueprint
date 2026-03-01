@@ -10,11 +10,11 @@ A security pattern "scales" if its cost (latency, compute, human effort, operati
 
 | Growth Rate | Assessment | Example |
 | --- | --- | --- |
-| O(1) — constant regardless of agents | **Scales** | System-wide budget caps |
-| O(N) — linear with agent count | **Scales acceptably** | Per-agent identity issuance |
-| O(N log N) — slightly superlinear | **Marginal** | Hierarchical trust evaluation |
-| O(N²) — quadratic with agent count | **Does not scale** | Per-pair inter-agent guardrails |
-| O(human) — requires human throughput | **Does not scale** | Manual edge-case review |
+| O(1) - constant regardless of agents | **Scales** | System-wide budget caps |
+| O(N) - linear with agent count | **Scales acceptably** | Per-agent identity issuance |
+| O(N log N) - slightly superlinear | **Marginal** | Hierarchical trust evaluation |
+| O(N²) - quadratic with agent count | **Does not scale** | Per-pair inter-agent guardrails |
+| O(human) - requires human throughput | **Does not scale** | Manual edge-case review |
 
 Most of the three-layer pattern's components are O(N²) or O(human). That's why it breaks.
 
@@ -22,7 +22,7 @@ Most of the three-layer pattern's components are O(N²) or O(human). That's why 
 
 ## What Scales
 
-### 1. System-Level Invariants — O(1)
+### 1. System-Level Invariants - O(1)
 
 **What:** Define constraints that must hold true for the *entire system*, regardless of how many agents exist or how they interact. Monitor those constraints, not individual agent outputs.
 
@@ -34,29 +34,29 @@ Most of the three-layer pattern's components are O(N²) or O(human). That's why 
 
 **Why it scales:** The number of invariants is a function of your *risk requirements*, not your *agent count*. Whether you have 3 agents or 300, the invariant "don't spend more than $10,000 without human approval" is one check against one aggregate counter. Adding agents doesn't add invariants.
 
-**Where it's appearing in production:** AWS's Agentic AI Security Scoping Matrix describes this as "enforcing agency boundaries" — defining what the *system* is permitted to do, not what each agent is permitted to say. The CSA's Agentic Trust Framework implements this through a centralized Policy Decision Point (PDP) that evaluates every action against system-level rules in real-time.
+**Where it's appearing in production:** AWS's Agentic AI Security Scoping Matrix describes this as "enforcing agency boundaries" - defining what the *system* is permitted to do, not what each agent is permitted to say. The CSA's Agentic Trust Framework implements this through a centralized Policy Decision Point (PDP) that evaluates every action against system-level rules in real-time.
 
-**The honest limit:** Invariants only catch what you anticipated. They're the equivalent of guardrails at system level — they prevent *known-bad system states*. They don't detect novel emergent failures. You still need something else for unknown-bad.
+**The honest limit:** Invariants only catch what you anticipated. They're the equivalent of guardrails at system level - they prevent *known-bad system states*. They don't detect novel emergent failures. You still need something else for unknown-bad.
 
-### 2. Cryptographic Identity and Provenance — O(N)
+### 2. Cryptographic Identity and Provenance - O(N)
 
 **What:** Every agent gets a verifiable identity. Every message is signed. Every action is attributed. Every delegation chain is traceable.
 
-**Why it scales:** Identity issuance is O(N) — one identity per agent. Verification is per-message, but message verification is computationally trivial (milliseconds). Unlike content-based guardrails that must *understand* a message to evaluate it, cryptographic verification only needs to confirm *who sent it* and *whether it was tampered with*. That operation doesn't get harder as the content gets more complex or the agent count grows.
+**Why it scales:** Identity issuance is O(N) - one identity per agent. Verification is per-message, but message verification is computationally trivial (milliseconds). Unlike content-based guardrails that must *understand* a message to evaluate it, cryptographic verification only needs to confirm *who sent it* and *whether it was tampered with*. That operation doesn't get harder as the content gets more complex or the agent count grows.
 
 **Where it's appearing:**
-- The CSA/OWASP-aligned research proposes **Decentralized Identifiers (DIDs)** and **Verifiable Credentials (VCs)** for agent identity — cryptographic proof of an agent's capabilities, provenance, and security posture.
+- The CSA/OWASP-aligned research proposes **Decentralized Identifiers (DIDs)** and **Verifiable Credentials (VCs)** for agent identity - cryptographic proof of an agent's capabilities, provenance, and security posture.
 - An **Agent Naming Service (ANS)**, analogous to DNS for agents, enables capability-based discovery with trust verification. GoDaddy has already deployed OWASP's ANS proposal to production.
-- HashiCorp Vault is emerging as infrastructure for agent secret management — dynamic, short-lived credentials issued per task, with automated rotation.
+- HashiCorp Vault is emerging as infrastructure for agent secret management - dynamic, short-lived credentials issued per task, with automated rotation.
 - Microsoft Foundry (Ignite 2025) treats agent identity as a first-class platform concept: admins can see every agent, its permissions, and control its access from a central management plane.
 
 **What this solves:** Three of the OWASP Agentic Top 4 risks (ASI02, ASI03, ASI04) are identity-related. Cryptographic identity directly addresses credential delegation abuse, confused deputy attacks, and cross-agent trust exploitation. It doesn't prevent an agent from being manipulated, but it ensures you always know *which* agent acted and *what credentials it used*.
 
 **The honest limit:** Identity tells you *who* did something. It doesn't tell you whether what they did was *correct*. A properly authenticated agent can still hallucinate, follow poisoned instructions, or produce harmful outputs. Identity is necessary infrastructure, not sufficient security.
 
-### 3. Economic Constraints and Budget Envelopes — O(1)
+### 3. Economic Constraints and Budget Envelopes - O(1)
 
-**What:** Hard limits on what the system can *spend* — in tokens, API calls, financial transactions, compute time, or data volume.
+**What:** Hard limits on what the system can *spend* - in tokens, API calls, financial transactions, compute time, or data volume.
 
 **Why it scales:** A budget is an aggregate constraint. Whether 3 agents or 300 are consuming tokens, the total budget check is one comparison. Budget enforcement turns unbounded AI behavior into a bounded-cost problem. OWASP's "Unbounded Consumption" (LLM10:2025) exists precisely because most systems lack this.
 
@@ -67,29 +67,29 @@ Most of the three-layer pattern's components are O(N²) or O(human). That's why 
 
 **The honest limit:** Budget caps are blunt instruments. They prevent catastrophic loss but don't prevent harm within budget. An agent can cause significant damage well within a $10,000 daily budget.
 
-### 4. Trust Zones with Controlled Boundaries — O(Z), where Z << N
+### 4. Trust Zones with Controlled Boundaries - O(Z), where Z << N
 
 **What:** Group agents into zones based on data sensitivity, action scope, and trust level. Within a zone, agents interact freely. Between zones, all communication passes through controlled boundary enforcement.
 
 **Why it scales:** The number of trust zones (Z) is determined by your data classification and risk architecture, not your agent count. You might have 200 agents across 5 trust zones. The number of *zone-to-zone boundaries* to secure is Z² = 25, not N² = 40,000.
 
-**This is directly analogous to network segmentation** — a pattern enterprise security teams already know. VLANs, firewalls, and zero-trust network segments work the same way: reduce the combinatorial problem by grouping entities and controlling boundaries.
+**This is directly analogous to network segmentation** - a pattern enterprise security teams already know. VLANs, firewalls, and zero-trust network segments work the same way: reduce the combinatorial problem by grouping entities and controlling boundaries.
 
 **Where it's appearing:** OWASP's Agentic Top 10 explicitly recommends "defining trust zones and isolation boundaries, with constrained scopes and tightly controlled inter-zone comms." AWS's Scoping Matrix maps four architectural scopes (no agency → prescribed → supervised → full) which function as trust tiers with different boundary enforcement requirements.
 
-**The honest limit:** Trust zones are only as good as your classification. If you put the wrong agent in the wrong zone, or if the boundaries are misconfigured, you have network segmentation without proper firewall rules — a false sense of security. Also, zone boundaries add latency. Complex multi-agent workflows that cross multiple zones will be slower.
+**The honest limit:** Trust zones are only as good as your classification. If you put the wrong agent in the wrong zone, or if the boundaries are misconfigured, you have network segmentation without proper firewall rules - a false sense of security. Also, zone boundaries add latency. Complex multi-agent workflows that cross multiple zones will be slower.
 
-### 5. Circuit Breakers and Kill Switches — O(1) per zone
+### 5. Circuit Breakers and Kill Switches - O(1) per zone
 
 **What:** Automated mechanisms that halt agent execution when system-level invariants are violated, anomalous behavior is detected, or operational thresholds are exceeded.
 
 **Why it scales:** A circuit breaker monitors an aggregate signal (error rate, anomaly score, budget consumption) and makes a binary decision: continue or halt. This is one check regardless of agent count. OWASP calls these "a non-negotiable, auditable, and physically isolated mechanism."
 
-**The critical implementation detail:** Kill switches must be *outside* the agent control plane. An agent that can disable its own kill switch isn't actually controlled. The mechanism must be physically or architecturally isolated — a separate service with its own authentication and no dependency on the agents it controls.
+**The critical implementation detail:** Kill switches must be *outside* the agent control plane. An agent that can disable its own kill switch isn't actually controlled. The mechanism must be physically or architecturally isolated - a separate service with its own authentication and no dependency on the agents it controls.
 
 **The honest limit:** Kill switches are the nuclear option. They prevent catastrophic harm but they also halt legitimate work. High false-positive rates in anomaly detection can cause kill switches to fire constantly, creating a denial-of-service against your own operations. Tuning the sensitivity is the operational challenge.
 
-### 6. Progressive Trust (Maturity-Based Autonomy) — O(N) amortised
+### 6. Progressive Trust (Maturity-Based Autonomy) - O(N) amortised
 
 **What:** Agents start with minimal autonomy and earn expanded permissions through demonstrated reliable behavior over time.
 
@@ -104,15 +104,15 @@ Most of the three-layer pattern's components are O(N²) or O(human). That's why 
 
 **Why it scales:** The progressive model reduces monitoring overhead for trusted agents over time. New and untrusted agents get heavy oversight (expensive but bounded to a small number of new agents). Established agents with proven behavioral records get lighter oversight (cheap, applied to the majority). The *steady-state* monitoring cost converges to the audit-based model, which is O(1) per audit cycle regardless of agent count.
 
-**Promotion criteria** include minimum time at level, performance thresholds, security validation, and governance sign-off. This prevents gaming — an agent can't fast-track itself to full autonomy.
+**Promotion criteria** include minimum time at level, performance thresholds, security validation, and governance sign-off. This prevents gaming - an agent can't fast-track itself to full autonomy.
 
-**The honest limit:** This assumes agent behavior is *stable* — that an agent that performed well last week will perform well next week. In practice, model updates, tool changes, data drift, and adversarial manipulation can change agent behavior between audit cycles. A "Principal" agent that gets a poisoned memory injection has earned trust that it no longer deserves. The model needs continuous anomaly detection as a safety net behind the maturity levels.
+**The honest limit:** This assumes agent behavior is *stable* - that an agent that performed well last week will perform well next week. In practice, model updates, tool changes, data drift, and adversarial manipulation can change agent behavior between audit cycles. A "Principal" agent that gets a poisoned memory injection has earned trust that it no longer deserves. The model needs continuous anomaly detection as a safety net behind the maturity levels.
 
-### 7. Append-Only Audit Logs — O(N) with volume, but cheap
+### 7. Append-Only Audit Logs - O(N) with volume, but cheap
 
 **What:** Immutable, tamper-evident logs of every agent action, tool call, credential use, and inter-agent communication.
 
-**Why it scales:** Storage is cheap. Append-only writes are fast. The cost is proportional to message volume, but the *per-message* cost is negligible. What matters is that the logs exist and are queryable — the analysis can happen async, at any cadence.
+**Why it scales:** Storage is cheap. Append-only writes are fast. The cost is proportional to message volume, but the *per-message* cost is negligible. What matters is that the logs exist and are queryable - the analysis can happen async, at any cadence.
 
 **Why this is more important than it looks:** Audit logs transform security from *prevention* to *detection and accountability*. In a system where you cannot prevent all failures (which is every AI system at scale), the ability to *reconstruct what happened, which agent was responsible, and what credentials were used* is the foundation for incident response, forensics, and continuous improvement.
 
@@ -124,13 +124,13 @@ Most of the three-layer pattern's components are O(N²) or O(human). That's why 
 
 For completeness and honesty:
 
-**Per-agent content guardrails in multi-agent communication** — O(N²). Each agent pair needs bidirectional inspection. Impractical beyond ~10 agents.
+**Per-agent content guardrails in multi-agent communication** - O(N²). Each agent pair needs bidirectional inspection. Impractical beyond ~10 agents.
 
-**LLM-as-Judge evaluating every agent output** — O(N) in cost, but each evaluation adds 500ms-5s latency *per agent hop*. In a 10-agent pipeline, you've added 5-50 seconds. Also, each judge evaluation costs tokens — at scale, the cost of judging exceeds the cost of the agents doing the work.
+**LLM-as-Judge evaluating every agent output** - O(N) in cost, but each evaluation adds 500ms-5s latency *per agent hop*. In a 10-agent pipeline, you've added 5-50 seconds. Also, each judge evaluation costs tokens - at scale, the cost of judging exceeds the cost of the agents doing the work.
 
-**Human review of edge cases** — O(human). Human throughput is fixed at roughly 50-200 decisions per hour for complex cases. A system generating 10,000 flagged interactions per hour requires 50-200 human reviewers. This is a staffing problem that grows linearly with system throughput and doesn't compress.
+**Human review of edge cases** - O(human). Human throughput is fixed at roughly 50-200 decisions per hour for complex cases. A system generating 10,000 flagged interactions per hour requires 50-200 human reviewers. This is a staffing problem that grows linearly with system throughput and doesn't compress.
 
-**Static RBAC for agent permissions** — designed for hundreds of known roles, not thousands of ephemeral, dynamically-created agents with varying scopes. Breaks at scale both operationally (role explosion) and conceptually (agents don't have stable roles).
+**Static RBAC for agent permissions** - designed for hundreds of known roles, not thousands of ephemeral, dynamically-created agents with varying scopes. Breaks at scale both operationally (role explosion) and conceptually (agents don't have stable roles).
 
 ---
 
@@ -142,7 +142,7 @@ The patterns that scale point toward a recognisable architecture. It's not the g
 
 This is not radically new. It's **zero-trust network architecture applied to AI agents**. The CSA, OWASP, and AWS are converging on this independently. Enterprise security teams already have the conceptual vocabulary: trust zones are VLANs, the PDP is a next-gen firewall, cryptographic identity is PKI, circuit breakers are IDS/IPS, audit logs are SIEM.
 
-The difference is that the *entities* being governed are probabilistic, natural-language-driven, and capable of independent reasoning — which means the boundary enforcement must be richer than IP/port rules. But the *architecture* is familiar.
+The difference is that the *entities* being governed are probabilistic, natural-language-driven, and capable of independent reasoning - which means the boundary enforcement must be richer than IP/port rules. But the *architecture* is familiar.
 
 ---
 
@@ -160,7 +160,7 @@ When your agents interact with agents from other organisations (via MCP, A2A pro
 
 **3. Securing against goal hijack in multi-turn, multi-agent conversations.**
 
-OWASP's ASI01 (Agent Goal Hijack) is the agentic equivalent of prompt injection — but harder, because the attack surface is every message from every other agent, and the hijack can be subtle and multi-step. Palo Alto's "Agent Session Smuggling" demonstration showed that a malicious agent can adapt its strategy and build false trust over multiple interactions. No guardrail or invariant catches a gradually shifting goal.
+OWASP's ASI01 (Agent Goal Hijack) is the agentic equivalent of prompt injection - but harder, because the attack surface is every message from every other agent, and the hijack can be subtle and multi-step. Palo Alto's "Agent Session Smuggling" demonstration showed that a malicious agent can adapt its strategy and build false trust over multiple interactions. No guardrail or invariant catches a gradually shifting goal.
 
 ---
 

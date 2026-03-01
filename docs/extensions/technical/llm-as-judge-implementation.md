@@ -22,7 +22,7 @@ Think of it as an auditor, not a gatekeeper.
 | A decision-maker | Cannot be accountable; humans must own decisions |
 | A replacement for guardrails | Guardrails handle fast, deterministic, inline checks |
 | A replacement for human oversight | It supports human oversight, doesn't replace it |
-| Infallible | It's an AI evaluating AI—it can be wrong, gamed, or fail silently |
+| Infallible | It's an AI evaluating AI-it can be wrong, gamed, or fail silently |
 
 ---
 
@@ -32,14 +32,14 @@ The Judge operates **after the fact**, reviewing what has already happened:
 
 ![Judge Interaction Flow](../../images/judge-interaction-flow.svg)
 
-1. **Transaction occurs** — User interacts with AI system
-2. **Guardrails check inline** — Fast, deterministic, blocks obvious issues
-3. **Primary AI executes** — Generates response
-4. **Output delivered** — User receives response
-5. **Interaction logged** — Full record captured
-6. **Judge evaluates (async)** — Reviews against policy, flags issues
-7. **Findings surfaced** — Red flags presented to humans
-8. **Human decides** — Investigate, remediate, update controls, or dismiss
+1. **Transaction occurs** - User interacts with AI system
+2. **Guardrails check inline** - Fast, deterministic, blocks obvious issues
+3. **Primary AI executes** - Generates response
+4. **Output delivered** - User receives response
+5. **Interaction logged** - Full record captured
+6. **Judge evaluates (async)** - Reviews against policy, flags issues
+7. **Findings surfaced** - Red flags presented to humans
+8. **Human decides** - Investigate, remediate, update controls, or dismiss
 
 The critical point: the transaction completes before the Judge evaluates. The Judge informs future action; it does not gate current action.
 
@@ -104,7 +104,7 @@ This assurance model avoids key legal risks:
 
 | Risk | How Assurance Model Avoids It |
 |------|-------------------------------|
-| GDPR Article 22 (automated decisions) | Judge doesn't decide—human reviews findings |
+| GDPR Article 22 (automated decisions) | Judge doesn't decide-human reviews findings |
 | Payment/execution SLAs | Transaction completes first; Judge reviews after |
 | Blocking legitimate activity | Nothing blocked; red flags investigated |
 | Accountability gap | Human is accountable for any action taken |
@@ -144,11 +144,11 @@ To function as an assurance tool, the Judge needs:
 
 The Judge is itself an AI system. It requires:
 
-1. **Validation** — How do we know it's finding what it should?
-2. **Testing** — Regular red team exercises
-3. **Monitoring** — False positive/negative rates
-4. **Model risk governance** — Treat as a model under SR 11-7 / SS1/23
-5. **Human oversight of the Judge** — Sample Judge findings, verify accuracy
+1. **Validation** - How do we know it's finding what it should?
+2. **Testing** - Regular red team exercises
+3. **Monitoring** - False positive/negative rates
+4. **Model risk governance** - Treat as a model under SR 11-7 / SS1/23
+5. **Human oversight of the Judge** - Sample Judge findings, verify accuracy
 
 ---
 

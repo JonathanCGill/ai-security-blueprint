@@ -8,7 +8,7 @@
 
   <rect width="800" height="380" fill="url(#bg)"/>
 
-  <text x="400" y="28" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" letter-spacing="1">TIER 3 — COST INDICATORS (ANNUAL)</text>
+  <text x="400" y="28" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" letter-spacing="1">TIER 3 - COST INDICATORS (ANNUAL)</text>
   <text x="400" y="44" text-anchor="middle" fill="#c77dff" font-size="9">SKILLED LABOUR + SOPHISTICATED INFRASTRUCTURE · HIGH-VALUE USE CASES ONLY</text>
 
   <rect x="30" y="58" width="740" height="24" rx="4" fill="#151a30"/>

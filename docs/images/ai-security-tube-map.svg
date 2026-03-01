@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1350" viewBox="0 0 1800 1350" font-family="'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', Helvetica, Arial, sans-serif">
-  <title>AI Runtime Behaviour Security — Complete Tube Map</title>
+  <title>AI Runtime Behaviour Security - Complete Tube Map</title>
   <defs>
     <!-- Line colors
       Getting Started (Teal/DLR): #00A4A7
@@ -143,7 +143,7 @@
   </g>
 
   <!-- ============================================================ -->
-  <!-- LINE: RUNTIME CONTROLS (Red #E32017) — THE CENTRAL LINE -->
+  <!-- LINE: RUNTIME CONTROLS (Red #E32017) - THE CENTRAL LINE -->
   <!-- ============================================================ -->
   <g id="line-runtime">
     <polyline points="120,380 280,380 480,380 680,380 880,380 1080,380 1280,380 1440,380"
@@ -241,7 +241,7 @@
   </g>
 
   <!-- ============================================================ -->
-  <!-- DATA FLOW "RIVER" — TRUST BOUNDARY -->
+  <!-- DATA FLOW "RIVER" - TRUST BOUNDARY -->
   <!-- ============================================================ -->
   <path d="M0,500 Q150,488 320,498 Q500,510 680,492 Q860,476 1040,492 Q1220,510 1400,496 Q1550,484 1800,500 L1800,525 Q1550,509 1400,521 Q1220,535 1040,517 Q860,501 680,517 Q500,535 320,523 Q150,513 0,525 Z" fill="#DAEAF6" opacity="0.45"/>
   <text x="80" y="517" font-size="8.5" fill="#5A94BD" font-style="italic" letter-spacing="3" font-weight="600">TRUST   BOUNDARY</text>
@@ -260,7 +260,7 @@
   </g>
 
   <!-- ============================================================ -->
-  <!-- LINE: MASO CONTROLS (Orange #EE7C0E) — MASO CENTRAL LINE -->
+  <!-- LINE: MASO CONTROLS (Orange #EE7C0E) - MASO CENTRAL LINE -->
   <!-- ============================================================ -->
   <g id="line-maso">
     <polyline points="280,600 480,600 680,600 880,600 1080,600 1280,600"
@@ -359,7 +359,7 @@
   </g>
 
   <!-- ============================================================ -->
-  <!-- LINE: PIPELINE & DATA (Purple #9B0056) — crosses trust boundary -->
+  <!-- LINE: PIPELINE & DATA (Purple #9B0056) - crosses trust boundary -->
   <!-- ============================================================ -->
   <g id="line-pipeline">
     <polyline points="340,440 340,600 340,700 540,900 740,900"
@@ -389,7 +389,7 @@
   </g>
 
   <!-- ============================================================ -->
-  <!-- LINE: OPERATIONS (Yellow #FFD300) — crosses trust boundary -->
+  <!-- LINE: OPERATIONS (Yellow #FFD300) - crosses trust boundary -->
   <!-- ============================================================ -->
   <g id="line-ops">
     <polyline points="680,440 680,500 680,700 680,900 880,900 1080,900 1280,900"
@@ -435,7 +435,7 @@
   </g>
 
   <!-- ============================================================ -->
-  <!-- LINE: REGULATORY (Silver #A0A5A9) — vertical, crosses both zones -->
+  <!-- LINE: REGULATORY (Silver #A0A5A9) - vertical, crosses both zones -->
   <!-- ============================================================ -->
   <g id="line-regulatory">
     <polyline points="1540,160 1540,380 1540,600 1540,900 1440,388"
@@ -585,7 +585,7 @@
   <!-- ============================================================ -->
   <!-- FOOTER -->
   <!-- ============================================================ -->
-  <text x="1700" y="1330" text-anchor="end" font-size="7.5" fill="#999">v3.0 — February 2026 — github.com/JonathanCGill/ai-runtime-behaviour-security</text>
+  <text x="1700" y="1330" text-anchor="end" font-size="7.5" fill="#999">v3.0 - February 2026 - github.com/JonathanCGill/ai-runtime-behaviour-security</text>
   <text x="100" y="1330" font-size="7.5" fill="#999">AI Runtime Behaviour Security · MIT License · Jonathan Gill</text>
 
 </svg>

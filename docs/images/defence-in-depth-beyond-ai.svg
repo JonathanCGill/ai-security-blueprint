@@ -22,7 +22,7 @@
   <line x1="400" y1="100" x2="400" y2="175" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,3"/>
   <line x1="400" y1="665" x2="400" y2="740" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,3"/>
 
-  <!-- Outer ring items — positioned around the circle -->
+  <!-- Outer ring items - positioned around the circle -->
 
   <!-- Top: Network DLP -->
   <rect x="280" y="128" width="240" height="52" rx="8" fill="#ffffff" filter="url(#shadow)" stroke="#8b5cf6" stroke-width="1.5"/>

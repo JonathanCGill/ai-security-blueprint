@@ -83,7 +83,7 @@
 
   <!-- Output guardrails bar -->
   <rect x="300" y="413" width="500" height="32" rx="5" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
-  <text x="550" y="434" text-anchor="middle" font-size="12" font-weight="600" fill="#1e40af">Output Guardrails — PII redaction · toxicity check · schema validation</text>
+  <text x="550" y="434" text-anchor="middle" font-size="12" font-weight="600" fill="#1e40af">Output Guardrails - PII redaction · toxicity check · schema validation</text>
 
   <!-- Arrow to user -->
   <line x1="550" y1="445" x2="550" y2="470" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
@@ -140,6 +140,6 @@
   <text x="810" y="751" text-anchor="middle" font-size="11" font-weight="600" fill="#854d0e">Remediation</text>
 
   <!-- Footer -->
-  <text x="550" y="805" text-anchor="middle" font-size="11" fill="#94a3b8">AI Security Reference Architecture — Three-Layer Control Model</text>
+  <text x="550" y="805" text-anchor="middle" font-size="11" fill="#94a3b8">AI Security Reference Architecture - Three-Layer Control Model</text>
 
 </svg>

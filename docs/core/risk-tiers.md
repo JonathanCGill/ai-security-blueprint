@@ -57,7 +57,7 @@ Minimal impact, non-sensitive context.
 | Control | LOW | MEDIUM | HIGH | CRITICAL |
 |---------|-----|--------|------|----------|
 | Injection detection | Basic | Standard | Enhanced + ML | Multi-layer |
-| PII detection | — | Warn | Block | Block + alert |
+| PII detection | - | Warn | Block | Block + alert |
 | Content policy | Basic | Standard | Strict | Maximum |
 | Rate limiting | Standard | Standard | Strict | Strict + anomaly |
 
@@ -67,19 +67,19 @@ Minimal impact, non-sensitive context.
 |---------|-----|--------|------|----------|
 | Content filtering | Basic | Standard | Enhanced | Maximum |
 | PII in output | Warn | Block | Block + alert | Block + alert + log |
-| Grounding check | — | Basic | Required | Required + citation |
-| Confidence threshold | — | — | Required | Required + escalation |
+| Grounding check | - | Basic | Required | Required + citation |
+| Confidence threshold | - | - | Required | Required + escalation |
 
 ### Judge Evaluation
 
 | Aspect | LOW | MEDIUM | HIGH | CRITICAL |
 |--------|-----|--------|------|----------|
 | Coverage | 1-5% (optional) | 5-10% | 20-50% | 100% |
-| Timing | — | Batch (daily) | Near real-time | Real-time |
-| Depth | — | Basic quality | Full policy | Full + reasoning |
-| Escalation | — | Weekly | Same-day | Immediate |
+| Timing | - | Batch (daily) | Near real-time | Real-time |
+| Depth | - | Basic quality | Full policy | Full + reasoning |
+| Escalation | - | Weekly | Same-day | Immediate |
 
-> **Note:** "Real-time" Judge evaluation for CRITICAL tier means near-real-time parallel assessment — the Judge evaluates alongside or immediately after delivery. It does not mean inline blocking, which is the Guardrail's role. Principle: **Guardrails block. Judge detects. Humans decide.**
+> **Note:** "Real-time" Judge evaluation for CRITICAL tier means near-real-time parallel assessment - the Judge evaluates alongside or immediately after delivery. It does not mean inline blocking, which is the Guardrail's role. Principle: **Guardrails block. Judge detects. Humans decide.**
 
 ### Human Oversight
 
@@ -88,7 +88,7 @@ Minimal impact, non-sensitive context.
 | Review trigger | Exceptions | Sampling + flags | All flags | All significant |
 | Review SLA | 72h | 24h | 4h | 1h |
 | Reviewer | General | Domain knowledge | Expert | Senior + expert |
-| Approval required | — | — | High-impact | All external |
+| Approval required | - | - | High-impact | All external |
 
 ### Logging
 
@@ -102,20 +102,20 @@ Minimal impact, non-sensitive context.
 
 ## Domain-Specific Guardrail Tuning
 
-The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) found significant **uneven safeguard coverage** across request categories in frontier AI systems. Biological misuse was well-defended across models tested, while other risk categories — including financial advice, legal guidance, and social engineering — were far less robustly safeguarded.
+The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) found significant **uneven safeguard coverage** across request categories in frontier AI systems. Biological misuse was well-defended across models tested, while other risk categories - including financial advice, legal guidance, and social engineering - were far less robustly safeguarded.
 
 This finding reinforces a critical principle: **one-size-fits-all guardrails are insufficient.** Organisations must tune guardrail configurations to the specific risk domains relevant to their use case.
 
 | Finding | Implication for Control Selection |
 |---------|----------------------------------|
 | Safeguard coverage varies dramatically by category | Test guardrails against your specific risk domains, not just generic benchmarks |
-| R² = 0.097 between model capability and safeguard robustness | More capable models are not inherently safer — don't reduce controls when upgrading models |
-| Universal jailbreaks found in every frontier system tested | Guardrails alone are not sufficient at any tier — the three-layer pattern is essential |
-| Effort required for jailbreaks increased 40x in 6 months for one category | Safeguards can improve rapidly with deliberate investment — but only for targeted categories |
+| R² = 0.097 between model capability and safeguard robustness | More capable models are not inherently safer - don't reduce controls when upgrading models |
+| Universal jailbreaks found in every frontier system tested | Guardrails alone are not sufficient at any tier - the three-layer pattern is essential |
+| Effort required for jailbreaks increased 40x in 6 months for one category | Safeguards can improve rapidly with deliberate investment - but only for targeted categories |
 
 **Practical guidance:**
 
-- At **HIGH** and **CRITICAL** tiers, test guardrails specifically against the risk categories relevant to your use case — not just the provider's default test suite.
+- At **HIGH** and **CRITICAL** tiers, test guardrails specifically against the risk categories relevant to your use case - not just the provider's default test suite.
 - Don't assume that a model's strong performance in one safety category (e.g., refusing to generate malware) transfers to your domain (e.g., refusing to give inappropriate financial advice).
 - Schedule domain-specific red-team testing at least quarterly for HIGH tier and monthly for CRITICAL tier systems.
 
@@ -159,7 +159,7 @@ If any dimension suggests higher tier, use it.
 
 ## Simplified Tier Mapping
 
-Some framework documents — particularly [PACE](pace-controls-section.md), [CHEATSHEET](../CHEATSHEET.md), and specialized controls — use a simplified **three-tier numbered system** (Tier 1/2/3). This is intentional: the three-tier system is a practical shorthand for operational contexts where the full four-tier classification adds complexity without proportionate benefit.
+Some framework documents - particularly [PACE](pace-controls-section.md), [CHEATSHEET](../CHEATSHEET.md), and specialized controls - use a simplified **three-tier numbered system** (Tier 1/2/3). This is intentional: the three-tier system is a practical shorthand for operational contexts where the full four-tier classification adds complexity without proportionate benefit.
 
 | Simplified Tier | Named Risk Tiers | Description |
 |-----------------|-----------------|-------------|
@@ -177,10 +177,10 @@ The [MASO Framework](../maso/) also uses Tier 1/2/3 for multi-agent **autonomy l
 
 | If you need... | Go to |
 |----------------|-------|
-| Low-risk systems that skip the full review | [Fast Lane](../FAST-LANE.md) — self-certification for internal, read-only, no regulated data |
-| Cost implications of each tier | [Cost & Latency](../extensions/technical/cost-and-latency.md) — security overhead is 15–40% at Tier 2, 40–100% at Tier 3 |
-| Quantitative risk scoring | [Risk Assessment](risk-assessment.md) — six-dimension scoring for board reporting |
-| Multi-agent tier progression | [MASO Implementation Tiers](../maso/) — Supervised → Managed → Autonomous |
+| Low-risk systems that skip the full review | [Fast Lane](../FAST-LANE.md) - self-certification for internal, read-only, no regulated data |
+| Cost implications of each tier | [Cost & Latency](../extensions/technical/cost-and-latency.md) - security overhead is 15–40% at Tier 2, 40–100% at Tier 3 |
+| Quantitative risk scoring | [Risk Assessment](risk-assessment.md) - six-dimension scoring for board reporting |
+| Multi-agent tier progression | [MASO Implementation Tiers](../maso/) - Supervised → Managed → Autonomous |
 
 ---
 

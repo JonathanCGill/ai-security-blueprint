@@ -20,13 +20,13 @@ Capability evaluation and security evaluation are different activities. Most org
 
 ## What "Reputable" Actually Means
 
-"We're using a reputable model" is not a security statement. It is a popularity statement. Reputation in the AI model market currently tracks funding, benchmarks, and adoption — none of which correlate reliably with security posture.
+"We're using a reputable model" is not a security statement. It is a popularity statement. Reputation in the AI model market currently tracks funding, benchmarks, and adoption - none of which correlate reliably with security posture.
 
 A model is security-reputable when you can answer these questions:
 
 ### 1. Do you know what it was trained on?
 
-Not in detail — no provider discloses full training corpora. But in principle: does the provider publish a model card? Does the model card describe the training data at a level that lets you assess risk? Or does it say "trained on a large corpus of internet text" and leave it there?
+Not in detail - no provider discloses full training corpora. But in principle: does the provider publish a model card? Does the model card describe the training data at a level that lets you assess risk? Or does it say "trained on a large corpus of internet text" and leave it there?
 
 What you're looking for:
 
@@ -49,7 +49,7 @@ A provider that treats security as a feature to market rather than a process to 
 
 ### 3. Can you test it before you trust it?
 
-Security evaluation requires testing the model against your specific threat scenarios — not the provider's generic benchmarks.
+Security evaluation requires testing the model against your specific threat scenarios - not the provider's generic benchmarks.
 
 - **Prompt injection resistance.** Run known injection techniques against the model with your system prompt. Does it hold?
 - **Instruction-following fidelity.** Give it a system prompt with constraints. Does it respect them under adversarial user input?
@@ -64,7 +64,7 @@ A model that silently updates is a model that silently changes your security pos
 
 - **API models.** Does the provider support version pinning? Will they notify you before deprecating a version? What's the migration timeline?
 - **Self-hosted models.** Do you hash-verify the weights? Do you pull from official sources only? Do you store approved versions in your own artefact repository?
-- **Fine-tuned models.** Can you trace the full lineage — base model version, training data, hyperparameters?
+- **Fine-tuned models.** Can you trace the full lineage - base model version, training data, hyperparameters?
 
 Version control for models is not optional. It is the difference between "we know what we're running" and "we think we know what we're running."
 
@@ -86,9 +86,9 @@ You cannot inspect why a model produces a given output. You cannot verify that s
 
 This is why the framework's three-layer pattern exists. You cannot eliminate the asymmetry, but you can compensate for it:
 
-- **Guardrails** catch outputs that violate known constraints — regardless of why the model produced them.
-- **The Judge** evaluates outputs against your policies — regardless of what the model intended.
-- **Human review** applies judgment — regardless of what the model claims.
+- **Guardrails** catch outputs that violate known constraints - regardless of why the model produced them.
+- **The Judge** evaluates outputs against your policies - regardless of what the model intended.
+- **Human review** applies judgment - regardless of what the model claims.
 
 The layers don't trust the model. They verify its outputs. But the layers work *better* when the model is better. A model with strong instruction-following produces fewer guardrail triggers. A model with good safety training produces fewer Judge flags. A model with consistent behaviour produces fewer surprises for human reviewers.
 
@@ -120,13 +120,13 @@ A model that scores poorly on transparency needs stronger runtime controls. A mo
 
 This is not a model evaluation framework. It does not tell you how to benchmark accuracy, measure latency, or compare reasoning capability. Those are capability assessments with mature tooling and methodology.
 
-This is a security lens on model selection. It sits upstream of the framework's [supply chain controls](../extensions/technical/supply-chain.md), which handle the technical mechanics — hash verification, version pinning, dependency scanning. And it complements the [vendor assessment questionnaire](../extensions/templates/vendor-assessment-questionnaire.md), which structures the contractual relationship.
+This is a security lens on model selection. It sits upstream of the framework's [supply chain controls](../extensions/technical/supply-chain.md), which handle the technical mechanics - hash verification, version pinning, dependency scanning. And it complements the [vendor assessment questionnaire](../extensions/templates/vendor-assessment-questionnaire.md), which structures the contractual relationship.
 
 The sequence is:
 
-1. **Evaluate the model's security posture** — is it trustworthy enough to deploy? *(this document)*
-2. **Verify what you deploy** — is it the model you evaluated? *([supply chain controls](../extensions/technical/supply-chain.md))*
-3. **Monitor what it does** — is it behaving as expected in production? *([core controls](../core/controls.md))*
+1. **Evaluate the model's security posture** - is it trustworthy enough to deploy? *(this document)*
+2. **Verify what you deploy** - is it the model you evaluated? *([supply chain controls](../extensions/technical/supply-chain.md))*
+3. **Monitor what it does** - is it behaving as expected in production? *([core controls](../core/controls.md))*
 
 Skip step one and you're verifying the integrity of a model you never assessed, then monitoring outputs from a system whose baseline risk you don't understand.
 
@@ -134,7 +134,7 @@ Skip step one and you're verifying the integrity of a model you never assessed, 
 
 ## The Bottom Line
 
-The model is the foundation. Every control in this framework — guardrails, Judge, human review, PACE resilience — operates on the model's outputs. If the model is fundamentally untrustworthy, the controls work harder, cost more, and catch less.
+The model is the foundation. Every control in this framework - guardrails, Judge, human review, PACE resilience - operates on the model's outputs. If the model is fundamentally untrustworthy, the controls work harder, cost more, and catch less.
 
 Choosing a model is not just a capability decision. It is the first security decision you make.
 

@@ -10,7 +10,7 @@
 
 Traditional application logging records discrete events: user logged in, API called, error thrown. AI systems require a fundamentally different approach because:
 
-1. **Non-determinism.** The same input produces different outputs. You can't diff against expected output — you must evaluate *behavioural patterns* over time.
+1. **Non-determinism.** The same input produces different outputs. You can't diff against expected output - you must evaluate *behavioural patterns* over time.
 2. **Semantic content.** A model response that is technically well-formed (valid JSON, no errors) can still be harmful, biased, or wrong. Logging must capture enough semantic context for evaluation.
 3. **Multi-step reasoning.** Agentic systems chain decisions. A single harmful outcome may result from a sequence of individually reasonable steps. Logging must preserve the full chain.
 4. **Adversarial inputs.** Prompt injection attempts must be detectable in logs. This means logging raw inputs *before* guardrail processing, not just the sanitised versions.
@@ -61,7 +61,7 @@ Every interaction with a model endpoint must be logged with sufficient context t
 
 ### What NOT to Log in Plain Text
 
-- Credentials, API keys, or tokens that appear in prompts (redact — see LOG-09).
+- Credentials, API keys, or tokens that appear in prompts (redact - see LOG-09).
 - Full PII unless explicitly required for the use case and protected accordingly.
 - System prompt content in full (log the hash; store the prompt in version-controlled config).
 
@@ -132,7 +132,7 @@ The Judge itself can fail, hallucinate, or be manipulated. Log analysis should d
 
 ## LOG-04: Agent Action Logging
 
-For agentic AI systems, every step in the agent's decision chain must be logged. A harmful outcome may result from a sequence of individually reasonable steps — you need the full chain to diagnose and prevent recurrence.
+For agentic AI systems, every step in the agent's decision chain must be logged. A harmful outcome may result from a sequence of individually reasonable steps - you need the full chain to diagnose and prevent recurrence.
 
 ### Required Fields per Action
 
@@ -193,8 +193,8 @@ Define alert thresholds as deviations from baseline. Example:
 Not every anomaly is an incident. The logging pipeline should classify:
 
 - **Expected variation:** Normal fluctuation within baseline bounds.
-- **Anomaly:** Statistically significant deviation — investigate.
-- **Incident:** Anomaly confirmed as control failure, misuse, or compromise — invoke IR.
+- **Anomaly:** Statistically significant deviation - investigate.
+- **Incident:** Anomaly confirmed as control failure, misuse, or compromise - invoke IR.
 
 ---
 
@@ -210,7 +210,7 @@ Prompt injection is the primary adversarial threat to LLM systems. Logging must 
 | **Guardrail confidence scoring** | Inputs that score near the block threshold | Only catches what guardrails are tuned for |
 | **Output anomaly detection** | Responses that deviate from expected format/tone/scope | Requires well-defined baselines |
 | **Cross-request correlation** | Sequential inputs that individually pass guardrails but collectively form an attack | Requires session-aware analysis |
-| **Judge evaluation patterns** | Content flagged by Judge but not caught by guardrails | Async — detection is delayed |
+| **Judge evaluation patterns** | Content flagged by Judge but not caught by guardrails | Async - detection is delayed |
 
 ### Logging for Injection Forensics
 
@@ -257,7 +257,7 @@ Adjust per regulatory requirements (GDPR, POPIA, sector-specific).
 
 ## LOG-09: Sensitive Data Redaction
 
-AI logs frequently contain PII, financial data, or other sensitive information — because users put it in their prompts and models include it in their responses.
+AI logs frequently contain PII, financial data, or other sensitive information - because users put it in their prompts and models include it in their responses.
 
 ### Redaction Strategy
 
@@ -280,7 +280,7 @@ AI system logs in isolation miss context. Correlating AI logs with enterprise se
 | Unusual prompt patterns from user X | User X's device has compromised IoC | Adversary using stolen session to probe AI system |
 | Agent makes unexpected outbound API call | Network logs show data exfiltration to unknown IP | Agent used as exfiltration channel |
 | Spike in token consumption | Cost management alert | Prompt injection inflating context (denial of wallet) |
-| Judge flags multiple responses as policy violations | No corresponding guardrail blocks | Guardrail evasion technique — update rules |
+| Judge flags multiple responses as policy violations | No corresponding guardrail blocks | Guardrail evasion technique - update rules |
 | System prompt hash changes | No corresponding change request in ITSM | Unauthorized configuration change |
 
 ### Integration Architecture

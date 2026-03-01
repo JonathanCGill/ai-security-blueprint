@@ -8,7 +8,7 @@ This document maps the AI Runtime Behaviour Security controls to EU AI Act requi
 
 The EU AI Act establishes requirements for AI systems based on risk classification. This crosswalk focuses on **high-risk AI systems** (Annex III), which face the most stringent requirements.
 
-**Key principle:** The framework's control model—guardrails prevent, Judge detects, humans decide—aligns well with the EU AI Act's emphasis on human oversight and risk management.
+**Key principle:** The framework's control model-guardrails prevent, Judge detects, humans decide-aligns well with the EU AI Act's emphasis on human oversight and risk management.
 
 ---
 
@@ -138,9 +138,9 @@ The EU AI Act establishes requirements for AI systems based on risk classificati
 
 This is where the framework's control model is specifically designed to comply:
 
-1. **Guardrails prevent** — Real-time protection, humans can override/disable
-2. **Judge detects** — Surfaces issues for human review, does NOT make decisions
-3. **Humans decide** — HITL reviews findings, makes all consequential decisions
+1. **Guardrails prevent** - Real-time protection, humans can override/disable
+2. **Judge detects** - Surfaces issues for human review, does NOT make decisions
+3. **Humans decide** - HITL reviews findings, makes all consequential decisions
 
 **Critical alignment:**
 - The Judge is explicitly NOT a decision-maker
@@ -191,13 +191,13 @@ This is where the framework's control model is specifically designed to comply:
 
 The framework's three-layer model directly supports Article 14:
 
-![EU AI Act Article 14 — Human Oversight](../../images/eu-ai-act-article14.svg)
+![EU AI Act Article 14 - Human Oversight](../../images/eu-ai-act-article14.svg)
 
 ### Risk Management (Article 9)
 
 The framework provides comprehensive risk management:
 
-![EU AI Act Article 9 — Risk Management System](../../images/eu-ai-act-article9.svg)
+![EU AI Act Article 9 - Risk Management System](../../images/eu-ai-act-article9.svg)
 
 ---
 

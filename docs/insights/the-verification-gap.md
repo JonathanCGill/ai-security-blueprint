@@ -1,6 +1,6 @@
 # The Verification Gap
 
-**Why current AI safety approaches can't confirm ground truth — and what's emerging to fill the gap.**
+**Why current AI safety approaches can't confirm ground truth - and what's emerging to fill the gap.**
 
 ---
 
@@ -158,7 +158,7 @@ Not all verification is equal. Approaches vary in their independence from the LL
 - Judge may have different biases, not fewer biases
 - "Grading your own homework with a different pencil"
 
-**Best for**: Style, safety, and appropriateness — not factual accuracy.
+**Best for**: Style, safety, and appropriateness - not factual accuracy.
 
 **Risk rating**: ⬤⬤○○○ (Useful layer, but not independent verification)
 
@@ -196,7 +196,7 @@ Stacking approaches with the same blind spots doesn't help:
 
 ```
 Bad: Guardrails → LLM → LLM-Judge → LLM-Reviewer
-     (All rely on LLM reasoning — correlated failures)
+     (All rely on LLM reasoning - correlated failures)
 
 Better: Guardrails → LLM → Formal Verify → KG Check → Human Sample
         (Multiple independent verification methods)
@@ -245,11 +245,11 @@ The verification gap won't be closed by a single solution. It will be narrowed b
 
 ## Key Takeaways
 
-1. **Current safety layers don't verify truth** — they verify compliance, safety, and style
-2. **LLM-based verification shares LLM vulnerabilities** — it's not independent
+1. **Current safety layers don't verify truth** - they verify compliance, safety, and style
+2. **LLM-based verification shares LLM vulnerabilities** - it's not independent
 3. **Fully independent verification exists** but has narrow coverage (formal logic, knowledge graphs)
-4. **No single approach covers everything** — hybrid pipelines are necessary
-5. **Match verification to claim type** — factual claims need different verification than policy compliance
+4. **No single approach covers everything** - hybrid pipelines are necessary
+5. **Match verification to claim type** - factual claims need different verification than policy compliance
 
 The question isn't "which verification method should we use?" It's "which verification methods cover the claims our application makes?"
 
@@ -257,7 +257,7 @@ The question isn't "which verification method should we use?" It's "which verifi
 
 ## Related
 
-- [Behavioral Anomaly Detection](./behavioral-anomaly-detection.md) — Aggregating signals to detect drift
+- [Behavioral Anomaly Detection](./behavioral-anomaly-detection.md) - Aggregating signals to detect drift
 - [Why Guardrails Aren't Enough](./why-guardrails-arent-enough.md)
 - [Judge Detects, Not Decides](./judge-detects-not-decides.md)
 - [Current Solutions Reference](../extensions/technical/current-solutions.md)

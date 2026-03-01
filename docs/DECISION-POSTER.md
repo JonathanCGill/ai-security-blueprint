@@ -6,7 +6,7 @@
 
 ---
 
-[![AI Runtime Behaviour Security — Decision Poster](images/decision-poster.svg)](images/decision-poster.svg)
+[![AI Runtime Behaviour Security - Decision Poster](images/decision-poster.svg)](images/decision-poster.svg)
 
 ---
 
@@ -18,7 +18,7 @@ To print at full size: click the image above to open the SVG directly, then use 
 
 | Resource | Purpose |
 |---|---|
-| [Cheat Sheet](CHEATSHEET.md) | Same content in text — scannable tables, copy-paste friendly |
+| [Cheat Sheet](CHEATSHEET.md) | Same content in text - scannable tables, copy-paste friendly |
 | [Fast Lane](FAST-LANE.md) | Pre-approved path for low-risk deployments |
 | [PACE Resilience](PACE-RESILIENCE.md) | Full resilience methodology |
 | [README](README.md) | Full framework overview |

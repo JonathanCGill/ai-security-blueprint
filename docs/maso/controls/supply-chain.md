@@ -2,13 +2,13 @@
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Covers: LLM03 (Supply Chain Vulnerabilities) · ASI04 (Agentic Supply Chain)
-> Also covers: HF-02 (Accountability — AIBOM component)
+> Also covers: HF-02 (Accountability - AIBOM component)
 
 ---
 
 ## Principle
 
-Every component in the agent system — models, tools, MCP servers, RAG sources, plugins, and protocol endpoints — is a supply chain dependency. Each dependency is inventoried, versioned, integrity-verified, and auditable. No component is loaded at runtime without prior vetting and signing. The supply chain attack surface scales linearly with the number of agents and exponentially with the number of dynamic integrations.
+Every component in the agent system - models, tools, MCP servers, RAG sources, plugins, and protocol endpoints - is a supply chain dependency. Each dependency is inventoried, versioned, integrity-verified, and auditable. No component is loaded at runtime without prior vetting and signing. The supply chain attack surface scales linearly with the number of agents and exponentially with the number of dynamic integrations.
 
 ---
 
@@ -16,17 +16,17 @@ Every component in the agent system — models, tools, MCP servers, RAG sources,
 
 **The supply chain multiplies with every agent.** A single-model system has one model provider, one set of tools, one RAG configuration. A three-agent system may have three different model providers, nine tool integrations, three RAG sources, and two MCP server connections. Each additional dependency is an additional attack surface.
 
-**Dynamic composition at runtime.** Modern agent frameworks support dynamic tool discovery and composition — an agent can discover and use an MCP server it has never interacted with before. This is powerful for flexibility and catastrophic for security. A poisoned MCP tool descriptor can trick an agent into passing credentials as tool parameters, executing unintended operations, or loading malicious code.
+**Dynamic composition at runtime.** Modern agent frameworks support dynamic tool discovery and composition - an agent can discover and use an MCP server it has never interacted with before. This is powerful for flexibility and catastrophic for security. A poisoned MCP tool descriptor can trick an agent into passing credentials as tool parameters, executing unintended operations, or loading malicious code.
 
-**Model provider changes propagate silently.** When a model provider updates their model (version change, fine-tuning update, safety filter modification), every agent using that model is affected simultaneously. If the update introduces a regression — reduced safety filtering, changed behaviour on edge cases, or degraded quality — the agents inherit the regression with no notice.
+**Model provider changes propagate silently.** When a model provider updates their model (version change, fine-tuning update, safety filter modification), every agent using that model is affected simultaneously. If the update introduces a regression - reduced safety filtering, changed behaviour on edge cases, or degraded quality - the agents inherit the regression with no notice.
 
-**Credential harvesting through tool manifests.** A poisoned tool manifest can describe a tool that requires "authentication tokens" as parameters. The agent, following its instructions to use the tool, passes credentials to the attacker's endpoint. This is a supply chain attack that doesn't require compromising the agent's code — only its tool configuration.
+**Credential harvesting through tool manifests.** A poisoned tool manifest can describe a tool that requires "authentication tokens" as parameters. The agent, following its instructions to use the tool, passes credentials to the attacker's endpoint. This is a supply chain attack that doesn't require compromising the agent's code - only its tool configuration.
 
 ---
 
 ## Controls by Tier
 
-### Tier 1 — Supervised
+### Tier 1 - Supervised
 
 | Control | Requirement | Implementation Notes |
 |---------|-------------|---------------------|
@@ -35,7 +35,7 @@ Every component in the agent system — models, tools, MCP servers, RAG sources,
 | **SC-1.3** Fixed toolsets | Agents use a predefined, static set of tools. No runtime discovery or dynamic composition | New tools require a change request and security review. |
 | **SC-1.4** RAG source inventory | Every RAG/vector database is documented per agent: source, update frequency, access controls | Enables traceability when poisoning is suspected. |
 
-### Tier 2 — Managed
+### Tier 2 - Managed
 
 All Tier 1 controls remain active, plus:
 
@@ -46,7 +46,7 @@ All Tier 1 controls remain active, plus:
 | **SC-2.3** MCP server allow-listing | Agents can only connect to pre-approved MCP servers | Allow-list maintained by the AI security team. New MCP servers require vetting before addition. |
 | **SC-2.4** Runtime integrity checks | Tool and MCP server integrity verified at load time against signed manifests | Integrity failure blocks loading and triggers an alert. |
 
-### Tier 3 — Autonomous
+### Tier 3 - Autonomous
 
 All Tier 2 controls remain active, plus:
 
@@ -94,7 +94,7 @@ MCP (Model Context Protocol) servers extend agent capabilities by providing tool
 |-------|-------------|
 | Source verification | Who built it? Is the source code available for review? |
 | Manifest inspection | Do the tool descriptions match the actual tool behaviour? Are parameter schemas well-defined? |
-| Credential handling | Does the tool request credentials as parameters? (Red flag — credentials should be injected by the platform, not passed by the agent.) |
+| Credential handling | Does the tool request credentials as parameters? (Red flag - credentials should be injected by the platform, not passed by the agent.) |
 | Network behaviour | What external endpoints does the MCP server contact? Are they documented and expected? |
 | Data handling | What data does the MCP server access, store, or transmit? Does it comply with the agent's data classification? |
 | Update mechanism | How is the MCP server updated? Can updates change tool behaviour without notice? |
@@ -102,7 +102,7 @@ MCP (Model Context Protocol) servers extend agent capabilities by providing tool
 
 **Approval authority:** AI security team for Tier 2. AI Security Architect for Tier 3 (higher bar due to autonomous usage).
 
-**Re-vetting triggers:** Any update to the MCP server, change in maintainer, security advisory affecting the server's dependencies, or a 6-month periodic review — whichever comes first.
+**Re-vetting triggers:** Any update to the MCP server, change in maintainer, security advisory affecting the server's dependencies, or a 6-month periodic review - whichever comes first.
 
 ---
 
@@ -151,11 +151,11 @@ MCP (Model Context Protocol) servers extend agent capabilities by providing tool
 
 ## Common Pitfalls
 
-**Treating model provider updates as safe by default.** Model providers update their models regularly — sometimes with notice, sometimes without. Each update is a supply chain change that can affect every agent in the system. Model version pinning (Tier 3) is the defensive measure, but even at Tier 2, organisations should monitor provider change logs and test updates before promoting them to production.
+**Treating model provider updates as safe by default.** Model providers update their models regularly - sometimes with notice, sometimes without. Each update is a supply chain change that can affect every agent in the system. Model version pinning (Tier 3) is the defensive measure, but even at Tier 2, organisations should monitor provider change logs and test updates before promoting them to production.
 
 **Vetting MCP servers once and never again.** An MCP server that was safe at vetting time can become unsafe through updates, dependency changes, or maintainer compromise. Re-vetting must be periodic and triggered by any change. The 6-month periodic review is a backstop, not a target.
 
-**AIBOM as a compliance document rather than an operational tool.** The AIBOM is useful only if it is compared against the deployed configuration automatically. A beautifully formatted AIBOM that sits in a wiki and diverges from reality is worse than no AIBOM — it provides false assurance.
+**AIBOM as a compliance document rather than an operational tool.** The AIBOM is useful only if it is compared against the deployed configuration automatically. A beautifully formatted AIBOM that sits in a wiki and diverges from reality is worse than no AIBOM - it provides false assurance.
 
 **Allowing agents to discover tools at runtime.** Dynamic tool discovery is the defining feature of MCP-based agent frameworks and the defining vulnerability of their supply chain. At Tier 1 and Tier 2, tool discovery must be disabled in favour of static allow-lists. Even at Tier 3, discovery should be limited to pre-approved registries with signed manifests.
 

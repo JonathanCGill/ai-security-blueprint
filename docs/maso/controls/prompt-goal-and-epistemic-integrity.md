@@ -8,9 +8,9 @@
 
 ## Principle
 
-The instructions an agent follows, the objectives it pursues, and the information it treats as true must be trustworthy, verifiable, and protected from manipulation — whether that manipulation comes from an external attacker, a compromised peer agent, or the emergent dynamics of multi-agent interaction. This domain addresses both adversarial threats to agent instructions and the non-adversarial information-processing failures that arise when agents collaborate.
+The instructions an agent follows, the objectives it pursues, and the information it treats as true must be trustworthy, verifiable, and protected from manipulation - whether that manipulation comes from an external attacker, a compromised peer agent, or the emergent dynamics of multi-agent interaction. This domain addresses both adversarial threats to agent instructions and the non-adversarial information-processing failures that arise when agents collaborate.
 
-In a multi-agent system, the instruction surface is not just the system prompt. It includes inter-agent messages, delegated task specifications, shared memory, RAG content, and tool outputs — all of which can carry injected instructions, leak system prompts, hijack goals, or degrade information quality through successive agent handoffs. Securing the instruction and information chain is the prerequisite for every other control domain functioning correctly.
+In a multi-agent system, the instruction surface is not just the system prompt. It includes inter-agent messages, delegated task specifications, shared memory, RAG content, and tool outputs - all of which can carry injected instructions, leak system prompts, hijack goals, or degrade information quality through successive agent handoffs. Securing the instruction and information chain is the prerequisite for every other control domain functioning correctly.
 
 ---
 
@@ -18,15 +18,15 @@ In a multi-agent system, the instruction surface is not just the system prompt. 
 
 ### Adversarial Threats (OWASP)
 
-**Prompt injection propagates across agents (LLM01).** In a single-model system, a prompt injection affects one context window. In a multi-agent system, a poisoned document processed by Agent A becomes part of Agent A's output, which becomes Agent B's input. The injection crosses the trust boundary invisibly — Agent B has no way to distinguish "data from Agent A" from "instructions from Agent A." The injection surface multiplies with every agent in the chain.
+**Prompt injection propagates across agents (LLM01).** In a single-model system, a prompt injection affects one context window. In a multi-agent system, a poisoned document processed by Agent A becomes part of Agent A's output, which becomes Agent B's input. The injection crosses the trust boundary invisibly - Agent B has no way to distinguish "data from Agent A" from "instructions from Agent A." The injection surface multiplies with every agent in the chain.
 
-**System prompts are extractable by peer agents (LLM07).** Agents in the same orchestration can probe each other's behaviour to infer system prompt contents. A compromised agent can explicitly attempt extraction through crafted requests. Leaked system prompts reveal security control logic, classification rules, and operational boundaries — information an attacker can use to craft targeted bypasses.
+**System prompts are extractable by peer agents (LLM07).** Agents in the same orchestration can probe each other's behaviour to infer system prompt contents. A compromised agent can explicitly attempt extraction through crafted requests. Leaked system prompts reveal security control logic, classification rules, and operational boundaries - information an attacker can use to craft targeted bypasses.
 
-**Goal hijacking redirects entire workflows (ASI01).** An attacker who manipulates one agent's objectives through poisoned inputs — emails, documents, RAG content, or inter-agent messages — can redirect an entire multi-agent workflow. If the planning agent's goal is hijacked, every downstream agent executes a corrupted plan. Unlike single-model deployments, the hijacked goal is reinforced by the orchestration structure: other agents follow the plan because that's what the planner told them to do.
+**Goal hijacking redirects entire workflows (ASI01).** An attacker who manipulates one agent's objectives through poisoned inputs - emails, documents, RAG content, or inter-agent messages - can redirect an entire multi-agent workflow. If the planning agent's goal is hijacked, every downstream agent executes a corrupted plan. Unlike single-model deployments, the hijacked goal is reinforced by the orchestration structure: other agents follow the plan because that's what the planner told them to do.
 
 ### Epistemic Threats (Non-Adversarial)
 
-These risks arise from how agents process and pass information — no external attacker required.
+These risks arise from how agents process and pass information - no external attacker required.
 
 **Groupthink (EP-01).** Agents converge on a plausible narrative. Dissent disappears. The human reviewer sees unanimous agreement and has no reason to challenge it. Multi-agent consensus amplifies ASI09 (trust exploitation) even when no agent is compromised.
 
@@ -44,13 +44,13 @@ These risks arise from how agents process and pass information — no external a
 
 **Hidden assumptions becoming global (EP-08).** Agent makes a local assumption ("assume the client is in the US for tax purposes"). The assumption propagates through the bus to other agents and is treated as established fact.
 
-**Task ambiguity as silent failure (EP-09).** Agent receives an ambiguous instruction — "review the account" could mean audit, summarise, or close. Rather than flagging the ambiguity, the agent selects the most probable interpretation and executes with full confidence. The output looks correct for the interpretation chosen, but the interpretation was wrong. No guardrail catches this because the output is valid — for a task nobody requested.
+**Task ambiguity as silent failure (EP-09).** Agent receives an ambiguous instruction - "review the account" could mean audit, summarise, or close. Rather than flagging the ambiguity, the agent selects the most probable interpretation and executes with full confidence. The output looks correct for the interpretation chosen, but the interpretation was wrong. No guardrail catches this because the output is valid - for a task nobody requested.
 
 ---
 
 ## Controls by Tier
 
-### Tier 1 — Supervised
+### Tier 1 - Supervised
 
 | Control | Requirement | Implementation Notes |
 |---------|-------------|---------------------|
@@ -63,7 +63,7 @@ These risks arise from how agents process and pass information — no external a
 
 **What you're building at Tier 1:** Input guardrails on all agent inputs (not just user-facing), a read-only task specification that the human can compare against agent behaviour, message schema discipline that distinguishes data from instructions, and a requirement that agents flag ambiguity rather than guess.
 
-### Tier 2 — Managed
+### Tier 2 - Managed
 
 All Tier 1 controls remain active, plus:
 
@@ -82,7 +82,7 @@ All Tier 1 controls remain active, plus:
 
 **What you're building at Tier 2:** The LLM-as-Judge now operates on inter-agent messages (not just outputs), enforcing goal integrity, injection detection, and epistemic quality. The message bus schema becomes a control surface with mandatory provenance, uncertainty, and assumption fields. Agents can request clarification rather than silently interpreting ambiguous instructions.
 
-### Tier 3 — Autonomous
+### Tier 3 - Autonomous
 
 All Tier 2 controls remain active, plus:
 
@@ -95,7 +95,7 @@ All Tier 2 controls remain active, plus:
 | **PG-3.5** Challenger agent | Dedicated adversarial agent assigned to attack the primary hypothesis before commit | Mandatory "produce a counterexample" step for high-consequence decisions. Challenger uses different model and different retrieval sources from task agents. |
 | **PG-3.6** Prompt leakage red team | Regular automated probing of agents for system prompt extraction susceptibility | Red team agent attempts extraction techniques against each agent in the orchestration. Results feed into the observability layer. |
 
-**What you're building at Tier 3:** Active defence through canary agents and challengers, cryptographic goal integrity, and automated red-teaming of prompt boundaries. The system doesn't just detect problems — it actively probes for vulnerabilities.
+**What you're building at Tier 3:** Active defence through canary agents and challengers, cryptographic goal integrity, and automated red-teaming of prompt boundaries. The system doesn't just detect problems - it actively probes for vulnerabilities.
 
 ---
 
@@ -134,7 +134,7 @@ The controls in this domain require extensions to the inter-agent message schema
 }
 ```
 
-This schema enables the judge to enforce provenance checks, uncertainty preservation, assumption isolation, and goal integrity — all through structured data rather than natural language parsing.
+This schema enables the judge to enforce provenance checks, uncertainty preservation, assumption isolation, and goal integrity - all through structured data rather than natural language parsing.
 
 ---
 
@@ -194,17 +194,17 @@ This schema enables the judge to enforce provenance checks, uncertainty preserva
 
 ## Common Pitfalls
 
-**Guarding the front door but not the side doors.** Most prompt injection defences focus on user-facing input. In a multi-agent system, the inter-agent message bus, RAG content, and tool outputs are equally dangerous input channels — and they're often unguarded because they're "internal."
+**Guarding the front door but not the side doors.** Most prompt injection defences focus on user-facing input. In a multi-agent system, the inter-agent message bus, RAG content, and tool outputs are equally dangerous input channels - and they're often unguarded because they're "internal."
 
 **Relying on prompt-level isolation for system prompts.** Telling an agent "never reveal your system prompt" is an instruction, not a control. Prompt-level instructions can be overridden by sufficiently creative injection. Infrastructure-level isolation (the agent's system prompt is not in the context window of other agents) is the only reliable approach.
 
-**Treating multi-agent consensus as evidence of correctness.** Three agents agreeing is not three independent opinions if they share the same model, the same training data, and the same retrieval corpus. Consensus is only meaningful when the agents have genuinely independent reasoning paths — different models, different prompts, different data sources.
+**Treating multi-agent consensus as evidence of correctness.** Three agents agreeing is not three independent opinions if they share the same model, the same training data, and the same retrieval corpus. Consensus is only meaningful when the agents have genuinely independent reasoning paths - different models, different prompts, different data sources.
 
-**Assuming epistemic risks require an attacker.** Hallucination amplification, uncertainty stripping, and semantic drift happen through normal agent interaction dynamics. No adversarial input is needed. These are the most dangerous failure modes because they produce outputs that look correct, are well-formatted, and have multi-agent "agreement" — but are wrong.
+**Assuming epistemic risks require an attacker.** Hallucination amplification, uncertainty stripping, and semantic drift happen through normal agent interaction dynamics. No adversarial input is needed. These are the most dangerous failure modes because they produce outputs that look correct, are well-formatted, and have multi-agent "agreement" - but are wrong.
 
 **Checking goal integrity at the output, not along the chain.** A goal hijack that occurs at step 2 of a 10-step chain will produce 8 steps of corrupted work before the final output is evaluated. Goal integrity must be monitored continuously, not just at the endpoint.
 
-**Treating agent confidence as task clarity.** An agent that executes confidently is not an agent that understood the task correctly. Ambiguous instructions produce high-confidence outputs for the wrong interpretation. The absence of an error is not evidence of correct understanding — agents must be required to flag ambiguity explicitly rather than defaulting to the most probable interpretation.
+**Treating agent confidence as task clarity.** An agent that executes confidently is not an agent that understood the task correctly. Ambiguous instructions produce high-confidence outputs for the wrong interpretation. The absence of an error is not evidence of correct understanding - agents must be required to flag ambiguity explicitly rather than defaulting to the most probable interpretation.
 
 ---
 

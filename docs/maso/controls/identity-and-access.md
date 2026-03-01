@@ -16,11 +16,11 @@ This domain is the foundation for all other MASO controls. Without reliable agen
 
 ## Why This Matters in Multi-Agent Systems
 
-In single-model deployments, identity is straightforward — there's one model, one credential set, one permission scope. Multi-agent systems break this model in several ways:
+In single-model deployments, identity is straightforward - there's one model, one credential set, one permission scope. Multi-agent systems break this model in several ways:
 
 **Transitive permission chains.** If Agent A delegates a task to Agent B, and Agent B has access to Tool X, then Agent A effectively has indirect access to Tool X through the delegation. Without explicit controls, delegation creates implicit privilege escalation.
 
-**Orchestrator over-privilege.** The orchestrator (the component that routes tasks to agents) typically starts with broad permissions because it needs to manage all agents. If task agents inherit the orchestrator's credentials — a common design shortcut — every agent operates with orchestrator-level privilege.
+**Orchestrator over-privilege.** The orchestrator (the component that routes tasks to agents) typically starts with broad permissions because it needs to manage all agents. If task agents inherit the orchestrator's credentials - a common design shortcut - every agent operates with orchestrator-level privilege.
 
 **Credential sharing at scale.** When agents are spun up dynamically, developers often reuse a single service account across all agent instances. This means compromising one agent compromises the credential used by all agents.
 
@@ -30,7 +30,7 @@ In single-model deployments, identity is straightforward — there's one model, 
 
 ## Controls by Tier
 
-### Tier 1 — Supervised
+### Tier 1 - Supervised
 
 | Control | Requirement | Implementation Notes |
 |---------|-------------|---------------------|
@@ -41,7 +41,7 @@ In single-model deployments, identity is straightforward — there's one model, 
 
 **What you're building at Tier 1:** A credential inventory and the organisational discipline to assign unique, scoped credentials per agent. No new infrastructure required.
 
-### Tier 2 — Managed
+### Tier 2 - Managed
 
 All Tier 1 controls remain active, plus:
 
@@ -56,7 +56,7 @@ All Tier 1 controls remain active, plus:
 
 **What you're building at Tier 2:** An NHI lifecycle management system. This can be an extension of your existing identity provider (Entra ID, Okta, CyberArk) or a dedicated agent identity service.
 
-### Tier 3 — Autonomous
+### Tier 3 - Autonomous
 
 All Tier 2 controls remain active, plus:
 
@@ -67,7 +67,7 @@ All Tier 2 controls remain active, plus:
 | **IA-3.3** Delegation contracts | Signed contracts define scope, max permissions, time limit, and expected output for each delegation | Agent B cannot exceed the contract scope. |
 | **IA-3.4** Automated credential revocation | Anomaly detection triggers credential revocation within 30 seconds | Faster than full PACE transition; immediate containment. |
 
-**What you're building at Tier 3:** Behavioural identity — the NHI is not just a certificate, it's a contract that includes expected behaviour patterns. The identity system becomes a detection layer.
+**What you're building at Tier 3:** Behavioural identity - the NHI is not just a certificate, it's a contract that includes expected behaviour patterns. The identity system becomes a detection layer.
 
 ---
 
@@ -121,7 +121,7 @@ All Tier 2 controls remain active, plus:
 
 **Using API keys instead of certificates.** API keys are long-lived shared secrets. They can be extracted from agent memory, logged accidentally, or leaked through tool manifests. Certificate-based NHI with short-lived tokens is the target state.
 
-**Treating the orchestrator as a trusted intermediary.** The orchestrator routes tasks — it should not proxy tool access. If every tool call goes through the orchestrator, the orchestrator becomes a single point of compromise with maximum privilege.
+**Treating the orchestrator as a trusted intermediary.** The orchestrator routes tasks - it should not proxy tool access. If every tool call goes through the orchestrator, the orchestrator becomes a single point of compromise with maximum privilege.
 
 **Forgetting about dynamic agent creation.** In systems that spin up agents on demand, the identity provisioning must be automated and scoped. A new agent instance should receive a fresh NHI with the minimum permissions for its role, not a clone of an existing agent's identity.
 

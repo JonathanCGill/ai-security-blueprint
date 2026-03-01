@@ -4,13 +4,13 @@
 
 ## Scope
 
-This covers security controls for the RAG pipeline: ingestion, embedding, retrieval, and augmentation. It does not cover the LLM's own behaviour — that's addressed by the three-layer pattern.
+This covers security controls for the RAG pipeline: ingestion, embedding, retrieval, and augmentation. It does not cover the LLM's own behaviour - that's addressed by the three-layer pattern.
 
 ---
 
 ## Architecture and Attack Surface
 
-![RAG Pipeline — Security Control Points](../../images/rag-security-controls.svg)
+![RAG Pipeline - Security Control Points](../../images/rag-security-controls.svg)
 
 | Component | Attack Surface | Control Category |
 |-----------|---------------|-----------------|
@@ -60,7 +60,7 @@ This is the highest-priority control. Without it, RAG is a data access bypass.
 
 | Approach | How It Works | Trade-offs |
 |----------|-------------|------------|
-| **Document-level filtering** | Each chunk inherits its source document's access permissions. At query time, filter chunks to only those the user is authorised to access. | Simple to implement. Coarse-grained — can't restrict access within a document. |
+| **Document-level filtering** | Each chunk inherits its source document's access permissions. At query time, filter chunks to only those the user is authorised to access. | Simple to implement. Coarse-grained - can't restrict access within a document. |
 | **Chunk-level filtering** | Each chunk has its own access permissions (may differ from parent document). | Fine-grained but complex. Requires per-chunk metadata management. |
 | **Role-based retrieval scopes** | Define retrieval scopes per role. Users in "Engineering" only retrieve from engineering-classified documents. | Practical for most enterprises. Map to existing RBAC. |
 | **Query-time access check** | After similarity search, before chunks enter the prompt, validate user access to each returned chunk. | Most reliable. Adds latency (one access check per retrieved chunk). |
@@ -68,7 +68,7 @@ This is the highest-priority control. Without it, RAG is a data access bypass.
 #### Implementation Pattern
 
 ```python
-# Pseudocode — query-time access filtering
+# Pseudocode - query-time access filtering
 def retrieve_with_access_control(query, user, top_k=10):
     # Step 1: Embed query
     query_embedding = embed(query)
@@ -123,7 +123,7 @@ Retrieved content becomes part of the LLM prompt. If it contains adversarial ins
 | LLM summarises sensitive data from retrieval | Output guardrails check for PII, classification markers, and sensitive entity patterns |
 | Aggregation risk (safe chunks combine to reveal sensitive info) | Limit number of retrieved chunks per query; evaluate combined context, not individual chunks |
 | Embedding inversion (recovering source text from embeddings) | Use embedding models resistant to inversion; monitor for bulk embedding extraction queries |
-| Chunk attribution in response | If user shouldn't know a document exists, don't cite it — strip source attribution from responses |
+| Chunk attribution in response | If user shouldn't know a document exists, don't cite it - strip source attribution from responses |
 
 ---
 

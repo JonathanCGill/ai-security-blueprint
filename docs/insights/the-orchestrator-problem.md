@@ -6,11 +6,11 @@
 
 ## The Implicit Trust
 
-Multi-agent security frameworks — including this one, until now — share a structural assumption: the orchestrator is trusted. It routes tasks, manages lifecycle, sequences execution. The controls focus on task agents — the ones that read data, call tools, generate outputs. The orchestrator sits above them, assumed to be benign.
+Multi-agent security frameworks - including this one, until now - share a structural assumption: the orchestrator is trusted. It routes tasks, manages lifecycle, sequences execution. The controls focus on task agents - the ones that read data, call tools, generate outputs. The orchestrator sits above them, assumed to be benign.
 
 This assumption is wrong. And its consequences are significant.
 
-In production multi-agent systems — LangGraph, AutoGen, CrewAI, AWS Bedrock multi-agent — the orchestrator is not a simple router. It is an LLM. It decomposes goals into sub-tasks. It selects which agents to invoke. It interprets intermediate results. It decides what to do next.
+In production multi-agent systems - LangGraph, AutoGen, CrewAI, AWS Bedrock multi-agent - the orchestrator is not a simple router. It is an LLM. It decomposes goals into sub-tasks. It selects which agents to invoke. It interprets intermediate results. It decides what to do next.
 
 It is, by every meaningful definition, an agent. But it operates outside the control architecture designed for agents.
 
@@ -40,7 +40,7 @@ The orchestrator doesn't need tool access to cause harm. It causes harm through 
 
 ## Three Privileged Roles, One Governance Gap
 
-The problem extends beyond orchestrators. Multi-agent systems have three classes of agent with elevated authority that the current framework treats differently from task agents — but shouldn't:
+The problem extends beyond orchestrators. Multi-agent systems have three classes of agent with elevated authority that the current framework treats differently from task agents - but shouldn't:
 
 ### 1. The Orchestrator
 
@@ -60,7 +60,7 @@ The problem extends beyond orchestrators. Multi-agent systems have three classes
 
 **What's missing:** Governance of the Judge's own criteria. Drift detection on Judge performance. Disagreement resolution procedures beyond "escalate to human." Monitoring of whether the Judge is itself being influenced through adversarial inputs.
 
-**The threat:** If the Judge's evaluation criteria drift — through prompt injection in criteria templates, training data poisoning of the judge model, or gradual calibration decay — Layer 2 collapses silently. Every task agent output passes because the standard has shifted. The system reports green while the controls have effectively been disabled.
+**The threat:** If the Judge's evaluation criteria drift - through prompt injection in criteria templates, training data poisoning of the judge model, or gradual calibration decay - Layer 2 collapses silently. Every task agent output passes because the standard has shifted. The system reports green while the controls have effectively been disabled.
 
 ### 3. The Observer
 
@@ -80,7 +80,7 @@ Each of these privileged agents exists to provide assurance over the layer below
 
 But who monitors the privileged agents?
 
-The classical answer is "another layer" — a meta-judge, a super-observer, an orchestrator-of-orchestrators. This creates infinite recursion. Every watchman needs a watchman.
+The classical answer is "another layer" - a meta-judge, a super-observer, an orchestrator-of-orchestrators. This creates infinite recursion. Every watchman needs a watchman.
 
 The practical answer is: **you break the recursion with independence and measurement, not with more layers.**
 
@@ -88,7 +88,7 @@ The practical answer is: **you break the recursion with independence and measure
 - The Judge's performance is calibrated against known-good and known-bad test cases, independently of the Judge's own self-assessment
 - The observer's accuracy is measured by injecting known anomalies (red team) and verifying detection
 
-You don't need a meta-judge. You need **calibration testing** — periodic verification that each privileged agent still does what you think it does.
+You don't need a meta-judge. You need **calibration testing** - periodic verification that each privileged agent still does what you think it does.
 
 ---
 
@@ -96,7 +96,7 @@ You don't need a meta-judge. You need **calibration testing** — periodic verif
 
 Production systems are already moving beyond flat topologies. A planning agent decomposes a complex task. A sub-orchestrator manages a cluster of specialist agents. Another sub-orchestrator handles a different cluster. Results flow up through aggregation agents before reaching the user.
 
-This creates multi-level hierarchies where MASO's current controls — designed for a single orchestration level — face ambiguity:
+This creates multi-level hierarchies where MASO's current controls - designed for a single orchestration level - face ambiguity:
 
 **Does IA-2.4 (no transitive permissions) apply at every level?** In principle, yes. In practice, if Sub-orchestrator B manages Agents C, D, and E, and Sub-orchestrator B was invoked by Orchestrator A, the delegation chain is: User → A → B → C. Each boundary needs explicit permission scoping, not just the first.
 
@@ -112,15 +112,15 @@ The core principle: **every agent with authority over other agents must have con
 
 An orchestrator that plans, selects, and sequences has more influence over the system outcome than any individual task agent. Its controls should reflect that. An evaluator that approves or blocks every output is a single point of trust. Its governance should reflect that.
 
-The current MASO framework handles task agents well. The gap is privileged agents — the agents that control, evaluate, and monitor other agents. They need:
+The current MASO framework handles task agents well. The gap is privileged agents - the agents that control, evaluate, and monitor other agents. They need:
 
 1. **Behavioural monitoring that matches their role.** Orchestrator decisions are measured against user intent, not just tool invocations. Judge accuracy is tracked and calibrated, not assumed. Observer precision is verified through injection testing.
 
-2. **Independence that is verified, not assumed.** Saying "the Judge uses a different model" is a design decision. Verifying that the Judge is still producing independent evaluations — not drifting toward the task agents' outputs — is an ongoing control.
+2. **Independence that is verified, not assumed.** Saying "the Judge uses a different model" is a design decision. Verifying that the Judge is still producing independent evaluations - not drifting toward the task agents' outputs - is an ongoing control.
 
-3. **Governance at every orchestration boundary.** In nested topologies, each delegation level needs explicit permission scoping, evaluation coverage, and blast radius containment. A compromised sub-orchestrator is a different threat from a compromised task agent — the controls should recognise this.
+3. **Governance at every orchestration boundary.** In nested topologies, each delegation level needs explicit permission scoping, evaluation coverage, and blast radius containment. A compromised sub-orchestrator is a different threat from a compromised task agent - the controls should recognise this.
 
-4. **Calibration as a first-class control.** Red team testing of privileged agents — injecting known-bad orchestrator plans, presenting the Judge with known policy violations, triggering known anomalies for the observer — is not optional. It's the mechanism that breaks the recursive "who watches the watchmen" problem.
+4. **Calibration as a first-class control.** Red team testing of privileged agents - injecting known-bad orchestrator plans, presenting the Judge with known policy violations, triggering known anomalies for the observer - is not optional. It's the mechanism that breaks the recursive "who watches the watchmen" problem.
 
 ---
 

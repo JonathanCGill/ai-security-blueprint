@@ -2,7 +2,7 @@
 
 > AI doesn't decide fraud. AI helps analysts interpret signals while fraud systems remain the enforcement authority.
 
-This example follows Sentinel Bank (fictional) as they deploy AI to assist fraud analysts. The critical insight: the AI is an **analyst amplifier** sitting inside an existing fraud control chain — not a replacement for it.
+This example follows Sentinel Bank (fictional) as they deploy AI to assist fraud analysts. The critical insight: the AI is an **analyst amplifier** sitting inside an existing fraud control chain - not a replacement for it.
 
 ---
 
@@ -347,7 +347,7 @@ Circuit breakers protect against AI misbehaviour at scale.
 
 | State | Behaviour | Recovery |
 |-------|-----------|----------|
-| **CLOSED** | Normal operation | — |
+| **CLOSED** | Normal operation | - |
 | **OPEN** | AI bypassed, all cases to human | Manual review + threshold clear |
 | **HALF-OPEN** | AI enabled for sample (10%) | Auto-promote if sample passes |
 

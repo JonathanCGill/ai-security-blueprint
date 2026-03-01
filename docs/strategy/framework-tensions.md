@@ -15,7 +15,7 @@ Strategy asks: **"What value can we create, and how do we capture it?"**
 
 These aren't opposed. Good security enables ambitious strategy by managing the risks that would otherwise kill projects or create crises. But they are in tension. Every control adds cost, time, and complexity. Every risk taken without controls adds exposure.
 
-This article maps the tension points — where the framework actively helps strategy, where it's silent on strategic questions, and where it constrains choices that strategists would rather make freely. It also identifies where strategies will legitimately test the framework's limits, and what to do about it.
+This article maps the tension points - where the framework actively helps strategy, where it's silent on strategic questions, and where it constrains choices that strategists would rather make freely. It also identifies where strategies will legitimately test the framework's limits, and what to do about it.
 
 ---
 
@@ -40,13 +40,13 @@ The framework's [risk tiers](../core/risk-tiers.md) solve this by creating **pro
 
 The [PACE resilience model](../PACE-RESILIENCE.md) is strategically valuable because it answers the question that blocks most launches: **"What happens if it goes wrong?"**
 
-Without PACE, the answer is "we don't know" — which is why risk-averse organisations never launch. With PACE, the answer is specific:
+Without PACE, the answer is "we don't know" - which is why risk-averse organisations never launch. With PACE, the answer is specific:
 
 - Primary fails → Alternate activates (degraded but functioning)
 - Multiple failures → Contingency (human-supervised only)
 - Everything fails → Emergency (AI off, manual fallback)
 
-**Strategic benefit:** Leaders can approve AI deployments because they know the worst case is "we turn it off and go back to manual" — not "we lose control and can't stop it."
+**Strategic benefit:** Leaders can approve AI deployments because they know the worst case is "we turn it off and go back to manual" - not "we lose control and can't stop it."
 
 ### 3. Fast Lane Removes the Starting Friction
 
@@ -77,7 +77,7 @@ The framework is a **security controls** framework. It deliberately doesn't cove
 
 The framework tells you what controls a Tier 2 deployment needs. It doesn't tell you whether the deployment is worth building. Business case development, ROI analysis, and value measurement are outside its scope.
 
-**Strategic gap:** Organisations using only this framework have no mechanism for deciding *whether* to build — only *how to secure* what they build.
+**Strategic gap:** Organisations using only this framework have no mechanism for deciding *whether* to build - only *how to secure* what they build.
 
 **What to do:** Use the [Business Alignment](business-alignment.md) assessment alongside the framework's risk classification. Classify both the risk and the value before committing.
 
@@ -111,19 +111,19 @@ The framework optimises for safety. Strategy must also optimise for speed. In co
 
 **The framework doesn't account for competitive pressure.** It says Tier 2 deployments need 20-50% Judge evaluation and 4-hour review SLAs. It doesn't say "unless your competitor launches first."
 
-This is correct — security requirements shouldn't be weakened by competitive pressure. But it creates a tension that strategy must manage: how to deploy quickly while meeting control requirements.
+This is correct - security requirements shouldn't be weakened by competitive pressure. But it creates a tension that strategy must manage: how to deploy quickly while meeting control requirements.
 
 **Resolution approaches:**
 - Use vendor-managed controls to accelerate (platform guardrails are faster than custom-built)
 - Deploy at a lower tier initially, then upgrade as controls mature (Tier 1 decision support → Tier 2 automated)
 - Parallelise control implementation with system development (don't build sequentially)
-- Accept that some competitive speed comes from accepting lower tiers — which means less capability, not less security
+- Accept that some competitive speed comes from accepting lower tiers - which means less capability, not less security
 
 ---
 
 ## Where the Framework Constrains Strategy
 
-These are genuine tensions — places where the framework's requirements conflict with what strategy would prefer.
+These are genuine tensions - places where the framework's requirements conflict with what strategy would prefer.
 
 ### 1. CRITICAL-Tier Costs Limit Business Cases
 
@@ -145,7 +145,7 @@ At high volume, this is expensive. As calculated in [Business Alignment](busines
 | **Reduce scope to lower tier** | Keep humans in the decision loop → Tier 2 | Less autonomy, but dramatically lower control costs |
 | **Reduce volume** | Apply autonomous AI only to a subset of decisions | Less coverage, but viable economics |
 | **Improve Judge accuracy** | Better Judge → fewer false positives → fewer human reviews | Requires investment in Judge R&D; takes time |
-| **Risk-based human review** | Not all CRITICAL outputs need human review — only Judge-flagged ones | Requires confidence in Judge accuracy; regulatory acceptance uncertain |
+| **Risk-based human review** | Not all CRITICAL outputs need human review - only Judge-flagged ones | Requires confidence in Judge accuracy; regulatory acceptance uncertain |
 | **Challenge the classification** | Is this really CRITICAL? Could human oversight be restructured to make it HIGH? | Requires honest risk assessment, not wishful thinking |
 
 ### 2. Tier Downgrade Requirements Are Conservative
@@ -156,7 +156,7 @@ The framework requires 6+ months of stable operation and governance approval to 
 
 But the framework's downgrade path doesn't have an "upgrade with evidence" mechanism. Adding capability is a new risk classification, not a continuation of the existing one.
 
-**The gap:** The framework treats capability expansion as a new assessment, not as a progression. A system that's proven safe at Tier 2 for 6 months should have an easier path to Tier 3 than a brand-new Tier 3 deployment — but the framework doesn't distinguish between them.
+**The gap:** The framework treats capability expansion as a new assessment, not as a progression. A system that's proven safe at Tier 2 for 6 months should have an easier path to Tier 3 than a brand-new Tier 3 deployment - but the framework doesn't distinguish between them.
 
 ### 3. The Framework Assumes a Single Risk Tier Per System
 
@@ -169,7 +169,7 @@ In practice, AI systems often span multiple risk tiers:
 | Transaction dispute filing | HIGH | Write access, customer-facing action |
 | Fraud alert suspension | CRITICAL | Autonomous decision with financial impact |
 
-The framework classifies the *system* at the highest applicable tier. This means the FAQ component has CRITICAL-tier controls — 100% Judge evaluation on responses about your opening hours.
+The framework classifies the *system* at the highest applicable tier. This means the FAQ component has CRITICAL-tier controls - 100% Judge evaluation on responses about your opening hours.
 
 **The tension:** Over-controlling low-risk functions adds cost without proportionate risk reduction. But allowing mixed-tier controls within one system creates complexity and potential for misclassification.
 
@@ -186,27 +186,27 @@ The framework classifies the *system* at the highest applicable tier. This means
 
 The framework starts at Fast Lane (internal, read-only, no regulated data, human-reviewed). But some valuable experiments don't fit:
 
-- Testing an AI chatbot with a small group of real customers (external users — fails Fast Lane criterion 1)
-- Running an AI in shadow mode alongside a real decision system (may process regulated data — fails criterion 3)
-- Deploying an AI prototype to a partner organisation (external — fails criterion 1)
+- Testing an AI chatbot with a small group of real customers (external users - fails Fast Lane criterion 1)
+- Running an AI in shadow mode alongside a real decision system (may process regulated data - fails criterion 3)
+- Deploying an AI prototype to a partner organisation (external - fails criterion 1)
 
 These are experiments, not production systems. The risk is genuinely low because of limited scope and duration. But the framework doesn't have a mechanism for time-limited, scope-limited deployments at reduced control levels.
 
-**The gap:** An "Experiment" tier could allow limited external deployments with time bounds, mandatory monitoring, and automatic shutdown — without requiring full Tier 2 controls that take months to implement.
+**The gap:** An "Experiment" tier could allow limited external deployments with time bounds, mandatory monitoring, and automatic shutdown - without requiring full Tier 2 controls that take months to implement.
 
 ### 5. Multi-Agent Progression Isn't Addressed
 
 The framework's [MASO section](../maso/) covers multi-agent security in detail. But the progression from single-agent to multi-agent isn't mapped.
 
-An organisation with mature Tier 2 single-agent deployments wants to introduce multi-agent orchestration. The MASO framework starts at Tier 1 (Supervised — all writes require human approval). But the organisation's single-agent capability is already beyond this.
+An organisation with mature Tier 2 single-agent deployments wants to introduce multi-agent orchestration. The MASO framework starts at Tier 1 (Supervised - all writes require human approval). But the organisation's single-agent capability is already beyond this.
 
-**The gap:** There's no guidance on how single-agent maturity translates to multi-agent readiness. Organisations either start MASO from scratch (losing momentum) or assume single-agent maturity transfers (it doesn't — multi-agent risks are fundamentally different).
+**The gap:** There's no guidance on how single-agent maturity translates to multi-agent readiness. Organisations either start MASO from scratch (losing momentum) or assume single-agent maturity transfers (it doesn't - multi-agent risks are fundamentally different).
 
 ---
 
 ## When Strategies Break the Framework
 
-Some strategic decisions will exceed what the framework covers. This isn't failure — it's the framework meeting its limits.
+Some strategic decisions will exceed what the framework covers. This isn't failure - it's the framework meeting its limits.
 
 ### Scenario 1: Speed-to-Market Requires Parallel Control Development
 
@@ -218,14 +218,14 @@ Some strategic decisions will exceed what the framework covers. This isn't failu
 **Framework view:** Non-compliant. The system is operating above its control level.
 **Strategic view:** Necessary. The market opportunity has a window.
 
-**Resolution:** Deploy at Tier 1 capability (decision support, not autonomous) with a documented plan and timeline for Tier 2 controls. Accept that the AI will be less capable initially — recommendations to human agents, not direct customer interaction — in exchange for faster launch. The framework supports this: the system is genuinely Tier 1 at launch, and the controls match.
+**Resolution:** Deploy at Tier 1 capability (decision support, not autonomous) with a documented plan and timeline for Tier 2 controls. Accept that the AI will be less capable initially - recommendations to human agents, not direct customer interaction - in exchange for faster launch. The framework supports this: the system is genuinely Tier 1 at launch, and the controls match.
 
-**The honest version:** If the strategy *requires* Tier 2 capability on day 1, the framework says the controls must also be there on day 1. If they can't be, either the strategy adjusts or the risk is explicitly accepted by governance — documented, time-bound, with a remediation plan. This is an exception, not a norm.
+**The honest version:** If the strategy *requires* Tier 2 capability on day 1, the framework says the controls must also be there on day 1. If they can't be, either the strategy adjusts or the risk is explicitly accepted by governance - documented, time-bound, with a remediation plan. This is an exception, not a norm.
 
 ### Scenario 2: Data Constraints Require Risk Acceptance
 
 **Strategy:** Build an AI underwriting assistant for a new insurance market.
-**Framework:** CRITICAL tier — automated decisions affecting financial outcomes. Maximum controls.
+**Framework:** CRITICAL tier - automated decisions affecting financial outcomes. Maximum controls.
 **Data reality:** Only 2 years of data in this market. Limited representativeness. Known gaps in claims history.
 
 **What happens:** The AI is built. It works well on the available data. But the data limitations mean it will have blind spots. The framework's controls can detect when the AI is wrong, but they can't make the data better.
@@ -233,13 +233,13 @@ Some strategic decisions will exceed what the framework covers. This isn't failu
 **Framework view:** The controls are implemented correctly. Residual risk from data quality is documented.
 **Strategic view:** We need to enter this market now. We'll improve data over time.
 
-**Resolution:** The framework supports this — through documented risk acceptance. The system operates at CRITICAL tier with full controls. The risk register includes "data quality limitations in [market]" with compensating controls (higher Judge scrutiny for this market segment, lower autonomy thresholds, mandatory human review for edge cases). The strategy proceeds with eyes open.
+**Resolution:** The framework supports this - through documented risk acceptance. The system operates at CRITICAL tier with full controls. The risk register includes "data quality limitations in [market]" with compensating controls (higher Judge scrutiny for this market segment, lower autonomy thresholds, mandatory human review for edge cases). The strategy proceeds with eyes open.
 
 **Where the framework should be stronger:** It should explicitly integrate data quality into risk assessment. A CRITICAL-tier system with poor data is a higher residual risk than a CRITICAL-tier system with excellent data, even with identical controls. Currently the framework doesn't distinguish.
 
 ### Scenario 3: Innovation Requires Operating Beyond the Framework
 
-**Strategy:** Build a novel AI application that doesn't fit existing risk categories — for example, an AI that generates personalised investment portfolio recommendations using real-time market data.
+**Strategy:** Build a novel AI application that doesn't fit existing risk categories - for example, an AI that generates personalised investment portfolio recommendations using real-time market data.
 **Framework:** The risk tiers and controls exist. But the combination of real-time data, personalised financial advice, and regulatory implications (MiFID II suitability) creates a profile the framework's examples don't cover.
 
 **What happens:** The risk classification team debates whether this is HIGH or CRITICAL. The guardrail patterns don't cover financial suitability. The Judge evaluation criteria need custom development. The HITL process requires investment advisory qualifications.
@@ -303,7 +303,7 @@ The framework explicitly invites this. The [Maturity & Validation](../MATURITY.m
 | **Human factors** | Controls assume competent operators | People need time to learn | Include human readiness in deployment criteria |
 | **Data quality** | Framework assumes adequate data | Data is often poor | Include data quality in risk assessment |
 
-The framework is a tool for managing risk. Strategy is the process of deciding which risks to take. The best outcomes come from using both — not from letting either dominate the other.
+The framework is a tool for managing risk. Strategy is the process of deciding which risks to take. The best outcomes come from using both - not from letting either dominate the other.
 
 ---
 

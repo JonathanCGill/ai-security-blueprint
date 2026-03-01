@@ -10,7 +10,7 @@ Deep dives on controls, infrastructure, and metrics.
 
 | Document | Description |
 |----------|-------------|
-| [current-solutions.md](current-solutions.md) | **Industry solutions implementing this pattern** — guardrails, evaluation frameworks, safety models |
+| [current-solutions.md](current-solutions.md) | **Industry solutions implementing this pattern** - guardrails, evaluation frameworks, safety models |
 
 ## Implementation Guidance
 

@@ -60,7 +60,7 @@ img[src$=".svg"] {
 
 /* Homepage only: hide h1 (site name already in navbar) and edit/view icons.
    The homepage is the only page that hides navigation, so when there is no
-   left sidebar the main grid shifts — we detect that via :only-child on
+   left sidebar the main grid shifts - we detect that via :only-child on
    the content area within .md-main__inner. */
 .md-main__inner > .md-content:only-child .md-content__inner > h1:first-child {
   display: none;

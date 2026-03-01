@@ -15,7 +15,7 @@ These establish the foundational argument: AI systems are non-deterministic, so 
 | # | Article | One-Line Summary |
 |---|---------|-----------------|
 | 1 | [The First Control: Choosing the Right Tool](the-first-control.md) | The best way to reduce AI risk is to not use AI where it doesn't belong |
-| 1b | [The Model You Choose Is a Security Decision](the-model-you-choose.md) | Choosing a flawed model makes every control downstream harder — evaluate security posture, not just capability |
+| 1b | [The Model You Choose Is a Security Decision](the-model-you-choose.md) | Choosing a flawed model makes every control downstream harder - evaluate security posture, not just capability |
 | 2 | [Why Your AI Guardrails Aren't Enough](why-guardrails-arent-enough.md) | Guardrails block known-bad; you need detection for unknown-bad |
 | 2b | [Practical Guardrails](practical-guardrails.md) | What guardrails should catch, international PII, RAG filtering, exception governance |
 | 3 | [The Judge Detects. It Doesn't Decide.](judge-detects-not-decides.md) | Async evaluation beats real-time blocking for nuance |
@@ -27,7 +27,7 @@ These establish the foundational argument: AI systems are non-deterministic, so 
 
 ## Emerging Challenges
 
-Where the three-layer pattern meets its limits — and what to do about it.
+Where the three-layer pattern meets its limits - and what to do about it.
 
 | # | Article | One-Line Summary | Solution |
 |---|---------|-----------------|----------|
@@ -39,8 +39,8 @@ Where the three-layer pattern meets its limits — and what to do about it.
 | 12 | [The Memory Problem](the-memory-problem.md) | Long context and persistent memory create new risks | [Memory and Context Controls](../core/memory-and-context.md) |
 | 13 | [You Can't Validate What Hasn't Finished](you-cant-validate-unfinished.md) | Real-time streaming breaks the validation model | [Streaming Controls](../core/streaming-controls.md) |
 | 14 | [The Orchestrator Problem](the-orchestrator-problem.md) | The most powerful agents in your system have the least controls applied to them | [Privileged Agent Governance](../maso/controls/privileged-agent-governance.md) |
-| 15 | [The MCP Problem](the-mcp-problem.md) | The protocol everyone's adopting gives agents universal tool access — without authentication, authorisation, or monitoring | [Tool Access Controls](../infrastructure/agentic/tool-access-controls.md) |
-| 16 | [The Long-Horizon Problem](the-long-horizon-problem.md) | The security properties you validated on day one may not hold on day thirty — time itself is an attack vector | [Observability Controls](../maso/controls/observability.md) |
+| 15 | [The MCP Problem](the-mcp-problem.md) | The protocol everyone's adopting gives agents universal tool access - without authentication, authorisation, or monitoring | [Tool Access Controls](../infrastructure/agentic/tool-access-controls.md) |
+| 16 | [The Long-Horizon Problem](the-long-horizon-problem.md) | The security properties you validated on day one may not hold on day thirty - time itself is an attack vector | [Observability Controls](../maso/controls/observability.md) |
 | 17 | [Process-Aware Evaluation](process-aware-evaluation.md) | Evaluating what an agent produced is less important than evaluating how it got there | [Judge Assurance](../core/judge-assurance.md) |
 
 ---
@@ -53,7 +53,7 @@ Blind spots in most enterprise AI security programmes.
 |---|---------|-----------------|----------|
 | 14 | [The Supply Chain Problem](the-supply-chain-problem.md) | You don't control the model you deploy | [Supply Chain Controls](../extensions/technical/supply-chain.md) |
 | 15 | [RAG Is Your Biggest Attack Surface](rag-is-your-biggest-attack-surface.md) | Retrieval pipelines bypass your existing access controls | [RAG Security](../extensions/technical/rag-security.md) |
-| 16 | [The Visibility Problem](the-visibility-problem.md) | You can't govern AI you don't know is running — shadow AI, inventories, and governance KPIs | [Operational Metrics](../extensions/technical/operational-metrics.md) |
+| 16 | [The Visibility Problem](the-visibility-problem.md) | You can't govern AI you don't know is running - shadow AI, inventories, and governance KPIs | [Operational Metrics](../extensions/technical/operational-metrics.md) |
 
 ---
 
@@ -63,7 +63,7 @@ What the peer-reviewed literature says about runtime AI security controls.
 
 | # | Article | One-Line Summary |
 |---|---------|-----------------|
-| 17 | [The Evidence Gap](the-evidence-gap.md) | What research actually supports — and where the science hasn't caught up to the architecture |
+| 17 | [The Evidence Gap](the-evidence-gap.md) | What research actually supports - and where the science hasn't caught up to the architecture |
 
 ---
 
@@ -73,13 +73,13 @@ The argument for why AI systems require a fundamentally different security model
 
 | Article | One-Line Summary |
 |---------|-----------------|
-| [Why AI Security Is a Runtime Problem](why-ai-security-is-a-runtime-problem.md) | Non-deterministic systems cannot be fully tested before deployment — security must be continuous |
+| [Why AI Security Is a Runtime Problem](why-ai-security-is-a-runtime-problem.md) | Non-deterministic systems cannot be fully tested before deployment - security must be continuous |
 
 ---
 
 ## Analysis
 
-Deeper examinations of where the framework meets production reality — what works, what scales, and where the pattern breaks.
+Deeper examinations of where the framework meets production reality - what works, what scales, and where the pattern breaks.
 
 | Article | One-Line Summary |
 |---------|-----------------|
@@ -93,7 +93,7 @@ Deeper examinations of where the framework meets production reality — what wor
 | [PACE Resilience](PACE-RESILIENCE.md) | How the three-layer architecture achieves operational resilience through layered, independent control redundancy |
 | [Security as Enablement, Not Commentary](security-as-enablement.md) | Security frameworks create value when delivered as platform infrastructure, not as narrative that diagnoses teams from the sidelines |
 | [Automated Risk Tiering](automated-risk-tiering.md) | Classification should take two minutes, produce an immediate result, and auto-apply the controls that make the risk manageable |
-| [Beyond Security](beyond-security.md) | The framework's architecture — layered independence, tiering, PACE, quantitative compounding — transfers to drift, fairness, explainability, and reliability |
+| [Beyond Security](beyond-security.md) | The framework's architecture - layered independence, tiering, PACE, quantitative compounding - transfers to drift, fairness, explainability, and reliability |
 
 ---
 

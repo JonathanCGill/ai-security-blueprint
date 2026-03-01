@@ -9,7 +9,7 @@
 
 ## OWASP LLM Top 10 (2025)
 
-### LLM01 — Prompt Injection
+### LLM01 - Prompt Injection
 
 Manipulation of model behaviour through crafted inputs that override system instructions or extract sensitive information.
 
@@ -21,7 +21,7 @@ Manipulation of model behaviour through crafted inputs that override system inst
 
 ---
 
-### LLM02 — Sensitive Information Disclosure
+### LLM02 - Sensitive Information Disclosure
 
 Model outputs that expose confidential data, PII, proprietary information, or system internals.
 
@@ -33,7 +33,7 @@ Model outputs that expose confidential data, PII, proprietary information, or sy
 
 ---
 
-### LLM03 — Supply Chain Vulnerabilities
+### LLM03 - Supply Chain Vulnerabilities
 
 Compromise of AI system components through malicious models, poisoned training data, compromised tools, or vulnerable dependencies.
 
@@ -44,7 +44,7 @@ Compromise of AI system components through malicious models, poisoned training d
 
 ---
 
-### LLM04 — Data and Model Poisoning
+### LLM04 - Data and Model Poisoning
 
 Intentional manipulation of training data or model weights to embed backdoors, biases, or degraded safety behaviour.
 
@@ -55,7 +55,7 @@ Intentional manipulation of training data or model weights to embed backdoors, b
 
 ---
 
-### LLM05 — Improper Output Handling
+### LLM05 - Improper Output Handling
 
 Insufficient validation of model outputs before they are passed to downstream systems, enabling injection into those systems.
 
@@ -67,7 +67,7 @@ Insufficient validation of model outputs before they are passed to downstream sy
 
 ---
 
-### LLM06 — Excessive Agency
+### LLM06 - Excessive Agency
 
 Model or agent takes actions beyond what was intended or authorised, including unintended tool use, inappropriate parameter values, or actions exceeding scope.
 
@@ -78,7 +78,7 @@ Model or agent takes actions beyond what was intended or authorised, including u
 
 ---
 
-### LLM07 — System Prompt Leakage
+### LLM07 - System Prompt Leakage
 
 Exposure of system prompts, instruction sets, or internal configuration through model outputs or side channels.
 
@@ -89,7 +89,7 @@ Exposure of system prompts, instruction sets, or internal configuration through 
 
 ---
 
-### LLM08 — Vector and Embedding Weaknesses
+### LLM08 - Vector and Embedding Weaknesses
 
 Attacks targeting vector databases and embedding pipelines, including embedding inversion, adversarial embedding injection, and retrieval manipulation.
 
@@ -100,7 +100,7 @@ Attacks targeting vector databases and embedding pipelines, including embedding 
 
 ---
 
-### LLM09 — Misinformation
+### LLM09 - Misinformation
 
 Model generates factually incorrect, misleading, or fabricated information (hallucination) that is presented as authoritative.
 
@@ -111,7 +111,7 @@ Model generates factually incorrect, misleading, or fabricated information (hall
 
 ---
 
-### LLM10 — Unbounded Consumption
+### LLM10 - Unbounded Consumption
 
 Resource exhaustion attacks where model or agent systems consume excessive compute, memory, storage, or API calls, causing denial of service or cost escalation.
 
@@ -124,7 +124,7 @@ Resource exhaustion attacks where model or agent systems consume excessive compu
 
 ## OWASP Agentic AI Top 10
 
-### AGT-01 — Agent Hijacking
+### AGT-01 - Agent Hijacking
 
 Attacker takes control of an AI agent through prompt injection, system prompt manipulation, or context poisoning, redirecting the agent to serve the attacker's goals.
 
@@ -135,7 +135,7 @@ Attacker takes control of an AI agent through prompt injection, system prompt ma
 
 ---
 
-### AGT-02 — Tool Misuse
+### AGT-02 - Tool Misuse
 
 Agent uses available tools in ways that were technically permitted but not intended, including chaining multiple tools to achieve unintended outcomes.
 
@@ -146,7 +146,7 @@ Agent uses available tools in ways that were technically permitted but not inten
 
 ---
 
-### AGT-03 — Privilege Escalation
+### AGT-03 - Privilege Escalation
 
 Agent gains access to resources or capabilities beyond its authorised scope, either by exploiting delegation chains, impersonating other agents, or manipulating authorisation systems.
 
@@ -157,7 +157,7 @@ Agent gains access to resources or capabilities beyond its authorised scope, eit
 
 ---
 
-### AGT-04 — Insecure Tool Implementation
+### AGT-04 - Insecure Tool Implementation
 
 Tools available to agents have security vulnerabilities, including injection flaws, missing authentication, excessive permissions, or insecure defaults.
 
@@ -168,9 +168,9 @@ Tools available to agents have security vulnerabilities, including injection fla
 
 ---
 
-### AGT-05 — Data Exfiltration Through Agents
+### AGT-05 - Data Exfiltration Through Agents
 
-Attacker uses agent tool access to extract sensitive data through permitted channels — reading files, querying databases, or calling APIs and routing results to external destinations.
+Attacker uses agent tool access to extract sensitive data through permitted channels - reading files, querying databases, or calling APIs and routing results to external destinations.
 
 | Control Type | Controls | How It Mitigates |
 |-------------|----------|-----------------|
@@ -179,7 +179,7 @@ Attacker uses agent tool access to extract sensitive data through permitted chan
 
 ---
 
-### AGT-06 — Uncontrolled Delegation
+### AGT-06 - Uncontrolled Delegation
 
 Agent delegates tasks to other agents without proper authorisation, permission scoping, or audit trails, creating opaque chains of trust that bypass intended controls.
 
@@ -190,7 +190,7 @@ Agent delegates tasks to other agents without proper authorisation, permission s
 
 ---
 
-### AGT-07 — Persistent Memory Poisoning
+### AGT-07 - Persistent Memory Poisoning
 
 Attacker injects malicious content into agent memory, conversation history, or persistent state that influences future agent behaviour across sessions.
 
@@ -201,7 +201,7 @@ Attacker injects malicious content into agent memory, conversation history, or p
 
 ---
 
-### AGT-08 — Autonomous Action Without Oversight
+### AGT-08 - Autonomous Action Without Oversight
 
 Agent takes consequential real-world actions (financial transactions, communications, data modifications) without appropriate human review, either because oversight was not configured or was bypassed.
 
@@ -212,7 +212,7 @@ Agent takes consequential real-world actions (financial transactions, communicat
 
 ---
 
-### AGT-09 — Inadequate Sandboxing
+### AGT-09 - Inadequate Sandboxing
 
 Agent-generated code executes with access to the host system, network, or persistent state, enabling system compromise, lateral movement, or persistent backdoors.
 
@@ -223,7 +223,7 @@ Agent-generated code executes with access to the host system, network, or persis
 
 ---
 
-### AGT-10 — Insufficient Logging and Monitoring
+### AGT-10 - Insufficient Logging and Monitoring
 
 Agent actions, decisions, and tool invocations are not logged with sufficient detail to detect, investigate, or attribute incidents.
 
@@ -236,7 +236,7 @@ Agent actions, decisions, and tool invocations are not logged with sufficient de
 
 ## Control Coverage Summary
 
-### OWASP LLM Top 10 — Primary Control Distribution
+### OWASP LLM Top 10 - Primary Control Distribution
 
 | Risk | Primary Controls |
 |------|-----------------|
@@ -251,7 +251,7 @@ Agent actions, decisions, and tool invocations are not logged with sufficient de
 | LLM09 Misinformation | LOG-03, LOG-05, SUP-03 |
 | LLM10 Unbounded Consumption | TOOL-05, SESS-01, SAND-04, NET-07 |
 
-### OWASP Agentic Top 10 — Primary Control Distribution
+### OWASP Agentic Top 10 - Primary Control Distribution
 
 | Risk | Primary Controls |
 |------|-----------------|

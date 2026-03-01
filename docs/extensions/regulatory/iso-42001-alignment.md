@@ -1,4 +1,4 @@
-# AI Governance Operating Model — ISO 42001 Alignment
+# AI Governance Operating Model - ISO 42001 Alignment
 
 This document defines how a centralised AI governance function operates in alignment with ISO 42001:2023 (AI Management System) while leveraging the control framework (guardrails, Judge, HITL) and enterprise AI platforms.
 
@@ -6,7 +6,7 @@ This document defines how a centralised AI governance function operates in align
 
 ## Executive Summary
 
-ISO 42001 establishes requirements for an **AI Management System (AIMS)**—a structured approach to governing AI across the organisation. This document maps:
+ISO 42001 establishes requirements for an **AI Management System (AIMS)**-a structured approach to governing AI across the organisation. This document maps:
 
 1. **ISO 42001 clauses** → Framework controls
 2. **Centralised governance function** → Roles, responsibilities, processes
@@ -121,7 +121,7 @@ The AIMS comprises:
 
 The AI Policy should address:
 
-!!! info "AI Policy — Key Elements"
+!!! info "AI Policy - Key Elements"
 
     1. Purpose and scope
     2. Alignment with organisational values
@@ -298,9 +298,9 @@ See AI.2 Risk Management controls.
 **8.4 AI system impact assessment**
 
 For HIGH and CRITICAL systems, conduct:
-- Fundamental Rights Impact Assessment (FRIA) — required for EU AI Act high-risk
-- Data Protection Impact Assessment (DPIA) — if personal data involved
-- Bias and Fairness Assessment — especially for consequential decisions
+- Fundamental Rights Impact Assessment (FRIA) - required for EU AI Act high-risk
+- Data Protection Impact Assessment (DPIA) - if personal data involved
+- Bias and Fairness Assessment - especially for consequential decisions
 
 ---
 
@@ -338,7 +338,7 @@ For HIGH and CRITICAL systems, conduct:
 
 **9.3 Management review**
 
-**AI Governance Committee — Quarterly Review Agenda:**
+**AI Governance Committee - Quarterly Review Agenda:**
 
 1. Performance metrics review
 2. Incident summary
@@ -454,7 +454,7 @@ Improvement sources:
 | **Management review** | Confirm readiness | 1-2 weeks |
 | **Stage 1 audit** | Documentation review | 1-2 days |
 | **Stage 2 audit** | Implementation audit | 3-5 days |
-| **Certification** | Certificate issued | — |
+| **Certification** | Certificate issued | - |
 
 ### Common Certification Gaps
 
@@ -575,13 +575,13 @@ ISO 42001 does not explicitly address agentic AI. The framework extends coverage
 | AI.7 Guardrails | 8.1 | A.4.3, A.7.2 |
 | AI.8 Judge | 9.1 Monitoring | A.8 |
 | AI.9 Human Oversight | 8.1 | A.7.3 |
-| AI.10 Agentic Controls | — (extension) | — |
+| AI.10 Agentic Controls | - (extension) | - |
 | AI.11 Logging & Monitoring | 9.1 | A.7.2, A.8.2 |
 | AI.12 Incident Response | 10.2 Nonconformity | A.9.3 |
 | AI.13 Supplier Management | 8.1 External provision | A.3.4 |
 | AI.14 Security Awareness | 7.2, 7.3 Competence | A.2.4 |
-| AI.15 Business Continuity | 8.1 | — |
-| AI.16 Intellectual Property | 7.5 | — |
+| AI.15 Business Continuity | 8.1 | - |
+| AI.16 Intellectual Property | 7.5 | - |
 
 ---
 
@@ -589,12 +589,12 @@ ISO 42001 does not explicitly address agentic AI. The framework extends coverage
 
 ### Key Success Factors
 
-1. **Executive sponsorship** — AI governance needs visible leadership support
-2. **Clear accountability** — Named owners for AI systems and governance
-3. **Proportionate controls** — Match controls to risk tier
-4. **Platform enablement** — Technical controls make governance practical
-5. **Feedback loops** — Continuous improvement from Judge findings and HITL
-6. **Metrics-driven** — Measure what matters, report to leadership
+1. **Executive sponsorship** - AI governance needs visible leadership support
+2. **Clear accountability** - Named owners for AI systems and governance
+3. **Proportionate controls** - Match controls to risk tier
+4. **Platform enablement** - Technical controls make governance practical
+5. **Feedback loops** - Continuous improvement from Judge findings and HITL
+6. **Metrics-driven** - Measure what matters, report to leadership
 
 ### The Operating Model in One Page
 

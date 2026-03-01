@@ -62,7 +62,7 @@
   <text x="460" y="300" font-family="Arial, sans-serif" font-size="10" fill="#1e293b">Hard spending cap at API gateway</text>
   <text x="460" y="320" font-family="Arial, sans-serif" font-size="9" fill="#166534" font-style="italic">Gateway blocks when limit reached</text>
   
-  <text x="590" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#166534">✓ Cannot be bypassed by the agent —</text>
+  <text x="590" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#166534">✓ Cannot be bypassed by the agent -</text>
   <text x="590" y="373" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#166534">enforcement is outside agent's control</text>
   
   <!-- VS in middle -->

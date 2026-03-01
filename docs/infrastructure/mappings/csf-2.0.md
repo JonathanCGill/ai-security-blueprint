@@ -14,9 +14,9 @@ The mapping below covers the CSF 2.0 "Secure" focus area as described in NIST IR
 
 | Framework Layer | Primary CSF Function | Role |
 | --- | --- | --- |
-| **Guardrails** | PROTECT (PR) | Preventive controls — block known-bad inputs and outputs |
-| **LLM-as-Judge** | DETECT (DE) | Detective controls — evaluate outputs against policy |
-| **Human Oversight** | GOVERN (GV) | Decision authority — humans accountable for high-risk outcomes |
+| **Guardrails** | PROTECT (PR) | Preventive controls - block known-bad inputs and outputs |
+| **LLM-as-Judge** | DETECT (DE) | Detective controls - evaluate outputs against policy |
+| **Human Oversight** | GOVERN (GV) | Decision authority - humans accountable for high-risk outcomes |
 
 The infrastructure controls that enforce these layers map across all six CSF Functions.
 
@@ -31,21 +31,21 @@ The GOVERN Function addresses organisational context, risk management strategy, 
 | CSF Subcategory | Description | Framework Domain | AI-Specific Notes |
 | --- | --- | --- | --- |
 | **GV.OC-01** | Organisational mission is understood and informs cybersecurity risk management | Risk Tiers | Risk tier classification (Tier 1–3, Agentic) determines control requirements based on organisational context and use case criticality |
-| **GV.OC-02** | Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered | Risk Tiers | Risk tiers account for regulatory exposure, data sensitivity, and autonomy level — all stakeholder-driven considerations |
-| **GV.OC-03** | Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed | Risk Tiers, Logging & Observability (LO) | AI-specific regulations (EU AI Act, sector-specific guidance) drive tier classification. LO controls support audit and compliance evidence |
+| **GV.OC-02** | Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered | Risk Tiers | Risk tiers account for regulatory exposure, data sensitivity, and autonomy level - all stakeholder-driven considerations |
+| **GV.OC-03** | Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed | Risk Tiers, Logging & Observability (LO) | AI-specific regulations (EU AI Act, sector-specific guidance) drive tier classification. LO controls support audit and compliance evidence |
 | **GV.RM-01** | Risk management objectives are established and expressed as statements that the implementation of policies and procedures address | Risk Tiers | Risk tier definitions establish acceptable risk levels for each AI deployment category |
 | **GV.RM-02** | Risk appetite and risk tolerance statements are established, communicated, and maintained | Risk Tiers | Tier boundaries define tolerance: Tier 1 accepts higher residual risk; Tier 3 requires defence-in-depth with all three layers |
-| **GV.RM-07** | Strategic opportunities (i.e., positive risks) are characterised and are included in the organisation's cybersecurity risk discussions | — | Out of scope. This framework addresses risk mitigation, not opportunity identification |
+| **GV.RM-07** | Strategic opportunities (i.e., positive risks) are characterised and are included in the organisation's cybersecurity risk discussions | - | Out of scope. This framework addresses risk mitigation, not opportunity identification |
 | **GV.RR-01** | Organisational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving | Human Oversight layer | Human Oversight layer requires defined accountability for AI system decisions. Escalation paths ensure leadership engagement at appropriate risk levels |
 | **GV.RR-02** | Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced | Human Oversight layer, Delegation Chains (DC) | DC controls define who can approve what actions. Human Oversight layer specifies escalation triggers and decision authority |
-| **GV.RR-04** | Cybersecurity is included in human resources practices | — | Organisational practice, not infrastructure control. Framework assumes this is in place |
-| **GV.PO-01** | Policy for managing cybersecurity risks is established based on organisational context, cybersecurity strategy, and priorities and is communicated and enforced | Controls (core), Risk Tiers | Framework provides the policy implementation mechanism — controls enforce policy at infrastructure layer rather than relying on procedural compliance |
+| **GV.RR-04** | Cybersecurity is included in human resources practices | - | Organisational practice, not infrastructure control. Framework assumes this is in place |
+| **GV.PO-01** | Policy for managing cybersecurity risks is established based on organisational context, cybersecurity strategy, and priorities and is communicated and enforced | Controls (core), Risk Tiers | Framework provides the policy implementation mechanism - controls enforce policy at infrastructure layer rather than relying on procedural compliance |
 | **GV.PO-02** | Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organisational mission | Incident Response (IR) | IR post-incident review (IR-07, IR-08) feeds back into control and policy updates |
-| **GV.OV-01** | Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction | Logging & Observability (LO) | LO controls provide the data needed for strategy review — behavioural drift, anomaly trends, Judge override rates |
+| **GV.OV-01** | Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction | Logging & Observability (LO) | LO controls provide the data needed for strategy review - behavioural drift, anomaly trends, Judge override rates |
 | **GV.OV-02** | The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organisational requirements and risks | Risk Tiers | Periodic tier reassessment as AI capabilities and threat landscape evolve |
 | **GV.OV-03** | Organisational cybersecurity risk management is improved based on lessons learned | Incident Response (IR) | IR-07 (Post-incident review) and IR-08 (Lessons learned) drive continuous improvement |
 | **GV.SC-01** | A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organisational stakeholders | Supply Chain (SC) | SC controls address AI-specific supply chain: model provenance, component integrity, dependency management |
-| **GV.SC-02** | Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally | Supply Chain (SC) | Defines responsibilities for model providers vs. deployers — who patches, who monitors, who responds |
+| **GV.SC-02** | Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally | Supply Chain (SC) | Defines responsibilities for model providers vs. deployers - who patches, who monitors, who responds |
 | **GV.SC-03** | Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes | Supply Chain (SC), Risk Tiers | Supply chain risk (model provenance, training data integrity) factors into tier classification |
 | **GV.SC-04** | Suppliers are known and prioritised by criticality | Supply Chain (SC) | SC-05 (Asset inventory) tracks which models, from which providers, power which systems |
 | **GV.SC-05** | Requirements to address cybersecurity risks in supply chains are established, prioritised, and integrated into contracts and other types of agreements with suppliers and other relevant third parties | Supply Chain (SC) | SC controls specify what to require from model providers: integrity verification, provenance data, vulnerability disclosure |
@@ -67,7 +67,7 @@ The IDENTIFY Function covers asset management, risk assessment, and improvement.
 | **ID.AM-07** | Inventories of data and corresponding metadata for designated data types are maintained | Data Protection (DP) | DP controls address AI-specific data: training data lineage, prompt/response logs, context window contents, RAG source data |
 | **ID.AM-08** | Systems, hardware, software, services, and data are managed throughout their life cycles | Supply Chain (SC), Incident Response (IR) | Model lifecycle management: deployment, monitoring, patching, retirement. IR controls cover end-of-life decommissioning |
 | **ID.RA-01** | Vulnerabilities in assets are identified, validated, and recorded | Logging & Observability (LO) | AI-specific vulnerabilities: prompt injection susceptibility, jailbreak vectors, data leakage paths. LO controls detect these in production |
-| **ID.RA-02** | Cyber threat intelligence is received from information sharing forums and sources | — | Organisational practice. Framework assumes threat intelligence feeds into risk tier and control decisions |
+| **ID.RA-02** | Cyber threat intelligence is received from information sharing forums and sources | - | Organisational practice. Framework assumes threat intelligence feeds into risk tier and control decisions |
 | **ID.RA-03** | Internal and external threats to the organisation are identified and recorded | Risk Tiers, threat model templates | Threat models in [Templates](../../extensions/templates/) address AI-specific threats: adversarial inputs, model manipulation, supply chain compromise |
 | **ID.RA-04** | Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded | Risk Tiers | Risk tier classification incorporates impact assessment: what happens when the AI system fails or is compromised |
 | **ID.RA-05** | Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritisation | Risk Tiers | Tier-based control selection: higher risk → more layers → more controls |
@@ -89,24 +89,24 @@ The PROTECT Function covers identity management, access control, awareness and t
 | **PR.AA-01** | Identities and credentials for authorised users, services, and hardware are managed by the organisation | Identity & Access Management (IA), Secrets & Credentials (SK) | IA controls manage who/what can invoke AI systems. SK controls manage API keys, model access tokens, service credentials |
 | **PR.AA-02** | Identities are proofed and bound to credentials based on the context of interactions | Identity & Access Management (IA) | Authentication context for AI system access: user identity, calling service identity, agent identity |
 | **PR.AA-03** | Users, services, and hardware are authenticated | Identity & Access Management (IA) | IA controls enforce authentication for model endpoints, tool access, and human oversight interfaces |
-| **PR.AA-04** | Identity assertions are protected, conveyed, and verified | Identity & Access Management (IA), Delegation Chains (DC) | DC controls verify identity assertions across agent delegation chains — who authorised this agent to act? |
+| **PR.AA-04** | Identity assertions are protected, conveyed, and verified | Identity & Access Management (IA), Delegation Chains (DC) | DC controls verify identity assertions across agent delegation chains - who authorised this agent to act? |
 | **PR.AA-05** | Access permissions, entitlements, and authorisations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties | Identity & Access Management (IA), Tool Access (TA), Session & Scope (SS) | IA: role-based access to AI systems. TA: least-privilege tool permissions for agents. SS: scoped context access per session |
-| **PR.AA-06** | Physical access to assets is managed, monitored, and enforced commensurate with risk | — | Physical security is out of scope for this framework. Relevant for self-hosted GPU infrastructure |
-| **PR.AT-01** | Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind | — | Organisational practice. Framework provides the controls; training on their use is an operational concern |
-| **PR.AT-02** | Individuals in specialised roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind | — | Organisational practice. Human Oversight layer effectiveness depends on trained reviewers |
+| **PR.AA-06** | Physical access to assets is managed, monitored, and enforced commensurate with risk | - | Physical security is out of scope for this framework. Relevant for self-hosted GPU infrastructure |
+| **PR.AT-01** | Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind | - | Organisational practice. Framework provides the controls; training on their use is an operational concern |
+| **PR.AT-02** | Individuals in specialised roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind | - | Organisational practice. Human Oversight layer effectiveness depends on trained reviewers |
 | **PR.DS-01** | The confidentiality, integrity, and availability of data-at-rest are protected | Data Protection (DP) | DP controls protect stored AI data: model weights, training data, prompt/response logs, RAG knowledge bases |
 | **PR.DS-02** | The confidentiality, integrity, and availability of data-in-transit are protected | Data Protection (DP), Network & Segmentation (NS) | NS controls enforce encrypted communication between AI components. DP controls protect data crossing trust boundaries |
 | **PR.DS-10** | The confidentiality, integrity, and availability of data-in-use are protected | Data Protection (DP), Session & Scope (SS) | **Key AI subcategory.** SS controls limit what data is accessible within an AI session context window. DP controls prevent data leakage through model outputs. Context window contents are data-in-use |
 | **PR.PS-01** | Configuration management practices are established and applied | Network & Segmentation (NS), Sandbox Patterns (SB) | Infrastructure-as-code for AI deployment configurations. SB controls define sandbox boundaries. NS controls define network topology |
 | **PR.PS-02** | Software is maintained, replaced, and removed commensurate with risk | Supply Chain (SC) | Model version management: patching, updating, retiring models as vulnerabilities are discovered or newer versions released |
-| **PR.PS-03** | Hardware is maintained, replaced, and removed commensurate with risk | — | Physical infrastructure management is out of scope |
+| **PR.PS-03** | Hardware is maintained, replaced, and removed commensurate with risk | - | Physical infrastructure management is out of scope |
 | **PR.PS-04** | Log records are generated and made available for continuous monitoring | Logging & Observability (LO) | **Key AI subcategory.** LO controls generate AI-specific logs: prompts, responses, guardrail decisions, Judge evaluations, human override actions, tool invocations, token usage |
 | **PR.PS-05** | Installation and execution of unauthorised software is prevented | Sandbox Patterns (SB), Tool Access (TA) | SB controls restrict agent execution environments. TA controls limit which tools agents can invoke. Prevents unauthorised code execution by AI systems |
 | **PR.PS-06** | Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle | Supply Chain (SC) | SC-03 (Dependency scanning), SC-04 (Build pipeline integrity) for AI application code. For model development practices, see NIST SP 800-218A |
 | **PR.IR-01** | Networks and environments are protected from unauthorised logical access and usage | Network & Segmentation (NS) | NS controls segment AI infrastructure: model endpoints isolated from general network, guardrail services in dedicated segments, Judge layer independently hosted |
-| **PR.IR-02** | The organisation's technology assets are protected from environmental threats | — | Physical/environmental protection is out of scope |
+| **PR.IR-02** | The organisation's technology assets are protected from environmental threats | - | Physical/environmental protection is out of scope |
 | **PR.IR-03** | Mechanisms are implemented to achieve resilience requirements in normal and adverse situations | Network & Segmentation (NS), Incident Response (IR) | Circuit breakers, fallback models, graceful degradation patterns. IR controls define when to activate these mechanisms |
-| **PR.IR-04** | Adequate resource capacity to ensure availability is maintained | — | Capacity planning for inference infrastructure is an operational concern, not a security control |
+| **PR.IR-04** | Adequate resource capacity to ensure availability is maintained | - | Capacity planning for inference infrastructure is an operational concern, not a security control |
 
 ### DETECT (DE)
 
@@ -115,7 +115,7 @@ The DETECT Function covers continuous monitoring and adverse event analysis. Thi
 | CSF Subcategory | Description | Framework Domain | AI-Specific Notes |
 | --- | --- | --- | --- |
 | **DE.CM-01** | Networks and network services are monitored to find potentially adverse events | Network & Segmentation (NS), Logging & Observability (LO) | Monitor AI network segments for anomalous traffic: unusual API call patterns, data exfiltration attempts, unexpected model-to-model communication |
-| **DE.CM-02** | The physical environment is monitored to find potentially adverse events | — | Out of scope |
+| **DE.CM-02** | The physical environment is monitored to find potentially adverse events | - | Out of scope |
 | **DE.CM-03** | Personnel activity and technology usage are monitored to find potentially adverse events | Logging & Observability (LO) | LO controls track user interactions with AI systems: prompt patterns, access frequency, data retrieval behaviour |
 | **DE.CM-06** | External service provider activities and services are monitored to find potentially adverse events | Supply Chain (SC), Logging & Observability (LO) | Monitor model provider APIs for: latency changes, behaviour drift, unexpected response patterns that may indicate compromise |
 | **DE.CM-09** | Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events | Logging & Observability (LO), LLM-as-Judge layer | **Primary mapping for the Judge layer.** LO provides the telemetry. The Judge evaluates model outputs against policy criteria. Together they detect: harmful outputs, policy violations, behavioural anomalies, prompt injection attempts, data leakage |
@@ -123,7 +123,7 @@ The DETECT Function covers continuous monitoring and adverse event analysis. Thi
 | **DE.AE-03** | Information is correlated from multiple sources | Logging & Observability (LO) | LO controls correlate: guardrail decisions + Judge evaluations + human override patterns + model telemetry to identify systemic issues |
 | **DE.AE-04** | The estimated impact and scope of adverse events are understood | Logging & Observability (LO), Risk Tiers | Impact assessment informed by risk tier: Tier 3 incident has different blast radius than Tier 1 |
 | **DE.AE-06** | Information on adverse events is provided to authorised staff and tools | Logging & Observability (LO), Incident Response (IR) | LO-05 (Alert generation) routes to appropriate responders based on severity. IR controls define escalation paths |
-| **DE.AE-07** | Cyber threat intelligence and other contextual information are integrated into the analysis | — | Organisational practice. Framework assumes threat intelligence informs guardrail and Judge criteria |
+| **DE.AE-07** | Cyber threat intelligence and other contextual information are integrated into the analysis | - | Organisational practice. Framework assumes threat intelligence informs guardrail and Judge criteria |
 | **DE.AE-08** | Incidents are declared when adverse events meet the defined incident criteria | Incident Response (IR) | IR controls define AI-specific incident declaration criteria: sustained guardrail bypass, Judge degradation, confirmed data leakage |
 
 ### RESPOND (RS)
@@ -204,7 +204,7 @@ The RECOVER Function covers recovery plan execution and communication. This fram
 
 ## Subcategories Not Mapped
 
-The following CSF 2.0 subcategory areas have no direct mapping to this framework's infrastructure controls. This is expected — the framework addresses AI deployment security, not full enterprise cybersecurity.
+The following CSF 2.0 subcategory areas have no direct mapping to this framework's infrastructure controls. This is expected - the framework addresses AI deployment security, not full enterprise cybersecurity.
 
 | CSF Area | Reason |
 | --- | --- |

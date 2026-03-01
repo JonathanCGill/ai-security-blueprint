@@ -39,7 +39,7 @@ An approved platform is infrastructure that has been evaluated, configured, and 
 | Incident response playbook exists | You know what to do when something goes wrong |
 | Operations team has trained | You know someone can actually run this |
 
-**The typical approved set is small — two or three platforms:**
+**The typical approved set is small - two or three platforms:**
 
 | Platform Type | Example | Typical Use |
 |---------------|---------|-------------|
@@ -51,7 +51,7 @@ Each platform has a [platform adapter](../extensions/regulatory/platform-integra
 
 **What happens when a team wants a new platform:**
 
-The platform must be evaluated against the criteria above before any AI system ships on it. This isn't a blocker — it's an investment. Once the platform is approved, every subsequent system gets the benefit of the work already done. The question is: does this platform offer something the approved set genuinely can't deliver? If yes, invest in the evaluation. If the answer is "we just prefer it" or "we used it at my last company," that's not sufficient.
+The platform must be evaluated against the criteria above before any AI system ships on it. This isn't a blocker - it's an investment. Once the platform is approved, every subsequent system gets the benefit of the work already done. The question is: does this platform offer something the approved set genuinely can't deliver? If yes, invest in the evaluation. If the answer is "we just prefer it" or "we used it at my last company," that's not sufficient.
 
 ---
 
@@ -117,14 +117,14 @@ A proven pattern is a reference architecture for a common AI use case type. It d
 | **Agentic Workflow** | Multi-step tasks requiring tool use and autonomous action | Orchestrator + tools + [sandbox](../infrastructure/agentic/sandbox-patterns.md) + [delegation chain](../infrastructure/agentic/delegation-chains.md) | Action validation, sandbox enforcement, budget limits, human approval controls, [MASO controls](../maso/) |
 
 Each pattern includes:
-- **Architecture diagram** — how the components connect
-- **Guardrail template** — starting-point input/output rules for this pattern type
-- **Judge configuration** — what the Judge evaluates and at what sampling rate
-- **HITL design** — what humans review and when
-- **Logging integration** — what telemetry the pattern produces
-- **PACE specification** — how the pattern degrades gracefully
-- **Known risks** — what typically goes wrong with this pattern type
-- **Cost model** — expected operating cost by tier and volume
+- **Architecture diagram** - how the components connect
+- **Guardrail template** - starting-point input/output rules for this pattern type
+- **Judge configuration** - what the Judge evaluates and at what sampling rate
+- **HITL design** - what humans review and when
+- **Logging integration** - what telemetry the pattern produces
+- **PACE specification** - how the pattern degrades gracefully
+- **Known risks** - what typically goes wrong with this pattern type
+- **Cost model** - expected operating cost by tier and volume
 
 **Composing patterns:**
 
@@ -133,7 +133,7 @@ Real systems often compose multiple patterns. A customer service system might co
 - **Conversational Agent pattern** for multi-turn dialogue
 - **Classification pattern** for intent routing
 
-Composition is expected and supported. The principle is that each component follows its standard pattern. The composition layer — how patterns connect — is where novel architecture happens, and that's where the security review focuses.
+Composition is expected and supported. The principle is that each component follows its standard pattern. The composition layer - how patterns connect - is where novel architecture happens, and that's where the security review focuses.
 
 ---
 
@@ -141,7 +141,7 @@ Composition is expected and supported. The principle is that each component foll
 
 AI systems need data. How they access it should be predictable, auditable, and consistent across every system.
 
-**The problem with ad-hoc data access:** If each AI system builds its own data integration — direct database queries here, custom API calls there, file system reads elsewhere — you get inconsistent access control enforcement, inconsistent audit trails, and no single view of what data each AI system can reach.
+**The problem with ad-hoc data access:** If each AI system builds its own data integration - direct database queries here, custom API calls there, file system reads elsewhere - you get inconsistent access control enforcement, inconsistent audit trails, and no single view of what data each AI system can reach.
 
 **Standardised data access means:**
 
@@ -150,7 +150,7 @@ AI systems need data. How they access it should be predictable, auditable, and c
 | **Access through approved connectors** | Data access layer with vetted connectors for each source type | Consistent authentication, authorisation, and audit logging |
 | **Identity propagation** | AI system's identity (not a shared service account) flows to the data source | Audit trail shows which system accessed which data |
 | **Schema-aware retrieval** | Connectors understand the data model, not just raw access | PII detection and redaction happen at the connector level |
-| **Access control at the data layer** | Permissions enforced by the data source, not by the AI application | Defence in depth — application can't access what it shouldn't |
+| **Access control at the data layer** | Permissions enforced by the data source, not by the AI application | Defence in depth - application can't access what it shouldn't |
 | **Consistent caching policy** | Standard caching rules by data classification | Sensitive data isn't cached where it shouldn't be |
 | **Change detection** | Standard mechanism for detecting when source data changes | RAG knowledge bases stay current; stale data flagged |
 
@@ -162,11 +162,11 @@ RAG is the most common AI data access pattern, and the one most likely to introd
 
 | Source Type | Approved Connector | Access Pattern | Sensitivity Handling |
 |-------------|-------------------|----------------|---------------------|
-| Internal knowledge base | Document ingestion pipeline (standard) | RAG — chunked, embedded, access-controlled | PII scanning at ingestion |
+| Internal knowledge base | Document ingestion pipeline (standard) | RAG - chunked, embedded, access-controlled | PII scanning at ingestion |
 | Customer data (CRM, accounts) | API gateway with identity propagation | Real-time query, scoped to current customer | PII redacted from AI context where possible |
 | Transaction data | Read-only API with row-level security | Query with filters, aggregated where possible | Financial data classification applied |
-| External data (web, third-party) | Vetted ingestion with content validation | Batch ingestion with adversarial content scanning | Treated as untrusted — additional guardrails |
-| Internal documents (policy, procedures) | Standard document ingestion | RAG — chunked, embedded | Classification inherited from source |
+| External data (web, third-party) | Vetted ingestion with content validation | Batch ingestion with adversarial content scanning | Treated as untrusted - additional guardrails |
+| Internal documents (policy, procedures) | Standard document ingestion | RAG - chunked, embedded | Classification inherited from source |
 
 ---
 
@@ -191,9 +191,9 @@ This is where standardisation delivers its highest return. When every AI system 
 
 Consider an organisation running fifteen AI systems. Without standardisation, the operations team needs to understand fifteen architectures, maintain fifteen monitoring configurations, and respond to incidents across fifteen different technology stacks. The team either becomes very large or very stretched.
 
-With standardisation — say, two platforms, three patterns — the team needs to understand two platforms and three patterns deeply. A RAG system on Bedrock looks like every other RAG system on Bedrock. The monitoring is the same. The failure modes are the same. The runbook is the same. The team develops deep expertise in a few patterns rather than shallow familiarity with many.
+With standardisation - say, two platforms, three patterns - the team needs to understand two platforms and three patterns deeply. A RAG system on Bedrock looks like every other RAG system on Bedrock. The monitoring is the same. The failure modes are the same. The runbook is the same. The team develops deep expertise in a few patterns rather than shallow familiarity with many.
 
-This is the resource argument: standardisation lets limited operations and security teams cover more AI systems effectively. It's not about restricting teams. It's about making the finite resources — security reviewers, Judge calibrators, HITL operators, incident responders — go further.
+This is the resource argument: standardisation lets limited operations and security teams cover more AI systems effectively. It's not about restricting teams. It's about making the finite resources - security reviewers, Judge calibrators, HITL operators, incident responders - go further.
 
 ---
 
@@ -229,13 +229,13 @@ BUILD ────────────────────── Assembl
 OPERATIONS ───────────────── Familiar logs, known patterns, standard playbooks
 ```
 
-The key insight: control design becomes **pattern-specific tuning** rather than design from scratch. A new RAG system at tier HIGH doesn't need a bespoke control specification. It needs the standard RAG-at-HIGH template with tuning for the specific use case — specific topic guardrails, specific Judge evaluation criteria, specific HITL reviewer qualifications. The architecture, logging, monitoring, and PACE configuration are inherited from the pattern.
+The key insight: control design becomes **pattern-specific tuning** rather than design from scratch. A new RAG system at tier HIGH doesn't need a bespoke control specification. It needs the standard RAG-at-HIGH template with tuning for the specific use case - specific topic guardrails, specific Judge evaluation criteria, specific HITL reviewer qualifications. The architecture, logging, monitoring, and PACE configuration are inherited from the pattern.
 
 ---
 
 ## The Catalogue Governance Model
 
-The approved catalogue — platforms, models, patterns, connectors — needs governance of its own.
+The approved catalogue - platforms, models, patterns, connectors - needs governance of its own.
 
 ### Who Owns What
 
@@ -250,12 +250,12 @@ The approved catalogue — platforms, models, patterns, connectors — needs gov
 
 | Step | Activity | Quality Signal |
 |------|----------|----------------|
-| 1 | **Request** — team identifies a need not met by current catalogue | Justified business need |
-| 2 | **Evaluate** — technical assessment against framework requirements | Meets control requirements |
-| 3 | **Security review** — threat model, attack surface, control mapping | Acceptable residual risk |
-| 4 | **Operational readiness** — logging configured, monitoring built, playbook written, team trained | Operations team sign-off |
-| 5 | **Approve and document** — added to catalogue with full documentation | Governance committee approval |
-| 6 | **Maintain** — ongoing review per lifecycle schedule | Remains current and supported |
+| 1 | **Request** - team identifies a need not met by current catalogue | Justified business need |
+| 2 | **Evaluate** - technical assessment against framework requirements | Meets control requirements |
+| 3 | **Security review** - threat model, attack surface, control mapping | Acceptable residual risk |
+| 4 | **Operational readiness** - logging configured, monitoring built, playbook written, team trained | Operations team sign-off |
+| 5 | **Approve and document** - added to catalogue with full documentation | Governance committee approval |
+| 6 | **Maintain** - ongoing review per lifecycle schedule | Remains current and supported |
 
 ### How Items Leave the Catalogue
 
@@ -303,10 +303,10 @@ How to know if standardisation is working:
 
 ## Relationship to Other Articles
 
-- **[Use Case Filter](use-case-filter.md)** determines what kind of solution — this article constrains how it's built
-- **[Use Case Definition](use-case-definition.md)** defines the specific system — this article provides the component catalogue it draws from
-- **[From Idea to Production](idea-to-production.md)** Stage 3 (Tool Selection) and Stage 5 (Control Design) both benefit from standardisation — the decisions are faster when the options are curated
-- **[The Thread](the-thread.md)** Phase 4 (Build) and Phase 5 (Monitor) are where standardisation pays off — consistent builds, consistent operations
+- **[Use Case Filter](use-case-filter.md)** determines what kind of solution - this article constrains how it's built
+- **[Use Case Definition](use-case-definition.md)** defines the specific system - this article provides the component catalogue it draws from
+- **[From Idea to Production](idea-to-production.md)** Stage 3 (Tool Selection) and Stage 5 (Control Design) both benefit from standardisation - the decisions are faster when the options are curated
+- **[The Thread](the-thread.md)** Phase 4 (Build) and Phase 5 (Monitor) are where standardisation pays off - consistent builds, consistent operations
 - **[Platform Integration Guide](../extensions/regulatory/platform-integration-guide.md)** implements the multi-platform governance this article calls for
 - **[RAG Security Controls](../extensions/technical/rag-security.md)** defines the controls for the RAG pattern
 - **[Judge Model Selection](../extensions/technical/judge-model-selection.md)** defines the principles for the Judge entries in the model catalogue

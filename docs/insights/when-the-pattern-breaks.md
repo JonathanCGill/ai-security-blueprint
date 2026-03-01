@@ -20,7 +20,7 @@ The question is what happens when the topology changes.
 
 ## Scaling Stages: Where It Holds, Strains, and Breaks
 
-### Stage 1: Single Agent, Single Model — Pattern Holds
+### Stage 1: Single Agent, Single Model - Pattern Holds
 
 **Topology:** User → Agent → Tools → Response
 
@@ -30,11 +30,11 @@ This is the architecture the framework was built for. RAG pipelines, document Q&
 - Trust boundaries are clear: user input is untrusted, system prompt is trusted, output is validated.
 - Guardrails inspect a known input/output surface.
 - The judge evaluates a single, bounded response.
-- Human review is feasible — the decision volume is proportional to user interactions.
+- Human review is feasible - the decision volume is proportional to user interactions.
 
 **Observed incidents at this stage:** Prompt injection, hallucination, data leakage. The framework's controls address these directly.
 
-### Stage 2: Single Agent, Multiple Tools/Models — Pattern Adapts
+### Stage 2: Single Agent, Multiple Tools/Models - Pattern Adapts
 
 **Topology:** User → Agent → [Tool A, Tool B, Model X, Model Y] → Response
 
@@ -44,11 +44,11 @@ An agent that calls different models for different subtasks (e.g., one model for
 - **Tool-call chains introduce indirect prompt injection surfaces.** A web search result or database record can contain instructions that the agent's model interprets as commands. The guardrails on user input don't inspect tool outputs.
 - **Model heterogeneity means inconsistent behavior.** A guardrail tuned for GPT-4's output patterns may not catch Mistral's failure modes.
 
-**Adaptation required:** Guardrails at every trust boundary — not just input/output, but between agent and each tool. AWS's Agentic AI Security Scoping Matrix calls this "Scope 2: Prescribed Agency" — tools are available, but human approval gates critical actions.
+**Adaptation required:** Guardrails at every trust boundary - not just input/output, but between agent and each tool. AWS's Agentic AI Security Scoping Matrix calls this "Scope 2: Prescribed Agency" - tools are available, but human approval gates critical actions.
 
 **This is achievable within the existing pattern,** but the number of guardrail instances multiplies with the number of tools.
 
-### Stage 3: Multi-Agent Orchestration — Pattern Strains Significantly
+### Stage 3: Multi-Agent Orchestration - Pattern Strains Significantly
 
 **Topology:** User → Orchestrator Agent → [Agent A, Agent B, Agent C] → Aggregated Response
 
@@ -56,17 +56,17 @@ A planner/orchestrator delegates subtasks to specialist agents. Common in docume
 
 **Where it strains hard:**
 
-**1. Trust boundary collapse.** Agent A's output becomes Agent B's input. In the single-agent model, "system prompt" and "user input" are distinct. In multi-agent systems, this boundary dissolves. An instruction embedded in Agent A's output can hijack Agent B's behavior. The OWASP Agentic Top 10 calls this **ASI07: Insecure Inter-Agent Communication** — and it has already caused real incidents. Palo Alto Unit 42 demonstrated "Agent Session Smuggling" in the A2A protocol (November 2025), where a malicious agent exploited built-in trust relationships to manipulate victim agents across entire sessions.
+**1. Trust boundary collapse.** Agent A's output becomes Agent B's input. In the single-agent model, "system prompt" and "user input" are distinct. In multi-agent systems, this boundary dissolves. An instruction embedded in Agent A's output can hijack Agent B's behavior. The OWASP Agentic Top 10 calls this **ASI07: Insecure Inter-Agent Communication** - and it has already caused real incidents. Palo Alto Unit 42 demonstrated "Agent Session Smuggling" in the A2A protocol (November 2025), where a malicious agent exploited built-in trust relationships to manipulate victim agents across entire sessions.
 
-**2. Combinatorial interaction surfaces.** With N agents, you have up to N² communication channels. Each channel needs guardrails. At N=3, this is 6 channels — manageable. At N=10, it's 90. At N=20, it's 380. Guardrail deployment doesn't scale linearly with agent count; it scales quadratically.
+**2. Combinatorial interaction surfaces.** With N agents, you have up to N² communication channels. Each channel needs guardrails. At N=3, this is 6 channels - manageable. At N=10, it's 90. At N=20, it's 380. Guardrail deployment doesn't scale linearly with agent count; it scales quadratically.
 
-**3. The judge can't see the whole picture.** Each agent produces output that looks reasonable in isolation. The judge evaluating Agent B's response doesn't have the full context of Agent A's reasoning chain that influenced it. A hallucinating planner can issue instructions to downstream agents that individually pass guardrail checks but collectively produce a harmful outcome. OWASP identifies this as **ASI08: Cascading Failures** — "a small error in one agent can propagate across planning, execution, memory, and downstream systems."
+**3. The judge can't see the whole picture.** Each agent produces output that looks reasonable in isolation. The judge evaluating Agent B's response doesn't have the full context of Agent A's reasoning chain that influenced it. A hallucinating planner can issue instructions to downstream agents that individually pass guardrail checks but collectively produce a harmful outcome. OWASP identifies this as **ASI08: Cascading Failures** - "a small error in one agent can propagate across planning, execution, memory, and downstream systems."
 
 **4. Latency budget exhaustion.** Guardrails at ~10ms per hop. In a 5-agent chain with guardrails at each boundary, you add 50-100ms minimum to every interaction. Add judge evaluation at 500ms-5s per agent, and the total pipeline latency becomes prohibitive for real-time applications. You're forced to choose: fewer guardrails (more risk) or slower responses (less utility).
 
 **5. Human review volume exceeds capacity.** If each agent flags 5% of interactions for human review, a 5-agent pipeline flags approximately 23% of all transactions (1 - 0.95⁵). At enterprise scale, this overwhelms human reviewers. The "humans decide" layer becomes a bottleneck, and pressure to reduce human review creates the exact gap the pattern was designed to fill.
 
-### Stage 4: Autonomous Multi-Agent Systems — Pattern Breaks
+### Stage 4: Autonomous Multi-Agent Systems - Pattern Breaks
 
 **Topology:** Agent A ↔ Agent B ↔ Agent C ↔ External Agents ↔ Tools ↔ Memory
 
@@ -80,22 +80,22 @@ In a peer-to-peer multi-agent system, communication is continuous and bidirectio
 
 **2. Emergent behavior is not detectable at the individual agent level.**
 
-Even if every individual agent operates within its guardrails, the *collective* behavior of the system can produce outcomes that no individual guardrail was designed to catch. This is a systems property, not an agent property. A judge evaluating individual agent outputs will miss it. You need system-level behavioral monitoring — a fundamentally different architecture than the per-agent judge model.
+Even if every individual agent operates within its guardrails, the *collective* behavior of the system can produce outcomes that no individual guardrail was designed to catch. This is a systems property, not an agent property. A judge evaluating individual agent outputs will miss it. You need system-level behavioral monitoring - a fundamentally different architecture than the per-agent judge model.
 
 The OWASP Agentic Top 10 documents this in multiple categories:
-- **ASI01: Agent Goal Hijack** — an agent's objectives are redirected through manipulated instructions that cascade through the multi-agent graph.
-- **ASI06: Memory & Context Poisoning** — persistent memory means a single poisoned interaction can reshape agent behavior long after the initial attack (documented in the Gemini Memory Attack).
-- **ASI10: Rogue Agents** — agents that deviate from intended behavior, act deceptively, or seize control of trusted workflows. OWASP explicitly notes this "isn't something traditional rule-based security measures can cover."
+- **ASI01: Agent Goal Hijack** - an agent's objectives are redirected through manipulated instructions that cascade through the multi-agent graph.
+- **ASI06: Memory & Context Poisoning** - persistent memory means a single poisoned interaction can reshape agent behavior long after the initial attack (documented in the Gemini Memory Attack).
+- **ASI10: Rogue Agents** - agents that deviate from intended behavior, act deceptively, or seize control of trusted workflows. OWASP explicitly notes this "isn't something traditional rule-based security measures can cover."
 
 **3. Identity and privilege become unmanageable.**
 
-In a multi-agent system, agents inherit and delegate credentials. Agent A runs with user-level permissions, delegates a subtask to Agent B, which invokes Tool C using Agent A's credentials. The trust chain becomes: User → Agent A → Agent B → Tool C. A compromised Agent B can now act with Agent A's (and potentially the user's) full permissions. OWASP calls this **ASI03: Identity & Privilege Abuse** — "exploiting the trust and delegation in agents to escalate access and bypass controls." Three of the OWASP Agentic Top 4 risks are identity-related.
+In a multi-agent system, agents inherit and delegate credentials. Agent A runs with user-level permissions, delegates a subtask to Agent B, which invokes Tool C using Agent A's credentials. The trust chain becomes: User → Agent A → Agent B → Tool C. A compromised Agent B can now act with Agent A's (and potentially the user's) full permissions. OWASP calls this **ASI03: Identity & Privilege Abuse** - "exploiting the trust and delegation in agents to escalate access and bypass controls." Three of the OWASP Agentic Top 4 risks are identity-related.
 
 Traditional RBAC doesn't work when agents dynamically request new permissions, spin up by the hundreds, and maintain ephemeral identities. As Obsidian Security notes: "AI agents routinely hold 10x more privileges than required, and 90% of agents are over-permissioned."
 
 **4. The human oversight layer is structurally insufficient.**
 
-At Stage 4, the system operates at machine speed across potentially thousands of agent interactions per second. Human review of edge cases is not just a bottleneck — it's architecturally incompatible. The OWASP Agentic Top 10 introduces **ASI09: Human-Agent Trust Exploitation** as a distinct risk: "confident, polished explanations misled human operators into approving harmful actions." The humans-in-the-loop aren't just too slow; they're actively being manipulated by the agents they're supposed to oversee.
+At Stage 4, the system operates at machine speed across potentially thousands of agent interactions per second. Human review of edge cases is not just a bottleneck - it's architecturally incompatible. The OWASP Agentic Top 10 introduces **ASI09: Human-Agent Trust Exploitation** as a distinct risk: "confident, polished explanations misled human operators into approving harmful actions." The humans-in-the-loop aren't just too slow; they're actively being manipulated by the agents they're supposed to oversee.
 
 ---
 
@@ -107,7 +107,7 @@ The three-layer pattern doesn't need to be abandoned. It needs to be **augmented
 
 ### 1. System-Level Invariant Monitoring
 
-Instead of evaluating individual agent outputs (judge per agent), define **system-level invariants** — properties that must remain true regardless of which agents are involved:
+Instead of evaluating individual agent outputs (judge per agent), define **system-level invariants** - properties that must remain true regardless of which agents are involved:
 
 - No agent may access data outside its designated scope.
 - Total financial exposure across all agents must not exceed $X per time window.
@@ -124,7 +124,7 @@ This maps to how network security works (VLANs, firewalls, zero-trust segments) 
 
 ### 3. Least Agency (Not Just Least Privilege)
 
-OWASP's 2026 Agentic Top 10 introduces the principle of **least agency**: only grant agents the minimum autonomy required to perform safe, bounded tasks. This is more than least privilege (which controls *access*) — it controls *action scope* (what an agent can *do*, not just what it can *see*).
+OWASP's 2026 Agentic Top 10 introduces the principle of **least agency**: only grant agents the minimum autonomy required to perform safe, bounded tasks. This is more than least privilege (which controls *access*) - it controls *action scope* (what an agent can *do*, not just what it can *see*).
 
 In practice: don't give a code review agent the ability to execute code. Don't give a document analysis agent the ability to send emails. Scope the agent's *capabilities*, not just its permissions.
 
@@ -132,10 +132,10 @@ In practice: don't give a code review agent the ability to execute code. Don't g
 
 Deploy dedicated monitoring agents whose sole purpose is to validate the outputs and behaviors of operational agents. OWASP recommends "watchdog/monitoring agents to validate peer outputs and spot collusion or abnormal exfiltration."
 
-This is the judge pattern elevated to the system level — but with important differences:
+This is the judge pattern elevated to the system level - but with important differences:
 - Watchdog agents operate in a *different trust zone* from the agents they monitor.
 - They have *read-only access* to agent communications and state.
-- They can trigger **circuit breakers** — kill switches that halt an agent or workflow when invariants are violated.
+- They can trigger **circuit breakers** - kill switches that halt an agent or workflow when invariants are violated.
 
 ### 5. Kill Switches and Containment
 

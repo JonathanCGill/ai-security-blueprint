@@ -391,7 +391,7 @@ The framework's technical controls directly support ISO 42001 compliance:
 | Audit (9.2) | Logging | All evidence |
 | Improvement (10.2) | Feedback loops | All controls |
 
-**Key message:** Technical controls are not separate from governance—they ARE the operational implementation of ISO 42001 requirements.
+**Key message:** Technical controls are not separate from governance-they ARE the operational implementation of ISO 42001 requirements.
 
 ---
 

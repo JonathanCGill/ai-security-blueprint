@@ -30,8 +30,8 @@ AI security controls operate across three layers:
 | AI.4 | Development Security | Secure development, testing, deployment |
 | AI.5 | Data Governance | Data quality, privacy, protection |
 | AI.6 | Model Security | Model protection, validation, monitoring |
-| AI.7 | Runtime Controls — Guardrails | Inline input/output validation |
-| AI.8 | Runtime Controls — LLM-as-Judge | Async assurance and monitoring |
+| AI.7 | Runtime Controls - Guardrails | Inline input/output validation |
+| AI.8 | Runtime Controls - LLM-as-Judge | Async assurance and monitoring |
 | AI.9 | Human Oversight | HITL, escalation, accountability |
 | AI.10 | Agentic Controls | Agent-specific safeguards |
 | AI.11 | Logging & Monitoring | Observability, alerting, audit |
@@ -190,7 +190,7 @@ AI security controls operate across three layers:
 
 **Requirement:** Define and document the level of explainability required for each AI system, proportionate to risk tier.
 
-AI models are inherently opaque — billions of parameters with no traceable decision logic. Explainability methods (attention maps, SHAP, etc.) are approximations. The required level of explainability must be defined per system and may constrain which models can be used.
+AI models are inherently opaque - billions of parameters with no traceable decision logic. Explainability methods (attention maps, SHAP, etc.) are approximations. The required level of explainability must be defined per system and may constrain which models can be used.
 
 **Explainability tiers:**
 
@@ -402,7 +402,7 @@ Retrieved content (RAG) is a primary attack vector. Poisoned knowledge base cont
 - Gradual degradation detection (trend analysis, not just threshold alerts)
 - Capability monitoring (track what the model is doing, not just how well)
 
-**Invisible degradation:** AI systems can degrade silently — output quality drops with no error signal. Monitoring must include trend analysis to catch gradual decline, not just sudden failures.
+**Invisible degradation:** AI systems can degrade silently - output quality drops with no error signal. Monitoring must include trend analysis to catch gradual decline, not just sudden failures.
 
 | Metric Type | What It Catches |
 |-------------|----------------|
@@ -419,7 +419,7 @@ Retrieved content (RAG) is a primary attack vector. Poisoned knowledge base cont
 
 **Requirement:** Assess model capabilities before deployment, and reassess when models are upgraded or changed.
 
-AI models can develop emergent capabilities that weren't explicitly programmed. A new model version may have capabilities — beneficial or dangerous — that the previous version lacked. Controls designed for the old model may be insufficient for the new one.
+AI models can develop emergent capabilities that weren't explicitly programmed. A new model version may have capabilities - beneficial or dangerous - that the previous version lacked. Controls designed for the old model may be insufficient for the new one.
 
 **Assessment triggers:**
 
@@ -447,7 +447,7 @@ AI models can develop emergent capabilities that weren't explicitly programmed. 
 
 **Requirement:** Maintain and periodically test against a baseline set of known-good inputs and outputs.
 
-Invisible degradation — where AI quality drops with no error signal — is a novel risk. Baseline comparison is the primary detection method.
+Invisible degradation - where AI quality drops with no error signal - is a novel risk. Baseline comparison is the primary detection method.
 
 **Implementation:**
 
@@ -471,7 +471,7 @@ Invisible degradation — where AI quality drops with no error signal — is a n
 
 ---
 
-## AI.7 Runtime Controls — Guardrails
+## AI.7 Runtime Controls - Guardrails
 
 Guardrails are **inline controls** that operate in real-time on inputs and outputs.
 
@@ -537,9 +537,9 @@ Guardrails are **inline controls** that operate in real-time on inputs and outpu
 - False positive monitoring and tuning
 - Feedback loop from Judge findings
 - Adversarial testing (including semantic/meaning-based evasion, not just known patterns)
-- Periodic effectiveness verification (don't assume guardrails still work — test them)
+- Periodic effectiveness verification (don't assume guardrails still work - test them)
 
-**Guardrail effectiveness testing:** Guardrails degrade over time as attackers adapt. Periodic red-team testing must include semantic evasion techniques — rephrased requests, multi-turn manipulation, and context-based attacks.
+**Guardrail effectiveness testing:** Guardrails degrade over time as attackers adapt. Periodic red-team testing must include semantic evasion techniques - rephrased requests, multi-turn manipulation, and context-based attacks.
 
 | Tier | Adversarial testing frequency |
 |------|------------------------------|
@@ -582,7 +582,7 @@ In multi-user AI systems, information from one user's session must not leak into
 
 ---
 
-## AI.8 Runtime Controls — LLM-as-Judge
+## AI.8 Runtime Controls - LLM-as-Judge
 
 The Judge is an **async assurance mechanism** that evaluates AI interactions after the fact.
 
@@ -599,15 +599,15 @@ The Judge is an **async assurance mechanism** that evaluates AI interactions aft
 | Conduct risk | Potential for customer or business harm |
 | Anomalies | Unusual patterns suggesting attacks or failures |
 | Bias indicators | Potential unfair treatment (where applicable) |
-| Hallucination detection | Unsupported claims — compare output against retrieved context |
+| Hallucination detection | Unsupported claims - compare output against retrieved context |
 | Instruction override detection | Signs that the model followed injected instructions rather than system prompt |
 | Confidence calibration | Cases where model expresses high confidence on topics where it's likely unreliable |
 
 **Hallucination detection:** Judge compares AI output against the source data that was retrieved. Claims not supported by retrieved context should be flagged. This is the primary async defence against hallucination.
 
-**Instruction override detection:** Judge evaluates whether the model's behaviour in an interaction is consistent with its system prompt. Behavioural anomalies — sudden topic changes, policy deviations, unusual output formats — may indicate the model followed injected instructions.
+**Instruction override detection:** Judge evaluates whether the model's behaviour in an interaction is consistent with its system prompt. Behavioural anomalies - sudden topic changes, policy deviations, unusual output formats - may indicate the model followed injected instructions.
 
-**Criteria-based evaluation:** Because AI is non-deterministic, Judge evaluates outputs against acceptance criteria, not expected exact outputs. "Was this response helpful, accurate, and within policy?" — not "Did this response match the expected answer?"
+**Criteria-based evaluation:** Because AI is non-deterministic, Judge evaluates outputs against acceptance criteria, not expected exact outputs. "Was this response helpful, accurate, and within policy?" - not "Did this response match the expected answer?"
 
 **Evidence:** Judge evaluation logs, finding summaries, hallucination detection rates, override detection rates
 
@@ -653,7 +653,7 @@ The Judge is an **async assurance mechanism** that evaluates AI interactions aft
 
 **Evidence:** Finding logs, routing records, SLA compliance
 
-> **Note:** These are Judge finding management SLAs — the time to triage and route findings from automated evaluation. They are distinct from incident response SLAs in the [AI Incident Playbook](../../extensions/templates/ai-incident-playbook.md), which govern response to confirmed security incidents.
+> **Note:** These are Judge finding management SLAs - the time to triage and route findings from automated evaluation. They are distinct from incident response SLAs in the [AI Incident Playbook](../../extensions/templates/ai-incident-playbook.md), which govern response to confirmed security incidents.
 
 ---
 
@@ -675,7 +675,7 @@ The Judge is an **async assurance mechanism** that evaluates AI interactions aft
 
 **Requirement:** Detect and flag cases where AI expresses inappropriate confidence.
 
-AI presents every output with equal confidence — correct or incorrect. Users cannot distinguish between a confident correct answer and a confident wrong answer. This leads to over-reliance, automation bias, and cascading errors when confident-but-wrong outputs feed downstream systems.
+AI presents every output with equal confidence - correct or incorrect. Users cannot distinguish between a confident correct answer and a confident wrong answer. This leads to over-reliance, automation bias, and cascading errors when confident-but-wrong outputs feed downstream systems.
 
 **Implementation:**
 
@@ -921,7 +921,7 @@ Agentic AI requires controls at three phases:
 
 **Requirement:** After an agent completes a task, independently validate that the outcome matches the intended goal and has no unintended side effects.
 
-Agentic AI pursues goals across multiple steps, choosing its own actions. Validating individual actions (AG.2.1) is necessary but insufficient — an agent can take a series of individually valid actions that produce an unintended aggregate outcome.
+Agentic AI pursues goals across multiple steps, choosing its own actions. Validating individual actions (AG.2.1) is necessary but insufficient - an agent can take a series of individually valid actions that produce an unintended aggregate outcome.
 
 **Implementation:**
 
@@ -974,7 +974,7 @@ Agentic AI pursues goals across multiple steps, choosing its own actions. Valida
 | Guardrail results | Know what was filtered or flagged |
 | Full input and output | The actual interaction content |
 
-Without full context capture, incident investigation is impossible — you cannot determine why the model produced a specific output.
+Without full context capture, incident investigation is impossible - you cannot determine why the model produced a specific output.
 
 **Evidence:** Log samples, retention compliance, context capture verification
 
@@ -1149,9 +1149,9 @@ The behaviour of AI systems is shaped by training data you don't control and lik
 
 | Risk Level | Action |
 |------------|--------|
-| Training data risk is low for this use case | Accept — document rationale |
-| Training data risk is moderate | Mitigate — RAG grounding, output validation, bias testing |
-| Training data risk is high | Avoid — use a different model, fine-tune on curated data, or don't use AI for this use case |
+| Training data risk is low for this use case | Accept - document rationale |
+| Training data risk is moderate | Mitigate - RAG grounding, output validation, bias testing |
+| Training data risk is high | Avoid - use a different model, fine-tune on curated data, or don't use AI for this use case |
 
 **Evidence:** Training data risk assessments per model per use case
 
@@ -1167,14 +1167,14 @@ The behaviour of AI systems is shaped by training data you don't control and lik
 
 | Audience | Content |
 |----------|---------|
-| All staff | AI acceptable use, recognising AI outputs, **confidence-competence gap** ("The AI sounds sure — that doesn't mean it's right") |
+| All staff | AI acceptable use, recognising AI outputs, **confidence-competence gap** ("The AI sounds sure - that doesn't mean it's right") |
 | AI developers | Secure AI development, prompt injection, adversarial testing |
 | AI operators | Guardrails, HITL processes |
 | HITL reviewers | **Cognitive bias training** (automation bias, anchoring bias, authority bias), how to challenge AI outputs, canary exercise participation |
 | Security team | AI threat landscape, monitoring, novel AI risks |
 | Executives | AI risk literacy, accountability for AI decisions |
 
-**HITL-specific training:** Automation bias — the tendency to defer to AI even when human judgement is better — is the primary failure mode of human oversight. HITL reviewers must be specifically trained to recognise and counter this bias.
+**HITL-specific training:** Automation bias - the tendency to defer to AI even when human judgement is better - is the primary failure mode of human oversight. HITL reviewers must be specifically trained to recognise and counter this bias.
 
 **Evidence:** Training records, cognitive bias assessment results
 

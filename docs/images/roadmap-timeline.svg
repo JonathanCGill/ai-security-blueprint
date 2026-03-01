@@ -20,7 +20,7 @@
   
   <rect width="900" height="300" fill="#f8fafc"/>
   
-  <text x="450" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle">Implementation Roadmap — Year 1</text>
+  <text x="450" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle">Implementation Roadmap - Year 1</text>
   
   <!-- Timeline bar -->
   <rect x="50" y="55" width="800" height="8" rx="4" fill="#e2e8f0"/>

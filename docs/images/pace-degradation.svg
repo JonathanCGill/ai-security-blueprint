@@ -12,9 +12,9 @@
   <rect width="700" height="240" rx="10" fill="#FAFAFA"/>
 
   <!-- Title -->
-  <text x="350" y="28" text-anchor="middle" fill="#37474F" font-size="14" font-weight="600">PACE Resilience — Structured Degradation Path</text>
+  <text x="350" y="28" text-anchor="middle" fill="#37474F" font-size="14" font-weight="600">PACE Resilience - Structured Degradation Path</text>
 
-  <!-- P — Primary -->
+  <!-- P - Primary -->
   <rect x="20" y="50" width="150" height="72" rx="8" fill="#2E7D32" filter="url(#shadow)"/>
   <text x="95" y="72" text-anchor="middle" fill="white" font-size="15" font-weight="700">P</text>
   <text x="95" y="90" text-anchor="middle" fill="white" font-size="12" font-weight="500">Primary</text>
@@ -24,7 +24,7 @@
   <!-- Arrow P → A -->
   <line x1="174" y1="86" x2="192" y2="86" stroke="#90A4AE" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- A — Alternate -->
+  <!-- A - Alternate -->
   <rect x="196" y="50" width="150" height="72" rx="8" fill="#F57F17" filter="url(#shadow)"/>
   <text x="271" y="72" text-anchor="middle" fill="white" font-size="15" font-weight="700">A</text>
   <text x="271" y="90" text-anchor="middle" fill="white" font-size="12" font-weight="500">Alternate</text>
@@ -34,7 +34,7 @@
   <!-- Arrow A → C -->
   <line x1="350" y1="86" x2="368" y2="86" stroke="#90A4AE" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- C — Contingency -->
+  <!-- C - Contingency -->
   <rect x="372" y="50" width="150" height="72" rx="8" fill="#E65100" filter="url(#shadow)"/>
   <text x="447" y="72" text-anchor="middle" fill="white" font-size="15" font-weight="700">C</text>
   <text x="447" y="90" text-anchor="middle" fill="white" font-size="12" font-weight="500">Contingency</text>
@@ -44,7 +44,7 @@
   <!-- Arrow C → E -->
   <line x1="526" y1="86" x2="544" y2="86" stroke="#90A4AE" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- E — Emergency -->
+  <!-- E - Emergency -->
   <rect x="548" y="50" width="134" height="72" rx="8" fill="#B71C1C" filter="url(#shadow)"/>
   <text x="615" y="72" text-anchor="middle" fill="white" font-size="15" font-weight="700">E</text>
   <text x="615" y="90" text-anchor="middle" fill="white" font-size="12" font-weight="500">Emergency</text>

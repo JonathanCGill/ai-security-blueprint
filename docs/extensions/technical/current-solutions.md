@@ -25,8 +25,8 @@ A reference guide to production-ready guardrail, evaluation, and safety solution
 
 | If You Need... | Primary Choice | Alternative |
 |----------------|----------------|-------------|
-| Turnkey AWS guardrails | AWS Bedrock Guardrails | — |
-| Turnkey Azure guardrails | Azure AI Content Safety | — |
+| Turnkey AWS guardrails | AWS Bedrock Guardrails | - |
+| Turnkey Azure guardrails | Azure AI Content Safety | - |
 | Self-hosted, customizable | NVIDIA NeMo Guardrails | Guardrails AI |
 | Open-source safety model | Llama Guard 3/4 | Prompt Guard |
 | LLM evaluation/testing | DeepEval | Galileo |
@@ -96,7 +96,7 @@ The AI security industry has converged on a common pattern: **layered runtime co
 - Automated Reasoning checks claim 99% accuracy for hallucination detection (AWS claim)
 - Blocks up to 88% of harmful content (AWS benchmark)
 - Native integration with Bedrock agents, knowledge bases, and flows
-- Cross-model consistency — same guardrails work across different FMs
+- Cross-model consistency - same guardrails work across different FMs
 
 **Limitations:**
 - **Cross-region complexity:** Known IAM permission issues when guardrails and agents are in different regions
@@ -190,7 +190,7 @@ The AI security industry has converged on a common pattern: **layered runtime co
 - Threads not supported in streaming mode
 - No automatic thread cleanup mechanism
 
-**Vendor Recommendation:** NVIDIA states developers should "work with their internal application team to ensure guardrails meets [their] requirements" — tune for your use case.
+**Vendor Recommendation:** NVIDIA states developers should "work with their internal application team to ensure guardrails meets [their] requirements" - tune for your use case.
 
 **Best For:** Teams needing highly customizable, self-hosted guardrails with complex policy logic.
 
@@ -244,7 +244,7 @@ The AI security industry has converged on a common pattern: **layered runtime co
 **How It Works:**
 - Fine-tuned Llama model that classifies content as safe/unsafe
 - Outputs category of violation when unsafe
-- Instruction-tunable — can adapt to custom taxonomies via prompting
+- Instruction-tunable - can adapt to custom taxonomies via prompting
 - Available in quantized versions for lower deployment cost
 
 **Versions:**
@@ -354,7 +354,7 @@ The AI security industry has converged on a common pattern: **layered runtime co
 
 ### Galileo
 
-**Overview:** LLM evaluation platform with "eval-to-guardrail" lifecycle — evaluations developed in testing become production guardrails.
+**Overview:** LLM evaluation platform with "eval-to-guardrail" lifecycle - evaluations developed in testing become production guardrails.
 
 **How It Works:**
 - Define evaluation criteria during development
@@ -492,13 +492,13 @@ Model-agnostic security gateway providing guardrails across any AI platform.
 
 This guide synthesizes publicly available documentation, research, and community feedback. Credit to:
 
-- **NVIDIA** — NeMo Guardrails and documentation
-- **Meta** — Llama Guard, Prompt Guard, and Llama Protections ecosystem
-- **AWS** — Bedrock Guardrails documentation and best practices
-- **Microsoft** — Azure AI Content Safety transparency notes
-- **Confident AI** — DeepEval framework and documentation
-- **OWASP** — LLM Top 10 and community contributions
-- **NIST** — AI Risk Management Framework
+- **NVIDIA** - NeMo Guardrails and documentation
+- **Meta** - Llama Guard, Prompt Guard, and Llama Protections ecosystem
+- **AWS** - Bedrock Guardrails documentation and best practices
+- **Microsoft** - Azure AI Content Safety transparency notes
+- **Confident AI** - DeepEval framework and documentation
+- **OWASP** - LLM Top 10 and community contributions
+- **NIST** - AI Risk Management Framework
 - **The broader AI safety research community**
 
 ---

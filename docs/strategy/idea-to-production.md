@@ -8,7 +8,7 @@
 
 ## Why This Matters
 
-The framework has excellent depth in each domain — risk tiers, controls, PACE resilience, governance. But there's no single document that connects the entire lifecycle from "someone has an idea" to "the system is running safely in production and being continuously governed."
+The framework has excellent depth in each domain - risk tiers, controls, PACE resilience, governance. But there's no single document that connects the entire lifecycle from "someone has an idea" to "the system is running safely in production and being continuously governed."
 
 Without that connected flow, organisations experience gaps:
 
@@ -45,7 +45,7 @@ Eight stages. Each produces a defined output. Each has guardrails that prevent m
 
 **Owner:** Business sponsor
 
-**Purpose:** Determine whether this initiative is worth pursuing — before any technical work begins.
+**Purpose:** Determine whether this initiative is worth pursuing - before any technical work begins.
 
 **Inputs:**
 - Business problem or opportunity
@@ -68,7 +68,7 @@ Eight stages. Each produces a defined output. Each has guardrails that prevent m
 | Initial risk sense | Gut-level: is this low, medium, or high risk? |
 | Sponsor | Named executive sponsor |
 
-**Guardrail:** Systems that reach production without a business case become visible during governance reviews — they can't demonstrate value and generate monitoring noise. The environment doesn't block teams from exploring, but it makes unjustified investment visible.
+**Guardrail:** Systems that reach production without a business case become visible during governance reviews - they can't demonstrate value and generate monitoring noise. The environment doesn't block teams from exploring, but it makes unjustified investment visible.
 
 **What can go wrong here:**
 - Skip this stage → technology investment without business justification
@@ -98,7 +98,7 @@ Eight stages. Each produces a defined output. Each has guardrails that prevent m
 
 The full template from [Use Case Definition](use-case-definition.md). All ten questions answered. No "TBD" in critical fields.
 
-**Guardrail:** The ten questions are the preventive control — they steer teams toward completeness. If fields are left as "TBD," downstream controls will be misconfigured and monitoring will surface the mismatch. Review by business owner, legal/compliance, and data owner improves quality but isn't a hard stop — incomplete definitions reveal themselves in operation.
+**Guardrail:** The ten questions are the preventive control - they steer teams toward completeness. If fields are left as "TBD," downstream controls will be misconfigured and monitoring will surface the mismatch. Review by business owner, legal/compliance, and data owner improves quality but isn't a hard stop - incomplete definitions reveal themselves in operation.
 
 **What can go wrong here:**
 - Incomplete definition → uncertain risk tier → wrong controls
@@ -112,7 +112,7 @@ The full template from [Use Case Definition](use-case-definition.md). All ten qu
 
 **Owner:** Technical lead + business owner
 
-**Purpose:** Determine whether AI is the right tool — and if so, what kind.
+**Purpose:** Determine whether AI is the right tool - and if so, what kind.
 
 This stage explicitly evaluates alternatives. The framework's [first control](../insights/the-first-control.md) is choosing the right tool.
 
@@ -137,9 +137,9 @@ This stage explicitly evaluates alternatives. The framework's [first control](..
 
 | Option | When To Use | Risk Profile | Framework Implication |
 |--------|------------|-------------- |----------------------|
-| **Traditional software** | Deterministic logic, bounded inputs, exact outputs needed | Lowest — existing SDLC applies | Outside framework scope |
-| **RPA / workflow automation** | Structured, repeatable processes; UI-based integration | Low — deterministic, auditable | Outside framework scope |
-| **Traditional ML** | Pattern recognition on structured data; classification, regression | Low–Medium — predictable, testable | Partial framework (monitoring, bias) |
+| **Traditional software** | Deterministic logic, bounded inputs, exact outputs needed | Lowest - existing SDLC applies | Outside framework scope |
+| **RPA / workflow automation** | Structured, repeatable processes; UI-based integration | Low - deterministic, auditable | Outside framework scope |
+| **Traditional ML** | Pattern recognition on structured data; classification, regression | Low–Medium - predictable, testable | Partial framework (monitoring, bias) |
 | **LLM / Generative AI** | Unstructured input, natural language, content generation | Medium–Critical (depends on use case) | Full framework applies |
 | **Multi-agent AI** | Complex workflows requiring multiple AI components collaborating | High–Critical | Full framework + [MASO](../maso/) |
 
@@ -167,7 +167,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Platform/provider | Managed service, self-hosted, vendor product |
 | Risk implication | How tool selection affects risk tier |
 
-**Guardrail:** The Use Case Filter is the preventive control — it steers teams to the right tool before investment begins. If a team skips it and builds AI where rules would suffice, the overhead becomes visible in operation: unnecessary guardrail tuning, Judge findings on deterministic tasks, governance cost that simpler tools wouldn't generate. If the decision is "not AI," the initiative exits to standard SDLC.
+**Guardrail:** The Use Case Filter is the preventive control - it steers teams to the right tool before investment begins. If a team skips it and builds AI where rules would suffice, the overhead becomes visible in operation: unnecessary guardrail tuning, Judge findings on deterministic tasks, governance cost that simpler tools wouldn't generate. If the decision is "not AI," the initiative exits to standard SDLC.
 
 ---
 
@@ -201,7 +201,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Regulatory | e.g., HIGH | PCI-DSS, banking regulations |
 | **Overall Tier** | **CRITICAL** | Data sensitivity drives the tier |
 
-**Guardrail:** Unclassified systems are visible in the use case registry — they stand out because they have no tier, no controls, and no monitoring baseline. For Fast Lane, teams self-certify. For MEDIUM, a risk analyst reviews. For HIGH/CRITICAL, the governance committee reviews. The classification process is lightweight enough that skipping it costs more than doing it.
+**Guardrail:** Unclassified systems are visible in the use case registry - they stand out because they have no tier, no controls, and no monitoring baseline. For Fast Lane, teams self-certify. For MEDIUM, a risk analyst reviews. For HIGH/CRITICAL, the governance committee reviews. The classification process is lightweight enough that skipping it costs more than doing it.
 
 **What can go wrong here:**
 - Optimistic scoring → system under-controlled
@@ -225,7 +225,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 **Activities:**
 - Select controls from the [control matrix](../core/risk-tiers.md) based on tier
 - Apply modifiers from the [control selection guide](../extensions/technical/control-selection-guide.md)
-- Design the PACE resilience plan — Primary, Alternate, Contingency, Emergency states
+- Design the PACE resilience plan - Primary, Alternate, Contingency, Emergency states
 - Specify guardrail configuration (what to block, what to allow)
 - Define Judge evaluation criteria (what "good" and "bad" look like for this use case)
 - Specify HITL requirements (who reviews, SLA, escalation path)
@@ -237,8 +237,8 @@ The framework applies to the AI components. The risk tier is determined by what 
 
 | Control Area | Specification |
 |--------------|---------------|
-| **Guardrails — Input** | Topic rules, injection detection, PII detection, rate limiting (specific config) |
-| **Guardrails — Output** | Content filtering, PII handling, confidence thresholds (specific config) |
+| **Guardrails - Input** | Topic rules, injection detection, PII detection, rate limiting (specific config) |
+| **Guardrails - Output** | Content filtering, PII handling, confidence thresholds (specific config) |
 | **Judge** | Evaluation criteria, sampling rate, escalation rules, Judge model selection |
 | **HITL** | Reviewer role, SLA, escalation path, review criteria |
 | **PACE** | P/A/C/E states with transition triggers, fallback process, kill switch |
@@ -246,7 +246,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | **Monitoring** | Dashboards, alerts, anomaly thresholds |
 | **Incident response** | Playbook reference, severity mapping, notification requirements |
 
-**Guardrail:** Teams building on approved platforms inherit baseline controls automatically — logging, monitoring, and standard guardrails come with the platform. The control specification adds use-case-specific configuration on top. Review by security architect, governance, and business owner strengthens the design, but the platform defaults mean even a rushed deployment starts with basic protection.
+**Guardrail:** Teams building on approved platforms inherit baseline controls automatically - logging, monitoring, and standard guardrails come with the platform. The control specification adds use-case-specific configuration on top. Review by security architect, governance, and business owner strengthens the design, but the platform defaults mean even a rushed deployment starts with basic protection.
 
 ---
 
@@ -288,7 +288,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Kill switch operational | Engineering | |
 | Regulatory/compliance sign-off obtained | Legal/Compliance | |
 
-**Guardrail:** The pre-deployment checklist is a detective control — it surfaces gaps before they reach production. Items that aren't verified generate findings, not blockers. For HIGH/CRITICAL systems, the governance committee reviews before go-live. For lower tiers, the checklist serves as the team's own quality signal. The feature flag and PACE plan mean a deployment that discovers problems can be rolled back quickly.
+**Guardrail:** The pre-deployment checklist is a detective control - it surfaces gaps before they reach production. Items that aren't verified generate findings, not blockers. For HIGH/CRITICAL systems, the governance committee reviews before go-live. For lower tiers, the checklist serves as the team's own quality signal. The feature flag and PACE plan mean a deployment that discovers problems can be rolled back quickly.
 
 **What can go wrong here:**
 - Controls implemented but not tested → false confidence
@@ -339,7 +339,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Operational review with business owner | Day 7, 14, 30 | All |
 | First PACE transition test | Day 30 | Engineering |
 
-**Guardrail:** Gradual rollout is the absorb control — it contains the blast radius of unexpected behaviour. The first 30 days of monitoring generate the baseline that ongoing governance uses. If calibration reveals problems, the deployment can be paused or rolled back without affecting the full user population. Operational handover to the steady-state team happens when monitoring confirms stability, not on a fixed schedule.
+**Guardrail:** Gradual rollout is the absorb control - it contains the blast radius of unexpected behaviour. The first 30 days of monitoring generate the baseline that ongoing governance uses. If calibration reveals problems, the deployment can be paused or rolled back without affecting the full user population. Operational handover to the steady-state team happens when monitoring confirms stability, not on a fixed schedule.
 
 ---
 
@@ -353,7 +353,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 - Operating system from Stage 7
 - Use case definition (maintained as a living document)
 
-**Activities — Continuous:**
+**Activities - Continuous:**
 
 | Activity | Frequency | Owner | Output |
 |----------|-----------|-------|--------|
@@ -363,7 +363,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Anomaly detection | Continuous | Security/SOC | Alerts on drift |
 | Usage monitoring | Weekly | Operations | Volume trends, user patterns |
 
-**Activities — Periodic:**
+**Activities - Periodic:**
 
 | Activity | Frequency | Owner | Output |
 |----------|-----------|-------|--------|
@@ -375,7 +375,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Regulatory alignment check | Annual + on regulatory change | Legal/Compliance | Compliance status |
 | Human factors assessment | Annual | Governance | Reviewer competence, deskilling check |
 
-**Activities — Event-Driven:**
+**Activities - Event-Driven:**
 
 | Trigger | Activity | Owner |
 |---------|----------|-------|
@@ -424,49 +424,49 @@ Systems should be retired when:
 
 ---
 
-## The Complete Lifecycle — Summary
+## The Complete Lifecycle - Summary
 
 ```
 STAGE 1: STRATEGIC ALIGNMENT
   Input:     Business problem
   Output:    Business case
-  Guardrail: Detect — unjustified systems visible in governance reviews
+  Guardrail: Detect - unjustified systems visible in governance reviews
      │
 STAGE 2: USE CASE DEFINITION
   Input:     Business case
   Output:    Ten-question use case definition
-  Guardrail: Prevent — ten questions steer toward completeness
+  Guardrail: Prevent - ten questions steer toward completeness
      │
 STAGE 3: TOOL SELECTION
   Input:     Use case definition
   Output:    Technology decision (AI / RPA / traditional / hybrid)
-  Guardrail: Prevent — Use Case Filter steers to right tool
+  Guardrail: Prevent - Use Case Filter steers to right tool
   Exit:      If not AI → standard SDLC
      │
 STAGE 4: RISK CLASSIFICATION
   Input:     Use case definition + technology decision
   Output:    Six-dimension scored risk profile + tier
-  Guardrail: Detect — unclassified systems visible in registry
+  Guardrail: Detect - unclassified systems visible in registry
      │
 STAGE 5: CONTROL DESIGN
   Input:     Risk profile + use case + technology
   Output:    Control specification + PACE plan
-  Guardrail: Prevent — approved platforms inherit baseline controls
+  Guardrail: Prevent - approved platforms inherit baseline controls
      │
 STAGE 6: BUILD & TEST
   Input:     Control specification
   Output:    Working system with verified controls
-  Guardrail: Detect — checklist surfaces gaps before production
+  Guardrail: Detect - checklist surfaces gaps before production
      │
 STAGE 7: DEPLOY & OPERATE
   Input:     Tested system
   Output:    Production system with active monitoring
-  Guardrail: Absorb — gradual rollout contains blast radius
+  Guardrail: Absorb - gradual rollout contains blast radius
      │
 STAGE 8: ONGOING GOVERNANCE
   Input:     Production system
   Output:    Continuous assurance
-  Guardrail: Detect — continuous monitoring surfaces drift
+  Guardrail: Detect - continuous monitoring surfaces drift
   Loop:      Periodic review → reassessment → control adjustment
   Exit:      Retirement when appropriate
 ```
@@ -497,7 +497,7 @@ Not every initiative needs all eight stages at full depth.
 | **Fast Lane deployment** | Stage 1 (brief) → Stage 2 (ten questions) → Stage 3 (confirm AI) → Stage 4 (self-certify Fast Lane) → Stage 6 (basic guardrails + logging + feature flag) → Stage 7 (deploy) → Stage 8 (annual review) |
 | **Vendor SaaS product** | Stages 1–4 as normal → Stage 5 (map vendor controls to framework; identify gaps) → Stage 6 (configure, don't build) → Stages 7–8 as normal |
 | **Upgrading existing system** | Skip Stage 1 (already justified) → Stage 2 (update definition with changes) → Stage 3 (already decided) → Stage 4 (reclassify) → Stages 5–7 (implement new controls) → Stage 8 (continue) |
-| **POC / Experiment** | Stage 1 (brief) → Stage 2 (minimal) → Stage 3 (confirm AI) → Stage 4 (classify as LOW + time-bound) → Stage 6 (basic controls) → Stage 7 (limited deployment) → Fixed end date (no Stage 8 — either promote to full process or retire) |
+| **POC / Experiment** | Stage 1 (brief) → Stage 2 (minimal) → Stage 3 (confirm AI) → Stage 4 (classify as LOW + time-bound) → Stage 6 (basic controls) → Stage 7 (limited deployment) → Fixed end date (no Stage 8 - either promote to full process or retire) |
 
 ---
 

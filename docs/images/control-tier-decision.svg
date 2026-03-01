@@ -19,7 +19,7 @@
   </defs>
   <rect width="800" height="500" fill="#ffffff"/>
   <text x="400" y="28" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Control Tier Decision Tree</text>
-  <text x="400" y="46" text-anchor="middle" font-size="12" fill="#64748b">Quick reference — see tier determination diagram for full logic</text>
+  <text x="400" y="46" text-anchor="middle" font-size="12" fill="#64748b">Quick reference - see tier determination diagram for full logic</text>
   <polygon points="400,60 560,100 400,140 240,100" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
   <text x="400" y="98" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">Customer-facing?</text>
   <text x="400" y="112" text-anchor="start" font-size="10" font-weight="400" fill="#334155"></text>

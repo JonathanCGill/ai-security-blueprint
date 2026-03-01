@@ -68,7 +68,7 @@ Your vector database contains dense numerical representations of your proprietar
 
 They are.
 
-**Control required:** Encryption at rest and in transit, access control, audit logging, and network segmentation for vector databases — the same controls you apply to any data store containing sensitive information.
+**Control required:** Encryption at rest and in transit, access control, audit logging, and network segmentation for vector databases - the same controls you apply to any data store containing sensitive information.
 
 ---
 
@@ -84,8 +84,8 @@ They are.
 
 | Risk | Why the Pattern Misses It |
 |------|--------------------------|
-| Unauthorised retrieval | Happens before the LLM generates output — no output to evaluate |
-| Data poisoning | Corrupted data produces plausible responses — judge may not flag them |
+| Unauthorised retrieval | Happens before the LLM generates output - no output to evaluate |
+| Data poisoning | Corrupted data produces plausible responses - judge may not flag them |
 | Indirect prompt injection via data | Guardrails check user input, not retrieved content |
 | Inference-based leakage | Individual outputs may look fine; the risk is in aggregation |
 | Vector store compromise | Infrastructure risk, not output risk |

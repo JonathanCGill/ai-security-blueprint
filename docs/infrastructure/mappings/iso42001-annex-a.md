@@ -1,6 +1,6 @@
 # ISO/IEC 42001 Annex A Mapping
 
-> Maps infrastructure controls to ISO/IEC 42001:2023 Annex A — Controls for AI Management Systems.
+> Maps infrastructure controls to ISO/IEC 42001:2023 Annex A - Controls for AI Management Systems.
 >
 > Part of the [AI Security Infrastructure Controls](../README.md) framework.
 > Companion to [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security).
@@ -15,7 +15,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 
 ---
 
-## A.2 — Policies for AI
+## A.2 - Policies for AI
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -25,7 +25,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 
 ---
 
-## A.3 — Internal Organisation
+## A.3 - Internal Organisation
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -35,7 +35,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 
 ---
 
-## A.4 — Resources for AI Systems
+## A.4 - Resources for AI Systems
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -47,7 +47,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 
 ---
 
-## A.5 — AI System Development
+## A.5 - AI System Development
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -61,7 +61,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 
 ---
 
-## A.6 — Data for AI Systems
+## A.6 - Data for AI Systems
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -74,7 +74,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 
 ---
 
-## A.7 — AI System Performance and Monitoring
+## A.7 - AI System Performance and Monitoring
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -85,7 +85,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 
 ---
 
-## A.8 — AI System Transparency
+## A.8 - AI System Transparency
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -95,7 +95,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 
 ---
 
-## A.9 — AI System Accountability
+## A.9 - AI System Accountability
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -106,7 +106,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 
 ---
 
-## A.10 — Third-Party and Customer Relationships
+## A.10 - Third-Party and Customer Relationships
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|

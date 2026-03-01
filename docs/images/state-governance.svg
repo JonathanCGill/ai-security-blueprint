@@ -13,7 +13,7 @@
   
   <!-- Title -->
   <text x="400" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="middle">State Governance</text>
-  <text x="400" y="50" font-family="Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Conceptual — Managing context and memory as attack surfaces</text>
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Conceptual - Managing context and memory as attack surfaces</text>
   
   <!-- Status badge -->
   <rect x="330" y="60" width="140" height="20" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>

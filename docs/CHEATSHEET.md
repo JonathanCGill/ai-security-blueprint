@@ -6,13 +6,13 @@ description: One-page AI security reference. Classify systems, select controls, 
 
 *Classify. Control. Define fail posture. Test. One page.*
 
-> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](core/risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers - Simplified Tier Mapping](core/risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
 
 ---
 
 ## 1. Classify
 
-| All four true? | → **Fast Lane** — self-certify, deploy in days |
+| All four true? | → **Fast Lane** - self-certify, deploy in days |
 |---|---|
 | Internal users only | Read-only (no write to external systems) |
 | No regulated data (PII, financial, health, legal) | Human reviews before acting on output |
@@ -21,9 +21,9 @@ description: One-page AI security reference. Classify systems, select controls, 
 
 | Tier | When | Example |
 |---|---|---|
-| **1 — Low** | Internal users. May have write access or unreviewed output. No regulated decisions. | Internal chatbot, code assistant, meeting summariser |
-| **2 — Medium** | Customer-facing. Human reviews before delivery. | Customer support draft, document processing, decision support |
-| **3 — High** | Regulated decisions, autonomous agents with write access, financial/medical/legal. | Loan decisioning, autonomous trading, clinical support |
+| **1 - Low** | Internal users. May have write access or unreviewed output. No regulated decisions. | Internal chatbot, code assistant, meeting summariser |
+| **2 - Medium** | Customer-facing. Human reviews before delivery. | Customer support draft, document processing, decision support |
+| **3 - High** | Regulated decisions, autonomous agents with write access, financial/medical/legal. | Loan decisioning, autonomous trading, clinical support |
 
 ---
 
@@ -32,8 +32,8 @@ description: One-page AI security reference. Classify systems, select controls, 
 | Control | Fast Lane | Tier 1 | Tier 2 | Tier 3 |
 |---|---|---|---|---|
 | **Guardrails** | Basic filter | Standard | Full suite + injection detection | Hardened, multi-layer |
-| **LLM-as-Judge** | — | 10–20% sample | 100% async | 100% dual-model, pre+post action |
-| **Human Oversight** | — | — | Dedicated reviewers, SLA-bound | Domain experts, dual approval |
+| **LLM-as-Judge** | - | 10–20% sample | 100% async | 100% dual-model, pre+post action |
+| **Human Oversight** | - | - | Dedicated reviewers, SLA-bound | Domain experts, dual approval |
 | **Circuit Breaker** | Feature flag | Feature flag | Automated health-check | Automated + staffed fallback |
 | **Usage Logging** | Yes | Yes | Yes | Yes |
 
@@ -91,9 +91,9 @@ If deploying **multiple agents** that communicate, delegate, or act across trust
 | **Observability** | Decision chain audit, anomaly scoring, drift detection, independent kill switch |
 | **Supply Chain** | AIBOM per agent, signed tool manifests, MCP server vetting |
 
-**Implementation tiers:** [Tier 1 — Supervised](maso/implementation/tier-1-supervised.md) (human approves all writes) → [Tier 2 — Managed](maso/implementation/tier-2-managed.md) (auto-approve low-risk, escalate high-risk) → [Tier 3 — Autonomous](maso/implementation/tier-3-autonomous.md) (self-healing PACE, adversarial testing, kill switch).
+**Implementation tiers:** [Tier 1 - Supervised](maso/implementation/tier-1-supervised.md) (human approves all writes) → [Tier 2 - Managed](maso/implementation/tier-2-managed.md) (auto-approve low-risk, escalate high-risk) → [Tier 3 - Autonomous](maso/implementation/tier-3-autonomous.md) (self-healing PACE, adversarial testing, kill switch).
 
-**Key difference from single-agent:** PACE extends to agent orchestration. When one agent fails, the system isolates that agent and tightens permissions across the chain — not just within a single model's control layers.
+**Key difference from single-agent:** PACE extends to agent orchestration. When one agent fails, the system isolates that agent and tightens permissions across the chain - not just within a single model's control layers.
 
 **→ [Full MASO Framework](maso/)**
 
@@ -104,11 +104,11 @@ If deploying **multiple agents** that communicate, delegate, or act across trust
 | Test | Fast Lane | Tier 1 | Tier 2 | Tier 3 |
 |---|---|---|---|---|
 | Feature flag / kill switch works | Annual | Annual | Quarterly | Monthly |
-| Control layer failure simulation | — | Annual | Quarterly | Monthly |
-| Human escalation exercise | — | Annual | Quarterly | Quarterly |
-| Full degradation walkthrough | — | — | Semi-annual | Quarterly |
+| Control layer failure simulation | - | Annual | Quarterly | Monthly |
+| Human escalation exercise | - | Annual | Quarterly | Quarterly |
+| Full degradation walkthrough | - | - | Semi-annual | Quarterly |
 | Non-AI fallback operation | Annual | Annual | Quarterly | Monthly |
-| Recovery (step back up) | — | Annual | Quarterly | Monthly |
+| Recovery (step back up) | - | Annual | Quarterly | Monthly |
 
 ---
 

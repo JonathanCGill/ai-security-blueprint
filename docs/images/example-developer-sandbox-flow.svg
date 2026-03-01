@@ -18,7 +18,7 @@
     </marker>
   </defs>
   <rect width="760" height="324" fill="#ffffff"/>
-  <text x="380" y="28" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Developer Sandbox — Data Flow</text>
+  <text x="380" y="28" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Developer Sandbox - Data Flow</text>
   <text x="380" y="46" text-anchor="middle" font-size="12" fill="#64748b">Low tier · Internal · No production data</text>
   <rect x="161.0" y="50" width="439.5" height="22" rx="4" fill="#fffbeb" stroke="#fcd34d" stroke-width="1"/>
   <text x="380" y="64" text-anchor="middle" font-size="9.5" font-weight="500" fill="#854d0e">PII Input Scanner → WARN if PII pattern detected (do not block)</text>

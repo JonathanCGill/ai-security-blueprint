@@ -13,7 +13,7 @@
   
   <!-- Title -->
   <text x="450" y="35" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle">Emerging Controls Architecture</text>
-  <text x="450" y="55" font-family="Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Theoretical — Multimodal, Reasoning, Streaming, Multi-Agent</text>
+  <text x="450" y="55" font-family="Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Theoretical - Multimodal, Reasoning, Streaming, Multi-Agent</text>
   
   <!-- Status badge -->
   <rect x="380" y="65" width="140" height="22" rx="11" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>

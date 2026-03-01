@@ -26,7 +26,7 @@
   <rect width="1100" height="700" rx="8" fill="#0d1117"/>
 
   <!-- Title -->
-  <text x="550" y="35" text-anchor="middle" fill="#e6e6e6" font-size="22" font-weight="700">AI System Network Zones — NET-01</text>
+  <text x="550" y="35" text-anchor="middle" fill="#e6e6e6" font-size="22" font-weight="700">AI System Network Zones - NET-01</text>
   <text x="550" y="55" text-anchor="middle" fill="#8b949e" font-size="12">Six zones with explicit traffic rules between them</text>
 
   <!-- ===== Consumers (external) ===== -->
@@ -217,5 +217,5 @@
   <text x="848" y="658" fill="#8b949e" font-size="9">Write-only to logs</text>
 
   <!-- Footer -->
-  <text x="550" y="695" text-anchor="middle" fill="#484f58" font-size="9">AI Runtime Behaviour Security — Technical Controls · Network &amp; Segmentation · github.com/JonathanCGill</text>
+  <text x="550" y="695" text-anchor="middle" fill="#484f58" font-size="9">AI Runtime Behaviour Security - Technical Controls · Network &amp; Segmentation · github.com/JonathanCGill</text>
 </svg>

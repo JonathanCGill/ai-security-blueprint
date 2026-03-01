@@ -7,7 +7,7 @@
   
   <rect width="800" height="500" fill="#f8fafc"/>
   
-  <text x="400" y="28" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle">ISO 42001 PDCA Cycle — Framework Mapping</text>
+  <text x="400" y="28" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle">ISO 42001 PDCA Cycle - Framework Mapping</text>
   
   <!-- Center circle -->
   <circle cx="400" cy="260" r="60" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>

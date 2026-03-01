@@ -1,4 +1,4 @@
-# Behavioral Anomaly Detection — Operational Guide
+# Behavioral Anomaly Detection - Operational Guide
 
 > From metrics collection to actionable alerts.
 

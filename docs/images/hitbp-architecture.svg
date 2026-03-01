@@ -18,7 +18,7 @@
   <rect width="880" height="520" fill="#f8fafc"/>
 
   <!-- Title -->
-  <text x="440" y="32" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle">Humans in the Business Process — Architecture</text>
+  <text x="440" y="32" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle">Humans in the Business Process - Architecture</text>
   <text x="440" y="52" font-family="Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">AI decides fast. The business process catches what automated layers miss.</text>
 
   <!-- === AI CONTROL ZONE === -->

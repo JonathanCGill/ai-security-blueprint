@@ -30,7 +30,7 @@ AI endpoints must be deployed behind the framework's [zone architecture](../../i
 ```
 Consumer → Zone 1 (API Gateway + WAF)
               → Zone 2 (Input Guardrails → Model Endpoint → Output Guardrails)
-              → Zone 3 (Judge — async evaluation)
+              → Zone 3 (Judge - async evaluation)
               → Zone 6 (Logging)
 ```
 
@@ -40,7 +40,7 @@ Consumer → Zone 1 (API Gateway + WAF)
 
 ## Gateway Hardening
 
-The API gateway is the single entry point and first line of defence. Harden it as you would any security-critical reverse proxy — then add AI-specific controls.
+The API gateway is the single entry point and first line of defence. Harden it as you would any security-critical reverse proxy - then add AI-specific controls.
 
 ### Standard Controls
 
@@ -50,7 +50,7 @@ The API gateway is the single entry point and first line of defence. Harden it a
 | **mTLS (Tier 3+)** | Mutual TLS for service-to-service calls within Zone 2. | Certificate pinning for known internal clients. |
 | **Authentication** | OAuth 2.0 / OIDC token validation. No API-key-only auth for Tier 2+. | Propagate authenticated identity downstream (IAM-01). |
 | **Rate limiting** | Per-consumer limits on requests, tokens, and cost. | See [Token-Based Rate Limiting](#token-based-rate-limiting) below. |
-| **WAF integration** | Standard OWASP CRS rules for SQLi, XSS, path traversal. | AI-specific WAF rules for common injection patterns (optional — guardrails are the primary defence). |
+| **WAF integration** | Standard OWASP CRS rules for SQLi, XSS, path traversal. | AI-specific WAF rules for common injection patterns (optional - guardrails are the primary defence). |
 | **Schema validation** | Reject malformed requests before they reach the model. | Validate JSON structure, required fields, max prompt length. |
 | **Request size limits** | Cap request body size. | Prevent context window stuffing attacks. |
 | **Timeout enforcement** | Set max request duration. | Prevents long-running inference from consuming GPU indefinitely. |
@@ -73,7 +73,7 @@ Traditional request-per-second rate limiting is insufficient for AI endpoints be
 
 - A single request can consume vastly different amounts of compute depending on prompt length and output length.
 - A rate-limited attacker can send one request with a massive prompt that consumes more resources than 100 normal requests.
-- Token cost varies by model — a request to a large model costs more than the same request to a smaller model.
+- Token cost varies by model - a request to a large model costs more than the same request to a smaller model.
 
 ### Rate Limiting Strategy
 
@@ -93,7 +93,7 @@ Allow short bursts above the per-minute limit, but enforce a sliding window. Thi
 
 ## Model Endpoint Hardening
 
-The model inference endpoint itself — whether self-hosted, managed, or third-party — requires specific hardening.
+The model inference endpoint itself - whether self-hosted, managed, or third-party - requires specific hardening.
 
 ### Self-Hosted Endpoints (vLLM, TGI, Ollama, TorchServe)
 
@@ -101,14 +101,14 @@ The model inference endpoint itself — whether self-hosted, managed, or third-p
 |---|---|
 | **Network binding** | Bind to internal interface only. Never expose on 0.0.0.0 or public IP. |
 | **Authentication** | Require authentication even for internal access. No unauthenticated inference. |
-| **Health check endpoint** | Expose `/health` or `/ready` on a separate port or path. Return minimal information — model name and status only. Do not expose model version, configuration, or system details. |
+| **Health check endpoint** | Expose `/health` or `/ready` on a separate port or path. Return minimal information - model name and status only. Do not expose model version, configuration, or system details. |
 | **Metrics endpoint** | Expose Prometheus metrics (`/metrics`) on a separate port, accessible only from Zone 6 (Logging). Do not expose on the inference port. |
 | **Resource limits** | Set container memory and GPU limits. Use Kubernetes resource quotas or equivalent. Prevent a single request from exhausting GPU memory. |
 | **Process isolation** | Run inference in a dedicated container/pod. Do not co-locate with other services. |
 | **Image hardening** | Use minimal base images. Remove unnecessary packages, shells, and debugging tools from production images. |
 | **Read-only filesystem** | Mount the container filesystem as read-only. Model weights and config are mounted as read-only volumes. |
 | **Non-root execution** | Run the inference process as a non-root user. |
-| **No outbound access** | Model inference endpoints should have no outbound network access (except for agent tool calls via egress proxy — NET-04). |
+| **No outbound access** | Model inference endpoints should have no outbound network access (except for agent tool calls via egress proxy - NET-04). |
 
 ### Managed Endpoints (Azure OpenAI, Bedrock, Vertex AI)
 
@@ -116,7 +116,7 @@ The model inference endpoint itself — whether self-hosted, managed, or third-p
 |---|---|
 | **Private endpoints** | Use private endpoints / VPC endpoints. Do not call managed AI services over the public internet from production. |
 | **Network restrictions** | Apply IP allowlisting or VNet/VPC rules to restrict which networks can reach the managed endpoint. |
-| **Content filtering** | Enable the provider's built-in content filtering as a baseline. Layer framework guardrails on top — provider filters are not sufficient alone. |
+| **Content filtering** | Enable the provider's built-in content filtering as a baseline. Layer framework guardrails on top - provider filters are not sufficient alone. |
 | **Data residency** | Deploy in regions aligned with data residency requirements. Verify that the provider does not route inference to other regions. |
 | **Model version pinning** | Pin to a specific model version. Do not use "latest" or auto-updating model references in production. Provider model updates can change behaviour without notice. |
 | **Diagnostic logging** | Enable full diagnostic logging to your SIEM. Azure: Diagnostic Settings → Log Analytics. AWS: Bedrock invocation logging → CloudWatch. GCP: Cloud Logging integration. |
@@ -127,7 +127,7 @@ The model inference endpoint itself — whether self-hosted, managed, or third-p
 
 ## Tool Server Hardening (MCP and Native)
 
-When AI agents invoke tools — via MCP servers, native function calls, or API integrations — the tool endpoints require their own hardening.
+When AI agents invoke tools - via MCP servers, native function calls, or API integrations - the tool endpoints require their own hardening.
 
 | Control | Detail |
 |---|---|
@@ -158,7 +158,7 @@ Before exposing any AI endpoint to traffic:
 - [ ] mTLS enforced for internal service-to-service calls (Tier 3+)
 - [ ] Correlation ID generated and propagated for every request
 - [ ] Max input tokens, max output tokens, and request timeout are enforced at gateway
-- [ ] Model version is pinned — no auto-updates in production
+- [ ] Model version is pinned - no auto-updates in production
 - [ ] Container runs as non-root with read-only filesystem
 - [ ] No outbound network access from model endpoint (except via egress proxy for agents)
 - [ ] Diagnostic logs flowing to SIEM with identity correlation
@@ -216,7 +216,7 @@ Endpoint-specific signals to feed into the [SOC Content Pack](soc-content-pack.m
 
 | Hardening Area | Guardrails | LLM-as-Judge | Human Oversight |
 |---|---|---|---|
-| **Gateway** | Guardrails enforced at gateway — cannot be bypassed | Gateway logs feed Judge evaluation | Humans configure gateway policies |
+| **Gateway** | Guardrails enforced at gateway - cannot be bypassed | Gateway logs feed Judge evaluation | Humans configure gateway policies |
 | **Rate limiting** | Token-aware limits prevent resource abuse | Judge detects cost anomalies that bypass rate limits | Humans set per-consumer quotas |
 | **Model endpoint** | Guardrails inline on request/response path | Judge evaluates output quality independently | Humans approve model version changes |
 | **Tool servers** | Parameter validation on tool inputs | Judge evaluates tool invocation patterns | Humans define tool allowlists |
@@ -229,26 +229,26 @@ Endpoint-specific signals to feed into the [SOC Content Pack](soc-content-pack.m
 
 | Hardening Area | OWASP LLM Risk | OWASP Agentic Risk |
 |---|---|---|
-| Gateway rate limiting | LLM10: Unbounded Consumption | — |
+| Gateway rate limiting | LLM10: Unbounded Consumption | - |
 | Input validation | LLM01: Prompt Injection | AGT-01: Agent Hijacking |
 | Output scanning | LLM02: Insecure Output Handling | AGT-05: Data Exfiltration |
-| Token limiting | LLM10: Unbounded Consumption | — |
+| Token limiting | LLM10: Unbounded Consumption | - |
 | Model version pinning | LLM03: Training Data Poisoning | AGT-04: Insecure Tool Implementation |
 | Tool server hardening | LLM07: Insecure Plugin Design | AGT-02: Tool Misuse |
 | Private endpoints | LLM06: Excessive Agency | AGT-09: Inadequate Sandboxing |
-| Kill switch | — | AGT-08: Autonomous Action Without Oversight |
+| Kill switch | - | AGT-08: Autonomous Action Without Oversight |
 
 ---
 
 ## Related
 
-- [Network & Segmentation](../../infrastructure/controls/network-and-segmentation.md) — Zone architecture and traffic rules
-- [Identity & Access Management](../../infrastructure/controls/identity-and-access.md) — Authentication and authorization controls
-- [Secrets & Credentials](../../infrastructure/controls/secrets-and-credentials.md) — Credential management for AI components
-- [Data Protection](../../infrastructure/controls/data-protection.md) — Data classification and protection in AI pipelines
-- [SOC Content Pack](soc-content-pack.md) — Detection rules for endpoint monitoring
-- [SOC Integration](soc-integration.md) — SOC architecture and triage procedures
-- [Bypass Prevention](bypass-prevention.md) — Guardrail bypass taxonomy and defences
+- [Network & Segmentation](../../infrastructure/controls/network-and-segmentation.md) - Zone architecture and traffic rules
+- [Identity & Access Management](../../infrastructure/controls/identity-and-access.md) - Authentication and authorization controls
+- [Secrets & Credentials](../../infrastructure/controls/secrets-and-credentials.md) - Credential management for AI components
+- [Data Protection](../../infrastructure/controls/data-protection.md) - Data classification and protection in AI pipelines
+- [SOC Content Pack](soc-content-pack.md) - Detection rules for endpoint monitoring
+- [SOC Integration](soc-integration.md) - SOC architecture and triage procedures
+- [Bypass Prevention](bypass-prevention.md) - Guardrail bypass taxonomy and defences
 
 ---
 

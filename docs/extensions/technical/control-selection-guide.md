@@ -8,10 +8,10 @@ How to select the right controls for your AI system based on risk tier and use c
 
 Not every AI system needs every control. This guide helps you select appropriate controls based on:
 
-1. **Risk tier** — CRITICAL, HIGH, MEDIUM, LOW
-2. **Use case type** — Customer-facing, internal, agentic, batch
-3. **Data sensitivity** — PII, financial, regulated, public
-4. **Decision impact** — Consequential, advisory, informational
+1. **Risk tier** - CRITICAL, HIGH, MEDIUM, LOW
+2. **Use case type** - Customer-facing, internal, agentic, batch
+3. **Data sensitivity** - PII, financial, regulated, public
+4. **Decision impact** - Consequential, advisory, informational
 
 ---
 
@@ -257,7 +257,7 @@ For each AI system, document:
 |--------------|-----------|
 | Guardrails | Full input + output + grounding verification |
 | Judge | 100% sampling, 2hr SLA for critical findings |
-| HITL | Human decides all — AI is advisory only |
+| HITL | Human decides all - AI is advisory only |
 | Logging | Full, tamper-evident, 7-year retention |
 | Validation | Independent validation per SR 11-7 |
 | Explainability | Full audit trail, decision rationale |

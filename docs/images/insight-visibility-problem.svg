@@ -2,7 +2,7 @@
   <rect width="900" height="520" fill="#f8fafc"/>
 
   <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e293b">The Visibility Problem: You Can't Govern What You Can't See</text>
-  <text x="450" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Enterprise AI exposure — known vs. actual</text>
+  <text x="450" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Enterprise AI exposure - known vs. actual</text>
 
   <!-- Left side: What you see -->
   <rect x="40" y="80" width="380" height="200" rx="10" fill="white" stroke="#e2e8f0"/>
@@ -31,7 +31,7 @@
   <text x="670" y="102" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#991b1b">What Actually Exists</text>
 
   <rect x="500" y="125" width="340" height="50" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="670" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#92400e">Shadow AI — Personal Accounts</text>
+  <text x="670" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#92400e">Shadow AI - Personal Accounts</text>
   <text x="670" y="161" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#92400e">47% of GenAI via personal accounts (Netskope)</text>
 
   <rect x="500" y="185" width="340" height="50" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>

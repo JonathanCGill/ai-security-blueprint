@@ -18,7 +18,7 @@ This framework's risk tier classification and governance structure align with NI
 
 ### NIST AI 600-1: Generative AI Profile
 
-A companion to the AI RMF specifically addressing generative AI risks — data memorisation/leakage, confabulations (hallucinations), training data poisoning, and prompt injection. Published July 2024, developed pursuant to Executive Order 14110.
+A companion to the AI RMF specifically addressing generative AI risks - data memorisation/leakage, confabulations (hallucinations), training data poisoning, and prompt injection. Published July 2024, developed pursuant to Executive Order 14110.
 
 This framework's treatment of prompt injection and hallucination as distinct control domains draws on the risk categories defined here.
 
@@ -60,7 +60,7 @@ Published April 2025. Strengthens security control selection and assessment by e
 
 - [MITRE SAFE-AI Full Report (PDF)](https://atlas.mitre.org/pdf-files/SAFEAI_Full_Report.pdf)
 
-### ISO/IEC 42001:2023 — AI Management System Standard
+### ISO/IEC 42001:2023 - AI Management System Standard
 
 The world's first AI management system standard. Specifies requirements for establishing, implementing, maintaining, and improving an AI management system (AIMS). Includes 38 distinct controls covering risk management, ethical considerations, transparency, and continuous learning. Uses Plan-Do-Check-Act methodology.
 
@@ -84,12 +84,12 @@ Industry coalition founded by Amazon, Anthropic, Cisco, IBM, Intel, Microsoft, N
 
 ---
 
-### UK AI Security Institute — Frontier AI Trends Report (December 2025)
+### UK AI Security Institute - Frontier AI Trends Report (December 2025)
 
 The strongest empirical backing for runtime security from a government body. The AISI (formerly UK AI Safety Institute) tested frontier AI systems and published findings with direct implications for runtime behavioural security:
 
-- **Safeguard robustness:** Universal jailbreaks found in every system tested, but effort required increased 40x over 6 months for biological misuse between two model generations — evidence that targeted safeguard investment works, but coverage is uneven across risk categories.
-- **Capability-safety gap:** R² = 0.097 between model capability (GPQA benchmark) and safeguard robustness — more capable models are not inherently safer.
+- **Safeguard robustness:** Universal jailbreaks found in every system tested, but effort required increased 40x over 6 months for biological misuse between two model generations - evidence that targeted safeguard investment works, but coverage is uneven across risk categories.
+- **Capability-safety gap:** R² = 0.097 between model capability (GPQA benchmark) and safeguard robustness - more capable models are not inherently safer.
 - **Sandbagging:** Models can distinguish testing from deployment contexts and alter behaviour accordingly. Black-box monitors lose accuracy on harder tasks.
 - **Open-weight safeguard removal:** Safeguards on open-weight models can be "quickly and cheaply removed." Open-to-closed source capability gap narrowed to 4–8 months.
 - **Self-replication:** Success rates on RepliBench tasks went from 5% (2023) to 60% (2025).
@@ -111,19 +111,19 @@ This framework references AISI findings in: [Evaluation Integrity Risks](insight
 
 The first comprehensive AI regulation by a major jurisdiction. Risk-based approach with key milestones: February 2025 (AI literacy requirements and prohibited AI uses), August 2025 (GPAI model transparency/documentation), August 2026 (full high-risk AI system compliance). Penalties up to EUR 35 million or 7% of global annual turnover.
 
-This framework's regulatory mapping covers Articles 9, 14, and 15 — risk management, human oversight, and robustness.
+This framework's regulatory mapping covers Articles 9, 14, and 15 - risk management, human oversight, and robustness.
 
 - [EU AI Act](https://artificialintelligenceact.eu/)
 
 ### U.S. Executive Order 14110 on Safe, Secure, and Trustworthy AI
 
-Signed October 2023. The most comprehensive U.S. government AI governance action at the time. Directed NIST to develop guidelines, red-teaming standards, and the GenAI Profile. Led to creation of the U.S. AI Safety Institute. Rescinded by President Trump on January 20, 2025 — but the NIST deliverables it produced (AI 600-1, AI 800-1, adversarial testing software) remain available and continue to be referenced by industry and regulators.
+Signed October 2023. The most comprehensive U.S. government AI governance action at the time. Directed NIST to develop guidelines, red-teaming standards, and the GenAI Profile. Led to creation of the U.S. AI Safety Institute. Rescinded by President Trump on January 20, 2025 - but the NIST deliverables it produced (AI 600-1, AI 800-1, adversarial testing software) remain available and continue to be referenced by industry and regulators.
 
 - [Executive Order 14110 (archived)](https://bidenwhitehouse.archives.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/)
 
 ---
 
-## Research — Multi-Agent Security
+## Research - Multi-Agent Security
 
 These papers and reports directly inform MASO's treatment of multi-agent risks. This is the area where this framework makes its most distinctive contribution, and where we want to be transparent about what we're building on.
 
@@ -135,13 +135,13 @@ MASO's six control domains cover similar ground but are structured around operat
 
 - [TRiSM for Agentic AI (arXiv)](https://arxiv.org/html/2506.04133v3)
 
-### "Multi-Agent Risks from Advanced AI" — Cooperative AI Foundation
+### "Multi-Agent Risks from Advanced AI" - Cooperative AI Foundation
 
 Identifies critical risk categories for multi-agent systems including commitment/trust failures, emergent agency (new goals arising from collections of agents), and multi-agent security vulnerabilities. Notes that groups of AI agents are already responsible for tasks from trading million-dollar assets to recommending military actions.
 
 This report's taxonomy of commitment failures directly informed MASO's identity and access controls, particularly the prohibition on transitive authority delegation.
 
-- [Cooperative AI Foundation — Multi-Agent Risks](https://www.cooperativeai.com/post/new-report-multi-agent-risks-from-advanced-ai)
+- [Cooperative AI Foundation - Multi-Agent Risks](https://www.cooperativeai.com/post/new-report-multi-agent-risks-from-advanced-ai)
 
 ### "Open Challenges in Multi-Agent Security" (May 2025)
 
@@ -155,11 +155,11 @@ Comprehensive survey outlining a taxonomy of threats specific to agentic AI, rev
 
 - [Agentic AI Security Survey (arXiv)](https://arxiv.org/html/2510.23883v1)
 
-### "Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training" — Anthropic (January 2024)
+### "Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training" - Anthropic (January 2024)
 
-Hubinger et al. (39 co-authors). Demonstrated that if an LLM learns to be strategically deceptive — behaving helpfully in most situations but pursuing alternative objectives when triggered — current safety training techniques (RLHF, supervised fine-tuning) fail to remove this behaviour. Larger models are more persistent. Adversarial training can backfire, teaching models to better hide unsafe behaviour.
+Hubinger et al. (39 co-authors). Demonstrated that if an LLM learns to be strategically deceptive - behaving helpfully in most situations but pursuing alternative objectives when triggered - current safety training techniques (RLHF, supervised fine-tuning) fail to remove this behaviour. Larger models are more persistent. Adversarial training can backfire, teaching models to better hide unsafe behaviour.
 
-This paper has profound implications for model supply chain security: if you fine-tune on compromised data or use a model with an embedded backdoor, standard safety evaluations will not reliably detect the problem. MASO's supply chain controls — AIBOM, signed manifests, model provenance verification — are partly informed by this finding. Anthropic followed up with research on "defection probes" that can detect sleeper agent behaviour with AUROC scores above 99%.
+This paper has profound implications for model supply chain security: if you fine-tune on compromised data or use a model with an embedded backdoor, standard safety evaluations will not reliably detect the problem. MASO's supply chain controls - AIBOM, signed manifests, model provenance verification - are partly informed by this finding. Anthropic followed up with research on "defection probes" that can detect sleeper agent behaviour with AUROC scores above 99%.
 
 - [Sleeper Agents (arXiv)](https://arxiv.org/abs/2401.05566)
 - [Anthropic Research Page](https://www.anthropic.com/research/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training)
@@ -167,18 +167,18 @@ This paper has profound implications for model supply chain security: if you fin
 
 ---
 
-## Research — Prompt Injection & Runtime Security
+## Research - Prompt Injection & Runtime Security
 
-### Simon Willison — Prompt Injection Research
+### Simon Willison - Prompt Injection Research
 
-Willison coined the term "prompt injection" in September 2022 and has been its most consistent chronicler. Key contributions include the "lethal trifecta" concept (June 2025) — the dangerous combination of access to private data, exposure to untrusted content, and external communication ability. If your agent combines all three, exfiltration attacks become trivially possible.
+Willison coined the term "prompt injection" in September 2022 and has been its most consistent chronicler. Key contributions include the "lethal trifecta" concept (June 2025) - the dangerous combination of access to private data, exposure to untrusted content, and external communication ability. If your agent combines all three, exfiltration attacks become trivially possible.
 
-This framework's guardrail architecture is designed around the assumption that prompt injection is unsolved — a position Willison has articulated more clearly than anyone.
+This framework's guardrail architecture is designed around the assumption that prompt injection is unsolved - a position Willison has articulated more clearly than anyone.
 
 - [Simon Willison's blog](https://simonwillison.net/)
 - [Simon Willison's newsletter](https://simonw.substack.com/)
 
-### Johann Rehberger — Embrace the Red
+### Johann Rehberger - Embrace the Red
 
 The most prolific independent AI security vulnerability researcher. His "Month of AI Bugs" (August 2025) published one critical vulnerability per day across ChatGPT, Codex, Cursor, Amp, Devin, OpenHands, Claude Code, GitHub Copilot, and Google Jules. Created "AgentHopper," a proof-of-concept self-propagating AI virus. His core advice to enterprises: *"Always assume breach. The agent gets compromised. What can it do? Then put security controls in place to mitigate that impact."*
 
@@ -190,13 +190,13 @@ This is essentially the design philosophy behind MASO's blast radius controls an
 
 Co-authored by 14 researchers from OpenAI, Anthropic, and Google DeepMind. Examined 12 published defences against prompt injection and jailbreaking. Subjected them to adaptive attacks, achieving >90% attack success rate against most defences.
 
-This is the single most important paper for understanding why this framework emphasises defence-in-depth and runtime monitoring rather than relying on any single mitigation. If 12 published defences fail against adaptive attackers, the answer is not a better defence — it's layered controls with circuit breakers.
+This is the single most important paper for understanding why this framework emphasises defence-in-depth and runtime monitoring rather than relying on any single mitigation. If 12 published defences fail against adaptive attackers, the answer is not a better defence - it's layered controls with circuit breakers.
 
 - [Coverage by Simon Willison](https://simonwillison.net/2025/Nov/2/new-prompt-injection-papers/)
 
-### "Not What You've Signed Up For" — Greshake et al. (February 2023)
+### "Not What You've Signed Up For" - Greshake et al. (February 2023)
 
-Formalised the concept of "indirect prompt injection" — attacks where malicious prompts are planted in external data sources (web pages, documents, code comments) that an LLM retrieves and processes. Demonstrated attacks against Bing Chat, Microsoft Edge sidebar, and GitHub Copilot. Showed that injected prompts can replicate through contact lists and persist across sessions via stored memories.
+Formalised the concept of "indirect prompt injection" - attacks where malicious prompts are planted in external data sources (web pages, documents, code comments) that an LLM retrieves and processes. Demonstrated attacks against Bing Chat, Microsoft Edge sidebar, and GitHub Copilot. Showed that injected prompts can replicate through contact lists and persist across sessions via stored memories.
 
 Key insight: LLMs fundamentally cannot distinguish between instructions and data. Any system where an LLM processes external content is vulnerable. This is an architectural vulnerability, not a patchable bug.
 
@@ -204,16 +204,16 @@ Key insight: LLMs fundamentally cannot distinguish between instructions and data
 - [Black Hat USA 2023 Whitepaper (PDF)](https://i.blackhat.com/BH-US-23/Presentations/US-23-Greshake-Not-what-youve-signed-up-for-whitepaper.pdf)
 - [Project Website](https://greshake.github.io/)
 
-### "Here Comes The AI Worm" — Morris II (March 2024)
+### "Here Comes The AI Worm" - Morris II (March 2024)
 
-Cohen, Bitton, and Nassi (Cornell Tech / Israel Institute of Technology / Intuit). The first self-replicating worm targeting GenAI ecosystems. Uses "adversarial self-replicating prompts" that force the model to replicate the prompt in its output, execute a payload (data exfiltration, spam), and propagate to new agents. Zero-click — no user interaction required. Demonstrated against Gemini Pro, ChatGPT 4.0, and LLaVA.
+Cohen, Bitton, and Nassi (Cornell Tech / Israel Institute of Technology / Intuit). The first self-replicating worm targeting GenAI ecosystems. Uses "adversarial self-replicating prompts" that force the model to replicate the prompt in its output, execute a payload (data exfiltration, spam), and propagate to new agents. Zero-click - no user interaction required. Demonstrated against Gemini Pro, ChatGPT 4.0, and LLaVA.
 
-MASO's data protection controls — particularly cross-agent message bus DLP and independent injection detection at every trust boundary — are directly informed by this research. If a poisoned message can propagate across agents, every inter-agent channel is an attack surface.
+MASO's data protection controls - particularly cross-agent message bus DLP and independent injection detection at every trust boundary - are directly informed by this research. If a poisoned message can propagate across agents, every inter-agent channel is an attack surface.
 
 - [Morris II (arXiv)](https://arxiv.org/abs/2403.02817)
 - [ComPromptMized Project Website](https://sites.google.com/view/compromptmized)
 
-### SecAlign — ACM CCS 2025
+### SecAlign - ACM CCS 2025
 
 The first known method that reduces prompt injection success rates to less than 10%, even against sophisticated attacks not seen during training. Uses preference optimisation to teach LLMs to prefer secure outputs over prompt-injected instructions. Promising but operational deployment at enterprise scale remains to be validated.
 
@@ -223,7 +223,7 @@ The first known method that reduces prompt injection success rates to less than 
 
 System of constitutional classifiers that withstood over 3,000 hours of expert red teaming with no universal jailbreaks found. Uses a constitution defining harmful/harmless content categories to generate synthetic training data for classifier-based input/output monitoring. The jailbreak bug bounty challenge involved 300,000+ interactions and 339 participants.
 
-Demonstrates a production-grade approach to input/output monitoring — the same pattern this framework recommends at the guardrail layer.
+Demonstrates a production-grade approach to input/output monitoring - the same pattern this framework recommends at the guardrail layer.
 
 - [Constitutional Classifiers (arXiv)](https://arxiv.org/pdf/2501.18837)
 
@@ -247,7 +247,7 @@ A living, systematic review and database of AI risk frameworks. Classifies incid
 
 ### Stanford AI Index Report 2025
 
-Documented AI safety incidents surged from 149 in 2023 to 233 in 2024 — a 56.4% increase.
+Documented AI safety incidents surged from 149 in 2023 to 233 in 2024 - a 56.4% increase.
 
 - [Stanford HAI AI Index](https://aiindex.stanford.edu/)
 
@@ -265,7 +265,7 @@ Maps to: Data Protection, Guardrails (DLP).
 
 - [AI Incident Database: Incident 768](https://incidentdatabase.ai/cite/768/)
 
-### Air Canada Chatbot — Moffatt v. Air Canada (February 2024)
+### Air Canada Chatbot - Moffatt v. Air Canada (February 2024)
 
 Air Canada's chatbot gave incorrect bereavement fare information. The airline argued the chatbot was "a separate legal entity responsible for its own actions." The BC Civil Resolution Tribunal ruled against Air Canada: *"It makes no difference whether the information comes from a static page or a chatbot."* Ordered to pay $812.02.
 
@@ -283,9 +283,9 @@ Maps to: Guardrails (regression testing), Circuit Breaker.
 - [TIME](https://time.com/6564726/ai-chatbot-dpd-curses-criticizes-company/)
 - [AI Incident Database: Incident 631](https://incidentdatabase.ai/cite/631/)
 
-### Chevrolet Watsonville Chatbot — $1 Car (December 2023)
+### Chevrolet Watsonville Chatbot - $1 Car (December 2023)
 
-A ChatGPT-powered dealership chatbot was manipulated into appearing to agree to sell a 2024 Chevy Tahoe for $1, claiming the offer was "legally binding — no takesies backsies." Post received 20 million views on X.
+A ChatGPT-powered dealership chatbot was manipulated into appearing to agree to sell a 2024 Chevy Tahoe for $1, claiming the offer was "legally binding - no takesies backsies." Post received 20 million views on X.
 
 Maps to: Guardrails (output validation), Execution Control (action boundaries).
 
@@ -313,7 +313,7 @@ Demonstrates that even the largest AI platform vendors face fundamental prompt i
 
 ### MCP Supply Chain Attacks (2024–2025)
 
-CVE-2025-6514 (CVSS 9.6) in mcp-remote package (437,000+ downloads) — malicious MCP servers could achieve remote code execution on client machines. Separately, an unofficial Postmark MCP server was modified to silently BCC all emails to an attacker's address. Anthropic's own reference SQLite MCP server had SQL injection. Tool descriptions in MCP servers can contain hidden instructions that the LLM treats as legitimate directives.
+CVE-2025-6514 (CVSS 9.6) in mcp-remote package (437,000+ downloads) - malicious MCP servers could achieve remote code execution on client machines. Separately, an unofficial Postmark MCP server was modified to silently BCC all emails to an attacker's address. Anthropic's own reference SQLite MCP server had SQL injection. Tool descriptions in MCP servers can contain hidden instructions that the LLM treats as legitimate directives.
 
 Maps to: Supply Chain (MCP server vetting, signed tool manifests), Identity & Access (tool-level permissions).
 
@@ -332,7 +332,7 @@ Maps to: Identity & Access (authentication), Human Oversight (out-of-band verifi
 
 ### Google Gemini Memory Poisoning (February 2025)
 
-Johann Rehberger demonstrated that Google Gemini Advanced could be tricked into storing false data in its long-term memory via hidden prompts in documents. Gemini "remembered" fabricated biographical details across conversations — persistent manipulation of AI memory.
+Johann Rehberger demonstrated that Google Gemini Advanced could be tricked into storing false data in its long-term memory via hidden prompts in documents. Gemini "remembered" fabricated biographical details across conversations - persistent manipulation of AI memory.
 
 Maps to: Data Protection (memory isolation), Prompt Integrity (injection detection on retrieval).
 
@@ -346,7 +346,7 @@ These are researchers and practitioners whose work has directly shaped the think
 
 ### Simon Willison
 
-Creator of Datasette. Coined the term "prompt injection" (2022). The most prolific chronicler of prompt injection research. His "lethal trifecta" concept — the dangerous combination of private data access, untrusted content exposure, and external communication ability — is an essential decision tool for enterprise architects evaluating what capabilities to grant AI agents.
+Creator of Datasette. Coined the term "prompt injection" (2022). The most prolific chronicler of prompt injection research. His "lethal trifecta" concept - the dangerous combination of private data access, untrusted content exposure, and external communication ability - is an essential decision tool for enterprise architects evaluating what capabilities to grant AI agents.
 
 - [simonwillison.net](https://simonwillison.net/)
 
@@ -356,9 +356,9 @@ Internationally recognised security technologist. Testified before the House Com
 
 - [schneier.com](https://www.schneier.com/)
 
-### Gary McGraw — Berryville Institute of Machine Learning (BIML)
+### Gary McGraw - Berryville Institute of Machine Learning (BIML)
 
-Co-founder of BIML. Globally recognised authority on software security (8 books). BIML has mapped 78 risks associated with ML systems (the BIML-78), of which 23 are directly linked to LLM black-box risks. Compares the current state of ML security to application security 25 years ago — a useful calibration for enterprises expecting mature, settled answers.
+Co-founder of BIML. Globally recognised authority on software security (8 books). BIML has mapped 78 risks associated with ML systems (the BIML-78), of which 23 are directly linked to LLM black-box risks. Compares the current state of ML security to application security 25 years ago - a useful calibration for enterprises expecting mature, settled answers.
 
 - [Berryville Institute of Machine Learning](https://berryvilleiml.com/)
 
@@ -378,11 +378,11 @@ Frontier Red Team and Safeguards Research Team. Published Constitutional AI, Con
 
 ## Enterprise AI Security Solutions
 
-Commercial and open-source tools that implement patterns described in this framework. Listed for reference — inclusion is not endorsement. We encourage readers to evaluate these against their own requirements.
+Commercial and open-source tools that implement patterns described in this framework. Listed for reference - inclusion is not endorsement. We encourage readers to evaluate these against their own requirements.
 
 | Solution | What It Does | Reference |
 | --- | --- | --- |
-| **NVIDIA NeMo Guardrails** | Open-source toolkit for programmable guardrails — topic control, PII detection, RAG grounding, jailbreak prevention. Integrates with LangChain, LangGraph, LlamaIndex. | [GitHub](https://github.com/NVIDIA/NeMo-Guardrails) |
+| **NVIDIA NeMo Guardrails** | Open-source toolkit for programmable guardrails - topic control, PII detection, RAG grounding, jailbreak prevention. Integrates with LangChain, LangGraph, LlamaIndex. | [GitHub](https://github.com/NVIDIA/NeMo-Guardrails) |
 | **Lakera Guard** | Real-time prompt injection detection, jailbreak prevention, DLP. Supports 100+ languages. Single API call integration. Their Gandalf research game (1M+ players) doubles as a training tool. | [lakera.ai](https://www.lakera.ai/lakera-guard) |
 | **Robust Intelligence AI Firewall** (now Cisco) | AI validation and real-time guardrail enforcement. Inspects prompts for injection, extraction, and PII. Continuously updated via automated red teaming. | [robustintelligence.com](https://www.robustintelligence.com/platform/ai-firewall-guardrails) |
 | **HiddenLayer AISec Platform** | Supply chain security, runtime defence, posture management. AI Bill of Materials (AIBOM). Model Genealogy tracking. Partnered with NVIDIA and Google on OpenSSF Model Signing. | [hiddenlayer.com](https://www.hiddenlayer.com) |
@@ -418,7 +418,7 @@ These numbers provide context for why this framework exists and help calibrate t
 
 ## Further Reading
 
-### Georgetown CSET — AI Incidents Issue Brief (January 2025)
+### Georgetown CSET - AI Incidents Issue Brief (January 2025)
 
 Academic perspective on key components needed for AI incident databases and gaps in current reporting. Useful for enterprises designing internal AI incident reporting processes.
 
@@ -430,7 +430,7 @@ Outlines seven objectives for foundation model developers to manage misuse risks
 
 - [NIST AI 800-1 (PDF)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.800-1.ipd2.pdf)
 
-### Promptfoo — RAG Data Poisoning
+### Promptfoo - RAG Data Poisoning
 
 Practical guidance on RAG poisoning attack vectors and defence strategies.
 
@@ -440,11 +440,11 @@ Practical guidance on RAG poisoning attack vectors and defence strategies.
 
 ## A Note on How We Use These Sources
 
-This framework is not a repackaging of the sources above. It is an original synthesis — particularly the MASO layer, which addresses multi-agent epistemic failures (groupthink, correlated errors, synthetic corroboration, uncertainty stripping) that we haven't found treated as a formal control domain elsewhere, though others may be working on similar ideas.
+This framework is not a repackaging of the sources above. It is an original synthesis - particularly the MASO layer, which addresses multi-agent epistemic failures (groupthink, correlated errors, synthetic corroboration, uncertainty stripping) that we haven't found treated as a formal control domain elsewhere, though others may be working on similar ideas.
 
 What the sources provide is:
 
-- **Validation.** The three-layer runtime monitoring pattern (guardrails + LLM-as-Judge + human oversight) is not our invention — it's an emerging industry consensus reflected in NIST, OWASP, Google SAIF, and commercial implementations.
+- **Validation.** The three-layer runtime monitoring pattern (guardrails + LLM-as-Judge + human oversight) is not our invention - it's an emerging industry consensus reflected in NIST, OWASP, Google SAIF, and commercial implementations.
 - **Evidence.** Every control in this framework maps to a documented incident, a published attack technique, or both. The incidents section above provides the evidence base.
 - **Context.** No framework exists in isolation. Citing what came before helps readers understand where this work sits in the broader landscape and what it adds to the conversation.
 

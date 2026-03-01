@@ -51,7 +51,7 @@
   <!-- No → back to declaration -->
   <line x1="480" y1="298" x2="370" y2="298" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrow-red)"/>
   <path d="M370,298 L370,148 L370,148" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#arrow-red)"/>
-  <text x="410" y="290" font-size="10" font-weight="600" fill="#dc2626">No — return for revision</text>
+  <text x="410" y="290" font-size="10" font-weight="600" fill="#dc2626">No - return for revision</text>
 
   <!-- Yes → tier determination -->
   <line x1="550" y1="328" x2="550" y2="358" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
@@ -59,7 +59,7 @@
   <!-- Step 3: Tier Determination -->
   <rect x="370" y="358" width="360" height="44" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
   <text x="550" y="378" text-anchor="middle" font-size="13" font-weight="600" fill="#166534">Tier Determined from Declaration</text>
-  <text x="550" y="394" text-anchor="middle" font-size="11" fill="#15803d">Automatic — owner does not choose</text>
+  <text x="550" y="394" text-anchor="middle" font-size="11" fill="#15803d">Automatic - owner does not choose</text>
 
   <!-- Tier outputs -->
   <line x1="550" y1="402" x2="550" y2="420" stroke="#334155" stroke-width="1.5"/>
@@ -123,7 +123,7 @@
   <!-- ==================== PHASE 2: RUNTIME ==================== -->
 
   <rect x="30" y="630" width="1040" height="860" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
-  <text x="50" y="655" font-size="12" font-weight="700" fill="#d97706" letter-spacing="1.5">RUNTIME — GUARDRAILS ALWAYS ON</text>
+  <text x="50" y="655" font-size="12" font-weight="700" fill="#d97706" letter-spacing="1.5">RUNTIME - GUARDRAILS ALWAYS ON</text>
 
   <!-- Interaction flow -->
   <rect x="370" y="670" width="280" height="40" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
@@ -136,7 +136,7 @@
   <text x="510" y="774" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">Guardrail</text>
   <text x="510" y="790" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">Triggered?</text>
 
-  <!-- NO path — clean pass -->
+  <!-- NO path - clean pass -->
   <line x1="600" y1="778" x2="720" y2="778" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
   <rect x="720" y="758" width="200" height="40" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
   <text x="820" y="778" text-anchor="middle" font-size="12" font-weight="600" fill="#166534">Clean Pass</text>
@@ -149,7 +149,7 @@
   <text x="820" y="848" text-anchor="middle" font-size="11" font-weight="600" fill="#1e40af">Routine Judge Sampling</text>
   <text x="820" y="860" text-anchor="middle" font-size="9" fill="#2563eb">Per tier rate · Central cost</text>
 
-  <!-- YES path — trigger -->
+  <!-- YES path - trigger -->
   <line x1="510" y1="818" x2="510" y2="858" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)"/>
   <text x="520" y="840" font-size="11" font-weight="600" fill="#dc2626">Yes</text>
 
@@ -169,14 +169,14 @@
   <text x="510" y="1009" text-anchor="middle" font-size="11" font-weight="600" fill="#92400e">Rate > 1%</text>
   <text x="510" y="1023" text-anchor="middle" font-size="11" font-weight="600" fill="#92400e">threshold?</text>
 
-  <!-- Below threshold — logged, weekly review -->
+  <!-- Below threshold - logged, weekly review -->
   <line x1="410" y1="1013" x2="260" y2="1013" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
   <text x="340" y="1005" font-size="10" font-weight="600" fill="#64748b">Below</text>
   <rect x="80" y="993" width="180" height="40" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
   <text x="170" y="1013" text-anchor="middle" font-size="11" font-weight="600" fill="#334155">Logged + Weekly Review</text>
   <text x="170" y="1027" text-anchor="middle" font-size="9" fill="#64748b">Included in governance report</text>
 
-  <!-- Above threshold — investigation -->
+  <!-- Above threshold - investigation -->
   <line x1="510" y1="1048" x2="510" y2="1080" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)"/>
   <text x="520" y="1068" font-size="10" font-weight="600" fill="#dc2626">Above</text>
 
@@ -244,6 +244,6 @@
   <text x="75" y="1462" font-size="11" fill="#475569">④ Quarterly exception + trigger review → adjust defaults if common patterns emerge</text>
 
   <!-- Footer -->
-  <text x="550" y="1505" text-anchor="middle" font-size="11" fill="#94a3b8">AI Security Reference Architecture — Default Controls and Exception Governance</text>
+  <text x="550" y="1505" text-anchor="middle" font-size="11" fill="#94a3b8">AI Security Reference Architecture - Default Controls and Exception Governance</text>
 
 </svg>

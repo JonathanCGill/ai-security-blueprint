@@ -13,7 +13,7 @@
   <rect width="900" height="520" fill="#f8fafc"/>
 
   <!-- Title -->
-  <text x="450" y="28" text-anchor="middle" class="title">Banking AI Feeder Systems — Attack Surface</text>
+  <text x="450" y="28" text-anchor="middle" class="title">Banking AI Feeder Systems - Attack Surface</text>
   <text x="450" y="44" text-anchor="middle" class="note">If a feeder is compromised, the AI inherits the compromise</text>
 
   <!-- ============================================ -->

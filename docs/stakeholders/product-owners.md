@@ -1,6 +1,6 @@
 # Product Owners
 
-**Product Managers, Business Owners, Delivery Leads — what controls cost, what they prevent, and how to ship AI without getting blocked by security.**
+**Product Managers, Business Owners, Delivery Leads - what controls cost, what they prevent, and how to ship AI without getting blocked by security.**
 
 > *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
 
@@ -14,7 +14,7 @@ Here's what's actually happening:
 
 1. **You're liable for what your AI does.** When your chatbot hallucinates a product spec and a customer acts on it, that's your product's problem. When it leaks PII, that's a data breach. When it processes an unauthorized payment, that's financial loss. "The AI did it" is not an answer.
 
-2. **Controls aren't equally expensive.** A LOW-tier system (internal FAQ bot) needs minimal controls and can deploy in days. A CRITICAL-tier system (credit decisioning) needs substantial controls and takes longer. The framework scales — not everything is maximum security.
+2. **Controls aren't equally expensive.** A LOW-tier system (internal FAQ bot) needs minimal controls and can deploy in days. A CRITICAL-tier system (credit decisioning) needs substantial controls and takes longer. The framework scales - not everything is maximum security.
 
 3. **Most delivery delays come from ambiguity, not controls.** Teams stall when they don't know what's required. A clear classification and a proportionate control list is faster than endless security reviews.
 
@@ -33,7 +33,7 @@ If your AI system meets **all four** of these criteria, it qualifies for the [Fa
 
 **Fast Lane = basic guardrails + self-certification. Deploy in days, not months.**
 
-Most internal productivity tools — meeting summarisers, document search, code assistants — qualify. Don't put them through the same process as a customer-facing payment system.
+Most internal productivity tools - meeting summarisers, document search, code assistants - qualify. Don't put them through the same process as a customer-facing payment system.
 
 ### A clear answer to "what controls do I need?"
 
@@ -41,14 +41,14 @@ The framework maps controls to risk tier. No negotiation needed:
 
 | Your System | Tier | Controls Required | Typical Delivery Impact |
 |---|---|---|---|
-| Internal FAQ bot | LOW | Basic guardrails | Days — minimal overhead |
-| Internal document assistant | MEDIUM | Guardrails + sampled Judge | 1-2 weeks — add evaluation layer |
-| Customer service chatbot | HIGH | Full three layers + PACE | 3-6 weeks — includes fail posture design |
-| Credit decisioning / autonomous agent | CRITICAL | Full three layers, 100% Judge, tested PACE | 6-12 weeks — includes compliance sign-off |
+| Internal FAQ bot | LOW | Basic guardrails | Days - minimal overhead |
+| Internal document assistant | MEDIUM | Guardrails + sampled Judge | 1-2 weeks - add evaluation layer |
+| Customer service chatbot | HIGH | Full three layers + PACE | 3-6 weeks - includes fail posture design |
+| Credit decisioning / autonomous agent | CRITICAL | Full three layers, 100% Judge, tested PACE | 6-12 weeks - includes compliance sign-off |
 
 ### The business case for controls (not just the cost)
 
-Controls aren't overhead — they're insurance with measurable ROI:
+Controls aren't overhead - they're insurance with measurable ROI:
 
 | Without Controls | With Controls |
 |---|---|
@@ -69,11 +69,11 @@ The [Use Case Definition](../strategy/use-case-definition.md) provides ten quest
 
 | # | Document | Why You Need It |
 |---|---|---|
-| 1 | [Cheat Sheet](../CHEATSHEET.md) | The entire framework on one page — decide your tier in 2 minutes |
+| 1 | [Cheat Sheet](../CHEATSHEET.md) | The entire framework on one page - decide your tier in 2 minutes |
 | 2 | [Fast Lane](../FAST-LANE.md) | Check if your system qualifies for accelerated deployment |
 | 3 | [Risk Tiers](../core/risk-tiers.md) | If not Fast Lane, classify your system using the six dimensions |
 | 4 | [Use Case Definition](../strategy/use-case-definition.md) | Ten questions that feed directly into security requirements |
-| 5 | [Checklist](../core/checklist.md) | Track your implementation — know what's done and what's left |
+| 5 | [Checklist](../core/checklist.md) | Track your implementation - know what's done and what's left |
 
 **If you're planning AI strategy:** [From Strategy to Production](../strategy/) covers business alignment, data reality, human factors, and progression planning.
 
@@ -93,19 +93,19 @@ The [Use Case Definition](../strategy/use-case-definition.md) provides ten quest
 
 ---
 
-## Common Objections — With Answers
+## Common Objections - With Answers
 
 **"Our competitors ship AI without all this."**
 Your competitors either have controls you can't see, or they're accumulating unquantified risk. The first major AI incident in your industry will change the conversation. Being ahead of that conversation is a strategic advantage. See [Risk Stories](../insights/risk-stories.md) for what happens when controls are absent.
 
 **"We can add security later."**
-Retrofitting controls is 3-5x more expensive than building them in. The architecture decisions (where the Judge sits, how the circuit breaker works, what the fail posture is) are easier at design time. The controls themselves are incremental — start with guardrails, add Judge, add oversight.
+Retrofitting controls is 3-5x more expensive than building them in. The architecture decisions (where the Judge sits, how the circuit breaker works, what the fail posture is) are easier at design time. The controls themselves are incremental - start with guardrails, add Judge, add oversight.
 
 **"Security keeps moving the goalposts."**
 The framework fixes the goalposts. Your tier determines your controls. If you're classified as MEDIUM, nobody can require CRITICAL-tier controls. If requirements change, the tier classification changes first, with documented justification.
 
 **"The AI team says we don't need a Judge layer."**
-Ask them what their hallucination rate is. Ask what happens when guardrails miss a prompt injection. The Judge isn't questioning the AI team's work — it's catching the failures that every AI system produces at some rate. It's the same principle as code review: not because the developer is bad, but because a second pair of eyes catches what the first misses.
+Ask them what their hallucination rate is. Ask what happens when guardrails miss a prompt injection. The Judge isn't questioning the AI team's work - it's catching the failures that every AI system produces at some rate. It's the same principle as code review: not because the developer is bad, but because a second pair of eyes catches what the first misses.
 
 ---
 

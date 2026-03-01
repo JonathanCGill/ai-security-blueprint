@@ -9,7 +9,7 @@
   <rect width="1200" height="950" fill="url(#bg3)"/>
 
   <!-- Title -->
-  <text x="600" y="40" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2">OWASP RISK MAPPING — MASO CONTROL COVERAGE</text>
+  <text x="600" y="40" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2">OWASP RISK MAPPING - MASO CONTROL COVERAGE</text>
   <text x="600" y="60" text-anchor="middle" fill="#ff6b35" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="11" letter-spacing="2">LLM TOP 10 (2025) + AGENTIC TOP 10 (2026) WITH MASO CONTROLS AND PACE PHASES</text>
   <line x1="200" y1="72" x2="1000" y2="72" stroke="#ff6b35" stroke-width="0.8" opacity="0.4"/>
 

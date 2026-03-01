@@ -161,13 +161,13 @@
   
   <!-- Timing bands at bottom -->
   <rect x="30" y="260" width="285" height="30" rx="4" fill="#3b82f6"/>
-  <text x="172" y="280" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="bold" fill="white">INLINE (ms) — Fraud engines dominate</text>
+  <text x="172" y="280" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="bold" fill="white">INLINE (ms) - Fraud engines dominate</text>
   
   <rect x="330" y="260" width="275" height="30" rx="4" fill="#8b5cf6"/>
-  <text x="467" y="280" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="bold" fill="white">NEAR-RT (sec) — AI enrichment</text>
+  <text x="467" y="280" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="bold" fill="white">NEAR-RT (sec) - AI enrichment</text>
   
   <rect x="630" y="260" width="430" height="30" rx="4" fill="#f59e0b"/>
-  <text x="845" y="280" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="bold" fill="white">HUMAN + NEARLINE (min+) — Decision &amp; learning</text>
+  <text x="845" y="280" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="bold" fill="white">HUMAN + NEARLINE (min+) - Decision &amp; learning</text>
   
   <!-- Alert aggregation -->
   <rect x="30" y="310" width="1030" height="80" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>

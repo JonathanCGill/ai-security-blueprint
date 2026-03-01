@@ -2,7 +2,7 @@
 description: Core implementation guide for AI behavioural controls including risk classification, control definitions, and specialised controls for production AI systems.
 ---
 
-# AI Runtime Behaviour Security — Core
+# AI Runtime Behaviour Security - Core
 
 Implementing behavioral controls for AI systems in production.
 
@@ -15,13 +15,13 @@ Implementing behavioral controls for AI systems in production.
 Start with the essentials, then branch into specialised topics based on your deployment:
 
 **Essential (read in order):**
-1. [Risk Tiers](risk-tiers.md) — classify your system
-2. [Risk Assessment](risk-assessment.md) — quantify control effectiveness and residual risk per tier
-3. [Controls](controls.md) — implement the three-layer pattern
-4. [Agentic](agentic.md) — add controls if your agent has tool access
-5. [IAM Governance](iam-governance.md) — identity, lifecycle, delegation
-6. [Judge Assurance](judge-assurance.md) — measure and calibrate the Judge
-7. [Checklist](checklist.md) — track implementation progress
+1. [Risk Tiers](risk-tiers.md) - classify your system
+2. [Risk Assessment](risk-assessment.md) - quantify control effectiveness and residual risk per tier
+3. [Controls](controls.md) - implement the three-layer pattern
+4. [Agentic](agentic.md) - add controls if your agent has tool access
+5. [IAM Governance](iam-governance.md) - identity, lifecycle, delegation
+6. [Judge Assurance](judge-assurance.md) - measure and calibrate the Judge
+7. [Checklist](checklist.md) - track implementation progress
 
 **Specialised (read based on your deployment type):**
 
@@ -35,15 +35,15 @@ Start with the essentials, then branch into specialised topics based on your dep
 | Open-weight / self-hosted models | [Open-Weight Models](../insights/open-weight-models-shift-the-burden.md) |
 
 **PACE resilience (read after controls):**
-- [Control Layer Resilience](pace-controls-section.md) — PACE for each control layer
-- [PACE for Agentic AI](pace-agentic-section.md) — PACE for agentic deployments
-- [PACE Checklist](pace-checklist-section.md) — verify your fail postures
+- [Control Layer Resilience](pace-controls-section.md) - PACE for each control layer
+- [PACE for Agentic AI](pace-agentic-section.md) - PACE for agentic deployments
+- [PACE Checklist](pace-checklist-section.md) - verify your fail postures
 
 ---
 
 ## The Fundamental Shift
 
-Traditional software can be tested before deployment. AI cannot — not fully.
+Traditional software can be tested before deployment. AI cannot - not fully.
 
 | Traditional Software | AI Systems |
 |---------------------|------------|
@@ -111,16 +111,16 @@ What's been missing: clear guidance on *why* this pattern is necessary and *how*
 |---------|-----|--------|------|----------|
 | Input guardrails | Basic | Standard | Enhanced | Maximum |
 | Output guardrails | Basic | Standard | Enhanced | Maximum |
-| Judge evaluation | — | Sampling | All | All + real-time |
+| Judge evaluation | - | Sampling | All | All + real-time |
 | Human review | Exceptions | Sampling | Risk-based | All significant |
 
 ### 3. Implement in Order
 
-1. **Logging** — Can't evaluate what you don't capture
-2. **Basic guardrails** — Block obvious attacks  
-3. **Judge in shadow mode** — Evaluate without action
-4. **HITL queues** — Somewhere for findings to go
-5. **Operationalise** — Act on findings, tune continuously
+1. **Logging** - Can't evaluate what you don't capture
+2. **Basic guardrails** - Block obvious attacks  
+3. **Judge in shadow mode** - Evaluate without action
+4. **HITL queues** - Somewhere for findings to go
+5. **Operationalise** - Act on findings, tune continuously
 
 ---
 
@@ -160,9 +160,9 @@ What's been missing: clear guidance on *why* this pattern is necessary and *how*
 
 | Document | Purpose |
 |----------|---------|
-| [PACE Controls Section](pace-controls-section.md) | PACE framework — controls |
-| [PACE Agentic Section](pace-agentic-section.md) | PACE framework — agentic controls |
-| [PACE Checklist Section](pace-checklist-section.md) | PACE framework — implementation checklist |
+| [PACE Controls Section](pace-controls-section.md) | PACE framework - controls |
+| [PACE Agentic Section](pace-agentic-section.md) | PACE framework - agentic controls |
+| [PACE Checklist Section](pace-checklist-section.md) | PACE framework - implementation checklist |
 
 ### Architecture Overview
 
@@ -183,12 +183,12 @@ What's been missing: clear guidance on *why* this pattern is necessary and *how*
 
 ## Key Principles
 
-1. **Match controls to risk** — Don't over-engineer LOW tier systems
-2. **Guardrails are necessary but not sufficient** — They miss novel attacks and nuance
-3. **Judge is assurance, not control** — It detects; humans decide what to do
-4. **Infrastructure beats instructions** — Enforce technically, not via prompts
-5. **Assume bypasses happen** — Design for detection, not just prevention
-6. **Humans remain accountable** — AI assists; humans own outcomes
+1. **Match controls to risk** - Don't over-engineer LOW tier systems
+2. **Guardrails are necessary but not sufficient** - They miss novel attacks and nuance
+3. **Judge is assurance, not control** - It detects; humans decide what to do
+4. **Infrastructure beats instructions** - Enforce technically, not via prompts
+5. **Assume bypasses happen** - Design for detection, not just prevention
+6. **Humans remain accountable** - AI assists; humans own outcomes
 
 ---
 

@@ -32,7 +32,7 @@ This example uses the layered control model:
 - Summarises applicant financial profile for underwriters
 - Flags potential fraud indicators
 - Recommends approval/denial with confidence score
-- **Does NOT make final decisions** — underwriter always decides
+- **Does NOT make final decisions** - underwriter always decides
 
 **What it accesses:**
 - Loan application data
@@ -98,8 +98,8 @@ Rationale: CreditAssist directly influences decisions that affect consumers' acc
 ![CreditAssist Control Architecture](../../images/example-credit-architecture.svg)
 
 **Why 100% HITL AND 100% Judge sampling?**
-- HITL (underwriter): Required for every decision—regulatory mandate, accountability
-- Judge (100%): Required for compliance evidence—bias monitoring, audit trail
+- HITL (underwriter): Required for every decision-regulatory mandate, accountability
+- Judge (100%): Required for compliance evidence-bias monitoring, audit trail
 
 These serve different purposes. The underwriter decides. The Judge provides assurance.
 
@@ -213,7 +213,7 @@ def validate_recommendation(recommendation: dict, application_id: str) -> Tuple[
     return True, ""
 ```
 
-**Note:** Output guardrails check format and explicitly prohibited language. They do NOT evaluate bias, quality, or explainability—that's the Judge's role, performed async.
+**Note:** Output guardrails check format and explicitly prohibited language. They do NOT evaluate bias, quality, or explainability-that's the Judge's role, performed async.
 
 ---
 
@@ -629,18 +629,18 @@ Because the Judge operates async and the underwriter always decides, a Judge-det
 
 ### What Worked
 
-1. **100% HITL maintained accountability** — Clear that humans decide, AI advises
-2. **Async Judge caught issues early** — Two potential bias patterns identified before they became problems
-3. **Statistical monitoring validated Judge** — Daily stats and per-application Judge findings aligned
-4. **Regulators praised the model** — OCC specifically noted quality of documentation and monitoring
-5. **Separation of concerns was clear** — Guardrails, AI, underwriter, Judge each had defined roles
+1. **100% HITL maintained accountability** - Clear that humans decide, AI advises
+2. **Async Judge caught issues early** - Two potential bias patterns identified before they became problems
+3. **Statistical monitoring validated Judge** - Daily stats and per-application Judge findings aligned
+4. **Regulators praised the model** - OCC specifically noted quality of documentation and monitoring
+5. **Separation of concerns was clear** - Guardrails, AI, underwriter, Judge each had defined roles
 
 ### Challenges
 
-1. **Initial Judge false positive rate** — Too aggressive on bias detection, caused alert fatigue
-2. **Underwriter trust took time** — Some initially rubber-stamped, required training
-3. **Cost higher than projected** — Validation and compliance staffing exceeded budget
-4. **Integration complexity** — LOS integration took 3 months longer than planned
+1. **Initial Judge false positive rate** - Too aggressive on bias detection, caused alert fatigue
+2. **Underwriter trust took time** - Some initially rubber-stamped, required training
+3. **Cost higher than projected** - Validation and compliance staffing exceeded budget
+4. **Integration complexity** - LOS integration took 3 months longer than planned
 
 ### Metrics After 12 Months
 
@@ -668,7 +668,7 @@ CreditAssist demonstrates CRITICAL-tier implementation with proper control separ
 | Bias Monitoring | Statistical analysis | Daily automated |
 | Compliance Review | Review Judge findings | Human action on findings |
 
-**Key insight:** At CRITICAL tier, the Judge's role is even more important as an assurance mechanism. It provides the evidence trail that regulators want to see. But it never blocks or gates the underwriter's work—the underwriter always sees the AI recommendation and always decides.
+**Key insight:** At CRITICAL tier, the Judge's role is even more important as an assurance mechanism. It provides the evidence trail that regulators want to see. But it never blocks or gates the underwriter's work-the underwriter always sees the AI recommendation and always decides.
 
 **The system is advisory, not autonomous.** This is a deliberate design choice that:
 - Keeps humans accountable

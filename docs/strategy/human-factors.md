@@ -10,9 +10,9 @@
 
 AI strategies account for technology, data, and budget. They rarely account for people.
 
-Not "headcount" — that's a budget line. People: their skills, their capacity to learn new things, their available time, their willingness to change how they work, and their ability to operate AI systems safely day after day.
+Not "headcount" - that's a budget line. People: their skills, their capacity to learn new things, their available time, their willingness to change how they work, and their ability to operate AI systems safely day after day.
 
-The framework's [novel risk #12](../extensions/technical/novel-ai-risks.md) — Human-AI Interaction Risk — identifies automation bias, deskilling, and accountability gaps as risks that emerge from how humans work alongside AI. But these aren't just runtime risks. They're strategic risks. If your AI strategy assumes human capabilities that don't exist, it will fail before any security control is tested.
+The framework's [novel risk #12](../extensions/technical/novel-ai-risks.md) - Human-AI Interaction Risk - identifies automation bias, deskilling, and accountability gaps as risks that emerge from how humans work alongside AI. But these aren't just runtime risks. They're strategic risks. If your AI strategy assumes human capabilities that don't exist, it will fail before any security control is tested.
 
 ---
 
@@ -20,15 +20,15 @@ The framework's [novel risk #12](../extensions/technical/novel-ai-risks.md) — 
 
 ### 1. Skills: What People Can Do Today
 
-AI systems require skills across three domains — and most organisations have significant gaps in at least two.
+AI systems require skills across three domains - and most organisations have significant gaps in at least two.
 
 ![Human Factors Skills Map](../images/strategy-human-factors.svg)
 
 | Skill Domain | Who Needs It | Current Gap |
 |--------------|-------------|-------------|
-| **AI technical** — Building, deploying, maintaining AI systems | Engineering team | Competitive market; experienced AI engineers are expensive and scarce |
-| **AI operational** — Monitoring, tuning guardrails, operating Judge, managing HITL queues | Security/ops team | Almost nobody has this skill set yet; it didn't exist 3 years ago |
-| **AI-aware domain expertise** — Using AI outputs critically, knowing when to trust and when to challenge | Business users | Most domain experts have never worked with non-deterministic tools |
+| **AI technical** - Building, deploying, maintaining AI systems | Engineering team | Competitive market; experienced AI engineers are expensive and scarce |
+| **AI operational** - Monitoring, tuning guardrails, operating Judge, managing HITL queues | Security/ops team | Almost nobody has this skill set yet; it didn't exist 3 years ago |
+| **AI-aware domain expertise** - Using AI outputs critically, knowing when to trust and when to challenge | Business users | Most domain experts have never worked with non-deterministic tools |
 
 #### The Build Skills Gap
 
@@ -36,11 +36,11 @@ Can your team build the AI system the strategy requires?
 
 | What You Need | Typical Availability | Realistic Option |
 |---------------|---------------------|-----------------|
-| Prompt engineering | Increasingly common | Train existing developers — 2-4 weeks |
-| RAG pipeline development | Common among senior engineers | Hire or upskill — 1-3 months |
+| Prompt engineering | Increasingly common | Train existing developers - 2-4 weeks |
+| RAG pipeline development | Common among senior engineers | Hire or upskill - 1-3 months |
 | Fine-tuning / model training | Specialist skill | Hire ML engineers or use vendor services |
-| Guardrail implementation | Rare (emerging) | Train security engineers using framework guides — 1-2 months |
-| Judge evaluation design | Very rare | Train using [Judge prompt examples](../extensions/templates/judge-prompt-examples.md) — ongoing |
+| Guardrail implementation | Rare (emerging) | Train security engineers using framework guides - 1-2 months |
+| Judge evaluation design | Very rare | Train using [Judge prompt examples](../extensions/templates/judge-prompt-examples.md) - ongoing |
 | Multi-agent orchestration | Very rare | Hire specialists or partner with vendor |
 | AI security architecture | Very rare | This framework is a starting point; experience takes time |
 
@@ -55,10 +55,10 @@ The framework's [governance operating model](../extensions/regulatory/ai-governa
 | Role | What They Do | Where They Come From |
 |------|-------------|---------------------|
 | **HITL reviewers** | Review AI outputs flagged by Judge | Domain experts redeployed from existing roles |
-| **Judge operators** | Calibrate Judge prompts, manage sampling rates, review accuracy | Security or QA analysts — retrained |
-| **Guardrail maintainers** | Update guardrail patterns, manage false positives | Security operations — retrained |
-| **AI incident responders** | Investigate AI-specific incidents | Security incident team — with additional training |
-| **AI risk analysts** | Classify risk, assess controls, report to governance | Risk team — with AI-specific training |
+| **Judge operators** | Calibrate Judge prompts, manage sampling rates, review accuracy | Security or QA analysts - retrained |
+| **Guardrail maintainers** | Update guardrail patterns, manage false positives | Security operations - retrained |
+| **AI incident responders** | Investigate AI-specific incidents | Security incident team - with additional training |
+| **AI risk analysts** | Classify risk, assess controls, report to governance | Risk team - with AI-specific training |
 
 These are not new hires (in most cases). They're existing people who need new skills. But the training takes time, and the people need to be freed from their current responsibilities to learn and then to operate.
 
@@ -70,7 +70,7 @@ These are not new hires (in most cases). They're existing people who need new sk
 - Review times are 3x longer than estimated because they don't know what they're evaluating
 - SLA compliance drops below 60% within the first month
 
-The system works. The people don't. Not because they're incapable — because they weren't prepared.
+The system works. The people don't. Not because they're incapable - because they weren't prepared.
 
 ### 2. Time: What People Can Learn
 
@@ -91,7 +91,7 @@ These are realistic, not optimistic. They assume motivated professionals with re
 | AI incident investigation | Security incident team | 2-3 weeks | 6 months |
 | Multi-agent security operations | Security architects | 1-2 months | 6-12 months |
 
-**The gap that matters:** The time between "basic competence" and "operational competence" is where mistakes happen. People know enough to do the job but not enough to do it well. For LOW and MEDIUM tier systems, this is acceptable — errors are low-impact and recoverable. For HIGH and CRITICAL tier systems, this gap is dangerous.
+**The gap that matters:** The time between "basic competence" and "operational competence" is where mistakes happen. People know enough to do the job but not enough to do it well. For LOW and MEDIUM tier systems, this is acceptable - errors are low-impact and recoverable. For HIGH and CRITICAL tier systems, this gap is dangerous.
 
 #### The Learning Capacity Problem
 
@@ -121,7 +121,7 @@ Even with time and training, there's a limit to how much change people can absor
 | **Confidence** | "I trust my judgement with AI systems" | Months-years |
 | **Mastery** | "I know when to trust AI and when to override" | Years |
 
-Most AI strategies plan for the **Competence** phase. The framework's controls — particularly HITL review — require the **Confidence** phase to work properly. A human reviewer who has reached Competence can follow the review process. A human reviewer who has reached Confidence knows when the process isn't capturing the right thing.
+Most AI strategies plan for the **Competence** phase. The framework's controls - particularly HITL review - require the **Confidence** phase to work properly. A human reviewer who has reached Competence can follow the review process. A human reviewer who has reached Confidence knows when the process isn't capturing the right thing.
 
 **The automation bias problem** (framework risk #12) is a confidence-phase problem. At the Competence phase, reviewers follow the process. At the Confidence phase, they develop genuine independent judgement. In between, there's a dangerous period where they're fast enough to process high volumes but not experienced enough to catch subtle AI failures.
 
@@ -142,7 +142,7 @@ Training assumes willingness. Willingness isn't guaranteed.
 - What the AI does and doesn't replace
 - How their role changes (specifically, not vaguely)
 - What new skills they need and how they'll be supported in acquiring them
-- That their domain expertise is *more* valuable with AI, not less — because the AI needs humans who can judge its outputs
+- That their domain expertise is *more* valuable with AI, not less - because the AI needs humans who can judge its outputs
 
 The framework's principle "[Humans Remain Accountable](../insights/humans-remain-accountable.md)" is the right message, but it needs to reach the people doing the work, not just the governance committee.
 
@@ -195,11 +195,11 @@ The human requirements scale with risk tier, just as technical controls do:
 
 **Reality:** Clinicians are overworked. Average consultation time is 10 minutes. They don't have time to cross-reference AI summaries against full notes. They scan the summary, confirm it looks plausible, and move on. Effective review rate: near zero.
 
-**Framework impact:** The HITL control exists on paper. In practice, the human layer isn't functioning. The system is operating as if it were at MEDIUM or LOW tier — basic guardrails only, with no effective human oversight.
+**Framework impact:** The HITL control exists on paper. In practice, the human layer isn't functioning. The system is operating as if it were at MEDIUM or LOW tier - basic guardrails only, with no effective human oversight.
 
 **Strategic response:**
 - Redesign the AI output to highlight uncertainty ("confidence: low on medication history")
-- Reduce the review burden — instead of reviewing every summary, review only those the Judge flags
+- Reduce the review burden - instead of reviewing every summary, review only those the Judge flags
 - Measure actual review behaviour (time spent, override rate) not just claimed process compliance
 - Consider whether the risk tier is appropriate given realistic human capacity
 
@@ -209,9 +209,9 @@ The human requirements scale with risk tier, just as technical controls do:
 
 **Assumption:** Security operations team will manage Judge calibration, guardrail updates, and escalation triage.
 
-**Reality:** The security operations team has one person who understands the Judge system. That person also manages three other security tools. Judge calibration happens when they have time — roughly once a quarter instead of the weekly cadence specified. When they take holiday, nobody monitors Judge accuracy.
+**Reality:** The security operations team has one person who understands the Judge system. That person also manages three other security tools. Judge calibration happens when they have time - roughly once a quarter instead of the weekly cadence specified. When they take holiday, nobody monitors Judge accuracy.
 
-**Framework impact:** Judge accuracy degrades without calibration. The framework's [invisible degradation](../extensions/technical/novel-ai-risks.md) risk materialises — not through technical failure, but through human capacity failure.
+**Framework impact:** Judge accuracy degrades without calibration. The framework's [invisible degradation](../extensions/technical/novel-ai-risks.md) risk materialises - not through technical failure, but through human capacity failure.
 
 **Strategic response:**
 - Fund a dedicated AI security operations role (the governance model's "Technical Operations Team")
@@ -229,12 +229,12 @@ The human requirements scale with risk tier, just as technical controls do:
 
 **Framework impact:** The system works technically but creates two failure modes:
 1. Senior assessors bypass the AI, gaining no benefit
-2. Junior assessors trust it uncritically — automation bias (framework risk #12)
+2. Junior assessors trust it uncritically - automation bias (framework risk #12)
 
 **Strategic response:**
-- Engage senior assessors in Judge calibration — their expertise is exactly what's needed to evaluate AI quality
+- Engage senior assessors in Judge calibration - their expertise is exactly what's needed to evaluate AI quality
 - Position the AI as a second opinion, not a replacement for expertise
-- Monitor override rates — very high (seniors ignoring AI) and very low (juniors trusting blindly) are both warning signals
+- Monitor override rates - very high (seniors ignoring AI) and very low (juniors trusting blindly) are both warning signals
 - Structure HITL so senior and junior assessors review each other's AI-assisted decisions
 
 ---
@@ -254,12 +254,12 @@ When AI handles tasks that humans used to do, humans lose the ability to do thos
 | **3-6 months** | Speed at manual process | Inconvenient but manageable if AI fails |
 | **6-12 months** | Routine judgement calls | Errors increase when reverting to manual |
 | **1-2 years** | Nuanced expertise | Manual fallback quality degrades significantly |
-| **2+ years** | Institutional knowledge | Organisation cannot operate without AI — single point of failure |
+| **2+ years** | Institutional knowledge | Organisation cannot operate without AI - single point of failure |
 
 **Strategic mitigation:**
 - Maintain manual process capability through periodic exercises (like disaster recovery testing)
 - Rotate staff between AI-assisted and manual work
-- Document manual processes before they're automated — not after
+- Document manual processes before they're automated - not after
 - Build deskilling risk into the PACE plan: if humans can't fall back, the Emergency phase is incomplete
 
 ---
@@ -308,11 +308,11 @@ The framework treats human factors as an implementation detail. It specifies tha
 - How to prevent deskilling over time
 - How to sustain human capability as the AI portfolio grows
 
-This is partly by design — the framework is a security controls framework, not an organisational change management programme. But strategy cannot treat human factors as somebody else's problem. The controls don't work if the humans operating them aren't ready, willing, and sustainably capable.
+This is partly by design - the framework is a security controls framework, not an organisational change management programme. But strategy cannot treat human factors as somebody else's problem. The controls don't work if the humans operating them aren't ready, willing, and sustainably capable.
 
 **Recommendation:** For any deployment above Fast Lane, include a human factors assessment alongside the technical risk assessment. The framework's risk classification asks "what can this system do?" The human factors assessment asks "can our people safely operate this system?" Both questions need answers before deployment.
 
-One approach to the scalability gap: [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md) — instead of adding dedicated HITL reviewers, use the existing human decision points in the business workflow as a detection and correction layer. The concept works because business process humans encounter AI outputs in full domain context (making their review more effective) and because it's their actual job (making their engagement sustainable).
+One approach to the scalability gap: [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md) - instead of adding dedicated HITL reviewers, use the existing human decision points in the business workflow as a detection and correction layer. The concept works because business process humans encounter AI outputs in full domain context (making their review more effective) and because it's their actual job (making their engagement sustainable).
 
 ---
 

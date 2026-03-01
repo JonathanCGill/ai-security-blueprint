@@ -4,13 +4,13 @@
 
 *The structured approach to ensuring no single failure in your AI security controls is catastrophic.*
 
-> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](core/risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers - Simplified Tier Mapping](core/risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
 
 ---
 
 ## What PACE Is
 
-PACE (Primary, Alternate, Contingency, Emergency) is a resilience planning methodology from military communications planning. It ensures mission-critical functions continue even when the preferred method fails, by pre-defining four layers of redundancy — each on a different failure domain so a single event can't cascade through all of them.
+PACE (Primary, Alternate, Contingency, Emergency) is a resilience planning methodology from military communications planning. It ensures mission-critical functions continue even when the preferred method fails, by pre-defining four layers of redundancy - each on a different failure domain so a single event can't cascade through all of them.
 
 This framework adopts PACE as a **core design principle**, not an optional overlay. Every control, at every tier, must have a defined fail posture and fallback path before the system enters production.
 
@@ -69,10 +69,10 @@ PACE is integrated throughout the framework, not isolated in a single document:
 
 | Framework Document | What It Contains |
 |---|---|
-| [Risk Tiers](core/risk-tiers.md) | Resilience requirements per tier — PACE formality, fail posture defaults, testing frequencies, fallback path requirements |
-| [Controls](core/controls.md) | Internal PACE tables for each control layer — what Primary/Alternate/Contingency/Emergency looks like within Guardrails, Judge, and Human Oversight at each tier |
-| [Agentic](core/agentic.md) | Graceful degradation path for autonomous systems — the five-phase transition from full autonomy to full stop, with transaction resolution and multi-agent cascade prevention |
-| [Checklist](core/checklist.md) | PACE verification items — what to check before go-live and at each testing interval |
+| [Risk Tiers](core/risk-tiers.md) | Resilience requirements per tier - PACE formality, fail posture defaults, testing frequencies, fallback path requirements |
+| [Controls](core/controls.md) | Internal PACE tables for each control layer - what Primary/Alternate/Contingency/Emergency looks like within Guardrails, Judge, and Human Oversight at each tier |
+| [Agentic](core/agentic.md) | Graceful degradation path for autonomous systems - the five-phase transition from full autonomy to full stop, with transaction resolution and multi-agent cascade prevention |
+| [Checklist](core/checklist.md) | PACE verification items - what to check before go-live and at each testing interval |
 
 This document is the methodology reference. The requirements are in the documents above.
 
@@ -82,7 +82,7 @@ This document is the methodology reference. The requirements are in the document
 
 Defence in depth tells you to have multiple layers. It doesn't tell you:
 
-1. What happens when a layer fails (not just "the next layer catches it" — what specifically changes?)
+1. What happens when a layer fails (not just "the next layer catches it" - what specifically changes?)
 2. What the trigger is to transition from one operational state to another
 3. How to step **back up** to normal operation after an incident
 4. What to do when "turn it off" isn't simple (mid-transaction agents, multi-agent cascades)
@@ -111,7 +111,7 @@ The **[MASO Framework](maso/)** integrates PACE at the orchestration level:
 
 **Blast radius is wider.** A compromised agent can inject instructions into the message bus that affect every downstream agent. Containment must isolate the agent *and* quarantine its recent outputs across the chain.
 
-**Transitions are automated at higher tiers.** At MASO Tier 2+, the monitoring agent or orchestrator can initiate P→A transitions without waiting for human approval — because multi-agent cascading failures move faster than human response times. Humans are notified, not gated.
+**Transitions are automated at higher tiers.** At MASO Tier 2+, the monitoring agent or orchestrator can initiate P→A transitions without waiting for human approval - because multi-agent cascading failures move faster than human response times. Humans are notified, not gated.
 
 **Recovery requires chain verification.** Stepping back from C→A or A→P isn't just "restart the failed component." The system must verify that no poisoned data from the compromised agent persists in other agents' memory, context, or RAG corpus.
 
@@ -129,7 +129,7 @@ A PACE plan that hasn't been tested is a plan that won't work.
 | **Judge failure simulation** | Annually | Quarterly | Monthly |
 | **Human escalation exercise** | Annually | Quarterly | Quarterly |
 | **Circuit breaker activation** | Annually | Quarterly | Monthly |
-| **Full degradation walkthrough** | — | Semi-annually | Quarterly |
+| **Full degradation walkthrough** | - | Semi-annually | Quarterly |
 | **Non-AI fallback operation** | Annually | Quarterly | Monthly |
 | **Recovery (step-back-up) validation** | Annually | Quarterly | Monthly |
 
@@ -144,7 +144,7 @@ For Tier 3 systems, testing should involve the same personnel who would handle a
 | [Controls](core/controls.md) | The three-layer architecture with integrated PACE resilience |
 | [Agentic](core/agentic.md) | Graceful degradation for autonomous agents |
 | [Risk Tiers](core/risk-tiers.md) | Classification that determines PACE requirements |
-| [MASO Framework](maso/) | PACE extended to multi-agent orchestration — agent failover, cascading failure response, kill switch architecture |
+| [MASO Framework](maso/) | PACE extended to multi-agent orchestration - agent failover, cascading failure response, kill switch architecture |
 | [Incident Playbook](extensions/templates) | Templates for Emergency layer activation |
 | [Infrastructure Beats Instructions](insights/infrastructure-beats-instructions.md) | Why the Emergency layer must be infrastructure, not prompts |
 

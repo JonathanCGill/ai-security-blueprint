@@ -4,7 +4,7 @@
 
 ![The First Control](../images/insight-first-control.svg)
 
-Before guardrails, before judges, before human oversight — there's a more fundamental question:
+Before guardrails, before judges, before human oversight - there's a more fundamental question:
 
 **Is AI the right tool for this problem?**
 
@@ -39,7 +39,7 @@ Design thinking asks architects to focus on:
 - Lifecycle behaviour
 - Unintended consequences
 
-AI should emerge as a solution to a well-understood problem — not as a starting point looking for application.
+AI should emerge as a solution to a well-understood problem - not as a starting point looking for application.
 
 ---
 
@@ -56,7 +56,7 @@ AI systems introduce:
 - Drift over time
 - Confidence signals that may be misleading
 
-This creates new classes of failure that cannot be eliminated — only designed around:
+This creates new classes of failure that cannot be eliminated - only designed around:
 - Hallucinated content
 - Inconsistent outputs
 - Reasoning errors that pass superficial checks
@@ -76,7 +76,7 @@ This is directionally correct but incomplete. Review creates its own costs:
 
 **Imperfection.** Reviewers miss edge cases, suffer fatigue, interpret inconsistently, and rely on AI explanations that may themselves be flawed.
 
-**Downstream work.** When AI outputs slip through, remediation workflows activate — customer corrections, compliance follow-ups, analyst rework.
+**Downstream work.** When AI outputs slip through, remediation workflows activate - customer corrections, compliance follow-ups, analyst rework.
 
 The system is no longer:
 
@@ -215,7 +215,7 @@ If you haven't done that design work, no amount of guardrails, judges, or human 
 
 **The first control is choosing wisely.**
 
-The controls, patterns, and examples that follow are for systems where AI genuinely improves outcomes. They're not a license to deploy AI everywhere — they're a framework for deploying AI well where it belongs.
+The controls, patterns, and examples that follow are for systems where AI genuinely improves outcomes. They're not a license to deploy AI everywhere - they're a framework for deploying AI well where it belongs.
 
 ---
 
@@ -231,15 +231,15 @@ The controls, patterns, and examples that follow are for systems where AI genuin
 
 5. **Traditional software is often better.** Deterministic systems are simpler, cheaper, and more auditable for many problems.
 
-6. **The goal is system fitness, not AI adoption.** Use AI where it improves outcomes — and restraint where it doesn't.
+6. **The goal is system fitness, not AI adoption.** Use AI where it improves outcomes - and restraint where it doesn't.
 
 ---
 
 ## Related
 
-- [Why Guardrails Aren't Enough](./why-guardrails-arent-enough.md) — The limits of inline controls
-- [Humans Remain Accountable](./humans-remain-accountable.md) — Review workflow realities
-- [Risk Tiers](../core/risk-tiers.md) — Determining appropriate control intensity
+- [Why Guardrails Aren't Enough](./why-guardrails-arent-enough.md) - The limits of inline controls
+- [Humans Remain Accountable](./humans-remain-accountable.md) - Review workflow realities
+- [Risk Tiers](../core/risk-tiers.md) - Determining appropriate control intensity
 
 ---
 

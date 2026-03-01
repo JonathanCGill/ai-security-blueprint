@@ -10,27 +10,27 @@
 
 Data flows between agents must be classified, controlled, and monitored. An agent's access to data is determined by its own classification level, not by the classification of the agent that sent the data. Shared knowledge bases are integrity-checked. Persistent memory is isolated per agent and has a finite lifespan.
 
-In a multi-agent system, every inter-agent message is a data transfer across a trust boundary. The message bus is not just a communication channel — it is the primary data loss prevention enforcement point.
+In a multi-agent system, every inter-agent message is a data transfer across a trust boundary. The message bus is not just a communication channel - it is the primary data loss prevention enforcement point.
 
 ---
 
 ## Why This Matters in Multi-Agent Systems
 
-**Implicit data flows through delegation.** When Agent A asks Agent B to summarise a document, Agent A's context — including any sensitive data it has processed — may leak into the request. Agent B, which may have a lower data classification, now has access to data it shouldn't see. The developer didn't intend a data transfer; the delegation created one.
+**Implicit data flows through delegation.** When Agent A asks Agent B to summarise a document, Agent A's context - including any sensitive data it has processed - may leak into the request. Agent B, which may have a lower data classification, now has access to data it shouldn't see. The developer didn't intend a data transfer; the delegation created one.
 
-**RAG poisoning scales across agents.** A poisoned document in a shared vector database doesn't just affect one model — it affects every agent that queries that database. In a multi-agent system, the poisoned data can be retrieved by one agent and passed to others through the message bus, amplifying the poisoning across the entire orchestration.
+**RAG poisoning scales across agents.** A poisoned document in a shared vector database doesn't just affect one model - it affects every agent that queries that database. In a multi-agent system, the poisoned data can be retrieved by one agent and passed to others through the message bus, amplifying the poisoning across the entire orchestration.
 
 **Memory becomes a persistent attack surface.** If agents have persistent memory across sessions, poisoned data injected in one session persists into future sessions. In single-model systems, this is a context window risk. In multi-agent systems, a poisoned memory in one agent can contaminate others through shared interactions.
 
-**Cross-classification data mixing.** Different agents may legitimately operate at different data classification levels — one processes public data, another processes confidential customer records. Without explicit fencing, the message bus becomes a channel for data to flow from high-classification agents to low-classification agents.
+**Cross-classification data mixing.** Different agents may legitimately operate at different data classification levels - one processes public data, another processes confidential customer records. Without explicit fencing, the message bus becomes a channel for data to flow from high-classification agents to low-classification agents.
 
-**Derived data elevation (DR-03).** An agent combines two individually non-sensitive data fields — customer ID and purchase history — and the result is PII. An analyst agent aggregates anonymised records and the output is re-identifiable. In multi-agent systems, data passes through multiple processing stages, and each stage can increase the effective classification of the output without any agent recognising the transition. The output is treated at the classification of the inputs, when it should be treated higher. Classification must be reassessed after processing, not just inherited from source data.
+**Derived data elevation (DR-03).** An agent combines two individually non-sensitive data fields - customer ID and purchase history - and the result is PII. An analyst agent aggregates anonymised records and the output is re-identifiable. In multi-agent systems, data passes through multiple processing stages, and each stage can increase the effective classification of the output without any agent recognising the transition. The output is treated at the classification of the inputs, when it should be treated higher. Classification must be reassessed after processing, not just inherited from source data.
 
 ---
 
 ## Controls by Tier
 
-### Tier 1 — Supervised
+### Tier 1 - Supervised
 
 | Control | Requirement | Implementation Notes |
 |---------|-------------|---------------------|
@@ -41,7 +41,7 @@ In a multi-agent system, every inter-agent message is a data transfer across a t
 | **DP-1.5** Data flow diagram | Documented diagram showing what data moves between which agents | Must be maintained when agents or data sources change. |
 | **DP-1.6** Classification metadata propagation | Data classification tags travel with data through inter-agent messages | Messages without classification metadata are rejected by the bus. Prevents classification from being lost between agents. |
 
-### Tier 2 — Managed
+### Tier 2 - Managed
 
 All Tier 1 controls remain active, plus:
 
@@ -53,7 +53,7 @@ All Tier 1 controls remain active, plus:
 | **DP-2.4** Memory isolation | Per-agent persistent memory isolated; agents cannot read/write other agents' memory | Shared state mediated exclusively through the message bus with DLP scanning. |
 | **DP-2.5** Derived data reclassification | Agent outputs are assessed for classification elevation when combining or enriching data from multiple sources | DLP evaluates whether the output classification should be higher than the input classification. Elevation rules defined per data type (e.g., combining identifiers with behavioural data = PII). Elevated data is tagged at the new classification before it enters the message bus (DR-03). |
 
-### Tier 3 — Autonomous
+### Tier 3 - Autonomous
 
 All Tier 2 controls remain active, plus:
 
@@ -114,13 +114,13 @@ All Tier 2 controls remain active, plus:
 
 ## DLP Beyond the Message Bus
 
-MASO's DLP controls (DP-2.1) scan inter-agent messages within the orchestration. This is necessary but not sufficient. DLP applies in both directions — inbound and outbound — and the controls outside the AI system play an equally important role.
+MASO's DLP controls (DP-2.1) scan inter-agent messages within the orchestration. This is necessary but not sufficient. DLP applies in both directions - inbound and outbound - and the controls outside the AI system play an equally important role.
 
 **Inbound DLP.** Your organisation's network DLP, email DLP, and endpoint DLP should prevent sensitive data from reaching agents that shouldn't have it. If a user pastes classified material into an agent's input, network-level DLP catching it before it reaches the model is a faster and more reliable defence than relying on the agent's input guardrails alone.
 
-**Outbound DLP.** If an agent exfiltrates data through a tool call, API request, or generated output, the message bus DLP (DP-2.1) is the first catch point. But network-level DLP, API gateway validation, and database access controls are the second. An agent that constructs a malformed API call or an overly broad database query should be stopped by the target system's own validation — not just by the orchestration's controls.
+**Outbound DLP.** If an agent exfiltrates data through a tool call, API request, or generated output, the message bus DLP (DP-2.1) is the first catch point. But network-level DLP, API gateway validation, and database access controls are the second. An agent that constructs a malformed API call or an overly broad database query should be stopped by the target system's own validation - not just by the orchestration's controls.
 
-**Reporting.** External DLP systems that detect AI-originated data incidents provide a feedback loop. If network DLP catches sensitive data that the message bus DLP missed, that is a signal to tighten DP-2.1 rules. DLP is not a single control — it is a layered strategy, and the AI-specific layer is one part of it.
+**Reporting.** External DLP systems that detect AI-originated data incidents provide a feedback loop. If network DLP catches sensitive data that the message bus DLP missed, that is a signal to tighten DP-2.1 rules. DLP is not a single control - it is a layered strategy, and the AI-specific layer is one part of it.
 
 These external controls are outside the scope of this framework, but they should be included in your threat model, your data flow diagrams (DP-1.5), and your design reviews.
 
@@ -128,15 +128,15 @@ These external controls are outside the scope of this framework, but they should
 
 ## Common Pitfalls
 
-**Classifying agents instead of data flows.** An agent is not "confidential" — it processes data that is confidential. The same agent might process both internal and confidential data depending on the task. Classification must be applied to the data flows, not the agent itself.
+**Classifying agents instead of data flows.** An agent is not "confidential" - it processes data that is confidential. The same agent might process both internal and confidential data depending on the task. Classification must be applied to the data flows, not the agent itself.
 
 **Trusting RAG content because it's internal.** RAG databases are a persistent injection point. An attacker who can modify a document in the knowledge base has a standing injection into every agent that queries it. Integrity validation is not optional.
 
 **Assuming memory isolation from model provider guarantees.** Model providers may offer session isolation, but if your orchestration framework maintains its own context store (which most do), that store is the actual memory surface. The provider's isolation guarantees don't cover your framework's state management.
 
-**Scanning outputs but not inter-agent messages.** DLP on final outputs catches data leakage to end users. But in a multi-agent system, the more dangerous leak path is agent-to-agent — where sensitive data crosses trust boundaries invisibly within the orchestration.
+**Scanning outputs but not inter-agent messages.** DLP on final outputs catches data leakage to end users. But in a multi-agent system, the more dangerous leak path is agent-to-agent - where sensitive data crosses trust boundaries invisibly within the orchestration.
 
-**Inheriting input classification without reassessment.** An agent that combines public customer IDs with internal behavioural data produces output that is neither public nor internal — it's PII. If the output inherits the classification of the higher input ("internal"), it's still under-classified. Classification must be reassessed after processing, particularly when agents combine, enrich, or aggregate data from multiple sources. The output classification may be higher than any individual input.
+**Inheriting input classification without reassessment.** An agent that combines public customer IDs with internal behavioural data produces output that is neither public nor internal - it's PII. If the output inherits the classification of the higher input ("internal"), it's still under-classified. Classification must be reassessed after processing, particularly when agents combine, enrich, or aggregate data from multiple sources. The output classification may be higher than any individual input.
 
 **Dropping classification metadata between agents.** If classification tags don't travel with data through the message bus, downstream agents and DLP controls have no basis for enforcement. A message arriving without a classification tag should be treated as an error, not as unclassified.
 

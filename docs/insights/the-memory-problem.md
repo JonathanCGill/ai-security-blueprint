@@ -28,7 +28,7 @@ Memory becomes a long-term attack surface.
 
 ### 3. RAG and external knowledge
 
-Retrieval-augmented generation pulls content from external sources — documents, databases, knowledge bases — into the context at runtime.
+Retrieval-augmented generation pulls content from external sources - documents, databases, knowledge bases - into the context at runtime.
 
 The external content becomes part of the effective state, even though it's stored elsewhere.
 
@@ -52,7 +52,7 @@ Your guardrails check each turn. They don't see the pattern across turns.
 
 ### Context poisoning
 
-An attacker feeds information into the context — through conversation, uploaded documents, or compromised knowledge bases — that shapes future behaviour.
+An attacker feeds information into the context - through conversation, uploaded documents, or compromised knowledge bases - that shapes future behaviour.
 
 The poison doesn't trigger immediately. It waits until the right query activates it.
 
@@ -91,7 +91,7 @@ You need:
 
 If you log each interaction but don't preserve the full context at decision time, you can't reconstruct what the model "saw" when it made a choice.
 
-A concerning output might make sense given the context — or might reveal context manipulation. Without the full context logged, you can't tell.
+A concerning output might make sense given the context - or might reveal context manipulation. Without the full context logged, you can't tell.
 
 ### Stateless evaluation
 

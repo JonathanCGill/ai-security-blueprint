@@ -26,7 +26,7 @@
 
   <!-- Title -->
   <text x="450" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">PACE Resilience Model for AI Security Controls</text>
-  <text x="450" y="55" text-anchor="middle" font-size="11" fill="#7f8c8d">Four layers of defence — each on a different failure domain</text>
+  <text x="450" y="55" text-anchor="middle" font-size="11" fill="#7f8c8d">Four layers of defence - each on a different failure domain</text>
 
   <!-- Left column: PACE labels -->
   <!-- P - Primary -->
@@ -60,28 +60,28 @@
   <!-- Right column: Control mapping -->
   <!-- P detail -->
   <rect x="175" y="80" width="700" height="90" rx="6" fill="#fff" stroke="#2980b9" stroke-width="2" filter="url(#shadow)"/>
-  <text x="195" y="105" font-size="13" font-weight="bold" fill="#1a5276">Guardrails — Real-time Enforcement</text>
+  <text x="195" y="105" font-size="13" font-weight="bold" fill="#1a5276">Guardrails - Real-time Enforcement</text>
   <text x="195" y="123" font-size="10" fill="#2c3e50">Deterministic pattern matching blocks known-bad inputs and outputs at the API boundary.</text>
   <text x="195" y="140" font-size="10" fill="#2c3e50">Content filters, schema validation, PII redaction, topic blocklists, token limits.</text>
   <text x="195" y="157" font-size="10" fill="#7f8c8d">Failure mode: Bypassed by novel attacks, adversarial inputs outside known patterns.</text>
 
   <!-- A detail -->
   <rect x="175" y="185" width="700" height="90" rx="6" fill="#fff" stroke="#27ae60" stroke-width="2" filter="url(#shadow)"/>
-  <text x="195" y="210" font-size="13" font-weight="bold" fill="#1e8449">LLM-as-Judge — Async Detection</text>
+  <text x="195" y="210" font-size="13" font-weight="bold" fill="#1e8449">LLM-as-Judge - Async Detection</text>
   <text x="195" y="228" font-size="10" fill="#2c3e50">Independent LLM evaluates outputs for policy compliance, hallucination, tone, and safety.</text>
   <text x="195" y="245" font-size="10" fill="#2c3e50">Catches unknown-bad that guardrails miss. Different model, different failure domain.</text>
   <text x="195" y="262" font-size="10" fill="#7f8c8d">Failure mode: Model error, shared blind spots, latency under load, adversarial evasion.</text>
 
   <!-- C detail -->
   <rect x="175" y="290" width="700" height="90" rx="6" fill="#fff" stroke="#f1c40f" stroke-width="2" filter="url(#shadow)"/>
-  <text x="195" y="315" font-size="13" font-weight="bold" fill="#7d6608">Human Oversight — Decision Authority</text>
+  <text x="195" y="315" font-size="13" font-weight="bold" fill="#7d6608">Human Oversight - Decision Authority</text>
   <text x="195" y="333" font-size="10" fill="#2c3e50">Humans review flagged outputs, decide edge cases, maintain accountability for regulated actions.</text>
   <text x="195" y="350" font-size="10" fill="#2c3e50">Queue-based review for high-risk decisions. Escalation triggers from Judge confidence scores.</text>
   <text x="195" y="367" font-size="10" fill="#7f8c8d">Failure mode: Fatigue, unavailability, overwhelmed by volume, insufficient context.</text>
 
   <!-- E detail -->
   <rect x="175" y="395" width="700" height="90" rx="6" fill="#fff" stroke="#e74c3c" stroke-width="2" filter="url(#shadow)"/>
-  <text x="195" y="420" font-size="13" font-weight="bold" fill="#922b21">Circuit Breaker — System-Level Fallback</text>
+  <text x="195" y="420" font-size="13" font-weight="bold" fill="#922b21">Circuit Breaker - System-Level Fallback</text>
   <text x="195" y="438" font-size="10" fill="#2c3e50">Kill switches, traffic rerouting, graceful degradation to non-AI path, rollback to last known good.</text>
   <text x="195" y="455" font-size="10" fill="#2c3e50">Pre-configured for each risk tier. Automated triggers or manual invocation.</text>
   <text x="195" y="472" font-size="10" fill="#7f8c8d">Failure mode: Last resort. If this fails, the process should already be stopped.</text>
@@ -93,5 +93,5 @@
   <line x1="150" y1="440" x2="175" y2="440" stroke="#e74c3c" stroke-width="2"/>
 
   <!-- Footer -->
-  <text x="450" y="510" text-anchor="middle" font-size="9" fill="#95a5a6">AI Runtime Behaviour Security — PACE Resilience Overlay © Jonathan Gill 2025</text>
+  <text x="450" y="510" text-anchor="middle" font-size="9" fill="#95a5a6">AI Runtime Behaviour Security - PACE Resilience Overlay © Jonathan Gill 2025</text>
 </svg>

@@ -47,10 +47,10 @@ Answer these questions:
 | Is it in a regulated domain? | ↑ |
 
 **Scoring:**
-- 0-1 "yes" → **LOW** — Basic guardrails sufficient
-- 2 "yes" → **MEDIUM** — Add sampling Judge
-- 3-4 "yes" → **HIGH** — Full Judge coverage
-- 5 "yes" or regulatory requirement → **CRITICAL** — All layers, human review on significant outputs
+- 0-1 "yes" → **LOW** - Basic guardrails sufficient
+- 2 "yes" → **MEDIUM** - Add sampling Judge
+- 3-4 "yes" → **HIGH** - Full Judge coverage
+- 5 "yes" or regulatory requirement → **CRITICAL** - All layers, human review on significant outputs
 
 Write down your tier. This determines your control requirements.
 
@@ -72,10 +72,10 @@ Block malicious inputs before they reach the model.
 - Rate limiting
 
 **Available tools:**
-- [NVIDIA NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) — Open-source, programmable
-- [Guardrails AI](https://www.guardrailsai.com/) — Validator framework
-- AWS Bedrock Guardrails — Managed service
-- Azure AI Content Safety — Managed service
+- [NVIDIA NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) - Open-source, programmable
+- [Guardrails AI](https://www.guardrailsai.com/) - Validator framework
+- AWS Bedrock Guardrails - Managed service
+- Azure AI Content Safety - Managed service
 
 ### Output Guardrails
 
@@ -154,7 +154,7 @@ EVALUATE:
 
 RESPOND:
 - PASS: No concerns
-- FLAG: [Concern description] — Severity: LOW/MEDIUM/HIGH
+- FLAG: [Concern description] - Severity: LOW/MEDIUM/HIGH
 ```
 
 ### Sampling by Tier
@@ -210,11 +210,11 @@ You now have:
 
 ### Month 1
 - Review flagged interactions for patterns
-- Test incident response — see [Testing Guidance](extensions/templates/testing-guidance.md)
+- Test incident response - see [Testing Guidance](extensions/templates/testing-guidance.md)
 - Document operational procedures
 
 ### This Quarter
-- Conduct threat modelling — see [Threat Model Template](extensions/templates/threat-model-template.md)
+- Conduct threat modelling - see [Threat Model Template](extensions/templates/threat-model-template.md)
 - Implement tier-appropriate controls from [Controls](core/controls.md)
 - If agentic: add controls from [Agentic](core/agentic.md)
 - If multi-agent: see below
@@ -223,7 +223,7 @@ You now have:
 
 ## Multi-Agent? Start Here After the Basics
 
-Everything above applies to single-model deployments — one AI, one context window, one trust boundary.
+Everything above applies to single-model deployments - one AI, one context window, one trust boundary.
 
 If your agents **communicate, delegate, or act autonomously**, you need additional controls. The single-agent pattern stays as your foundation, but multi-agent systems add new risks:
 
@@ -232,7 +232,7 @@ If your agents **communicate, delegate, or act autonomously**, you need addition
 - Transitive authority creating unintended privilege escalation
 - Consensus that looks like independent validation but isn't
 
-The **[MASO Framework](maso/)** extends this pattern into multi-agent orchestration. Start with [Tier 1 — Supervised](maso/implementation/tier-1-supervised.md) and graduate upward as your controls mature.
+The **[MASO Framework](maso/)** extends this pattern into multi-agent orchestration. Start with [Tier 1 - Supervised](maso/implementation/tier-1-supervised.md) and graduate upward as your controls mature.
 
 ---
 
@@ -268,7 +268,7 @@ You can't fully test AI at design time. You must monitor behavior in production.
 
 > **Design reviews prove intent. Behavioral monitoring proves reality.**
 
-The pattern — Guardrails, Judge, Human Oversight — gives you predictable, proportionate controls that work.
+The pattern - Guardrails, Judge, Human Oversight - gives you predictable, proportionate controls that work.
 
 ---
 

@@ -12,13 +12,13 @@ Traditional incident response follows a pattern: detect, contain, eradicate, rec
 
 | Assumption | Traditional IR | AI Systems |
 |-----------|---------------|------------|
-| **You can identify the payload** | Malware has a hash, an exploit has a CVE | Prompt injection is natural language — no signature |
-| **You can isolate the affected system** | Take the server offline | The model is stateless — the "infection" is in the prompt, not the system |
-| **You can determine impact** | Forensics reveals what the attacker accessed | AI context windows are ephemeral — what the model "saw" may not be fully logged |
+| **You can identify the payload** | Malware has a hash, an exploit has a CVE | Prompt injection is natural language - no signature |
+| **You can isolate the affected system** | Take the server offline | The model is stateless - the "infection" is in the prompt, not the system |
+| **You can determine impact** | Forensics reveals what the attacker accessed | AI context windows are ephemeral - what the model "saw" may not be fully logged |
 | **You can prevent recurrence** | Patch the vulnerability | The same injection technique can be paraphrased infinitely |
-| **Root cause is identifiable** | Vulnerability + exploit chain | Model behaviour is non-deterministic — the same input might not reproduce the issue |
+| **Root cause is identifiable** | Vulnerability + exploit chain | Model behaviour is non-deterministic - the same input might not reproduce the issue |
 
-The core problem: **AI incidents often involve behavioural failures rather than system compromises.** The model isn't "hacked" in the traditional sense — it's manipulated into behaving in ways that violate policy. This requires IR procedures that address behaviour, not just infrastructure.
+The core problem: **AI incidents often involve behavioural failures rather than system compromises.** The model isn't "hacked" in the traditional sense - it's manipulated into behaving in ways that violate policy. This requires IR procedures that address behaviour, not just infrastructure.
 
 ---
 
@@ -47,8 +47,8 @@ Standard incident categories (malware, unauthorised access, data breach) don't a
 
 | Category | Description | Example |
 |----------|-------------|---------|
-| **Prompt injection — successful** | Attacker bypassed guardrails and manipulated model behaviour | Model disclosed system prompt, executed unintended tool calls |
-| **Prompt injection — attempted** | Guardrails or Judge detected injection attempt | Blocked injection, but technique is novel and needs analysis |
+| **Prompt injection - successful** | Attacker bypassed guardrails and manipulated model behaviour | Model disclosed system prompt, executed unintended tool calls |
+| **Prompt injection - attempted** | Guardrails or Judge detected injection attempt | Blocked injection, but technique is novel and needs analysis |
 | **Guardrail failure** | Guardrails passed content that should have been blocked | PII in output not caught, harmful content not filtered |
 | **Judge disagreement** | Judge flagged content that guardrails passed (or vice versa) at significant rates | Systemic gap between detection layers |
 | **Model behavioural drift** | Model behaviour shifted outside baseline parameters | Response quality degradation, topic drift, tone changes |
@@ -98,7 +98,7 @@ AI incidents are detected through the logging and monitoring infrastructure (LOG
 
 ## IR-03: Containment Procedures
 
-AI containment differs from traditional containment. You can't "quarantine" a stateless model — but you can restrict what reaches it and what it can do.
+AI containment differs from traditional containment. You can't "quarantine" a stateless model - but you can restrict what reaches it and what it can do.
 
 ### Containment Actions by Severity
 
@@ -135,7 +135,7 @@ The ability to rapidly roll back model deployments and update guardrails is crit
 - Pre-staged rollback artefacts for current-1 and current-2 model versions.
 - Guardrail rule hot-reload capability (update rules without restarting the guardrail service).
 - Blue/green or canary deployment for model updates, enabling rapid rollback.
-- Agent permission sets managed as configuration, not code — enabling runtime updates.
+- Agent permission sets managed as configuration, not code - enabling runtime updates.
 
 ---
 
@@ -152,7 +152,7 @@ AI incident investigation must account for non-determinism. The same input may n
 5. **Determine scope:** Was this an isolated incident or part of a pattern? Search logs for similar inputs, techniques, or user behaviour.
 6. **Assess impact:** What data was exposed, what actions were taken, what decisions were influenced? For agent incidents, reconstruct the full action chain.
 7. **Identify the control gap:** Which control failed? Was it a guardrail rule gap, a Judge criteria gap, a network bypass, or a permission misconfiguration?
-8. **Attempt reproduction:** Try to reproduce the behaviour in a sandboxed environment. Accept that non-determinism may prevent exact reproduction — focus on reproducing the *category* of failure.
+8. **Attempt reproduction:** Try to reproduce the behaviour in a sandboxed environment. Accept that non-determinism may prevent exact reproduction - focus on reproducing the *category* of failure.
 
 ---
 

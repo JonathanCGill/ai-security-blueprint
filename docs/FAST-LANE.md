@@ -6,7 +6,7 @@ description: Pre-approved AI security controls for low-risk deployments. If your
 
 *Pre-approved controls for low-risk AI. If your deployment qualifies, security has already said yes.*
 
-> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](core/risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers - Simplified Tier Mapping](core/risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
 
 ---
 
@@ -29,7 +29,7 @@ All four must be true. If any one fails, the deployment takes the standard path 
 | # | Criterion | What It Means | Why It Matters |
 |---|---|---|---|
 | 1 | **Internal users only** | The AI output is consumed exclusively by employees. No customer, partner, or public exposure. | Blast radius is limited to the organisation. Reputational and regulatory risk is minimal. |
-| 2 | **Read-only** | The AI system does not write to external systems, databases, APIs, or file stores. It generates text, summaries, analysis, or recommendations — but does not execute actions. | No irreversible side effects. If the output is wrong, nothing breaks except a human's document. |
+| 2 | **Read-only** | The AI system does not write to external systems, databases, APIs, or file stores. It generates text, summaries, analysis, or recommendations - but does not execute actions. | No irreversible side effects. If the output is wrong, nothing breaks except a human's document. |
 | 3 | **No regulated data** | The system does not process, generate, or have access to PII, financial records, health data, legal documents, or other data subject to regulatory requirements. | Eliminates compliance risk. No data breach, no regulatory notification, no audit trail requirements beyond standard logging. |
 | 4 | **Human always in the loop** | A human reviews the AI output before acting on it or passing it downstream. The AI is a tool, not a decision-maker. | The human is the final control layer. The AI's mistakes are caught before they have consequences. |
 
@@ -39,7 +39,7 @@ Some deployments will be close to the boundary. The intent is to be practical, n
 
 - **"Internal users only" but output gets emailed externally:** Not Fast Lane. The output reaches people outside the organisation.
 - **"Read-only" but saves to a shared drive:** Fast Lane, if the shared drive is internal and the save is initiated by the human, not the AI.
-- **"No regulated data" but employees paste in customer names:** Depends on jurisdiction. If customer names are PII in your regulatory context, not Fast Lane. If they're not, proceed — but add PII detection to the guardrails.
+- **"No regulated data" but employees paste in customer names:** Depends on jurisdiction. If customer names are PII in your regulatory context, not Fast Lane. If they're not, proceed - but add PII detection to the guardrails.
 - **"Human in the loop" but nobody actually reads the output:** This is an operational problem, not a control problem. The criterion is that the process *requires* review, not that every individual user performs it diligently. Address compliance through training, not control architecture.
 
 ---
@@ -60,7 +60,7 @@ These are the **only** controls required for a qualified Fast Lane deployment.
 
 ### 2. Usage Logging
 
-**What:** A log of every AI interaction — input, output, timestamp, user identity.
+**What:** A log of every AI interaction - input, output, timestamp, user identity.
 
 **Purpose:** Audit trail for post-hoc review, usage analytics, and incident investigation if something goes wrong. Not real-time evaluation.
 
@@ -78,7 +78,7 @@ These are the **only** controls required for a qualified Fast Lane deployment.
 
 ### 4. Known Fallback
 
-**What:** Documentation — even a single sentence — of what users do when the AI feature is off.
+**What:** Documentation - even a single sentence - of what users do when the AI feature is off.
 
 **Purpose:** Prevents the scenario where six months after deployment, nobody remembers how to do the task without the AI, and disabling the feature causes a work stoppage.
 
@@ -108,10 +108,10 @@ Even Fast Lane deployments get a PACE plan. It's just simple.
 
 | PACE Layer | Fast Lane Implementation |
 |---|---|
-| **P — Primary** | AI feature running with basic guardrails and usage logging. |
-| **A — Alternate** | Guardrail degraded → pass traffic, log everything, fix at next opportunity. (Fail-open is acceptable.) |
-| **C — Contingency** | Feature disabled via feature flag. Users revert to manual process. |
-| **E — Emergency** | Same as C. There's no scenario where "turn it off" isn't sufficient for a Fast Lane system. |
+| **P - Primary** | AI feature running with basic guardrails and usage logging. |
+| **A - Alternate** | Guardrail degraded → pass traffic, log everything, fix at next opportunity. (Fail-open is acceptable.) |
+| **C - Contingency** | Feature disabled via feature flag. Users revert to manual process. |
+| **E - Emergency** | Same as C. There's no scenario where "turn it off" isn't sufficient for a Fast Lane system. |
 
 Testing: Annually, confirm the feature flag works and the manual process is still known.
 
@@ -127,13 +127,13 @@ If there's ambiguity on any criterion, the deployment goes through standard Tier
 
 ### What If Conditions Change?
 
-If a Fast Lane deployment later evolves to violate any criterion — it starts processing PII, or its output reaches customers, or it gains write access — it **must** be re-assessed through [Risk Tiers](core/risk-tiers.md) before the change goes live. The Fast Lane qualification is not permanent; it applies to a specific configuration.
+If a Fast Lane deployment later evolves to violate any criterion - it starts processing PII, or its output reaches customers, or it gains write access - it **must** be re-assessed through [Risk Tiers](core/risk-tiers.md) before the change goes live. The Fast Lane qualification is not permanent; it applies to a specific configuration.
 
 The usage logs from the Fast Lane period are available to support the re-assessment.
 
 ### Periodic Review
 
-Fast Lane deployments should be reviewed annually to confirm they still meet all four criteria. This isn't a security assessment — it's a five-minute check: "Is it still internal? Still read-only? Still no regulated data? Still human-reviewed?" If yes, carry on. If no, re-assess.
+Fast Lane deployments should be reviewed annually to confirm they still meet all four criteria. This isn't a security assessment - it's a five-minute check: "Is it still internal? Still read-only? Still no regulated data? Still human-reviewed?" If yes, carry on. If no, re-assess.
 
 ---
 
@@ -146,18 +146,18 @@ Fast Lane deployments should be reviewed annually to confirm they still meet all
 - Research assistant that summarises internal documents (internal users, read-only, no regulated data, analyst reviews before including in reports)
 
 **Does not qualify:**
-- Customer service chatbot (external users — Tier 2+)
-- AI that auto-files support tickets (write access — standard Tier 1)
-- HR assistant that processes employee records (PII — standard Tier 1+)
-- Code generation tool that auto-commits to production (write access, no human review — Tier 2+)
-- Internal tool that summarises patient notes (health data — Tier 2+)
-- **Any multi-agent system** (multiple agents communicating, delegating, or acting autonomously — see [MASO Framework](maso/))
+- Customer service chatbot (external users - Tier 2+)
+- AI that auto-files support tickets (write access - standard Tier 1)
+- HR assistant that processes employee records (PII - standard Tier 1+)
+- Code generation tool that auto-commits to production (write access, no human review - Tier 2+)
+- Internal tool that summarises patient notes (health data - Tier 2+)
+- **Any multi-agent system** (multiple agents communicating, delegating, or acting autonomously - see [MASO Framework](maso/))
 
 ---
 
 ## Relationship to Risk Tiers
 
-The Fast Lane sits below Tier 1. It's not a separate classification — it's a **pre-qualification** that exempts a deployment from the full Tier 1 assessment process.
+The Fast Lane sits below Tier 1. It's not a separate classification - it's a **pre-qualification** that exempts a deployment from the full Tier 1 assessment process.
 
 ```
 Fast Lane  →  Tier 1  →  Tier 2  →  Tier 3
@@ -174,7 +174,7 @@ The Fast Lane reduces your workload by removing low-risk assessments from your q
 
 This trust is justified because:
 
-1. The criteria are restrictive — internal, read-only, unregulated, human-reviewed. A system that meets all four genuinely has low blast radius.
+1. The criteria are restrictive - internal, read-only, unregulated, human-reviewed. A system that meets all four genuinely has low blast radius.
 2. Usage logging provides a retrospective audit trail. If something goes wrong, you have the data to investigate.
 3. The annual review catches scope creep. A Fast Lane system that silently evolved into a Tier 2 system will be identified.
 4. The feature flag provides a reliable kill switch. If a Fast Lane system causes problems, one person can stop it in minutes.

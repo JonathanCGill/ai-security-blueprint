@@ -18,7 +18,7 @@
   
   <!-- Title -->
   <text x="350" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">Agent Sandbox</text>
-  <text x="350" y="50" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Infrastructure-level enforcement — don't rely on agent to limit itself</text>
+  <text x="350" y="50" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Infrastructure-level enforcement - don't rely on agent to limit itself</text>
   
   <!-- Outer boundary (blocked) -->
   <rect x="30" y="70" width="640" height="360" rx="12" fill="url(#diagonal)" stroke="#dc2626" stroke-width="3" stroke-dasharray="10,5"/>

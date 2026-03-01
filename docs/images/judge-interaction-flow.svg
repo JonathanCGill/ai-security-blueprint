@@ -11,7 +11,7 @@
   <rect width="850" height="380" fill="#f8fafc"/>
   
   <!-- Title -->
-  <text x="425" y="25" text-anchor="middle" class="title">Judge Evaluation — Interaction Flow</text>
+  <text x="425" y="25" text-anchor="middle" class="title">Judge Evaluation - Interaction Flow</text>
   
   <!-- Step 1: Interaction -->
   <rect x="30" y="55" width="120" height="60" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
