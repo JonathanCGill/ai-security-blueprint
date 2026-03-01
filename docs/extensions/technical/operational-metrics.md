@@ -286,6 +286,7 @@ For security team:
 - Predictive analytics
 - Automated remediation
 - Continuous improvement feedback loops
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

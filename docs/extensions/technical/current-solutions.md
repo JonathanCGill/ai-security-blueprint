@@ -500,6 +500,7 @@ This guide synthesizes publicly available documentation, research, and community
 - **OWASP** — LLM Top 10 and community contributions
 - **NIST** — AI Risk Management Framework
 - **The broader AI safety research community**
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

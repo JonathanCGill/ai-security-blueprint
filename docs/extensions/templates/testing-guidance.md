@@ -408,6 +408,7 @@ This testing guidance is a starting point, not a prescription. You'll need to ad
 3. **Human oversight** — Test that findings reach humans who can act
 
 How you implement these tests will vary. The need to test them will not.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

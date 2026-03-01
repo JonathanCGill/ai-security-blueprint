@@ -675,6 +675,7 @@ CreditAssist demonstrates CRITICAL-tier implementation with proper control separ
 - Satisfies regulatory requirements
 - Allows the Judge to operate async without impacting operations
 - Provides comprehensive audit trail
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

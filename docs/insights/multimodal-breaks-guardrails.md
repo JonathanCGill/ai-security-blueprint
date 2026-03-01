@@ -138,6 +138,7 @@ If you're deploying multimodal AI in production:
 - Constrain scope until controls mature
 
 The framework provides structure. Multimodal fills in that structure with uncertainty.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

@@ -240,6 +240,7 @@ The controls, patterns, and examples that follow are for systems where AI genuin
 - [Why Guardrails Aren't Enough](./why-guardrails-arent-enough.md) — The limits of inline controls
 - [Humans Remain Accountable](./humans-remain-accountable.md) — Review workflow realities
 - [Risk Tiers](../core/risk-tiers.md) — Determining appropriate control intensity
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

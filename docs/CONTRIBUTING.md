@@ -174,6 +174,7 @@ If you're unsure about anything:
 3. Tag it with `question`
 
 We're happy to help guide your contribution.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

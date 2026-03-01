@@ -124,6 +124,7 @@ If your agent security strategy is "we wrote really good instructions," you don'
 Instructions express intent. Infrastructure enforces it.
 
 Build both. Trust only the second.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

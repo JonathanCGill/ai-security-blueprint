@@ -332,6 +332,7 @@ The question isn't just "did we catch the bad request?" It's "is the agent behav
 - [Judge Detects, Not Decides](./judge-detects-not-decides.md) — Async evaluation for pattern analysis
 - [Current Solutions Reference](../extensions/technical/current-solutions.md) — Platforms implementing this
 - [Beyond Security](./beyond-security.md) — How the framework's architecture applies to drift, fairness, and other AI risks beyond security
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

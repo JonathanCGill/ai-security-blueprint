@@ -569,6 +569,7 @@ Agentic AI requires controls at three phases:
 - HITL → Plan approval + circuit breaker response + trajectory review
 
 **Key principle remains:** Humans decide. Agents act within approved boundaries. Execution is constrained by circuit breakers. Trajectories are evaluated. Findings are reviewed.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

@@ -79,6 +79,7 @@ Regardless of which topics enter scope in future releases, the framework's core 
 - **Defence-in-depth through complementary layers.** No single layer is sufficient. The value is in the combination.
 - **Proportionality to risk.** Not every system needs every control. Risk tiers exist for a reason.
 - **Practical over theoretical.** If it can't be implemented by an engineering team with a deadline, it doesn't belong in this framework.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

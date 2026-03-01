@@ -158,6 +158,7 @@ Design systems where humans:
 Automate the analysis. Keep humans in the loop for decisions.
 
 Because when the regulator calls, "the AI did it" isn't an answer.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

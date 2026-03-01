@@ -670,6 +670,7 @@ index=ai_gateway status=403
 4. **Log everything** — Full visibility for detection and forensics
 5. **Layer controls** — Network + gateway + WAF + DLP + endpoint
 6. **Automate enforcement** — Don't rely on user compliance
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

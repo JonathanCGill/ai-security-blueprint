@@ -189,6 +189,7 @@ What's been missing: clear guidance on *why* this pattern is necessary and *how*
 4. **Infrastructure beats instructions** — Enforce technically, not via prompts
 5. **Assume bypasses happen** — Design for detection, not just prevention
 6. **Humans remain accountable** — AI assists; humans own outcomes
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

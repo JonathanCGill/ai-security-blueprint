@@ -416,6 +416,7 @@ This template is a starting point. Your threat model needs to reflect:
 - Your existing controls
 
 **The framework provides principles. You provide the specifics.**
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

@@ -170,6 +170,7 @@ Stop asking "what model is this?" Start asking "what does it do, to whom, with w
 Risk lives in deployment, not technology.
 
 Classify accordingly.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

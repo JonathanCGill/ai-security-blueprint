@@ -64,6 +64,7 @@ For API-accessed models (OpenAI, Anthropic, etc.), you cannot verify model integ
 For self-hosted models, you have more control but more responsibility. You own the full chain from download to deployment.
 
 Neither is inherently safer. Both need explicit controls.
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*

@@ -40,6 +40,7 @@ Gill, J. (2025). *AI Runtime Behaviour Security: Runtime behavioral controls for
 ## IEEE
 
 J. Gill, "AI Runtime Behaviour Security: Runtime Behavioral Controls for Generative and Agentic AI Systems," 2025. [Online]. Available: https://github.com/JonathanCGill/ai-runtime-behaviour-security
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*
