@@ -66,7 +66,7 @@ Rationale: High autonomy (auto-send) + irreversibility (can't unsend) + scale (m
 
 ### Traditional Thinking (Broken)
 
-The typical pattern — generate, send, log, then evaluate hours later — doesn't work. By the time nearline evaluation catches a problem, thousands of messages are already delivered.
+The typical pattern - generate, send, log, then evaluate hours later - doesn't work. By the time nearline evaluation catches a problem, thousands of messages are already delivered.
 
 ### Time-Band Thinking (Required)
 
@@ -92,7 +92,7 @@ Controls must match the **reversibility window**. For communications:
 
 **Implementation:**
 
-See the inline flow in the architecture diagram below — requests pass through rate limiting, schema validation, guardrails, generation, output checks, and DLP before the auto-send decision.
+See the inline flow in the architecture diagram below - requests pass through rate limiting, schema validation, guardrails, generation, output checks, and DLP before the auto-send decision.
 
 **Latency budget:** 100ms total for inline checks.
 
@@ -133,10 +133,10 @@ Events flow through EventBridge to Kinesis, then to an aggregator that feeds ale
 
 | Time | Event | Action |
 |------|-------|--------|
-| 10:00:00 | New prompt version deployed | — |
-| 10:00:15 | First messages generated | — |
+| 10:00:00 | New prompt version deployed | - |
+| 10:00:15 | First messages generated | - |
 | 10:00:30 | Aggregator sees 12% soft-hit rate (baseline: 2%) | Threshold breached |
-| 10:00:35 | Alert fires: "Guardrail anomaly on intent:payment_reminder" | — |
+| 10:00:35 | Alert fires: "Guardrail anomaly on intent:payment_reminder" | - |
 | 10:00:40 | Circuit breaker triggers | Intent moves to draft-only |
 | 10:00:45 | Ops notified | Investigation begins |
 
@@ -157,7 +157,7 @@ Events flow through EventBridge to Kinesis, then to an aggregator that feeds ale
 
 **Implementation:**
 
-Message logs are sampled, evaluated by LLM-as-Judge, and stored in a findings database. QA dashboards and anomaly jobs drive policy updates — guardrail rules, prompt improvements, and training data refinements.
+Message logs are sampled, evaluated by LLM-as-Judge, and stored in a findings database. QA dashboards and anomaly jobs drive policy updates - guardrail rules, prompt improvements, and training data refinements.
 
 **Why delays don't break safety:** These controls don't stop individual messages. They improve the system over time.
 

@@ -37,7 +37,7 @@
   <rect width="1500" height="1050" fill="#fafaf8"/>
   
   <!-- Title -->
-  <text x="750" y="32" text-anchor="middle" class="title">AI SOLUTION — DATA FLOW THREAT MODEL</text>
+  <text x="750" y="32" text-anchor="middle" class="title">AI SOLUTION - DATA FLOW THREAT MODEL</text>
   <text x="750" y="50" text-anchor="middle" class="subtitle">Trust boundaries, data flows, and attack paths for enterprise AI deployments</text>
 
   <!-- ================================================================ -->
@@ -133,7 +133,7 @@
   <text x="930" y="90" text-anchor="middle" class="tb-label">TB3: DATA ZONE</text>
   <text x="930" y="103" text-anchor="middle" class="tb-sub">Knowledge, embeddings, logs</text>
   
-  <!-- Product Data / Knowledge Base (data store — parallel lines) -->
+  <!-- Product Data / Knowledge Base (data store - parallel lines) -->
   <line x1="815" y1="140" x2="945" y2="140" stroke="#92400e" stroke-width="2"/>
   <rect x="815" y="142" width="130" height="48" fill="#fef3c7" stroke="none"/>
   <line x1="815" y1="190" x2="945" y2="190" stroke="#92400e" stroke-width="2"/>
@@ -430,22 +430,22 @@
   <text x="520" y="745" class="legend-head">TRUST BOUNDARIES</text>
   
   <line x1="520" y1="760" x2="550" y2="760" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="6,4"/>
-  <text x="558" y="764" class="legend-text">TB0: Internet — untrusted, all external traffic</text>
+  <text x="558" y="764" class="legend-text">TB0: Internet - untrusted, all external traffic</text>
   
   <line x1="520" y1="780" x2="550" y2="780" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6,4"/>
-  <text x="558" y="784" class="legend-text">TB1: DMZ — perimeter controls, authentication</text>
+  <text x="558" y="784" class="legend-text">TB1: DMZ - perimeter controls, authentication</text>
   
   <line x1="520" y1="800" x2="550" y2="800" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="6,4"/>
-  <text x="558" y="804" class="legend-text">TB2: AI Processing — guardrails, LLM, judge (the framework scope)</text>
+  <text x="558" y="804" class="legend-text">TB2: AI Processing - guardrails, LLM, judge (the framework scope)</text>
   
   <line x1="520" y1="820" x2="550" y2="820" stroke="#d97706" stroke-width="2.5" stroke-dasharray="6,4"/>
-  <text x="558" y="824" class="legend-text">TB3: Data Zone — knowledge base, vectors, logs, alerts</text>
+  <text x="558" y="824" class="legend-text">TB3: Data Zone - knowledge base, vectors, logs, alerts</text>
   
   <line x1="520" y1="840" x2="550" y2="840" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="6,4"/>
-  <text x="558" y="844" class="legend-text">TB4: Internal — SOC, support, model ops (privileged users)</text>
+  <text x="558" y="844" class="legend-text">TB4: Internal - SOC, support, model ops (privileged users)</text>
   
   <line x1="520" y1="860" x2="550" y2="860" stroke="#9333ea" stroke-width="2.5" stroke-dasharray="6,4"/>
-  <text x="558" y="864" class="legend-text">TB5: Downstream — systems that act on AI output</text>
+  <text x="558" y="864" class="legend-text">TB5: Downstream - systems that act on AI output</text>
   
   <!-- Col 4: Attack paths summary -->
   <line x1="960" y1="730" x2="960" y2="880" stroke="#e2e8f0" stroke-width="1"/>
@@ -461,7 +461,7 @@
   <text x="1000" y="794" class="legend-text">Data exfiltration via response (TB2→TB0)</text>
   
   <text x="980" y="810" class="legend-text" fill="#dc2626" font-weight="bold">A4</text>
-  <text x="1000" y="810" class="legend-text">RAG poisoning — insider/supply chain (TB4→TB3)</text>
+  <text x="1000" y="810" class="legend-text">RAG poisoning - insider/supply chain (TB4→TB3)</text>
   
   <text x="980" y="826" class="legend-text" fill="#dc2626" font-weight="bold">A5</text>
   <text x="1000" y="826" class="legend-text">Downstream exploitation (TB0→TB5 via LLM)</text>
@@ -473,7 +473,7 @@
   <text x="1000" y="858" class="legend-text">Multi-turn context manipulation (TB0↔TB1)</text>
   
   <text x="980" y="874" class="legend-text" fill="#dc2626" font-weight="bold">A8</text>
-  <text x="1000" y="874" class="legend-text">Insider threat — support/ops (TB4→TB3)</text>
+  <text x="1000" y="874" class="legend-text">Insider threat - support/ops (TB4→TB3)</text>
   
   <text x="980" y="890" class="legend-text" fill="#dc2626" font-weight="bold">A9</text>
   <text x="1000" y="890" class="legend-text">Telemetry/log tampering (within TB3)</text>
@@ -489,5 +489,5 @@
   <text x="60" y="962" class="legend-head" fill="#166534">FRAMEWORK MAPPING</text>
   <text x="200" y="962" class="legend-text">TB2 maps to the Runtime line (green) on the AI Security Reference Architecture tube map.</text>
   <text x="200" y="976" class="legend-text">Controls: Input Guardrails → Output Guardrails → Judge → HITL. The three-layer pattern (guardrails prevent, judge detects, humans decide) addresses A1, A3, A6.</text>
-  <text x="200" y="990" class="legend-text">A2 (indirect injection) and A4 (RAG poisoning) require Data Zone controls — mapped to the Monitoring line (teal) and Verification line (cyan).</text>
+  <text x="200" y="990" class="legend-text">A2 (indirect injection) and A4 (RAG poisoning) require Data Zone controls - mapped to the Monitoring line (teal) and Verification line (cyan).</text>
 </svg>

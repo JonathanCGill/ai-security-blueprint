@@ -1,7 +1,7 @@
 # Azure AI Implementation Patterns
 
 > **Purpose:** Platform-specific guidance for implementing the infrastructure controls on Azure using Azure OpenAI Service and Azure AI Studio as the model hosting platforms.  
-> **Status:** Reference patterns — adapt to your specific architecture and Azure subscription structure.
+> **Status:** Reference patterns - adapt to your specific architecture and Azure subscription structure.
 
 ---
 
@@ -9,12 +9,12 @@
 
 | Framework Zone | Azure Implementation |
 |---------------|---------------------|
-| **Zone 1 — Ingress** | Azure API Management (APIM) + Azure Front Door + Azure WAF |
-| **Zone 2 — Runtime** | Azure OpenAI Service (inference), Azure AI Content Safety, Azure AI Search (vector read) |
-| **Zone 3 — Evaluation** | Separate Azure OpenAI deployment (Judge) in isolated resource group/subscription |
-| **Zone 4 — Ingestion** | Azure Functions / Azure Data Factory + Azure AI Search (vector write), Azure AI Document Intelligence |
-| **Zone 5 — Control Plane** | Azure Key Vault, Azure Policy, Azure RBAC, Entra ID Privileged Identity Management |
-| **Zone 6 — Logging** | Azure Monitor / Log Analytics, Azure Storage (log archive), Microsoft Sentinel |
+| **Zone 1 - Ingress** | Azure API Management (APIM) + Azure Front Door + Azure WAF |
+| **Zone 2 - Runtime** | Azure OpenAI Service (inference), Azure AI Content Safety, Azure AI Search (vector read) |
+| **Zone 3 - Evaluation** | Separate Azure OpenAI deployment (Judge) in isolated resource group/subscription |
+| **Zone 4 - Ingestion** | Azure Functions / Azure Data Factory + Azure AI Search (vector write), Azure AI Document Intelligence |
+| **Zone 5 - Control Plane** | Azure Key Vault, Azure Policy, Azure RBAC, Entra ID Privileged Identity Management |
+| **Zone 6 - Logging** | Azure Monitor / Log Analytics, Azure Storage (log archive), Microsoft Sentinel |
 
 ---
 
@@ -22,21 +22,21 @@
 
 ### IAM-01/02: Authentication and Least Privilege
 
-- Use **Entra ID (Azure AD)** for all identities — human and service.
-- Azure OpenAI access via **Managed Identity** — no API key in application code.
+- Use **Entra ID (Azure AD)** for all identities - human and service.
+- Azure OpenAI access via **Managed Identity** - no API key in application code.
 - **Azure RBAC** custom roles: `Cognitive Services OpenAI User` (invoke only), `Cognitive Services OpenAI Contributor` (manage deployments).
-- Use **Entra ID Conditional Access** for human access to control plane — MFA, compliant device, trusted location.
+- Use **Entra ID Conditional Access** for human access to control plane - MFA, compliant device, trusted location.
 
 ### IAM-03: Control/Data Plane Separation
 
 - **Separate Azure subscriptions** for control plane and runtime.
 - **Azure Policy** assignments prevent runtime subscriptions from modifying AI service configurations.
 - Use **Entra ID Privileged Identity Management (PIM)** for just-in-time access to control plane roles.
-- Azure OpenAI model deployment changes require PIM elevation — not available via runtime identity.
+- Azure OpenAI model deployment changes require PIM elevation - not available via runtime identity.
 
 ### IAM-04/05: Agent Tool Constraints
 
-- Azure AI Agent Service supports **function definitions** — each function is a declared tool.
+- Azure AI Agent Service supports **function definitions** - each function is a declared tool.
 - Use **Azure Functions** with per-function Managed Identity scoped to specific backend APIs.
 - Implement approval routing via **Azure Logic Apps** with human approval connector or **Power Automate** approval flow.
 - **APIM policies** validate tool invocation requests at gateway layer.
@@ -55,13 +55,13 @@
 
 - Enable **Azure OpenAI diagnostic logging** to Log Analytics workspace.
 - Capture: `RequestResponse` log category for full prompt/completion logging.
-- **Important:** Azure OpenAI can log prompts and completions — enable only with PII handling in place.
+- **Important:** Azure OpenAI can log prompts and completions - enable only with PII handling in place.
 - Use **Azure Monitor data collection rules** to route logs to appropriate destinations.
 
 ### LOG-02/03: Guardrail and Judge Logging
 
-- **Azure AI Content Safety** API returns category scores and severity — log these with the request.
-- Custom guardrail logic via **APIM policies** — log policy evaluation results.
+- **Azure AI Content Safety** API returns category scores and severity - log these with the request.
+- Custom guardrail logic via **APIM policies** - log policy evaluation results.
 - Judge invocations logged as separate Azure OpenAI calls to a distinct deployment.
 
 ### LOG-04: Agent Decision Chains
@@ -79,7 +79,7 @@
 
 ### LOG-10: SIEM Integration
 
-- **Microsoft Sentinel** as native SIEM — direct ingestion from Log Analytics.
+- **Microsoft Sentinel** as native SIEM - direct ingestion from Log Analytics.
 - For third-party SIEM: use **Azure Event Hubs** export from Log Analytics.
 - Sentinel **custom analytics rules** for AI incident detection (IR-02 triggers).
 
@@ -90,14 +90,14 @@
 ### NET-01: Network Zones
 
 - Use **Azure Virtual Networks (VNets)** with Network Security Groups (NSGs) for zone segmentation.
-- Azure OpenAI access via **Private Endpoints** — no public internet exposure.
+- Azure OpenAI access via **Private Endpoints** - no public internet exposure.
 - **VNet service endpoints** or **Private Link** for Azure AI Search access.
 - Separate VNets for runtime and ingestion with **VNet peering** only where required (vector store replication).
 
 ### NET-02: Guardrail Bypass Prevention
 
 - Azure OpenAI **content filtering** is enabled by default on all deployments.
-- For custom guardrails: implement in **APIM policies** — all requests route through APIM.
+- For custom guardrails: implement in **APIM policies** - all requests route through APIM.
 - **NSG rules** ensure Azure OpenAI private endpoint is only reachable from the APIM subnet.
 - **Azure Policy** to deny Azure OpenAI deployments without content filtering.
 
@@ -105,12 +105,12 @@
 
 - Judge Azure OpenAI deployment in a **separate resource group** with separate VNet.
 - Communication via **Private Endpoint** from runtime VNet to Judge VNet (one-way).
-- Alternatively, async evaluation via **Azure Service Bus** queue — runtime pushes evaluation data, Judge pulls.
+- Alternatively, async evaluation via **Azure Service Bus** queue - runtime pushes evaluation data, Judge pulls.
 
 ### NET-04: Agent Egress Controls
 
 - Agent compute runs in **VNet-integrated Azure Functions** (Premium plan).
-- No default internet access — outbound via **Azure Firewall** with FQDN-based rules.
+- No default internet access - outbound via **Azure Firewall** with FQDN-based rules.
 - **Azure Firewall application rules** implement the egress destination allowlist.
 - **NSG flow logs** captured for cross-zone traffic monitoring (NET-08).
 
@@ -146,7 +146,7 @@
 ### SEC-01/03: Vault and Context Isolation
 
 - **Azure Key Vault** for all AI system secrets.
-- Access via **Managed Identity** — no credentials in application code or configuration.
+- Access via **Managed Identity** - no credentials in application code or configuration.
 - Key Vault **access policies** or **RBAC** restrict which identities can read which secrets.
 - **Key Vault diagnostics** log all secret access for auditing.
 
@@ -162,9 +162,9 @@
 
 ### IR-04: Rollback
 
-- Azure OpenAI deployments are **versioned** — rollback by repointing to previous model version.
-- APIM policy **revisions** — rollback guardrail policies to previous revision.
-- Azure AI Search index **aliases** — point to previous known-good index.
+- Azure OpenAI deployments are **versioned** - rollback by repointing to previous model version.
+- APIM policy **revisions** - rollback guardrail policies to previous revision.
+- Azure AI Search index **aliases** - point to previous known-good index.
 - **Azure DevOps pipelines** with approval gates for all AI component deployments.
 
 ---
@@ -175,9 +175,9 @@
 |--------------|---------|
 | **Content filtering** | Azure OpenAI has mandatory content filtering that can be modified via Azure AI Content Safety. Understand the default filters and supplement with custom rules. |
 | **Responsible AI** | Azure requires Responsible AI use case approval for certain model capabilities. Factor this into SUP-02 model risk assessment. |
-| **Data residency** | Azure OpenAI processes data in the region of deployment. Azure AI Content Safety may process in different regions — verify data residency requirements. |
-| **Provisioned throughput** | For consistent performance, use provisioned throughput units (PTUs) — avoids token-based throttling that could affect guardrail latency. |
-| **Entra ID integration** | Leverage Entra ID deeply — Conditional Access, PIM, and workload identity provide strong IAM-01 through IAM-06 implementation. |
+| **Data residency** | Azure OpenAI processes data in the region of deployment. Azure AI Content Safety may process in different regions - verify data residency requirements. |
+| **Provisioned throughput** | For consistent performance, use provisioned throughput units (PTUs) - avoids token-based throttling that could affect guardrail latency. |
+| **Entra ID integration** | Leverage Entra ID deeply - Conditional Access, PIM, and workload identity provide strong IAM-01 through IAM-06 implementation. |
 
 ---
 

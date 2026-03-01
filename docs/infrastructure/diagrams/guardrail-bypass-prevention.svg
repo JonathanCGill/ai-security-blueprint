@@ -14,11 +14,11 @@
   <rect width="880" height="380" rx="8" fill="#0d1117"/>
 
   <!-- Title -->
-  <text x="440" y="30" text-anchor="middle" fill="#e6e6e6" font-size="18" font-weight="700">Guardrail Bypass Prevention — NET-02</text>
-  <text x="440" y="50" text-anchor="middle" fill="#8b949e" font-size="11">Network policy enforces guardrail traversal — not application routing</text>
+  <text x="440" y="30" text-anchor="middle" fill="#e6e6e6" font-size="18" font-weight="700">Guardrail Bypass Prevention - NET-02</text>
+  <text x="440" y="50" text-anchor="middle" fill="#8b949e" font-size="11">Network policy enforces guardrail traversal - not application routing</text>
 
   <!-- ===== CORRECT PATH (top) ===== -->
-  <text x="40" y="85" fill="#4ecca3" font-size="12" font-weight="700">✅ CORRECT — Network-enforced path</text>
+  <text x="40" y="85" fill="#4ecca3" font-size="12" font-weight="700">✅ CORRECT - Network-enforced path</text>
 
   <!-- Consumer -->
   <rect x="40" y="100" width="110" height="45" rx="5" fill="#1a3a5c" stroke="#4ecca3" stroke-width="1" filter="url(#shadow)"/>
@@ -61,7 +61,7 @@
   <text x="835" y="127" text-anchor="middle" fill="#4ecca3" font-size="10" font-weight="600">✅</text>
 
   <!-- ===== BLOCKED PATH (bottom) ===== -->
-  <text x="40" y="205" fill="#e94560" font-size="12" font-weight="700">🚫 BLOCKED — Direct access attempts denied at network layer</text>
+  <text x="40" y="205" fill="#e94560" font-size="12" font-weight="700">🚫 BLOCKED - Direct access attempts denied at network layer</text>
 
   <!-- Attempt 1: Consumer → Model directly -->
   <rect x="40" y="225" width="110" height="45" rx="5" fill="#1a3a5c" stroke="#e94560" stroke-width="1" filter="url(#shadow)"/>

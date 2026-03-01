@@ -67,7 +67,7 @@ Instead of telling the agent what not to do, make it impossible.
 | "Only call these three APIs" | Network allowlist blocks everything else |
 | "Don't run for more than 10 minutes" | Process timeout kills execution |
 
-The difference is enforcement location. Instructions are enforced by the agent — which means they're not really enforced at all. Infrastructure is enforced outside the agent — which means the agent can't circumvent it regardless of instructions, manipulation, or intent.
+The difference is enforcement location. Instructions are enforced by the agent - which means they're not really enforced at all. Infrastructure is enforced outside the agent - which means the agent can't circumvent it regardless of instructions, manipulation, or intent.
 
 ---
 
@@ -79,7 +79,7 @@ The agent's runtime environment can only reach allowlisted endpoints. Everything
 
 ### Data access controls
 
-The agent authenticates with credentials that have minimal scope. It literally cannot query tables outside its authorisation. Not "shouldn't" — cannot.
+The agent authenticates with credentials that have minimal scope. It literally cannot query tables outside its authorisation. Not "shouldn't" - cannot.
 
 ### Action allow-lists
 
@@ -113,7 +113,7 @@ Prompt engineering asks: "How do I tell the AI what to do?"
 
 Systems engineering asks: "How do I make undesired outcomes impossible regardless of what the AI tries to do?"
 
-The second question is harder. It requires understanding failure modes, designing constraints, and accepting that the agent is not trustworthy — not because it's malicious, but because it's unpredictable.
+The second question is harder. It requires understanding failure modes, designing constraints, and accepting that the agent is not trustworthy - not because it's malicious, but because it's unpredictable.
 
 ---
 

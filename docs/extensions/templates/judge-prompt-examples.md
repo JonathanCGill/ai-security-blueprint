@@ -338,7 +338,7 @@ For each PII instance found:
 ## Hallucination Detection Prompt
 
 ```
-You are evaluating an AI response for hallucination — content that appears factual but is not supported by the provided context.
+You are evaluating an AI response for hallucination - content that appears factual but is not supported by the provided context.
 
 ## Interaction
 **User Query:** {user_input}
@@ -397,7 +397,7 @@ You are evaluating an AI response for hallucination — content that appears fac
 ### Trajectory Evaluation
 
 ```
-You are evaluating an AI agent's execution trajectory — the sequence of actions it took to accomplish a task.
+You are evaluating an AI agent's execution trajectory - the sequence of actions it took to accomplish a task.
 
 ## Task
 **Original Goal:** {goal}

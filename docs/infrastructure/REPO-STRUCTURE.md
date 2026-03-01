@@ -1,4 +1,4 @@
-# AI Security Infrastructure Controls — Repo Structure
+# AI Security Infrastructure Controls - Repo Structure
 
 > Complements [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security), which defines the *behavioral* security pattern (Guardrails → LLM-as-Judge → Human Oversight). This repo defines the *infrastructure* controls that make that pattern enforceable.
 
@@ -78,7 +78,7 @@ ai-security-infrastructure-controls/
 2. **Three-layer alignment.** Every technical control maps back to how it enables or strengthens the Guardrails → Judge → Human Oversight pattern.
 3. **Risk-tiered.** Controls specify which risk tiers (from the parent framework) they apply to, so implementers can right-size.
 4. **Practitioner audience.** Written for security architects and engineers who will implement these controls. Not executive summaries.
-5. **Agentic AI treated separately.** Agentic systems introduce trust delegation, tool invocation, and autonomous action — these deserve their own control domain.
+5. **Agentic AI treated separately.** Agentic systems introduce trust delegation, tool invocation, and autonomous action - these deserve their own control domain.
 6. **Infrastructure beats instructions.** Security controls enforced via deterministic infrastructure (gateways, network policy, vaults), never via prompt instructions.
 
 ## Implementation Sequence

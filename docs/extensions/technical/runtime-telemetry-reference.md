@@ -137,9 +137,9 @@ Input guardrails run before the request reaches the model. Output guardrails run
 
 | Check | Block Threshold | Flag Threshold | This Request |
 |---|---|---|---|
-| Prompt injection | confidence > 0.85 | confidence > 0.60 | 0.12 — pass |
-| Financial advice | confidence > 0.95 | confidence > 0.70 | 0.78 — flag, add disclaimer |
-| PII leakage | confidence > 0.80 | confidence > 0.50 | 0.03 — pass |
+| Prompt injection | confidence > 0.85 | confidence > 0.60 | 0.12 - pass |
+| Financial advice | confidence > 0.95 | confidence > 0.70 | 0.78 - flag, add disclaimer |
+| PII leakage | confidence > 0.80 | confidence > 0.50 | 0.03 - pass |
 
 **Evidence produced:** Guardrail effectiveness measurement (Art. 9 risk mitigation), content modification audit trail.
 
@@ -275,7 +275,7 @@ AISecurity_CL
 | project TimeGenerated, request_id_s, user_identity_s, judge_score=overall_score_d
 ```
 
-**What this detects:** Guardrails passed the request, but the Judge flagged it. This is a guardrail gap — the pattern the guardrail doesn't recognise. Feed these back into guardrail tuning.
+**What this detects:** Guardrails passed the request, but the Judge flagged it. This is a guardrail gap - the pattern the guardrail doesn't recognise. Feed these back into guardrail tuning.
 
 ### Detect escalation volume spike (Splunk)
 

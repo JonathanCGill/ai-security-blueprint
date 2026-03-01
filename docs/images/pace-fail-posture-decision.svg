@@ -136,5 +136,5 @@
   <text x="80" y="496" font-size="10" fill="#e74c3c" font-weight="bold">Tier 3:</text>
   <text x="130" y="496" font-size="10" fill="#2c3e50">Fail-closed always. No AI traffic passes a degraded control. Immediate escalation.</text>
 
-  <text x="410" y="515" text-anchor="middle" font-size="9" fill="#95a5a6">AI Runtime Behaviour Security — Fail Posture Decision Tree © Jonathan Gill 2025</text>
+  <text x="410" y="515" text-anchor="middle" font-size="9" fill="#95a5a6">AI Runtime Behaviour Security - Fail Posture Decision Tree © Jonathan Gill 2025</text>
 </svg>

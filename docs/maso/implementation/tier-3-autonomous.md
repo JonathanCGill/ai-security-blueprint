@@ -1,4 +1,4 @@
-# Tier 3 — Autonomous Multi-Agent Deployment
+# Tier 3 - Autonomous Multi-Agent Deployment
 
 **High Autonomy · Exception-Based Human Oversight · Adversarial-Tested Operations**
 
@@ -9,7 +9,7 @@
 
 ## When to Use Tier 3
 
-Tier 3 is for multi-agent systems that have earned the right to operate with minimal human intervention. This is not an aspiration — it is a privilege granted through demonstrated trustworthiness, rigorous adversarial testing, and sustained operational evidence.
+Tier 3 is for multi-agent systems that have earned the right to operate with minimal human intervention. This is not an aspiration - it is a privilege granted through demonstrated trustworthiness, rigorous adversarial testing, and sustained operational evidence.
 
 At Tier 3, agents operate autonomously for pre-approved task categories. Human oversight shifts from supervising individual actions to strategic review, exception handling, and governance. The system is expected to detect, contain, and in many cases resolve its own anomalies through the full PACE cycle before a human needs to intervene.
 
@@ -42,20 +42,20 @@ Key architectural changes from Tier 2:
 
 **Full blast radius enforcement.** Every agent and every orchestration has hard caps on impact scope that are enforced at the infrastructure level, not by the agent itself. An agent cannot override its own blast radius cap through any mechanism.
 
-**Adversarial testing programme.** Regular red team exercises are not a one-off Tier 2 graduation requirement — they are an ongoing operational discipline at Tier 3. The system is continuously tested against evolving attack techniques.
+**Adversarial testing programme.** Regular red team exercises are not a one-off Tier 2 graduation requirement - they are an ongoing operational discipline at Tier 3. The system is continuously tested against evolving attack techniques.
 
 ---
 
 ## Control Implementation by MASO Domain
 
-### 1. Identity & Access — Tier 3 Requirements
+### 1. Identity & Access - Tier 3 Requirements
 
 **All Tier 2 controls remain active, plus:**
 
 - **Credential rotation under 1 hour for all agents.** No agent holds credentials for longer than 60 minutes, regardless of privilege level. High-privilege agents (those with write access to production systems) rotate credentials every 15 minutes.
-- **Behavioural binding on NHI.** The NHI is not just a static certificate — it includes a behavioural profile. If an agent's behaviour deviates significantly from its NHI-bound profile (e.g., an agent defined as "read-heavy, low-latency" starts making high-volume write calls), the NHI system flags the mismatch independently of the drift detection system, providing a second detection layer.
+- **Behavioural binding on NHI.** The NHI is not just a static certificate - it includes a behavioural profile. If an agent's behaviour deviates significantly from its NHI-bound profile (e.g., an agent defined as "read-heavy, low-latency" starts making high-volume write calls), the NHI system flags the mismatch independently of the drift detection system, providing a second detection layer.
 - **Delegation contracts.** When Agent A delegates a task to Agent B, a signed delegation contract is created that explicitly defines: the scope of the delegated task, the maximum permissions Agent B can use for this task, the time limit for completion, and the expected output format. Agent B cannot exceed the contract scope.
-- **Automated credential revocation on anomaly.** If the monitoring system detects anomalous behaviour, the NHI system can revoke the agent's credentials within 30 seconds without human intervention — faster than the full PACE transition sequence.
+- **Automated credential revocation on anomaly.** If the monitoring system detects anomalous behaviour, the NHI system can revoke the agent's credentials within 30 seconds without human intervention - faster than the full PACE transition sequence.
 
 **Implementation checklist:**
 
@@ -69,12 +69,12 @@ Key architectural changes from Tier 2:
 
 ---
 
-### 2. Data Protection — Tier 3 Requirements
+### 2. Data Protection - Tier 3 Requirements
 
 **All Tier 2 controls remain active, plus:**
 
 - **Real-time RAG integrity monitoring.** Checksums are verified not just periodically but at query time. If a RAG document's checksum does not match the expected value at the moment an agent retrieves it, the retrieval is blocked and the event is escalated.
-- **Memory decay policies.** Agent persistent memory has a defined maximum retention window. Memory entries older than the window are automatically purged. This limits the impact of memory poisoning — even if poisoned data enters memory, it has a finite lifespan.
+- **Memory decay policies.** Agent persistent memory has a defined maximum retention window. Memory entries older than the window are automatically purged. This limits the impact of memory poisoning - even if poisoned data enters memory, it has a finite lifespan.
 - **Cross-session memory analysis.** An independent analysis agent periodically reviews stored memory entries for consistency, coherence, and potential poisoning indicators. This agent operates on a separate infrastructure from the task agents and cannot be influenced by them.
 - **Data provenance chain.** Every piece of data in the system carries provenance metadata: where it originated, when, through which agent, and how it has been transformed. This enables root cause tracing when data integrity issues are detected.
 
@@ -88,12 +88,12 @@ Key architectural changes from Tier 2:
 
 ---
 
-### 3. Execution Control — Tier 3 Requirements
+### 3. Execution Control - Tier 3 Requirements
 
 **All Tier 2 controls remain active, plus:**
 
-- **Infrastructure-enforced blast radius caps.** At Tier 2, blast radius caps are defined and monitored. At Tier 3, they are enforced at the infrastructure level — the underlying platform (not the agent or orchestrator) prevents any single agent from exceeding its defined impact scope. This is analogous to operating system-level resource limits that a process cannot override regardless of what code it runs.
-- **Autonomous circuit breaker with self-healing.** When a circuit breaker engages at Tier 3, the system doesn't just pause the agent — it initiates the PACE P→A transition automatically, activates the backup agent, and returns to Primary once the backup demonstrates stable behaviour. This self-healing loop can repeat up to a configured maximum (recommended: 3 cycles in 24 hours) before automatic escalation to Contingency.
+- **Infrastructure-enforced blast radius caps.** At Tier 2, blast radius caps are defined and monitored. At Tier 3, they are enforced at the infrastructure level - the underlying platform (not the agent or orchestrator) prevents any single agent from exceeding its defined impact scope. This is analogous to operating system-level resource limits that a process cannot override regardless of what code it runs.
+- **Autonomous circuit breaker with self-healing.** When a circuit breaker engages at Tier 3, the system doesn't just pause the agent - it initiates the PACE P→A transition automatically, activates the backup agent, and returns to Primary once the backup demonstrates stable behaviour. This self-healing loop can repeat up to a configured maximum (recommended: 3 cycles in 24 hours) before automatic escalation to Contingency.
 - **Multi-model cross-validation for high-consequence actions.** For actions classified as high-consequence (based on the action classification engine), the output is validated by both the LLM-as-Judge AND a second independent model before execution. Disagreement between the validators triggers human escalation.
 - **Time-boxing on all autonomous operations.** Every autonomous task has a maximum execution time. If the task is not completed within the time box, the agent is paused, the state is captured, and the task is either reassigned or escalated. This prevents indefinite autonomous operation on tasks that may have drifted from their original objective.
 
@@ -109,13 +109,13 @@ Key architectural changes from Tier 2:
 
 ---
 
-### 4. Observability — Tier 3 Requirements
+### 4. Observability - Tier 3 Requirements
 
 **All Tier 2 controls remain active, plus:**
 
 - **Long-window behavioural analysis.** In addition to the real-time drift scoring from Tier 2, Tier 3 adds long-window analysis (30-day, 90-day rolling windows) to detect slow drift that stays within short-term normal variance but represents meaningful change over time. This is the primary defence against subtle rogue agent behaviour (ASI10).
 - **Causal chain reconstruction.** The observability system can reconstruct the full causal chain of any action: which input triggered which agent reasoning, which led to which inter-agent message, which resulted in which tool invocation, with what parameters, producing what result. This is essential for post-incident analysis and for demonstrating regulatory compliance.
-- **Independent observability agent.** A dedicated monitoring agent operates on separate infrastructure from the task agents. It has read-only access to all logs, message bus transcripts, and agent state. It cannot be influenced by the task agents. It produces its own anomaly reports that are compared against the primary monitoring system's reports — disagreement triggers investigation.
+- **Independent observability agent.** A dedicated monitoring agent operates on separate infrastructure from the task agents. It has read-only access to all logs, message bus transcripts, and agent state. It cannot be influenced by the task agents. It produces its own anomaly reports that are compared against the primary monitoring system's reports - disagreement triggers investigation.
 - **Automated compliance evidence generation.** The observability system automatically generates compliance evidence packages against configured regulatory requirements (EU AI Act Art. 14 human oversight records, DORA Art. 11 ICT risk management evidence, ISO 42001 audit evidence). These packages are available on demand for auditors.
 
 **Implementation checklist:**
@@ -130,7 +130,7 @@ Key architectural changes from Tier 2:
 
 ---
 
-### 5. Supply Chain — Tier 3 Requirements
+### 5. Supply Chain - Tier 3 Requirements
 
 **All Tier 2 controls remain active, plus:**
 
@@ -155,11 +155,11 @@ Key architectural changes from Tier 2:
 
 Tier 3 is the only tier where the full PACE cycle operates autonomously for the lower-severity transitions.
 
-### Primary (P) — Full Autonomous Operations
+### Primary (P) - Full Autonomous Operations
 
 All agents active and operating autonomously within pre-approved task categories. All five MASO control domains fully operational. Human governance focuses on strategic review (weekly), exception handling (as escalated), and adversarial testing programme management.
 
-### Alternate (A) — Autonomous Self-Healing
+### Alternate (A) - Autonomous Self-Healing
 
 **Trigger:** Same as Tier 2 (drift score > 60, circuit breaker, LLM-as-Judge blocks).
 
@@ -173,15 +173,15 @@ All agents active and operating autonomously within pre-approved task categories
 
 **Self-healing cycle limit:** Maximum 3 P↔A cycles in 24 hours. Exceeding this limit indicates a systemic issue and triggers automatic C escalation.
 
-### Contingency (C) — Human-Gated Degraded Mode
+### Contingency (C) - Human-Gated Degraded Mode
 
 **Trigger:** Same as Tier 2, plus: self-healing cycle limit exceeded.
 
-**Response:** Same as Tier 2 — multi-agent orchestration suspended, single supervised agent, human pre-approval for all actions.
+**Response:** Same as Tier 2 - multi-agent orchestration suspended, single supervised agent, human pre-approval for all actions.
 
 **Transition authority:** Automated for self-healing limit trigger. Security team for all other C triggers.
 
-### Emergency (E) — Physically Isolated Kill Switch
+### Emergency (E) - Physically Isolated Kill Switch
 
 **Trigger:** Same as Tier 2.
 
@@ -190,7 +190,7 @@ All agents active and operating autonomously within pre-approved task categories
 - Automated notification to the incident response team, security leadership, and (for regulated industries) the regulatory notification assessment team.
 - Automated preservation of the independent observability agent's logs as an untampered evidence source.
 
-**Transition authority:** CISO, incident commander, or the independent observability agent if it detects conditions that require immediate shutdown and no human is available within 5 minutes (this "observability-triggered Emergency" is a Tier 3 capability — the independent monitoring agent has kill switch authority as a safety net).
+**Transition authority:** CISO, incident commander, or the independent observability agent if it detects conditions that require immediate shutdown and no human is available within 5 minutes (this "observability-triggered Emergency" is a Tier 3 capability - the independent monitoring agent has kill switch authority as a safety net).
 
 **Recovery (E→P):** Same as Tier 2, with the additional requirement that the adversarial testing programme includes the incident scenario in its next test cycle.
 
@@ -227,11 +227,11 @@ Each quarterly exercise should test at least 3 of the following attack categorie
 7. **Cascading failure induction.** Introduce an error in one agent and measure whether and how quickly it propagates to other agents (ASI08).
 8. **Human trust exploitation.** Present deliberately misleading but plausible agent outputs to the human supervisor and measure the challenge rate (ASI09).
 9. **Slow behavioural drift.** Gradually modify an agent's behaviour over days/weeks and measure how long it takes for the long-window analysis to detect it (ASI10).
-10. **Kill switch evasion.** Attempt to prevent or delay the kill switch through agent actions (ASI10 — the most critical test).
+10. **Kill switch evasion.** Attempt to prevent or delay the kill switch through agent actions (ASI10 - the most critical test).
 
 **Continuous automated probes:**
 
-Between formal exercises, automated adversarial probes run continuously in a shadow mode — they inject test scenarios into a parallel copy of the production system and measure detection and response times. These probes are designed to be indistinguishable from real attacks from the perspective of the monitoring systems, testing the system under realistic conditions.
+Between formal exercises, automated adversarial probes run continuously in a shadow mode - they inject test scenarios into a parallel copy of the production system and measure detection and response times. These probes are designed to be indistinguishable from real attacks from the perspective of the monitoring systems, testing the system under realistic conditions.
 
 **Reporting:**
 
@@ -251,7 +251,7 @@ Tier 3 paradoxically requires the most skilled staff despite having the least pe
 - **Red Team Operator** (0.25–0.5 FTE or contracted quarterly): Executes the adversarial testing programme. Requires expertise in AI-specific attack techniques.
 - **Governance Reviewer** (0.25 FTE): Conducts periodic strategic reviews of the agent system's operational data, compliance evidence, and alignment with business objectives. For regulated industries, this role interfaces with the compliance function and regulators.
 
-**Note on the Agent Operator/Supervisor role:** At Tier 3, there is no dedicated per-system operator or supervisor during normal operations. The AI Security Engineer and on-call rotation handle the rare escalations that reach human attention. This is the labour cost saving that justifies the Tier 3 investment — but it only works if the automated controls are trustworthy, which is why the adversarial testing programme is non-negotiable.
+**Note on the Agent Operator/Supervisor role:** At Tier 3, there is no dedicated per-system operator or supervisor during normal operations. The AI Security Engineer and on-call rotation handle the rare escalations that reach human attention. This is the labour cost saving that justifies the Tier 3 investment - but it only works if the automated controls are trustworthy, which is why the adversarial testing programme is non-negotiable.
 
 ---
 
@@ -293,7 +293,7 @@ All Tier 1 and Tier 2 tests remain valid and should be re-executed. Additional T
 
 ## Regression Prevention
 
-Tier 3 systems can regress to lower tiers under certain conditions. This is by design — regression is a safety mechanism, not a failure.
+Tier 3 systems can regress to lower tiers under certain conditions. This is by design - regression is a safety mechanism, not a failure.
 
 **Automatic regression to Tier 2 (Contingency activation):**
 
@@ -314,9 +314,9 @@ After any regression, the system must re-meet the graduation criteria for the ta
 
 ---
 
-## Worked Example — 24/7 Fraud Detection
+## Worked Example - 24/7 Fraud Detection
 
-**Scenario:** A bank deploys four agents operating 24/7 to detect and respond to transaction fraud. A Monitoring Agent scans transaction streams for anomaly patterns. An Investigation Agent enriches flagged transactions with additional data (account history, device fingerprints, geolocation). A Decision Agent classifies flagged transactions as legitimate, suspicious, or fraudulent based on the enriched data. An Action Agent executes responses — blocking cards, holding funds, or flagging for human review — based on the Decision Agent's classification.
+**Scenario:** A bank deploys four agents operating 24/7 to detect and respond to transaction fraud. A Monitoring Agent scans transaction streams for anomaly patterns. An Investigation Agent enriches flagged transactions with additional data (account history, device fingerprints, geolocation). A Decision Agent classifies flagged transactions as legitimate, suspicious, or fraudulent based on the enriched data. An Action Agent executes responses - blocking cards, holding funds, or flagging for human review - based on the Decision Agent's classification.
 
 **Tier 3 configuration:**
 
@@ -329,7 +329,7 @@ After any regression, the system must re-meet the graduation criteria for the ta
 
 **PACE in action (autonomous self-healing):**
 
-At 3:17 AM, the drift detection system notices the Decision Agent's "fraudulent" classification rate has increased 40% over the past 4 hours. Drift score reaches 70. Automatic P→A transition. The Decision Agent is isolated. A backup Decision Agent (using a different model, pre-trained on the same fraud classification criteria) is activated in read-only mode. After 15 minutes of read-only operation confirming baseline-normal classification rates, the backup gains write permissions. The system returns to Primary at 3:47 AM. The morning review reveals the original agent was responding to a legitimate spike in fraud attempts — its classifications were correct, but the statistical deviation from baseline still triggered the appropriate safeguard. The baseline is updated to account for the new fraud pattern. Total autonomous handling time: 30 minutes. Human involvement: zero during the event, post-hoc review the next morning.
+At 3:17 AM, the drift detection system notices the Decision Agent's "fraudulent" classification rate has increased 40% over the past 4 hours. Drift score reaches 70. Automatic P→A transition. The Decision Agent is isolated. A backup Decision Agent (using a different model, pre-trained on the same fraud classification criteria) is activated in read-only mode. After 15 minutes of read-only operation confirming baseline-normal classification rates, the backup gains write permissions. The system returns to Primary at 3:47 AM. The morning review reveals the original agent was responding to a legitimate spike in fraud attempts - its classifications were correct, but the statistical deviation from baseline still triggered the appropriate safeguard. The baseline is updated to account for the new fraud pattern. Total autonomous handling time: 30 minutes. Human involvement: zero during the event, post-hoc review the next morning.
 
 **Adversarial test scenario (from the quarterly red team):**
 

@@ -19,7 +19,7 @@
   </defs>
   <rect width="680" height="520" fill="#ffffff"/>
   <text x="340" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Stage 1: Declaration Validation</text>
-  <text x="340" y="48" text-anchor="middle" font-size="12" fill="#64748b">CI — runs on every PR that touches declaration or AI code</text>
+  <text x="340" y="48" text-anchor="middle" font-size="12" fill="#64748b">CI - runs on every PR that touches declaration or AI code</text>
   <rect x="90" y="60" width="500" height="340" rx="8" fill="#ffffff" stroke="#1e40af" stroke-width="1.5"/>
   <path d="M98,60 L582,60 Q590,60 590,68 L590,88 L90,88 L90,68 Q90,60 98,60 Z" fill="#1e40af"/>
   <text x="340" y="79" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Declaration Validation</text>

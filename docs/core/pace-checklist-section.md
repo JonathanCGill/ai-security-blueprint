@@ -2,11 +2,11 @@
 
 *Verification items for PACE resilience, organised by risk tier. Complete these before go-live and revalidate at the cadence specified for your tier.*
 
-> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers - Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
 
 ---
 
-## All Tiers — Pre-Deployment
+## All Tiers - Pre-Deployment
 
 These items apply to every AI system, regardless of risk tier.
 
@@ -30,7 +30,7 @@ These items apply to every AI system, regardless of risk tier.
 
 ---
 
-## Tier 1 — Low Risk
+## Tier 1 - Low Risk
 
 *Internal tools, content generation, employee productivity.*
 
@@ -49,7 +49,7 @@ These items apply to every AI system, regardless of risk tier.
 
 ---
 
-## Tier 2 — Medium Risk
+## Tier 2 - Medium Risk
 
 *Customer-facing content, decision support, document processing.*
 
@@ -93,7 +93,7 @@ These items apply to every AI system, regardless of risk tier.
 
 ---
 
-## Tier 3 — High Risk
+## Tier 3 - High Risk
 
 *Regulated decisions, autonomous agents with write access, financial/medical/legal domains.*
 
@@ -156,7 +156,7 @@ These items apply to every AI system, regardless of risk tier.
 
 ---
 
-## Ongoing Maintenance — All Tiers
+## Ongoing Maintenance - All Tiers
 
 These items prevent PACE plan decay over time:
 

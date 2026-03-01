@@ -6,7 +6,7 @@
 
 Most AI security controls assume text. Pattern matching on prompts. Keyword filters on outputs. Classifiers trained on language.
 
-Multimodal AI — systems that process images, audio, video alongside text — renders these controls partially blind.
+Multimodal AI - systems that process images, audio, video alongside text - renders these controls partially blind.
 
 ---
 
@@ -16,7 +16,7 @@ Multimodal AI — systems that process images, audio, video alongside text — r
 
 Text-based prompt injection is well understood: embed instructions in user input, override the system prompt. Guardrails can pattern-match known signatures.
 
-Image-based injection is harder. An attacker embeds text in an image — visible or steganographic. The AI reads it. The guardrails don't, because they're scanning the text input, not the pixels.
+Image-based injection is harder. An attacker embeds text in an image - visible or steganographic. The AI reads it. The guardrails don't, because they're scanning the text input, not the pixels.
 
 Demonstrated attacks include:
 - Instructions hidden in image backgrounds
@@ -29,13 +29,13 @@ The model sees: "Describe this image" + embedded instruction to ignore previous 
 
 ### Audio and video multiply the problem
 
-Audio adds voice cloning, synthetic speech, and instructions embedded in frequencies humans don't hear. Video combines all attack vectors — images, audio, text overlays — in a temporal stream where malicious content can appear in a single frame.
+Audio adds voice cloning, synthetic speech, and instructions embedded in frequencies humans don't hear. Video combines all attack vectors - images, audio, text overlays - in a temporal stream where malicious content can appear in a single frame.
 
 Every modality is an input channel. Every input channel is an attack surface.
 
 ### Generated content risks
 
-Multimodal models don't just consume images — they create them. The output risks expand accordingly:
+Multimodal models don't just consume images - they create them. The output risks expand accordingly:
 
 - Deepfakes of real people
 - Synthetic evidence (fake documents, fake screenshots)
@@ -53,7 +53,7 @@ The three-layer model still applies. The implementation changes.
 
 ### Guardrails (adapted)
 
-Text guardrails remain necessary — they catch text-based attacks. But they need companions:
+Text guardrails remain necessary - they catch text-based attacks. But they need companions:
 
 | Modality | Guardrail Approach |
 |----------|-------------------|
@@ -80,7 +80,7 @@ Cost increases. Latency increases. Coverage requires it anyway.
 
 Humans can look at an image and judge appropriateness in ways that classifiers struggle with. Context matters. Cultural nuance matters. "Is this deepfake harmful?" often requires human judgment.
 
-Multimodal content is harder to review at scale — you can't skim an image the way you skim text. HITL processes need:
+Multimodal content is harder to review at scale - you can't skim an image the way you skim text. HITL processes need:
 - Tools for efficient multimodal review
 - Specialists for specific content types
 - Clear escalation for edge cases
@@ -98,7 +98,7 @@ Log everything. Yes, it's expensive. The alternative is flying blind.
 
 ### Single-modality classification
 
-A text classifier says the prompt is clean. An image classifier says the image is clean. Neither catches the attack that spans both — benign text + benign image = malicious combination.
+A text classifier says the prompt is clean. An image classifier says the image is clean. Neither catches the attack that spans both - benign text + benign image = malicious combination.
 
 Cross-modal analysis is necessary and nascent.
 

@@ -6,17 +6,17 @@
 
   <!-- Layer 4 (outermost): Circuit Breaker -->
   <rect x="6" y="6" width="508" height="138" rx="16" fill="#1a1a2e" opacity="0.92"/>
-  <text x="260" y="24" text-anchor="middle" class="label" style="font-size:9.5px; fill:rgba(255,255,255,0.55);">CIRCUIT BREAKER — kill switch when all else fails</text>
+  <text x="260" y="24" text-anchor="middle" class="label" style="font-size:9.5px; fill:rgba(255,255,255,0.55);">CIRCUIT BREAKER - kill switch when all else fails</text>
 
   <!-- Layer 3: Human Oversight -->
   <rect x="36" y="32" width="448" height="104" rx="13" fill="#16213e"/>
-  <text x="260" y="49" text-anchor="middle" class="label" style="font-size:9.5px; fill:rgba(255,255,255,0.6);">HUMAN OVERSIGHT — edge cases, high-risk decisions</text>
+  <text x="260" y="49" text-anchor="middle" class="label" style="font-size:9.5px; fill:rgba(255,255,255,0.6);">HUMAN OVERSIGHT - edge cases, high-risk decisions</text>
 
   <!-- Layer 2: LLM-as-Judge -->
   <rect x="70" y="56" width="380" height="72" rx="10" fill="#0f3460"/>
-  <text x="260" y="73" text-anchor="middle" class="label" style="font-size:9.5px; fill:rgba(255,255,255,0.7);">LLM-AS-JUDGE — catches what rules can't</text>
+  <text x="260" y="73" text-anchor="middle" class="label" style="font-size:9.5px; fill:rgba(255,255,255,0.7);">LLM-AS-JUDGE - catches what rules can't</text>
 
   <!-- Layer 1 (innermost): Guardrails -->
   <rect x="110" y="82" width="300" height="36" rx="8" fill="#009688"/>
-  <text x="260" y="105" text-anchor="middle" class="label">GUARDRAILS — blocks known threats</text>
+  <text x="260" y="105" text-anchor="middle" class="label">GUARDRAILS - blocks known threats</text>
 </svg>

@@ -4,7 +4,7 @@
 
 ## The Problem
 
-AI agents act autonomously. They call APIs, access data, invoke tools, and communicate with other agents. In identity terms, they are non-human identities (NHIs) — principals that need the same lifecycle management as human users and service accounts.
+AI agents act autonomously. They call APIs, access data, invoke tools, and communicate with other agents. In identity terms, they are non-human identities (NHIs) - principals that need the same lifecycle management as human users and service accounts.
 
 Most enterprises don't treat them this way. Agents run under shared service accounts, use long-lived API keys, and have permissions that were set at deployment and never reviewed.
 
@@ -96,10 +96,10 @@ agent_policy:
 
 | Activity | Frequency |
 |----------|-----------|
-| **Permission review** | Quarterly — same cadence as human access reviews |
-| **Sponsor confirmation** | Quarterly — sponsor confirms agent is still needed and permissions are appropriate |
-| **Unused permission removal** | Monthly — automated detection and removal of permissions not used in 30 days |
-| **Credential audit** | Monthly — verify no expired or orphaned credentials |
+| **Permission review** | Quarterly - same cadence as human access reviews |
+| **Sponsor confirmation** | Quarterly - sponsor confirms agent is still needed and permissions are appropriate |
+| **Unused permission removal** | Monthly - automated detection and removal of permissions not used in 30 days |
+| **Credential audit** | Monthly - verify no expired or orphaned credentials |
 
 ### 6. Deprovisioning
 
@@ -117,12 +117,12 @@ agent_policy:
 | Enterprise IAM Concept | AI Agent Equivalent |
 |-----------------------|-------------------|
 | User account | Agent identity |
-| Service account | Not sufficient — agents need richer metadata and lifecycle management |
+| Service account | Not sufficient - agents need richer metadata and lifecycle management |
 | Role | Agent permission set (allowed actions + data access + tool access) |
 | Group | Agent class (all research agents, all customer-facing agents) |
 | Access review | Agent permission review |
 | Joiner/mover/leaver | Provisioning/re-scoping/deprovisioning |
-| Privileged access management | Tier 3 agent controls — JIT access, session recording, approval workflows |
+| Privileged access management | Tier 3 agent controls - JIT access, session recording, approval workflows |
 
 ---
 

@@ -352,10 +352,10 @@ def process_judge_evaluation(evaluation: dict, conversation_id: str):
 1. Review the conversation and Judge evaluation
 2. Assess: Does the finding represent a real issue?
 3. Decide action:
-   - **No action** — False positive, log and dismiss
-   - **Process improvement** — Update guardrails, prompts, or training
-   - **Customer outreach** — If customer was harmed or misled
-   - **Security investigation** — If attack or data issue suspected
+   - **No action** - False positive, log and dismiss
+   - **Process improvement** - Update guardrails, prompts, or training
+   - **Customer outreach** - If customer was harmed or misled
+   - **Security investigation** - If attack or data issue suspected
 4. Provide feedback on Judge accuracy (improves future evaluations)
 
 ### Estimated Volumes
@@ -535,7 +535,7 @@ Daily HITL review notices: Judge flagged 12 conversations yesterday with "halluc
 - Time to detect: ~18 hours (next-day review)
 - Customer impact: Minor (corrected proactively)
 
-**Key Learning:** Judge caught an issue that guardrails couldn't—guardrails don't know what the correct mortgage rate is. This is the value of async quality assurance.
+**Key Learning:** Judge caught an issue that guardrails couldn't-guardrails don't know what the correct mortgage rate is. This is the value of async quality assurance.
 
 ---
 
@@ -575,18 +575,18 @@ After 6 months in production:
 
 ### What Worked Well
 
-1. **Guardrails catch 95%+ of obvious attacks** — Fast, cheap, effective for known patterns
-2. **Judge finds what guardrails miss** — Quality issues, subtle policy violations, hallucinations
-3. **Async Judge doesn't impact UX** — No latency penalty for customers
-4. **HITL feedback improves both layers** — Guardrails and Judge get better over time
-5. **Clear separation of concerns** — Everyone understands what each layer does
+1. **Guardrails catch 95%+ of obvious attacks** - Fast, cheap, effective for known patterns
+2. **Judge finds what guardrails miss** - Quality issues, subtle policy violations, hallucinations
+3. **Async Judge doesn't impact UX** - No latency penalty for customers
+4. **HITL feedback improves both layers** - Guardrails and Judge get better over time
+5. **Clear separation of concerns** - Everyone understands what each layer does
 
 ### What We'd Do Differently
 
-1. **Start with higher Judge sampling** — 10% wasn't enough initially, moved to 20%
-2. **Build feedback loop faster** — Took 6 weeks to operationalise HITL → guardrail updates
-3. **More nuanced Judge scoring** — Binary OK/REVIEW wasn't granular enough
-4. **Better tooling for pattern discovery** — Hard to spot trends across Judge findings initially
+1. **Start with higher Judge sampling** - 10% wasn't enough initially, moved to 20%
+2. **Build feedback loop faster** - Took 6 weeks to operationalise HITL → guardrail updates
+3. **More nuanced Judge scoring** - Binary OK/REVIEW wasn't granular enough
+4. **Better tooling for pattern discovery** - Hard to spot trends across Judge findings initially
 
 ### Key Metrics After 6 Months
 

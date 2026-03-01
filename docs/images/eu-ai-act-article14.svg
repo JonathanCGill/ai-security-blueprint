@@ -10,7 +10,7 @@
 
   <!-- Header bar -->
   <rect x="0" y="0" width="800" height="44" rx="0" fill="#1e293b"/>
-  <text x="400" y="28" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">EU AI Act Article 14 — Human Oversight</text>
+  <text x="400" y="28" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">EU AI Act Article 14 - Human Oversight</text>
 
   <!-- Row 1: Understand AI -->
   <rect x="40" y="64" width="160" height="40" rx="6" fill="#6366f1"/>

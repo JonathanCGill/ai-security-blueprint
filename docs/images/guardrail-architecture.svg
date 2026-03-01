@@ -3,7 +3,7 @@
   <rect width="900" height="620" fill="#FFFFFF"/>
 
   <!-- Title -->
-  <text x="450" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">Guardrail Architecture — Five Enforcement Points</text>
+  <text x="450" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">Guardrail Architecture - Five Enforcement Points</text>
 
   <!-- RAG Ingestion (top left) -->
   <rect x="30" y="60" width="250" height="130" rx="8" fill="#fff3e0"/>

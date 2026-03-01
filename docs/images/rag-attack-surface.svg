@@ -13,7 +13,7 @@
 
   <rect width="1000" height="520" rx="8" fill="#FAFBFC"/>
   
-  <text x="500" y="36" text-anchor="middle" font-size="18" font-weight="700" fill="#1B1F23">RAG Pipeline — Attack Surface Map</text>
+  <text x="500" y="36" text-anchor="middle" font-size="18" font-weight="700" fill="#1B1F23">RAG Pipeline - Attack Surface Map</text>
   <text x="500" y="54" text-anchor="middle" font-size="11" fill="#6A737D">Red markers indicate attack vectors at each pipeline stage</text>
 
   <!-- === PIPELINE BOXES === -->

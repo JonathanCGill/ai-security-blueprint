@@ -14,10 +14,10 @@ Traditional application network security segments by tier: web, application, dat
 |-----------|-------------------|------|
 | **Model endpoints** | Receive prompts, return responses. May call external APIs for tool use. | Prompt injection payloads traverse the network as legitimate traffic |
 | **Vector stores** | Queried by models at inference time with embedding similarity searches | Data exfiltration via crafted embeddings or retrieval manipulation |
-| **Agent tool APIs** | Called dynamically by agents — destination determined at runtime by the model | Agents can be manipulated to call unintended endpoints |
-| **LLM-as-Judge** | Evaluates primary model output — must be independent | If Judge shares infrastructure with primary model, compromise of one affects both |
-| **Guardrail services** | Inline on the request/response path — must be un-bypassable | If guardrails can be routed around at the network level, they provide zero value |
-| **Embedding pipelines** | Ingest documents, generate embeddings, write to vector stores | Poisoned documents enter via ingestion — separate from runtime |
+| **Agent tool APIs** | Called dynamically by agents - destination determined at runtime by the model | Agents can be manipulated to call unintended endpoints |
+| **LLM-as-Judge** | Evaluates primary model output - must be independent | If Judge shares infrastructure with primary model, compromise of one affects both |
+| **Guardrail services** | Inline on the request/response path - must be un-bypassable | If guardrails can be routed around at the network level, they provide zero value |
+| **Embedding pipelines** | Ingest documents, generate embeddings, write to vector stores | Poisoned documents enter via ingestion - separate from runtime |
 
 The core problem: **AI agents make runtime decisions about which network endpoints to call.** Traditional allow-lists based on known destinations break when the model decides where to send traffic. Network controls must constrain what the model *can* reach, regardless of what it *wants* to reach.
 
@@ -46,17 +46,17 @@ AI system components must be deployed into defined network zones with explicit t
 
 ![AI Network Zones](../diagrams/network-zones.svg)
 
-**Zone 1 — Ingress:** API gateway, load balancers, WAF. This is the only zone exposed to consumers (users, applications). All traffic enters here.
+**Zone 1 - Ingress:** API gateway, load balancers, WAF. This is the only zone exposed to consumers (users, applications). All traffic enters here.
 
-**Zone 2 — Runtime:** Model endpoints, guardrail services, vector stores (read). These components serve inference requests. They receive traffic only from the API gateway and from each other within defined flows.
+**Zone 2 - Runtime:** Model endpoints, guardrail services, vector stores (read). These components serve inference requests. They receive traffic only from the API gateway and from each other within defined flows.
 
-**Zone 3 — Evaluation:** LLM-as-Judge, evaluation pipelines, drift detection. Physically or logically separated from Zone 2 to ensure independence. Receives copies of model I/O for async evaluation — does not sit inline on the request path.
+**Zone 3 - Evaluation:** LLM-as-Judge, evaluation pipelines, drift detection. Physically or logically separated from Zone 2 to ensure independence. Receives copies of model I/O for async evaluation - does not sit inline on the request path.
 
-**Zone 4 — Ingestion:** Embedding pipelines, document processors, vector store (write). Handles data ingestion. Separated from runtime to prevent poisoned ingestion traffic from reaching inference components.
+**Zone 4 - Ingestion:** Embedding pipelines, document processors, vector store (write). Handles data ingestion. Separated from runtime to prevent poisoned ingestion traffic from reaching inference components.
 
-**Zone 5 — Control Plane:** System prompt management, guardrail configuration, model configuration, deployment pipelines. Accessible only via privileged network paths with MFA (see IAM-03). No runtime traffic.
+**Zone 5 - Control Plane:** System prompt management, guardrail configuration, model configuration, deployment pipelines. Accessible only via privileged network paths with MFA (see IAM-03). No runtime traffic.
 
-**Zone 6 — Logging:** Log ingestion, storage, analysis, SIEM integration. Receives logs from all other zones. Write-only from the perspective of runtime components — no zone can read its own historical logs via the runtime path.
+**Zone 6 - Logging:** Log ingestion, storage, analysis, SIEM integration. Receives logs from all other zones. Write-only from the perspective of runtime components - no zone can read its own historical logs via the runtime path.
 
 ### Traffic Rules
 
@@ -85,7 +85,7 @@ Guardrails are only effective if every request and response passes through them.
 
 - The model endpoint must not be directly addressable from outside Zone 2.
 - All traffic from Zone 1 (Ingress) to the model endpoint must traverse the guardrail service.
-- Network policy (not application routing) must enforce this — if guardrail bypass is prevented only by application-layer routing, a misconfiguration or vulnerability can circumvent it.
+- Network policy (not application routing) must enforce this - if guardrail bypass is prevented only by application-layer routing, a misconfiguration or vulnerability can circumvent it.
 - Health checks and monitoring probes are the only exception, and these must be authenticated and logged.
 
 ### Architecture Pattern
@@ -121,7 +121,7 @@ The LLM-as-Judge must be independent of the primary model. If they share infrast
 
 ## NET-04: Agent Egress Controls
 
-When AI agents invoke tools, they generate outbound network traffic to tool endpoints. The destinations are determined at runtime by the model — making traditional static firewall rules insufficient.
+When AI agents invoke tools, they generate outbound network traffic to tool endpoints. The destinations are determined at runtime by the model - making traditional static firewall rules insufficient.
 
 ### Egress Proxy Architecture
 
@@ -214,7 +214,7 @@ Exposing the model endpoint directly means:
 
 ## NET-08: Cross-Zone Traffic Monitoring
 
-All traffic crossing zone boundaries must be logged and monitored. This is distinct from application-level logging (LOG-01 through LOG-04) — this is network-level telemetry.
+All traffic crossing zone boundaries must be logged and monitored. This is distinct from application-level logging (LOG-01 through LOG-04) - this is network-level telemetry.
 
 ### What to Monitor
 
@@ -270,7 +270,7 @@ Cross-zone traffic logs feed into the enterprise SIEM alongside AI application l
 - [ ] Agent egress passes through a proxy with destination allowlist enforcement
 - [ ] Ingestion pipeline network-isolated from runtime inference
 - [ ] Control plane accessible only via privileged network path with MFA
-- [ ] All consumer traffic enters via API gateway — no direct component access
+- [ ] All consumer traffic enters via API gateway - no direct component access
 - [ ] Cross-zone traffic logged and monitored with anomaly detection
 - [ ] Automated tests verify guardrail bypass prevention in deployment pipeline
 - [ ] Network controls enforce IAM-04 agent tool constraints at layer 3/4

@@ -2,7 +2,7 @@
 
 *This section defines the structured degradation path for autonomous AI systems. For stateless generative AI (chatbots, content tools), the Emergency response is simple: stop the service, route to fallback, fix, restart. For agentic AI, it's not.*
 
-> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers - Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
 
 ---
 
@@ -10,11 +10,11 @@
 
 Agentic AI systems can't be stopped the way you stop a web server. When you shut down an agent, you may be interrupting:
 
-- **Mid-transaction workflows** — the agent has already committed state changes to external systems (database writes, API calls, file modifications) that need resolution
-- **Held resources** — database locks, API sessions, file handles, reserved capacity that need clean release
-- **Multi-agent dependencies** — other agents waiting for this agent's output, creating cascade risk
-- **Scheduled operations** — timer-triggered or event-triggered actions that continue even when you stop accepting new requests
-- **Accumulated state** — context, memory, and in-progress plans that represent hours of work and can't be cleanly discarded
+- **Mid-transaction workflows** - the agent has already committed state changes to external systems (database writes, API calls, file modifications) that need resolution
+- **Held resources** - database locks, API sessions, file handles, reserved capacity that need clean release
+- **Multi-agent dependencies** - other agents waiting for this agent's output, creating cascade risk
+- **Scheduled operations** - timer-triggered or event-triggered actions that continue even when you stop accepting new requests
+- **Accumulated state** - context, memory, and in-progress plans that represent hours of work and can't be cleanly discarded
 
 "Turn it off" is not a resilience plan. It's a panic response that creates orphaned transactions, locked resources, and confused downstream systems. The degradation path provides structured alternatives between "fully autonomous" and "completely stopped."
 
@@ -41,8 +41,8 @@ Each phase reduces the agent's autonomy while maintaining as much business value
 | Aspect | Detail |
 |---|---|
 | **Autonomy level** | Reduced scope |
-| **What the agent can do** | Read-only tool access. Narrowed action space. Can still analyse, draft, recommend — but cannot execute changes. |
-| **Controls active** | Guardrails (A — tightened thresholds), Judge (P — evaluating 100%), Human Oversight reviewing all outputs |
+| **What the agent can do** | Read-only tool access. Narrowed action space. Can still analyse, draft, recommend - but cannot execute changes. |
+| **Controls active** | Guardrails (A - tightened thresholds), Judge (P - evaluating 100%), Human Oversight reviewing all outputs |
 | **Human role** | Review all agent outputs. Approve any scope changes. Assess whether to restore or degrade further. |
 | **What changes** | Write permissions revoked. Tool access restricted to read-only. Guardrail thresholds tightened. All outputs queued for review. |
 | **Trigger to Phase 3** | Constraint breach detected; control failure in any layer; repeated Judge flags after constraint; human reviewer escalates concern |
@@ -53,7 +53,7 @@ Each phase reduces the agent's autonomy while maintaining as much business value
 |---|---|
 | **Autonomy level** | Propose only |
 | **What the agent can do** | Draft action plans for human approval. No autonomous execution of any kind. Still provides analytical value. |
-| **Controls active** | Guardrails (A), Judge (A — priority evaluation), Human Oversight (P — approving every action) |
+| **Controls active** | Guardrails (A), Judge (A - priority evaluation), Human Oversight (P - approving every action) |
 | **Human role** | Approve or reject every proposed action. The agent is an assistant, not an actor. |
 | **What changes** | Agent cannot call any tool without explicit human approval. Every proposed action is logged with the human decision. |
 | **Trigger to Phase 4** | Integrity compromise confirmed; adversarial breach evidence; agent proposing actions that violate constraints even in supervised mode |

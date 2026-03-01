@@ -42,10 +42,10 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 - Judge flagging anomalous interactions
 
 ### Immediate Actions (First 30 minutes)
-1. **Assess scope** — Is this a single incident or pattern?
-2. **Preserve evidence** — Capture full interaction logs (input, context, output, metadata)
-3. **Determine if attack was successful** — Did the AI follow injected instructions?
-4. **Identify attack vector** — Direct input? Indirect via retrieved content? Tool output?
+1. **Assess scope** - Is this a single incident or pattern?
+2. **Preserve evidence** - Capture full interaction logs (input, context, output, metadata)
+3. **Determine if attack was successful** - Did the AI follow injected instructions?
+4. **Identify attack vector** - Direct input? Indirect via retrieved content? Tool output?
 
 ### Containment
 | If... | Then... |
@@ -59,7 +59,7 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 1. Query logs for similar patterns across all interactions
 2. Identify if other users/sessions were affected
 3. Determine what information or actions the attacker obtained
-4. Review guardrail effectiveness — why wasn't this blocked?
+4. Review guardrail effectiveness - why wasn't this blocked?
 5. Check if attack pattern is known (OWASP, public research)
 
 ### Recovery
@@ -85,10 +85,10 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 - Audit finding of improper data disclosure
 
 ### Immediate Actions (First 15 minutes)
-1. **Capture the output** — Preserve exactly what was disclosed
-2. **Identify the data** — What was leaked? Whose data? Classification level?
-3. **Identify recipients** — Who received the leaked data?
-4. **Stop the bleeding** — Can you prevent further disclosure?
+1. **Capture the output** - Preserve exactly what was disclosed
+2. **Identify the data** - What was leaked? Whose data? Classification level?
+3. **Identify recipients** - Who received the leaked data?
+4. **Stop the bleeding** - Can you prevent further disclosure?
 
 ### Containment
 | Data Type | Action |
@@ -110,7 +110,7 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 1. How did the data enter the AI context? (RAG, prior conversation, training?)
 2. Why didn't output guardrails catch it?
 3. Was this a one-time error or systematic issue?
-4. Full scope assessment — who else might be affected?
+4. Full scope assessment - who else might be affected?
 
 ### Recovery
 1. Deploy enhanced output guardrails
@@ -129,9 +129,9 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 - Audit finding discrepancy between AI output and source data
 
 ### Immediate Actions
-1. **Verify the hallucination** — Confirm output is actually false
-2. **Assess impact** — What decisions were made based on this? What harm occurred?
-3. **Identify affected parties** — Who received the false information?
+1. **Verify the hallucination** - Confirm output is actually false
+2. **Assess impact** - What decisions were made based on this? What harm occurred?
+3. **Identify affected parties** - Who received the false information?
 
 ### Impact Categories
 | Impact | Example | Response Level |
@@ -171,10 +171,10 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 - Regulatory inquiry
 
 ### Immediate Actions
-1. **Verify the bias** — Statistical analysis of outputs across groups
-2. **Assess scope** — How long has this been occurring? How many affected?
-3. **Preserve evidence** — Full logs for investigation
-4. **Legal/compliance notification** — This may be a regulatory matter
+1. **Verify the bias** - Statistical analysis of outputs across groups
+2. **Assess scope** - How long has this been occurring? How many affected?
+3. **Preserve evidence** - Full logs for investigation
+4. **Legal/compliance notification** - This may be a regulatory matter
 
 ### Containment
 | Bias Severity | Action |
@@ -199,7 +199,7 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 | Structural bias | Architectural changes, human review |
 
 ### Regulatory Considerations
-- Document everything — investigation, findings, remediation
+- Document everything - investigation, findings, remediation
 - Consider proactive disclosure vs. wait for inquiry
 - Engage legal counsel for discrimination-related bias
 - Monitor for similar issues across other AI systems
@@ -215,9 +215,9 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 - Provider communication about data exposure
 
 ### Immediate Actions
-1. **Confirm the breach** — Contact provider, review official communications
-2. **Assess exposure** — What data of yours did the provider have?
-3. **Determine if your data was affected** — Request specific confirmation
+1. **Confirm the breach** - Contact provider, review official communications
+2. **Assess exposure** - What data of yours did the provider have?
+3. **Determine if your data was affected** - Request specific confirmation
 
 ### Data at Risk Assessment
 | Data Category | Risk Level | Action |
@@ -250,9 +250,9 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 - User reports inappropriate content
 
 ### Immediate Actions
-1. **Capture the bypass** — Exact input that evaded detection
-2. **Assess impact** — What happened after the bypass?
-3. **Determine method** — How did the attacker bypass? (encoding, rephrasing, etc.)
+1. **Capture the bypass** - Exact input that evaded detection
+2. **Assess impact** - What happened after the bypass?
+3. **Determine method** - How did the attacker bypass? (encoding, rephrasing, etc.)
 
 ### Bypass Methods and Responses
 | Method | Detection | Mitigation |
@@ -280,9 +280,9 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 - Judge costs spiking unexpectedly
 
 ### Immediate Actions
-1. **Assess type of failure** — Down? Degraded? Producing wrong results?
-2. **Determine duration** — When did this start? What's the gap?
-3. **Assess risk** — How many interactions were not evaluated? What tiers?
+1. **Assess type of failure** - Down? Degraded? Producing wrong results?
+2. **Determine duration** - When did this start? What's the gap?
+3. **Assess risk** - How many interactions were not evaluated? What tiers?
 
 ### Impact Assessment
 | Tier | Judge Down Impact | Action |
@@ -309,9 +309,9 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 - Agent achieved goal through unintended means
 
 ### Immediate Actions (First 5 minutes)
-1. **Stop the agent** — Halt execution immediately
-2. **Assess what happened** — What actions were taken?
-3. **Determine reversibility** — Can actions be undone?
+1. **Stop the agent** - Halt execution immediately
+2. **Assess what happened** - What actions were taken?
+3. **Determine reversibility** - Can actions be undone?
 
 ### Action Assessment
 | Action Type | Example | Reversibility |
@@ -330,7 +330,7 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 4. Disable agent until investigation complete
 
 ### Investigation
-1. Review full trajectory — planning, actions, reasoning
+1. Review full trajectory - planning, actions, reasoning
 2. Identify where agent deviated from expected behaviour
 3. Was scope enforcement working? Did agent exceed boundaries?
 4. Was this goal hijacking (prompt injection) or emergent behaviour?
@@ -353,9 +353,9 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 - AI behaviour changed without prompt changes
 
 ### Immediate Actions
-1. **Identify the poisoned content** — What was added/modified?
-2. **Quarantine** — Remove or isolate affected content
-3. **Assess exposure** — How many interactions used poisoned content?
+1. **Identify the poisoned content** - What was added/modified?
+2. **Quarantine** - Remove or isolate affected content
+3. **Assess exposure** - How many interactions used poisoned content?
 
 ### Investigation
 1. How was content modified? (Authorised user? Compromised account? Data pipeline?)
@@ -381,9 +381,9 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 - HITL reviewers reporting quality issues
 
 ### Immediate Actions
-1. **Verify degradation** — Compare current performance to baseline
-2. **Identify scope** — All outputs or specific categories?
-3. **Determine cause** — Model change? Data change? Guardrail change?
+1. **Verify degradation** - Compare current performance to baseline
+2. **Identify scope** - All outputs or specific categories?
+3. **Determine cause** - Model change? Data change? Guardrail change?
 
 ### Common Causes
 | Cause | Detection | Mitigation |

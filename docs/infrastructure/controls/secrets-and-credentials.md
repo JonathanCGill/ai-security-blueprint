@@ -46,11 +46,11 @@ Credentials must never appear in model prompts, system prompts, conversation his
 
 ![Credential Isolation Architecture](../diagrams/credential-isolation.svg)
 
-**Out-of-band credential injection:** When an agent needs to call a tool API, the authorization gateway (IAM-04) injects the credential at the network layer — the agent's request to the gateway says *what* to call, and the gateway adds *how* to authenticate. The credential never passes through the model.
+**Out-of-band credential injection:** When an agent needs to call a tool API, the authorization gateway (IAM-04) injects the credential at the network layer - the agent's request to the gateway says *what* to call, and the gateway adds *how* to authenticate. The credential never passes through the model.
 
 **Tool result sanitisation:** When a tool returns data, the gateway strips any credentials from the response before injecting it into the agent's context. Connection strings, tokens, and API keys in tool responses are redacted.
 
-**System prompt design:** System prompts must not contain credentials. If the model needs to know which tools are available, it receives tool descriptions — not the credentials to access them.
+**System prompt design:** System prompts must not contain credentials. If the model needs to know which tools are available, it receives tool descriptions - not the credentials to access them.
 
 ---
 
@@ -80,10 +80,10 @@ Every credential used by an AI system component must be:
 All AI system credentials must be stored in a centralised secrets vault with:
 
 - **Encryption at rest** with customer-managed keys for Tier 3+.
-- **Access audit logging** — every credential read is logged with requestor identity, timestamp, and purpose.
-- **Least-privilege access** — AI system components authenticate to the vault with their own scoped identities. No shared vault tokens.
-- **Automated rotation** — the vault supports automatic credential rotation without downtime.
-- **No static exports** — credentials are fetched at runtime, never exported to config files, environment variables, or code repositories.
+- **Access audit logging** - every credential read is logged with requestor identity, timestamp, and purpose.
+- **Least-privilege access** - AI system components authenticate to the vault with their own scoped identities. No shared vault tokens.
+- **Automated rotation** - the vault supports automatic credential rotation without downtime.
+- **No static exports** - credentials are fetched at runtime, never exported to config files, environment variables, or code repositories.
 
 ---
 
@@ -147,10 +147,10 @@ Agents that invoke multiple tools across a session accumulate access to multiple
 ### Isolation Requirements
 
 - Each tool invocation uses a **separate, single-use token** scoped to that specific call.
-- Tokens are not stored in the agent's context or memory — they exist only at the gateway layer.
+- Tokens are not stored in the agent's context or memory - they exist only at the gateway layer.
 - When the agent session ends, all associated tokens are revoked.
 - An agent cannot request credentials for tools outside its declared permission set (IAM-04).
-- Token reuse across sessions is blocked — every session starts with fresh credentials.
+- Token reuse across sessions is blocked - every session starts with fresh credentials.
 
 ---
 
@@ -169,7 +169,7 @@ Model API credentials (the keys/tokens used to call inference endpoints) are hig
 
 ## SEC-08: Code and Configuration Scanning
 
-AI projects are prone to embedded credentials — API keys in notebooks, tokens in config files, model endpoint URLs with embedded auth in deployment manifests.
+AI projects are prone to embedded credentials - API keys in notebooks, tokens in config files, model endpoint URLs with embedded auth in deployment manifests.
 
 ### Scanning Requirements
 

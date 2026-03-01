@@ -39,7 +39,7 @@ The core problem: **an AI agent that can call tools is an identity that can take
 
 ## IAM-01: Authentication of All Entities
 
-Every request to an AI system component — model endpoint, vector store, tool API, evaluation pipeline — must be authenticated. No anonymous access.
+Every request to an AI system component - model endpoint, vector store, tool API, evaluation pipeline - must be authenticated. No anonymous access.
 
 ### What This Means in Practice
 
@@ -47,7 +47,7 @@ Every request to an AI system component — model endpoint, vector store, tool A
 
 **User sessions:** Authenticate the human user, then propagate that identity through the AI pipeline. The model endpoint should know *who* is asking, not just *which application* is asking.
 
-**Agent identities:** Each agent instance should have a unique, auditable identity. If Agent A spawns Agent B, Agent B gets its own credentials scoped to its declared permissions — not Agent A's credentials.
+**Agent identities:** Each agent instance should have a unique, auditable identity. If Agent A spawns Agent B, Agent B gets its own credentials scoped to its declared permissions - not Agent A's credentials.
 
 ### Implementation Pattern
 
@@ -113,7 +113,7 @@ Before deployment, every agent must declare:
 
 1. **Which tools** it is permitted to invoke (explicit allowlist, never a denylist).
 2. **What parameters** are constrained (e.g., can query customer records but only for the customer in the current session).
-3. **What actions are irreversible** (e.g., sending an email, executing a transaction) — these require additional controls (see IAM-05).
+3. **What actions are irreversible** (e.g., sending an email, executing a transaction) - these require additional controls (see IAM-05).
 4. **What the maximum scope is** (e.g., can read from database X, table Y, but not table Z).
 
 ### Enforcement Mechanism
@@ -122,7 +122,7 @@ Tool invocation must be mediated by an **authorization gateway** that sits betwe
 
 ![Authorization Gateway Flow](../diagrams/iam-auth-gateway-flow.svg)
 
-The gateway is infrastructure, not a prompt instruction. You cannot secure tool access by telling the agent "don't use tools you shouldn't." The agent doesn't enforce its own permissions — the gateway does.
+The gateway is infrastructure, not a prompt instruction. You cannot secure tool access by telling the agent "don't use tools you shouldn't." The agent doesn't enforce its own permissions - the gateway does.
 
 ---
 
@@ -184,7 +184,7 @@ Model context windows are a credential leak vector. If an API key, database conn
 - **Never inject credentials into prompts.** Tool access should use out-of-band credential injection at the gateway layer.
 - **Scan model inputs and outputs** for credential patterns (API keys, tokens, connection strings) as a guardrail rule.
 - **Redact credentials from logs.** If they somehow appear in model I/O, the logging pipeline must redact before storage.
-- **Rotate immediately** if a credential appears in model output — treat it as compromised.
+- **Rotate immediately** if a credential appears in model output - treat it as compromised.
 
 ---
 

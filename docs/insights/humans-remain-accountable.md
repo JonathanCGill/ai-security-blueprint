@@ -8,7 +8,7 @@ There's a fantasy in AI deployment that goes like this: we'll automate the decis
 
 The fantasy collides with reality in three places: the courtroom, the regulator's office, and the customer's complaint.
 
-When something goes wrong — and something always goes wrong — someone needs to be accountable. That someone cannot be an AI.
+When something goes wrong - and something always goes wrong - someone needs to be accountable. That someone cannot be an AI.
 
 ---
 
@@ -71,7 +71,7 @@ The Judge makes human oversight scalable. It doesn't make it optional.
 
 ### Clear ownership
 
-Every AI system needs an accountable owner — not the team, not the committee, a person. When something goes wrong, who answers?
+Every AI system needs an accountable owner - not the team, not the committee, a person. When something goes wrong, who answers?
 
 | Role | Accountability |
 |------|----------------|
@@ -141,7 +141,7 @@ The solution isn't less capable AI. It's systems designed to keep humans engaged
 
 **Individual level:** Every person who touches an AI decision can explain their role and justify their actions.
 
-**Business process level:** Where dedicated HITL reviewers can't scale, the humans already in the business process — underwriters, analysts, adjusters, traders — provide accountability at the point of commitment. See [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md).
+**Business process level:** Where dedicated HITL reviewers can't scale, the humans already in the business process - underwriters, analysts, adjusters, traders - provide accountability at the point of commitment. See [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md).
 
 ---
 

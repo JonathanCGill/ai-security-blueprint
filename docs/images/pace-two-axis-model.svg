@@ -18,13 +18,13 @@
   <text x="470" y="50" text-anchor="middle" font-size="11" fill="#7f8c8d">Every layer has its own PACE plan. The architecture has a PACE plan across layers.</text>
 
   <!-- Horizontal axis label -->
-  <text x="470" y="80" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3e50">HORIZONTAL PACE — Across Control Layers (Architecture-Level Resilience)</text>
+  <text x="470" y="80" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3e50">HORIZONTAL PACE - Across Control Layers (Architecture-Level Resilience)</text>
   <line x1="100" y1="88" x2="840" y2="88" stroke="#bdc3c7" stroke-width="1"/>
 
   <!-- Four horizontal PACE boxes -->
   <rect x="40" y="100" width="195" height="100" rx="6" fill="#fff" stroke="#2980b9" stroke-width="2" filter="url(#shadow)"/>
   <rect x="40" y="100" width="195" height="24" rx="6" fill="#2980b9"/>
-  <text x="137" y="116" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">P — GUARDRAILS</text>
+  <text x="137" y="116" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">P - GUARDRAILS</text>
   <text x="50" y="140" font-size="9" fill="#2c3e50">Always-on, real-time</text>
   <text x="50" y="153" font-size="9" fill="#2c3e50">Pattern matching, filters</text>
   <text x="50" y="166" font-size="9" fill="#2c3e50">Catches: known-bad</text>
@@ -34,7 +34,7 @@
 
   <rect x="268" y="100" width="195" height="100" rx="6" fill="#fff" stroke="#27ae60" stroke-width="2" filter="url(#shadow)"/>
   <rect x="268" y="100" width="195" height="24" rx="6" fill="#27ae60"/>
-  <text x="365" y="116" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">A — LLM-AS-JUDGE</text>
+  <text x="365" y="116" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">A - LLM-AS-JUDGE</text>
   <text x="278" y="140" font-size="9" fill="#2c3e50">Continuous parallel eval</text>
   <text x="278" y="153" font-size="9" fill="#2c3e50">Independent model</text>
   <text x="278" y="166" font-size="9" fill="#2c3e50">Catches: unknown-bad</text>
@@ -44,7 +44,7 @@
 
   <rect x="496" y="100" width="195" height="100" rx="6" fill="#fff" stroke="#f39c12" stroke-width="2" filter="url(#shadow)"/>
   <rect x="496" y="100" width="195" height="24" rx="6" fill="#f39c12"/>
-  <text x="593" y="116" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">C — HUMAN OVERSIGHT</text>
+  <text x="593" y="116" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">C - HUMAN OVERSIGHT</text>
   <text x="506" y="140" font-size="9" fill="#2c3e50">Queue-based review</text>
   <text x="506" y="153" font-size="9" fill="#2c3e50">Domain judgment</text>
   <text x="506" y="166" font-size="9" fill="#2c3e50">Catches: edge cases</text>
@@ -54,14 +54,14 @@
 
   <rect x="724" y="100" width="195" height="100" rx="6" fill="#fff" stroke="#e74c3c" stroke-width="2" filter="url(#shadow)"/>
   <rect x="724" y="100" width="195" height="24" rx="6" fill="#e74c3c"/>
-  <text x="821" y="116" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">E — CIRCUIT BREAKER</text>
+  <text x="821" y="116" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">E - CIRCUIT BREAKER</text>
   <text x="734" y="140" font-size="9" fill="#2c3e50">Kill switch, reroute</text>
   <text x="734" y="153" font-size="9" fill="#2c3e50">Non-AI fallback path</text>
   <text x="734" y="166" font-size="9" fill="#2c3e50">Catches: systemic failure</text>
   <text x="734" y="183" font-size="9" fill="#7f8c8d">Last resort → Full stop</text>
 
   <!-- Vertical axis label -->
-  <text x="470" y="232" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3e50">VERTICAL PACE — Within Each Control Layer (Component-Level Resilience)</text>
+  <text x="470" y="232" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3e50">VERTICAL PACE - Within Each Control Layer (Component-Level Resilience)</text>
   <line x1="100" y1="240" x2="840" y2="240" stroke="#bdc3c7" stroke-width="1"/>
 
   <!-- Vertical PACE for Guardrails -->
@@ -140,17 +140,17 @@
 
   <!-- Tier scale at bottom -->
   <rect x="40" y="565" width="270" height="50" rx="4" fill="#ebf5fb" stroke="#2980b9" stroke-width="1"/>
-  <text x="175" y="583" text-anchor="middle" font-size="10" font-weight="bold" fill="#1a5276">Tier 1 — Low Risk</text>
+  <text x="175" y="583" text-anchor="middle" font-size="10" font-weight="bold" fill="#1a5276">Tier 1 - Low Risk</text>
   <text x="175" y="600" text-anchor="middle" font-size="9" fill="#2c3e50">P+A defined per control. C/E = "disable feature."</text>
 
   <rect x="335" y="565" width="270" height="50" rx="4" fill="#fef9e7" stroke="#f39c12" stroke-width="1"/>
-  <text x="470" y="583" text-anchor="middle" font-size="10" font-weight="bold" fill="#935116">Tier 2 — Medium Risk</text>
+  <text x="470" y="583" text-anchor="middle" font-size="10" font-weight="bold" fill="#935116">Tier 2 - Medium Risk</text>
   <text x="470" y="600" text-anchor="middle" font-size="9" fill="#2c3e50">Full P/A/C/E per control. Fail-closed default.</text>
 
   <rect x="630" y="565" width="270" height="50" rx="4" fill="#fdedec" stroke="#e74c3c" stroke-width="1"/>
-  <text x="765" y="583" text-anchor="middle" font-size="10" font-weight="bold" fill="#922b21">Tier 3 — High Risk</text>
+  <text x="765" y="583" text-anchor="middle" font-size="10" font-weight="bold" fill="#922b21">Tier 3 - High Risk</text>
   <text x="765" y="600" text-anchor="middle" font-size="9" fill="#2c3e50">Full P/A/C/E + triggers + staffing + comms.</text>
 
   <!-- Footer -->
-  <text x="470" y="650" text-anchor="middle" font-size="9" fill="#95a5a6">AI Runtime Behaviour Security — Two-Axis PACE Model © Jonathan Gill 2025</text>
+  <text x="470" y="650" text-anchor="middle" font-size="9" fill="#95a5a6">AI Runtime Behaviour Security - Two-Axis PACE Model © Jonathan Gill 2025</text>
 </svg>

@@ -20,7 +20,7 @@ Submit a pull request adding your organisation to the appropriate section, or op
 1. Organisation name (or "Anonymous" if preferred)
 2. Industry sector
 3. Brief description of how you're using the framework
-4. Contact (optional — for others who want to discuss)
+4. Contact (optional - for others who want to discuss)
 
 **We welcome:**
 - Full adopters implementing the framework

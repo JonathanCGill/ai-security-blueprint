@@ -20,11 +20,11 @@ Execution control is where the PACE resilience methodology meets real-time opera
 
 **Code execution pathways multiply.** When agents generate and execute code, each agent is a potential entry point for code injection. If Agent A generates code that Agent B executes in its sandbox, the security boundary depends on both the generation controls (Agent A) and the execution controls (Agent B). A weakness in either is exploitable.
 
-**Cascading failures are the default, not the exception.** Multi-agent systems are tightly coupled by design — agents depend on each other's outputs. A hallucination in one agent becomes a flawed plan in the next, becomes a destructive action in the third. Without explicit isolation, errors propagate at the speed of the orchestration.
+**Cascading failures are the default, not the exception.** Multi-agent systems are tightly coupled by design - agents depend on each other's outputs. A hallucination in one agent becomes a flawed plan in the next, becomes a destructive action in the third. Without explicit isolation, errors propagate at the speed of the orchestration.
 
-**Runaway loops consume resources exponentially.** Two agents triggering each other in a cycle can generate exponential resource consumption. The loop may look like productive work to a naive monitor — each agent is calling tools, producing outputs, and delegating tasks — but the system is burning tokens and compute on a recursive dead end.
+**Runaway loops consume resources exponentially.** Two agents triggering each other in a cycle can generate exponential resource consumption. The loop may look like productive work to a naive monitor - each agent is calling tools, producing outputs, and delegating tasks - but the system is burning tokens and compute on a recursive dead end.
 
-**Single agent loss cascades through the orchestration (OP-04).** When one agent in a multi-agent system becomes unavailable — model provider outage, sandbox crash, credential revocation — every agent that depends on its output is affected. Without explicit failover, a single agent failure degrades or halts the entire orchestration. The system's availability is determined by its least available component, not its most robust.
+**Single agent loss cascades through the orchestration (OP-04).** When one agent in a multi-agent system becomes unavailable - model provider outage, sandbox crash, credential revocation - every agent that depends on its output is affected. Without explicit failover, a single agent failure degrades or halts the entire orchestration. The system's availability is determined by its least available component, not its most robust.
 
 **Irreversible actions compound across agent chains (OP-05).** Agent A sends an email. Agent B deletes a record. Agent C makes an API call to a third party. Each action was individually approved, but the chain is collectively irreversible. When Agent D detects that Agent A's email was based on hallucinated data, the downstream actions cannot be undone. Reversibility must be assessed for the chain, not just per-action, and compensating controls must exist for actions that cannot be recalled.
 
@@ -32,7 +32,7 @@ Execution control is where the PACE resilience methodology meets real-time opera
 
 ## Controls by Tier
 
-### Tier 1 — Supervised
+### Tier 1 - Supervised
 
 | Control | Requirement | Implementation Notes |
 |---------|-------------|---------------------|
@@ -44,7 +44,7 @@ Execution control is where the PACE resilience methodology meets real-time opera
 | **EC-1.6** Reversibility assessment | Every action is classified as reversible, time-bounded reversible, or irreversible before execution | Irreversible actions require human approval (reinforces EC-1.1). Time-bounded reversible actions carry a reversal window (e.g., "email can be recalled within 60 seconds"). Classification is logged with each action (OP-05). |
 | **EC-1.7** Agent health check | Each agent's availability is verified before task assignment | Orchestrator confirms agent is responsive before delegating. If unavailable, task is queued or routed to an alternative. Prevents silent failure from assigning work to a dead agent (OP-04). |
 
-### Tier 2 — Managed
+### Tier 2 - Managed
 
 All Tier 1 controls remain active, plus:
 
@@ -63,7 +63,7 @@ All Tier 1 controls remain active, plus:
 | **EC-2.11** Chain reversibility assessment | For multi-step plans, the Judge evaluates aggregate reversibility before execution begins | If the plan contains irreversible actions, the Judge flags the irreversibility point and requires explicit human acknowledgement. Compensating actions must be defined for each irreversible step (e.g., correction email, reversal transaction, notification to affected party) (OP-05). |
 | **EC-2.12** Multimodal boundary validation | When multimodal data (images, audio, video, documents) crosses an agent boundary, modality-specific guardrails are applied at the receiving agent | Text-in-image injection, steganographic payloads, inaudible audio commands, and embedded document instructions are checked at each agent boundary, not just at system input. Cross-ref [Multimodal Controls](../../core/multimodal-controls.md). |
 
-### Tier 3 — Autonomous
+### Tier 3 - Autonomous
 
 All Tier 2 controls remain active, plus:
 
@@ -167,25 +167,25 @@ The action classification engine is the core mechanism that replaces per-action 
 
 ## Common Pitfalls
 
-**Blast radius caps that are too generous.** A cap of "10,000 records per hour" for an agent that normally modifies 50 records per hour is not a cap — it's a ceiling so high it provides no protection. Caps should be set at 2–3x the expected peak volume, not at theoretical maximums.
+**Blast radius caps that are too generous.** A cap of "10,000 records per hour" for an agent that normally modifies 50 records per hour is not a cap - it's a ceiling so high it provides no protection. Caps should be set at 2–3x the expected peak volume, not at theoretical maximums.
 
 **Circuit breakers that only count errors.** An agent that never triggers guardrails but produces subtly incorrect output is more dangerous than one that fails loudly. Circuit breakers should include quality metrics (LLM-as-Judge scores) not just error counts.
 
-**Sandboxes with network access.** A sandbox that isolates the filesystem but allows unrestricted network access is not a sandbox — it's a launchpad. Network scope should be limited to the specific endpoints the agent's tools require.
+**Sandboxes with network access.** A sandbox that isolates the filesystem but allows unrestricted network access is not a sandbox - it's a launchpad. Network scope should be limited to the specific endpoints the agent's tools require.
 
-**Conflating the LLM-as-Judge with the task agent.** The judge must be independent — a different model, ideally from a different provider, with no access to the task agent's system prompt or configuration. If the judge uses the same model as the task agent, they share the same blindspots.
+**Conflating the LLM-as-Judge with the task agent.** The judge must be independent - a different model, ideally from a different provider, with no access to the task agent's system prompt or configuration. If the judge uses the same model as the task agent, they share the same blindspots.
 
-**Evaluating individual steps but not the aggregate plan.** Each subtask passes guardrails and the judge. But the combined effect is harmful — a planning agent has decomposed a harmful objective into individually benign steps. The judge must evaluate multi-step plans holistically (EC-2.7), not just step by step.
+**Evaluating individual steps but not the aggregate plan.** Each subtask passes guardrails and the judge. But the combined effect is harmful - a planning agent has decomposed a harmful objective into individually benign steps. The judge must evaluate multi-step plans holistically (EC-2.7), not just step by step.
 
-**Treating task completion as the quality metric.** An agent that reports 100% completion with zero uncertainty is more suspicious than one that reports 85% with documented unknowns. Judge criteria must include faithfulness, analytical depth, and evidence quality — not just format compliance and completion rate (GV-02).
+**Treating task completion as the quality metric.** An agent that reports 100% completion with zero uncertainty is more suspicious than one that reports 85% with documented unknowns. Judge criteria must include faithfulness, analytical depth, and evidence quality - not just format compliance and completion rate (GV-02).
 
 **Ignoring latency as a security-relevant metric.** Latency SLOs are not just a performance concern. An orchestration that takes 10x longer than expected may indicate a runaway loop, a deadlock, or an agent being manipulated into excessive processing. Latency monitoring feeds into anomaly detection.
 
 **Assessing reversibility per-action but not per-chain.** Each action in a multi-step plan is individually approved, but the aggregate chain may be irreversible. Agent A sends an email (reversible within 60 seconds), Agent B updates a record (reversible), Agent C notifies an external party (irreversible). By the time Agent C acts, the 60-second window on Agent A's email has closed. The chain's reversibility decays over time and must be assessed as a whole before execution begins.
 
-**No failover for the agent everyone depends on.** The most critical agent in the orchestration is often the one with no backup — because it was deployed as a singleton and nobody defined what happens when it's unavailable. Agent criticality should be assessed at design time, and critical agents must have a failover path: backup agent, graceful degradation, or controlled halt. "The orchestration waits indefinitely" is not a failover strategy.
+**No failover for the agent everyone depends on.** The most critical agent in the orchestration is often the one with no backup - because it was deployed as a singleton and nobody defined what happens when it's unavailable. Agent criticality should be assessed at design time, and critical agents must have a failover path: backup agent, graceful degradation, or controlled halt. "The orchestration waits indefinitely" is not a failover strategy.
 
-**Applying text guardrails to multimodal inter-agent data.** When an image, audio file, or document crosses an agent boundary, text-based DLP and injection detection are insufficient. Each modality requires modality-specific validation at the receiving agent's boundary — not just at the system's external input layer.
+**Applying text guardrails to multimodal inter-agent data.** When an image, audio file, or document crosses an agent boundary, text-based DLP and injection detection are insufficient. Each modality requires modality-specific validation at the receiving agent's boundary - not just at the system's external input layer.
 
 ---
 

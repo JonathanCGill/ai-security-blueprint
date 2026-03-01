@@ -9,7 +9,7 @@
   <rect width="900" height="680" fill="url(#bg)"/>
 
   <!-- Title -->
-  <text x="450" y="32" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" letter-spacing="2">TIER 3 — AUTONOMOUS MULTI-AGENT ARCHITECTURE</text>
+  <text x="450" y="32" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" letter-spacing="2">TIER 3 - AUTONOMOUS MULTI-AGENT ARCHITECTURE</text>
   <text x="450" y="50" text-anchor="middle" fill="#c77dff" font-size="10" letter-spacing="1">HIGH AUTONOMY · EXCEPTION-BASED OVERSIGHT · ADVERSARIAL-TESTED</text>
   <line x1="150" y1="60" x2="750" y2="60" stroke="#c77dff" stroke-width="0.6" opacity="0.4"/>
 

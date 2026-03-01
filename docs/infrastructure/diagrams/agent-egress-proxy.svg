@@ -20,7 +20,7 @@
   <rect width="880" height="450" rx="8" fill="#0d1117"/>
 
   <!-- Title -->
-  <text x="440" y="30" text-anchor="middle" fill="#e6e6e6" font-size="18" font-weight="700">Agent Egress Controls — NET-04</text>
+  <text x="440" y="30" text-anchor="middle" fill="#e6e6e6" font-size="18" font-weight="700">Agent Egress Controls - NET-04</text>
   <text x="440" y="50" text-anchor="middle" fill="#8b949e" font-size="11">All agent-initiated outbound traffic mediated by egress proxy</text>
 
   <!-- Zone 2: Runtime -->
@@ -110,5 +110,5 @@
   <text x="370" y="218" fill="#e6e6e6" font-size="10">🛡️ Tool endpoint probing is logged, rate-limited, and alertable</text>
 
   <!-- Footer -->
-  <text x="440" y="445" text-anchor="middle" fill="#484f58" font-size="9">AI Runtime Behaviour Security — Technical Controls · Agent Egress · github.com/JonathanCGill</text>
+  <text x="440" y="445" text-anchor="middle" fill="#484f58" font-size="9">AI Runtime Behaviour Security - Technical Controls · Agent Egress · github.com/JonathanCGill</text>
 </svg>

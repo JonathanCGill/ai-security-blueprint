@@ -6,7 +6,7 @@
 
 When teams discover that guardrails miss things, the instinct is to add another AI layer that can catch what rules-based systems can't. An LLM that evaluates every transaction. If it spots a problem, block it.
 
-This is a mistake. A well-intentioned, logical mistake — but a mistake.
+This is a mistake. A well-intentioned, logical mistake - but a mistake.
 
 ---
 
@@ -32,7 +32,7 @@ LLM evaluation takes time. Even fast models need hundreds of milliseconds. Compl
 
 Add that to every customer interaction and you've destroyed the experience. Chatbots feel sluggish. APIs miss SLAs. Users leave.
 
-Guardrails work because they're fast — pattern matching in single-digit milliseconds. The Judge is valuable precisely because it's thorough. Thoroughness and speed are opposing forces.
+Guardrails work because they're fast - pattern matching in single-digit milliseconds. The Judge is valuable precisely because it's thorough. Thoroughness and speed are opposing forces.
 
 ### 2. False Positives Create Harm
 

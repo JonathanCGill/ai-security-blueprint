@@ -41,7 +41,7 @@ Guardrails catch **known patterns**. They miss:
 
 This is why the Judge provides the second layer.
 
-> For practical implementation guidance — international PII detection, RAG ingestion filtering, secrets scanning, alerting design, and guardrail exception governance — see **[Practical Guardrails](../insights/practical-guardrails.md)**.
+> For practical implementation guidance - international PII detection, RAG ingestion filtering, secrets scanning, alerting design, and guardrail exception governance - see **[Practical Guardrails](../insights/practical-guardrails.md)**.
 
 ---
 
@@ -164,25 +164,25 @@ Humans review findings, make decisions, remain accountable.
 
 | Topic | Document |
 |-------|----------|
-| What these controls cost in production | [Cost & Latency](../extensions/technical/cost-and-latency.md) — latency budgets, sampling strategies, tiered evaluation cascade |
+| What these controls cost in production | [Cost & Latency](../extensions/technical/cost-and-latency.md) - latency budgets, sampling strategies, tiered evaluation cascade |
 | Judge accuracy, drift, and adversarial failure | [Judge Assurance](judge-assurance.md) · [When the Judge Can Be Fooled](when-the-judge-can-be-fooled.md) |
-| Practical guardrail configurations | [Practical Guardrails](../insights/practical-guardrails.md) — what to turn on first, encoding detection, international PII |
-| When HITL doesn't scale | [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md) — using existing business process checkpoints as a detection layer |
-| Controls for multi-agent systems | [MASO Framework](../maso/) — 93 controls across 6 domains for agent orchestration |
-| Controls for reasoning models (o1, etc.) | [Reasoning Model Controls](reasoning-model-controls.md) — trace scanning, instruction adherence, consistency checks |
+| Practical guardrail configurations | [Practical Guardrails](../insights/practical-guardrails.md) - what to turn on first, encoding detection, international PII |
+| When HITL doesn't scale | [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md) - using existing business process checkpoints as a detection layer |
+| Controls for multi-agent systems | [MASO Framework](../maso/) - 93 controls across 6 domains for agent orchestration |
+| Controls for reasoning models (o1, etc.) | [Reasoning Model Controls](reasoning-model-controls.md) - trace scanning, instruction adherence, consistency checks |
 
 ---
 
 ## Implementation Order
 
-1. **Logging** — Can't evaluate what you don't capture
-2. **Basic guardrails** — Block obvious attacks
-3. **Judge in shadow** — Evaluate without action
-4. **HITL queues** — Somewhere for findings
-5. **Judge advisory** — Surface to humans
-6. **Enhanced guardrails** — Add ML detection
-7. **Judge operational** — Drive workflows
-8. **Continuous tuning** — Improve from findings
+1. **Logging** - Can't evaluate what you don't capture
+2. **Basic guardrails** - Block obvious attacks
+3. **Judge in shadow** - Evaluate without action
+4. **HITL queues** - Somewhere for findings
+5. **Judge advisory** - Surface to humans
+6. **Enhanced guardrails** - Add ML detection
+7. **Judge operational** - Drive workflows
+8. **Continuous tuning** - Improve from findings
 
 ---
 

@@ -1,7 +1,7 @@
 # Data Protection for AI Systems
 
 > **Control Domain:** Confidentiality Controls  
-> **Purpose:** Protect sensitive data as it flows through AI system components — in prompts, responses, context windows, vector stores, and logs.  
+> **Purpose:** Protect sensitive data as it flows through AI system components - in prompts, responses, context windows, vector stores, and logs.  
 > **Relationship:** Supports the Guardrails layer (by detecting and redacting sensitive data in model I/O) and the Human Oversight layer (by ensuring humans can review AI interactions without unnecessary data exposure).
 
 ---
@@ -16,7 +16,7 @@ Traditional data protection focuses on data at rest and in transit between known
 | **Context windows** | The model's full context (system prompt + conversation history + retrieved documents) may contain data from multiple sensitivity levels |
 | **RAG retrieval** | Vector similarity search can surface documents the user shouldn't have access to if access controls aren't enforced at retrieval time |
 | **Model responses** | Models can generate plausible-looking PII (hallucinated or memorised from training data) |
-| **Agent tool results** | Agents retrieve data from backend systems and inject it into context — expanding the blast radius of any context window leak |
+| **Agent tool results** | Agents retrieve data from backend systems and inject it into context - expanding the blast radius of any context window leak |
 | **Evaluation data** | Model I/O sent to the Judge for evaluation contains all the sensitive data from the original interaction |
 | **Conversation history** | Persistent conversation state accumulates sensitive data over time |
 
@@ -41,7 +41,7 @@ The core problem: **AI context windows mix data from multiple trust levels into 
 
 ## DAT-01: Data Classification at AI Boundaries
 
-Every data element entering an AI system component must be classifiable by sensitivity level. This doesn't require manual classification of every prompt — it requires automated classification at system boundaries.
+Every data element entering an AI system component must be classifiable by sensitivity level. This doesn't require manual classification of every prompt - it requires automated classification at system boundaries.
 
 ### Classification Points
 
@@ -118,7 +118,7 @@ When a model retrieves documents from a vector store to augment its response (RA
 
 ### The Problem
 
-Vector stores index documents by embedding similarity. A query about "Q3 revenue" will retrieve the most semantically similar documents — regardless of whether the user is authorised to see those documents. Without access controls, RAG becomes a data exfiltration vector.
+Vector stores index documents by embedding similarity. A query about "Q3 revenue" will retrieve the most semantically similar documents - regardless of whether the user is authorised to see those documents. Without access controls, RAG becomes a data exfiltration vector.
 
 ### Enforcement
 
@@ -169,8 +169,8 @@ Models can leak sensitive data in responses through several mechanisms:
 ### Controls
 
 - Output guardrails scan for PII patterns, credential patterns, and system prompt fragments.
-- System prompt includes instructions not to disclose its own content — but this is a defence-in-depth measure, not a primary control (infrastructure beats instructions).
-- For multi-tenant deployments, conversation contexts are strictly isolated — no shared state between users at the model layer.
+- System prompt includes instructions not to disclose its own content - but this is a defence-in-depth measure, not a primary control (infrastructure beats instructions).
+- For multi-tenant deployments, conversation contexts are strictly isolated - no shared state between users at the model layer.
 - For Tier 3+ systems, output classification compares the sensitivity level of the response against the user's access level.
 
 ---
@@ -199,7 +199,7 @@ Model I/O sent to the LLM-as-Judge for evaluation contains all the sensitive dat
 - Evaluation data encrypted in transit from Zone 2 to Zone 3.
 - Judge does not persist evaluation inputs beyond the evaluation session.
 - Judge logs store tokenised versions, not original content.
-- If using a third-party evaluation service, the same data protection standards apply — sensitive data doesn't leave the security boundary without classification-appropriate controls.
+- If using a third-party evaluation service, the same data protection standards apply - sensitive data doesn't leave the security boundary without classification-appropriate controls.
 
 ---
 

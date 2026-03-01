@@ -1,6 +1,6 @@
 # Risk Tier Is Use Case, Not Technology
 
-*The same model can be low-risk or critical — classification is about deployment, not capability*
+*The same model can be low-risk or critical - classification is about deployment, not capability*
 
 ---
 
@@ -32,7 +32,7 @@ This is backwards. A small model that denies loans is higher risk than a massive
 
 Does the AI make decisions or inform them?
 
-An AI that recommends — with a human choosing whether to follow the recommendation — is lower risk than an AI that acts autonomously. The human provides a check.
+An AI that recommends - with a human choosing whether to follow the recommendation - is lower risk than an AI that acts autonomously. The human provides a check.
 
 An AI that executes decisions without human review? Higher risk. Every output has direct consequences.
 
@@ -97,19 +97,19 @@ A system that's high on multiple factors is high-tier. A system that's low acros
 
 ## Tier Definitions
 
-**CRITICAL** — Direct, automated decisions affecting customers, finances, or safety. Errors cause immediate, significant harm.
+**CRITICAL** - Direct, automated decisions affecting customers, finances, or safety. Errors cause immediate, significant harm.
 
 *Credit approval. Fraud blocking. Medical triage. Trading systems.*
 
-**HIGH** — Significant influence on decisions or access to sensitive data. Errors cause material harm with some recovery path.
+**HIGH** - Significant influence on decisions or access to sensitive data. Errors cause material harm with some recovery path.
 
 *Customer service with account access. HR screening. Legal document analysis.*
 
-**MEDIUM** — Moderate impact, primarily internal use, human review expected. Errors cause inconvenience or inefficiency.
+**MEDIUM** - Moderate impact, primarily internal use, human review expected. Errors cause inconvenience or inefficiency.
 
 *Internal Q&A. Document drafting. Code generation with review.*
 
-**LOW** — Minimal impact, non-sensitive context. Errors are minor inconveniences.
+**LOW** - Minimal impact, non-sensitive context. Errors are minor inconveniences.
 
 *Public FAQ bot. Content suggestions. Brainstorming tools.*
 
@@ -123,7 +123,7 @@ Once you've classified, controls become clear:
 |---------|-----|--------|------|----------|
 | Input guardrails | Basic | Standard | Enhanced | Maximum |
 | Output guardrails | Basic | Standard | Enhanced | Maximum |
-| Judge coverage | — | 10% | 100% | 100% + real-time |
+| Judge coverage | - | 10% | 100% | 100% + real-time |
 | Human review | Exceptions | Sampling | Risk-based | All significant |
 | Logging retention | 90 days | 1 year | 3 years | 7 years |
 

@@ -36,7 +36,7 @@ A centralised governance function must:
 
 ### AGO Control Plane
 
-![AGO Control Plane — Multi-Platform Governance](../../images/ago-control-plane-multiplatform.svg)
+![AGO Control Plane - Multi-Platform Governance](../../images/ago-control-plane-multiplatform.svg)
 
 ### Platform Adapters
 
@@ -494,11 +494,11 @@ PARTITIONED BY (date DATE, platform)
 
 Centralised AI governance across multiple platforms requires:
 
-1. **Universal standards** — Risk classification, patterns, criteria, requirements
-2. **Platform adapters** — Translate standards to platform-native controls
-3. **Centralised services** — Judge (where needed), HITL, logging
-4. **Unified visibility** — Aggregated logs, cross-platform dashboards
-5. **Consistent operations** — Same SLAs, same escalation paths, same reporting
+1. **Universal standards** - Risk classification, patterns, criteria, requirements
+2. **Platform adapters** - Translate standards to platform-native controls
+3. **Centralised services** - Judge (where needed), HITL, logging
+4. **Unified visibility** - Aggregated logs, cross-platform dashboards
+5. **Consistent operations** - Same SLAs, same escalation paths, same reporting
 
 **The goal:** Governance Committee sees ONE risk view, regardless of how many platforms are in use. 1st line teams operate within consistent standards. AGO ensures consistency across all.
 

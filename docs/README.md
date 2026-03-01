@@ -1,6 +1,6 @@
 ---
 title: AI Runtime Behaviour Security
-description: A practitioner's reference for runtime AI security. Guardrails, LLM-as-Judge, human oversight, and PACE resilience — from single-model deployments to autonomous multi-agent orchestration. Take what's useful, adapt it, ignore what doesn't fit.
+description: A practitioner's reference for runtime AI security. Guardrails, LLM-as-Judge, human oversight, and PACE resilience - from single-model deployments to autonomous multi-agent orchestration. Take what's useful, adapt it, ignore what doesn't fit.
 hide:
   - toc
   - path
@@ -12,7 +12,7 @@ hide:
 
 AI systems fail quietly. The worst failures look like normal responses. Testing alone cannot catch them. **Runtime controls can.**
 
-**173 controls. 10 real-world incidents. Open-source practitioner's reference.** Covers single-model deployments through autonomous multi-agent orchestration — aligned to OWASP, NIST, ISO 42001, EU AI Act, and DORA.
+**173 controls. 10 real-world incidents. Open-source practitioner's reference.** Covers single-model deployments through autonomous multi-agent orchestration - aligned to OWASP, NIST, ISO 42001, EU AI Act, and DORA.
 
 ![Four-layer runtime security: Guardrails → Judge → Human → Circuit Breaker](images/runtime-layers.svg)
 
@@ -25,11 +25,11 @@ AI systems fail quietly. The worst failures look like normal responses. Testing 
 
 !!! tip "Start here"
 
-    **Executives** — [2-minute cheat sheet](CHEATSHEET.md) covers risk tiers, control layers, and what to ask your team.
+    **Executives** - [2-minute cheat sheet](CHEATSHEET.md) covers risk tiers, control layers, and what to ask your team.
 
-    **Architects** — [Architecture overview](ARCHITECTURE.md) shows the four-layer pattern and how single-agent extends to multi-agent.
+    **Architects** - [Architecture overview](ARCHITECTURE.md) shows the four-layer pattern and how single-agent extends to multi-agent.
 
-    **Practitioners** — [Quick start](QUICK_START.md) gets you from zero to working controls.
+    **Practitioners** - [Quick start](QUICK_START.md) gets you from zero to working controls.
 
 ---
 
@@ -41,9 +41,9 @@ Every control maps to a real failure mode. 10 documented AI incidents traced to 
 
 ## What You Get
 
-- **Classify risk and right-size controls** — not every AI system needs the same governance. Tier your deployments from [fast-lane self-certification](FAST-LANE.md) to full human-in-the-loop oversight.
-- **Controls that work at runtime** — [guardrails](ARCHITECTURE.md#single-agent-architecture) for known threats, LLM-as-Judge for unknown threats, human oversight for edge cases, circuit breakers for when everything else fails.
-- **Resilience when controls fail** — every control has a defined failure mode and a predetermined safe state. [PACE methodology](PACE-RESILIENCE.md): Primary, Alternate, Contingency, Emergency.
+- **Classify risk and right-size controls** - not every AI system needs the same governance. Tier your deployments from [fast-lane self-certification](FAST-LANE.md) to full human-in-the-loop oversight.
+- **Controls that work at runtime** - [guardrails](ARCHITECTURE.md#single-agent-architecture) for known threats, LLM-as-Judge for unknown threats, human oversight for edge cases, circuit breakers for when everything else fails.
+- **Resilience when controls fail** - every control has a defined failure mode and a predetermined safe state. [PACE methodology](PACE-RESILIENCE.md): Primary, Alternate, Contingency, Emergency.
 
 Use the parts that fit your environment. Skip the parts that don't. If your existing tools already satisfy a control, you don't need new ones.
 
@@ -53,29 +53,29 @@ Use the parts that fit your environment. Skip the parts that don't. If your exis
 
 | I want to... | Go to |
 | --- | --- |
-| **See how the layers work** | [Architecture Overview](ARCHITECTURE.md) — single-agent and multi-agent patterns |
-| **Secure a single-model AI system** | [Foundation Controls](foundations/) — 80 controls, risk tiers, PACE resilience |
-| **Secure a multi-agent system** | [Multi-Agent Controls (MASO)](maso/) — 93 controls, 6 domains, 3 tiers |
-| **Deploy low-risk AI fast** | [Fast Lane](FAST-LANE.md) — self-certification for internal, read-only, no regulated data |
-| **Classify a system by risk** | [Risk Tiers](core/risk-tiers.md) — six-dimension scored profile |
-| **Map to compliance requirements** | [Compliance & Legal](stakeholders/compliance-and-legal.md) — ISO 42001, EU AI Act, DORA |
+| **See how the layers work** | [Architecture Overview](ARCHITECTURE.md) - single-agent and multi-agent patterns |
+| **Secure a single-model AI system** | [Foundation Controls](foundations/) - 80 controls, risk tiers, PACE resilience |
+| **Secure a multi-agent system** | [Multi-Agent Controls (MASO)](maso/) - 93 controls, 6 domains, 3 tiers |
+| **Deploy low-risk AI fast** | [Fast Lane](FAST-LANE.md) - self-certification for internal, read-only, no regulated data |
+| **Classify a system by risk** | [Risk Tiers](core/risk-tiers.md) - six-dimension scored profile |
+| **Map to compliance requirements** | [Compliance & Legal](stakeholders/compliance-and-legal.md) - ISO 42001, EU AI Act, DORA |
 
-??? question "Common questions — cost, Judge reliability, supply chain, human factors"
+??? question "Common questions - cost, Judge reliability, supply chain, human factors"
 
     | I'm asking about... | Start here |
     | --- | --- |
-    | What these controls cost and how to manage latency | [Cost & Latency](extensions/technical/cost-and-latency.md) — sampling strategies, latency budgets, tiered evaluation cascade |
-    | What happens when the Judge is wrong | [Judge Assurance](core/judge-assurance.md) — accuracy metrics, calibration, adversarial testing, fail-safe mechanisms |
-    | How the Judge can be attacked | [When the Judge Can Be Fooled](core/when-the-judge-can-be-fooled.md) — output crafting, judge manipulation, mitigations by tier |
-    | Securing the AI supply chain | [Supply Chain Controls](maso/controls/supply-chain.md) — AIBOM, signed manifests, MCP vetting, model provenance |
-    | Human operator fatigue and automation bias | [Human Factors](strategy/human-factors.md) — skill development, alert fatigue, challenge rate testing |
-    | Risks that emerge when agents collaborate | [Emergent Risk Register](maso/controls/risk-register.md) — 33 risks across 9 categories, with coverage assessment |
+    | What these controls cost and how to manage latency | [Cost & Latency](extensions/technical/cost-and-latency.md) - sampling strategies, latency budgets, tiered evaluation cascade |
+    | What happens when the Judge is wrong | [Judge Assurance](core/judge-assurance.md) - accuracy metrics, calibration, adversarial testing, fail-safe mechanisms |
+    | How the Judge can be attacked | [When the Judge Can Be Fooled](core/when-the-judge-can-be-fooled.md) - output crafting, judge manipulation, mitigations by tier |
+    | Securing the AI supply chain | [Supply Chain Controls](maso/controls/supply-chain.md) - AIBOM, signed manifests, MCP vetting, model provenance |
+    | Human operator fatigue and automation bias | [Human Factors](strategy/human-factors.md) - skill development, alert fatigue, challenge rate testing |
+    | Risks that emerge when agents collaborate | [Emergent Risk Register](maso/controls/risk-register.md) - 33 risks across 9 categories, with coverage assessment |
 
-??? example "More paths — strategy, red teaming, worked examples, full reference"
+??? example "More paths - strategy, red teaming, worked examples, full reference"
 
     | I want to... | Start here |
     | --- | --- |
-    | Get the one-page reference | [Cheat Sheet](CHEATSHEET.md) — classify, control, fail posture, test |
+    | Get the one-page reference | [Cheat Sheet](CHEATSHEET.md) - classify, control, fail posture, test |
     | Quantify AI risk for board reporting | [Risk Assessment](core/risk-assessment.md) |
     | Align AI with business strategy | [From Strategy to Production](strategy/) |
     | See everything on one map | [Tube Map](TUBE-MAP.md) |
@@ -94,9 +94,9 @@ Use the parts that fit your environment. Skip the parts that don't. If your exis
 
 ## See Inside
 
-> *Your AI system returns a confident, well-formatted answer. It's wrong. Your guardrail didn't catch it — it looked normal. Your test suite didn't cover it — the input was novel. Now what?*
+> *Your AI system returns a confident, well-formatted answer. It's wrong. Your guardrail didn't catch it - it looked normal. Your test suite didn't cover it - the input was novel. Now what?*
 
-That's the problem this reference addresses. The [Architecture Overview](ARCHITECTURE.md) shows the four-layer pattern. The [Quick Start](QUICK_START.md) gets you from zero to working controls. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) shows where real systems failed — and which controls would have caught it.
+That's the problem this reference addresses. The [Architecture Overview](ARCHITECTURE.md) shows the four-layer pattern. The [Quick Start](QUICK_START.md) gets you from zero to working controls. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) shows where real systems failed - and which controls would have caught it.
 
 ---
 
@@ -112,7 +112,7 @@ OWASP LLM Top 10 · OWASP Agentic Top 10 · NIST AI RMF · ISO 42001 · NIST SP 
 
 ??? abstract "What it provides, what it doesn't, and how to approach it"
 
-    This is a practitioner's reference — not a standard, not a certification, not a product pitch. Take what's useful, adapt it to your environment, ignore what doesn't fit.
+    This is a practitioner's reference - not a standard, not a certification, not a product pitch. Take what's useful, adapt it to your environment, ignore what doesn't fit.
 
     **What it provides:**
 
@@ -121,7 +121,7 @@ OWASP LLM Top 10 · OWASP Agentic Top 10 · NIST AI RMF · ISO 42001 · NIST SP 
     - **Defence in depth as a design principle.** The layered approach exists because each layer covers gaps in the others. The question isn't "which layer do we need?" but "what happens when each layer fails?"
     - **Resilience thinking for AI products.** Traditional security asks "how do we prevent bad things?" This reference also asks "what happens when prevention fails?"
     - **Clarity on when tools are *not* needed.** Some controls are already handled by your existing infrastructure. This should help you see where you already have coverage, not convince you to buy something new.
-    - **An AI-specific layer, not a replacement for everything else.** This addresses the controls unique to non-deterministic AI behaviour. It does not replace your existing DLP, API validation, database access controls, IAM, SIEM, secure coding practices, or incident response capabilities. Those controls still matter — arguably more than ever, because they are your safety net when AI-specific controls miss something.
+    - **An AI-specific layer, not a replacement for everything else.** This addresses the controls unique to non-deterministic AI behaviour. It does not replace your existing DLP, API validation, database access controls, IAM, SIEM, secure coding practices, or incident response capabilities. Those controls still matter - arguably more than ever, because they are your safety net when AI-specific controls miss something.
 
     **What it is not:**
 
@@ -137,7 +137,7 @@ OWASP LLM Top 10 · OWASP Agentic Top 10 · NIST AI RMF · ISO 42001 · NIST SP 
 ??? info "Repository structure"
 
     ```
-    ├── README.md                          # This document — start here
+    ├── README.md                          # This document - start here
     ├── TUBE-MAP.md                        # Complete framework tube map with guide
     ├── foundations/
     │   └── README.md                      # Single-model AI security framework
@@ -155,7 +155,7 @@ OWASP LLM Top 10 · OWASP Agentic Top 10 · NIST AI RMF · ISO 42001 · NIST SP 
     ├── infrastructure/                    # 80 technical controls, 11 domains
     ├── extensions/                        # Regulatory, templates, worked examples
     ├── insights/                          # Analysis articles and emerging challenges
-    └── strategy/                          # AI strategy — alignment, data, human factors, progression
+    └── strategy/                          # AI strategy - alignment, data, human factors, progression
     ```
 
 ---
@@ -173,7 +173,7 @@ His current focus is AI security governance: designing control architectures tha
 
 ## Disclaimer
 
-This reference is provided as-is under the [MIT License](../LICENSE). As described in [How to Use This](#how-to-use-this), it is a thinking tool — not a standard, certification, or guarantee of security. It reflects one practitioner's synthesis of industry patterns, regulatory requirements, and operational experience.
+This reference is provided as-is under the [MIT License](../LICENSE). As described in [How to Use This](#how-to-use-this), it is a thinking tool - not a standard, certification, or guarantee of security. It reflects one practitioner's synthesis of industry patterns, regulatory requirements, and operational experience.
 
 If you adopt any part of this, you are responsible for validating it against your own threat model, environment, and regulatory obligations.
 

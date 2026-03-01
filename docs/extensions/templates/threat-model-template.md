@@ -395,13 +395,13 @@ Use the ATLAS framework for adversarial ML threats:
 
 ## Key Takeaways
 
-1. **AI doesn't exist in isolation** — threat model the full supply chain
-2. **Risk tier determines depth** — LOW needs basic analysis, CRITICAL needs comprehensive
-3. **Include upstream systems** — compromised inputs compromise AI
-4. **Include downstream systems** — AI failures cascade
-5. **Include humans** — over-reliance is a threat
-6. **Use established frameworks** — STRIDE-AI, ATLAS, attack trees
-7. **Document and review** — threat models age; update them
+1. **AI doesn't exist in isolation** - threat model the full supply chain
+2. **Risk tier determines depth** - LOW needs basic analysis, CRITICAL needs comprehensive
+3. **Include upstream systems** - compromised inputs compromise AI
+4. **Include downstream systems** - AI failures cascade
+5. **Include humans** - over-reliance is a threat
+6. **Use established frameworks** - STRIDE-AI, ATLAS, attack trees
+7. **Document and review** - threat models age; update them
 
 ---
 

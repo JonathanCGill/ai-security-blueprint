@@ -1,6 +1,6 @@
 # Compliance & Legal
 
-**Compliance Officers, Legal Counsel, DPOs, Audit Teams — how this framework maps to your regulatory obligations and produces the evidence you need.**
+**Compliance Officers, Legal Counsel, DPOs, Audit Teams - how this framework maps to your regulatory obligations and produces the evidence you need.**
 
 > *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
 
@@ -10,11 +10,11 @@
 
 AI regulation is arriving faster than most compliance programmes can adapt. You're facing:
 
-1. **New obligations with unclear scope.** The EU AI Act, evolving NIST guidance, sector-specific regulators adding AI provisions to existing rules. Requirements are principles-based — you need to demonstrate "appropriate risk management" without a prescriptive checklist.
+1. **New obligations with unclear scope.** The EU AI Act, evolving NIST guidance, sector-specific regulators adding AI provisions to existing rules. Requirements are principles-based - you need to demonstrate "appropriate risk management" without a prescriptive checklist.
 
 2. **Evidence gaps.** Traditional compliance evidence (policy documents, annual assessments, audit logs) doesn't cover what regulators are asking about AI: *How do you know the AI's output is correct? How do you detect bias in real-time decisions? What happens when your AI fails? Can you explain why the AI made a specific decision?*
 
-3. **Scope uncertainty.** Which of your AI systems are "high risk" under the EU AI Act? Which are "critical" under DORA? Your AI team says "it's just a chatbot" — your regulator might disagree.
+3. **Scope uncertainty.** Which of your AI systems are "high risk" under the EU AI Act? Which are "critical" under DORA? Your AI team says "it's just a chatbot" - your regulator might disagree.
 
 ---
 
@@ -70,15 +70,15 @@ The classification dimensions (decision authority, reversibility, data sensitivi
 
 | # | Document | Why You Need It |
 |---|---|---|
-| 1 | [Risk Tiers](../core/risk-tiers.md) | Classification scheme — produces the risk assessment your regulator requires |
-| 2 | [EU AI Act Crosswalk](../extensions/regulatory/eu-ai-act-crosswalk.md) | If EU AI Act applies — control-by-control mapping |
-| 3 | [Risk Assessment](../core/risk-assessment.md) | Quantitative methodology — satisfies NIST AI RMF Measure function |
+| 1 | [Risk Tiers](../core/risk-tiers.md) | Classification scheme - produces the risk assessment your regulator requires |
+| 2 | [EU AI Act Crosswalk](../extensions/regulatory/eu-ai-act-crosswalk.md) | If EU AI Act applies - control-by-control mapping |
+| 3 | [Risk Assessment](../core/risk-assessment.md) | Quantitative methodology - satisfies NIST AI RMF Measure function |
 | 4 | [ISO 42001 Alignment](../extensions/regulatory/iso-42001-alignment.md) | If pursuing ISO 42001 certification |
 | 5 | [AI Governance Operating Model](../extensions/regulatory/ai-governance-operating-model.md) | Organisational structure for AI governance |
 
 **For financial services:** Add [High-Risk Financial Services](../extensions/regulatory/high-risk-financial-services.md).
 
-**For detailed NIST mapping:** [NIST AI RMF Mapping](../infrastructure/mappings/nist-ai-rmf.md) — all 51 subcategories.
+**For detailed NIST mapping:** [NIST AI RMF Mapping](../infrastructure/mappings/nist-ai-rmf.md) - all 51 subcategories.
 
 ---
 
@@ -88,7 +88,7 @@ The classification dimensions (decision authority, reversibility, data sensitivi
 
 2. **Map your highest-risk system** against the [EU AI Act Crosswalk](../extensions/regulatory/eu-ai-act-crosswalk.md) or relevant standard. Identify gaps between current controls and regulatory requirements. This becomes your compliance roadmap.
 
-3. **Require the [Risk Assessment](../core/risk-assessment.md) template** for every HIGH and CRITICAL tier system. This produces the quantified risk documentation that regulators and auditors expect — inherent risk, control effectiveness, residual risk.
+3. **Require the [Risk Assessment](../core/risk-assessment.md) template** for every HIGH and CRITICAL tier system. This produces the quantified risk documentation that regulators and auditors expect - inherent risk, control effectiveness, residual risk.
 
 4. **Verify human oversight evidence.** For each system with human oversight requirements, confirm you can produce: escalation criteria, review rates, override counts, reviewer qualifications. If you can't produce this evidence today, you have a gap.
 
@@ -96,22 +96,22 @@ The classification dimensions (decision authority, reversibility, data sensitivi
 
 ---
 
-## Common Objections — With Answers
+## Common Objections - With Answers
 
 **"The EU AI Act doesn't apply to us."**
-If you serve EU customers or deploy AI that affects EU data subjects, it likely does. Even if it doesn't today, the regulatory direction is clear — NIST, sector regulators, and international standards are converging on similar requirements. Building to this framework positions you for any AI regulation, not just the EU AI Act.
+If you serve EU customers or deploy AI that affects EU data subjects, it likely does. Even if it doesn't today, the regulatory direction is clear - NIST, sector regulators, and international standards are converging on similar requirements. Building to this framework positions you for any AI regulation, not just the EU AI Act.
 
 **"We already have an AI ethics policy."**
 A policy is a statement of intent. A regulator wants evidence of implementation. "We have a responsible AI policy" doesn't answer "show me your risk assessment, your control effectiveness measurements, your human oversight records, and your fail posture testing evidence." This framework produces those artefacts.
 
 **"Our AI vendor handles compliance."**
-Your vendor handles their compliance — model safety, platform security, API availability. They don't handle your compliance — how you use the model, what data you feed it, what decisions it makes, how you monitor output quality, what happens when it fails. The shared responsibility model applies to AI just like cloud. See [Infrastructure Beats Instructions](../insights/infrastructure-beats-instructions.md).
+Your vendor handles their compliance - model safety, platform security, API availability. They don't handle your compliance - how you use the model, what data you feed it, what decisions it makes, how you monitor output quality, what happens when it fails. The shared responsibility model applies to AI just like cloud. See [Infrastructure Beats Instructions](../insights/infrastructure-beats-instructions.md).
 
 **"We're waiting for regulatory clarity before investing."**
-The core requirements are already clear across all major frameworks: risk assessment, layered controls, human oversight, resilience planning, audit trails. The details may change; these principles won't. Implementing the framework now gives you a structured approach that adapts as regulations finalise — rather than a scramble when enforcement begins.
+The core requirements are already clear across all major frameworks: risk assessment, layered controls, human oversight, resilience planning, audit trails. The details may change; these principles won't. Implementing the framework now gives you a structured approach that adapts as regulations finalise - rather than a scramble when enforcement begins.
 
 **"Compliance requirements will slow down AI adoption."**
-Compliance requirements scale with risk. LOW-tier systems (internal, read-only, no regulated data) go through the [Fast Lane](../FAST-LANE.md) — self-certification, minimal controls, days not months. Compliance only adds significant overhead for HIGH and CRITICAL tier systems — where the regulatory obligations actually apply.
+Compliance requirements scale with risk. LOW-tier systems (internal, read-only, no regulated data) go through the [Fast Lane](../FAST-LANE.md) - self-certification, minimal controls, days not months. Compliance only adds significant overhead for HIGH and CRITICAL tier systems - where the regulatory obligations actually apply.
 
 ---
 

@@ -19,7 +19,7 @@
   <!-- Header -->
   <rect width="900" height="56" rx="12" fill="url(#headerGrad)"/>
   <rect y="44" width="900" height="12" fill="url(#headerGrad)"/>
-  <text x="450" y="36" text-anchor="middle" fill="white" font-size="18" font-weight="600">Stakeholder Views — Your Entry Point into the Framework</text>
+  <text x="450" y="36" text-anchor="middle" fill="white" font-size="18" font-weight="600">Stakeholder Views - Your Entry Point into the Framework</text>
 
   <!-- Center hub -->
   <ellipse cx="450" cy="280" rx="110" ry="48" fill="url(#centerGrad)" stroke="#3F51B5" stroke-width="2" filter="url(#shadow)"/>

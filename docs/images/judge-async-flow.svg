@@ -16,7 +16,7 @@
   
   <!-- Title -->
   <text x="325" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="middle">The Judge Detects. It Doesn't Decide.</text>
-  <text x="325" y="50" font-family="Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Async evaluation flow — transaction completes before Judge evaluates</text>
+  <text x="325" y="50" font-family="Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Async evaluation flow - transaction completes before Judge evaluates</text>
   
   <!-- Divider line between inline and async -->
   <line x1="50" y1="300" x2="600" y2="300" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="8,4"/>

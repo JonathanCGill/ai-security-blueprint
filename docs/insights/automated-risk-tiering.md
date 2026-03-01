@@ -1,6 +1,6 @@
 # Automated Risk Tiering
 
-*If classifying your AI system requires a governance meeting, a questionnaire, and a three-week wait for sign-off — you have built a gate, not a guardrail. Classification should take two minutes, produce an immediate result, and auto-apply the controls that make the risk manageable.*
+*If classifying your AI system requires a governance meeting, a questionnaire, and a three-week wait for sign-off - you have built a gate, not a guardrail. Classification should take two minutes, produce an immediate result, and auto-apply the controls that make the risk manageable.*
 
 ---
 
@@ -15,12 +15,12 @@ What typically happens:
 1. A team wants to deploy an AI feature.
 2. Someone emails the security or governance function asking how to classify it.
 3. A meeting is arranged. Calendars are consulted. Two weeks pass.
-4. The team fills in a questionnaire — often a spreadsheet, sometimes a Confluence page — with the help of someone from the governance function who explains what the questions mean.
+4. The team fills in a questionnaire - often a spreadsheet, sometimes a Confluence page - with the help of someone from the governance function who explains what the questions mean.
 5. The governance function reviews the answers, sometimes challenges them, occasionally escalates to a risk committee.
 6. A tier is assigned. The team is told which controls apply. Another document is produced describing the controls. The team implements them manually.
 7. Total elapsed time: three to six weeks. Often longer.
 
-The framework was designed to be proportionate. The implementation process is not. A system that takes six weeks to classify and then requires manual control implementation is a system that incentivises teams to avoid classification entirely — or to understate risk so they fall into a lighter tier.
+The framework was designed to be proportionate. The implementation process is not. A system that takes six weeks to classify and then requires manual control implementation is a system that incentivises teams to avoid classification entirely - or to understate risk so they fall into a lighter tier.
 
 The [Fast Lane](../FAST-LANE.md) was designed to solve this for low-risk deployments. This article extends the same principle to all tiers: **classification should be self-service, instant, and directly connected to automated control deployment.**
 
@@ -49,7 +49,7 @@ The six dimensions that determine risk tier can each be answered with a single m
 | **Q5** | How many people are affected per day? | <100 → 100–10,000 → 10,000–100,000 → >100,000 |
 | **Q6** | Is the activity regulated? | Unregulated → Light-touch → Sector-regulated → High-risk under AI Act |
 
-Each answer maps to a score. The highest score across all six dimensions determines the tier. This is the framework's existing "highest dimension wins" rule — implemented as code, not as a conversation.
+Each answer maps to a score. The highest score across all six dimensions determines the tier. This is the framework's existing "highest dimension wins" rule - implemented as code, not as a conversation.
 
 ### Scoring Logic
 
@@ -68,7 +68,7 @@ Additional rule:
 
 ### Fast Lane Gate
 
-Before tier assignment, the system checks Fast Lane eligibility. If all four criteria are met — internal users only, read-only, no regulated data, human always reviews — the system is classified as Fast Lane with minimal controls and self-certification. No further review needed.
+Before tier assignment, the system checks Fast Lane eligibility. If all four criteria are met - internal users only, read-only, no regulated data, human always reviews - the system is classified as Fast Lane with minimal controls and self-certification. No further review needed.
 
 This is not a shortcut. It is the designed default for the majority of enterprise AI deployments. If most of your teams are not landing in the Fast Lane, the problem is your implementation, not your teams.
 
@@ -76,9 +76,9 @@ This is not a shortcut. It is the designed default for the majority of enterpris
 
 The form returns:
 
-1. **The tier** — Fast Lane, Tier 1, Tier 2, or Tier 3
-2. **The dimension that determined it** — so the team understands *why*
-3. **The controls that will auto-apply** — not a list to implement, but a description of what the platform is about to provision
+1. **The tier** - Fast Lane, Tier 1, Tier 2, or Tier 3
+2. **The dimension that determined it** - so the team understands *why*
+3. **The controls that will auto-apply** - not a list to implement, but a description of what the platform is about to provision
 
 No approval queue. No governance sign-off. The logic is deterministic. The same answers always produce the same tier. If the answers are honest, the classification is correct.
 
@@ -86,8 +86,8 @@ No approval queue. No governance sign-off. The logic is deterministic. The same 
 
 Self-service classification works because the scoring logic is mechanical. But two scenarios still need human involvement:
 
-- **Borderline CRITICAL.** When the scoring engine returns CRITICAL — or when three or more dimensions score HIGH (triggering the escalation rule) — the system flags for confirmation by a risk practitioner. Not approval. Confirmation that the answers reflect reality. This can be async; it should not block deployment of Tier 3 controls while confirmation is in progress.
-- **Novel use cases.** When a team selects answers that produce a combination the scoring engine hasn't seen — for example, a system that is read-only but processes highly regulated data at autonomous scale — the system flags for review. These are the edge cases where human judgement adds value. They are rare.
+- **Borderline CRITICAL.** When the scoring engine returns CRITICAL - or when three or more dimensions score HIGH (triggering the escalation rule) - the system flags for confirmation by a risk practitioner. Not approval. Confirmation that the answers reflect reality. This can be async; it should not block deployment of Tier 3 controls while confirmation is in progress.
+- **Novel use cases.** When a team selects answers that produce a combination the scoring engine hasn't seen - for example, a system that is read-only but processes highly regulated data at autonomous scale - the system flags for review. These are the edge cases where human judgement adds value. They are rare.
 
 Everything else flows through without human intervention.
 
@@ -117,8 +117,8 @@ The platform provisions these controls when the deployment is registered at a ti
 
 A team that classifies their system as Tier 2 (HIGH) and deploys on the AI platform gets:
 
-- **Guardrails** already running on the API gateway — PII detection, injection classification, content policy enforcement. No configuration needed unless the team wants custom rules for their domain.
-- **Judge evaluation** at 20–50% sampling, running asynchronously against the team's transactions. Findings route to the team's existing workflow tools (Jira, ServiceNow, Slack — wherever they work). Not to a governance dashboard.
+- **Guardrails** already running on the API gateway - PII detection, injection classification, content policy enforcement. No configuration needed unless the team wants custom rules for their domain.
+- **Judge evaluation** at 20–50% sampling, running asynchronously against the team's transactions. Findings route to the team's existing workflow tools (Jira, ServiceNow, Slack - wherever they work). Not to a governance dashboard.
 - **Human review queue** pre-configured with the team as the owning group. Escalation rules based on Judge findings. 4-hour SLA on flagged items.
 - **Logging** capturing full input/output with context, stored for one year, access-controlled to the team plus security operations.
 - **Circuit breaker** configured with the team's PACE alternate (reduced functionality mode) as the fallback destination.
@@ -131,7 +131,7 @@ The team did not build any of this. They answered six questions. The platform di
 
 Classification happens once. Risk does not stay constant.
 
-The system a team described in the questionnaire is a statement of intent. The system that actually runs in production may diverge — sometimes because scope creeps, sometimes because the operating environment changes, sometimes because the initial classification was optimistic.
+The system a team described in the questionnaire is a statement of intent. The system that actually runs in production may diverge - sometimes because scope creeps, sometimes because the operating environment changes, sometimes because the initial classification was optimistic.
 
 Continuous monitoring closes this gap. It watches seven signals, aggregates them into a composite anomaly score, and uses that score to adjust controls dynamically.
 
@@ -141,11 +141,11 @@ Continuous monitoring closes this gap. It watches seven signals, aggregates them
 |--------|--------|-----------------|
 | **Guardrail block rate** | 0.15 | Volume and pattern of blocked inputs/outputs against 7-day baseline |
 | **Judge flag rate** | 0.25 | Frequency and severity of Judge findings relative to baseline |
-| **Output quality** | 0.20 | Hallucination rate, grounding score, factual errors — tracked against tier targets |
+| **Output quality** | 0.20 | Hallucination rate, grounding score, factual errors - tracked against tier targets |
 | **Content drift** | 0.15 | Whether the topics and patterns in production match what was classified |
 | **Tool usage patterns** | 0.10 | For agentic systems: whether tool calls match expected patterns |
 | **Error rate** | 0.10 | System errors, timeout rates, failed transactions |
-| **Cost trajectory** | 0.05 | Token consumption trends — spikes may indicate runaway loops or abuse |
+| **Cost trajectory** | 0.05 | Token consumption trends - spikes may indicate runaway loops or abuse |
 
 These signals are already collected by the framework's existing observability controls. The anomaly score is an aggregation layer on top of infrastructure that should already exist.
 
@@ -172,7 +172,7 @@ The anomaly score feeds two automated processes:
 - Guardrail block rate exceeds 3σ from 7-day baseline
 - Judge flag rate doubles within a 48-hour window
 - PII detected in output (any instance, at any tier)
-- Scope change detected — new data sources accessed, new audience patterns observed
+- Scope change detected - new data sources accessed, new audience patterns observed
 
 Escalation is automated and immediate. Controls tighten first, questions later. This is the same principle as a circuit breaker: act, then investigate.
 
@@ -196,13 +196,13 @@ This model has a structural weakness, and it is important to name it explicitly.
 
 **Classification is only as good as the answers.**
 
-The self-service form assumes the person completing it knows their system's data flows, audience reach, and regulatory status. In practice, teams understate risk — not maliciously, but because they classify *intent* rather than *actual behaviour*.
+The self-service form assumes the person completing it knows their system's data flows, audience reach, and regulatory status. In practice, teams understate risk - not maliciously, but because they classify *intent* rather than *actual behaviour*.
 
 A team building an internal document assistant will answer the six questions based on what they designed: internal users, read-only, no PII. Six months later, the system may be processing documents that contain customer data, the output may be copy-pasted into external emails, and the "internal only" constraint may have eroded through integration with a customer-facing portal.
 
 The self-service form captured day-one intent. It did not capture month-six reality.
 
-This is why continuous monitoring is not optional — it is the corrective layer for classification error. The seven signals detect when runtime behaviour diverges from the classification assumptions. Content drift catches topic changes. PII detection catches data scope creep. Audience pattern monitoring catches exposure changes.
+This is why continuous monitoring is not optional - it is the corrective layer for classification error. The seven signals detect when runtime behaviour diverges from the classification assumptions. Content drift catches topic changes. PII detection catches data scope creep. Audience pattern monitoring catches exposure changes.
 
 **Classification starts the conversation. Monitoring finishes it.**
 
@@ -283,48 +283,48 @@ The monitoring pipeline is a platform service. It runs against every deployment.
 
 ## Stakeholder Views
 
-Automated risk tiering changes the operating model for every function involved in AI governance. What each stakeholder sees — and what changes for them — depends on where they sit in the organisation's control structure.
+Automated risk tiering changes the operating model for every function involved in AI governance. What each stakeholder sees - and what changes for them - depends on where they sit in the organisation's control structure.
 
-### First Line — Delivery Teams
+### First Line - Delivery Teams
 
-Delivery teams are the primary beneficiaries. Classification drops from a multi-week process to a two-minute self-service form. Controls auto-apply. The team does not configure guardrails, provision logging, or set up review queues — the platform does. Their responsibility is answering the six questions honestly and responding when monitoring surfaces findings. They own the risk. They do not own the infrastructure.
+Delivery teams are the primary beneficiaries. Classification drops from a multi-week process to a two-minute self-service form. Controls auto-apply. The team does not configure guardrails, provision logging, or set up review queues - the platform does. Their responsibility is answering the six questions honestly and responding when monitoring surfaces findings. They own the risk. They do not own the infrastructure.
 
-### Second Line — Risk and Compliance Functions
+### Second Line - Risk and Compliance Functions
 
-In organisations operating a three lines of defence model, second line functions — enterprise risk management, compliance, information security risk — provide oversight, challenge, and frameworks. Automated risk tiering changes their operating model fundamentally.
+In organisations operating a three lines of defence model, second line functions - enterprise risk management, compliance, information security risk - provide oversight, challenge, and frameworks. Automated risk tiering changes their operating model fundamentally.
 
 **What improves:**
 
 - **Visibility without overhead.** Second line no longer relies on periodic self-assessments or governance meetings to understand the risk profile of AI deployments. The platform provides a real-time view of every system's tier, anomaly score, and control state. The risk register populates itself.
-- **Challenge with evidence.** When second line challenges a classification, they do so with runtime data — not with a questionnaire response from three months ago. "Your system was classified Tier 1 but has been operating at Tier 2 controls for six weeks because monitoring detected PII in outputs" is a more productive conversation than "please re-attest your risk classification."
-- **Proportionality is enforced mechanically.** The framework's proportionality principle — higher risk, stronger controls — is encoded in the scoring logic and the control provisioning layer. Second line does not need to check whether teams have implemented the right controls for their tier. The platform enforces it.
+- **Challenge with evidence.** When second line challenges a classification, they do so with runtime data - not with a questionnaire response from three months ago. "Your system was classified Tier 1 but has been operating at Tier 2 controls for six weeks because monitoring detected PII in outputs" is a more productive conversation than "please re-attest your risk classification."
+- **Proportionality is enforced mechanically.** The framework's proportionality principle - higher risk, stronger controls - is encoded in the scoring logic and the control provisioning layer. Second line does not need to check whether teams have implemented the right controls for their tier. The platform enforces it.
 
 **What changes:**
 
-- The second line role shifts from **review and approve** to **define and monitor**. Second line defines the scoring logic, the control configurations per tier, the escalation thresholds, and the de-escalation criteria. They do not review individual classifications — the deterministic scoring engine handles that. They review the *rules*, not the *results*.
+- The second line role shifts from **review and approve** to **define and monitor**. Second line defines the scoring logic, the control configurations per tier, the escalation thresholds, and the de-escalation criteria. They do not review individual classifications - the deterministic scoring engine handles that. They review the *rules*, not the *results*.
 - Second line monitors aggregate patterns across the portfolio: which tiers are most common, where escalations cluster, which dimensions drive the highest classifications, and whether de-escalation criteria are appropriately calibrated. This is portfolio-level risk management, not case-by-case review.
-- Regulatory reporting draws directly from platform data. When regulators ask "how do you classify your AI systems and what controls apply?", the answer is a data export — not a narrative.
+- Regulatory reporting draws directly from platform data. When regulators ask "how do you classify your AI systems and what controls apply?", the answer is a data export - not a narrative.
 
-### Third Line — Internal Audit
+### Third Line - Internal Audit
 
 Internal audit provides independent assurance over both the first and second lines. Automated risk tiering gives audit something most AI governance frameworks do not: **a deterministic, auditable trail from classification to control to runtime evidence.**
 
 **What audit can now verify:**
 
-- **Classification integrity.** The scoring logic is deterministic. The same answers always produce the same tier. Audit can test the scoring engine directly — submit known answer sets and verify the output. They can also compare classification answers against observable system behaviour: if a team said "internal users only" but logs show external IP addresses, the classification is demonstrably wrong.
-- **Control enforcement.** Controls are platform-provisioned, not team-implemented. Audit does not need to check whether a Tier 2 system has the correct guardrails configured — the platform enforces this at deployment. Audit verifies that the platform's control provisioning logic matches the framework's requirements for each tier. Test once, rely continuously.
+- **Classification integrity.** The scoring logic is deterministic. The same answers always produce the same tier. Audit can test the scoring engine directly - submit known answer sets and verify the output. They can also compare classification answers against observable system behaviour: if a team said "internal users only" but logs show external IP addresses, the classification is demonstrably wrong.
+- **Control enforcement.** Controls are platform-provisioned, not team-implemented. Audit does not need to check whether a Tier 2 system has the correct guardrails configured - the platform enforces this at deployment. Audit verifies that the platform's control provisioning logic matches the framework's requirements for each tier. Test once, rely continuously.
 - **Monitoring effectiveness.** The seven signals, the anomaly score calculation, and the escalation thresholds are all defined in code. Audit can review the logic, test with synthetic data, and verify that escalations fire when they should. They can also review historical escalation events: did the score cross 60? Did controls tighten? Did the team receive notification? The evidence trail is complete.
-- **De-escalation governance.** Every de-escalation requires sustained low anomaly scores and explicit product owner approval. Audit can verify that no system had its controls reduced without meeting the defined criteria and obtaining documented approval. This is a binary check against platform records — not a judgement call.
+- **De-escalation governance.** Every de-escalation requires sustained low anomaly scores and explicit product owner approval. Audit can verify that no system had its controls reduced without meeting the defined criteria and obtaining documented approval. This is a binary check against platform records - not a judgement call.
 
 **What changes for audit:**
 
 - The audit approach shifts from **testing team-level compliance** (did this team implement the controls their tier requires?) to **testing platform-level enforcement** (does the platform correctly provision and maintain controls for each tier?). This is a more efficient model. Instead of sampling 30 AI deployments and checking controls on each, audit tests the provisioning engine once and verifies it is correctly applied everywhere.
-- Audit evidence is machine-generated and immutable. Classification records, control configurations, monitoring data, escalation events, and de-escalation approvals are all captured by the platform. Audit does not request evidence from teams — they query the platform.
+- Audit evidence is machine-generated and immutable. Classification records, control configurations, monitoring data, escalation events, and de-escalation approvals are all captured by the platform. Audit does not request evidence from teams - they query the platform.
 - The audit cycle can shift from annual to continuous. Platform data supports ongoing assurance rather than point-in-time testing.
 
 ### CISO and Security Leadership
 
-The CISO's function builds and operates the platform. They define control configurations. They do not own individual risk classifications — product owners do. What they gain is a portfolio-level view of AI risk that updates in real time: how many systems at each tier, where anomaly scores are elevated, which controls are firing most frequently, and where the framework's assumptions are being tested by production behaviour.
+The CISO's function builds and operates the platform. They define control configurations. They do not own individual risk classifications - product owners do. What they gain is a portfolio-level view of AI risk that updates in real time: how many systems at each tier, where anomaly scores are elevated, which controls are firing most frequently, and where the framework's assumptions are being tested by production behaviour.
 
 ### Platform Engineering
 
@@ -334,7 +334,7 @@ Platform engineering implements the control provisioning, the monitoring pipelin
 
 ## Operating Principles
 
-**1. The form is the risk assessment.** If the six questions are answered honestly, the tier is correct. No secondary review needed for Tier 1 and Tier 2. The scoring logic is the risk methodology — published, deterministic, and auditable.
+**1. The form is the risk assessment.** If the six questions are answered honestly, the tier is correct. No secondary review needed for Tier 1 and Tier 2. The scoring logic is the risk methodology - published, deterministic, and auditable.
 
 **2. Controls are inherited, not implemented.** Teams do not build guardrails. They do not configure Judge pipelines. They do not set up logging. The platform provides all of this. Teams answer six questions and deploy.
 
@@ -342,7 +342,7 @@ Platform engineering implements the control provisioning, the monitoring pipelin
 
 **4. Escalation is automated and immediate.** When monitoring detects risk increase, controls tighten without human approval. The team is informed, not consulted. Speed matters more than consensus when risk is increasing.
 
-**5. De-escalation is earned and explicit.** Reducing controls requires sustained evidence of low risk and product owner acceptance. The asymmetry — fast up, slow down — reflects the reality that increasing risk needs immediate action, while decreasing controls can wait for confidence.
+**5. De-escalation is earned and explicit.** Reducing controls requires sustained evidence of low risk and product owner acceptance. The asymmetry - fast up, slow down - reflects the reality that increasing risk needs immediate action, while decreasing controls can wait for confidence.
 
 **6. The product owner owns the risk.** Classification is the team's responsibility. De-escalation is the product owner's decision. The security function builds the platform and defines the controls. It does not own the classification, the tier, or the decision to accept residual risk. Accountability follows the decision, not the infrastructure.
 
@@ -354,11 +354,11 @@ Platform engineering implements the control provisioning, the monitoring pipelin
 
 If you are implementing automated risk tiering, start here:
 
-1. **Build the form.** Six questions. Multiple choice. Deterministic scoring. Ship it as a page in your developer portal. Do not overthink the UI — a working form today is worth a perfect portal in six months.
+1. **Build the form.** Six questions. Multiple choice. Deterministic scoring. Ship it as a page in your developer portal. Do not overthink the UI - a working form today is worth a perfect portal in six months.
 
 2. **Automate Fast Lane first.** The four Fast Lane criteria are binary. If a team's answers qualify, auto-approve and provision minimal controls. This alone eliminates the majority of classification bottlenecks.
 
-3. **Connect classification to control provisioning.** When a tier is assigned, the platform applies controls. Start with guardrails and logging — these are the easiest to automate. Add Judge provisioning and review queues as the platform matures.
+3. **Connect classification to control provisioning.** When a tier is assigned, the platform applies controls. Start with guardrails and logging - these are the easiest to automate. Add Judge provisioning and review queues as the platform matures.
 
 4. **Deploy the monitoring pipeline.** Aggregate the seven signals. Calculate anomaly scores. Set escalation thresholds. Start with alerting (notify the team when score exceeds 60). Add automated escalation once you trust the scoring.
 

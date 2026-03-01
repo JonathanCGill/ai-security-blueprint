@@ -10,7 +10,7 @@
 
   <rect width="1000" height="500" rx="8" fill="#FAFBFC"/>
   
-  <text x="500" y="36" text-anchor="middle" font-size="18" font-weight="700" fill="#1B1F23">SOC Integration — AI Alert Flow</text>
+  <text x="500" y="36" text-anchor="middle" font-size="18" font-weight="700" fill="#1B1F23">SOC Integration - AI Alert Flow</text>
   <text x="500" y="54" text-anchor="middle" font-size="11" fill="#6A737D">From AI telemetry sources through correlation to SOC response</text>
 
   <!-- === TELEMETRY SOURCES (Left) === -->
@@ -78,28 +78,28 @@
   <!-- Low -->
   <line x1="670" y1="190" x2="730" y2="115" stroke="#34D058" stroke-width="1.5" marker-end="url(#ar)"/>
   <rect x="730" y="90" width="250" height="55" rx="6" fill="#DAFBE1" stroke="#34D058" stroke-width="1.2" filter="url(#sd)"/>
-  <text x="855" y="110" text-anchor="middle" font-size="11" font-weight="600" fill="#22863A">LOW — Log &amp; Aggregate</text>
+  <text x="855" y="110" text-anchor="middle" font-size="11" font-weight="600" fill="#22863A">LOW - Log &amp; Aggregate</text>
   <text x="855" y="125" text-anchor="middle" font-size="9" fill="#22863A">Weekly review · No SOC ticket</text>
   <text x="855" y="138" text-anchor="middle" font-size="8" fill="#6A737D">Single guardrail blocks, routine flags</text>
 
   <!-- Medium -->
   <line x1="670" y1="210" x2="730" y2="195" stroke="#F9C513" stroke-width="1.5" marker-end="url(#ar)"/>
   <rect x="730" y="165" width="250" height="55" rx="6" fill="#FFF5B1" stroke="#F9C513" stroke-width="1.2" filter="url(#sd)"/>
-  <text x="855" y="185" text-anchor="middle" font-size="11" font-weight="600" fill="#B08800">MEDIUM — SOC L1 Triage</text>
+  <text x="855" y="185" text-anchor="middle" font-size="11" font-weight="600" fill="#B08800">MEDIUM - SOC L1 Triage</text>
   <text x="855" y="200" text-anchor="middle" font-size="9" fill="#B08800">4-hour SLA · Auto-ticket</text>
   <text x="855" y="213" text-anchor="middle" font-size="8" fill="#6A737D">Judge flags, single anomalies, patterns</text>
 
   <!-- High -->
   <line x1="670" y1="230" x2="730" y2="270" stroke="#E65100" stroke-width="1.5" marker-end="url(#ar)"/>
   <rect x="730" y="240" width="250" height="55" rx="6" fill="#FFE0B2" stroke="#E65100" stroke-width="1.2" filter="url(#sd)"/>
-  <text x="855" y="260" text-anchor="middle" font-size="11" font-weight="600" fill="#BF360C">HIGH — SOC L2 Investigation</text>
+  <text x="855" y="260" text-anchor="middle" font-size="11" font-weight="600" fill="#BF360C">HIGH - SOC L2 Investigation</text>
   <text x="855" y="275" text-anchor="middle" font-size="9" fill="#BF360C">1-hour SLA · Incident created</text>
   <text x="855" y="288" text-anchor="middle" font-size="8" fill="#6A737D">Attack patterns, data exfil signals, multi-metric</text>
 
   <!-- Critical -->
   <line x1="670" y1="250" x2="730" y2="345" stroke="#D73A49" stroke-width="1.5" marker-end="url(#ar)"/>
   <rect x="730" y="315" width="250" height="55" rx="6" fill="#FFEEF0" stroke="#D73A49" stroke-width="1.2" filter="url(#sd)"/>
-  <text x="855" y="335" text-anchor="middle" font-size="11" font-weight="600" fill="#CB2431">CRITICAL — Immediate Response</text>
+  <text x="855" y="335" text-anchor="middle" font-size="11" font-weight="600" fill="#CB2431">CRITICAL - Immediate Response</text>
   <text x="855" y="350" text-anchor="middle" font-size="9" fill="#CB2431">Auto-disable endpoint · Page on-call</text>
   <text x="855" y="363" text-anchor="middle" font-size="8" fill="#6A737D">Confirmed breach, agent compromise, confirmed bypass</text>
 

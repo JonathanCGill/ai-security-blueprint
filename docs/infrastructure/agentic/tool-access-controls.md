@@ -1,25 +1,25 @@
 # Tool Access Controls
 
-> Part of the [AI Security Infrastructure Controls](../README.md) framework — Agentic AI Controls.
+> Part of the [AI Security Infrastructure Controls](../README.md) framework - Agentic AI Controls.
 > Companion to [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security).
 
 ---
 
 ## Overview
 
-When AI agents invoke external tools — APIs, databases, file systems, code interpreters, or third-party services — the tool invocation boundary is one of the highest-risk points in the system. The agent decides *what* to call and *why*, but it must never decide *whether* it is allowed to call it or *how* to authenticate. That enforcement belongs to deterministic infrastructure: the authorisation gateway.
+When AI agents invoke external tools - APIs, databases, file systems, code interpreters, or third-party services - the tool invocation boundary is one of the highest-risk points in the system. The agent decides *what* to call and *why*, but it must never decide *whether* it is allowed to call it or *how* to authenticate. That enforcement belongs to deterministic infrastructure: the authorisation gateway.
 
 These six controls establish the principle that tool access is declared, mediated, constrained, classified, rate-limited, and fully logged.
 
 ---
 
-## TOOL-01 — Declare Tool Permissions Explicitly Before Deployment
+## TOOL-01 - Declare Tool Permissions Explicitly Before Deployment
 
 **Risk Tiers:** Tier 2+ (agentic)
 
 ### Objective
 
-Every tool available to an agent must be declared in a machine-readable manifest before deployment. The manifest defines what the agent is allowed to do. Anything not in the manifest is denied by default — allowlist, not denylist.
+Every tool available to an agent must be declared in a machine-readable manifest before deployment. The manifest defines what the agent is allowed to do. Anything not in the manifest is denied by default - allowlist, not denylist.
 
 ### Requirements
 
@@ -35,13 +35,13 @@ Every tool available to an agent must be declared in a machine-readable manifest
 
 | Layer | How TOOL-01 Supports It |
 |-------|------------------------|
-| **Guardrails** | The manifest is the guardrail for tool access — it defines the boundary of permitted actions before any invocation occurs. |
+| **Guardrails** | The manifest is the guardrail for tool access - it defines the boundary of permitted actions before any invocation occurs. |
 | **Judge** | Judge can evaluate whether the agent's tool invocation patterns align with the manifest's intended scope, detecting misuse within technically permitted bounds. |
 | **Human Oversight** | The manifest is a human-readable, auditable declaration of agent capability. Reviewers can assess whether declared permissions are appropriate for the task. |
 
 ---
 
-## TOOL-02 — Enforce Permissions at the Gateway, Not at the Agent
+## TOOL-02 - Enforce Permissions at the Gateway, Not at the Agent
 
 **Risk Tiers:** Tier 2+ (agentic)
 
@@ -54,7 +54,7 @@ Tool invocation permissions are enforced by a gateway that sits between the agen
 | Requirement | Description |
 |-------------|-------------|
 | **Gateway mediation** | All tool invocations pass through an authorisation gateway. No direct network path exists between the agent runtime and tool endpoints. |
-| **Seven-step validation** | The gateway validates each invocation against: (1) manifest membership — is this tool declared? (2) operation permission — is this operation allowed? (3) parameter constraints — are parameters within bounds? (4) rate limits — has the invocation budget been exceeded? (5) context conditions — are contextual prerequisites met? (6) human approval — does this action require approval? (7) credential injection — add authentication out-of-band. |
+| **Seven-step validation** | The gateway validates each invocation against: (1) manifest membership - is this tool declared? (2) operation permission - is this operation allowed? (3) parameter constraints - are parameters within bounds? (4) rate limits - has the invocation budget been exceeded? (5) context conditions - are contextual prerequisites met? (6) human approval - does this action require approval? (7) credential injection - add authentication out-of-band. |
 | **Deterministic enforcement** | The gateway is a deterministic system (code, not a model). Its decisions are based on policy, not inference. It cannot be influenced by the content of the agent's reasoning or the prompt. |
 | **Fail-closed** | If the gateway cannot validate an invocation (e.g., manifest lookup fails, rate limit service unavailable), the invocation is denied. The system never fails open. |
 | **Agent opacity** | The agent does not receive detailed information about why an invocation was denied. Detailed denial reasons are logged for operators but not returned to the agent's context window, as this information could be used to craft bypass attempts. |
@@ -69,7 +69,7 @@ Tool invocation permissions are enforced by a gateway that sits between the agen
 
 ---
 
-## TOOL-03 — Constrain Tool Parameters to Declared Bounds
+## TOOL-03 - Constrain Tool Parameters to Declared Bounds
 
 **Risk Tiers:** Tier 2+ (agentic)
 
@@ -97,7 +97,7 @@ Even when a tool invocation is permitted, the parameters passed to the tool must
 
 ---
 
-## TOOL-04 — Classify Tool Actions by Reversibility and Impact
+## TOOL-04 - Classify Tool Actions by Reversibility and Impact
 
 **Risk Tiers:** Tier 2+ (agentic)
 
@@ -120,12 +120,12 @@ Not all tool actions carry the same risk. Reading a file is different from delet
 | Layer | How TOOL-04 Supports It |
 |-------|------------------------|
 | **Guardrails** | Action classification is the basis for the guardrail's decision about whether an invocation can proceed automatically or requires escalation. |
-| **Judge** | Judge evaluation can be calibrated by action class — irreversible-write and privileged actions warrant more thorough post-hoc evaluation than read-only actions. |
+| **Judge** | Judge evaluation can be calibrated by action class - irreversible-write and privileged actions warrant more thorough post-hoc evaluation than read-only actions. |
 | **Human Oversight** | Classification directly drives when humans are brought into the loop. It ensures human attention is directed at the highest-impact decisions. |
 
 ---
 
-## TOOL-05 — Rate-Limit Tool Invocations per Agent and per Tool
+## TOOL-05 - Rate-Limit Tool Invocations per Agent and per Tool
 
 **Risk Tiers:** Tier 2+ (agentic)
 
@@ -148,19 +148,19 @@ Prevent runaway agent behaviour, resource exhaustion, and data exfiltration by e
 
 | Layer | How TOOL-05 Supports It |
 |-------|------------------------|
-| **Guardrails** | Rate limits are a quantitative guardrail that prevents accumulation attacks — where no single invocation is harmful, but the volume of invocations achieves a harmful outcome (e.g., enumerating records). |
+| **Guardrails** | Rate limits are a quantitative guardrail that prevents accumulation attacks - where no single invocation is harmful, but the volume of invocations achieves a harmful outcome (e.g., enumerating records). |
 | **Judge** | Rate limit proximity and burst patterns feed Judge evaluation as signals of potential anomalous behaviour. |
 | **Human Oversight** | Rate limit alerts surface agent sessions that may require human review, directing attention to potentially problematic behaviour. |
 
 ---
 
-## TOOL-06 — Log Every Tool Invocation with Full Context
+## TOOL-06 - Log Every Tool Invocation with Full Context
 
 **Risk Tiers:** Tier 2+ (agentic)
 
 ### Objective
 
-Every tool invocation — whether permitted or denied — must be logged with sufficient context to reconstruct the agent's actions, the gateway's decisions, and the tool's responses.
+Every tool invocation - whether permitted or denied - must be logged with sufficient context to reconstruct the agent's actions, the gateway's decisions, and the tool's responses.
 
 ### Requirements
 
@@ -170,7 +170,7 @@ Every tool invocation — whether permitted or denied — must be logged with su
 | **Denial logging** | Denied invocations are logged with the same detail as permitted invocations, plus the specific validation step that caused denial (manifest, parameter, rate limit, approval, etc.). |
 | **Chain context** | Tool invocation logs include a reference to the agent's reasoning chain, linking the invocation to the prompt, model output, and any preceding invocations in the same chain. This enables agent chain reconstruction (see LOG-04). |
 | **Response capture** | Tool responses are captured in logs (with PII redaction). This is essential for understanding what information the agent received and how it influenced subsequent reasoning. |
-| **Tamper protection** | Tool invocation logs are subject to the same integrity protection as all other logs (LOG-07) — append-only, write-once storage, inaccessible to the agent runtime. |
+| **Tamper protection** | Tool invocation logs are subject to the same integrity protection as all other logs (LOG-07) - append-only, write-once storage, inaccessible to the agent runtime. |
 | **Retention** | Tool invocation logs follow the retention policy defined in LOG-08, with consideration that agentic audit trails may have longer regulatory retention requirements. |
 
 ### Relationship to Three Layers
@@ -178,7 +178,7 @@ Every tool invocation — whether permitted or denied — must be logged with su
 | Layer | How TOOL-06 Supports It |
 |-------|------------------------|
 | **Guardrails** | Invocation logs provide evidence that guardrail enforcement (via the gateway) is functioning correctly. Logs of denied invocations prove the guardrails are active. |
-| **Judge** | Complete invocation logs are a primary input for Judge evaluation of agent behaviour — the Judge can assess whether the sequence and pattern of tool use was appropriate. |
+| **Judge** | Complete invocation logs are a primary input for Judge evaluation of agent behaviour - the Judge can assess whether the sequence and pattern of tool use was appropriate. |
 | **Human Oversight** | Full invocation logs give human reviewers the ability to understand exactly what an agent did, why it was allowed, and what it received in response. |
 
 ---

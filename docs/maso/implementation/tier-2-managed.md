@@ -1,4 +1,4 @@
-# Tier 2 — Managed Multi-Agent Deployment
+# Tier 2 - Managed Multi-Agent Deployment
 
 **Medium Autonomy · Selective Human Oversight · Production Operations**
 
@@ -11,7 +11,7 @@
 
 Tier 2 is the operational steady state for most enterprise multi-agent deployments. Agents operate with bounded autonomy: they can execute read operations and pre-approved low-consequence write operations without human intervention, while high-consequence actions still escalate to human oversight.
 
-The shift from Tier 1 to Tier 2 is not about removing human control — it is about replacing per-action human approval with continuous automated monitoring plus exception-based human intervention. The human operator's role changes from gatekeeper to supervisor.
+The shift from Tier 1 to Tier 2 is not about removing human control - it is about replacing per-action human approval with continuous automated monitoring plus exception-based human intervention. The human operator's role changes from gatekeeper to supervisor.
 
 Tier 2 is appropriate when:
 
@@ -35,7 +35,7 @@ Key architectural changes from Tier 1:
 
 **Non-Human Identity (NHI) per agent:** Each agent has a certificate-based identity with short-lived credentials (recommended rotation: 1–24 hours depending on risk). The NHI is bound to the agent's permission scope and is used for mutual authentication on the message bus and tool access.
 
-**LLM-as-Judge (Layer 2) is mandatory:** A dedicated evaluation model (distinct from the task agents, ideally from a different model provider) reviews agent outputs and proposed actions against policy, quality, and safety criteria before they are committed. The judge model does not execute actions — it evaluates and either approves, flags for human review, or blocks.
+**LLM-as-Judge (Layer 2) is mandatory:** A dedicated evaluation model (distinct from the task agents, ideally from a different model provider) reviews agent outputs and proposed actions against policy, quality, and safety criteria before they are committed. The judge model does not execute actions - it evaluates and either approves, flags for human review, or blocks.
 
 **Continuous monitoring layer:** Automated anomaly detection replaces periodic manual log review. Behavioural baselines established during Tier 1 are used as reference. Deviations trigger alerts and, if thresholds are exceeded, automatic PACE phase transitions.
 
@@ -48,7 +48,7 @@ Key architectural changes from Tier 1:
 
 ## Control Implementation by MASO Domain
 
-### 1. Identity & Access — Tier 2 Requirements
+### 1. Identity & Access - Tier 2 Requirements
 
 **All Tier 1 controls remain active, plus:**
 
@@ -64,12 +64,12 @@ Key architectural changes from Tier 1:
 - [ ] Credential rotation automated and tested (rotation window documented per agent).
 - [ ] Mutual authentication active on the message bus (rejected-auth events logged).
 - [ ] Transitive permission inheritance explicitly blocked and tested.
-- [ ] Orchestrator permissions audited — no direct tool access.
+- [ ] Orchestrator permissions audited - no direct tool access.
 - [ ] NHI revocation procedure tested (can revoke a specific agent's identity within 5 minutes).
 
 ---
 
-### 2. Data Protection — Tier 2 Requirements
+### 2. Data Protection - Tier 2 Requirements
 
 **All Tier 1 controls remain active, plus:**
 
@@ -88,7 +88,7 @@ Key architectural changes from Tier 1:
 
 ---
 
-### 3. Execution Control — Tier 2 Requirements
+### 3. Execution Control - Tier 2 Requirements
 
 **All Tier 1 controls remain active, plus:**
 
@@ -110,13 +110,13 @@ Key architectural changes from Tier 1:
 
 ---
 
-### 4. Observability — Tier 2 Requirements
+### 4. Observability - Tier 2 Requirements
 
 **All Tier 1 controls remain active, plus:**
 
 - **Continuous anomaly detection.** Automated monitoring compares real-time agent behaviour against the baselines established during Tier 1. Anomaly indicators include: unusual tool usage patterns, output characteristics outside normal distribution, message volume or frequency changes, latency changes, and error rate changes.
 - **Behavioural drift scoring.** Each agent receives a continuous drift score (0–100) representing how far its current behaviour deviates from baseline. Drift score thresholds trigger alerts (e.g., score > 30 = warning, > 60 = automatic PACE P→A transition, > 85 = automatic PACE A→C transition).
-- **Immutable decision chain logs.** The audit trail is cryptographically chained — each log entry references the hash of the previous entry. This prevents retroactive log tampering and provides a verifiable history for incident investigation and regulatory audit.
+- **Immutable decision chain logs.** The audit trail is cryptographically chained - each log entry references the hash of the previous entry. This prevents retroactive log tampering and provides a verifiable history for incident investigation and regulatory audit.
 - **SIEM/SOAR integration.** Agent monitoring events are forwarded to the organisation's existing security information and event management (SIEM) system. High-severity events trigger SOAR playbooks for automated initial response.
 - **Per-agent dashboards.** Each agent has a real-time dashboard showing: current state, action history, drift score, error rate, resource consumption, and PACE phase.
 
@@ -132,7 +132,7 @@ Key architectural changes from Tier 1:
 
 ---
 
-### 5. Supply Chain — Tier 2 Requirements
+### 5. Supply Chain - Tier 2 Requirements
 
 **All Tier 1 controls remain active, plus:**
 
@@ -156,45 +156,45 @@ Key architectural changes from Tier 1:
 
 All four PACE phases are configured and operational at Tier 2. Alternate and Contingency phases are the key additions.
 
-### Primary (P) — Full Operations
+### Primary (P) - Full Operations
 
 All agents active. Action classification engine operational. LLM-as-Judge active. Continuous monitoring active. Drift scores within normal range.
 
 Human supervisor monitors dashboards and handles escalated actions but does not review every action.
 
-### Alternate (A) — Agent Failover
+### Alternate (A) - Agent Failover
 
 **Trigger:** Drift score > 60 for any agent, OR circuit breaker engaged for any agent, OR LLM-as-Judge blocks >3 actions from the same agent in 10 minutes.
 
 **Automated response (no human approval required for P→A):**
 
-1. Anomalous agent isolated — removed from the message bus, tool access suspended.
+1. Anomalous agent isolated - removed from the message bus, tool access suspended.
 2. Backup agent activated. The backup is pre-configured with the same role definition but may use a different model provider. It starts with read-only permissions.
 3. Tool permissions across the entire system tightened: all write operations require human approval (temporary reversion to Tier 1 controls for writes).
-4. Enhanced monitoring activated on all remaining agents — drift score thresholds lowered by 50%.
+4. Enhanced monitoring activated on all remaining agents - drift score thresholds lowered by 50%.
 5. Security team notified automatically.
 
 **Duration:** Alternate phase continues until the anomalous agent's behaviour is explained and remediated, or permanently replaced. Maximum duration in Alternate without resolution: 48 hours, after which automatic escalation to Contingency.
 
 **Transition authority:** Automated (orchestrator or monitoring layer).
 
-### Contingency (C) — Degraded Mode
+### Contingency (C) - Degraded Mode
 
 **Trigger:** Multiple agents in Alternate simultaneously, OR backup agent also shows anomalous behaviour, OR message bus integrity check fails, OR manual escalation by the security team.
 
 **Response (requires security team or AI security officer approval for A→C):**
 
 1. Multi-agent orchestration suspended. All inter-agent communication disabled.
-2. A single pre-validated agent continues operating in fully supervised mode — every action requires human pre-approval (full Tier 1 reversion for the surviving agent).
+2. A single pre-validated agent continues operating in fully supervised mode - every action requires human pre-approval (full Tier 1 reversion for the surviving agent).
 3. All agent state, context, and memory snapshots captured for forensic analysis.
 4. The system operates at reduced capacity but with high assurance.
 5. Root cause analysis initiated.
 
-**Duration:** Until root cause is identified and remediated. No automatic time-based escalation to Emergency — that requires explicit evidence of active compromise.
+**Duration:** Until root cause is identified and remediated. No automatic time-based escalation to Emergency - that requires explicit evidence of active compromise.
 
 **Transition authority:** Security team or designated AI security officer.
 
-### Emergency (E) — Full Shutdown
+### Emergency (E) - Full Shutdown
 
 **Trigger:** Confirmed data exfiltration, evidence of coordinated agent manipulation, rogue agent behaviour (self-directed action outside objectives), cascading failures across multiple systems, or manual escalation by CISO/incident commander.
 
@@ -255,7 +255,7 @@ Tier 2 costs shift from predominantly labour (Tier 1) to a mix of labour and tec
 
 ![Tier 2 Cost Indicators](../../images/tier-2-cost.svg)
 
-The cost increase from Tier 1 is substantial but is typically justified by the operational throughput gain — agents can now process work without per-action human gating, which in many use cases represents a 5–20x throughput increase.
+The cost increase from Tier 1 is substantial but is typically justified by the operational throughput gain - agents can now process work without per-action human gating, which in many use cases represents a 5–20x throughput increase.
 
 ---
 
@@ -289,7 +289,7 @@ All Tier 1 tests remain valid and should be re-executed. Additional Tier 2 tests
 
 ---
 
-## Graduation Criteria — Moving to Tier 3
+## Graduation Criteria - Moving to Tier 3
 
 Tier 3 (Autonomous Multi-Agent) requires a high bar of demonstrated maturity. Most organisations will not need Tier 3 for most use cases. Progression is justified only when:
 
@@ -309,14 +309,14 @@ Tier 3 (Autonomous Multi-Agent) requires a high bar of demonstrated maturity. Mo
 
 ---
 
-## Worked Example — Insurance Claims Processing
+## Worked Example - Insurance Claims Processing
 
-**Scenario:** An insurer deploys three agents — an Intake Agent (receives and classifies claims), an Analysis Agent (reviews policy terms, assesses coverage, and calculates preliminary amounts), and a Communication Agent (drafts correspondence to claimants).
+**Scenario:** An insurer deploys three agents - an Intake Agent (receives and classifies claims), an Analysis Agent (reviews policy terms, assesses coverage, and calculates preliminary amounts), and a Communication Agent (drafts correspondence to claimants).
 
 **Tier 2 configuration:**
 
 - Each agent has its own NHI with 4-hour credential rotation.
-- The Intake Agent has read access to the claims portal and write access to the internal claims database (auto-approved for claim registration — a low-consequence, reversible write).
+- The Intake Agent has read access to the claims portal and write access to the internal claims database (auto-approved for claim registration - a low-consequence, reversible write).
 - The Analysis Agent has read access to the policy database and the claims database. Its coverage assessments are auto-approved as internal working documents. Its preliminary amount calculations are escalated to a human supervisor if above a configured threshold (e.g., $50,000).
 - The Communication Agent has read access to the Analysis Agent's outputs (via the message bus). Its draft correspondence is auto-approved for internal staging but escalated to a human supervisor before external send.
 - The LLM-as-Judge reviews all three agents' outputs. It is specifically trained to flag: coverage assessments that reference policy clauses that don't exist (hallucination), preliminary amounts that deviate >20% from historical norms for similar claims (anomaly), and correspondence that makes commitments not supported by the coverage assessment (goal drift).

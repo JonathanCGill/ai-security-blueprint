@@ -196,7 +196,7 @@ Judge evaluations contain:
 - Judge's analysis and findings
 - Metadata (Judge model version, evaluation time)
 
-**Retain Judge evaluations for the same period as the underlying interaction** — they're part of the audit trail.
+**Retain Judge evaluations for the same period as the underlying interaction** - they're part of the audit trail.
 
 ### HITL Decision Retention
 
@@ -207,7 +207,7 @@ HITL decisions must capture:
 - Who made the decision
 - When
 
-**Retain HITL decisions for accountability** — typically same as interaction retention or longer.
+**Retain HITL decisions for accountability** - typically same as interaction retention or longer.
 
 ---
 

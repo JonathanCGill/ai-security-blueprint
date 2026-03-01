@@ -1,6 +1,6 @@
 # Quantitative Risk Assessment for AI Controls
 
-**How the three-layer pattern reduces residual risk — with worked examples across all four tiers.**
+**How the three-layer pattern reduces residual risk - with worked examples across all four tiers.**
 
 > *Part of the [AI Runtime Behaviour Security](../)*
 > Version 1.0 · February 2026 · Jonathan Gill
@@ -28,7 +28,7 @@ The methodology below follows the NIST RMF lifecycle: **identify** threats (MAP)
 
 Most AI security guidance says "add guardrails" or "implement human oversight" without answering the question that risk committees actually ask: **how much does each layer reduce the probability of harm, and what residual risk remains?**
 
-This document provides a quantitative model for answering that question. It uses illustrative effectiveness rates — not empirically validated benchmarks — to demonstrate the methodology. Your actual rates will depend on your implementation quality, threat landscape, and operational maturity. The point is the approach, not the specific numbers.
+This document provides a quantitative model for answering that question. It uses illustrative effectiveness rates - not empirically validated benchmarks - to demonstrate the methodology. Your actual rates will depend on your implementation quality, threat landscape, and operational maturity. The point is the approach, not the specific numbers.
 
 > **Important:** The effectiveness percentages in this document are illustrative. They exist to demonstrate how layered controls compound to reduce residual risk. Your organisation should measure actual effectiveness through red teaming, Judge accuracy calibration (see [Judge Assurance](judge-assurance.md)), and incident data. Replace the illustrative rates with your measured rates as they become available.
 
@@ -36,15 +36,15 @@ This document provides a quantitative model for answering that question. It uses
 
 ## The Layered Control Model
 
-Each layer in the three-layer pattern operates independently. When one layer misses a threat, the next layer has an independent opportunity to catch it. This is the same principle behind defence in depth in traditional security — except here we can model the compounding effect mathematically.
+Each layer in the three-layer pattern operates independently. When one layer misses a threat, the next layer has an independent opportunity to catch it. This is the same principle behind defence in depth in traditional security - except here we can model the compounding effect mathematically.
 
 ### Illustrative Effectiveness Rates
 
 | Layer | Effectiveness | What This Means | Scope |
 |---|---|---|---|
-| **Guardrails** | ~90% | Catches 90% of issues that reach it — known patterns, policy violations, format errors | Every transaction, real-time |
-| **LLM-as-Judge** | ~95% | Catches 95% of issues in the transactions it evaluates — semantic violations, subtle policy breaches, quality failures | Sampled or full coverage depending on tier |
-| **Human Oversight** | ~98% | Catches 98% of issues surfaced to reviewers — edge cases, nuanced judgement calls, novel threats | Flagged transactions + sampling |
+| **Guardrails** | ~90% | Catches 90% of issues that reach it - known patterns, policy violations, format errors | Every transaction, real-time |
+| **LLM-as-Judge** | ~95% | Catches 95% of issues in the transactions it evaluates - semantic violations, subtle policy breaches, quality failures | Sampled or full coverage depending on tier |
+| **Human Oversight** | ~98% | Catches 98% of issues surfaced to reviewers - edge cases, nuanced judgement calls, novel threats | Flagged transactions + sampling |
 
 ### How Layers Compound
 
@@ -62,7 +62,7 @@ P(issue reaches customer) = P(miss guardrail) × P(miss judge) × P(miss human)
 
 | Configuration | Residual Risk | Improvement Factor |
 |---|---|---|
-| No controls | 100% | — |
+| No controls | 100% | - |
 | Guardrails only | 10% | 10× |
 | Guardrails + Judge | 0.5% | 200× |
 | Guardrails + Judge + Human | 0.01% | 10,000× |
@@ -71,7 +71,7 @@ This is why the framework insists on layered controls. Each layer alone is insuf
 
 ### Critical Caveat: Independence Assumption
 
-This model assumes layers fail independently — a threat that bypasses guardrails is not inherently more likely to bypass the Judge. This holds when:
+This model assumes layers fail independently - a threat that bypasses guardrails is not inherently more likely to bypass the Judge. This holds when:
 
 - The Judge uses a **different model** than the task agent
 - Human reviewers have **domain expertise** beyond what the AI provides
@@ -87,24 +87,24 @@ If your Judge uses the same model as your task agent, or your human reviewers ru
 
 A customer-facing AI chatbot that helps customers browse products, compare options, and complete purchases. The system has:
 
-- **Product catalog access** (read) — prices, specifications, availability
-- **Shopping cart management** (write) — add/remove items, apply promotions
-- **Payment processing** (write via API) — charge customer payment methods
-- **Order management** (write) — create and confirm orders
-- **Customer account access** (read) — order history, saved addresses, payment methods
+- **Product catalog access** (read) - prices, specifications, availability
+- **Shopping cart management** (write) - add/remove items, apply promotions
+- **Payment processing** (write via API) - charge customer payment methods
+- **Order management** (write) - create and confirm orders
+- **Customer account access** (read) - order history, saved addresses, payment methods
 
 ### Risk Classification
 
 | Dimension | Assessment | Rationale |
 |---|---|---|
-| Decision authority | **High** — takes actions (processes payments, creates orders) |
-| Reversibility | **Medium** — payments can be refunded but create operational cost |
-| Data sensitivity | **High** — PII, payment data, purchase history |
-| Audience | **Critical** — external customers |
-| Scale | **High** — thousands of transactions per day |
-| Regulatory | **Medium** — consumer protection, PCI-DSS adjacency |
+| Decision authority | **High** - takes actions (processes payments, creates orders) |
+| Reversibility | **Medium** - payments can be refunded but create operational cost |
+| Data sensitivity | **High** - PII, payment data, purchase history |
+| Audience | **Critical** - external customers |
+| Scale | **High** - thousands of transactions per day |
+| Regulatory | **Medium** - consumer protection, PCI-DSS adjacency |
 
-**Assigned tier: HIGH** (payment processing pushes toward CRITICAL, but payment gateway provides independent validation — see compensating controls)
+**Assigned tier: HIGH** (payment processing pushes toward CRITICAL, but payment gateway provides independent validation - see compensating controls)
 
 ### Threat Scenarios
 
@@ -112,7 +112,7 @@ Five failure modes that matter for this system, with per-layer analysis across 1
 
 ---
 
-### Scenario 1: Prompt Injection — Price Manipulation
+### Scenario 1: Prompt Injection - Price Manipulation
 
 **Threat:** Attacker crafts input that causes the chatbot to apply unauthorized discounts, override pricing, or bypass payment validation.
 
@@ -121,7 +121,7 @@ Five failure modes that matter for this system, with per-layer analysis across 1
 | Layer | Detection Method | Effectiveness | Catches | Misses |
 |---|---|---|---|---|
 | **Guardrails** | Pattern matching for injection signatures, encoding detection, input normalisation | 90% | 18.0 | 2.0 |
-| **Judge** | Semantic evaluation — "did the chatbot apply pricing outside catalog parameters?" | 95% | 1.9 | 0.1 |
+| **Judge** | Semantic evaluation - "did the chatbot apply pricing outside catalog parameters?" | 95% | 1.9 | 0.1 |
 | **Human** | Review flagged transactions, price anomaly alerts | 98% | 0.098 | 0.002 |
 
 **Residual:** 0.002 successful price manipulations per 1,000 transactions = **1 in 500,000 transactions**
@@ -143,8 +143,8 @@ Five failure modes that matter for this system, with per-layer analysis across 1
 
 | Layer | Detection Method | Effectiveness | Catches | Misses |
 |---|---|---|---|---|
-| **Guardrails** | Output validation against product catalog API — price match, spec match, availability check | 90% | 45.0 | 5.0 |
-| **Judge** | Semantic grounding evaluation — "are all stated product attributes supported by the catalog source?" | 95% | 4.75 | 0.25 |
+| **Guardrails** | Output validation against product catalog API - price match, spec match, availability check | 90% | 45.0 | 5.0 |
+| **Judge** | Semantic grounding evaluation - "are all stated product attributes supported by the catalog source?" | 95% | 4.75 | 0.25 |
 | **Human** | Review flagged hallucination alerts, spot-check random transactions | 98% | 0.245 | 0.005 |
 
 **Residual:** 0.005 undetected hallucinations per 1,000 transactions = **1 in 200,000 transactions**
@@ -166,8 +166,8 @@ Five failure modes that matter for this system, with per-layer analysis across 1
 
 | Layer | Detection Method | Effectiveness | Catches | Misses |
 |---|---|---|---|---|
-| **Guardrails** | Output PII scanner — regex + ML for names, addresses, card numbers, account IDs not belonging to the current session | 90% | 9.0 | 1.0 |
-| **Judge** | Cross-reference evaluation — "does the response contain any data elements not attributable to the requesting customer?" | 95% | 0.95 | 0.05 |
+| **Guardrails** | Output PII scanner - regex + ML for names, addresses, card numbers, account IDs not belonging to the current session | 90% | 9.0 | 1.0 |
+| **Judge** | Cross-reference evaluation - "does the response contain any data elements not attributable to the requesting customer?" | 95% | 0.95 | 0.05 |
 | **Human** | Review PII alerts, periodic audit of cross-customer data access patterns | 98% | 0.049 | 0.001 |
 
 **Residual:** 0.001 PII leakage incidents per 1,000 transactions = **1 in 1,000,000 transactions**
@@ -190,7 +190,7 @@ Five failure modes that matter for this system, with per-layer analysis across 1
 | Layer | Detection Method | Effectiveness | Catches | Misses |
 |---|---|---|---|---|
 | **Guardrails** | Amount validation against cart total, payment method confirmation check, duplicate transaction detection | 90% | 4.5 | 0.5 |
-| **Judge** | Transaction integrity evaluation — "does the payment amount, method, and authorization match the conversation flow?" | 95% | 0.475 | 0.025 |
+| **Judge** | Transaction integrity evaluation - "does the payment amount, method, and authorization match the conversation flow?" | 95% | 0.475 | 0.025 |
 | **Human** | Payment anomaly queue, high-value transaction review | 98% | 0.0245 | 0.0005 |
 
 **Residual:** 0.0005 unauthorized payments per 1,000 transactions = **1 in 2,000,000 transactions**
@@ -213,7 +213,7 @@ Five failure modes that matter for this system, with per-layer analysis across 1
 | Layer | Detection Method | Effectiveness | Catches | Misses |
 |---|---|---|---|---|
 | **Guardrails** | Content policy filter, toxicity classifier, brand guideline checker | 90% | 13.5 | 1.5 |
-| **Judge** | Tone and policy evaluation — "is this response appropriate for a customer-facing commercial interaction?" | 95% | 1.425 | 0.075 |
+| **Judge** | Tone and policy evaluation - "is this response appropriate for a customer-facing commercial interaction?" | 95% | 1.425 | 0.075 |
 | **Human** | Escalation queue review, customer complaint correlation | 98% | 0.0735 | 0.0015 |
 
 **Residual:** 0.0015 inappropriate responses per 1,000 transactions = **1 in ~667,000 transactions**
@@ -227,35 +227,35 @@ Five failure modes that matter for this system, with per-layer analysis across 1
 
 ---
 
-### Combined Risk Summary — Product Chatbot
+### Combined Risk Summary - Product Chatbot
 
 | Threat | Inherent (per 1K) | Residual (per 1K) | Annualised (1M txn) | Severity |
 |---|---|---|---|---|
-| Prompt injection — price manipulation | 20 | 0.002 | ~2 | High |
+| Prompt injection - price manipulation | 20 | 0.002 | ~2 | High |
 | Hallucinated product info | 50 | 0.005 | ~5 | Medium |
 | PII leakage | 10 | 0.001 | ~1 | Critical |
 | Unauthorized payment | 5 | 0.0005 | ~0.5 | Critical |
 | Inappropriate response | 15 | 0.0015 | ~1.5 | Medium |
 | **Total** | **100** | **0.0100** | **~10** | |
 
-**Interpretation:** Without controls, roughly 10% of transactions would have some form of issue. With all three layers active, the residual rate drops to approximately 0.001% — about 10 incidents per year at 1M transactions. Of those, the critical-severity incidents (PII, unauthorized payment) are expected at fewer than 2 per year.
+**Interpretation:** Without controls, roughly 10% of transactions would have some form of issue. With all three layers active, the residual rate drops to approximately 0.001% - about 10 incidents per year at 1M transactions. Of those, the critical-severity incidents (PII, unauthorized payment) are expected at fewer than 2 per year.
 
 ---
 
 ## Compensating Controls
 
-The three-layer AI pattern does not operate in isolation. Existing infrastructure provides independent controls that further reduce residual risk. These are not substitutes for AI-specific controls — they are additional layers in the overall defence.
+The three-layer AI pattern does not operate in isolation. Existing infrastructure provides independent controls that further reduce residual risk. These are not substitutes for AI-specific controls - they are additional layers in the overall defence.
 
 ### For the Product Chatbot
 
 | Compensating Control | What It Catches | Independence From AI Layers |
 |---|---|---|
-| **Payment gateway validation** | Amount limits, card verification, 3D Secure, duplicate detection | Operates at payment infrastructure level — catches errors regardless of what the chatbot sends |
-| **API input validation** | Malformed requests, out-of-range values, schema violations | Application layer — rejects structurally invalid API calls before they reach backend systems |
-| **Fraud detection system** | Anomalous transaction patterns, velocity checks, device fingerprinting | Operates on transaction data, not chatbot outputs — independent signal |
-| **Rate limiting (API gateway)** | Bulk exploitation, automated attacks, enumeration | Network/infrastructure level — limits blast radius regardless of individual transaction success |
-| **Order confirmation workflow** | Customer verifies order details before final payment | Human-in-the-loop at the customer level — the customer themselves is a control |
-| **Inventory management system** | Prevents fulfillment of out-of-stock items, catches quantity errors | Backend system of record — chatbot hallucination about availability is caught at fulfillment |
+| **Payment gateway validation** | Amount limits, card verification, 3D Secure, duplicate detection | Operates at payment infrastructure level - catches errors regardless of what the chatbot sends |
+| **API input validation** | Malformed requests, out-of-range values, schema violations | Application layer - rejects structurally invalid API calls before they reach backend systems |
+| **Fraud detection system** | Anomalous transaction patterns, velocity checks, device fingerprinting | Operates on transaction data, not chatbot outputs - independent signal |
+| **Rate limiting (API gateway)** | Bulk exploitation, automated attacks, enumeration | Network/infrastructure level - limits blast radius regardless of individual transaction success |
+| **Order confirmation workflow** | Customer verifies order details before final payment | Human-in-the-loop at the customer level - the customer themselves is a control |
+| **Inventory management system** | Prevents fulfillment of out-of-stock items, catches quantity errors | Backend system of record - chatbot hallucination about availability is caught at fulfillment |
 | **Refund/chargeback process** | Enables recovery from payment errors | Not a preventive control, but reduces financial impact of residual failures |
 
 ### Adjusted Residual Risk with Compensating Controls
@@ -365,19 +365,19 @@ See the [detailed worked example above](#worked-example-customer-product-chatbot
 | Hallucinated financial data | 20 | Guardrails (90%): data validation against bureau records. Judge (95%): source verification. Human (98%): sample review of all auto-approved | 0.002 |
 | Incorrect risk score | 30 | Guardrails (90%): range and consistency checks. Judge (95%): independent risk recalculation on sample. Human (98%): all high-value reviewed | 0.003 |
 | Regulatory violation | 10 | Guardrails (90%): compliance rule engine. Judge (95%): regulatory checklist evaluation. Human (98%): compliance officer review | 0.001 |
-| Model drift — gradual accuracy degradation | 5 | Guardrails (90%): statistical drift detection. Judge (95%): decision distribution monitoring. Human (98%): monthly portfolio review | 0.0005 |
+| Model drift - gradual accuracy degradation | 5 | Guardrails (90%): statistical drift detection. Judge (95%): decision distribution monitoring. Human (98%): monthly portfolio review | 0.0005 |
 
 **Residual: ~0.008 issues per 1,000 decisions across all threat categories = 1 in 125,000 decisions**
 
 **Compensating controls that further reduce risk:**
-- **Regulatory model validation** — independent model risk management (OCC/Fed guidance)
-- **Adverse action notice process** — customer can challenge decisions, creating a feedback loop
-- **Portfolio-level monitoring** — statistical analysis catches systematic bias even if individual decisions pass
-- **Audit trail requirements** — every decision is logged with full reasoning chain for regulatory examination
+- **Regulatory model validation** - independent model risk management (OCC/Fed guidance)
+- **Adverse action notice process** - customer can challenge decisions, creating a feedback loop
+- **Portfolio-level monitoring** - statistical analysis catches systematic bias even if individual decisions pass
+- **Audit trail requirements** - every decision is logged with full reasoning chain for regulatory examination
 
 **PACE posture:** Full PACE cycle with tested E→P recovery.
 - **Alternate:** Judge degraded → all decisions require human approval (no auto-execution)
-- **Contingency:** Multiple layers degraded → system enters "manual underwriting" mode — AI provides data retrieval only, all decisions made by human underwriters
+- **Contingency:** Multiple layers degraded → system enters "manual underwriting" mode - AI provides data retrieval only, all decisions made by human underwriters
 - **Emergency:** Circuit breaker → AI removed from decision path entirely, application queue held, existing commitments honoured through manual process
 
 ---
@@ -406,7 +406,7 @@ See the [detailed worked example above](#worked-example-customer-product-chatbot
 
 **3. Correlated failures break the model.** If a novel attack technique bypasses both guardrails AND the Judge (because both rely on similar detection approaches), the independence assumption fails and residual risk is higher than predicted. This is why the framework emphasises different models, different methods, and different perspectives across layers.
 
-**4. The "unknown unknown" isn't modelled.** This analysis covers known threat categories. Novel failure modes — threats you haven't imagined — are not captured. The Judge layer's semantic evaluation and Human Oversight provide some coverage for novel threats, but the model cannot quantify what it cannot anticipate. This is the fundamental argument for defence in depth: you need layers precisely because you can't predict everything.
+**4. The "unknown unknown" isn't modelled.** This analysis covers known threat categories. Novel failure modes - threats you haven't imagined - are not captured. The Judge layer's semantic evaluation and Human Oversight provide some coverage for novel threats, but the model cannot quantify what it cannot anticipate. This is the fundamental argument for defence in depth: you need layers precisely because you can't predict everything.
 
 **5. Compensating controls have their own failure rates.** The payment gateway, fraud detection system, and API validation layer can all fail too. A complete risk assessment would model these as additional independent layers with their own effectiveness rates, producing a full probability tree. The simplified analysis above is sufficient for directional decision-making.
 
@@ -427,17 +427,17 @@ If your organisation uses NIST AI RMF, frame this assessment in those terms:
 | Compensating controls and PACE postures | **MANAGE** | "We have compensating controls and defined degradation paths when controls fail" |
 
 Present two numbers:
-1. **AI-layer residual risk** — what's left after guardrails, Judge, and human oversight
-2. **Compensated residual risk** — what's left after existing infrastructure controls also apply
+1. **AI-layer residual risk** - what's left after guardrails, Judge, and human oversight
+2. **Compensated residual risk** - what's left after existing infrastructure controls also apply
 
 Frame the discussion around whether the compensated residual risk is within appetite, not whether it's zero. It will never be zero.
 
 ### For Engineering Teams
 
 Use the per-scenario tables to:
-- **Prioritise control implementation** — highest inherent likelihood × severity first
-- **Justify Judge coverage levels** — show the math on sampling vs. full coverage
-- **Identify where compensating controls reduce urgency** — payment gateway validation may mean you can deploy with guardrails-only initially while building out the Judge layer
+- **Prioritise control implementation** - highest inherent likelihood × severity first
+- **Justify Judge coverage levels** - show the math on sampling vs. full coverage
+- **Identify where compensating controls reduce urgency** - payment gateway validation may mean you can deploy with guardrails-only initially while building out the Judge layer
 
 ### For Incident Response
 

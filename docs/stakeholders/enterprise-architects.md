@@ -1,6 +1,6 @@
 # Enterprise Architects
 
-**Solution Architects, Platform Architects, Technical Leads — where controls go in your pipeline, what they cost, and how they fail.**
+**Solution Architects, Platform Architects, Technical Leads - where controls go in your pipeline, what they cost, and how they fail.**
 
 > *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
 
@@ -31,7 +31,7 @@ Every AI request passes through a pipeline. Controls intercept at specific point
 **Key architectural decisions:**
 - Judge runs **asynchronously** for most tiers (doesn't block response). Runs **synchronously** for CRITICAL tier (blocks until evaluated)
 - Guardrails add **~10ms** per layer. Judge adds **~500ms–5s** depending on model and prompt complexity
-- Judge should use a **different model** from the task agent — same-model evaluation has correlated failure modes
+- Judge should use a **different model** from the task agent - same-model evaluation has correlated failure modes
 
 ### What your existing infrastructure already covers
 
@@ -52,11 +52,11 @@ The framework fills the gaps, not replaces the stack. See [Infrastructure Contro
 
 | If You're Building... | Read | Key Architecture Decision |
 |---|---|---|
-| RAG pipeline | [RAG Security](../extensions/technical/rag-security.md) | Retrieval layer is your biggest attack surface — poisoned documents become instructions |
+| RAG pipeline | [RAG Security](../extensions/technical/rag-security.md) | Retrieval layer is your biggest attack surface - poisoned documents become instructions |
 | Single agent with tools | [Agentic Controls](../core/agentic.md) | Tool access scoping, action classification (read/write/irreversible), confirmation gates |
 | Multi-agent orchestration | [MASO Integration Guide](../maso/integration/integration-guide.md) | Message bus signing, per-agent NHI, cross-agent DLP, delegation depth limits |
-| Streaming responses | [Streaming Controls](../core/streaming-controls.md) | You can't evaluate output that hasn't finished — buffer or accept partial validation |
-| Multimodal (image/audio/video) | [Multimodal Controls](../core/multimodal-controls.md) | Text guardrails don't work on images — you need modality-specific evaluation |
+| Streaming responses | [Streaming Controls](../core/streaming-controls.md) | You can't evaluate output that hasn't finished - buffer or accept partial validation |
+| Multimodal (image/audio/video) | [Multimodal Controls](../core/multimodal-controls.md) | Text guardrails don't work on images - you need modality-specific evaluation |
 
 ### Cost and latency budgets
 
@@ -71,9 +71,9 @@ The Judge layer isn't free. Budget for it:
 
 Full analysis: [Cost & Latency](../extensions/technical/cost-and-latency.md)
 
-### PACE fail postures — what you wire into your architecture
+### PACE fail postures - what you wire into your architecture
 
-Each control layer needs a defined failure mode. These aren't operational procedures — they're **architecture decisions** you make at design time:
+Each control layer needs a defined failure mode. These aren't operational procedures - they're **architecture decisions** you make at design time:
 
 | Layer Failure | Architectural Response |
 |---|---|
@@ -90,17 +90,17 @@ Wire these as **health checks and circuit breakers** in your service mesh or orc
 
 | # | Document | Why You Need It |
 |---|---|---|
-| 1 | [Controls](../core/controls.md) | Three-layer pattern with implementation detail — the core architectural reference |
-| 2 | [Risk Tiers](../core/risk-tiers.md) | Determines your control requirements — different tiers, different architectures |
-| 3 | [Infrastructure Controls](../infrastructure/) | 80 controls across 11 domains — what to enforce at infrastructure level |
-| 4 | [Cost & Latency](../extensions/technical/cost-and-latency.md) | Budget the evaluation layer — latency vs. coverage trade-offs |
+| 1 | [Controls](../core/controls.md) | Three-layer pattern with implementation detail - the core architectural reference |
+| 2 | [Risk Tiers](../core/risk-tiers.md) | Determines your control requirements - different tiers, different architectures |
+| 3 | [Infrastructure Controls](../infrastructure/) | 80 controls across 11 domains - what to enforce at infrastructure level |
+| 4 | [Cost & Latency](../extensions/technical/cost-and-latency.md) | Budget the evaluation layer - latency vs. coverage trade-offs |
 | 5 | [PACE Resilience](../PACE-RESILIENCE.md) | Fail postures as architecture decisions |
 
 **If you're building with a specific platform:** [AWS Bedrock](../infrastructure/reference/platform-patterns/aws-bedrock.md) · [Azure AI](../infrastructure/reference/platform-patterns/azure-ai.md) · [Databricks](../infrastructure/reference/platform-patterns/databricks.md)
 
-**If you're building multi-agent:** [MASO Integration Guide](../maso/integration/integration-guide.md) — LangGraph, AutoGen, CrewAI, AWS Bedrock patterns.
+**If you're building multi-agent:** [MASO Integration Guide](../maso/integration/integration-guide.md) - LangGraph, AutoGen, CrewAI, AWS Bedrock patterns.
 
-**If you want to see one transaction end-to-end:** [Runtime Telemetry Reference](../extensions/technical/runtime-telemetry-reference.md) — every JSON event, every threshold, every evidence artefact for a single request through the full control stack.
+**If you want to see one transaction end-to-end:** [Runtime Telemetry Reference](../extensions/technical/runtime-telemetry-reference.md) - every JSON event, every threshold, every evidence artefact for a single request through the full control stack.
 
 ---
 
@@ -108,7 +108,7 @@ Wire these as **health checks and circuit breakers** in your service mesh or orc
 
 1. **Map your existing infrastructure** against the [Infrastructure Controls](../infrastructure/) to identify what you already cover and where the AI-specific gaps are.
 
-2. **Add the Judge layer to your architecture.** Pick one HIGH or CRITICAL tier system. Add an independent LLM evaluation step — even async, even sampled. The [LLM-as-Judge Implementation](../extensions/technical/llm-as-judge-implementation.md) guide has the implementation patterns.
+2. **Add the Judge layer to your architecture.** Pick one HIGH or CRITICAL tier system. Add an independent LLM evaluation step - even async, even sampled. The [LLM-as-Judge Implementation](../extensions/technical/llm-as-judge-implementation.md) guide has the implementation patterns.
 
 3. **Wire PACE health checks.** Add circuit breakers for your guardrail and Judge services. Define what the system does when each is unavailable. Test the failover path.
 
@@ -118,15 +118,15 @@ Wire these as **health checks and circuit breakers** in your service mesh or orc
 
 ---
 
-## Common Objections — With Answers
+## Common Objections - With Answers
 
 **"Adding a Judge layer doubles our latency."**
-Only if you run it synchronously. For HIGH tier, run it async — the guardrails provide real-time protection while the Judge evaluates in the background. Only CRITICAL tier needs synchronous Judge evaluation. Budget ~10ms for guardrails, not seconds.
+Only if you run it synchronously. For HIGH tier, run it async - the guardrails provide real-time protection while the Judge evaluates in the background. Only CRITICAL tier needs synchronous Judge evaluation. Budget ~10ms for guardrails, not seconds.
 
 **"We're using [vendor]'s built-in guardrails. That's enough."**
 Vendor guardrails are your first layer. The framework's three-layer pattern adds an independent evaluation layer (different model, different detection approach) and human oversight. Single-layer controls have a ~10% miss rate. Three layers compound to ~0.01%. [Why Guardrails Aren't Enough](../insights/why-guardrails-arent-enough.md).
 
-**"Our RAG pipeline grounds the model — it won't hallucinate."**
+**"Our RAG pipeline grounds the model - it won't hallucinate."**
 RAG reduces but doesn't eliminate hallucination. More importantly, RAG creates a new attack surface: poisoned documents in your retrieval corpus become instructions to the model. [RAG Is Your Biggest Attack Surface](../insights/rag-is-your-biggest-attack-surface.md).
 
 **"The infrastructure team handles security, not us."**

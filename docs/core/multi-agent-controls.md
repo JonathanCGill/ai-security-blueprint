@@ -2,7 +2,7 @@
 
 > Extends [Agentic Controls](agentic.md) for systems where agents interact with other agents.
 >
-> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers — Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
+> *This document uses the simplified three-tier system (Tier 1/2/3). See [Risk Tiers - Simplified Tier Mapping](risk-tiers.md#simplified-tier-mapping) for the mapping to LOW/MEDIUM/HIGH/CRITICAL.*
 
 ## The Problem
 
@@ -25,9 +25,9 @@ Multi-agent systems fall into three patterns. Each has different control require
 
 | Topology | Description | Risk Profile |
 |----------|-------------|-------------|
-| **Orchestrator** | One agent coordinates, others execute | Moderate — single point of control and failure |
-| **Peer-to-peer** | Agents communicate directly | High — no central authority, lateral movement risk |
-| **Hierarchical** | Agents delegate down a chain | High — privilege can accumulate or escalate across levels |
+| **Orchestrator** | One agent coordinates, others execute | Moderate - single point of control and failure |
+| **Peer-to-peer** | Agents communicate directly | High - no central authority, lateral movement risk |
+| **Hierarchical** | Agents delegate down a chain | High - privilege can accumulate or escalate across levels |
 
 ---
 
@@ -88,7 +88,7 @@ This is the equivalent of HTTP request tracing (e.g., OpenTelemetry spans) appli
 
 ### 3. Inter-Agent Guardrails
 
-Each agent in a chain should apply its own guardrails to incoming requests — not trust the upstream agent's validation.
+Each agent in a chain should apply its own guardrails to incoming requests - not trust the upstream agent's validation.
 
 | Position | Guardrail Responsibility |
 |----------|------------------------|
@@ -131,9 +131,9 @@ This is not optional for regulated environments. If an AI system makes a credit 
 
 MCP enables agents to use tools, including other agents exposed as tools. Risks:
 
-- **Tool impersonation** — Malicious MCP server posing as a legitimate tool
-- **Excessive tool access** — Agent given access to more MCP tools than needed
-- **No built-in authentication** — MCP does not natively verify tool identity
+- **Tool impersonation** - Malicious MCP server posing as a legitimate tool
+- **Excessive tool access** - Agent given access to more MCP tools than needed
+- **No built-in authentication** - MCP does not natively verify tool identity
 
 **Controls:** Pin MCP server URIs, verify server identity, scope tool access per agent, log all MCP calls.
 
@@ -141,9 +141,9 @@ MCP enables agents to use tools, including other agents exposed as tools. Risks:
 
 Google's A2A protocol enables cross-vendor agent communication. Risks:
 
-- **Trust boundary collapse** — External agent from another organisation gains access to internal tools
-- **Schema injection** — Malformed agent cards that manipulate receiving agents
-- **Capability advertisement spoofing** — Agent claims capabilities it doesn't have (or shouldn't use)
+- **Trust boundary collapse** - External agent from another organisation gains access to internal tools
+- **Schema injection** - Malformed agent cards that manipulate receiving agents
+- **Capability advertisement spoofing** - Agent claims capabilities it doesn't have (or shouldn't use)
 
 **Controls:** Validate agent cards against an allowlist, enforce capability constraints at the receiving end, treat all A2A inputs as untrusted.
 

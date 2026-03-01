@@ -1,11 +1,11 @@
 User-agent: *
 Allow: /
 
-# Raw source files — content is served as HTML, not markdown
+# Raw source files - content is served as HTML, not markdown
 Disallow: /*.md$
 Disallow: /*.docx$
 
-# Internal/theme files — not content pages
+# Internal/theme files - not content pages
 Disallow: /overrides/
 Disallow: /LinkedIn_Sharing_Strategy.docx
 

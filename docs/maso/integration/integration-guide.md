@@ -11,7 +11,7 @@
 
 This guide maps MASO control requirements to the specific implementation patterns available in four widely-adopted agent orchestration frameworks: LangGraph, AutoGen, CrewAI, and AWS Bedrock Agents. For each framework, it identifies where MASO controls can be enforced natively, where custom implementation is required, and where architectural gaps exist.
 
-The guide does not endorse any framework. It provides the security architect with a practical mapping: "I need to implement MASO control X — here's how to do it in framework Y."
+The guide does not endorse any framework. It provides the security architect with a practical mapping: "I need to implement MASO control X - here's how to do it in framework Y."
 
 ---
 
@@ -20,12 +20,12 @@ The guide does not endorse any framework. It provides the security architect wit
 | MASO Control | LangGraph | AutoGen | CrewAI | AWS Bedrock Agents |
 |--------------|-----------|---------|--------|-------------------|
 | **PG-1.1** Input guardrails per agent | Custom node | Custom middleware | Custom tool | Bedrock Guardrails (native) |
-| **PG-1.4** Message source tagging | State annotation | Message metadata | N/A — custom needed | N/A — custom needed |
-| **PG-2.1** Inter-agent injection detection | Custom edge validator | Custom speaker selection | N/A — custom needed | N/A — custom needed |
-| **PG-2.2** Goal integrity monitoring | Checkpointer + custom | Custom termination check | N/A — custom needed | CloudWatch custom metric |
+| **PG-1.4** Message source tagging | State annotation | Message metadata | N/A - custom needed | N/A - custom needed |
+| **PG-2.1** Inter-agent injection detection | Custom edge validator | Custom speaker selection | N/A - custom needed | N/A - custom needed |
+| **PG-2.2** Goal integrity monitoring | Checkpointer + custom | Custom termination check | N/A - custom needed | CloudWatch custom metric |
 | **IA-1.4** Scoped tool permissions | Per-node tool binding | Per-agent tool list | Per-agent tool list | Action group scoping (native) |
 | **IA-2.1** Zero-trust credentials | Custom credential manager | Custom credential manager | Custom credential manager | IAM roles per agent (native) |
-| **DP-2.1** DLP on message bus | Custom channel interceptor | Custom middleware | N/A — custom needed | N/A — custom needed |
+| **DP-2.1** DLP on message bus | Custom channel interceptor | Custom middleware | N/A - custom needed | N/A - custom needed |
 | **EC-1.1** Human approval for writes | `interrupt_before` (native) | `HumanInputMode` (native) | `human_input=True` (native) | Return control (native) |
 | **EC-1.2** Tool allow-lists | Per-node tool binding | Per-agent tool list | Per-agent tool list | Action group definitions (native) |
 | **EC-2.5** LLM-as-Judge gate | Custom node in graph | Custom agent role | Custom agent role | Custom Lambda function |
@@ -113,7 +113,7 @@ CrewAI's task-based model with explicit agent roles and delegation maps naturall
 
 **Human approval for writes (EC-1.1):** Set `human_input=True` on any task that involves write operations. CrewAI natively pauses execution and requests human input before proceeding.
 
-**Scoped permissions (IA-1.4):** Assign tools to agents explicitly in the agent definition. Each agent receives only the tools required for its role. Use the `allow_delegation` parameter to control whether an agent can delegate tasks to other agents — set to `False` for high-privilege agents to prevent transitive authority.
+**Scoped permissions (IA-1.4):** Assign tools to agents explicitly in the agent definition. Each agent receives only the tools required for its role. Use the `allow_delegation` parameter to control whether an agent can delegate tasks to other agents - set to `False` for high-privilege agents to prevent transitive authority.
 
 **LLM-as-Judge (EC-2.5):** Create a dedicated "Quality Assurance" agent with its own model configuration. Add it as the final step in the task chain. The QA agent reviews all outputs against MASO criteria before they are returned. Use the hierarchical process model to enforce that the QA agent has authority over task agents.
 
@@ -156,16 +156,16 @@ AWS Bedrock Agents provides a managed infrastructure for agent orchestration wit
 Regardless of framework, implement these controls first:
 
 **Priority 1 (Tier 1 minimum):**
-1. Human approval for all write operations — every framework supports this natively
-2. Per-agent tool scoping — define exactly which tools each agent can use
-3. Audit logging — capture every agent action, tool call, and delegation event
-4. Input guardrails — filter known-bad patterns at each agent's input boundary
+1. Human approval for all write operations - every framework supports this natively
+2. Per-agent tool scoping - define exactly which tools each agent can use
+3. Audit logging - capture every agent action, tool call, and delegation event
+4. Input guardrails - filter known-bad patterns at each agent's input boundary
 
 **Priority 2 (Tier 2 minimum):**
-5. LLM-as-Judge evaluation — add an independent evaluation agent using a different model
-6. Message source tagging — distinguish data from instruction in all inter-agent communication
-7. Inter-agent injection detection — evaluate messages for injection patterns at the bus level
-8. DLP on inter-agent messages — detect sensitive data in agent-to-agent communication
+5. LLM-as-Judge evaluation - add an independent evaluation agent using a different model
+6. Message source tagging - distinguish data from instruction in all inter-agent communication
+7. Inter-agent injection detection - evaluate messages for injection patterns at the bus level
+8. DLP on inter-agent messages - detect sensitive data in agent-to-agent communication
 
 **Priority 3 (Tier 3):**
 9. Independent observability agent with kill switch authority
@@ -186,7 +186,7 @@ Regardless of framework, implement these controls first:
 | Regulated financial services | AWS Bedrock Agents (IAM, CloudTrail, compliance) |
 | Research / experimentation | LangGraph or AutoGen |
 
-No framework provides complete MASO coverage out of the box. Every implementation will require custom security controls beyond what the framework provides natively. The framework's role is to provide extension points — the security architecture is your responsibility.
+No framework provides complete MASO coverage out of the box. Every implementation will require custom security controls beyond what the framework provides natively. The framework's role is to provide extension points - the security architecture is your responsibility.
 
 ---
 

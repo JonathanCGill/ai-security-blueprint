@@ -9,7 +9,7 @@
   <rect width="900" height="520" fill="url(#bg)"/>
 
   <!-- Title -->
-  <text x="450" y="32" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" letter-spacing="2">TIER 1 — SUPERVISED MULTI-AGENT ARCHITECTURE</text>
+  <text x="450" y="32" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" letter-spacing="2">TIER 1 - SUPERVISED MULTI-AGENT ARCHITECTURE</text>
   <text x="450" y="50" text-anchor="middle" fill="#ff6b35" font-size="10" letter-spacing="1">LOW AUTONOMY · HUMAN-IN-THE-LOOP · PILOT PHASE</text>
   <line x1="150" y1="60" x2="750" y2="60" stroke="#ff6b35" stroke-width="0.6" opacity="0.4"/>
 
@@ -74,12 +74,12 @@
 
   <!-- Layer status boxes -->
   <rect x="100" y="400" width="340" height="55" rx="6" fill="#0d1225" stroke="#445" stroke-width="1" stroke-dasharray="4,2"/>
-  <text x="270" y="420" text-anchor="middle" fill="#667" font-size="10" font-weight="600">Layer 2 — LLM-as-Judge</text>
+  <text x="270" y="420" text-anchor="middle" fill="#667" font-size="10" font-weight="600">Layer 2 - LLM-as-Judge</text>
   <text x="270" y="436" text-anchor="middle" fill="#556" font-size="9">OPTIONAL at Tier 1</text>
   <text x="270" y="448" text-anchor="middle" fill="#445" font-size="8">(Deploy if available · not a gating requirement)</text>
 
   <rect x="460" y="400" width="340" height="55" rx="6" fill="#0d1225" stroke="#92fe9d" stroke-width="1.5"/>
-  <text x="630" y="420" text-anchor="middle" fill="#92fe9d" font-size="10" font-weight="600">Layer 3 — Human Oversight</text>
+  <text x="630" y="420" text-anchor="middle" fill="#92fe9d" font-size="10" font-weight="600">Layer 3 - Human Oversight</text>
   <text x="630" y="436" text-anchor="middle" fill="#92fe9d" font-size="9">MANDATORY for all writes</text>
   <text x="630" y="448" text-anchor="middle" fill="#8899aa" font-size="8">(Dominant control at Tier 1)</text>
 

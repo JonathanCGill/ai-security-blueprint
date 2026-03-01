@@ -674,13 +674,13 @@ FTE = (Volume × Sample Rate × Review Time) / Working Hours
 
 A centralised AI governance function aligned with ISO 42001:
 
-1. **Operates as 2nd line** — Sets policy, provides oversight, doesn't own systems
-2. **Enables 1st line** — Provides standards, tools, and support
-3. **Centralises what should be central** — Judge, patterns, policy, reporting
-4. **Federates what should be federated** — HITL operations, system ownership
-5. **Integrates technical controls** — Guardrails, Judge, HITL into governance processes
-6. **Spans platforms** — Provides consistency across Bedrock, Databricks, Foundry
-7. **Demonstrates compliance** — ISO 42001, regulations, internal standards
+1. **Operates as 2nd line** - Sets policy, provides oversight, doesn't own systems
+2. **Enables 1st line** - Provides standards, tools, and support
+3. **Centralises what should be central** - Judge, patterns, policy, reporting
+4. **Federates what should be federated** - HITL operations, system ownership
+5. **Integrates technical controls** - Guardrails, Judge, HITL into governance processes
+6. **Spans platforms** - Provides consistency across Bedrock, Databricks, Foundry
+7. **Demonstrates compliance** - ISO 42001, regulations, internal standards
 
 **The key insight:** Technical controls (guardrails, Judge, HITL) are governance controls. A centralised function ensures they're applied consistently, operated effectively, and demonstrate compliance.
 

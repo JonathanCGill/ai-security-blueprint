@@ -13,7 +13,7 @@ These eight controls establish verification, provenance, and integrity requireme
 
 ---
 
-## SUP-01 — Verify Model Provenance and Integrity
+## SUP-01 - Verify Model Provenance and Integrity
 
 **Risk Tiers:** All
 
@@ -41,7 +41,7 @@ Ensure that every model deployed in production can be traced to a verified sourc
 
 ---
 
-## SUP-02 — Assess Model Risk Before Adoption
+## SUP-02 - Assess Model Risk Before Adoption
 
 **Risk Tiers:** All
 
@@ -65,11 +65,11 @@ Evaluate every model against security, safety, and operational risk criteria bef
 |-------|----------------------|
 | **Guardrails** | Risk assessment identifies which guardrail configurations are needed for a specific model's known weaknesses and capability profile. |
 | **Judge** | Assessment results inform Judge evaluation criteria and threshold calibration for the specific model. |
-| **Human Oversight** | Risk classification determines the level of human oversight required — higher-risk models require more frequent and more granular human review. |
+| **Human Oversight** | Risk classification determines the level of human oversight required - higher-risk models require more frequent and more granular human review. |
 
 ---
 
-## SUP-03 — Verify RAG Data Source Integrity
+## SUP-03 - Verify RAG Data Source Integrity
 
 **Risk Tiers:** Tier 2+
 
@@ -97,7 +97,7 @@ Ensure that data ingested into retrieval-augmented generation (RAG) knowledge ba
 
 ---
 
-## SUP-04 — Secure Fine-Tuning Pipeline
+## SUP-04 - Secure Fine-Tuning Pipeline
 
 **Risk Tiers:** Tier 2+
 
@@ -126,7 +126,7 @@ Protect fine-tuning processes from data poisoning, unauthorised modification, an
 
 ---
 
-## SUP-05 — Audit Tool and Plugin Supply Chain
+## SUP-05 - Audit Tool and Plugin Supply Chain
 
 **Risk Tiers:** Tier 2+ (agentic)
 
@@ -149,13 +149,13 @@ Ensure that tools and plugins available to AI agents are from verified sources, 
 
 | Layer | How SUP-05 Supports It |
 |-------|----------------------|
-| **Guardrails** | Tool manifests feed guardrail policy — the guardrail knows what the tool is allowed to do and blocks invocations outside declared scope. |
+| **Guardrails** | Tool manifests feed guardrail policy - the guardrail knows what the tool is allowed to do and blocks invocations outside declared scope. |
 | **Judge** | Judge can evaluate whether tool invocation patterns match the declared capability profile, detecting anomalous usage that may indicate compromise. |
 | **Human Oversight** | The tool registry provides human reviewers with a complete inventory of what agents can do, enabling informed approval decisions. |
 
 ---
 
-## SUP-06 — Verify Guardrail and Safety Model Integrity
+## SUP-06 - Verify Guardrail and Safety Model Integrity
 
 **Risk Tiers:** All
 
@@ -183,13 +183,13 @@ Guardrails and Judge models are themselves machine learning systems (or rule eng
 
 ---
 
-## SUP-07 — Maintain AI Component Inventory (AI-BOM)
+## SUP-07 - Maintain AI Component Inventory (AI-BOM)
 
 **Risk Tiers:** All
 
 ### Objective
 
-Maintain a comprehensive, machine-readable inventory of all AI components in production — analogous to a software bill of materials (SBOM) but extended to cover models, datasets, guardrails, tools, and evaluation systems.
+Maintain a comprehensive, machine-readable inventory of all AI components in production - analogous to a software bill of materials (SBOM) but extended to cover models, datasets, guardrails, tools, and evaluation systems.
 
 ### Requirements
 
@@ -211,7 +211,7 @@ Maintain a comprehensive, machine-readable inventory of all AI components in pro
 
 ---
 
-## SUP-08 — Monitor for Model and Dependency Vulnerabilities
+## SUP-08 - Monitor for Model and Dependency Vulnerabilities
 
 **Risk Tiers:** All
 

@@ -1,6 +1,6 @@
 # Bypass Prevention
 
-How attackers, users, and agents circumvent controls — and what you can do about it.
+How attackers, users, and agents circumvent controls - and what you can do about it.
 
 ---
 
@@ -8,7 +8,7 @@ How attackers, users, and agents circumvent controls — and what you can do abo
 
 **You cannot fully prevent bypasses.**
 
-This isn't defeatism — it's the foundation of a realistic security posture. AI systems have fundamental properties that make complete bypass prevention impossible:
+This isn't defeatism - it's the foundation of a realistic security posture. AI systems have fundamental properties that make complete bypass prevention impossible:
 
 | Property | Why It Enables Bypass |
 |----------|----------------------|
@@ -175,7 +175,7 @@ You cannot verify that someone's stated intent is their actual intent. A user wh
 
 **3. Structured declarations**
 
-Don't ask "What's your purpose?" — ask specific, verifiable questions:
+Don't ask "What's your purpose?" - ask specific, verifiable questions:
 
 ```
 ❌ Bad: "Please describe your intended use"
@@ -429,13 +429,13 @@ Be honest about what's impossible:
 
 ## Summary
 
-1. **Accept that bypasses will happen** — design for detection and response, not just prevention
-2. **Layer your controls** — attacker must defeat all layers, not just one
-3. **Enforce at infrastructure, not instruction** — don't rely on AI to limit itself
-4. **Verify controls work** — canary testing, adversarial testing, metrics
-5. **Make misuse costly** — audit trails, consequences, attribution
-6. **Learn from every bypass** — improve controls, update tests, share knowledge
-7. **Provide good alternatives** — shadow AI happens when official AI is too restrictive
+1. **Accept that bypasses will happen** - design for detection and response, not just prevention
+2. **Layer your controls** - attacker must defeat all layers, not just one
+3. **Enforce at infrastructure, not instruction** - don't rely on AI to limit itself
+4. **Verify controls work** - canary testing, adversarial testing, metrics
+5. **Make misuse costly** - audit trails, consequences, attribution
+6. **Learn from every bypass** - improve controls, update tests, share knowledge
+7. **Provide good alternatives** - shadow AI happens when official AI is too restrictive
 
 ---
 

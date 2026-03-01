@@ -14,7 +14,7 @@ Real-time and streaming AI doesn't work that way.
 
 ## The Streaming Challenge
 
-Voice assistants, live translation, real-time transcription, interactive agents — these systems produce output as they go. The user receives partial results while the model is still generating.
+Voice assistants, live translation, real-time transcription, interactive agents - these systems produce output as they go. The user receives partial results while the model is still generating.
 
 Token by token. Word by word. Sentence by sentence.
 
@@ -52,10 +52,10 @@ None of these is satisfactory.
 Streaming a response that mentions a customer name:
 
 "The account holder, J..."
-*— Can you stop it here? You don't know what comes next.*
+*- Can you stop it here? You don't know what comes next.*
 
 "...ohn Smith, has..."
-*— Too late. PII delivered.*
+*- Too late. PII delivered.*
 
 Partial content doesn't reveal whether the full content violates policy.
 
@@ -64,10 +64,10 @@ Partial content doesn't reveal whether the full content violates policy.
 A response can start appropriately and go wrong:
 
 "I understand you're frustrated. Let me help you with..."
-*— So far, fine.*
+*- So far, fine.*
 
 "...a workaround that technically violates our terms of service but..."
-*— Problem.*
+*- Problem.*
 
 Chunk-by-chunk validation can't see where the response is heading. By the time the trajectory is clear, significant content has streamed.
 
@@ -81,7 +81,7 @@ Voice and video add constraints:
 
 **No take-backs**: Once audio is spoken or video is shown, it can't be unspoken or unshown. Text streaming can at least be edited on screen. Voice is gone.
 
-**Continuous generation**: A voice agent might speak for 30 seconds continuously. That's not chunks — that's a constant stream of potentially reviewable content with no natural pause points.
+**Continuous generation**: A voice agent might speak for 30 seconds continuously. That's not chunks - that's a constant stream of potentially reviewable content with no natural pause points.
 
 ---
 
@@ -126,7 +126,7 @@ The Judge operates after delivery, but operates fast.
 
 Some content shouldn't stream.
 
-Sensitive topics, high-risk decisions, regulated advice — these might require the non-streaming path even in a real-time system.
+Sensitive topics, high-risk decisions, regulated advice - these might require the non-streaming path even in a real-time system.
 
 "Let me look into that and get back to you in a moment..."
 *[switch to full validation path]*
@@ -175,11 +175,11 @@ The framework should:
 
 ## The Trajectory
 
-Real-time AI is becoming the default. Voice interfaces, live assistance, instant translation — users expect immediate response.
+Real-time AI is becoming the default. Voice interfaces, live assistance, instant translation - users expect immediate response.
 
 The inspect-then-deliver model assumes time we don't have.
 
-Security approaches will adapt: more prevention, probabilistic intervention, faster detection, graceful degradation. But the fundamental tension — validation takes time, streaming doesn't wait — won't disappear.
+Security approaches will adapt: more prevention, probabilistic intervention, faster detection, graceful degradation. But the fundamental tension - validation takes time, streaming doesn't wait - won't disappear.
 
 Build for imperfect control. Design for fast recovery.
 

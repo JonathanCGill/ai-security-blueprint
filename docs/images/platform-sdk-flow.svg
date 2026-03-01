@@ -19,7 +19,7 @@
   </defs>
   <rect width="900" height="340" fill="#ffffff"/>
   <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Platform SDK Flow</text>
-  <text x="450" y="46" text-anchor="middle" font-size="12" fill="#64748b">Developer integrates via SDK — guardrails and Judge run as platform services</text>
+  <text x="450" y="46" text-anchor="middle" font-size="12" fill="#64748b">Developer integrates via SDK - guardrails and Judge run as platform services</text>
   <rect x="20" y="105" width="90" height="30" rx="15" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
   <text x="65" y="125" text-anchor="middle" font-size="10" font-weight="600" fill="#1e40af">Developer</text>
   <line x1="110" y1="120" x2="145" y2="120" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>

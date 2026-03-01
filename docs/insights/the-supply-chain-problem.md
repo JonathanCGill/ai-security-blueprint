@@ -24,7 +24,7 @@ You test your application. You monitor your outputs. But you have no visibility 
 | **Embedding drift** | Embedding model update changes retrieval behaviour across your RAG pipeline |
 | **Shadow AI** | Teams deploy models you haven't evaluated, using your data |
 
-Traditional software has SBOMs. AI systems need equivalent provenance documentation — what NDAA and EU AI Act drafters are calling "AI-BOMs."
+Traditional software has SBOMs. AI systems need equivalent provenance documentation - what NDAA and EU AI Act drafters are calling "AI-BOMs."
 
 ---
 
@@ -57,9 +57,9 @@ Runtime monitoring detects symptoms. Supply chain controls prevent the disease.
 
 For API-accessed models (OpenAI, Anthropic, etc.), you cannot verify model integrity. You are trusting the provider. Your controls are:
 
-1. **Contractual** — SLAs that require change notification
-2. **Behavioral** — Continuous evaluation that detects drift (this is where the Judge helps)
-3. **Architectural** — Abstraction layers that let you switch providers if trust breaks
+1. **Contractual** - SLAs that require change notification
+2. **Behavioral** - Continuous evaluation that detects drift (this is where the Judge helps)
+3. **Architectural** - Abstraction layers that let you switch providers if trust breaks
 
 For self-hosted models, you have more control but more responsibility. You own the full chain from download to deployment.
 

@@ -8,7 +8,7 @@
   <rect width="820" height="440" rx="8" fill="#0d1117"/>
 
   <!-- Title -->
-  <text x="410" y="30" text-anchor="middle" fill="#e6e6e6" font-size="16" font-weight="700">Agent Decision Chain — Forensic Reconstruction (LOG-04)</text>
+  <text x="410" y="30" text-anchor="middle" fill="#e6e6e6" font-size="16" font-weight="700">Agent Decision Chain - Forensic Reconstruction (LOG-04)</text>
   <text x="410" y="48" text-anchor="middle" fill="#8b949e" font-size="10">Every step logged with timestamp, identity, authorization decision, and reasoning</text>
 
   <!-- Timeline line -->
@@ -52,7 +52,7 @@
   <rect x="80" y="280" width="700" height="24" rx="4" fill="#2d2a00" stroke="#f0a500" stroke-width="1"/>
   <text x="92" y="297" fill="#e6e6e6" font-size="10">customer_db.update_record(customer_id=12345, field=address, value="...")</text>
   <rect x="550" y="281" width="220" height="22" rx="11" fill="#2d2a00" stroke="#f0a500" stroke-width="1"/>
-  <text x="660" y="296" text-anchor="middle" fill="#f0a500" font-size="9" font-weight="600">⏸️ AUTHORIZED — APPROVAL PENDING</text>
+  <text x="660" y="296" text-anchor="middle" fill="#f0a500" font-size="9" font-weight="600">⏸️ AUTHORIZED - APPROVAL PENDING</text>
 
   <!-- Step 6: Human approval -->
   <circle cx="60" cy="324" r="6" fill="#e94560"/>

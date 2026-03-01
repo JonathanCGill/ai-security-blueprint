@@ -1,6 +1,6 @@
 # Use Case Definition
 
-*What makes a good AI use case definition from a security and governance perspective — and how to translate one into a risk profile, control set, and operating model.*
+*What makes a good AI use case definition from a security and governance perspective - and how to translate one into a risk profile, control set, and operating model.*
 
 > Part of [From Strategy to Production](./)
 
@@ -10,7 +10,7 @@
 
 Every AI system starts as a use case. "We want AI to help with customer queries." "We want AI to analyse contracts." "We want AI to detect fraud."
 
-These are not use cases. They're aspirations. A use case — one that security, governance, and risk functions can actually work with — is something far more specific. It defines not just what the AI does, but what data it touches, who sees its outputs, what decisions it influences, what happens when it's wrong, and who is accountable.
+These are not use cases. They're aspirations. A use case - one that security, governance, and risk functions can actually work with - is something far more specific. It defines not just what the AI does, but what data it touches, who sees its outputs, what decisions it influences, what happens when it's wrong, and who is accountable.
 
 The difference matters because the framework's entire control model flows from the use case. The [risk tier](../core/risk-tiers.md) determines which controls apply. The risk tier is determined by the use case. A vague use case produces an uncertain risk tier, which produces either too many controls (killing the business case) or too few (creating unmanaged risk).
 
@@ -22,18 +22,18 @@ The difference matters because the framework's entire control model flows from t
 
 ### The Minimum Viable Use Case
 
-A use case definition that security and governance can work with answers ten questions. These aren't optional fields on a form — each one directly determines a control requirement.
+A use case definition that security and governance can work with answers ten questions. These aren't optional fields on a form - each one directly determines a control requirement.
 
 ![Use Case Definition Model](../images/strategy-use-case-model.svg)
 
 | # | Question | What It Determines | Framework Connection |
 |---|----------|-------------------|---------------------|
-| 1 | **What does it do?** | Scope boundaries, guardrail topic rules | [Controls](../core/controls.md) — guardrail configuration |
-| 2 | **What decisions does it make or influence?** | Decision authority dimension → risk tier | [Risk Tiers](../core/risk-tiers.md) — authority scoring |
+| 1 | **What does it do?** | Scope boundaries, guardrail topic rules | [Controls](../core/controls.md) - guardrail configuration |
+| 2 | **What decisions does it make or influence?** | Decision authority dimension → risk tier | [Risk Tiers](../core/risk-tiers.md) - authority scoring |
 | 3 | **What data does it access?** | Data sensitivity dimension → risk tier, DLP rules | [Data Protection](../infrastructure/controls/data-protection.md) |
 | 4 | **Who are the users?** | Audience dimension → risk tier, access controls | [Identity & Access](../infrastructure/controls/identity-and-access.md) |
 | 5 | **What happens when it's wrong?** | Reversibility dimension → risk tier, PACE plan | [PACE Resilience](../PACE-RESILIENCE.md) |
-| 6 | **What's the expected volume?** | Operational sizing — HITL staffing, Judge compute, logging storage | [Governance Model](../extensions/regulatory/ai-governance-operating-model.md) |
+| 6 | **What's the expected volume?** | Operational sizing - HITL staffing, Judge compute, logging storage | [Governance Model](../extensions/regulatory/ai-governance-operating-model.md) |
 | 7 | **What regulatory context applies?** | Regulatory dimension → risk tier, compliance controls | [Regulatory Extensions](../extensions/regulatory/) |
 | 8 | **What tools or actions can it take?** | Agentic scope → agentic controls, execution boundaries | [Agentic Controls](../core/agentic.md) |
 | 9 | **Where does it sit in the business process?** | Integration points, upstream/downstream dependencies | [Threat Model Template](../extensions/templates/threat-model-template.md) |
@@ -51,7 +51,7 @@ Not "what could it do" or "what might it do eventually." What does it do *in thi
 | "Contract analysis tool" | "Extracts key dates, parties, and obligation clauses from supplier contracts. Outputs a structured summary for procurement review. Does not recommend accept/reject decisions." |
 | "Fraud detection" | "Scores incoming card transactions against fraud patterns. Transactions scoring above 0.85 are held for human review. Transactions below 0.85 proceed automatically. Does not block transactions independently." |
 
-The good definitions include explicit **negative scope** — what the system *cannot* do. This is critical for guardrail configuration. If the use case says "does not provide financial advice," then the guardrails enforce that boundary. Without that boundary in the definition, nobody knows to configure it.
+The good definitions include explicit **negative scope** - what the system *cannot* do. This is critical for guardrail configuration. If the use case says "does not provide financial advice," then the guardrails enforce that boundary. Without that boundary in the definition, nobody knows to configure it.
 
 **Q2: What decisions does it make or influence?**
 
@@ -68,7 +68,7 @@ Many use cases claim to be "advisory" when they're functionally "influential." I
 
 **Q3: What data does it access?**
 
-Not just what data it *needs* — what data it *can access*. If the system has a database connection with broader permissions than the use case requires, the risk profile reflects the access, not the intent.
+Not just what data it *needs* - what data it *can access*. If the system has a database connection with broader permissions than the use case requires, the risk profile reflects the access, not the intent.
 
 | Data Category | Examples | Risk Impact |
 |---------------|----------|-------------|
@@ -83,11 +83,11 @@ Not just what data it *needs* — what data it *can access*. If the system has a
 
 | User Type | Risk Implication |
 |-----------|-----------------|
-| **Internal — technical** | Lowest risk; users understand AI limitations |
-| **Internal — non-technical** | Low–medium; may overtrust AI outputs |
+| **Internal - technical** | Lowest risk; users understand AI limitations |
+| **Internal - non-technical** | Low–medium; may overtrust AI outputs |
 | **Partners/suppliers** | Medium; less control over use, contractual implications |
-| **Customers — authenticated** | High; reputational risk, regulatory exposure |
-| **Customers — unauthenticated** | High; abuse potential, no user accountability |
+| **Customers - authenticated** | High; reputational risk, regulatory exposure |
+| **Customers - unauthenticated** | High; abuse potential, no user accountability |
 | **General public** | Highest; maximum blast radius, maximum regulatory exposure |
 
 **Q5: What happens when it's wrong?**
@@ -101,15 +101,15 @@ Not just what data it *needs* — what data it *can access*. If the system has a
 | **Regulatory breach** | PII disclosed in response | Notification required |
 | **Physical harm** | Wrong medical triage priority | Irreversible |
 
-**Q6: Volume** determines operational cost — see [Business Alignment](business-alignment.md) for the FTE calculation. A CRITICAL-tier system at 100 interactions/day is operationally different from one at 100,000 interactions/day, even though the control requirements are identical.
+**Q6: Volume** determines operational cost - see [Business Alignment](business-alignment.md) for the FTE calculation. A CRITICAL-tier system at 100 interactions/day is operationally different from one at 100,000 interactions/day, even though the control requirements are identical.
 
 **Q7: Regulatory context** is often the simplest question to answer and the one most often skipped. If the use case operates in financial services, healthcare, legal, HR, or insurance, there are sector-specific requirements that may override the framework's general tiers.
 
-**Q8: Tools and actions** determine whether agentic controls apply. If the AI can call APIs, write to databases, send emails, or trigger workflows, it's agentic — even if nobody calls it that.
+**Q8: Tools and actions** determine whether agentic controls apply. If the AI can call APIs, write to databases, send emails, or trigger workflows, it's agentic - even if nobody calls it that.
 
-**Q9: Business process position** determines upstream and downstream dependencies. Where does the AI sit? What feeds it? What consumes its output? This shapes the [threat model](../extensions/templates/threat-model-template.md) — attack surfaces are at integration points, not inside the model.
+**Q9: Business process position** determines upstream and downstream dependencies. Where does the AI sit? What feeds it? What consumes its output? This shapes the [threat model](../extensions/templates/threat-model-template.md) - attack surfaces are at integration points, not inside the model.
 
-**Q10: Accountability** is the governance anchor. Someone — named, not "TBD" — owns the outcomes of this AI system. This person is responsible for HITL decisions, incident response, and regulatory engagement. Without named accountability, the governance model has no force.
+**Q10: Accountability** is the governance anchor. Someone - named, not "TBD" - owns the outcomes of this AI system. This person is responsible for HITL decisions, incident response, and regulatory engagement. Without named accountability, the governance model has no force.
 
 ---
 
@@ -141,7 +141,7 @@ Use case modifiers (agentic, customer-facing, regulated) can increase the effect
 
 ### Can AI Score Risk Tiers?
 
-Yes — with caveats. The six-dimension model is structured enough to be machine-evaluable. An LLM can extract the relevant information from a well-written use case definition and propose a risk tier.
+Yes - with caveats. The six-dimension model is structured enough to be machine-evaluable. An LLM can extract the relevant information from a well-written use case definition and propose a risk tier.
 
 **What AI can reliably do:**
 
@@ -174,7 +174,7 @@ Use an LLM to:
 
 Then a human risk analyst reviews the proposal, investigates the flagged areas, and makes the final classification decision.
 
-This is an example of the framework's own principle in action: **AI proposes. Humans decide.** The classification itself is a [MEDIUM-tier use case](../insights/risk-tier-is-use-case.md) — it influences risk decisions, should be reviewed by a human, and the consequences of misclassification are significant but recoverable.
+This is an example of the framework's own principle in action: **AI proposes. Humans decide.** The classification itself is a [MEDIUM-tier use case](../insights/risk-tier-is-use-case.md) - it influences risk decisions, should be reviewed by a human, and the consequences of misclassification are significant but recoverable.
 
 **Example AI classification prompt:**
 
@@ -202,7 +202,7 @@ Then:
 - List any questions that need human investigation before finalising
 ```
 
-The Judge layer should evaluate the quality of AI-generated classifications just as it evaluates any other AI output. Use the same sampling rates — 100% review for the first 50 classifications, then reduce as accuracy data accumulates.
+The Judge layer should evaluate the quality of AI-generated classifications just as it evaluates any other AI output. Use the same sampling rates - 100% review for the first 50 classifications, then reduce as accuracy data accumulates.
 
 ---
 
@@ -277,7 +277,7 @@ Different stakeholders need different views of the same use case:
 
 ### The Use Case Registry
 
-Use cases should be managed in a central registry — an inventory that tracks every AI use case from definition through deployment to retirement.
+Use cases should be managed in a central registry - an inventory that tracks every AI use case from definition through deployment to retirement.
 
 | Registry Field | Purpose | Populated By |
 |----------------|---------|-------------|
@@ -337,7 +337,7 @@ Automation of use case definition exists on a spectrum:
 
 ### AI-Assisted Drafting
 
-Given a brief description — even a single sentence — an LLM can draft a structured use case definition by asking the right questions.
+Given a brief description - even a single sentence - an LLM can draft a structured use case definition by asking the right questions.
 
 **Input:** "We want to use AI to help our support team respond to customer emails faster."
 
@@ -346,7 +346,7 @@ Given a brief description — even a single sentence — an LLM can draft a stru
 | Question | AI-Populated Answer | Confidence | Needs Verification |
 |----------|---------------------|------------|-------------------|
 | What does it do? | Drafts email responses for support team review before sending | High | Confirm: does it send directly or draft only? |
-| Decision authority? | Advisory — suggests response; human sends | Medium | Verify: will humans always review? Or auto-send for certain categories? |
+| Decision authority? | Advisory - suggests response; human sends | Medium | Verify: will humans always review? Or auto-send for certain categories? |
 | Data accessed? | Customer email content (may contain PII), customer account data, support knowledge base | High | Confirm: what account data specifically? |
 | Users? | Internal support team | High | Confirm: any partner/outsourced support? |
 | What if wrong? | Incorrect draft; human catches before sending (if reviewing) | Medium | Verify: what if human doesn't catch it? What's sent on company letterhead |
@@ -365,21 +365,21 @@ For organisations with mature observability, use case discovery can be partially
 | Data Source | What It Reveals | Use Case Field Populated |
 |-------------|----------------|--------------------------|
 | **API gateway logs** | Which AI APIs are being called, by whom, at what volume | Users (Q4), Volume (Q6), Tools (Q8) |
-| **Cloud service inventory** | Which AI services are provisioned | Scope (Q1) — at a high level |
+| **Cloud service inventory** | Which AI services are provisioned | Scope (Q1) - at a high level |
 | **IAM policies** | What data the AI service can access | Data access (Q3) |
 | **Network flow data** | What the AI connects to upstream and downstream | Business process position (Q9) |
 | **Billing data** | Usage patterns, cost allocation | Volume (Q6) |
 | **Feature flag platforms** | What AI features exist and their status | Scope (Q1), Status |
 
 **What automated discovery cannot populate:**
-- Decision authority (Q2) — requires understanding how humans use the output
-- What happens when wrong (Q5) — requires business context
-- Regulatory context (Q7) — requires legal/compliance knowledge
-- Accountability (Q10) — requires organisational knowledge
+- Decision authority (Q2) - requires understanding how humans use the output
+- What happens when wrong (Q5) - requires business context
+- Regulatory context (Q7) - requires legal/compliance knowledge
+- Accountability (Q10) - requires organisational knowledge
 
-**The shadow AI problem:** Semi-automated discovery is most valuable for finding AI use cases that exist but aren't formally defined. The framework's [Visibility Problem](../insights/the-visibility-problem.md) article notes that over 50% of enterprise AI adoption may be shadow AI. Automated discovery tools that scan API calls, cloud service provisioning, and browser traffic can identify undocumented AI usage — which can then be formally defined, classified, and governed.
+**The shadow AI problem:** Semi-automated discovery is most valuable for finding AI use cases that exist but aren't formally defined. The framework's [Visibility Problem](../insights/the-visibility-problem.md) article notes that over 50% of enterprise AI adoption may be shadow AI. Automated discovery tools that scan API calls, cloud service provisioning, and browser traffic can identify undocumented AI usage - which can then be formally defined, classified, and governed.
 
-### Automated Classification — With Guardrails
+### Automated Classification - With Guardrails
 
 For organisations processing many use cases (large enterprises may have hundreds), AI-assisted classification can accelerate the pipeline:
 
@@ -414,7 +414,7 @@ Use Case Submitted → AI Drafts Definition → AI Scores Dimensions
 
 | Anti-Pattern | What Goes Wrong | How to Fix |
 |--------------|----------------|------------|
-| **Vague scope** | "AI assistant for the team" — no boundaries, no guardrails, no risk tier | Require explicit positive and negative scope |
+| **Vague scope** | "AI assistant for the team" - no boundaries, no guardrails, no risk tier | Require explicit positive and negative scope |
 | **Missing negative scope** | Use case says what AI does, not what it doesn't | Require "the system cannot/does not..." statements |
 | **Understated decision authority** | Claimed "advisory" but functionally autonomous | Ask: "What percentage of AI recommendations are changed by humans?" |
 | **Data access vs. data need** | System has broad database access but "only uses" a subset | Assess risk based on access, not stated intent; apply least-privilege |
@@ -431,9 +431,9 @@ Use Case Submitted → AI Drafts Definition → AI Scores Dimensions
 
 For practical use. Complete each section before submitting for risk classification.
 
-> **Instructions:** Every field is required unless marked optional. "TBD" is not an acceptable answer for sections 1–10. If you don't know yet, that's your next action — not submitting the form.
+> **Instructions:** Every field is required unless marked optional. "TBD" is not an acceptable answer for sections 1–10. If you don't know yet, that's your next action - not submitting the form.
 
-### Section 1 — System Identity
+### Section 1 - System Identity
 
 | Field | Value |
 |-------|-------|
@@ -444,14 +444,14 @@ For practical use. Complete each section before submitting for risk classificati
 | **Version** | |
 | **Status** | Draft / Under Review / Approved / In Production / Retired |
 
-### Section 2 — Scope
+### Section 2 - Scope
 
 | | Description |
 |---|-------------|
 | **What it does** | *Specific, bounded description of system behaviour in this deployment* |
-| **What it does NOT do** | *Explicit negative scope — list capabilities the system is prevented from exercising* |
+| **What it does NOT do** | *Explicit negative scope - list capabilities the system is prevented from exercising* |
 
-### Section 3 — Decision Authority
+### Section 3 - Decision Authority
 
 | Field | Value |
 |-------|-------|
@@ -461,7 +461,7 @@ For practical use. Complete each section before submitting for risk classificati
 
 > **Honesty check:** If the human modification rate is below 10%, the system is functionally autonomous regardless of what the process document says. Score accordingly.
 
-### Section 4 — Data Access
+### Section 4 - Data Access
 
 | Data Source | Data Categories | Sensitivity (Public / Internal / Confidential / PII / Sensitive PII / Regulated) | Access Type (Read / Write) |
 |-------------|----------------|-------------|--------------------------|
@@ -469,16 +469,16 @@ For practical use. Complete each section before submitting for risk classificati
 | | | | |
 | | | | |
 
-> **Assess based on access, not intent.** If the system *can* reach sensitive data through its database connection, that's the risk profile — even if the use case only *needs* a subset.
+> **Assess based on access, not intent.** If the system *can* reach sensitive data through its database connection, that's the risk profile - even if the use case only *needs* a subset.
 
-### Section 5 — Users
+### Section 5 - Users
 
 | User Type | Description | Estimated Count |
 |-----------|-------------|-----------------|
 | | | |
 | | | |
 
-### Section 6 — Error Consequences
+### Section 6 - Error Consequences
 
 | Question | Answer |
 |----------|--------|
@@ -488,7 +488,7 @@ For practical use. Complete each section before submitting for risk classificati
 | **How is an error corrected?** | |
 | **Is the error reversible?** | Fully / With effort / With difficulty / Irreversible |
 
-### Section 7 — Volume
+### Section 7 - Volume
 
 | Metric | Value |
 |--------|-------|
@@ -496,7 +496,7 @@ For practical use. Complete each section before submitting for risk classificati
 | **Peak volume** | |
 | **Growth trajectory** (6–12 month projection) | |
 
-### Section 8 — Regulatory Context
+### Section 8 - Regulatory Context
 
 | Field | Value |
 |-------|-------|
@@ -505,16 +505,16 @@ For practical use. Complete each section before submitting for risk classificati
 | **Regulatory notification required for AI use?** | Yes / No / Unknown |
 | **EU AI Act risk category** (if applicable) | Unacceptable / High-Risk / Limited / Minimal / Not Applicable |
 
-### Section 9 — Tools and Actions
+### Section 9 - Tools and Actions
 
 | Tool / API | What It Does | Access Level (Read / Write / Execute) | Human Approval Required? |
 |------------|-------------|---------------------------------------|--------------------------|
 | | | | |
 | | | | |
 
-> If the AI can call APIs, write to databases, send emails, or trigger workflows, it is **agentic** — even if nobody calls it that. [Agentic controls](../core/agentic.md) apply.
+> If the AI can call APIs, write to databases, send emails, or trigger workflows, it is **agentic** - even if nobody calls it that. [Agentic controls](../core/agentic.md) apply.
 
-### Section 10 — Business Process Position
+### Section 10 - Business Process Position
 
 | Field | Value |
 |-------|-------|
@@ -523,7 +523,7 @@ For practical use. Complete each section before submitting for risk classificati
 | **Manual fallback** (if the AI is unavailable) | |
 | **Integration dependencies** | |
 
-### Section 11 — Accountability
+### Section 11 - Accountability
 
 | Role | Named Individual | Contact |
 |------|-----------------|---------|
@@ -532,7 +532,7 @@ For practical use. Complete each section before submitting for risk classificati
 | **HITL reviewers** (quality) | | |
 | **Escalation path** | | |
 
-### Section 12 — Risk Classification
+### Section 12 - Risk Classification
 
 *Completed by risk function. Not self-assessed by the project team.*
 

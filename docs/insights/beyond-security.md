@@ -10,12 +10,12 @@ This framework was built to answer a security question: how do you control AI sy
 
 The answer it arrived at was structural:
 
-- **Layer controls independently** — rules-based detection, ML-based evaluation, human judgment — so no single failure is catastrophic.
-- **Tier by impact** — decision authority, reversibility, sensitivity, audience, scale, regulation — so controls are proportionate to what's at stake.
-- **Quantify residual risk** — measure what each layer catches, compound the misses, compare to appetite.
-- **Define fail posture before deployment** — Primary, Alternate, Contingency, Emergency — so degradation is planned, not improvised.
-- **Scale controls to risk** — more critical systems get more layers, more coverage, more formal governance.
-- **Test continuously** — controls degrade. Verify they still work.
+- **Layer controls independently** - rules-based detection, ML-based evaluation, human judgment - so no single failure is catastrophic.
+- **Tier by impact** - decision authority, reversibility, sensitivity, audience, scale, regulation - so controls are proportionate to what's at stake.
+- **Quantify residual risk** - measure what each layer catches, compound the misses, compare to appetite.
+- **Define fail posture before deployment** - Primary, Alternate, Contingency, Emergency - so degradation is planned, not improvised.
+- **Scale controls to risk** - more critical systems get more layers, more coverage, more formal governance.
+- **Test continuously** - controls degrade. Verify they still work.
 
 None of these principles mention security. They describe how to build reliable, layered, proportional controls for any risk domain where the thing you're controlling is uncertain and the consequences of failure vary.
 
@@ -65,7 +65,7 @@ The problem: a model's accuracy degrades over time as the world changes. The inp
 
 ### Fairness
 
-The problem: a model produces outcomes that systematically disadvantage a protected group — sometimes because the training data encoded historical bias, sometimes because a proxy variable correlates with protected attributes.
+The problem: a model produces outcomes that systematically disadvantage a protected group - sometimes because the training data encoded historical bias, sometimes because a proxy variable correlates with protected attributes.
 
 **Three layers, applied:**
 
@@ -86,7 +86,7 @@ The problem: a model produces outcomes that systematically disadvantage a protec
 
 ### Explainability
 
-The problem: a model produces a decision but cannot adequately explain why. In regulated domains, "the model said so" is not sufficient. In high-stakes domains, humans need to understand the reasoning to trust it — or override it.
+The problem: a model produces a decision but cannot adequately explain why. In regulated domains, "the model said so" is not sufficient. In high-stakes domains, humans need to understand the reasoning to trust it - or override it.
 
 **Three layers, applied:**
 
@@ -94,7 +94,7 @@ The problem: a model produces a decision but cannot adequately explain why. In r
 |---|---|---|
 | Layer 1 (Detection) | Guardrails validate input/output format and content | Explanation validators check that every decision includes a structured rationale meeting minimum criteria |
 | Layer 2 (Evaluation) | Judge evaluates output against policy | Explanation quality scorer evaluates whether the rationale is consistent, complete, and faithful to the model's actual decision factors |
-| Layer 3 (Judgment) | Human reviews escalated cases | Domain expert assesses whether the explanation is genuinely interpretable — not just present, but useful |
+| Layer 3 (Judgment) | Human reviews escalated cases | Domain expert assesses whether the explanation is genuinely interpretable - not just present, but useful |
 
 **PACE, applied:**
 
@@ -107,7 +107,7 @@ The problem: a model produces a decision but cannot adequately explain why. In r
 
 ### Reliability
 
-The problem: a model produces outputs that are inconsistent, contradictory, or confidently wrong — hallucination, confabulation, or simply unreliable performance under edge conditions.
+The problem: a model produces outputs that are inconsistent, contradictory, or confidently wrong - hallucination, confabulation, or simply unreliable performance under edge conditions.
 
 **Three layers, applied:**
 
@@ -120,7 +120,7 @@ The problem: a model produces outputs that are inconsistent, contradictory, or c
 **PACE, applied:**
 
 - **Primary:** Real-time consistency validation against source documents.
-- **Alternate:** Reduce model autonomy — present outputs as drafts requiring human confirmation.
+- **Alternate:** Reduce model autonomy - present outputs as drafts requiring human confirmation.
 - **Contingency:** Switch to retrieval-only mode (return source documents, don't generate).
 - **Emergency:** Disable generative capability entirely.
 
@@ -136,7 +136,7 @@ For drift: *What is the probability that an accuracy degradation exceeds the thr
 
 For fairness: *What is the probability that a disparate impact emerges, is missed by the disparity monitor, is not caught by the bias measurement pipeline, and is not identified by the equity review board?*
 
-Same math. Different inputs. The residual risk calculation, the severity weighting, the recalibration cycle — all of it transfers without modification.
+Same math. Different inputs. The residual risk calculation, the severity weighting, the recalibration cycle - all of it transfers without modification.
 
 ---
 
@@ -144,15 +144,15 @@ Same math. Different inputs. The residual risk calculation, the severity weighti
 
 This framework does not provide domain-specific controls for drift, fairness, explainability, or reliability. It does not tell you which statistical test detects distribution shift, which fairness metric to use, or how to generate faithful explanations. Those are domain problems with mature, domain-specific tooling.
 
-What it provides is the **control architecture** — the structural reasoning about how to layer defences, how to tier by impact, how to quantify what gets through, and how to degrade gracefully when controls fail. That architecture is domain-agnostic because it describes *how to control*, not *what to control*.
+What it provides is the **control architecture** - the structural reasoning about how to layer defences, how to tier by impact, how to quantify what gets through, and how to degrade gracefully when controls fail. That architecture is domain-agnostic because it describes *how to control*, not *what to control*.
 
 If you are building controls for AI risks beyond security, the framework offers a structural starting point:
 
-1. **Classify the system** using the same [impact dimensions](../core/risk-tiers.md) — they are not security-specific.
-2. **Layer your controls** so they fail independently — use different mechanisms at each layer.
-3. **Quantify your residual risk** using the same [compounding model](../core/risk-assessment.md) — measure, don't assume.
-4. **Define your fail posture** using the same [PACE methodology](../PACE-RESILIENCE.md) — decide before deployment what happens when controls degrade.
-5. **Scale to the risk** — not every AI system needs maximum controls for every risk dimension.
+1. **Classify the system** using the same [impact dimensions](../core/risk-tiers.md) - they are not security-specific.
+2. **Layer your controls** so they fail independently - use different mechanisms at each layer.
+3. **Quantify your residual risk** using the same [compounding model](../core/risk-assessment.md) - measure, don't assume.
+4. **Define your fail posture** using the same [PACE methodology](../PACE-RESILIENCE.md) - decide before deployment what happens when controls degrade.
+5. **Scale to the risk** - not every AI system needs maximum controls for every risk dimension.
 
 The security content in this framework is one instantiation of the architecture. Drift, fairness, explainability, and reliability are others. The architecture holds.
 
@@ -160,7 +160,7 @@ The security content in this framework is one instantiation of the architecture.
 
 ## The Bottom Line
 
-This framework was built for AI security. Its architecture — layered independence, proportional tiering, quantitative compounding, defined fail posture — was not built for any single risk domain. It was built for the structural problem of controlling systems that are uncertain, non-deterministic, and consequential.
+This framework was built for AI security. Its architecture - layered independence, proportional tiering, quantitative compounding, defined fail posture - was not built for any single risk domain. It was built for the structural problem of controlling systems that are uncertain, non-deterministic, and consequential.
 
 Security is where we started. It is not where the architecture ends.
 

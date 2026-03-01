@@ -13,7 +13,7 @@ For MEDIUM-risk internal tools, the control model simplifies:
 | Layer | Approach |
 |-------|----------|
 | **Guardrails** | Rules-based validation (no LLM needed) |
-| **LLM-as-Judge** | Recommended—sampling for quality assurance |
+| **LLM-as-Judge** | Recommended-sampling for quality assurance |
 | **Human Oversight** | Periodic batch review, not real-time |
 
 This example uses **guardrails only** for inline protection, with optional Judge sampling for quality monitoring. This is appropriate because:
@@ -244,7 +244,7 @@ You are DocBot, TechCorp's internal documentation assistant. You help employees 
 ## Important
 - If you don't know something, say so and suggest who to contact
 - If a question seems to be about restricted information, direct them to the appropriate team
-- Be helpful and concise—employees are busy
+- Be helpful and concise-employees are busy
 
 ## Context
 Employee: {employee_name}
@@ -317,7 +317,7 @@ Department: {department}
 
 ### Escalation
 
-Simple escalation—no dedicated AI incident process:
+Simple escalation-no dedicated AI incident process:
 
 ![DocBot Escalation Flow](../../images/example-docbot-escalation.svg)
 

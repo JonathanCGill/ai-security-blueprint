@@ -46,7 +46,7 @@ You can't enforce behavioural security controls on infrastructure you don't cont
 
 ## Control Domains
 
-### [Identity & Access Management](controls/identity-and-access.md) — 8 controls
+### [Identity & Access Management](controls/identity-and-access.md) - 8 controls
 
 Authentication, least privilege, control plane separation, agent tool constraints, human approval workflows, session credentials, credential exposure prevention, and access auditing.
 
@@ -61,7 +61,7 @@ Authentication, least privilege, control plane separation, agent tool constraint
 | IAM-07 | Prevent credential exposure in context | All |
 | IAM-08 | Audit all access changes | Tier 2+ |
 
-### [Logging & Observability](controls/logging-and-observability.md) — 10 controls
+### [Logging & Observability](controls/logging-and-observability.md) - 10 controls
 
 Model I/O logging, guardrail decisions, Judge evaluations, agent chains, drift detection, injection detection, log integrity, retention, redaction, and SIEM correlation.
 
@@ -78,7 +78,7 @@ Model I/O logging, guardrail decisions, Judge evaluations, agent chains, drift d
 | LOG-09 | Redact sensitive data in logs | All |
 | LOG-10 | Correlate with enterprise SIEM | Tier 3+ |
 
-### [Network & Segmentation](controls/network-and-segmentation.md) — 8 controls
+### [Network & Segmentation](controls/network-and-segmentation.md) - 8 controls
 
 Six-zone architecture, guardrail bypass prevention, Judge isolation, agent egress controls, ingestion/runtime separation, control plane protection, API gateway enforcement, and cross-zone monitoring.
 
@@ -93,7 +93,7 @@ Six-zone architecture, guardrail bypass prevention, Judge isolation, agent egres
 | NET-07 | Enforce API gateway as single entry | All |
 | NET-08 | Monitor cross-zone traffic | Tier 2+ |
 
-### [Data Protection](controls/data-protection.md) — 8 controls
+### [Data Protection](controls/data-protection.md) - 8 controls
 
 Data classification, minimisation, PII detection/redaction, access-controlled RAG, encryption, response leakage prevention, conversation history management, and evaluation data protection.
 
@@ -108,7 +108,7 @@ Data classification, minimisation, PII detection/redaction, access-controlled RA
 | DAT-07 | Manage conversation history retention | All |
 | DAT-08 | Protect evaluation data sent to Judge | Tier 2+ |
 
-### [Secrets & Credentials](controls/secrets-and-credentials.md) — 8 controls
+### [Secrets & Credentials](controls/secrets-and-credentials.md) - 8 controls
 
 Context window isolation, short-lived tokens, centralised vault, credential scanning, rotation on exposure, agent credential isolation, endpoint protection, and code scanning.
 
@@ -123,7 +123,7 @@ Context window isolation, short-lived tokens, centralised vault, credential scan
 | SEC-07 | Protect model endpoint credentials | All |
 | SEC-08 | Scan code and config for embedded credentials | All |
 
-### [Supply Chain](agentic/supply-chain.md) — 8 controls
+### [Supply Chain](agentic/supply-chain.md) - 8 controls
 
 Model provenance, risk assessment, RAG data integrity, fine-tuning security, tool supply chain, safety model integrity, AI-BOM, and vulnerability monitoring.
 
@@ -138,7 +138,7 @@ Model provenance, risk assessment, RAG data integrity, fine-tuning security, too
 | SUP-07 | Maintain AI component inventory (AI-BOM) | All |
 | SUP-08 | Monitor for model and dependency vulnerabilities | All |
 
-### [Incident Response](controls/incident-response.md) — 8 controls
+### [Incident Response](controls/incident-response.md) - 8 controls
 
 AI-specific incident categories, detection triggers, containment procedures, rollback capability, investigation for non-deterministic systems, communication protocols, post-incident review, and enterprise IR integration.
 
@@ -159,7 +159,7 @@ AI-specific incident categories, detection triggers, containment procedures, rol
 
 Additional controls for systems where AI agents invoke tools, generate code, delegate to other agents, or take autonomous actions.
 
-### [Tool Access Controls](agentic/tool-access-controls.md) — 6 controls
+### [Tool Access Controls](agentic/tool-access-controls.md) - 6 controls
 
 | Control | Purpose |
 |---------|---------|
@@ -170,7 +170,7 @@ Additional controls for systems where AI agents invoke tools, generate code, del
 | TOOL-05 | Rate-limit tool invocations per agent and per tool |
 | TOOL-06 | Log every tool invocation with full context |
 
-### [Session & Scope](controls/session-and-scope.md) — 5 controls
+### [Session & Scope](controls/session-and-scope.md) - 5 controls
 
 | Control | Purpose |
 |---------|---------|
@@ -180,7 +180,7 @@ Additional controls for systems where AI agents invoke tools, generate code, del
 | SESS-04 | Implement progressive trust within sessions |
 | SESS-05 | Clean up session state on termination |
 
-### [Delegation Chains](agentic/delegation-chains.md) — 5 controls
+### [Delegation Chains](agentic/delegation-chains.md) - 5 controls
 
 | Control | Purpose |
 |---------|---------|
@@ -190,7 +190,7 @@ Additional controls for systems where AI agents invoke tools, generate code, del
 | DEL-04 | Require explicit delegation authorisation |
 | DEL-05 | Propagate user identity through chains |
 
-### [Sandbox Patterns](agentic/sandbox-patterns.md) — 6 controls
+### [Sandbox Patterns](agentic/sandbox-patterns.md) - 6 controls
 
 | Control | Purpose |
 |---------|---------|
@@ -242,7 +242,7 @@ Fourteen SVG diagrams covering IAM architecture, logging pipelines, network zone
 4. **Practitioner-focused.** Written for security architects and engineers, not executive summaries.
 5. **Agentic-aware.** Agent-specific controls are treated as first-class concerns, not afterthoughts.
 6. **Infrastructure beats instructions.** Security controls are enforced via deterministic infrastructure (gateways, network policy, vaults), never via prompt instructions that can be overridden.
-7. **AI controls add to your existing security, they don't replace it.** These 80 controls address AI-specific risks. Your organisation's existing DLP (inbound and outbound), API gateways, database access controls, IAM, SIEM, network segmentation, secure coding practices, and incident response capabilities all still apply — and all still catch failures that AI-specific controls miss. Defence in depth includes everything outside this framework.
+7. **AI controls add to your existing security, they don't replace it.** These 80 controls address AI-specific risks. Your organisation's existing DLP (inbound and outbound), API gateways, database access controls, IAM, SIEM, network segmentation, secure coding practices, and incident response capabilities all still apply - and all still catch failures that AI-specific controls miss. Defence in depth includes everything outside this framework.
 
 ---
 
@@ -260,7 +260,7 @@ Feedback, corrections, and extensions welcome. This is a living framework.
 
 ## Author
 
-**Jonathan Gill** — Cybersecurity practitioner with 30+ years in IT and 20+ years in enterprise cybersecurity, currently focused on AI security governance.
+**Jonathan Gill** - Cybersecurity practitioner with 30+ years in IT and 20+ years in enterprise cybersecurity, currently focused on AI security governance.
 
 - GitHub: [@JonathanCGill](https://github.com/JonathanCGill)
 - LinkedIn: [Jonathan Gill](https://www.linkedin.com/in/jonathancgill/)

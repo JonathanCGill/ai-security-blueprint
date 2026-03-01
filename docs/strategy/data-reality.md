@@ -64,12 +64,12 @@ Data existing somewhere in the organisation is not the same as data being availa
 |-------------------|---------------|----------------------|
 | **Completeness** | What percentage of records have all required fields? | Missing data leads to biased models and unreliable outputs |
 | **Accuracy** | How much of the data is actually correct? | Incorrect training data produces incorrect models |
-| **Consistency** | Are the same things represented the same way? | "UK", "United Kingdom", "GB", "GBR" — same country, four representations |
+| **Consistency** | Are the same things represented the same way? | "UK", "United Kingdom", "GB", "GBR" - same country, four representations |
 | **Timeliness** | How current is the data? | Models trained on stale data make decisions about a world that no longer exists |
 | **Duplication** | How many records are duplicated? | Duplicates skew distributions and bias models |
-| **Labelling quality** | For supervised learning — are labels consistent and correct? | Inconsistent labelling is the single biggest quality issue for ML |
+| **Labelling quality** | For supervised learning - are labels consistent and correct? | Inconsistent labelling is the single biggest quality issue for ML |
 
-**Real-world example — customer churn prediction:**
+**Real-world example - customer churn prediction:**
 
 An insurance company wants to predict customer churn. They have 5 years of customer data. Assessment reveals:
 
@@ -77,11 +77,11 @@ An insurance company wants to predict customer churn. They have 5 years of custo
 - "Churn reason" was only tracked for the last 18 months
 - Product names changed twice, creating three naming conventions in the same dataset
 - 12% of records are duplicates from a system migration
-- "Renewal" sometimes means "auto-renewed" and sometimes means "customer actively renewed" — no way to distinguish
+- "Renewal" sometimes means "auto-renewed" and sometimes means "customer actively renewed" - no way to distinguish
 
 The model can still be built. But the strategy needs to account for 3-6 months of data cleaning before any AI development starts. And the model will be less accurate than the business case assumed, because the underlying data has limitations that no model can overcome.
 
-**The framework connection:** The framework's data protection controls ([DAT-01 to DAT-08](../infrastructure/controls/data-protection.md)) focus on securing data. Data *quality* is a prerequisite the framework assumes but doesn't enforce. If your data quality is poor, the framework's controls will faithfully protect poor data — and the AI will faithfully produce poor outputs.
+**The framework connection:** The framework's data protection controls ([DAT-01 to DAT-08](../infrastructure/controls/data-protection.md)) focus on securing data. Data *quality* is a prerequisite the framework assumes but doesn't enforce. If your data quality is poor, the framework's controls will faithfully protect poor data - and the AI will faithfully produce poor outputs.
 
 ### 4. Representativeness
 
@@ -98,7 +98,7 @@ This is particularly important for high-stakes AI and is directly connected to t
 | **Selection bias** | Data from customers who opted in to tracking | Model doesn't represent customers who opted out |
 | **Label bias** | Fraud labels applied by a team that only investigated certain transaction types | Model only detects fraud it was shown |
 
-**Strategic implication:** If your data has representativeness problems, the AI will have bias problems. This isn't a technical issue to fix with model tuning — it's a data problem that requires data solutions. For CRITICAL-tier systems (lending, hiring, insurance pricing), representativeness isn't optional. Regulators will ask.
+**Strategic implication:** If your data has representativeness problems, the AI will have bias problems. This isn't a technical issue to fix with model tuning - it's a data problem that requires data solutions. For CRITICAL-tier systems (lending, hiring, insurance pricing), representativeness isn't optional. Regulators will ask.
 
 ### 5. Permissibility
 
@@ -114,7 +114,7 @@ This is particularly important for high-stakes AI and is directly connected to t
 | **Intellectual property** | Are we training on copyrighted content? | IP litigation risk |
 | **Ethical** | Even if legal, should we use this data this way? | Reputational risk |
 
-**Real-world scenario:** A retailer wants to use loyalty card data to train a personalised recommendation AI. The loyalty card terms say data will be used "to provide personalised offers." Legal advises that training an AI model is different from running a database query, and may require updated consent under GDPR legitimate interest assessment. This isn't a technical blocker — it's a 3-month legal process that wasn't in the project plan.
+**Real-world scenario:** A retailer wants to use loyalty card data to train a personalised recommendation AI. The loyalty card terms say data will be used "to provide personalised offers." Legal advises that training an AI model is different from running a database query, and may require updated consent under GDPR legitimate interest assessment. This isn't a technical blocker - it's a 3-month legal process that wasn't in the project plan.
 
 ---
 
@@ -140,8 +140,8 @@ The framework's [risk tiers](../core/risk-tiers.md) classify systems by their po
 | Risk Tier | Good Data | Poor Data |
 |-----------|-----------|-----------|
 | **LOW** | Standard controls sufficient | Standard controls sufficient (errors are low-impact) |
-| **MEDIUM** | Standard controls sufficient | Consider upgrading to HIGH — poor data increases error probability |
-| **HIGH** | HIGH controls appropriate | Consider upgrading to CRITICAL — poor data on high-impact decisions |
+| **MEDIUM** | Standard controls sufficient | Consider upgrading to HIGH - poor data increases error probability |
+| **HIGH** | HIGH controls appropriate | Consider upgrading to CRITICAL - poor data on high-impact decisions |
 | **CRITICAL** | Maximum controls | **Question the deployment.** CRITICAL decisions on poor data may not be appropriate. |
 
 The framework doesn't currently incorporate data quality into risk classification. This is a gap. A CRITICAL-tier system built on well-curated, representative data is a different risk profile from a CRITICAL-tier system built on incomplete, biased data. The controls are the same; the residual risk is not.
@@ -154,7 +154,7 @@ The framework doesn't currently incorporate data quality into risk classificatio
 
 Don't wait for perfect data. Identify what's available now, assess its quality honestly, and design AI use cases that work within those constraints.
 
-**Example:** A bank wants AI-powered customer insights. The ideal dataset would integrate all customer touchpoints. The available data is transactional data from core banking — complete, accurate, but limited in scope. Strategy: start with transaction-based insights (spending patterns, anomaly detection) where the data is strong. Add other data sources over time.
+**Example:** A bank wants AI-powered customer insights. The ideal dataset would integrate all customer touchpoints. The available data is transactional data from core banking - complete, accurate, but limited in scope. Strategy: start with transaction-based insights (spending patterns, anomaly detection) where the data is strong. Add other data sources over time.
 
 **Framework alignment:** This naturally produces a [Fast Lane](../FAST-LANE.md) or Tier 1 deployment. Internal users, read-only, leveraging data you already control.
 
@@ -181,14 +181,14 @@ These don't eliminate the need for internal data governance, but they accelerate
 
 ### Strategy 4: Accept Data Limitations Explicitly
 
-Not every data problem needs solving. For LOW and MEDIUM tier AI deployments, imperfect data may be acceptable — as long as:
+Not every data problem needs solving. For LOW and MEDIUM tier AI deployments, imperfect data may be acceptable - as long as:
 
 1. The limitations are documented
 2. The impact of data errors is understood
 3. Human review catches the cases where data quality causes AI errors
 4. The risk tier accounts for data quality (not just use case impact)
 
-**The framework supports this.** The three-layer model (Guardrails → Judge → Human) is designed to catch errors regardless of their cause. Data quality issues manifest as AI output errors, which the Judge can detect and humans can review. The controls don't need to know *why* the output is wrong — they need to know *that* it's wrong.
+**The framework supports this.** The three-layer model (Guardrails → Judge → Human) is designed to catch errors regardless of their cause. Data quality issues manifest as AI output errors, which the Judge can detect and humans can review. The controls don't need to know *why* the output is wrong - they need to know *that* it's wrong.
 
 ---
 
@@ -207,13 +207,13 @@ Not every data problem needs solving. For LOW and MEDIUM tier AI deployments, im
 
 ## The Uncomfortable Truth
 
-Most organisations' data is not ready for the AI strategy they want to pursue. This is not a failure — it's a starting condition. The organisations that succeed are the ones that:
+Most organisations' data is not ready for the AI strategy they want to pursue. This is not a failure - it's a starting condition. The organisations that succeed are the ones that:
 
-1. **Assess data reality before committing to AI strategy** — not after
-2. **Match ambition to data maturity** — pursue what's possible now, not what's possible with data you don't yet have
-3. **Invest in data as a strategic asset** — not as an AI project dependency
-4. **Accept that some use cases need to wait** — until the data supports them
-5. **Use the framework's risk tiers to calibrate expectations** — higher tiers need better data, not just better controls
+1. **Assess data reality before committing to AI strategy** - not after
+2. **Match ambition to data maturity** - pursue what's possible now, not what's possible with data you don't yet have
+3. **Invest in data as a strategic asset** - not as an AI project dependency
+4. **Accept that some use cases need to wait** - until the data supports them
+5. **Use the framework's risk tiers to calibrate expectations** - higher tiers need better data, not just better controls
 
 The framework can secure AI systems built on poor data. It cannot make them accurate. That distinction is critical for strategy.
 

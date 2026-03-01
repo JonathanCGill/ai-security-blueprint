@@ -98,5 +98,5 @@
   <line x1="430" y1="185" x2="480" y2="185" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,2"/>
   
   <!-- Legend -->
-  <text x="60" y="395" font-family="Arial, sans-serif" font-size="9" fill="#64748b">Each step can block — defence in depth, not single point of failure</text>
+  <text x="60" y="395" font-family="Arial, sans-serif" font-size="9" fill="#64748b">Each step can block - defence in depth, not single point of failure</text>
 </svg>

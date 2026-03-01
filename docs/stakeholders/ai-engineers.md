@@ -1,6 +1,6 @@
 # AI Engineers
 
-**ML Engineers, AI Developers, Data Scientists, Platform Engineers — implementation patterns, not governance theory.**
+**ML Engineers, AI Developers, Data Scientists, Platform Engineers - implementation patterns, not governance theory.**
 
 > *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
 
@@ -8,7 +8,7 @@
 
 ## The Problem You Have
 
-You're building AI systems. Your security and risk teams have requirements that sound like governance bureaucracy. You've been asked for "guardrails," "a Judge," "human oversight," "PACE resilience" — but what you actually need is:
+You're building AI systems. Your security and risk teams have requirements that sound like governance bureaucracy. You've been asked for "guardrails," "a Judge," "human oversight," "PACE resilience" - but what you actually need is:
 
 - **What do I implement?** Concrete patterns, not abstract principles.
 - **Where do I put it?** Architecture-level placement in the pipeline.
@@ -24,7 +24,7 @@ You're building AI systems. Your security and risk teams have requirements that 
 
 Every AI system needs some combination of these. Your risk tier determines how much:
 
-**1. Guardrails** — input/output filters that run on every request.
+**1. Guardrails** - input/output filters that run on every request.
 
 What you're implementing:
 - Input: injection detection, content policy check, PII redaction, schema validation
@@ -32,7 +32,7 @@ What you're implementing:
 - Latency budget: ~10-20ms total
 - Libraries: NVIDIA NeMo Guardrails, Guardrails AI, LangChain output parsers, AWS Bedrock Guardrails, Azure AI Content Safety
 
-**2. LLM-as-Judge** — an independent LLM that evaluates your task agent's output.
+**2. LLM-as-Judge** - an independent LLM that evaluates your task agent's output.
 
 What you're implementing:
 - A separate model (different from your task agent) that receives the input, output, and context
@@ -47,7 +47,7 @@ Key constraint: **the Judge must use a different model than your task agent**. S
 - Model selection: [Judge Model Selection](../extensions/technical/judge-model-selection.md)
 - Calibration: [Judge Assurance](../core/judge-assurance.md)
 
-**3. Circuit breaker / PACE fail postures** — what your system does when control layers fail.
+**3. Circuit breaker / PACE fail postures** - what your system does when control layers fail.
 
 What you're implementing:
 - Health checks on guardrail and Judge services
@@ -61,7 +61,7 @@ This is infrastructure code, not AI code. Treat it like any service reliability 
 
 | Tier | What You Build | Judge Configuration | Human Oversight |
 |---|---|---|---|
-| **LOW** | Basic input/output guardrails | Optional — 1-5% sampling for monitoring | None (exception-based) |
+| **LOW** | Basic input/output guardrails | Optional - 1-5% sampling for monitoring | None (exception-based) |
 | **MEDIUM** | Standard guardrails + Judge integration | 5-10% sampling, batch evaluation | Review flagged items only |
 | **HIGH** | Full guardrail suite + Judge + routing | 20-50% coverage, near real-time | Flagged items + random sampling |
 | **CRITICAL** | Hardened guardrails + Judge + human gate | 100% coverage, synchronous (blocks delivery) | All high-impact decisions reviewed |
@@ -81,10 +81,10 @@ If you're building on a specific platform, these map framework controls to platf
 
 Controls that aren't tested don't work. The framework provides:
 
-- [Testing Guidance](../extensions/templates/testing-guidance.md) — structured test scenarios for each control layer
-- [Red Team Playbook](../maso/red-team/red-team-playbook.md) — 13 adversarial scenarios (prompt injection, data exfiltration, privilege escalation, consensus manipulation)
-- [Judge Assurance](../core/judge-assurance.md) — how to measure Judge accuracy, calibrate confidence thresholds, detect drift
-- [When the Judge Can Be Fooled](../core/when-the-judge-can-be-fooled.md) — failure modes specific to the evaluation layer
+- [Testing Guidance](../extensions/templates/testing-guidance.md) - structured test scenarios for each control layer
+- [Red Team Playbook](../maso/red-team/red-team-playbook.md) - 13 adversarial scenarios (prompt injection, data exfiltration, privilege escalation, consensus manipulation)
+- [Judge Assurance](../core/judge-assurance.md) - how to measure Judge accuracy, calibrate confidence thresholds, detect drift
+- [When the Judge Can Be Fooled](../core/when-the-judge-can-be-fooled.md) - failure modes specific to the evaluation layer
 
 ---
 
@@ -92,17 +92,17 @@ Controls that aren't tested don't work. The framework provides:
 
 | # | Document | Why You Need It |
 |---|---|---|
-| 1 | [Controls](../core/controls.md) | Three-layer implementation reference — what to build |
+| 1 | [Controls](../core/controls.md) | Three-layer implementation reference - what to build |
 | 2 | [Quick Start](../QUICK_START.md) | Zero to working controls in 30 minutes |
 | 3 | [LLM-as-Judge Implementation](../extensions/technical/llm-as-judge-implementation.md) | Judge layer patterns, prompts, routing logic |
 | 4 | [Judge Assurance](../core/judge-assurance.md) | How to measure and calibrate Judge accuracy |
 | 5 | [Checklist](../core/checklist.md) | Track what you've implemented |
 
-**If you're building agents:** [Agentic Controls](../core/agentic.md) — tool scoping, action classification, confirmation gates.
+**If you're building agents:** [Agentic Controls](../core/agentic.md) - tool scoping, action classification, confirmation gates.
 
-**If you're building multi-agent systems:** [MASO Integration Guide](../maso/integration/integration-guide.md) — message bus signing, per-agent identity, cross-agent DLP.
+**If you're building multi-agent systems:** [MASO Integration Guide](../maso/integration/integration-guide.md) - message bus signing, per-agent identity, cross-agent DLP.
 
-**If you're building RAG:** [RAG Security](../extensions/technical/rag-security.md) — the attack surface you probably haven't considered.
+**If you're building RAG:** [RAG Security](../extensions/technical/rag-security.md) - the attack surface you probably haven't considered.
 
 ---
 
@@ -114,16 +114,16 @@ Controls that aren't tested don't work. The framework provides:
 
 3. **Implement a Judge on 10% of traffic.** Pick a different model from your task agent. Use the [Judge Prompt Examples](../extensions/templates/judge-prompt-examples.md) as starting points. Log results. Measure the catch rate. This tells you what your guardrails are missing.
 
-4. **Wire a circuit breaker.** If your guardrail service goes down, your system should degrade to a safe state — not continue without protection. A simple health check and fallback route takes an afternoon.
+4. **Wire a circuit breaker.** If your guardrail service goes down, your system should degrade to a safe state - not continue without protection. A simple health check and fallback route takes an afternoon.
 
 5. **Red team your own system.** Spend an hour trying to break it. The [Red Team Playbook](../maso/red-team/red-team-playbook.md) has structured scenarios. Document what you find. This is the most effective way to identify control gaps.
 
 ---
 
-## Common Objections — With Answers
+## Common Objections - With Answers
 
 **"The Judge adds latency to every request."**
-Only for CRITICAL tier. For HIGH tier, run it asynchronously — it doesn't block the response. For MEDIUM tier, run it on a sample. For LOW tier, it's optional. See [Cost & Latency](../extensions/technical/cost-and-latency.md).
+Only for CRITICAL tier. For HIGH tier, run it asynchronously - it doesn't block the response. For MEDIUM tier, run it on a sample. For LOW tier, it's optional. See [Cost & Latency](../extensions/technical/cost-and-latency.md).
 
 **"Our model is already aligned / fine-tuned / safe."**
 Model alignment is necessary but insufficient. Alignment reduces the base rate of harmful outputs but doesn't eliminate it. Prompt injection bypasses alignment. RAG poisoning bypasses alignment. Edge cases that weren't in the training data bypass alignment. Runtime controls catch what alignment misses.
@@ -132,7 +132,7 @@ Model alignment is necessary but insufficient. Alignment reduces the base rate o
 The Judge doesn't have to be expensive. A smaller, faster model (Haiku-class) running a focused evaluation prompt often outperforms a larger model for specific policy checks. Sample at 10% to start. The [Judge Model Selection](../extensions/technical/judge-model-selection.md) guide covers cost-effective configurations.
 
 **"Human oversight doesn't scale."**
-Correct — which is why the framework doesn't require human review of every transaction (except at CRITICAL tier). The Judge handles scale. Humans handle the edge cases the Judge flags and the random samples that keep the system honest. See [Humans Remain Accountable](../insights/humans-remain-accountable.md).
+Correct - which is why the framework doesn't require human review of every transaction (except at CRITICAL tier). The Judge handles scale. Humans handle the edge cases the Judge flags and the random samples that keep the system honest. See [Humans Remain Accountable](../insights/humans-remain-accountable.md).
 
 **"This is security's job, not mine."**
 Security sets the requirements. You implement them. The framework gives you concrete patterns so you're not guessing. The [Controls](../core/controls.md) document tells you exactly what to build. The [Checklist](../core/checklist.md) tracks your progress. Security reviews the result, not the implementation approach.

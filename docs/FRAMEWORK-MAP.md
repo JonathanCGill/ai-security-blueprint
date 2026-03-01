@@ -2,21 +2,21 @@
 
 Navigate the framework by role or goal. Pick a reading path, follow it, branch when something connects.
 
-> **New: [Stakeholder Views](stakeholders/)** — dedicated entry points for Security Leaders, Risk & Governance, Enterprise Architects, Product Owners, AI Engineers, and Compliance & Legal. Each page answers "what's in this for me?" with a targeted reading path and Monday-morning actions.
+> **New: [Stakeholder Views](stakeholders/)** - dedicated entry points for Security Leaders, Risk & Governance, Enterprise Architects, Product Owners, AI Engineers, and Compliance & Legal. Each page answers "what's in this for me?" with a targeted reading path and Monday-morning actions.
 
 ---
 
 ## Two Architectures, One Framework
 
-This framework has two halves. The **Foundation** covers single-model AI deployments. **MASO** extends it to multi-agent orchestration. Both share the same three-layer pattern (Guardrails → Judge → Human Oversight) and PACE resilience methodology — MASO adds the controls needed when agents communicate, delegate, and act across trust boundaries.
+This framework has two halves. The **Foundation** covers single-model AI deployments. **MASO** extends it to multi-agent orchestration. Both share the same three-layer pattern (Guardrails → Judge → Human Oversight) and PACE resilience methodology - MASO adds the controls needed when agents communicate, delegate, and act across trust boundaries.
 
 [![Single-Agent Architecture](images/single-agent-architecture.svg)](images/single-agent-architecture.svg)
 
-**Foundation** — Three-layer runtime security for single-model AI. Risk classification, 80 infrastructure controls, PACE resilience, fast lane for low-risk deployments. **→ [Start here](foundations/)**
+**Foundation** - Three-layer runtime security for single-model AI. Risk classification, 80 infrastructure controls, PACE resilience, fast lane for low-risk deployments. **→ [Start here](foundations/)**
 
 [![MASO Tube Map](images/maso-tube-map.svg)](images/maso-tube-map.svg)
 
-**MASO** — Six control domains, 93 controls, three implementation tiers, dual OWASP coverage. For systems where multiple agents collaborate autonomously. **→ [Start here](maso/)**
+**MASO** - Six control domains, 93 controls, three implementation tiers, dual OWASP coverage. For systems where multiple agents collaborate autonomously. **→ [Start here](maso/)**
 
 ---
 
@@ -26,11 +26,11 @@ This framework has two halves. The **Foundation** covers single-model AI deploym
 
 Start with strategy, then the business case for controls.
 
-1. [AI Strategy](strategy/) — business alignment, data reality, human factors, progression
-2. [The First Control: Choosing the Right Tool](insights/the-first-control.md) — frames the design-thinking question
-3. [Why Your AI Guardrails Aren't Enough](insights/why-guardrails-arent-enough.md) — the case for the Judge layer
-4. [Humans Remain Accountable](insights/humans-remain-accountable.md) — accountability model
-5. [When Agents Talk to Agents](insights/when-agents-talk-to-agents.md) — the multi-agent problem statement
+1. [AI Strategy](strategy/) - business alignment, data reality, human factors, progression
+2. [The First Control: Choosing the Right Tool](insights/the-first-control.md) - frames the design-thinking question
+3. [Why Your AI Guardrails Aren't Enough](insights/why-guardrails-arent-enough.md) - the case for the Judge layer
+4. [Humans Remain Accountable](insights/humans-remain-accountable.md) - accountability model
+5. [When Agents Talk to Agents](insights/when-agents-talk-to-agents.md) - the multi-agent problem statement
 
 Then the two operational gap articles most boards haven't heard about: [The Supply Chain Problem](insights/the-supply-chain-problem.md) and [RAG Is Your Biggest Attack Surface](insights/rag-is-your-biggest-attack-surface.md).
 
@@ -40,26 +40,26 @@ For multi-agent specifically, the [MASO worked examples](maso/examples/worked-ex
 
 Follow the foundation path:
 
-1. [Quick Start](QUICK_START.md) — zero to working controls in 30 minutes
-2. [Risk Tiers](core/risk-tiers.md) — classify your system
-3. [Controls](core/controls.md) — implement the three-layer pattern
-4. [PACE Resilience](PACE-RESILIENCE.md) — define fail postures and fallback paths
-5. [Checklist](core/checklist.md) — track progress
+1. [Quick Start](QUICK_START.md) - zero to working controls in 30 minutes
+2. [Risk Tiers](core/risk-tiers.md) - classify your system
+3. [Controls](core/controls.md) - implement the three-layer pattern
+4. [PACE Resilience](PACE-RESILIENCE.md) - define fail postures and fallback paths
+5. [Checklist](core/checklist.md) - track progress
 
-If your system qualifies for the [Fast Lane](FAST-LANE.md) (internal, read-only, no regulated data, human-reviewed), start there instead — minimal controls, self-certification, deploy in days.
+If your system qualifies for the [Fast Lane](FAST-LANE.md) (internal, read-only, no regulated data, human-reviewed), start there instead - minimal controls, self-certification, deploy in days.
 
 If your system is agentic (single agent with tool access), add [Agentic Controls](core/agentic.md) after step 3.
 
 ### "I'm building a multi-agent system"
 
-Start with the foundation path above — the single-agent controls are the baseline. Then layer on MASO:
+Start with the foundation path above - the single-agent controls are the baseline. Then layer on MASO:
 
-1. [MASO Overview](maso/) — architecture, control domains, OWASP mapping
-2. [Tier 1 — Supervised](maso/implementation/tier-1-supervised.md) — start here (human approves all writes)
-3. [Integration Guide](maso/integration/integration-guide.md) — LangGraph, AutoGen, CrewAI, AWS Bedrock patterns
-4. [Red Team Playbook](maso/red-team/red-team-playbook.md) — 13 adversarial test scenarios
+1. [MASO Overview](maso/) - architecture, control domains, OWASP mapping
+2. [Tier 1 - Supervised](maso/implementation/tier-1-supervised.md) - start here (human approves all writes)
+3. [Integration Guide](maso/integration/integration-guide.md) - LangGraph, AutoGen, CrewAI, AWS Bedrock patterns
+4. [Red Team Playbook](maso/red-team/red-team-playbook.md) - 13 adversarial test scenarios
 
-Graduate to [Tier 2](maso/implementation/tier-2-managed.md) and [Tier 3](maso/implementation/tier-3-autonomous.md) as your controls mature. The tier guides include graduation criteria — don't skip tiers.
+Graduate to [Tier 2](maso/implementation/tier-2-managed.md) and [Tier 3](maso/implementation/tier-3-autonomous.md) as your controls mature. The tier guides include graduation criteria - don't skip tiers.
 
 ### "I'm an architect designing the pipeline"
 
@@ -76,14 +76,14 @@ Start with the challenges that affect your architecture:
 
 Then the data-layer controls: [RAG Security](extensions/technical/rag-security.md), [Supply Chain](extensions/technical/supply-chain.md), [Memory & Context](core/memory-and-context.md).
 
-For infrastructure enforcement: [Infrastructure Controls](infrastructure/) — 80 controls across 11 domains with AWS, Azure, and Databricks patterns.
+For infrastructure enforcement: [Infrastructure Controls](infrastructure/) - 80 controls across 11 domains with AWS, Azure, and Databricks patterns.
 
 ### "I run a SOC and need to operationalise AI monitoring"
 
-1. [Behavioral Anomaly Detection](insights/behavioral-anomaly-detection.md) — what you're looking for and why traditional detection doesn't apply
-2. [SOC Integration](extensions/technical/soc-integration.md) — alert taxonomy, SIEM rules, triage
-3. [Anomaly Detection Ops](extensions/technical/anomaly-detection-ops.md) — baselining and detection engineering
-4. [Cost & Latency](extensions/technical/cost-and-latency.md) — budget the evaluation layer
+1. [Behavioral Anomaly Detection](insights/behavioral-anomaly-detection.md) - what you're looking for and why traditional detection doesn't apply
+2. [SOC Integration](extensions/technical/soc-integration.md) - alert taxonomy, SIEM rules, triage
+3. [Anomaly Detection Ops](extensions/technical/anomaly-detection-ops.md) - baselining and detection engineering
+4. [Cost & Latency](extensions/technical/cost-and-latency.md) - budget the evaluation layer
 
 For multi-agent monitoring, the [MASO Observability domain](maso/controls/observability.md) covers decision chain audit, anomaly scoring, drift detection, and independent kill switch architecture. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps 10 real-world AI security incidents to specific controls.
 
@@ -92,18 +92,18 @@ For multi-agent monitoring, the [MASO Observability domain](maso/controls/observ
 | Standard | Single-Agent Mapping | Multi-Agent Mapping |
 |---|---|---|
 | OWASP LLM Top 10 (2025) | [OWASP mapping](infrastructure/mappings/owasp-llm-top10.md) | [MASO OWASP coverage](maso/) |
-| OWASP Agentic Top 10 (2026) | — | [MASO OWASP coverage](maso/) |
+| OWASP Agentic Top 10 (2026) | - | [MASO OWASP coverage](maso/) |
 | ISO 42001 | [ISO 42001 mapping](infrastructure/mappings/iso42001-annex-a.md) | [MASO regulatory alignment](maso/) |
 | NIST AI RMF | [NIST mapping](infrastructure/mappings/nist-ai-rmf.md) | [MASO regulatory alignment](maso/) |
 | EU AI Act | [EU AI Act mapping](extensions/regulatory/) | [MASO regulatory alignment](maso/) |
-| NIST SP 800-218A | [SP 800-218A mapping](infrastructure/mappings/nist-sp800-218a.md) | — |
-| DORA | — | [MASO regulatory alignment](maso/) |
+| NIST SP 800-218A | [SP 800-218A mapping](infrastructure/mappings/nist-sp800-218a.md) | - |
+| DORA | - | [MASO regulatory alignment](maso/) |
 
 ### "I need to test and red team AI controls"
 
-**Single-agent:** [Threat Model Template](extensions/templates/threat-model-template.md) → [Testing Guidance](extensions/templates/testing-guidance.md). Design adversarial tests targeting guardrails, Judge, and human oversight. Results feed back into control tuning — testing is continuous, not a pre-deployment gate.
+**Single-agent:** [Threat Model Template](extensions/templates/threat-model-template.md) → [Testing Guidance](extensions/templates/testing-guidance.md). Design adversarial tests targeting guardrails, Judge, and human oversight. Results feed back into control tuning - testing is continuous, not a pre-deployment gate.
 
-**Multi-agent:** [Red Team Playbook](maso/red-team/red-team-playbook.md) — 13 structured scenarios across three tiers, from basic inter-agent prompt injection (RT-01) to PACE transition under active attack (RT-12). Includes success criteria, detection latency targets, and escalation guidance.
+**Multi-agent:** [Red Team Playbook](maso/red-team/red-team-playbook.md) - 13 structured scenarios across three tiers, from basic inter-agent prompt injection (RT-01) to PACE transition under active attack (RT-12). Includes success criteria, detection latency targets, and escalation guidance.
 
 ---
 
@@ -113,12 +113,12 @@ For multi-agent monitoring, the [MASO Observability domain](maso/controls/observ
 
 | Document | What It Is |
 |---|---|
-| [Root README](README.md) | Framework overview — the narrative arc from problem to solution |
-| [Foundation](foundations/) | Single-model AI security — full reference |
-| [MASO Framework](maso/) | Multi-agent security operations — full reference |
+| [Root README](README.md) | Framework overview - the narrative arc from problem to solution |
+| [Foundation](foundations/) | Single-model AI security - full reference |
+| [MASO Framework](maso/) | Multi-agent security operations - full reference |
 | [Quick Start](QUICK_START.md) | Zero to working controls in 30 minutes |
 | [Cheat Sheet](CHEATSHEET.md) | Entire framework on one page |
-| [Decision Poster](DECISION-POSTER.md) | Visual one-page reference — print it |
+| [Decision Poster](DECISION-POSTER.md) | Visual one-page reference - print it |
 | [Fast Lane](FAST-LANE.md) | Pre-approved path for low-risk deployments |
 
 ### Core Documents
@@ -145,9 +145,9 @@ For multi-agent monitoring, the [MASO Observability domain](maso/controls/observ
 | [Observability](maso/controls/observability.md) | Audit, anomaly scoring, kill switch |
 | [Supply Chain](maso/controls/supply-chain.md) | AIBOM, tool manifests, MCP vetting |
 | [Risk Register](maso/controls/risk-register.md) | 30 emergent risks beyond OWASP |
-| [Tier 1 — Supervised](maso/implementation/tier-1-supervised.md) | Human approves all writes |
-| [Tier 2 — Managed](maso/implementation/tier-2-managed.md) | NHI, signed bus, Judge, continuous monitoring |
-| [Tier 3 — Autonomous](maso/implementation/tier-3-autonomous.md) | Self-healing PACE, adversarial testing, kill switch |
+| [Tier 1 - Supervised](maso/implementation/tier-1-supervised.md) | Human approves all writes |
+| [Tier 2 - Managed](maso/implementation/tier-2-managed.md) | NHI, signed bus, Judge, continuous monitoring |
+| [Tier 3 - Autonomous](maso/implementation/tier-3-autonomous.md) | Self-healing PACE, adversarial testing, kill switch |
 | [Incident Tracker](maso/threat-intelligence/incident-tracker.md) | 10 real-world incidents mapped to controls |
 | [Emerging Threats](maso/threat-intelligence/emerging-threats.md) | 8 forward-looking threat patterns |
 | [Red Team Playbook](maso/red-team/red-team-playbook.md) | 13 adversarial test scenarios |
@@ -183,7 +183,7 @@ For multi-agent monitoring, the [MASO Observability domain](maso/controls/observ
 | [Data Reality](strategy/data-reality.md) | Is our data ready for the strategy we want to pursue? |
 | [Human Factors](strategy/human-factors.md) | Can our people build, operate, and sustain this? |
 | [Progression](strategy/progression.md) | How do we move from low-risk to high-risk safely? |
-| [Framework Tensions](strategy/framework-tensions.md) | Where does the framework help strategy — and where does it constrain it? |
+| [Framework Tensions](strategy/framework-tensions.md) | Where does the framework help strategy - and where does it constrain it? |
 | [Use Case Definition](strategy/use-case-definition.md) | How do we define use cases so security and governance can work with them? |
 | [From Idea to Production](strategy/idea-to-production.md) | What's the complete process from idea to running system to ongoing control? |
 

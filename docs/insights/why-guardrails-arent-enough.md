@@ -54,7 +54,7 @@ Guardrails operate on individual transactions. They can't see patterns.
 
 If guardrails are the bouncer, you also need a detective. Someone reviewing the footage, noticing patterns, flagging concerns for investigation.
 
-This is the role of **LLM-as-Judge** — a second AI system that evaluates interactions after they occur. Not blocking. Not deciding. Detecting.
+This is the role of **LLM-as-Judge** - a second AI system that evaluates interactions after they occur. Not blocking. Not deciding. Detecting.
 
 The Judge reviews transactions asynchronously. It asks:
 - Did the AI follow its policies?
@@ -74,7 +74,7 @@ The instinct is to make the Judge an active control. If it spots a problem, bloc
 
 This instinct is wrong, for three reasons.
 
-**Latency.** LLM evaluation takes time — hundreds of milliseconds to seconds. Adding that to every transaction destroys user experience and violates SLAs. Customers don't wait.
+**Latency.** LLM evaluation takes time - hundreds of milliseconds to seconds. Adding that to every transaction destroys user experience and violates SLAs. Customers don't wait.
 
 **False positives.** The Judge will be wrong sometimes. An active Judge that blocks legitimate transactions creates customer harm, support burden, and legal exposure. A passive Judge that flags false positives wastes some analyst time. The failure modes are asymmetric.
 
@@ -106,7 +106,7 @@ No single layer is sufficient. Together, they provide defence in depth.
 
 ## Implementation Principles
 
-**Start with logging.** The Judge needs data. If you're not capturing full AI interactions — inputs, outputs, context — start there. You can't evaluate what you didn't record.
+**Start with logging.** The Judge needs data. If you're not capturing full AI interactions - inputs, outputs, context - start there. You can't evaluate what you didn't record.
 
 **Deploy the Judge in shadow mode first.** Run it against your transaction log without acting on findings. Measure its accuracy against human review. Tune it. Trust comes from evidence.
 
@@ -120,7 +120,7 @@ No single layer is sufficient. Together, they provide defence in depth.
 
 ## The Uncomfortable Truth About Agents
 
-Everything above applies to generative AI. Agents — AI systems that take actions — are harder.
+Everything above applies to generative AI. Agents - AI systems that take actions - are harder.
 
 An agent doesn't just produce text. It calls APIs, queries databases, sends messages, executes code. A bad response is recoverable. A bad action might not be.
 
@@ -144,13 +144,13 @@ Instructions are policy. Infrastructure is enforcement.
 
 If you're running AI in production with guardrails alone, you have blind spots. You're catching obvious problems and missing subtle ones. You're protected against yesterday's attacks and exposed to tomorrow's.
 
-The fix isn't more guardrails. It's adding the assurance layer — detection, evaluation, human review — that guardrails can't provide.
+The fix isn't more guardrails. It's adding the assurance layer - detection, evaluation, human review - that guardrails can't provide.
 
 Start with one system. Add logging. Deploy a Judge. Review its findings weekly. Learn what it catches that guardrails miss.
 
 Then expand.
 
-The organisations getting AI security right aren't the ones with the most sophisticated guardrails. They're the ones that assume guardrails aren't enough — and build accordingly.
+The organisations getting AI security right aren't the ones with the most sophisticated guardrails. They're the ones that assume guardrails aren't enough - and build accordingly.
 
 ---
 
@@ -168,9 +168,9 @@ The three-layer model isn't theoretical. It's already being implemented:
 
 What's been missing: a clear explanation of *why* this pattern is necessary and *how* to implement it proportionate to risk.
 
-That's what the [AI Runtime Behaviour Security](../README.md) provides — a practical synthesis of the pattern with implementation guidance. For detailed solution comparison, see [Current Solutions](../extensions/technical/current-solutions.md).
+That's what the [AI Runtime Behaviour Security](../README.md) provides - a practical synthesis of the pattern with implementation guidance. For detailed solution comparison, see [Current Solutions](../extensions/technical/current-solutions.md).
 
-For practical implementation guidance on the guardrail layer itself — what to detect, international PII patterns, RAG ingestion filtering, alerting, and governance of exceptions — see **[Practical Guardrails](practical-guardrails.md)**.
+For practical implementation guidance on the guardrail layer itself - what to detect, international PII patterns, RAG ingestion filtering, alerting, and governance of exceptions - see **[Practical Guardrails](practical-guardrails.md)**.
 
 > **Design reviews prove intent. Behavioral monitoring proves reality.**
 

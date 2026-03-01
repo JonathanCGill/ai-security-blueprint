@@ -4,7 +4,7 @@
 
 ---
 
-A new class of models thinks before responding. OpenAI's o1, Anthropic's extended thinking, and similar approaches run internal reasoning chains — sometimes for seconds, sometimes longer — before producing output.
+A new class of models thinks before responding. OpenAI's o1, Anthropic's extended thinking, and similar approaches run internal reasoning chains - sometimes for seconds, sometimes longer - before producing output.
 
 This changes the security model in ways we're only starting to understand.
 
@@ -14,7 +14,7 @@ This changes the security model in ways we're only starting to understand.
 
 Traditional LLMs produce output token by token. What you see is what you get. The response is the reasoning.
 
-Reasoning models are different. They generate internal thinking — planning, exploration, self-correction — then produce a final answer. The thinking may or may not be visible to you.
+Reasoning models are different. They generate internal thinking - planning, exploration, self-correction - then produce a final answer. The thinking may or may not be visible to you.
 
 This creates a trust gap:
 
@@ -40,7 +40,7 @@ The attack surface isn't just input → output anymore. It's input → reasoning
 
 ### The Judge needs reasoning access
 
-A Judge evaluating only the final output can't assess whether the reasoning was appropriate. Two identical outputs can come from very different reasoning paths — one sound, one problematic.
+A Judge evaluating only the final output can't assess whether the reasoning was appropriate. Two identical outputs can come from very different reasoning paths - one sound, one problematic.
 
 For HIGH and CRITICAL systems, you likely need:
 - Access to the reasoning chain (if the model exposes it)
@@ -111,7 +111,7 @@ For CRITICAL systems, you probably need reasoning visibility. If the model won't
 **If you're deploying reasoning models today:**
 
 1. Understand what reasoning access you have (full chain, summary, none)
-2. Log the reasoning where available — you'll need it for incidents
+2. Log the reasoning where available - you'll need it for incidents
 3. Adjust latency expectations in your SLAs
 4. Consider whether your Judge can evaluate reasoning, or just outputs
 5. Be conservative with CRITICAL use cases until evaluation methods mature
@@ -131,7 +131,7 @@ Reasoning capability will improve. Models will think longer and more effectively
 
 Security and governance approaches that assume transparent, fast, input-output models will age poorly.
 
-The framework needs to evolve to handle systems that think — even when we can't watch them do it.
+The framework needs to evolve to handle systems that think - even when we can't watch them do it.
 
 ---
 

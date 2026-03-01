@@ -8,7 +8,7 @@
 
 ## Principle
 
-You cannot secure what you cannot see. Every agent decision, every inter-agent message, every tool invocation, and every output is captured in an immutable audit trail. Monitoring is not retrospective — it is continuous, automated, and feeds directly into the PACE escalation logic. At Tier 3, the observability system is itself an independent agent with its own infrastructure and kill switch authority.
+You cannot secure what you cannot see. Every agent decision, every inter-agent message, every tool invocation, and every output is captured in an immutable audit trail. Monitoring is not retrospective - it is continuous, automated, and feeds directly into the PACE escalation logic. At Tier 3, the observability system is itself an independent agent with its own infrastructure and kill switch authority.
 
 Observability is the domain that makes all other domains verifiable. Without it, identity controls are unauditable, data fencing is uncheckable, and execution caps are unenforceable.
 
@@ -20,15 +20,15 @@ Observability is the domain that makes all other domains verifiable. Without it,
 
 **Behavioural drift is harder to detect.** A single model's output quality can be monitored against a baseline. In a multi-agent system, drift in one agent may be masked by compensating behaviour in another. Agent A starts hallucinating, but Agent B's summarisation smooths over the inaccuracies. The final output looks acceptable while the intermediate data is corrupted.
 
-**Trust exploitation scales with agent confidence.** ASI09 — Human-Agent Trust Exploitation — is particularly dangerous in multi-agent systems because agents can present consensus. "All three agents agree this is the right action" is more persuasive than a single agent's recommendation, even when the consensus is based on shared poisoned data or correlated errors.
+**Trust exploitation scales with agent confidence.** ASI09 - Human-Agent Trust Exploitation - is particularly dangerous in multi-agent systems because agents can present consensus. "All three agents agree this is the right action" is more persuasive than a single agent's recommendation, even when the consensus is based on shared poisoned data or correlated errors.
 
-**Rogue behaviour can be concealed by collaboration.** ASI10 — Rogue Agents — is harder to detect when the rogue agent's outputs are processed by other agents before reaching human review. The observability layer must monitor intermediate states, not just final outputs.
+**Rogue behaviour can be concealed by collaboration.** ASI10 - Rogue Agents - is harder to detect when the rogue agent's outputs are processed by other agents before reaching human review. The observability layer must monitor intermediate states, not just final outputs.
 
 ---
 
 ## Controls by Tier
 
-### Tier 1 — Supervised
+### Tier 1 - Supervised
 
 | Control | Requirement | Implementation Notes |
 |---------|-------------|---------------------|
@@ -37,7 +37,7 @@ Observability is the domain that makes all other domains verifiable. Without it,
 | **OB-1.3** Weekly manual review | Human reviews a sample of agent actions and inter-agent messages weekly | Focus on: unexpected tool usage, unusual message patterns, rejected actions. |
 | **OB-1.4** Output quality log | Human approval decisions (approve/reject) logged alongside agent output | Builds the baseline data set required for Tier 2 anomaly detection. |
 
-### Tier 2 — Managed
+### Tier 2 - Managed
 
 All Tier 1 controls remain active, plus:
 
@@ -52,7 +52,7 @@ All Tier 1 controls remain active, plus:
 | **OB-2.7** Accountable human | Every workflow has a designated human owner recorded in the decision chain and AIBOM | `accountable_human` field mandatory in decision chain log. Judge approval does not transfer responsibility from the human owner. Prevents accountability blur (HF-02). |
 | **OB-2.8** Emergent failure accountability | For failures that arise from agent-to-agent interaction (hallucination amplification, consensus failures, transitive delegation errors), the workflow owner is accountable, not individual agent owners | Prevents accountability gaps where no single agent "failed" but the system produced a harmful outcome. Workflow owner is responsible for the orchestration design that permitted the emergent failure. |
 
-### Tier 3 — Autonomous
+### Tier 3 - Autonomous
 
 All Tier 2 controls remain active, plus:
 
@@ -68,7 +68,7 @@ All Tier 2 controls remain active, plus:
 
 ## Anomaly Scoring Model (Tier 2+)
 
-The anomaly score is a composite metric that drives PACE escalation decisions. It is not a single number — it is a vector of signals, each weighted by the agent's risk profile.
+The anomaly score is a composite metric that drives PACE escalation decisions. It is not a single number - it is a vector of signals, each weighted by the agent's risk profile.
 
 **Input signals:**
 
@@ -81,7 +81,7 @@ The anomaly score is a composite metric that drives PACE escalation decisions. I
 | Error rate | 0.10 | Guardrail blocks, tool failures, timeouts |
 | Content drift | 0.15 | Semantic similarity of outputs vs. baseline |
 | Cost trajectory | 0.05 | Token usage trend vs. baseline |
-| Temporal profile | 0.10 | Activity timing vs. established schedule — flags weekend, off-hours, or out-of-cycle invocations that deviate from the agent's historical activation pattern. Borrowed from [insider risk UEBA](../../insights/behavioral-anomaly-detection.md#the-insider-risk-parallel): unusual working hours are one of the strongest early signals of compromised credentials. |
+| Temporal profile | 0.10 | Activity timing vs. established schedule - flags weekend, off-hours, or out-of-cycle invocations that deviate from the agent's historical activation pattern. Borrowed from [insider risk UEBA](../../insights/behavioral-anomaly-detection.md#the-insider-risk-parallel): unusual working hours are one of the strongest early signals of compromised credentials. |
 | Peer group deviation | 0.10 | Behavioural divergence from other agents with the same role and configuration. If one agent in a fleet of five starts behaving differently while its peers remain stable, the individual agent is flagged. Filters out environmental changes that affect all agents equally. |
 
 **Thresholds (configurable per agent):**
@@ -179,13 +179,13 @@ This format enables: full chain reconstruction, per-agent performance trending, 
 
 **Logging everything but monitoring nothing.** A comprehensive audit log that nobody reviews and no automated system analyses is compliance theatre. Logs must feed into active monitoring and alerting, not just exist for post-incident forensics.
 
-**Anomaly detection based solely on error rates.** The most dangerous agent behaviours don't generate errors — they produce plausible-looking outputs that are subtly wrong. Anomaly scoring must include output quality metrics (LLM-as-Judge scores, semantic similarity to baseline), not just error counts and rate limits.
+**Anomaly detection based solely on error rates.** The most dangerous agent behaviours don't generate errors - they produce plausible-looking outputs that are subtly wrong. Anomaly scoring must include output quality metrics (LLM-as-Judge scores, semantic similarity to baseline), not just error counts and rate limits.
 
-**Trusting the observability system that runs on the same infrastructure as the agents.** At Tier 3, the observability agent must be on separate infrastructure. If a compromised agent can influence the monitoring system — by flooding it with noise, modifying its inputs, or degrading its resources — the monitoring is compromised. Independence requires infrastructure isolation, not just logical separation.
+**Trusting the observability system that runs on the same infrastructure as the agents.** At Tier 3, the observability agent must be on separate infrastructure. If a compromised agent can influence the monitoring system - by flooding it with noise, modifying its inputs, or degrading its resources - the monitoring is compromised. Independence requires infrastructure isolation, not just logical separation.
 
 **Setting drift detection thresholds too tight.** Overly sensitive drift detection generates alert fatigue. If the anomaly score triggers a PACE transition three times a day for false positives, the team will start ignoring it. Calibrate thresholds using Tier 1 manual review data and expect a 2–4 week tuning period at Tier 2 before thresholds stabilise.
 
-**Comprehensive logging without log security.** Agent logs contain reasoning chains, tool parameters, context fragments, and potentially sensitive data. Without classification, encryption, and access controls, the observability layer becomes a high-value target for data exfiltration — the very attack it's supposed to detect (SR-06).
+**Comprehensive logging without log security.** Agent logs contain reasoning chains, tool parameters, context fragments, and potentially sensitive data. Without classification, encryption, and access controls, the observability layer becomes a high-value target for data exfiltration - the very attack it's supposed to detect (SR-06).
 
 **No named human on the decision chain.** "The agents decided" is not accountability. Every workflow must have a designated human owner. The decision chain log must record who that person is. Judge approval is a tool, not a transfer of responsibility.
 

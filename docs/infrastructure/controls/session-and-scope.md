@@ -1,6 +1,6 @@
 # Session & Scope for Agentic AI
 
-> **Control Domain:** Agentic — Containment Controls  
+> **Control Domain:** Agentic - Containment Controls  
 > **Purpose:** Isolate agent sessions, limit blast radius, and prevent scope creep in autonomous AI operations.  
 > **Extends:** IAM-06 (session-scoped credentials) and NET-01 (network zones) with agentic-specific depth.
 
@@ -63,7 +63,7 @@ Sessions must be isolated from each other. No data, credentials, context, or sta
 
 ## SESS-03: Scope Constraints
 
-Each session should have a declared scope — the task it is permitted to accomplish.
+Each session should have a declared scope - the task it is permitted to accomplish.
 
 ### Scope Definition
 
@@ -111,12 +111,12 @@ For Tier 3+ systems, sessions should not start with full permissions. Instead, p
 When a session terminates (normally or abnormally), all session state must be cleaned up:
 
 - **Credentials:** All session-scoped tokens revoked immediately.
-- **Context:** Session context purged from memory (not just dereferenced — actively cleared).
+- **Context:** Session context purged from memory (not just dereferenced - actively cleared).
 - **Temporary data:** Any temporary files, cache entries, or intermediate results created during the session are deleted.
 - **Tool connections:** Any open connections to backend tools are closed.
 - **Audit record:** A session termination event is logged with: session duration, token consumption, tool invocation count, guardrail/Judge flags, and termination reason.
 
-For abnormal termination (crash, timeout, forced kill), cleanup must still occur — design for crash-safe cleanup.
+For abnormal termination (crash, timeout, forced kill), cleanup must still occur - design for crash-safe cleanup.
 
 ---
 
@@ -135,13 +135,13 @@ For abnormal termination (crash, timeout, forced kill), cleanup must still occur
 
 ## Customer-to-Agent Session Binding
 
-The controls above address agent sessions — how an autonomous AI system manages its own context, credentials, and scope. But in customer-facing deployments (chatbots, self-service portals, AI-assisted commerce), there is an additional trust boundary: **the authenticated customer whose intent the agent is executing**.
+The controls above address agent sessions - how an autonomous AI system manages its own context, credentials, and scope. But in customer-facing deployments (chatbots, self-service portals, AI-assisted commerce), there is an additional trust boundary: **the authenticated customer whose intent the agent is executing**.
 
 This is not the same as agent identity. Agent identity answers "which AI component is acting?" Customer session binding answers "on whose behalf, and how do we know?"
 
 ### The Problem
 
-When a customer authenticates to your application and interacts with an AI agent, the agent acts *as a proxy* for that customer — reading their data, modifying their cart, processing their payment. If the binding between customer identity and agent session is weak, an attacker can:
+When a customer authenticates to your application and interacts with an AI agent, the agent acts *as a proxy* for that customer - reading their data, modifying their cart, processing their payment. If the binding between customer identity and agent session is weak, an attacker can:
 
 - **Session hijack:** Take over another customer's agent session and issue commands on their behalf
 - **Session fixation:** Pre-set a session that a customer later authenticates into, giving the attacker a parallel path
@@ -154,7 +154,7 @@ The framework gives you the agent-side controls (SESS-01 through SESS-05). For c
 
 | Question | Why It Matters |
 |----------|---------------|
-| How is the customer's identity propagated into the agent session? | The agent needs to know *whose* data it can access — not just *what kind* of data |
+| How is the customer's identity propagated into the agent session? | The agent needs to know *whose* data it can access - not just *what kind* of data |
 | Is customer identity verified per-session or per-request? | Per-session is simpler but vulnerable to mid-session takeover. Per-request is safer for CRITICAL-tier |
 | Are the agent's write permissions scoped to this specific customer? | "Can write to shopping carts" is insufficient. "Can write to customer-12345's cart" is the control |
 | What happens if the customer's account is compromised mid-session? | You need a revocation path from your identity provider to active agent sessions |
@@ -175,19 +175,19 @@ Customer authenticates → Your application verifies identity
 
 The critical principle: **customer identity is injected by your infrastructure, not extracted from the conversation.** If the agent determines which customer it's serving by reading the chat, an attacker can inject a different identity through the conversation.
 
-### Offramps — Go Here Next
+### Offramps - Go Here Next
 
 This framework gives you the AI-specific session controls. For customer authentication, session management, and identity propagation, these are the domain-specific resources:
 
 | Topic | Resource | Why |
 |-------|----------|-----|
-| **Session management fundamentals** | [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html) | Token generation, session lifecycle, fixation prevention — the upstream controls your AI session inherits |
+| **Session management fundamentals** | [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html) | Token generation, session lifecycle, fixation prevention - the upstream controls your AI session inherits |
 | **Authentication architecture** | Your identity platform documentation (Entra ID, Cognito, Auth0, Okta, Keycloak) | How customer identity tokens are issued, validated, and revoked. Your agent session must consume these, not reinvent them |
 | **Payment authentication** | PCI-DSS Requirement 8 (your QSA or [PCI SSC Document Library](https://www.pcisecuritystandards.org/document_library/)) | If your agent handles payment data, PCI-DSS defines authentication requirements that apply *through* the agent, not just around it |
-| **Customer data scoping** | Your data platform's row-level security or tenant isolation documentation | How your backend ensures the agent can only read/write this customer's data — the enforcement point beneath the agent |
+| **Customer data scoping** | Your data platform's row-level security or tenant isolation documentation | How your backend ensures the agent can only read/write this customer's data - the enforcement point beneath the agent |
 | **Session revocation** | Your identity provider's real-time revocation documentation (token introspection, webhook-based revocation) | How to kill an active agent session when a customer reports account compromise |
 
-**The framework's role:** Define the agent session controls (SESS-01–05), require customer identity binding, and mandate that write permissions are scoped to the authenticated customer — not just to a resource type.
+**The framework's role:** Define the agent session controls (SESS-01–05), require customer identity binding, and mandate that write permissions are scoped to the authenticated customer - not just to a resource type.
 
 **Your platform's role:** Implement the authentication, issue the scoped tokens, enforce row-level data access, and provide the revocation path.
 

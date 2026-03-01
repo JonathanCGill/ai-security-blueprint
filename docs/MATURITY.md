@@ -15,15 +15,15 @@ That's an important fact and we're stating it clearly rather than hoping no one 
 
 What this reference *is*:
 
-- **A practitioner's synthesis.** 30+ years in IT, 20+ in enterprise security, applied to the specific problem of runtime AI security. The architecture draws on real operational experience in financial services, government, and critical infrastructure — applied to AI, not invented from theory.
-- **Aligned to real incidents.** Every major control addresses a documented, public security failure — retroactively analysed, not empirically tested. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps 10 real-world incidents to specific controls. The [Validated Against Real Incidents](VALIDATED-AGAINST.md) page inverts this — showing which controls align to the most documented incidents.
-- **Aligned to established standards.** Full crosswalks to OWASP LLM Top 10 (2025), OWASP Agentic Top 10 (2026), NIST AI RMF, ISO 42001, EU AI Act, NIST SP 800-218A, and MITRE ATLAS. These aren't surface-level mappings — they're control-by-control alignments.
-- **Consistent with production patterns.** The three-layer model (Guardrails, Judge, Human Oversight) exists in production at NVIDIA NeMo, AWS Bedrock, Azure AI Content Safety, LangChain, and Guardrails AI. This reference didn't invent the pattern — it codified it.
+- **A practitioner's synthesis.** 30+ years in IT, 20+ in enterprise security, applied to the specific problem of runtime AI security. The architecture draws on real operational experience in financial services, government, and critical infrastructure - applied to AI, not invented from theory.
+- **Aligned to real incidents.** Every major control addresses a documented, public security failure - retroactively analysed, not empirically tested. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps 10 real-world incidents to specific controls. The [Validated Against Real Incidents](VALIDATED-AGAINST.md) page inverts this - showing which controls align to the most documented incidents.
+- **Aligned to established standards.** Full crosswalks to OWASP LLM Top 10 (2025), OWASP Agentic Top 10 (2026), NIST AI RMF, ISO 42001, EU AI Act, NIST SP 800-218A, and MITRE ATLAS. These aren't surface-level mappings - they're control-by-control alignments.
+- **Consistent with production patterns.** The three-layer model (Guardrails, Judge, Human Oversight) exists in production at NVIDIA NeMo, AWS Bedrock, Azure AI Content Safety, LangChain, and Guardrails AI. This reference didn't invent the pattern - it codified it.
 
 What this reference *is not*:
 
 - **Not battle-tested at scale.** No one has run this at 100K+ daily interactions and reported back on false positive rates, Judge accuracy, operational overhead, or PACE failover performance.
-- **Not a certification or audit standard.** Implementing this does not constitute compliance with any regulation. It may support compliance — the regulatory crosswalks show how — but that's your assessment to make, not ours.
+- **Not a certification or audit standard.** Implementing this does not constitute compliance with any regulation. It may support compliance - the regulatory crosswalks show how - but that's your assessment to make, not ours.
 - **Not complete.** Several control domains are explicitly marked as emerging: multimodal, reasoning models, streaming, epistemic risk detection. These are well-articulated but lack the operational depth of the core three-layer pattern.
 
 ---
@@ -38,7 +38,7 @@ Controls proven effective through real-world deployment and operational measurem
 
 **Current status: None.** No organisation has reported production deployment results.
 
-**What would change this:** An organisation implements the framework (or a subset), operates it for 90+ days, and shares operational metrics — false positive rates, Judge accuracy, PACE failover performance, cost per interaction, incidents detected. Even anonymised or aggregated data would be valuable.
+**What would change this:** An organisation implements the framework (or a subset), operates it for 90+ days, and shares operational metrics - false positive rates, Judge accuracy, PACE failover performance, cost per interaction, incidents detected. Even anonymised or aggregated data would be valuable.
 
 ### 2. Incident Validation
 
@@ -48,7 +48,7 @@ Controls retroactively mapped to real-world security incidents, showing they wou
 
 See: [Validated Against Real Incidents](VALIDATED-AGAINST.md)
 
-This is the strongest current basis for credibility — but it is retroactive analysis, not empirical evidence from running systems. It demonstrates the controls address real attack patterns, not theoretical ones. It does not prove the controls *will* work in your environment.
+This is the strongest current basis for credibility - but it is retroactive analysis, not empirical evidence from running systems. It demonstrates the controls address real attack patterns, not theoretical ones. It does not prove the controls *will* work in your environment.
 
 ### 3. Standards Alignment
 
@@ -67,7 +67,7 @@ Controls mapped to established international standards and industry frameworks.
 | NIST SP 800-218A | Pre-deployment complement |
 | MITRE ATLAS | Agent threat intelligence alignment |
 
-Standards alignment doesn't validate effectiveness — it validates *relevance*. These mappings show the reference addresses the same risk categories that international bodies have independently identified as critical.
+Standards alignment doesn't validate effectiveness - it validates *relevance*. These mappings show the reference addresses the same risk categories that international bodies have independently identified as critical.
 
 ### 4. Pattern Consistency
 
@@ -82,7 +82,7 @@ The architectural patterns used in this framework exist independently in product
 | Agent sandboxing | Docker/gVisor patterns in LangGraph, CrewAI |
 | Non-Human Identity | Service account patterns extended to agents |
 
-Pattern consistency doesn't prove this reference's *specific implementation* works — but it demonstrates the architectural approach is sound and independently adopted.
+Pattern consistency doesn't prove this reference's *specific implementation* works - but it demonstrates the architectural approach is sound and independently adopted.
 
 ---
 
@@ -106,7 +106,7 @@ We track what we know we don't know.
 
 ### Pilot It
 
-The single most valuable thing for this reference's credibility is a real deployment. If your organisation is implementing AI security controls — even partially — and would be willing to share results (anonymised is fine), we want to hear from you.
+The single most valuable thing for this reference's credibility is a real deployment. If your organisation is implementing AI security controls - even partially - and would be willing to share results (anonymised is fine), we want to hear from you.
 
 What a pilot looks like:
 
@@ -119,14 +119,14 @@ Even negative results are valuable. "We implemented X and it didn't work because
 
 ### Peer Review
 
-If you're an AI security practitioner, red teamer, or compliance professional — review the reference and tell us what's wrong, what's missing, or what doesn't match your experience. Open an issue or submit a PR.
+If you're an AI security practitioner, red teamer, or compliance professional - review the reference and tell us what's wrong, what's missing, or what doesn't match your experience. Open an issue or submit a PR.
 
 Specific areas where expert review would be most valuable:
 
-- **Judge accuracy** — Have you measured LLM-as-Judge performance in production? What accuracy ranges are realistic?
-- **Epistemic controls** — Are the six epistemic risk categories we've identified complete? Are there others?
-- **PACE resilience** — Have you implemented structured failover for AI systems? What worked?
-- **Multi-agent security** — Are the MASO control domains the right decomposition? What's missing?
+- **Judge accuracy** - Have you measured LLM-as-Judge performance in production? What accuracy ranges are realistic?
+- **Epistemic controls** - Are the six epistemic risk categories we've identified complete? Are there others?
+- **PACE resilience** - Have you implemented structured failover for AI systems? What worked?
+- **Multi-agent security** - Are the MASO control domains the right decomposition? What's missing?
 
 ### Report Incidents
 
@@ -140,7 +140,7 @@ This section exists because too much guidance presents itself as established whe
 
 We'd rather be honest about where this reference stands and let you judge whether it's useful in its current state, than pretend it has an evidence base it doesn't.
 
-The architecture is sound — the patterns exist independently in production. The controls are grounded — they address real incidents. The standards alignment is thorough. What's missing is the operational proof that comes only from real deployment.
+The architecture is sound - the patterns exist independently in production. The controls are grounded - they address real incidents. The standards alignment is thorough. What's missing is the operational proof that comes only from real deployment.
 
 Help us close that gap.
 

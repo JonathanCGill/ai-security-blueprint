@@ -25,8 +25,8 @@
   <rect width="1100" height="680" rx="8" fill="#0d1117"/>
 
   <!-- Title -->
-  <text x="550" y="38" text-anchor="middle" fill="#e6e6e6" font-size="22" font-weight="700">Delegation Chain — Identity Propagation and Scope Narrowing</text>
-  <text x="550" y="60" text-anchor="middle" fill="#8b949e" font-size="13">Delegation can only narrow scope, never expand it — every hop reduces permissions</text>
+  <text x="550" y="38" text-anchor="middle" fill="#e6e6e6" font-size="22" font-weight="700">Delegation Chain - Identity Propagation and Scope Narrowing</text>
+  <text x="550" y="60" text-anchor="middle" fill="#8b949e" font-size="13">Delegation can only narrow scope, never expand it - every hop reduces permissions</text>
 
   <!-- Permission scope narrowing visual (background trapezoid) -->
   <polygon points="80,85 1020,85 860,280 240,280" fill="url(#narrowing)" stroke="none"/>
@@ -113,7 +113,7 @@
 
   <text x="80" y="522" fill="#e6e6e6" font-size="12">Identity loss: action reaches a tool with no traceable originating user</text>
   <line x1="700" y1="515" x2="740" y2="515" stroke="#e94560" stroke-width="2" marker-end="url(#arrowRed)"/>
-  <text x="755" y="520" fill="#e94560" font-size="11" font-weight="600">BLOCKED — no identity, no action</text>
+  <text x="755" y="520" fill="#e94560" font-size="11" font-weight="600">BLOCKED - no identity, no action</text>
 
   <text x="80" y="540" fill="#e94560" font-size="10" font-weight="600">Governance rule: If the chain breaks, the action fails. Silent privilege expansion is the primary threat in multi-agent systems.</text>
 
@@ -128,8 +128,8 @@
 
   <rect x="740" y="570" width="320" height="50" rx="5" fill="#1e1e3f" stroke="#e94560" stroke-width="1"/>
   <text x="900" y="592" text-anchor="middle" fill="#e94560" font-size="12" font-weight="600">Tier 3: Max 3 hops</text>
-  <text x="900" y="608" text-anchor="middle" fill="#8b949e" font-size="10">Deep chains — full audit trail mandatory</text>
+  <text x="900" y="608" text-anchor="middle" fill="#8b949e" font-size="10">Deep chains - full audit trail mandatory</text>
 
   <!-- Footer -->
-  <text x="550" y="660" text-anchor="middle" fill="#484f58" font-size="10">AI Runtime Behaviour Security — IAM Governance · Delegation and Attribution · github.com/JonathanCGill</text>
+  <text x="550" y="660" text-anchor="middle" fill="#484f58" font-size="10">AI Runtime Behaviour Security - IAM Governance · Delegation and Attribution · github.com/JonathanCGill</text>
 </svg>

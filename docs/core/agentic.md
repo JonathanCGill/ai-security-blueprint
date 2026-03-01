@@ -1,5 +1,5 @@
 ---
-description: Security controls for autonomous AI agents — plan approval, action constraints, circuit breakers, and trajectory evaluation for systems that take real-world actions.
+description: Security controls for autonomous AI agents - plan approval, action constraints, circuit breakers, and trajectory evaluation for systems that take real-world actions.
 ---
 
 # Agentic AI Controls
@@ -66,7 +66,7 @@ The action the agent takes should match what the user actually wanted.
 | Normal operation | ✓ | ✓ | Correct action |
 | Over-privileged agent | ✗ | ✓ | Correct action, but breach waiting to happen |
 | Injection attack | ✓ | ✗ | Wrong action on right systems |
-| Compromised agent | ✗ | ✗ | Catastrophic — wrong action, broad access |
+| Compromised agent | ✗ | ✗ | Catastrophic - wrong action, broad access |
 
 Both problems must be solved. Solving one doesn't help if the other fails.
 
@@ -91,7 +91,7 @@ Give it credentials that can only access customer service data.
 
 ### 1. Scope Enforcement
 
-Limit what the agent can access and do — technically, not via prompts.
+Limit what the agent can access and do - technically, not via prompts.
 
 | Control | Implementation |
 |---------|----------------|
@@ -202,14 +202,14 @@ Not all actions are reversible. For those that aren't, require human approval.
 
 ## Key Takeaways
 
-1. **Solve both problems** — Access control AND integrity preservation
-2. **Enforce via infrastructure** — Agents can ignore instructions
-3. **Validate every action** — Independent of agent reasoning
-4. **Sanitise tool outputs** — They're injection vectors
-5. **Use circuit breakers** — Hard stops that can't be reasoned around
-6. **Require approval for impact** — Irreversible actions need humans
-7. **Enable rollback** — Assume integrity will sometimes fail
-8. **Monitor aggressively** — Agents can cause harm fast
+1. **Solve both problems** - Access control AND integrity preservation
+2. **Enforce via infrastructure** - Agents can ignore instructions
+3. **Validate every action** - Independent of agent reasoning
+4. **Sanitise tool outputs** - They're injection vectors
+5. **Use circuit breakers** - Hard stops that can't be reasoned around
+6. **Require approval for impact** - Irreversible actions need humans
+7. **Enable rollback** - Assume integrity will sometimes fail
+8. **Monitor aggressively** - Agents can cause harm fast
 
 ---
 

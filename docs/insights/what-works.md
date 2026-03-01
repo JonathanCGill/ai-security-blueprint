@@ -1,7 +1,7 @@
 # What's Working: Where Controls Are Reducing Harm
 
 > *"People often call me an optimist, because I show them the enormous progress they didn't know about. That makes me angry. I'm not an optimist. That makes me sound naive. I'm a very serious 'possibilist'."*
-> — Hans Rosling
+> - Hans Rosling
 
 A framework focused exclusively on failure modes trains readers to expect failure. This document provides calibration: where runtime behavioral monitoring and proportionate controls are measurably reducing AI risk.
 
@@ -11,10 +11,10 @@ A framework focused exclusively on failure modes trains readers to expect failur
 
 The IBM 2025 Cost of a Data Breach Report provides the clearest evidence that AI security controls work when deployed:
 
-- Organizations using **extensive AI and automation in security** detect breaches **108 days faster** than those without — reducing the average breach lifecycle to roughly 133 days versus 241.
+- Organizations using **extensive AI and automation in security** detect breaches **108 days faster** than those without - reducing the average breach lifecycle to roughly 133 days versus 241.
 - This speed translates to **$1.9 million lower breach costs per incident** ($2.54M vs $4.44M average).
 - **74% of organizations** deploying security AI report positive first-year ROI. Among early adopters, this rises to **88%**.
-- Per-record breach costs drop from **$234 to $128** — a 45% reduction — when AI-powered detection is in place.
+- Per-record breach costs drop from **$234 to $128** - a 45% reduction - when AI-powered detection is in place.
 
 These numbers are not specific to AI *system* security. They measure AI used for *defensive* security across all breach types. But the principle transfers directly: runtime monitoring catches what design-time testing misses.
 
@@ -36,11 +36,11 @@ These are guardrails doing what guardrails do: blocking known patterns at speed.
 
 - **Galileo's eval-to-guardrail lifecycle** demonstrates the feedback loop: evaluation metrics from production identify new failure modes, which are then converted into guardrail rules.
 - **Confident AI / DeepEval** provides async LLM-as-judge evaluation that catches hallucination, toxicity, and coherence failures that static rules miss.
-- Red teaming tools (Promptfoo, Adversa AI's platform) are enabling continuous adversarial testing — not just pre-deployment, but as ongoing runtime verification.
+- Red teaming tools (Promptfoo, Adversa AI's platform) are enabling continuous adversarial testing - not just pre-deployment, but as ongoing runtime verification.
 
 ### Human Oversight Preventing Harm
 
-- The **Norwegian Supreme Court incident** (April 2025) — where fabricated AI-generated case citations were filed — was caught by human reviewers before it affected a ruling. The system failed; the human oversight layer worked.
+- The **Norwegian Supreme Court incident** (April 2025) - where fabricated AI-generated case citations were filed - was caught by human reviewers before it affected a ruling. The system failed; the human oversight layer worked.
 - Multiple South African court filings with AI-generated non-existent case law were detected and flagged. The pattern is consistent: where human review exists in the pipeline for high-stakes outputs, hallucination-driven harm is caught.
 - Organizations with formal incident response plans for AI-specific events contain breaches faster and at lower cost.
 
@@ -50,11 +50,11 @@ These are guardrails doing what guardrails do: blocking known patterns at speed.
 
 Not every AI system needs every control. The evidence supports tiered implementation:
 
-**Low-risk systems** (internal summarization, search, content drafting) — basic input validation and output filtering are sufficient to prevent the majority of observed failure modes. These systems need guardrails, not judges.
+**Low-risk systems** (internal summarization, search, content drafting) - basic input validation and output filtering are sufficient to prevent the majority of observed failure modes. These systems need guardrails, not judges.
 
-**Medium-risk systems** (customer-facing chatbots, document analysis, code generation) — guardrails plus async evaluation plus logging. The Anysphere/Cursor incident (April 2025), where an AI support bot invented a login policy that triggered subscription cancellations, would have been caught by a judge layer monitoring for policy hallucination.
+**Medium-risk systems** (customer-facing chatbots, document analysis, code generation) - guardrails plus async evaluation plus logging. The Anysphere/Cursor incident (April 2025), where an AI support bot invented a login policy that triggered subscription cancellations, would have been caught by a judge layer monitoring for policy hallucination.
 
-**High-risk systems** (financial decisions, healthcare recommendations, legal analysis, autonomous agents) — full three-layer pattern with mandatory human oversight for consequential outputs. The evidence is clear that hallucination rates, while declining, are not yet low enough for unsupervised high-stakes operation.
+**High-risk systems** (financial decisions, healthcare recommendations, legal analysis, autonomous agents) - full three-layer pattern with mandatory human oversight for consequential outputs. The evidence is clear that hallucination rates, while declining, are not yet low enough for unsupervised high-stakes operation.
 
 ---
 
@@ -75,7 +75,7 @@ The organizations avoiding major incidents are not the ones with the largest bud
 Controls reduce risk. They do not eliminate it.
 
 - Guardrails with 95% effectiveness still fail 1 in 20 times. At enterprise scale (millions of interactions), this means thousands of failures.
-- LLM-as-Judge evaluation is itself a probabilistic system — it will have false negatives.
+- LLM-as-Judge evaluation is itself a probabilistic system - it will have false negatives.
 - Human oversight only works if the humans are trained, resourced, and empowered to override the system.
 
 The framework's value is not in promising zero risk. It is in making the residual risk **visible, measurable, and manageable**. That is worth doing, and the data shows it works.

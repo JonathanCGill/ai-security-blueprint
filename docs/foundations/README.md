@@ -2,16 +2,16 @@
 description: Runtime behavioural security controls for single-model AI deployments. Guardrails, LLM-as-Judge, and human oversight scaled to risk tiers.
 ---
 
-# AI Runtime Behaviour Security — Single-Agent Controls
+# AI Runtime Behaviour Security - Single-Agent Controls
 
 > Most AI governance guidance assumes you can test your way to safety.
 > You cannot.
 
-AI systems are non-deterministic. Same prompt, same model, same parameters — different response. Every time. Your test suite proves the system *can* behave correctly. It cannot prove it *will* on the next request.
+AI systems are non-deterministic. Same prompt, same model, same parameters - different response. Every time. Your test suite proves the system *can* behave correctly. It cannot prove it *will* on the next request.
 
-- **AI systems are non-deterministic** — same input, different output, by design
-- **Guardrails fail silently** — the most dangerous outputs look perfectly normal
-- **Multi-agent systems amplify errors** — hallucinations compound, permissions propagate, failures correlate
+- **AI systems are non-deterministic** - same input, different output, by design
+- **Guardrails fail silently** - the most dangerous outputs look perfectly normal
+- **Multi-agent systems amplify errors** - hallucinations compound, permissions propagate, failures correlate
 
 **Guardrails** → **Judge** → **Human Oversight** → **Circuit Breaker**
 
@@ -19,9 +19,9 @@ AI systems are non-deterministic. Same prompt, same model, same parameters — d
 
 **Start here:**
 
-- [Read the 5-minute executive summary](../CHEATSHEET.md) — the entire framework on one page
-- [Explore the technical architecture](#architecture) — three layers, what fails when
-- [Get working controls in 30 minutes](../QUICK_START.md) — from zero to deployed
+- [Read the 5-minute executive summary](../CHEATSHEET.md) - the entire framework on one page
+- [Explore the technical architecture](#architecture) - three layers, what fails when
+- [Get working controls in 30 minutes](../QUICK_START.md) - from zero to deployed
 
 ---
 
@@ -31,13 +31,13 @@ AI systems are non-deterministic. Same prompt, same model, same parameters — d
 
 Three layers, one principle: **you can't fully test a non-deterministic system before deployment, so you continuously verify behaviour in production.**
 
-**Layer 1 — Guardrails** block known-bad inputs and outputs at machine speed (~10ms). Deterministic pattern matching: content filters, PII detection, topic restrictions, rate limits. Every request passes through. No exceptions.
+**Layer 1 - Guardrails** block known-bad inputs and outputs at machine speed (~10ms). Deterministic pattern matching: content filters, PII detection, topic restrictions, rate limits. Every request passes through. No exceptions.
 
-**Layer 2 — LLM-as-Judge** catches unknown-bad through independent model evaluation (~500ms–5s). A separate LLM evaluates task agent outputs against policy, factual grounding, tone, and safety criteria. Catches what guardrails can't pattern-match.
+**Layer 2 - LLM-as-Judge** catches unknown-bad through independent model evaluation (~500ms–5s). A separate LLM evaluates task agent outputs against policy, factual grounding, tone, and safety criteria. Catches what guardrails can't pattern-match.
 
-**Layer 3 — Human Oversight** provides the accountability backstop. Scope scales with risk: low-risk systems get spot checks, high-risk systems get human approval before commit. Humans decide edge cases. Humans own outcomes.
+**Layer 3 - Human Oversight** provides the accountability backstop. Scope scales with risk: low-risk systems get spot checks, high-risk systems get human approval before commit. Humans decide edge cases. Humans own outcomes.
 
-**Circuit Breaker** stops all AI traffic and activates a non-AI fallback when any layer fails. Not a degradation — a full stop with a predetermined safe state.
+**Circuit Breaker** stops all AI traffic and activates a non-AI fallback when any layer fails. Not a degradation - a full stop with a predetermined safe state.
 
 This pattern already exists in production at major platforms: NVIDIA NeMo, AWS Bedrock, Azure AI, LangChain, Guardrails AI, and others. This reference provides the vendor-neutral implementation: risk classification, controls, fail postures, and tested fallback paths.
 
@@ -64,9 +64,9 @@ This pattern already exists in production at major platforms: NVIDIA NeMo, AWS B
 
 > **[The First Control: Choosing the Right Tool](../insights/the-first-control.md)**
 >
-> The most effective way to reduce AI risk is to not use AI where it doesn't belong. Before guardrails, judges, or human oversight — ask whether AI is the right tool for this problem.
+> The most effective way to reduce AI risk is to not use AI where it doesn't belong. Before guardrails, judges, or human oversight - ask whether AI is the right tool for this problem.
 
-If your deployment is internal, read-only, handles no regulated data, and has a human reviewing output — start with the [Fast Lane](../FAST-LANE.md). You may not need the rest.
+If your deployment is internal, read-only, handles no regulated data, and has a human reviewing output - start with the [Fast Lane](../FAST-LANE.md). You may not need the rest.
 
 ---
 
@@ -87,7 +87,7 @@ Classify your system: **[Risk Tiers](../core/risk-tiers.md)**
 
 ## PACE Resilience
 
-Every control has a defined failure mode. The [PACE methodology](../PACE-RESILIENCE.md) ensures that when a control layer degrades — and it will — the system fails safely rather than silently.
+Every control has a defined failure mode. The [PACE methodology](../PACE-RESILIENCE.md) ensures that when a control layer degrades - and it will - the system fails safely rather than silently.
 
 **Primary:** All layers operational. Normal production.
 
@@ -105,7 +105,7 @@ Even at the lowest risk tier, there's a fallback plan. At the highest, there's a
 
 | Document | Purpose |
 | --- | --- |
-| [Cheat Sheet](../CHEATSHEET.md) | Entire framework on one page — classify, control, fail posture, test |
+| [Cheat Sheet](../CHEATSHEET.md) | Entire framework on one page - classify, control, fail posture, test |
 | [Decision Poster](../DECISION-POSTER.md) | Visual one-page reference |
 | [Fast Lane](../FAST-LANE.md) | Pre-approved minimal controls for low-risk AI |
 | [Risk Tiers](../core/risk-tiers.md) | Classify your system, determine control and resilience requirements |
@@ -120,7 +120,7 @@ Even at the lowest risk tier, there's a fallback plan. At the highest, there's a
 
 ## Infrastructure Controls
 
-This section defines *what* to enforce. The [infrastructure](../infrastructure/) section defines *how* — 80 technical controls across 11 domains, with standards mappings and platform-specific patterns.
+This section defines *what* to enforce. The [infrastructure](../infrastructure/) section defines *how* - 80 technical controls across 11 domains, with standards mappings and platform-specific patterns.
 
 **Domains:** Identity & Access Management (8), Logging & Observability (10), Network & Segmentation (8), Data Protection (8), Secrets & Credentials (8), Supply Chain (8), Incident Response (8), Tool Access (6), Session & Scope (5), Delegation Chains (5), Sandbox Patterns (6).
 
@@ -134,9 +134,9 @@ This section defines *what* to enforce. The [infrastructure](../infrastructure/)
 
 ![Defence in Depth Beyond the AI Layer](../images/defence-in-depth-beyond-ai.svg)
 
-The three-layer model above — guardrails, judge, human oversight — addresses controls specific to non-deterministic AI behaviour. It does not replace the security controls your organisation already has. It sits inside them.
+The three-layer model above - guardrails, judge, human oversight - addresses controls specific to non-deterministic AI behaviour. It does not replace the security controls your organisation already has. It sits inside them.
 
-Your existing DLP systems apply to data flowing into and out of AI systems — both preventing sensitive data from reaching models and catching leakage that AI-specific controls miss. API gateways validate requests and enforce schemas regardless of whether the caller is human or AI. Database access controls and parameterised queries prevent injection even if an agent constructs a malicious query. IAM governs who can invoke AI systems in the first place. SIEM correlates AI events with network, endpoint, and application events. Secure coding practices in the systems agents interact with still matter — arguably more, because the caller is now non-deterministic.
+Your existing DLP systems apply to data flowing into and out of AI systems - both preventing sensitive data from reaching models and catching leakage that AI-specific controls miss. API gateways validate requests and enforce schemas regardless of whether the caller is human or AI. Database access controls and parameterised queries prevent injection even if an agent constructs a malicious query. IAM governs who can invoke AI systems in the first place. SIEM correlates AI events with network, endpoint, and application events. Secure coding practices in the systems agents interact with still matter - arguably more, because the caller is now non-deterministic.
 
 These controls are outside the scope of this reference, but they are part of your defence. When you assess your AI security posture, include them. When you threat-model, include them. When one of these controls misses something, they are your safety net.
 
@@ -158,9 +158,9 @@ When AI agents collaborate, delegate tasks, and take autonomous actions across t
 | Document | Purpose |
 | --- | --- |
 | [MASO Overview](../maso/) | Architecture, PACE integration, OWASP dual mapping, 6 control domains |
-| [Tier 1 — Supervised](../maso/implementation/tier-1-supervised.md) | Low autonomy: human approves all writes |
-| [Tier 2 — Managed](../maso/implementation/tier-2-managed.md) | Medium autonomy: NHI, signed bus, LLM-as-Judge, continuous monitoring |
-| [Tier 3 — Autonomous](../maso/implementation/tier-3-autonomous.md) | High autonomy: self-healing PACE, adversarial testing, isolated kill switch |
+| [Tier 1 - Supervised](../maso/implementation/tier-1-supervised.md) | Low autonomy: human approves all writes |
+| [Tier 2 - Managed](../maso/implementation/tier-2-managed.md) | Medium autonomy: NHI, signed bus, LLM-as-Judge, continuous monitoring |
+| [Tier 3 - Autonomous](../maso/implementation/tier-3-autonomous.md) | High autonomy: self-healing PACE, adversarial testing, isolated kill switch |
 | [Red Team Playbook](../maso/red-team/red-team-playbook.md) | 13 adversarial test scenarios for multi-agent systems |
 | [Integration Guide](../maso/integration/integration-guide.md) | LangGraph, AutoGen, CrewAI, AWS Bedrock implementation patterns |
 | [Worked Examples](../maso/examples/worked-examples.md) | Financial services, healthcare, critical infrastructure |
@@ -240,7 +240,7 @@ This isn't a theoretical proposal. These platforms already implement variants of
 
 ## Scope
 
-**In scope:** Custom LLM applications, AI decision support, document processing, single-agent systems — from deployment through incident response.
+**In scope:** Custom LLM applications, AI decision support, document processing, single-agent systems - from deployment through incident response.
 
 **Out of scope:** Vendor AI products (use vendor controls), model training (see MLOps security guidance), and pre-deployment testing. This framework is about what happens in production.
 

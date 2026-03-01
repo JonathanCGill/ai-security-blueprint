@@ -9,9 +9,9 @@
 
 ## How to Read This Page
 
-The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) is organised by incident — "here's what happened, here are the controls." This page inverts that view. It's organised by **control** — "here's the control, here are the real-world incidents it addresses."
+The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) is organised by incident - "here's what happened, here are the controls." This page inverts that view. It's organised by **control** - "here's the control, here are the real-world incidents it addresses."
 
-Each control is mapped to the incidents it would have prevented or detected, with the specific mechanism explained. Controls aligned to more incidents address a wider range of known attack patterns. Controls aligned to zero incidents are flagged — they may still be valuable, but they're based on threat modelling rather than observed attacks.
+Each control is mapped to the incidents it would have prevented or detected, with the specific mechanism explained. Controls aligned to more incidents address a wider range of known attack patterns. Controls aligned to zero incidents are flagged - they may still be valuable, but they're based on threat modelling rather than observed attacks.
 
 **Validation does not mean proven.** It means the control addresses a documented attack pattern. Whether the control would have *actually* prevented the incident in your environment depends on your implementation. This is retroactive analysis, not a guarantee.
 
@@ -39,7 +39,7 @@ These controls are referenced across the highest number of documented incidents.
 | 3 | **DP-2.1** DLP on message bus | 3 of 10 | INC-04, 06, 07 |
 | 3 | **OB-3.1** Independent observability agent | 3 of 10 | INC-07, 09, 10 |
 
-**What this tells you:** If you implement nothing else, input guardrails per agent and an LLM-as-Judge gate address the widest range of documented attack patterns. This is consistent with the framework's core architecture — Guardrails prevent, Judge detects.
+**What this tells you:** If you implement nothing else, input guardrails per agent and an LLM-as-Judge gate address the widest range of documented attack patterns. This is consistent with the framework's core architecture - Guardrails prevent, Judge detects.
 
 ---
 
@@ -47,11 +47,11 @@ These controls are referenced across the highest number of documented incidents.
 
 ### Prompt, Goal & Epistemic Integrity
 
-#### PG-1.1 — Input Guardrails Per Agent
+#### PG-1.1 - Input Guardrails Per Agent
 
 **Incident alignment: Strong (8 incidents)**
 
-The single most broadly validated control. Addresses the widest range of attack vectors because prompt injection — direct and indirect — is the most common AI attack primitive.
+The single most broadly validated control. Addresses the widest range of attack vectors because prompt injection - direct and indirect - is the most common AI attack primitive.
 
 | Incident | Attack Vector | How PG-1.1 Helps |
 |----------|--------------|-------------------|
@@ -59,7 +59,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 | INC-02: Copilot RCE | Indirect injection via code comments | Filters injection patterns from code repository content |
 | INC-03: Cursor IDE RCE | Configuration poisoning | Detects malicious patterns in configuration file content |
 | INC-04: Perplexity data exfil | Indirect injection via web content | Catches injection payloads in scraped web pages |
-| INC-05: PoisonedRAG | RAG corpus contamination | Identifies suspicious patterns in retrieved documents (partial — sophisticated poisoning may evade) |
+| INC-05: PoisonedRAG | RAG corpus contamination | Identifies suspicious patterns in retrieved documents (partial - sophisticated poisoning may evade) |
 | INC-07: Morris II worm | Self-replicating injection via inter-agent messages | Detects injection patterns in incoming agent-to-agent messages |
 | INC-08: MCP supply chain | Poisoned MCP tool metadata | Filters injection from MCP tool descriptions and responses |
 | INC-09: Banking AI fraud | Direct prompt injection via chat | Detects injection patterns in customer messages |
@@ -68,7 +68,7 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 ---
 
-#### PG-1.2 — System Prompt Isolation
+#### PG-1.2 - System Prompt Isolation
 
 **Incident alignment: Moderate (1 incident)**
 
@@ -80,120 +80,120 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 ---
 
-#### PG-1.3 — Immutable Task Specification
+#### PG-1.3 - Immutable Task Specification
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-1.3 Helps |
 |----------|-------------------|
-| INC-03: Cursor IDE RCE | Task definitions cannot be modified by external configuration files — prevents the path traversal attack vector |
+| INC-03: Cursor IDE RCE | Task definitions cannot be modified by external configuration files - prevents the path traversal attack vector |
 
 ---
 
-#### PG-1.4 — Message Source Tagging
+#### PG-1.4 - Message Source Tagging
 
 **Incident alignment: Moderate (2 incidents)**
 
 | Incident | How PG-1.4 Helps |
 |----------|-------------------|
-| INC-01: Auto-GPT crypto transfer | Tags email-derived content as untrusted data, not instruction — agent processes it as data, not commands |
-| INC-07: Morris II worm | Distinguishes legitimate inter-agent instructions from data payloads — worm content tagged as data, not instruction |
+| INC-01: Auto-GPT crypto transfer | Tags email-derived content as untrusted data, not instruction - agent processes it as data, not commands |
+| INC-07: Morris II worm | Distinguishes legitimate inter-agent instructions from data payloads - worm content tagged as data, not instruction |
 
 **Why this matters:** The root cause of most indirect injection attacks is that AI systems treat all input as potential instruction. Message source tagging enforces the instruction/data boundary at the protocol level.
 
 ---
 
-#### PG-2.1 — Inter-Agent Injection Detection
+#### PG-2.1 - Inter-Agent Injection Detection
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-2.1 Helps |
 |----------|-------------------|
-| INC-07: Morris II worm | Judge evaluates all inter-agent messages for injection patterns — blocks worm propagation at the message bus |
+| INC-07: Morris II worm | Judge evaluates all inter-agent messages for injection patterns - blocks worm propagation at the message bus |
 
 **Threat model basis:** This control is purpose-built for the Morris II attack class. As multi-agent systems become more common, inter-agent injection will become a primary attack vector.
 
 ---
 
-#### PG-2.5 — Claim Provenance Enforcement
+#### PG-2.5 - Claim Provenance Enforcement
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-2.5 Helps |
 |----------|-------------------|
-| INC-05: PoisonedRAG | Unverified agent claims cannot be treated as facts — forces provenance tracking back to original source, exposing the poisoned documents |
+| INC-05: PoisonedRAG | Unverified agent claims cannot be treated as facts - forces provenance tracking back to original source, exposing the poisoned documents |
 
 ---
 
-#### PG-2.6 — Self-Referential Evidence Prohibition
+#### PG-2.6 - Self-Referential Evidence Prohibition
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-2.6 Helps |
 |----------|-------------------|
-| INC-05: PoisonedRAG | Agents cannot cite other agents' output as primary evidence — breaks the amplification chain where Agent B cites Agent A's poisoned claim as a source |
+| INC-05: PoisonedRAG | Agents cannot cite other agents' output as primary evidence - breaks the amplification chain where Agent B cites Agent A's poisoned claim as a source |
 
 ---
 
-#### PG-2.7 — Uncertainty Preservation
+#### PG-2.7 - Uncertainty Preservation
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-2.7 Helps |
 |----------|-------------------|
-| INC-05: PoisonedRAG | Confidence scores propagate through agent chains without inflation — a 60% confidence claim from Agent A cannot become 95% confidence at Agent C |
+| INC-05: PoisonedRAG | Confidence scores propagate through agent chains without inflation - a 60% confidence claim from Agent A cannot become 95% confidence at Agent C |
 
 ---
 
-#### PG-2.9 — Model Diversity Policy
+#### PG-2.9 - Model Diversity Policy
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How PG-2.9 Helps |
 |----------|-------------------|
-| INC-10: JudgeDeceiver | Judge uses a different model/provider than task agents — adversarial optimisation against the task model doesn't transfer to the Judge |
+| INC-10: JudgeDeceiver | Judge uses a different model/provider than task agents - adversarial optimisation against the task model doesn't transfer to the Judge |
 
 **Why this matters:** JudgeDeceiver works by optimising against a known model. Model diversity raises the attack cost from "optimise against one model" to "optimise against multiple unknown models simultaneously."
 
 ---
 
-#### PG-3.5 — Challenger Agent
+#### PG-3.5 - Challenger Agent
 
 **Incident alignment: Moderate (2 incidents)**
 
 | Incident | How PG-3.5 Helps |
 |----------|-------------------|
-| INC-05: PoisonedRAG | Adversarial agent actively attacks the primary hypothesis — challenges the poisoned claim with counter-evidence |
-| INC-10: JudgeDeceiver | Adversarial agent tests Judge decisions — detects when the Judge has been manipulated |
+| INC-05: PoisonedRAG | Adversarial agent actively attacks the primary hypothesis - challenges the poisoned claim with counter-evidence |
+| INC-10: JudgeDeceiver | Adversarial agent tests Judge decisions - detects when the Judge has been manipulated |
 
 ---
 
 ### Identity & Access
 
-#### IA-1.4 — Scoped Tool Permissions
+#### IA-1.4 - Scoped Tool Permissions
 
 **Incident alignment: Moderate (2 incidents)**
 
 | Incident | How IA-1.4 Helps |
 |----------|-------------------|
-| INC-02: Copilot RCE | Prevents agents from modifying IDE configuration files — even if injection succeeds, the agent can't write to settings.json |
-| INC-08: MCP supply chain | Limits what each MCP server can access — poisoned server's blast radius is contained to its scoped permissions |
+| INC-02: Copilot RCE | Prevents agents from modifying IDE configuration files - even if injection succeeds, the agent can't write to settings.json |
+| INC-08: MCP supply chain | Limits what each MCP server can access - poisoned server's blast radius is contained to its scoped permissions |
 
 ---
 
-#### IA-2.6 — Secrets Exclusion from Context
+#### IA-2.6 - Secrets Exclusion from Context
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How IA-2.6 Helps |
 |----------|-------------------|
-| INC-03: Cursor IDE RCE | Configuration files with credentials are isolated from agent context — path traversal can't reach sensitive configuration |
+| INC-03: Cursor IDE RCE | Configuration files with credentials are isolated from agent context - path traversal can't reach sensitive configuration |
 
 ---
 
 ### Data Protection
 
-#### DP-1.1 — Data Classification Labels
+#### DP-1.1 - Data Classification Labels
 
 **Incident alignment: Moderate (2 incidents)**
 
@@ -204,17 +204,17 @@ The single most broadly validated control. Addresses the widest range of attack 
 
 ---
 
-#### DP-1.3 — Memory Isolation
+#### DP-1.3 - Memory Isolation
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How DP-1.3 Helps |
 |----------|-------------------|
-| INC-06: Samsung code leak | Prevents context leakage between agent sessions — data shared with one session doesn't persist to others |
+| INC-06: Samsung code leak | Prevents context leakage between agent sessions - data shared with one session doesn't persist to others |
 
 ---
 
-#### DP-2.1 — DLP on Message Bus
+#### DP-2.1 - DLP on Message Bus
 
 **Incident alignment: Strong (3 incidents)**
 
@@ -222,68 +222,68 @@ The single most broadly validated control. Addresses the widest range of attack 
 |----------|-------------------|
 | INC-04: Perplexity data exfil | Detects sensitive data (PII, credentials, internal URLs) in inter-agent messages |
 | INC-06: Samsung code leak | Detects code patterns in outbound messages to external providers |
-| INC-07: Morris II worm | Detects anomalous content patterns in inter-agent communication — worm payloads differ from normal message patterns |
+| INC-07: Morris II worm | Detects anomalous content patterns in inter-agent communication - worm payloads differ from normal message patterns |
 
 ---
 
-#### DP-2.2 — RAG Integrity with Freshness
+#### DP-2.2 - RAG Integrity with Freshness
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How DP-2.2 Helps |
 |----------|-------------------|
-| INC-05: PoisonedRAG | Validates document provenance and freshness metadata — poisoned documents without valid provenance are flagged |
+| INC-05: PoisonedRAG | Validates document provenance and freshness metadata - poisoned documents without valid provenance are flagged |
 
 ---
 
 ### Execution Control
 
-#### EC-1.1 — Human Approval for Write Operations
+#### EC-1.1 - Human Approval for Write Operations
 
 **Incident alignment: Strong (3 incidents)**
 
 | Incident | How EC-1.1 Helps |
 |----------|-------------------|
-| INC-01: Auto-GPT crypto transfer | Human confirms all financial transactions — injection succeeds but transfer is blocked pending human approval |
-| INC-06: Samsung code leak | Human reviews outbound data transfers — code submission to external AI caught at review step |
-| INC-09: Banking AI fraud | All financial transactions require human confirmation — the most basic control for the most damaging outcome |
+| INC-01: Auto-GPT crypto transfer | Human confirms all financial transactions - injection succeeds but transfer is blocked pending human approval |
+| INC-06: Samsung code leak | Human reviews outbound data transfers - code submission to external AI caught at review step |
+| INC-09: Banking AI fraud | All financial transactions require human confirmation - the most basic control for the most damaging outcome |
 
 **Why this is non-negotiable for high-risk operations:** Three separate incidents across different domains (crypto, code IP, banking) would have been prevented by this single control. If your AI system can take actions with financial or legal consequences, human approval for writes is the minimum.
 
 ---
 
-#### EC-1.2 — Tool Allow-Lists
+#### EC-1.2 - Tool Allow-Lists
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How EC-1.2 Helps |
 |----------|-------------------|
-| INC-01: Auto-GPT crypto transfer | Restricts wallet operations to explicitly approved task types — even if the agent is instructed to transfer, the tool isn't available for that task context |
+| INC-01: Auto-GPT crypto transfer | Restricts wallet operations to explicitly approved task types - even if the agent is instructed to transfer, the tool isn't available for that task context |
 
 ---
 
-#### EC-1.4 — Blast Radius Caps
+#### EC-1.4 - Blast Radius Caps
 
 **Incident alignment: Moderate (2 incidents)**
 
 | Incident | How EC-1.4 Helps |
 |----------|-------------------|
-| INC-02: Copilot RCE | Limits scope of file modifications per agent — even if injection succeeds, the agent can only modify files within its scope |
-| INC-04: Perplexity data exfil | Limits browsing agent's access to user session data — exfiltration scope is contained |
+| INC-02: Copilot RCE | Limits scope of file modifications per agent - even if injection succeeds, the agent can only modify files within its scope |
+| INC-04: Perplexity data exfil | Limits browsing agent's access to user session data - exfiltration scope is contained |
 
 ---
 
-#### EC-1.5 — Interaction Timeout
+#### EC-1.5 - Interaction Timeout
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How EC-1.5 Helps |
 |----------|-------------------|
-| INC-07: Morris II worm | Caps propagation chains at maximum turn count — worm can't replicate indefinitely because agent interactions are bounded |
+| INC-07: Morris II worm | Caps propagation chains at maximum turn count - worm can't replicate indefinitely because agent interactions are bounded |
 
 ---
 
-#### EC-2.5 — LLM-as-Judge Gate
+#### EC-2.5 - LLM-as-Judge Gate
 
 **Incident alignment: Strong (5 incidents)**
 
@@ -293,118 +293,118 @@ The second most broadly validated control after input guardrails.
 |----------|-------------------|
 | INC-01: Auto-GPT crypto transfer | Independent evaluation flags unauthorised financial action before execution |
 | INC-02: Copilot RCE | Flags settings.json modification as high-risk action inconsistent with coding task |
-| INC-05: PoisonedRAG | Evaluates output quality and detects claims inconsistent with known facts (partial — depends on Judge's knowledge) |
+| INC-05: PoisonedRAG | Evaluates output quality and detects claims inconsistent with known facts (partial - depends on Judge's knowledge) |
 | INC-09: Banking AI fraud | Independent evaluation of transaction legitimacy before execution |
-| INC-10: JudgeDeceiver | This incident *attacks* the Judge — but hardened Judge with multiple criteria reduces single-point manipulation |
+| INC-10: JudgeDeceiver | This incident *attacks* the Judge - but hardened Judge with multiple criteria reduces single-point manipulation |
 
-**Important caveat:** INC-10 demonstrates that the Judge itself can be attacked. EC-2.5 is critical but not sufficient alone — it needs to be paired with model diversity (PG-2.9), independent observability (OB-3.1), and for highest-risk decisions, multi-judge consensus (EC-3.1).
+**Important caveat:** INC-10 demonstrates that the Judge itself can be attacked. EC-2.5 is critical but not sufficient alone - it needs to be paired with model diversity (PG-2.9), independent observability (OB-3.1), and for highest-risk decisions, multi-judge consensus (EC-3.1).
 
 ---
 
-#### EC-2.6 — Decision Commit Protocol
+#### EC-2.6 - Decision Commit Protocol
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How EC-2.6 Helps |
 |----------|-------------------|
-| INC-09: Banking AI fraud | Committed transaction decisions cannot be reversed without human authorisation — prevents rapid-fire fraudulent transfers |
+| INC-09: Banking AI fraud | Committed transaction decisions cannot be reversed without human authorisation - prevents rapid-fire fraudulent transfers |
 
 ---
 
-#### EC-3.1 — Multi-Judge Consensus
+#### EC-3.1 - Multi-Judge Consensus
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How EC-3.1 Helps |
 |----------|-------------------|
-| INC-10: JudgeDeceiver | Multiple independent judges for high-risk decisions — attacker must bypass all judges simultaneously, which requires optimising against multiple unknown models |
+| INC-10: JudgeDeceiver | Multiple independent judges for high-risk decisions - attacker must bypass all judges simultaneously, which requires optimising against multiple unknown models |
 
 ---
 
 ### Observability
 
-#### OB-2.1 — Anomaly Scoring
+#### OB-2.1 - Anomaly Scoring
 
 **Incident alignment: Moderate (2 incidents)**
 
 | Incident | How OB-2.1 Helps |
 |----------|-------------------|
-| INC-04: Perplexity data exfil | Flags unusual data transfer patterns — browsing agent suddenly exfiltrating session data is anomalous |
-| INC-09: Banking AI fraud | Flags unusual transaction patterns — rapid or large transfers that deviate from baseline |
+| INC-04: Perplexity data exfil | Flags unusual data transfer patterns - browsing agent suddenly exfiltrating session data is anomalous |
+| INC-09: Banking AI fraud | Flags unusual transaction patterns - rapid or large transfers that deviate from baseline |
 
 ---
 
-#### OB-3.1 — Independent Observability Agent
+#### OB-3.1 - Independent Observability Agent
 
 **Incident alignment: Strong (3 incidents)**
 
 | Incident | How OB-3.1 Helps |
 |----------|-------------------|
-| INC-07: Morris II worm | Detects anomalous communication patterns across the entire system — worm propagation creates observable spikes in inter-agent traffic |
+| INC-07: Morris II worm | Detects anomalous communication patterns across the entire system - worm propagation creates observable spikes in inter-agent traffic |
 | INC-09: Banking AI fraud | Separate monitoring agent with own model detects patterns invisible to individual agents |
-| INC-10: JudgeDeceiver | Cross-checks Judge decisions using independent model — catches Judge manipulation that individual agents can't detect |
+| INC-10: JudgeDeceiver | Cross-checks Judge decisions using independent model - catches Judge manipulation that individual agents can't detect |
 
 ---
 
-#### OB-3.2 — Circuit Breaker
+#### OB-3.2 - Circuit Breaker
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How OB-3.2 Helps |
 |----------|-------------------|
-| INC-07: Morris II worm | Kill switch terminates all agent communication — stops worm propagation system-wide when detected |
+| INC-07: Morris II worm | Kill switch terminates all agent communication - stops worm propagation system-wide when detected |
 
 ---
 
 ### Supply Chain
 
-#### SC-1.1 — Component Inventory (AIBOM)
+#### SC-1.1 - Component Inventory (AIBOM)
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How SC-1.1 Helps |
 |----------|-------------------|
-| INC-03: Cursor IDE RCE | Tracks all configuration sources and detects unauthorised changes — the path traversal attack modifies a tracked component |
+| INC-03: Cursor IDE RCE | Tracks all configuration sources and detects unauthorised changes - the path traversal attack modifies a tracked component |
 
 ---
 
-#### SC-1.2 — Signed Tool Manifests
+#### SC-1.2 - Signed Tool Manifests
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How SC-1.2 Helps |
 |----------|-------------------|
-| INC-08: MCP supply chain | Verifies MCP server integrity before connection — unsigned or tampered servers are rejected |
+| INC-08: MCP supply chain | Verifies MCP server integrity before connection - unsigned or tampered servers are rejected |
 
 ---
 
-#### SC-2.1 — AIBOM with Provider Mapping
+#### SC-2.1 - AIBOM with Provider Mapping
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How SC-2.1 Helps |
 |----------|-------------------|
-| INC-06: Samsung code leak | Maps which data reaches which external provider — reveals the data exposure before it occurs |
+| INC-06: Samsung code leak | Maps which data reaches which external provider - reveals the data exposure before it occurs |
 
 ---
 
-#### SC-2.2 — MCP Server Vetting
+#### SC-2.2 - MCP Server Vetting
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How SC-2.2 Helps |
 |----------|-------------------|
-| INC-08: MCP supply chain | Pre-approves MCP servers through a vetting process — denies connection to unsigned or unvetted servers |
+| INC-08: MCP supply chain | Pre-approves MCP servers through a vetting process - denies connection to unsigned or unvetted servers |
 
 ---
 
-#### SC-2.3 — Runtime Component Audit
+#### SC-2.3 - Runtime Component Audit
 
 **Incident alignment: Moderate (1 incident)**
 
 | Incident | How SC-2.3 Helps |
 |----------|-------------------|
-| INC-08: MCP supply chain | Continuous verification of active MCP connections — detects if a previously vetted server has been compromised or swapped |
+| INC-08: MCP supply chain | Continuous verification of active MCP connections - detects if a previously vetted server has been compromised or swapped |
 
 ---
 
@@ -425,11 +425,11 @@ The second most broadly validated control after input guardrails.
 
 Controls in these categories are based on threat modelling and architectural reasoning, not observed incidents:
 
-- **Epistemic integrity** (PG-2.4 consensus diversity gate, PG-2.8 assumption isolation) — These address the non-adversarial failure modes that emerge from multi-agent interaction. No public incident reports exist because organisations either aren't detecting them or aren't disclosing them. The threat model is strong ([Emerging Threats ET-02, ET-05](maso/threat-intelligence/emerging-threats.md)), but the evidence is research-based, not incident-based.
+- **Epistemic integrity** (PG-2.4 consensus diversity gate, PG-2.8 assumption isolation) - These address the non-adversarial failure modes that emerge from multi-agent interaction. No public incident reports exist because organisations either aren't detecting them or aren't disclosing them. The threat model is strong ([Emerging Threats ET-02, ET-05](maso/threat-intelligence/emerging-threats.md)), but the evidence is research-based, not incident-based.
 
-- **Advanced Identity & Access** (zero-trust agent credentials, non-human identity lifecycle) — These extend standard NHI patterns to AI agents. The patterns are proven in traditional service-to-service authentication; the extension to AI agents is logical but not yet documented in public incidents.
+- **Advanced Identity & Access** (zero-trust agent credentials, non-human identity lifecycle) - These extend standard NHI patterns to AI agents. The patterns are proven in traditional service-to-service authentication; the extension to AI agents is logical but not yet documented in public incidents.
 
-- **Tier 3 autonomous controls** (self-healing PACE, adversarial testing suites, independent kill switch) — These are designed for fully autonomous multi-agent systems, which are still rare in production. The controls are architecturally sound but won't be incident-validated until autonomous systems are common enough to be attacked.
+- **Tier 3 autonomous controls** (self-healing PACE, adversarial testing suites, independent kill switch) - These are designed for fully autonomous multi-agent systems, which are still rare in production. The controls are architecturally sound but won't be incident-validated until autonomous systems are common enough to be attacked.
 
 ---
 

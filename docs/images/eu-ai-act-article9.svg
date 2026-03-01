@@ -13,7 +13,7 @@
 
   <!-- Header bar -->
   <rect x="0" y="0" width="850" height="44" rx="0" fill="#1e293b"/>
-  <text x="425" y="28" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">EU AI Act Article 9 — Risk Management System</text>
+  <text x="425" y="28" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">EU AI Act Article 9 - Risk Management System</text>
 
   <!-- Top row: Lifecycle stages -->
   <!-- 1. Design -->

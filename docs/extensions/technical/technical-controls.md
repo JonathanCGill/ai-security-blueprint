@@ -13,7 +13,7 @@ Policy and process controls fail when:
 - Attackers ignore them
 - Insiders circumvent them
 
-Technical controls **enforce** security regardless of user behaviour. If the network blocks access to unauthorised AI, users can't use it — no policy required.
+Technical controls **enforce** security regardless of user behaviour. If the network blocks access to unauthorised AI, users can't use it - no policy required.
 
 | Control Type | Relies On | Failure Mode |
 |--------------|-----------|--------------|
@@ -153,7 +153,7 @@ BLOCK  *  User-Agent:*Claude*
 
 ### 2.2 AI Gateway
 
-A dedicated gateway for all AI traffic — the core enforcement point.
+A dedicated gateway for all AI traffic - the core enforcement point.
 
 ![AI Gateway Architecture](../../images/ai-gateway-architecture.svg)
 
@@ -664,12 +664,12 @@ index=ai_gateway status=403
 
 ## Summary
 
-1. **Block at the network** — Deny by default, allow approved AI only
-2. **Force through gateway** — Single control point for all AI traffic
-3. **Inspect everything** — TLS inspection, DLP, content scanning
-4. **Log everything** — Full visibility for detection and forensics
-5. **Layer controls** — Network + gateway + WAF + DLP + endpoint
-6. **Automate enforcement** — Don't rely on user compliance
+1. **Block at the network** - Deny by default, allow approved AI only
+2. **Force through gateway** - Single control point for all AI traffic
+3. **Inspect everything** - TLS inspection, DLP, content scanning
+4. **Log everything** - Full visibility for detection and forensics
+5. **Layer controls** - Network + gateway + WAF + DLP + endpoint
+6. **Automate enforcement** - Don't rely on user compliance
 
 ---
 

@@ -30,7 +30,7 @@
   <rect width="1100" height="780" rx="8" fill="#0d1117"/>
 
   <!-- Title -->
-  <text x="550" y="40" text-anchor="middle" fill="#e6e6e6" font-size="22" font-weight="700">Identity &amp; Access Management — AI System Architecture</text>
+  <text x="550" y="40" text-anchor="middle" fill="#e6e6e6" font-size="22" font-weight="700">Identity &amp; Access Management - AI System Architecture</text>
   <text x="550" y="62" text-anchor="middle" fill="#8b949e" font-size="13">Control Plane / Data Plane Separation with Agent Authorization Gateway</text>
 
   <!-- CONTROL PLANE -->
@@ -207,5 +207,5 @@
   <text x="80" y="704" fill="#8b949e" font-size="9">Controls: IAM-01 (Authentication) · IAM-02 (Least Privilege) · IAM-03 (Plane Separation) · IAM-04 (Tool Constraints) · IAM-05 (Human Approval) · IAM-06 (Session Credentials) · IAM-07 (Credential Exposure) · IAM-08 (Audit)</text>
 
   <!-- Footer -->
-  <text x="550" y="760" text-anchor="middle" fill="#484f58" font-size="10">AI Runtime Behaviour Security — Technical Controls · Identity &amp; Access Management · github.com/JonathanCGill</text>
+  <text x="550" y="760" text-anchor="middle" fill="#484f58" font-size="10">AI Runtime Behaviour Security - Technical Controls · Identity &amp; Access Management · github.com/JonathanCGill</text>
 </svg>

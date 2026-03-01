@@ -1,7 +1,7 @@
 # AWS Bedrock Implementation Patterns
 
 > **Purpose:** Platform-specific guidance for implementing the infrastructure controls on AWS using Amazon Bedrock as the model hosting platform.  
-> **Status:** Reference patterns — adapt to your specific architecture and AWS account structure.
+> **Status:** Reference patterns - adapt to your specific architecture and AWS account structure.
 
 ---
 
@@ -9,12 +9,12 @@
 
 | Framework Zone | AWS Implementation |
 |---------------|-------------------|
-| **Zone 1 — Ingress** | Amazon API Gateway + AWS WAF + Amazon CloudFront |
-| **Zone 2 — Runtime** | Amazon Bedrock (invoke endpoint), Bedrock Guardrails, Amazon OpenSearch Serverless (vector read) |
-| **Zone 3 — Evaluation** | Separate Bedrock model invocation (Judge) in isolated account or VPC |
-| **Zone 4 — Ingestion** | AWS Lambda / AWS Step Functions + Amazon Bedrock Knowledge Bases (ingestion), OpenSearch Serverless (vector write) |
-| **Zone 5 — Control Plane** | AWS Systems Manager Parameter Store / Secrets Manager, AWS Config, IAM Identity Center |
-| **Zone 6 — Logging** | Amazon CloudWatch Logs, Amazon S3 (log archive), Amazon Security Lake, SIEM integration |
+| **Zone 1 - Ingress** | Amazon API Gateway + AWS WAF + Amazon CloudFront |
+| **Zone 2 - Runtime** | Amazon Bedrock (invoke endpoint), Bedrock Guardrails, Amazon OpenSearch Serverless (vector read) |
+| **Zone 3 - Evaluation** | Separate Bedrock model invocation (Judge) in isolated account or VPC |
+| **Zone 4 - Ingestion** | AWS Lambda / AWS Step Functions + Amazon Bedrock Knowledge Bases (ingestion), OpenSearch Serverless (vector write) |
+| **Zone 5 - Control Plane** | AWS Systems Manager Parameter Store / Secrets Manager, AWS Config, IAM Identity Center |
+| **Zone 6 - Logging** | Amazon CloudWatch Logs, Amazon S3 (log archive), Amazon Security Lake, SIEM integration |
 
 ---
 
@@ -23,7 +23,7 @@
 ### IAM-01/02: Authentication and Least Privilege
 
 - Use **IAM Identity Center** for human identities with federated SSO.
-- Use **IAM Roles** for all service identities — never static access keys.
+- Use **IAM Roles** for all service identities - never static access keys.
 - Bedrock model invocation via **IAM role-based access** with resource-based policies.
 - **Resource policies** on Bedrock model endpoints restrict which IAM principals can invoke.
 - Separate IAM roles for: application (invoke model), guardrail service (evaluate), ingestion (manage knowledge base), admin (configure).
@@ -37,9 +37,9 @@
 
 ### IAM-04/05: Agent Tool Constraints
 
-- Bedrock Agents define **action groups** — each action group is a declared tool with specific API operations.
+- Bedrock Agents define **action groups** - each action group is a declared tool with specific API operations.
 - Use **Lambda function resource policies** to restrict which Bedrock Agent can invoke which function.
-- Implement approval routing via **Step Functions** for high-impact actions — the Lambda returns a "pending approval" response and waits for human input.
+- Implement approval routing via **Step Functions** for high-impact actions - the Lambda returns a "pending approval" response and waits for human input.
 
 ### IAM-06: Session-Scoped Credentials
 
@@ -56,11 +56,11 @@
 - Enable **Bedrock Model Invocation Logging** to CloudWatch Logs and/or S3.
 - Log configuration captures: input tokens, output tokens, model ID, invocation latency.
 - For full prompt/response capture, use the **S3 delivery** option (CloudWatch has size limits).
-- **Important:** Bedrock invocation logging captures prompts and responses — ensure PII handling (LOG-09) is applied downstream.
+- **Important:** Bedrock invocation logging captures prompts and responses - ensure PII handling (LOG-09) is applied downstream.
 
 ### LOG-02/03: Guardrail and Judge Logging
 
-- **Bedrock Guardrails** log trace data when enabled — includes filter decisions, blocked content, and applied policies.
+- **Bedrock Guardrails** log trace data when enabled - includes filter decisions, blocked content, and applied policies.
 - Use the `trace` field in Bedrock API responses to capture guardrail evaluation details.
 - Judge invocations logged as separate Bedrock model calls with distinct logging configuration.
 
@@ -90,13 +90,13 @@
 ### NET-01: Network Zones
 
 - Use **separate VPCs** for runtime (Zone 2) and ingestion (Zone 4).
-- Bedrock Guardrails run in AWS-managed infrastructure — use **VPC endpoints** (`com.amazonaws.region.bedrock-runtime`) for private connectivity.
+- Bedrock Guardrails run in AWS-managed infrastructure - use **VPC endpoints** (`com.amazonaws.region.bedrock-runtime`) for private connectivity.
 - **VPC endpoint policies** restrict which IAM principals can use the endpoint.
-- Use **AWS PrivateLink** for all Bedrock API access — no internet-routed traffic.
+- Use **AWS PrivateLink** for all Bedrock API access - no internet-routed traffic.
 
 ### NET-02: Guardrail Bypass Prevention
 
-- Bedrock Guardrails are **applied at the API level** — configure guardrail ID on model invocations.
+- Bedrock Guardrails are **applied at the API level** - configure guardrail ID on model invocations.
 - Use **IAM policies** to deny `bedrock:InvokeModel` without guardrail specification.
 - **SCP** at org level: deny Bedrock invocations that don't include a guardrailIdentifier.
 
@@ -104,7 +104,7 @@
 
 - Judge model invoked from a **separate VPC** or **separate AWS account**.
 - **Cross-account IAM role** for Judge invocation with minimal permissions.
-- Judge VPC has no inbound routes from runtime VPC — data pushed via **SQS** or **EventBridge**.
+- Judge VPC has no inbound routes from runtime VPC - data pushed via **SQS** or **EventBridge**.
 
 ### NET-04: Agent Egress Controls
 
@@ -132,7 +132,7 @@
 
 ### DAT-05: Encryption
 
-- Bedrock data encrypted at rest with **AWS KMS** — use CMK (customer-managed key) for Tier 3+.
+- Bedrock data encrypted at rest with **AWS KMS** - use CMK (customer-managed key) for Tier 3+.
 - OpenSearch Serverless collections encrypted with KMS.
 - S3 log buckets encrypted with separate KMS key.
 - All Bedrock API calls over TLS 1.2 via PrivateLink endpoints.
@@ -144,8 +144,8 @@
 ### SEC-01/03: Vault and Context Isolation
 
 - Use **AWS Secrets Manager** for all AI system credentials.
-- Agent Lambda functions retrieve credentials from Secrets Manager at invocation — credentials not stored in environment variables.
-- Bedrock Agent action groups use **Lambda execution roles** — no credentials in agent prompts.
+- Agent Lambda functions retrieve credentials from Secrets Manager at invocation - credentials not stored in environment variables.
+- Bedrock Agent action groups use **Lambda execution roles** - no credentials in agent prompts.
 
 ### SEC-04: Credential Scanning
 
@@ -159,8 +159,8 @@
 
 ### IR-04: Rollback
 
-- Bedrock model versions pinned — rollback by changing the model ID in configuration.
-- Bedrock Guardrail versions — create new version, point to previous known-good version.
+- Bedrock model versions pinned - rollback by changing the model ID in configuration.
+- Bedrock Guardrail versions - create new version, point to previous known-good version.
 - Knowledge Base rollback: re-sync from known-good S3 source data.
 - **AWS CodePipeline** with manual approval gates for all AI component deployments.
 
@@ -170,7 +170,7 @@
 
 | Consideration | Guidance |
 |--------------|---------|
-| **Bedrock Guardrails limitations** | Bedrock Guardrails run in AWS-managed infrastructure — you control configuration but not the execution environment. Supplement with custom guardrail logic for domain-specific requirements. |
+| **Bedrock Guardrails limitations** | Bedrock Guardrails run in AWS-managed infrastructure - you control configuration but not the execution environment. Supplement with custom guardrail logic for domain-specific requirements. |
 | **Multi-region** | Bedrock model availability varies by region. Design for single-region deployment per AI system instance. |
 | **Cost management** | Enable Bedrock model invocation metrics for cost tracking. Use SESS-01 token limits to prevent denial-of-wallet. |
 | **Model access** | Bedrock requires explicit model access grants per account. Use this as an additional control point (SUP-01). |

@@ -1,4 +1,4 @@
-# Tier 1 — Supervised Multi-Agent Deployment
+# Tier 1 - Supervised Multi-Agent Deployment
 
 **Low Autonomy · Human-in-the-Loop · Pilot Phase**
 
@@ -16,10 +16,10 @@ Use Tier 1 when any of the following conditions apply:
 - The organisation has no prior production experience with multi-agent AI orchestration.
 - The use case involves regulated data or regulated processes (financial services, healthcare, legal).
 - The agent system is in pilot or proof-of-concept phase and operational baselines have not been established.
-- The consequence of an uncorrected agent error is material — financial loss, reputational damage, regulatory exposure, or safety impact.
+- The consequence of an uncorrected agent error is material - financial loss, reputational damage, regulatory exposure, or safety impact.
 - The organisation's AI security maturity is at CMMI Level 1–2 (initial or managed) for AI-specific controls.
 
-Tier 1 is not a permanent state. It is designed to build the operational evidence base — behavioural baselines, failure mode data, and trust calibration — that justifies progression to Tier 2.
+Tier 1 is not a permanent state. It is designed to build the operational evidence base - behavioural baselines, failure mode data, and trust calibration - that justifies progression to Tier 2.
 
 ---
 
@@ -29,19 +29,19 @@ Tier 1 is not a permanent state. It is designed to build the operational evidenc
 
 Key architectural constraints at Tier 1:
 
-**Message bus** is operational but runs in logging mode only — all inter-agent messages are captured in the audit trail but are not cryptographically signed. This simplifies initial deployment while still providing the observability foundation needed for Tier 2 graduation.
+**Message bus** is operational but runs in logging mode only - all inter-agent messages are captured in the audit trail but are not cryptographically signed. This simplifies initial deployment while still providing the observability foundation needed for Tier 2 graduation.
 
 **Guardrails (Layer 1)** are mandatory on every agent. Input validation, output sanitisation, tool permission scoping, and rate limiting are active. These are deterministic controls that operate at machine speed regardless of human availability.
 
 **LLM-as-Judge (Layer 2)** is optional at Tier 1. Organisations that already have an evaluation model can deploy it, but it is not a gating requirement. The primary quality gate is human review.
 
-**Human Oversight (Layer 3)** is the dominant control. Every action that modifies external state — write operations, API calls, data mutations, file modifications, message sends — requires explicit human approval before execution.
+**Human Oversight (Layer 3)** is the dominant control. Every action that modifies external state - write operations, API calls, data mutations, file modifications, message sends - requires explicit human approval before execution.
 
 ---
 
 ## Control Implementation by MASO Domain
 
-### 1. Identity & Access — Tier 1 Requirements
+### 1. Identity & Access - Tier 1 Requirements
 
 **Mandatory:**
 
@@ -60,14 +60,14 @@ Key architectural constraints at Tier 1:
 **Implementation checklist:**
 
 - [ ] Each agent has a unique identifier in all log entries.
-- [ ] Agent credential inventory documented — which agent has access to which tools with which permissions.
+- [ ] Agent credential inventory documented - which agent has access to which tools with which permissions.
 - [ ] No shared credentials between agents (verified by audit).
 - [ ] Orchestrator credentials are not passed to task agents.
 - [ ] Write-capable tool access is documented and justified per agent.
 
 ---
 
-### 2. Data Protection — Tier 1 Requirements
+### 2. Data Protection - Tier 1 Requirements
 
 **Mandatory:**
 
@@ -93,7 +93,7 @@ Key architectural constraints at Tier 1:
 
 ---
 
-### 3. Execution Control — Tier 1 Requirements
+### 3. Execution Control - Tier 1 Requirements
 
 **Mandatory:**
 
@@ -116,11 +116,11 @@ Key architectural constraints at Tier 1:
 - [ ] Tool allow-list defined and enforced per agent.
 - [ ] Rate limits configured per agent.
 - [ ] Read operations do not require human approval (efficiency baseline).
-- [ ] Approval workflow is logged — who approved what, when, with what context.
+- [ ] Approval workflow is logged - who approved what, when, with what context.
 
 ---
 
-### 4. Observability — Tier 1 Requirements
+### 4. Observability - Tier 1 Requirements
 
 **Mandatory:**
 
@@ -146,7 +146,7 @@ Key architectural constraints at Tier 1:
 
 ---
 
-### 5. Supply Chain — Tier 1 Requirements
+### 5. Supply Chain - Tier 1 Requirements
 
 **Mandatory:**
 
@@ -167,7 +167,7 @@ Key architectural constraints at Tier 1:
 
 - [ ] Model inventory documented (provider, version, endpoint, agent assignment).
 - [ ] Tool inventory documented (tool name, function, permissions, agent assignment).
-- [ ] No dynamic tool composition — toolsets are fixed at deployment.
+- [ ] No dynamic tool composition - toolsets are fixed at deployment.
 - [ ] Third-party providers assessed against vendor risk framework.
 - [ ] Change management process exists for modifying the agent toolset.
 
@@ -177,11 +177,11 @@ Key architectural constraints at Tier 1:
 
 At Tier 1, only two PACE phases are required to be fully operational:
 
-### Primary (P) — Active
+### Primary (P) - Active
 
 Normal operations as described above. All agents running with human-in-the-loop for write operations.
 
-### Emergency (E) — Active
+### Emergency (E) - Active
 
 The kill switch. At Tier 1, this is the critical safety net. If anything goes wrong, the operator can shut down all agents immediately.
 
@@ -196,11 +196,11 @@ Emergency response at Tier 1:
 3. Logs preserved.
 4. Post-incident review conducted before restarting.
 
-### Alternate (A) — Configuration Optional
+### Alternate (A) - Configuration Optional
 
 At Tier 1, having a backup agent ready is recommended but not required. If a single agent fails, the human operator can take over the task manually while the issue is investigated.
 
-### Contingency (C) — Not Required
+### Contingency (C) - Not Required
 
 Degraded mode orchestration is unnecessary at Tier 1 because the system is already operating with maximum human oversight. There is no further degradation path short of Emergency shutdown.
 
@@ -260,7 +260,7 @@ Before declaring Tier 1 operational, validate the following:
 
 ---
 
-## Graduation Criteria — Moving to Tier 2
+## Graduation Criteria - Moving to Tier 2
 
 Tier 1 is the foundation. An organisation should progress to Tier 2 when the following conditions are met:
 
@@ -278,14 +278,14 @@ Tier 1 is the foundation. An organisation should progress to Tier 2 when the fol
 
 ---
 
-## Worked Example — Financial Services Document Processing
+## Worked Example - Financial Services Document Processing
 
-**Scenario:** A bank deploys two agents — an Analyst Agent (reads customer documents, extracts key data points) and a Summariser Agent (takes the extracted data and produces a structured summary for the relationship manager).
+**Scenario:** A bank deploys two agents - an Analyst Agent (reads customer documents, extracts key data points) and a Summariser Agent (takes the extracted data and produces a structured summary for the relationship manager).
 
 **Tier 1 configuration:**
 
 - The Analyst Agent has read access to the document management system and can call a text extraction tool. It cannot write to any system.
-- The Summariser Agent receives the Analyst's output via the message bus and produces a summary. It has write access to a staging area where summaries are placed for human review — but the write operation requires human approval.
+- The Summariser Agent receives the Analyst's output via the message bus and produces a summary. It has write access to a staging area where summaries are placed for human review - but the write operation requires human approval.
 - The human operator reviews each summary before it is committed to the staging area.
 - Both agents are rate-limited to 50 tool calls per hour.
 - All inter-agent messages are logged.

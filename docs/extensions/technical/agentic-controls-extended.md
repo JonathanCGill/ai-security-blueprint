@@ -1,6 +1,6 @@
 # Agentic AI Controls
 
-This document extends the control framework for **agentic AI systems** — AI that takes autonomous multi-step actions, uses tools, and interacts with external systems.
+This document extends the control framework for **agentic AI systems** - AI that takes autonomous multi-step actions, uses tools, and interacts with external systems.
 
 ---
 
@@ -93,11 +93,11 @@ Standard AI controls assume discrete request/response interactions. Agentic AI b
 
 | Plan Characteristic | CRITICAL | HIGH | MEDIUM | LOW |
 |---------------------|----------|------|--------|-----|
-| Any plan | Approve | — | — | — |
-| External system access | Approve | Approve | Review | — |
-| Data modification | Approve | Approve | Review | — |
+| Any plan | Approve | - | - | - |
+| External system access | Approve | Approve | Review | - |
+| Data modification | Approve | Approve | Review | - |
 | Financial transaction | Approve | Approve | Approve | Review |
-| >10 steps | Approve | Approve | Review | — |
+| >10 steps | Approve | Approve | Review | - |
 | Irreversible actions | Approve | Approve | Approve | Review |
 
 **Implementation:**
@@ -189,7 +189,7 @@ Standard AI controls assume discrete request/response interactions. Agentic AI b
 | **Authority scope** | What agent can commit to | Approval thresholds |
 | **Outcome scope** | What results the agent should produce | Outcome boundaries, not just action lists |
 
-**Outcome boundaries:** Action-level scope is necessary but insufficient. An agent can take a series of individually permitted actions that produce an unintended aggregate outcome. Scope must include outcome constraints — "you can query this table for read-only customer service purposes" is better than "you can query this table."
+**Outcome boundaries:** Action-level scope is necessary but insufficient. An agent can take a series of individually permitted actions that produce an unintended aggregate outcome. Scope must include outcome constraints - "you can query this table for read-only customer service purposes" is better than "you can query this table."
 
 **Implementation:**
 - Scope defined per agent / use case
@@ -256,11 +256,11 @@ Tool protocols standardise how agents invoke external capabilities. The security
 
 **Protocol-agnostic principles:**
 
-1. **Tools are trust boundaries** — Every tool call crosses a trust boundary
-2. **Least privilege** — Grant minimum permissions required
-3. **Defence in depth** — Don't rely solely on tool-side security
-4. **Assume compromise** — Tool responses may be malicious or manipulated
-5. **Audit everything** — Full logging for investigation and compliance
+1. **Tools are trust boundaries** - Every tool call crosses a trust boundary
+2. **Least privilege** - Grant minimum permissions required
+3. **Defence in depth** - Don't rely solely on tool-side security
+4. **Assume compromise** - Tool responses may be malicious or manipulated
+5. **Audit everything** - Full logging for investigation and compliance
 
 **Evidence:** Tool endpoint configuration, authentication records, tool call logs
 

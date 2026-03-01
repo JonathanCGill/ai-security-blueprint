@@ -19,7 +19,7 @@
   </defs>
   <rect width="900" height="420" fill="#ffffff"/>
   <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Risk Integration Model</text>
-  <text x="450" y="46" text-anchor="middle" font-size="12" fill="#64748b">Framework provides data — other functions plug in and consume</text>
+  <text x="450" y="46" text-anchor="middle" font-size="12" fill="#64748b">Framework provides data - other functions plug in and consume</text>
   <rect x="60" y="50" width="780" height="195" rx="8" fill="#f8fafc" stroke="#1e40af" stroke-width="1.5"/>
   <path d="M68,50 L832,50 Q840,50 840,58 L840,76 L60,76 L60,58 Q60,50 68,50 Z" fill="#1e40af"/>
   <text x="450" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">AI Security Framework</text>

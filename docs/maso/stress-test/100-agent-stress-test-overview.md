@@ -9,11 +9,11 @@
 
 ## What This Is (And What It Is Not)
 
-This is a **tabletop stress test** — a structured thought exercise for identifying where MASO's controls, assumptions, and architectural patterns encounter their limits as agent count increases from single digits to triple digits.
+This is a **tabletop stress test** - a structured thought exercise for identifying where MASO's controls, assumptions, and architectural patterns encounter their limits as agent count increases from single digits to triple digits.
 
 It is not a report on a system we built and tested. No 100-agent system was deployed. The value here is in the reasoning: taking the framework's controls and asking, methodically, *does this still work when the numbers change by an order of magnitude?*
 
-The [worked examples](../examples/worked-examples.md) validate MASO against realistic 5-agent systems. This document asks what happens next — when organisations move from pilot to platform, and agent count grows from a handful to a fleet.
+The [worked examples](../examples/worked-examples.md) validate MASO against realistic 5-agent systems. This document asks what happens next - when organisations move from pilot to platform, and agent count grows from a handful to a fleet.
 
 ---
 
@@ -21,11 +21,11 @@ The [worked examples](../examples/worked-examples.md) validate MASO against real
 
 MASO's controls were designed with scalability in mind, but design intent and operational reality diverge in predictable ways:
 
-- **Linear controls hit quadratic problems.** A control that inspects each agent's output scales linearly. A control that monitors communication *between* agents scales with the number of agent pairs — quadratically.
+- **Linear controls hit quadratic problems.** A control that inspects each agent's output scales linearly. A control that monitors communication *between* agents scales with the number of agent pairs - quadratically.
 - **Composition creates emergent behaviour.** Five agents with well-tested PACE transitions do not guarantee that fifty agents degrade gracefully when a shared dependency fails. Cascade dynamics only emerge at scale.
 - **Operational cost becomes a constraint.** A Judge evaluation on every inter-agent message is sound security architecture. Whether the organisation can afford the compute and latency at 10,000 messages per second is an operational question the framework should help teams answer before they discover it in production.
 
-The purpose of this exercise is to help architects and security teams anticipate these breakpoints *before* they scale — not after an incident teaches them where the limits were.
+The purpose of this exercise is to help architects and security teams anticipate these breakpoints *before* they scale - not after an incident teaches them where the limits were.
 
 ---
 
@@ -48,7 +48,7 @@ Work through each stress dimension below. For each one:
 2. **Identify the MASO controls involved.** Use the control references provided.
 3. **Assess: linear, quadratic, or breaking?** Does the control scale with agent count, with agent pairs, or does it hit a hard limit?
 4. **Determine your threshold.** At what agent count (or message volume, or delegation depth) does the control need architectural adaptation?
-5. **Document the adaptation.** What changes — additional infrastructure, modified control parameters, architectural segmentation — would you need?
+5. **Document the adaptation.** What changes - additional infrastructure, modified control parameters, architectural segmentation - would you need?
 
 The stress dimensions are ordered from most likely to surface first (epistemic cascade) to most consequential if missed (kill switch at scale).
 
@@ -65,15 +65,15 @@ In MASO's worked examples, an epistemic failure (hallucinated claim, corrupted d
 In a system with 50–100 agents organised into functional clusters, a data point may traverse 8–12 agents across 3–4 clusters before it reaches an external boundary. At each handoff:
 
 - **Uncertainty is stripped** (EP-06). Agent A reports "estimated at 85% (single source, unverified)." Agent B summarises as "approximately 85%." Agent C states "85%." By Agent D, it is treated as established fact.
-- **Provenance thins.** Claim provenance tags (PG-2.5) carry source metadata, but each summarisation step abstracts away detail. By the fourth summarisation, the provenance may say "derived from Cluster 1 analysis" — technically accurate but useless for verification.
-- **Corroboration is synthetic** (EP-04). If agents in Cluster 2 and Cluster 3 both derive their analysis from Cluster 1's output, their agreement is not independent validation — it is the same source presenting as two. The consensus diversity gate (PG-2.4) catches this if it tracks data lineage, but not if it only checks model diversity.
+- **Provenance thins.** Claim provenance tags (PG-2.5) carry source metadata, but each summarisation step abstracts away detail. By the fourth summarisation, the provenance may say "derived from Cluster 1 analysis" - technically accurate but useless for verification.
+- **Corroboration is synthetic** (EP-04). If agents in Cluster 2 and Cluster 3 both derive their analysis from Cluster 1's output, their agreement is not independent validation - it is the same source presenting as two. The consensus diversity gate (PG-2.4) catches this if it tracks data lineage, but not if it only checks model diversity.
 
 ### What to Assess
 
 - What is the maximum handoff depth in your system from data ingestion to external output?
 - At that depth, does PG-2.7 (uncertainty preservation) still carry meaningful confidence metadata, or has it been summarised into meaninglessness?
 - Does your PG-2.4 (consensus diversity gate) check data lineage, or only model provider diversity?
-- At what depth would you need to introduce a mandatory re-verification checkpoint — an agent that goes back to primary sources rather than trusting the chain?
+- At what depth would you need to introduce a mandatory re-verification checkpoint - an agent that goes back to primary sources rather than trusting the chain?
 
 ### MASO Controls Under Stress
 
@@ -94,7 +94,7 @@ MASO's identity and access controls (IA-2.3 no transitive permissions, IA-2.1 ze
 
 ### The Scale Question
 
-At 100 agents, the potential delegation graph has up to ~10,000 edges. Even if most are unused, the *policy surface* — the set of rules defining who can delegate what to whom — grows with the number of agent pairs. Consider:
+At 100 agents, the potential delegation graph has up to ~10,000 edges. Even if most are unused, the *policy surface* - the set of rules defining who can delegate what to whom - grows with the number of agent pairs. Consider:
 
 - **Policy complexity.** Each delegation rule specifies: source agent, target agent, permitted scope, maximum permissions, time limit. At 100 agents, the policy set may contain thousands of rules. Auditing this manually is not feasible.
 - **Delegation contracts at speed.** At Tier 3, every delegation creates a cryptographically signed contract (source, scope, permissions, time limit, expected output). If agents delegate tasks hundreds of times per minute, the signing and validation overhead may become a latency bottleneck.
@@ -102,7 +102,7 @@ At 100 agents, the potential delegation graph has up to ~10,000 edges. Even if m
 
 ### What to Assess
 
-- How many active delegation paths does your system have? (Not theoretical maximum — actual observed paths.)
+- How many active delegation paths does your system have? (Not theoretical maximum - actual observed paths.)
 - Can your policy engine evaluate delegation requests within your latency budget?
 - Do you have automated tooling to detect transitive permission paths, or is this a manual review?
 - At what agent count would you need to move from point-to-point delegation policies to role-based or cluster-based delegation models?
@@ -169,16 +169,16 @@ MASO's observability controls (OB-2.1 anomaly scoring, OB-2.2 drift detection, O
 At 100 agents, the message volume changes the problem:
 
 - **Message throughput.** If each agent sends an average of 10 messages per minute to other agents, the system generates ~1,000 messages per minute. At peak (e.g., market open, incident response), this may spike to 10,000+ per minute. Every message needs anomaly scoring, drift comparison, and potentially DLP scanning.
-- **Anomaly baseline complexity.** Behavioural baselines at 5 agents are 5 profiles. At 100 agents, it is 100 profiles — plus the interaction patterns between agents, which is combinatorial. What constitutes "anomalous" for Agent 47's communication pattern with Agent 83?
+- **Anomaly baseline complexity.** Behavioural baselines at 5 agents are 5 profiles. At 100 agents, it is 100 profiles - plus the interaction patterns between agents, which is combinatorial. What constitutes "anomalous" for Agent 47's communication pattern with Agent 83?
 - **Alert fatigue.** More agents means more anomaly signals. If each agent generates a false positive alert once per day, 100 agents generate 100 false positives per day. The human review capacity for PACE escalation decisions becomes the bottleneck.
-- **Cost.** If every message is evaluated by a Judge model, the observability compute cost may exceed the task compute cost. The framework's [cost and latency guidance](../../extensions/technical/cost-and-latency.md) discusses sampling rates for single-model systems — the same logic applies at scale, but the trade-offs are sharper.
+- **Cost.** If every message is evaluated by a Judge model, the observability compute cost may exceed the task compute cost. The framework's [cost and latency guidance](../../extensions/technical/cost-and-latency.md) discusses sampling rates for single-model systems - the same logic applies at scale, but the trade-offs are sharper.
 
 ### What to Assess
 
 - What is your expected message volume at steady state and at peak?
 - Can your observability infrastructure process this volume within your latency budget?
 - What is your anomaly alert rate, and does your team have capacity to review escalations?
-- At what volume would you need to move from per-message evaluation to statistical sampling — and what is the risk trade-off of sampling?
+- At what volume would you need to move from per-message evaluation to statistical sampling - and what is the risk trade-off of sampling?
 - What is the compute cost of full observability vs. the compute cost of the agents themselves?
 
 ### MASO Controls Under Stress
@@ -203,7 +203,7 @@ MASO's model diversity policy (PG-2.9) flags concentration risk when multiple ag
 At 100 agents, provider allocation becomes a strategic decision with systemic implications:
 
 - **Correlated failure.** If 40 agents use Provider A and Provider A experiences an outage, 40% of the system fails simultaneously. If those 40 agents include infrastructure agents (monitoring, incident response), the system loses both its operational capability and its ability to manage the degradation.
-- **Correlated errors.** Agents using the same model produce correlated reasoning errors. At 5 agents, PG-2.4 (consensus diversity gate) catches this. At 40 agents on the same provider, the "consensus" of 40 agents agreeing on a wrong answer is overwhelming — and the 10 agents on other providers that disagree look like outliers, not correctors.
+- **Correlated errors.** Agents using the same model produce correlated reasoning errors. At 5 agents, PG-2.4 (consensus diversity gate) catches this. At 40 agents on the same provider, the "consensus" of 40 agents agreeing on a wrong answer is overwhelming - and the 10 agents on other providers that disagree look like outliers, not correctors.
 - **Rate limiting cascade.** Providers impose rate limits. At 100 agents making concurrent API calls, a single provider's rate limit may throttle operations across multiple clusters simultaneously, creating correlated latency spikes that look like system degradation.
 
 ### What to Assess
@@ -234,7 +234,7 @@ MASO's data protection controls (DP-1.1 classification, DP-2.1 DLP on message bu
 In regulated environments with complex information barriers (financial services Chinese walls, healthcare PHI boundaries, legal privilege), the number of boundary rules scales with the complexity of the regulatory environment *and* the number of agent pairs:
 
 - **Rule explosion.** A financial services firm may have 10 information barriers (equity research, M&A, proprietary trading, etc.). At 100 agents, each barrier must be enforced on every relevant communication path. The rule set becomes thousands of entries.
-- **Classification propagation.** When Agent A (with access to restricted data) sends a summary to Agent B (without access), has the restricted data been adequately transformed? At each hop, the question of whether derived data inherits the classification of source data requires judgement — and the framework relies on DLP scanning to enforce it.
+- **Classification propagation.** When Agent A (with access to restricted data) sends a summary to Agent B (without access), has the restricted data been adequately transformed? At each hop, the question of whether derived data inherits the classification of source data requires judgement - and the framework relies on DLP scanning to enforce it.
 - **Latency of enforcement.** If every inter-agent message must be scanned against thousands of DLP rules before delivery, the scanning latency becomes a bottleneck on inter-agent communication speed.
 
 ### What to Assess
@@ -242,7 +242,7 @@ In regulated environments with complex information barriers (financial services 
 - How many distinct information barriers or data boundaries does your regulatory environment require?
 - How many agent pairs cross those boundaries?
 - Is message-level DLP scanning viable at your message volume, or do you need architectural segmentation (separate message buses per boundary)?
-- How do you handle derived data — does a summary of restricted data inherit the restriction?
+- How do you handle derived data - does a summary of restricted data inherit the restriction?
 
 ### MASO Controls Under Stress
 
@@ -285,10 +285,10 @@ At 100 agents across multiple clusters and potentially multiple geographic regio
 ### Potential Framework Extension
 
 MASO may need a **graduated shutdown protocol** for large-scale deployments:
-1. **Halt new work** — no new tasks accepted
-2. **Drain in-flight work** — allow active tasks to complete within a time limit (e.g., 30 seconds)
-3. **Force terminate** — kill remaining agents after the drain window
-4. **Reconcile** — automated check of external system state against expected state
+1. **Halt new work** - no new tasks accepted
+2. **Drain in-flight work** - allow active tasks to complete within a time limit (e.g., 30 seconds)
+3. **Force terminate** - kill remaining agents after the drain window
+4. **Reconcile** - automated check of external system state against expected state
 
 ---
 
@@ -300,11 +300,11 @@ The [red team playbook](../red-team/red-team-playbook.md) tests individual attac
 
 ### The Scale Question
 
-At 100 agents, the attack surface is not 20x larger — it is combinatorially larger. An attacker can chain techniques:
+At 100 agents, the attack surface is not 20x larger - it is combinatorially larger. An attacker can chain techniques:
 
 - **Injection + delegation laundering.** Inject a payload into a low-privilege agent (RT-01). The payload instructs the agent to delegate a seemingly benign task to a high-privilege agent (RT-02). The delegated task, once accepted, exploits the high-privilege agent's tool access. The attack crosses 3 agents and 2 control domains (prompt integrity, identity & access).
 - **Slow drift + judge evasion.** Gradually shift an agent's behaviour over hundreds of interactions (RT-07) while keeping each individual interaction within the anomaly detection threshold (RT-10). Once the agent's behavioural baseline has been sufficiently shifted, exploit the new baseline as "normal."
-- **Supply chain + epistemic cascade.** Poison an MCP server (ET-04) that feeds data to a cluster of agents. The poisoned data propagates through the epistemic chain (ET-05) and is corroborated by multiple agents using the same poisoned source. The consensus diversity gate (PG-2.4) does not trigger because the agents use different models — the correlation is in the data, not the models.
+- **Supply chain + epistemic cascade.** Poison an MCP server (ET-04) that feeds data to a cluster of agents. The poisoned data propagates through the epistemic chain (ET-05) and is corroborated by multiple agents using the same poisoned source. The consensus diversity gate (PG-2.4) does not trigger because the agents use different models - the correlation is in the data, not the models.
 
 ### What to Assess
 
@@ -327,10 +327,10 @@ At 100 agents, the attack surface is not 20x larger — it is combinatorially la
 
 After working through the 8 dimensions, you should have:
 
-1. **A scaling profile for each MASO control** — which controls scale linearly with agent count, which scale quadratically with agent pairs, and which hit hard limits.
-2. **Your breakpoints** — the agent count or message volume at which you need to adapt the framework's standard implementation.
-3. **Architectural decisions** — where you need segmentation (separate message buses, separate providers for task vs. control plane), where you need sampling (observability at volume), and where you need new coordination mechanisms (cross-cluster PACE).
-4. **Cost projections** — the operational cost of full MASO compliance at your target scale, so you can make informed trade-offs.
+1. **A scaling profile for each MASO control** - which controls scale linearly with agent count, which scale quadratically with agent pairs, and which hit hard limits.
+2. **Your breakpoints** - the agent count or message volume at which you need to adapt the framework's standard implementation.
+3. **Architectural decisions** - where you need segmentation (separate message buses, separate providers for task vs. control plane), where you need sampling (observability at volume), and where you need new coordination mechanisms (cross-cluster PACE).
+4. **Cost projections** - the operational cost of full MASO compliance at your target scale, so you can make informed trade-offs.
 
 These findings should feed directly into your MASO implementation planning and your risk owner's sign-off process. The framework's controls are the *what*. This exercise helps you plan the *how much* and *at what cost* for your specific scale.
 
@@ -342,7 +342,7 @@ These findings should feed directly into your MASO implementation planning and y
 |----------|-------------|
 | [Worked Examples](../examples/worked-examples.md) | Validates MASO at 5-agent scale. This document extends that thinking to 50–100+ agents |
 | [Red Team Playbook](../red-team/red-team-playbook.md) | Tests individual controls. Stress Dimension 8 asks what happens when those attacks are combined |
-| [Tier 3 — Autonomous](../implementation/tier-3-autonomous.md) | Defines the controls required for high autonomy. This document asks which of those controls need adaptation at scale |
+| [Tier 3 - Autonomous](../implementation/tier-3-autonomous.md) | Defines the controls required for high autonomy. This document asks which of those controls need adaptation at scale |
 | [Cost & Latency](../../extensions/technical/cost-and-latency.md) | Provides single-model cost analysis. Stress Dimension 4 extends that to multi-agent observability cost |
 | [PACE Resilience](../../PACE-RESILIENCE.md) | Defines the three-axis PACE model. Stress Dimension 3 identifies the need for a potential fourth axis |
 

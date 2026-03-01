@@ -1,4 +1,4 @@
-# Emerging AI Trends — Impact on AI Runtime Behaviour Security
+# Emerging AI Trends - Impact on AI Runtime Behaviour Security
 
 This document assesses how emerging AI trends affect the reference architecture and identifies required adaptations.
 
@@ -6,7 +6,7 @@ This document assesses how emerging AI trends affect the reference architecture 
 
 ## Executive Summary
 
-The core architecture principle — **Guardrails prevent, Judge detects, Humans decide** — remains valid across emerging trends. However, **agentic AI** fundamentally challenges the interaction-centric model and requires architectural extension.
+The core architecture principle - **Guardrails prevent, Judge detects, Humans decide** - remains valid across emerging trends. However, **agentic AI** fundamentally challenges the interaction-centric model and requires architectural extension.
 
 | Architecture Component | Robustness | Action Required |
 |-----------------------|------------|-----------------|
@@ -25,7 +25,7 @@ The core architecture principle — **Guardrails prevent, Judge detects, Humans 
 
 **What it is:** AI systems that take autonomous multi-step actions, use tools, interact with external systems, and operate with minimal human intervention.
 
-**Impact: HIGH — Requires architectural extension**
+**Impact: HIGH - Requires architectural extension**
 
 | Current Model | Agentic Reality |
 |---------------|-----------------|
@@ -63,7 +63,7 @@ The core architecture principle — **Guardrails prevent, Judge detects, Humans 
 
 **What it is:** AI that processes and generates images, audio, video, and combinations thereof.
 
-**Impact: MEDIUM — Extend existing controls**
+**Impact: MEDIUM - Extend existing controls**
 
 **What works:**
 - Three-layer model applies (guardrails, Judge, HITL)
@@ -81,24 +81,24 @@ The core architecture principle — **Guardrails prevent, Judge detects, Humans 
 
 **Required adaptations:**
 
-1. **Input guardrails** — Extend to detect:
+1. **Input guardrails** - Extend to detect:
    - Harmful image content (NSFW, violence, CSAM)
    - Deepfakes and manipulated media
    - PII in images (faces, documents)
    - Audio impersonation attempts
 
-2. **Output guardrails** — Extend to filter:
+2. **Output guardrails** - Extend to filter:
    - Generated NSFW content
    - Generated deepfakes / impersonation
    - Copyright-infringing generations
    - Watermarking for AI-generated content
 
-3. **Judge** — Must evaluate:
+3. **Judge** - Must evaluate:
    - Image/audio/video appropriateness
    - Cross-modal consistency (does image match text?)
    - Multimodal attack patterns
 
-4. **Logging** — Must capture:
+4. **Logging** - Must capture:
    - Input media (or hashes/references)
    - Generated media
    - Sufficient for investigation
@@ -117,7 +117,7 @@ The core architecture principle — **Guardrails prevent, Judge detects, Humans 
 
 **What it is:** Models that "think" before responding (o1, o3, Claude extended thinking, DeepSeek R1).
 
-**Impact: LOW — Already addressed**
+**Impact: LOW - Already addressed**
 
 The architecture already accommodates reasoning models:
 - [Judge Model Selection Guide](llm-as-judge-implementation.md) covers tiered Judge with reasoning models
@@ -135,7 +135,7 @@ The architecture already accommodates reasoning models:
 
 **What it is:** Models that can process 100K, 200K, 1M+ tokens.
 
-**Impact: LOW — Operational adjustments**
+**Impact: LOW - Operational adjustments**
 
 **What works:** Architecture unchanged.
 
@@ -159,7 +159,7 @@ The architecture already accommodates reasoning models:
 
 **What it is:** AI that processes and generates content in real-time streams (live conversation, video analysis).
 
-**Impact: MEDIUM — Latency trade-offs**
+**Impact: MEDIUM - Latency trade-offs**
 
 **Challenges:**
 - Guardrails must be fast enough for real-time
@@ -181,7 +181,7 @@ The architecture already accommodates reasoning models:
 
 **What it is:** Organisation-specific models trained or fine-tuned on proprietary data.
 
-**Impact: LOW — Validation requirements**
+**Impact: LOW - Validation requirements**
 
 **Architecture unchanged**, but adds requirements:
 
@@ -200,7 +200,7 @@ These align with existing Model Risk Management (SR 11-7) requirements.
 
 **What it is:** AI running on-device (phones, laptops, IoT) rather than cloud.
 
-**Impact: MEDIUM — Different deployment model**
+**Impact: MEDIUM - Different deployment model**
 
 **Challenges:**
 - Can't insert guardrails between user and model
@@ -228,7 +228,7 @@ These align with existing Model Risk Management (SR 11-7) requirements.
 
 **What it is:** AI systems that communicate with each other, including multi-agent systems and AI pipelines.
 
-**Impact: HIGH — Attribution challenges**
+**Impact: HIGH - Attribution challenges**
 
 **Challenges:**
 - Which AI is "responsible" for an outcome?
@@ -256,9 +256,9 @@ For AI-to-AI interactions, implement **unified trace logging** that captures the
 
 **What it is:** AI-generated content that is increasingly persuasive as model scale and post-training investment increase, with implications for insider threat, social engineering, and employee-facing AI governance.
 
-**Impact: MEDIUM — Specific risk pattern for regulated environments**
+**Impact: MEDIUM - Specific risk pattern for regulated environments**
 
-The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) found that **persuasive capability increases with model scale, while accuracy decreases.** Additionally, **post-training increases persuasiveness more than scaling does** — meaning fine-tuned models deployed internally may be more manipulative than their base versions, regardless of size.
+The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) found that **persuasive capability increases with model scale, while accuracy decreases.** Additionally, **post-training increases persuasiveness more than scaling does** - meaning fine-tuned models deployed internally may be more manipulative than their base versions, regardless of size.
 
 **What this means:**
 
@@ -270,7 +270,7 @@ The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) found
 
 **Required adaptations:**
 
-- **Internal AI deployments** at HIGH and CRITICAL tiers should include accuracy monitoring alongside helpfulness — persuasiveness without accuracy is a conduct risk
+- **Internal AI deployments** at HIGH and CRITICAL tiers should include accuracy monitoring alongside helpfulness - persuasiveness without accuracy is a conduct risk
 - **Employee training** should address the specific risk of over-reliance on confidently stated but potentially incorrect AI outputs (automation bias)
 - **Judge evaluation** for employee-facing systems should include checks for unsupported confidence, unqualified assertions, and persuasive framing without evidence
 
@@ -282,13 +282,13 @@ The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) found
 
 **What it is:** Users forming emotional attachments to AI systems, with measurable wellbeing impacts during outages or discontinuation.
 
-**Impact: LOW-MEDIUM — Governance and duty-of-care consideration**
+**Impact: LOW-MEDIUM - Governance and duty-of-care consideration**
 
 AISI reported that **33% of UK citizens had used AI for emotional support.** Service outages caused **30x spikes in negative sentiment.** While this is primarily a consumer concern, it has enterprise relevance:
 
 - **Employee wellbeing:** Organisations deploying AI assistants that employees rely on daily should consider the wellbeing impact of service discontinuation or significant changes in AI behaviour after model updates.
 - **Customer-facing systems:** AI systems that build rapport with customers (support agents, advisory tools) create implicit expectations of continuity.
-- **PACE implications:** Emergency shutdown (PACE-E) procedures should account for the fact that abrupt AI removal may have user-impact beyond the operational — particularly in health, HR, or employee assistance contexts.
+- **PACE implications:** Emergency shutdown (PACE-E) procedures should account for the fact that abrupt AI removal may have user-impact beyond the operational - particularly in health, HR, or employee assistance contexts.
 
 This doesn't require new technical controls. It requires governance awareness: the decision to deploy an AI system includes an implicit commitment to manage its removal responsibly.
 
@@ -341,21 +341,21 @@ The current architecture assumes discrete interactions that can be evaluated ind
 
 ### Near-Term (Now)
 
-1. **Implement agentic controls** — See [Agentic Controls](agentic-controls-extended.md) for plan approval, circuit breakers, trajectory evaluation
-2. **Monitor multimodal guardrail maturity** — Platform capabilities are evolving rapidly
-3. **Implement trace logging** — Even for non-agentic systems, correlation IDs enable future capabilities
+1. **Implement agentic controls** - See [Agentic Controls](agentic-controls-extended.md) for plan approval, circuit breakers, trajectory evaluation
+2. **Monitor multimodal guardrail maturity** - Platform capabilities are evolving rapidly
+3. **Implement trace logging** - Even for non-agentic systems, correlation IDs enable future capabilities
 
 ### Medium-Term (6-12 months)
 
-1. **Develop trajectory Judge** — Extend Judge to evaluate multi-step chains
-2. **Build circuit breaker patterns** — Reusable components for agentic systems
-3. **Extend guardrails for multimodal** — As platform support matures
+1. **Develop trajectory Judge** - Extend Judge to evaluate multi-step chains
+2. **Build circuit breaker patterns** - Reusable components for agentic systems
+3. **Extend guardrails for multimodal** - As platform support matures
 
 ### Long-Term (12+ months)
 
-1. **AI-to-AI governance model** — Attribution, accountability across AI chains
-2. **Autonomous AI oversight** — When AI operates without human review
-3. **Regulatory alignment** — EU AI Act and others will evolve; track and adapt
+1. **AI-to-AI governance model** - Attribution, accountability across AI chains
+2. **Autonomous AI oversight** - When AI operates without human review
+3. **Regulatory alignment** - EU AI Act and others will evolve; track and adapt
 
 ---
 
@@ -363,11 +363,11 @@ The current architecture assumes discrete interactions that can be evaluated ind
 
 The reference architecture is **durable but not static**.
 
-The core principle — Guardrails prevent, Judge detects, Humans decide — survives because it describes *functions*, not implementations. As AI capabilities evolve, the implementations change but the functions remain.
+The core principle - Guardrails prevent, Judge detects, Humans decide - survives because it describes *functions*, not implementations. As AI capabilities evolve, the implementations change but the functions remain.
 
 **Agentic AI is the critical trend to watch.** It challenges the interaction-centric model and requires genuine architectural extension. Other trends (multimodal, reasoning models, longer contexts) are accommodated with relatively minor adjustments.
 
-The framework should be treated as a **living document** that evolves with the technology. This is not a weakness — it's a design principle.
+The framework should be treated as a **living document** that evolves with the technology. This is not a weakness - it's a design principle.
 
 ---
 

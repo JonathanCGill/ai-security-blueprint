@@ -96,7 +96,7 @@
   <!-- TRUST ZONE background -->
   <!-- ================================================================ -->
   <rect x="40" y="155" width="1020" height="370" rx="12" fill="url(#zoneGrad)" stroke="#475569" stroke-width="1" stroke-dasharray="6 3"/>
-  <text x="60" y="178" fill="#94a3b8" font-size="11" font-weight="600" letter-spacing="1">TRUST ZONE — EXECUTION ENVIRONMENT</text>
+  <text x="60" y="178" fill="#94a3b8" font-size="11" font-weight="600" letter-spacing="1">TRUST ZONE - EXECUTION ENVIRONMENT</text>
 
   <!-- ================================================================ -->
   <!-- AGENT 1: Data Retrieval -->
@@ -176,7 +176,7 @@
   <!-- ================================================================ -->
   <rect x="60" y="380" width="465" height="44" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5" filter="url(#shadow)"/>
   <text x="292" y="400" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">SYSTEM INVARIANTS</text>
-  <text x="292" y="414" text-anchor="middle" fill="#64748b" font-size="9">Budget caps · Data classification · Action scope · Compliance — O(1)</text>
+  <text x="292" y="414" text-anchor="middle" fill="#64748b" font-size="9">Budget caps · Data classification · Action scope · Compliance - O(1)</text>
 
   <!-- CIRCUIT BREAKER -->
   <rect x="545" y="380" width="200" height="44" rx="6" fill="#7f1d1d" stroke="#dc2626" stroke-width="1.5" filter="url(#shadow)"/>
@@ -186,7 +186,7 @@
   <!-- CRYPTO IDENTITY -->
   <rect x="765" y="380" width="275" height="44" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5" filter="url(#shadow)"/>
   <text x="902" y="400" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">CRYPTOGRAPHIC IDENTITY</text>
-  <text x="902" y="414" text-anchor="middle" fill="#64748b" font-size="9">DIDs · Signed messages · Delegation chains — O(N)</text>
+  <text x="902" y="414" text-anchor="middle" fill="#64748b" font-size="9">DIDs · Signed messages · Delegation chains - O(N)</text>
 
   <!-- ================================================================ -->
   <!-- ALL ACTIONS → AUDIT LOG -->
@@ -219,7 +219,7 @@
   <text x="550" y="618" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">POST-EXECUTION SUPER JUDGE</text>
   <text x="550" y="638" text-anchor="middle" fill="#fecaca" font-size="10" font-weight="600">Different model · Separate trust zone · Read-only access</text>
   <text x="550" y="655" text-anchor="middle" fill="#fca5a5" font-size="10">Intent alignment · Reasoning coherence · Source traceability · Role adherence · Adversarial patterns</text>
-  <text x="550" y="670" text-anchor="middle" fill="#fecaca" font-size="10" font-weight="600">Evaluates at O(W) — per workflow, not per agent</text>
+  <text x="550" y="670" text-anchor="middle" fill="#fecaca" font-size="10" font-weight="600">Evaluates at O(W) - per workflow, not per agent</text>
 
   <!-- Arrow from summariser to super judge -->
   <line x1="550" y1="565" x2="550" y2="590" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowRed)"/>

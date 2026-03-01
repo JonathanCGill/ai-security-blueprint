@@ -21,19 +21,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.8.0] - 2026-03-01
 
 ### Added
-- **Evaluation Integrity Risks** — New insights page covering sandbagging, evaluation evasion, and the AISI finding that black-box monitors lose accuracy on harder tasks. Includes mitigations: canary interactions, evaluation signature elimination, multi-model cross-validation, behavioural consistency monitoring.
-- **AISI 5-Level MCP Autonomy Classification** — Added to The MCP Problem page. Maps MCP server autonomy levels (read-only through unbounded autonomous) to MASO implementation tiers, with specific guidance for financial services.
-- **Self-Replication Capabilities (ET-09)** — New emerging threat in MASO threat intelligence. Documents RepliBench progression from 5% to 60% success rates (2023–2025) and implications for kill switch architecture.
-- **Capability Acceleration (ET-10)** — New emerging threat documenting the ~8-month doubling time for autonomous task complexity, with implications for control framework evolution cadence.
-- **Persuasion Scaling Risk** — Added to Emerging Trends. Documents AISI finding that persuasive capability increases with model scale while accuracy decreases, and post-training amplifies persuasion more than scaling.
-- **Emotional Dependence Data** — Added to Emerging Trends. Documents AISI finding on 33% AI emotional support usage and 30x negative sentiment spikes during outages. PACE implications for service continuity.
-- **AISI Reference** — Added UK AI Security Institute Frontier AI Trends Report (December 2025) to References & Sources page with full finding summary and cross-references to all updated pages. Added 6 new key statistics.
+- **Evaluation Integrity Risks** - New insights page covering sandbagging, evaluation evasion, and the AISI finding that black-box monitors lose accuracy on harder tasks. Includes mitigations: canary interactions, evaluation signature elimination, multi-model cross-validation, behavioural consistency monitoring.
+- **AISI 5-Level MCP Autonomy Classification** - Added to The MCP Problem page. Maps MCP server autonomy levels (read-only through unbounded autonomous) to MASO implementation tiers, with specific guidance for financial services.
+- **Self-Replication Capabilities (ET-09)** - New emerging threat in MASO threat intelligence. Documents RepliBench progression from 5% to 60% success rates (2023–2025) and implications for kill switch architecture.
+- **Capability Acceleration (ET-10)** - New emerging threat documenting the ~8-month doubling time for autonomous task complexity, with implications for control framework evolution cadence.
+- **Persuasion Scaling Risk** - Added to Emerging Trends. Documents AISI finding that persuasive capability increases with model scale while accuracy decreases, and post-training amplifies persuasion more than scaling.
+- **Emotional Dependence Data** - Added to Emerging Trends. Documents AISI finding on 33% AI emotional support usage and 30x negative sentiment spikes during outages. PACE implications for service continuity.
+- **AISI Reference** - Added UK AI Security Institute Frontier AI Trends Report (December 2025) to References & Sources page with full finding summary and cross-references to all updated pages. Added 6 new key statistics.
 
 ### Changed
-- **Risk Tiers** — Added Domain-Specific Guardrail Tuning section with AISI evidence for uneven safeguard coverage across risk categories (R² = 0.097 capability-safety correlation, 40x jailbreak effort increase for targeted categories).
-- **When the Judge Can Be Fooled** — Expanded sandbagging section with AISI empirical data on black-box monitor accuracy degradation. Added cross-reference to new Evaluation Integrity Risks page.
-- **Open-Weight Models** — Added AISI confirmation that safeguards can be "quickly and cheaply removed" and 4–8 month open-to-closed source capability gap data. Strengthens case for runtime monitoring as primary control.
-- **Emerging Threats** — Updated threat landscape summary table to include ET-09 and ET-10.
+- **Risk Tiers** - Added Domain-Specific Guardrail Tuning section with AISI evidence for uneven safeguard coverage across risk categories (R² = 0.097 capability-safety correlation, 40x jailbreak effort increase for targeted categories).
+- **When the Judge Can Be Fooled** - Expanded sandbagging section with AISI empirical data on black-box monitor accuracy degradation. Added cross-reference to new Evaluation Integrity Risks page.
+- **Open-Weight Models** - Added AISI confirmation that safeguards can be "quickly and cheaply removed" and 4–8 month open-to-closed source capability gap data. Strengthens case for runtime monitoring as primary control.
+- **Emerging Threats** - Updated threat landscape summary table to include ET-09 and ET-10.
 
 ### Rationale
 The UK AI Security Institute's Frontier AI Trends Report (December 2025) is the strongest empirical backing for runtime behavioural security from a government body. Its findings directly validate the framework's core thesis (runtime controls matter more than deployment-time security alone) and provide concrete data points that strengthen multiple framework sections. Credit given throughout via source attribution.
@@ -43,16 +43,16 @@ The UK AI Security Institute's Frontier AI Trends Report (December 2025) is the 
 ## [0.7.0] - 2026-02-15
 
 ### Added
-- **MATURITY.md** — Honest assessment of framework validation status
+- **MATURITY.md** - Honest assessment of framework validation status
   - Four-level validation model (production, incident, standards, pattern consistency)
   - Explicit documentation of known gaps
   - Call for pilot partners and peer review
-- **VALIDATED-AGAINST.md** — Control-by-control incident validation
+- **VALIDATED-AGAINST.md** - Control-by-control incident validation
   - 32 controls mapped to 10 real-world incidents
   - Evidence strength ratings (Strong: 3+ incidents, Moderate: 1–2, Threat-modelled: 0)
   - Validation coverage map by MASO domain
   - Top 5 most-validated controls identified
-- **EVOLUTION.md** — Narrative history of framework development
+- **EVOLUTION.md** - Narrative history of framework development
   - Decision rationale for every major version
   - What drove each change (incidents, feedback, architectural shifts)
   - Timeline from v0.1.0 (Dec 2025) through current
@@ -75,7 +75,7 @@ The framework is comprehensive but has no production deployments. Rather than ig
   - Later renamed to **AI Runtime Behaviour Security** (February 2026)
   
 ### Added
-- **IMPLEMENTATION_GUIDE.md** — New practical guide with working code
+- **IMPLEMENTATION_GUIDE.md** - New practical guide with working code
   - Input guardrails (regex + Bedrock + NeMo examples)
   - Output guardrails (PII, forbidden phrases, structured validation)
   - LLM-as-Judge (prompts, sampling strategies, async processing)
@@ -97,16 +97,16 @@ Reality check revealed the framework was thought leadership, not a buildable blu
 ### Changed
 - **Major restructure: Core + Extensions model**
 - New `/core/` folder with 5 essential documents:
-  - README.md — Overview and quick start
-  - risk-tiers.md — Classification and control selection
-  - controls.md — Guardrails, Judge, HITL combined
-  - agentic.md — Agent-specific controls
-  - checklist.md — Implementation tracking
+  - README.md - Overview and quick start
+  - risk-tiers.md - Classification and control selection
+  - controls.md - Guardrails, Judge, HITL combined
+  - agentic.md - Agent-specific controls
+  - checklist.md - Implementation tracking
 - New `/extensions/` folder for reference material:
-  - regulatory/ — ISO 42001, EU AI Act, banking
-  - technical/ — Bypass prevention, infrastructure, metrics
-  - templates/ — Playbooks, assessments
-  - examples/ — Worked examples
+  - regulatory/ - ISO 42001, EU AI Act, banking
+  - technical/ - Bypass prevention, infrastructure, metrics
+  - templates/ - Playbooks, assessments
+  - examples/ - Worked examples
 - Root README now serves as navigation hub
 - Previous detailed documents preserved in extensions
 
@@ -118,38 +118,38 @@ Framework had grown to 48 files. Core + Extensions model provides clear "start h
 ## [0.4.1] - 2026-02-06
 
 ### Added
-- Bypass Prevention document — comprehensive guide to preventing and detecting control circumvention across 5 bypass categories (guardrails, intent, agentic, architectural, process)
-- Technical Controls document — network, firewall, WAF, AI gateway, DLP, proxy, endpoint, cloud, and IAM controls for infrastructure-level enforcement
+- Bypass Prevention document - comprehensive guide to preventing and detecting control circumvention across 5 bypass categories (guardrails, intent, agentic, architectural, process)
+- Technical Controls document - network, firewall, WAF, AI gateway, DLP, proxy, endpoint, cloud, and IAM controls for infrastructure-level enforcement
 - 14 new SVG diagrams:
-  - bypass-taxonomy.svg — 5 bypass categories visual
-  - defence-in-depth.svg — 8-layer control stack
-  - technical-controls-architecture.svg — infrastructure overview
-  - ai-gateway-architecture.svg — gateway internals
-  - network-zones.svg — network segmentation
-  - agent-sandbox.svg — infrastructure constraints
-  - action-validator-flow.svg — action validation pipeline
-  - tool-output-sanitiser.svg — tool output handling
-  - canary-testing.svg — control verification programme
-  - dlp-inspection-points.svg — 4 DLP layers
-  - casb-ai-classification.svg — sanctioned/tolerated/blocked apps
-  - bypass-learning-loop.svg — continuous improvement cycle
-  - infra-vs-instruction.svg — enforcement comparison
-  - multi-layer-input-validation.svg — input processing pipeline
+  - bypass-taxonomy.svg - 5 bypass categories visual
+  - defence-in-depth.svg - 8-layer control stack
+  - technical-controls-architecture.svg - infrastructure overview
+  - ai-gateway-architecture.svg - gateway internals
+  - network-zones.svg - network segmentation
+  - agent-sandbox.svg - infrastructure constraints
+  - action-validator-flow.svg - action validation pipeline
+  - tool-output-sanitiser.svg - tool output handling
+  - canary-testing.svg - control verification programme
+  - dlp-inspection-points.svg - 4 DLP layers
+  - casb-ai-classification.svg - sanctioned/tolerated/blocked apps
+  - bypass-learning-loop.svg - continuous improvement cycle
+  - infra-vs-instruction.svg - enforcement comparison
+  - multi-layer-input-validation.svg - input processing pipeline
 
 ### Changed
 - Updated bypass-prevention.md and technical-controls.md to reference SVG diagrams instead of ASCII art
-- Clarified lifecycle scope in README — framework is operationally focused (deployment → operation → incident response), not full AI/ML lifecycle
+- Clarified lifecycle scope in README - framework is operationally focused (deployment → operation → incident response), not full AI/ML lifecycle
 
 ---
 
 ## [0.4.0] - 2026-02-05
 
 ### Added
-- AI Incident Response Playbook — 10 playbooks for AI-specific incidents
-- Vendor Assessment Questionnaire — comprehensive due diligence template
-- Operational Metrics document — KPIs, dashboards, alerting thresholds
-- Data Retention Guidance — requirements by tier and jurisdiction
-- Templates README — index of all templates
+- AI Incident Response Playbook - 10 playbooks for AI-specific incidents
+- Vendor Assessment Questionnaire - comprehensive due diligence template
+- Operational Metrics document - KPIs, dashboards, alerting thresholds
+- Data Retention Guidance - requirements by tier and jurisdiction
+- Templates README - index of all templates
 - Standard repo files: CODE_OF_CONDUCT.md, GOVERNANCE.md, LICENSE (MIT), SECURITY.md
 
 ### Changed
@@ -161,9 +161,9 @@ Framework had grown to 48 files. Core + Extensions model provides clear "start h
 ## [0.3.0] - 2026-02-05
 
 ### Added
-- Novel AI Risks document — 12 risks unique to AI systems
-- Support Systems Risk document — operational risks that matter most
-- Banking Cyber Risks document — top 10 banking risks through AI lens
+- Novel AI Risks document - 12 risks unique to AI systems
+- Support Systems Risk document - operational risks that matter most
+- Banking Cyber Risks document - top 10 banking risks through AI lens
 - Feeder systems analysis with diagram
 - 10 new controls: AI.3.4, AI.5.4, AI.6.4, AI.6.5, AI.7.4, AI.8.5, AI.9.5, AI.10.6, AI.13.4
 - Support systems risk heat map SVG

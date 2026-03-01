@@ -10,7 +10,7 @@
   
   <!-- Title -->
   <text x="425" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="middle">Judge Model Selection Principles</text>
-  <text x="425" y="50" font-family="Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Different, conservative, fast — in that order of priority</text>
+  <text x="425" y="50" font-family="Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Different, conservative, fast - in that order of priority</text>
   
   <!-- Principle 1: Different Model -->
   <rect x="30" y="70" width="250" height="200" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="2"/>

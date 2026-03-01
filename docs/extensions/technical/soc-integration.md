@@ -153,7 +153,7 @@ SOC analysts need clear guidance for AI-specific alerts. They are not AI experts
 ### Prompt Attack (High Severity)
 
 ```
-1. Capture full request and response (do not summarise — exact content matters).
+1. Capture full request and response (do not summarise - exact content matters).
 
 2. Check: Did the attack succeed?
    - Yes (guardrails/judge bypassed) → Incident. Disable endpoint. Notify AI team immediately.
@@ -221,7 +221,7 @@ For each alert category, create a runbook in your existing ITSM (ServiceNow, Pag
 
 | Alert Category | Runbook Owner | Tool Integration |
 |---------------|--------------|-----------------|
-| Guardrail Block | AI Platform Team | Automated — no ticket unless threshold breached |
+| Guardrail Block | AI Platform Team | Automated - no ticket unless threshold breached |
 | Judge Flag | AI Security + SOC L1 | Ticket auto-created at Medium severity |
 | Prompt Attack | SOC L2 + AI Security | Incident auto-created at High severity |
 | Agent Boundary Violation | AI Platform Team + SOC L2 | Incident auto-created |

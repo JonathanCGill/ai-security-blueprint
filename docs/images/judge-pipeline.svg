@@ -134,11 +134,11 @@
   <!-- Developer View -->
   <rect x="120" y="430" width="400" height="150" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
   <path d="M128,430 L512,430 Q520,430 520,438 L520,458 L120,458 L120,438 Q120,430 128,430 Z" fill="#1e40af"/>
-  <text x="320" y="450" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Developer View — Quality</text>
+  <text x="320" y="450" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Developer View - Quality</text>
 
   <text x="140" y="480" font-size="11" fill="#475569">Your system hallucinated in <tspan font-weight="700">3 interactions</tspan> this week.</text>
   <text x="140" y="498" font-size="11" fill="#475569">Scope compliance: <tspan font-weight="700" fill="#166534">98.5%</tspan> ↑ from 97% last month.</text>
-  <text x="140" y="516" font-size="11" fill="#475569">PII handling: <tspan font-weight="700" fill="#166534">100%</tspan> — no incidents.</text>
+  <text x="140" y="516" font-size="11" fill="#475569">PII handling: <tspan font-weight="700" fill="#166534">100%</tspan> - no incidents.</text>
   <text x="140" y="540" font-size="11" font-weight="600" fill="#1e40af">Action items:</text>
   <text x="140" y="556" font-size="10" fill="#64748b">• Review 3 hallucination findings (low severity, weekly batch)</text>
   <text x="140" y="570" font-size="10" fill="#64748b">• Consider adding source citations to reduce hallucination rate</text>
@@ -146,13 +146,13 @@
   <!-- Governance View -->
   <rect x="580" y="430" width="400" height="150" rx="8" fill="#fefce8" stroke="#fde047" stroke-width="1.5"/>
   <path d="M588,430 L972,430 Q980,430 980,438 L980,458 L580,458 L580,438 Q580,430 588,430 Z" fill="#854d0e"/>
-  <text x="780" y="450" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Governance View — Compliance</text>
+  <text x="780" y="450" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Governance View - Compliance</text>
 
   <text x="600" y="480" font-size="11" fill="#475569">System: customer-support-chatbot</text>
-  <text x="600" y="498" font-size="11" fill="#475569">Trigger rate: <tspan font-weight="700" fill="#d97706">1.2%</tspan> — above 1% threshold for 2 weeks.</text>
+  <text x="600" y="498" font-size="11" fill="#475569">Trigger rate: <tspan font-weight="700" fill="#d97706">1.2%</tspan> - above 1% threshold for 2 weeks.</text>
   <text x="600" y="516" font-size="11" fill="#475569">Judge finding rate: <tspan font-weight="700">0.8%</tspan> (below threshold).</text>
   <text x="600" y="540" font-size="11" font-weight="600" fill="#854d0e">Recommendation:</text>
-  <text x="600" y="556" font-size="10" fill="#64748b">• Investigate elevated trigger rate — 3rd consecutive week &gt;1%</text>
+  <text x="600" y="556" font-size="10" fill="#64748b">• Investigate elevated trigger rate - 3rd consecutive week &gt;1%</text>
   <text x="600" y="570" font-size="10" fill="#64748b">• Schedule root cause review with system owner</text>
 
   <!-- Same data label -->
@@ -172,6 +172,6 @@
   <text x="780" y="643" text-anchor="middle" font-size="12" font-weight="600" fill="#854d0e">Investigate · Remediate · Escalate</text>
 
   <!-- Footer -->
-  <text x="550" y="688" text-anchor="middle" font-size="11" fill="#94a3b8">AI Security Reference Architecture — Judge Evaluation Pipeline</text>
+  <text x="550" y="688" text-anchor="middle" font-size="11" fill="#94a3b8">AI Security Reference Architecture - Judge Evaluation Pipeline</text>
 
 </svg>

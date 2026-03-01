@@ -225,6 +225,6 @@
   <text x="930" y="955" font-size="9" fill="#475569">High/Critical: 2–5 days</text>
 
   <!-- Footer -->
-  <text x="530" y="1040" text-anchor="middle" font-size="11" fill="#94a3b8">AI Security Reference Architecture — CI/CD Pipeline Integration</text>
+  <text x="530" y="1040" text-anchor="middle" font-size="11" fill="#94a3b8">AI Security Reference Architecture - CI/CD Pipeline Integration</text>
 
 </svg>

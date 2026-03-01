@@ -29,7 +29,7 @@
   <!-- PRIMARY - Top -->
   <rect x="420" y="90" width="360" height="160" rx="12" fill="#0d1225" stroke="#ff6b35" stroke-width="2"/>
   <rect x="420" y="90" width="360" height="5" rx="3" fill="#ff6b35"/>
-  <text x="600" y="125" text-anchor="middle" fill="#ff6b35" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="1">P — PRIMARY</text>
+  <text x="600" y="125" text-anchor="middle" fill="#ff6b35" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="1">P - PRIMARY</text>
   <text x="600" y="145" text-anchor="middle" fill="#aaaabb" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="600">Normal Multi-Agent Operations</text>
   <line x1="450" y1="155" x2="750" y2="155" stroke="#333333" stroke-width="0.5"/>
   <text x="450" y="175" fill="#889999" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="10">· Full agent roster active with designated roles</text>
@@ -41,7 +41,7 @@
   <!-- ALTERNATE - Right -->
   <rect x="820" y="260" width="340" height="170" rx="12" fill="#0d1225" stroke="#00c9ff" stroke-width="2"/>
   <rect x="820" y="260" width="340" height="5" rx="3" fill="#00c9ff"/>
-  <text x="990" y="295" text-anchor="middle" fill="#00c9ff" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="1">A — ALTERNATE</text>
+  <text x="990" y="295" text-anchor="middle" fill="#00c9ff" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="1">A - ALTERNATE</text>
   <text x="990" y="315" text-anchor="middle" fill="#aaaabb" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="600">Agent Failover and Substitution</text>
   <line x1="845" y1="325" x2="1135" y2="325" stroke="#333333" stroke-width="0.5"/>
   <text x="845" y="345" fill="#889999" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="10">· Compromised agent isolated, backup activated</text>
@@ -53,8 +53,8 @@
   <!-- CONTINGENCY - Bottom -->
   <rect x="420" y="540" width="360" height="170" rx="12" fill="#0d1225" stroke="#ffd700" stroke-width="2"/>
   <rect x="420" y="540" width="360" height="5" rx="3" fill="#ffd700"/>
-  <text x="600" y="575" text-anchor="middle" fill="#ffd700" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="1">C — CONTINGENCY</text>
-  <text x="600" y="595" text-anchor="middle" fill="#aaaabb" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="600">Degraded Mode — Single Agent + Manual</text>
+  <text x="600" y="575" text-anchor="middle" fill="#ffd700" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="1">C - CONTINGENCY</text>
+  <text x="600" y="595" text-anchor="middle" fill="#aaaabb" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="600">Degraded Mode - Single Agent + Manual</text>
   <line x1="450" y1="605" x2="750" y2="605" stroke="#333333" stroke-width="0.5"/>
   <text x="450" y="625" fill="#889999" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="10">· Multi-agent orchestration suspended</text>
   <text x="450" y="642" fill="#889999" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="10">· Single validated agent in supervised mode</text>
@@ -65,7 +65,7 @@
   <!-- EMERGENCY - Left -->
   <rect x="40" y="260" width="340" height="170" rx="12" fill="#0d1225" stroke="#f5576c" stroke-width="2"/>
   <rect x="40" y="260" width="340" height="5" rx="3" fill="#f5576c"/>
-  <text x="210" y="295" text-anchor="middle" fill="#f5576c" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="1">E — EMERGENCY</text>
+  <text x="210" y="295" text-anchor="middle" fill="#f5576c" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="1">E - EMERGENCY</text>
   <text x="210" y="315" text-anchor="middle" fill="#aaaabb" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="600">Full Shutdown and Containment</text>
   <line x1="65" y1="325" x2="355" y2="325" stroke="#333333" stroke-width="0.5"/>
   <text x="65" y="345" fill="#889999" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="10">· All agents terminated immediately</text>

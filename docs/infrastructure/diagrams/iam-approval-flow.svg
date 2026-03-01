@@ -59,7 +59,7 @@
   <text x="390" y="290" text-anchor="middle" fill="#c084fc" font-size="13" font-weight="700">👤 Human Reviewer Sees</text>
   <line x1="225" y1="298" x2="555" y2="298" stroke="#c084fc" stroke-width="0.5" opacity="0.3"/>
   <text x="240" y="316" fill="#e6e6e6" font-size="10">What action the agent wants to take</text>
-  <text x="240" y="332" fill="#e6e6e6" font-size="10">Why — the agent's reasoning chain</text>
+  <text x="240" y="332" fill="#e6e6e6" font-size="10">Why - the agent's reasoning chain</text>
   <text x="240" y="348" fill="#e6e6e6" font-size="10">What data it accessed to reach this decision</text>
   <text x="240" y="364" fill="#e6e6e6" font-size="10">Judge's evaluation (if available)</text>
 
