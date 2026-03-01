@@ -167,6 +167,7 @@ Humans review findings, make decisions, remain accountable.
 | What these controls cost in production | [Cost & Latency](../extensions/technical/cost-and-latency.md) — latency budgets, sampling strategies, tiered evaluation cascade |
 | Judge accuracy, drift, and adversarial failure | [Judge Assurance](judge-assurance.md) · [When the Judge Can Be Fooled](when-the-judge-can-be-fooled.md) |
 | Practical guardrail configurations | [Practical Guardrails](../insights/practical-guardrails.md) — what to turn on first, encoding detection, international PII |
+| When HITL doesn't scale | [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md) — using existing business process checkpoints as a detection layer |
 | Controls for multi-agent systems | [MASO Framework](../maso/) — 93 controls across 6 domains for agent orchestration |
 | Controls for reasoning models (o1, etc.) | [Reasoning Model Controls](reasoning-model-controls.md) — trace scanning, instruction adherence, consistency checks |
 

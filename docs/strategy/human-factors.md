@@ -312,6 +312,8 @@ This is partly by design — the framework is a security controls framework, not
 
 **Recommendation:** For any deployment above Fast Lane, include a human factors assessment alongside the technical risk assessment. The framework's risk classification asks "what can this system do?" The human factors assessment asks "can our people safely operate this system?" Both questions need answers before deployment.
 
+One approach to the scalability gap: [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md) — instead of adding dedicated HITL reviewers, use the existing human decision points in the business workflow as a detection and correction layer. The concept works because business process humans encounter AI outputs in full domain context (making their review more effective) and because it's their actual job (making their engagement sustainable).
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*
