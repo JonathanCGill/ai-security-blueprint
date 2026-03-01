@@ -1,5 +1,7 @@
 ---
 description: Downloadable resources including position papers and practitioner training materials for AI runtime behaviour security.
+og_title: Downloads - AI Runtime Behaviour Security
+og_description: Position papers and practitioner training materials for AI runtime behaviour security, available as PDF downloads.
 ---
 
 # Downloads
@@ -12,7 +14,7 @@ Downloadable resources for offline reading, training, and distribution. These ma
 
 ### Why Containment Beats Evaluation
 
-A position paper arguing that runtime containment — constraining what AI systems can do — is more reliable than evaluation-based approaches that try to determine what AI systems will do.
+A position paper arguing that runtime containment, constraining what AI systems can do, is more reliable than evaluation-based approaches that try to determine what AI systems will do.
 
 Covers the limitations of pre-deployment evaluation, the case for runtime enforcement, and how containment-first thinking changes control architecture.
 
