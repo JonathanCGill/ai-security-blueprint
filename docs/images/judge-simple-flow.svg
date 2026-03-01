@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="160" viewBox="0 0 700 160">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect width="700" height="160" fill="#f8fafc"/>
+
+  <text x="350" y="22" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="middle">Simple (low volume)</text>
+
+  <!-- Interactions -->
+  <rect x="20" y="42" width="120" height="40" rx="4" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="80" y="67" font-family="Arial, sans-serif" font-size="11" fill="#4338ca" text-anchor="middle">Interactions</text>
+
+  <line x1="140" y1="62" x2="188" y2="62" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Judge -->
+  <rect x="190" y="42" width="100" height="40" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="240" y="67" font-family="Arial, sans-serif" font-size="11" fill="#92400e" text-anchor="middle">Judge</text>
+
+  <line x1="290" y1="62" x2="338" y2="62" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Findings -->
+  <rect x="340" y="42" width="110" height="40" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="395" y="67" font-family="Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">Findings</text>
+
+  <line x1="450" y1="62" x2="498" y2="62" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- HITL Queue -->
+  <rect x="500" y="42" width="130" height="40" rx="4" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="565" y="67" font-family="Arial, sans-serif" font-size="11" fill="#166534" text-anchor="middle">HITL Queue</text>
+
+  <!-- Two-tier label -->
+  <text x="350" y="110" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="middle">Two-tier (high volume)</text>
+
+  <!-- Interactions -->
+  <rect x="10" y="125" width="100" height="30" rx="4" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="60" y="145" font-family="Arial, sans-serif" font-size="10" fill="#4338ca" text-anchor="middle">Interactions</text>
+
+  <line x1="110" y1="140" x2="138" y2="140" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Tier 1 -->
+  <rect x="140" y="125" width="130" height="30" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="205" y="145" font-family="Arial, sans-serif" font-size="10" fill="#92400e" text-anchor="middle">Tier 1 (fast/cheap)</text>
+
+  <line x1="270" y1="140" x2="298" y2="140" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Flags only -->
+  <rect x="300" y="125" width="100" height="30" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="350" y="145" font-family="Arial, sans-serif" font-size="10" fill="#b91c1c" text-anchor="middle">Flags only</text>
+
+  <line x1="400" y1="140" x2="428" y2="140" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Tier 2 -->
+  <rect x="430" y="125" width="130" height="30" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="495" y="145" font-family="Arial, sans-serif" font-size="10" fill="#92400e" text-anchor="middle">Tier 2 (thorough)</text>
+
+  <line x1="560" y1="140" x2="588" y2="140" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- HITL -->
+  <rect x="590" y="125" width="90" height="30" rx="4" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="635" y="145" font-family="Arial, sans-serif" font-size="10" fill="#166534" text-anchor="middle">HITL</text>
+</svg>
