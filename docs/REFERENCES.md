@@ -104,6 +104,17 @@ This framework's three-layer pattern (guardrails, Judge, human oversight), PACE 
 - [Principles for Secure-by-Design Agentic Systems (GitHub)](https://github.com/cosai-oasis/cosai-tsc/blob/main/security-principles-for-agentic-systems.md)
 - [CoSAI Workstream 4: Secure Design Patterns for Agentic Systems](https://github.com/cosai-oasis/ws4-secure-design-agentic-systems)
 
+### NCSC/CISA Guidelines for Secure AI System Development
+
+Published November 2023 by the UK National Cyber Security Centre (NCSC) and the US Cybersecurity and Infrastructure Security Agency (CISA), co-signed by 23 cybersecurity agencies across all G7 nations including BSI (Germany), ANSSI (France), CSA (Singapore), NSA (US), and others. Industry contributors from OpenAI, DeepMind, IBM, Microsoft, Anthropic, and RAND.
+
+The first globally agreed guidelines for secure AI system development. Structured around four lifecycle stages: secure design, secure development, secure deployment, and secure operation and maintenance. Aligned with NIST's Secure Software Development Framework (SSDF) and CISA's "Secure by Design" initiative.
+
+This framework's infrastructure controls and deployment guidance are consistent with the NCSC/CISA lifecycle model, particularly the emphasis on securing the operational environment - not just the model.
+
+- [NCSC Guidelines for Secure AI System Development](https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development)
+- [CISA Announcement](https://www.cisa.gov/news-events/news/dhs-cisa-and-uk-ncsc-release-joint-guidelines-secure-ai-system-development)
+
 ---
 
 ### UK AI Security Institute - Frontier AI Trends Report (December 2025)
@@ -125,6 +136,17 @@ This framework references AISI findings in: [Evaluation Integrity Risks](insight
 
 - [UK AI Security Institute](https://www.aisi.gov.uk/)
 
+### International AI Safety Report 2026
+
+The second edition of the landmark scientific report on the safety of advanced AI, chaired by Yoshua Bengio and contributed to by over 100 independent international experts including Geoffrey Hinton, Stuart Russell, and Bernhard Schölkopf. Published February 2026. Commissioned by the UK Government with secretariat support from the UK AI Security Institute. Expert Advisory Panel drew nominees from more than 30 countries plus intergovernmental organisations including the EU, OECD, and UN.
+
+Structured around three questions: what can general-purpose AI do today, what emerging risks does it pose, and how can those risks be mitigated. Covers language, vision, and agentic models alongside broader societal impacts (labour markets, human autonomy, concentration of power). At 220 pages, this is the most comprehensive international scientific consensus document on AI safety to date. The first edition (2025) followed the AI Safety Summit at Bletchley Park; this edition incorporates developments from the Seoul (May 2024) and Paris (February 2025) summits.
+
+Provides independent scientific validation for many of the risk categories addressed by this framework, particularly around agentic capabilities, evaluation integrity, and the gap between model capability and safety assurance.
+
+- [International AI Safety Report 2026](https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026)
+- [International AI Safety Report 2026 (arXiv)](https://arxiv.org/abs/2602.21012)
+
 ---
 
 ## Regulatory Landscape
@@ -142,6 +164,36 @@ This framework's regulatory mapping covers Articles 9, 14, and 15 - risk managem
 Signed October 2023. The most comprehensive U.S. government AI governance action at the time. Directed NIST to develop guidelines, red-teaming standards, and the GenAI Profile. Led to creation of the U.S. AI Safety Institute. Rescinded by President Trump on January 20, 2025 - but the NIST deliverables it produced (AI 600-1, AI 800-1, adversarial testing software) remain available and continue to be referenced by industry and regulators.
 
 - [Executive Order 14110 (archived)](https://bidenwhitehouse.archives.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/)
+
+---
+
+## Developer Safety Frameworks
+
+The three leading frontier AI developers have each published structured safety frameworks that define capability thresholds, evaluation protocols, and deployment safeguards for their most advanced models. These are the developer-side counterparts to the deployer-focused controls in this framework. Where they define what the model provider commits to before release, this framework defines what the deploying organisation must do at runtime.
+
+### OpenAI Preparedness Framework (v2, April 2025)
+
+Focuses on three frontier capability domains: biological and chemical, cybersecurity, and AI self-improvement. Defines two capability thresholds - "High" (amplifies existing pathways to severe harm) and "Critical" (introduces unprecedented new pathways to severe harm). Version 2 replaced the original Preparedness Scorecard with separate Capabilities Reports and Safeguards Reports, governed by a Safety Advisory Group (SAG). Persuasion risks are handled outside this framework via the Model Spec.
+
+- [Preparedness Framework v2 Announcement](https://openai.com/index/updating-our-preparedness-framework/)
+- [Preparedness Framework v2 (PDF)](https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf)
+
+### Google DeepMind Frontier Safety Framework (v3.0, September 2025)
+
+Built around Critical Capability Levels (CCLs) - thresholds at which models may pose heightened risk of severe harm absent mitigations. Covers four risk domains: CBRN, cybersecurity, ML R&D, and harmful manipulation (added in v3.0). Requires a formal safety case - a structured argument that severe risks have been minimised - before deployment. Version 3.0 added coverage of model resistance to human shutdown or control and an exploratory track for misalignment risks. Commits to notifying government authorities if a CCL is reached with unmitigated public safety risk.
+
+- [Frontier Safety Framework v3.0 Announcement](https://deepmind.google/blog/strengthening-our-frontier-safety-framework/)
+- [Frontier Safety Framework v3.0 (PDF)](https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/strengthening-our-frontier-safety-framework/frontier-safety-framework_3.pdf)
+
+### Anthropic Responsible Scaling Policy (v3.0, February 2026)
+
+Establishes AI Safety Levels (ASLs) - capability-based thresholds triggering specific security and deployment safeguards. ASL-3 safeguards were provisionally activated for Claude Opus 4 in May 2025. Version 3.0 introduces Frontier Safety Roadmaps (public goals across Security, Alignment, Safeguards, and Policy) and Risk Reports published every 3-6 months with external review under certain conditions. Adds a new CBRN capability threshold for state-program-level uplift and disaggregates AI R&D thresholds into two distinct levels.
+
+Version 3.0 removes the prior categorical commitment not to train models unless safety measures could be guaranteed in advance, replacing it with a dual condition requiring both AI race leadership and material catastrophic risk - a change that generated significant debate (see TIME coverage below). This illustrates the tension between unilateral safety commitments and competitive dynamics that deployers must account for in their risk assessments.
+
+- [Responsible Scaling Policy v3.0](https://anthropic.com/responsible-scaling-policy/rsp-v3-0)
+- [RSP Overview](https://www.anthropic.com/responsible-scaling-policy)
+- [TIME: "Anthropic Drops Flagship Safety Pledge" (February 2026)](https://time.com/7380854/exclusive-anthropic-drops-flagship-safety-pledge/)
 
 ---
 
@@ -469,6 +521,8 @@ What the sources provide is:
 - **Validation.** The three-layer runtime monitoring pattern (guardrails + LLM-as-Judge + human oversight) is not our invention - it's an emerging industry consensus reflected in NIST, OWASP, Google SAIF, and commercial implementations.
 - **Evidence.** Every control in this framework maps to a documented incident, a published attack technique, or both. The incidents section above provides the evidence base.
 - **Context.** No framework exists in isolation. Citing what came before helps readers understand where this work sits in the broader landscape and what it adds to the conversation.
+
+**Developer frameworks and deployer controls are complementary, not competing.** The developer safety frameworks from OpenAI, Google DeepMind, and Anthropic define what the model provider commits to before a model reaches you - capability evaluations, safety cases, release thresholds. This framework defines what happens after - the runtime behavioural controls, monitoring, and governance that deploying organisations must implement regardless of which model they use. One does not replace the other. A model that passes its developer's safety evaluations still needs guardrails, a Judge, human oversight, and circuit breakers in production. Conversely, robust runtime controls cannot compensate for a fundamentally unsafe model. Enterprises should treat developer safety commitments as part of their supply chain due diligence, and this framework's controls as the operational layer that sits on top.
 
 We encourage readers to engage with the primary sources directly. If you find additional relevant work we should reference, please open an issue or pull request.
 
