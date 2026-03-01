@@ -88,6 +88,7 @@ Deeper examinations of where the framework meets production reality - what works
 | [What Scales](what-scales.md) | Security controls succeed only if their cost grows slower than the system they protect |
 | [What Works](what-works.md) | Deployed controls are measurably reducing breach detection time and costs |
 | [The Intent Layer](the-intent-layer.md) | Mechanical controls constrain what agents can do; semantic evaluation determines whether actions align with objectives |
+| [Containment Through Intent](containment-through-intent.md) | Declared intent is the organising principle that gives every defence layer its reference point |
 | [When the Pattern Breaks](when-the-pattern-breaks.md) | The three-layer pattern designed for single-agent systems fails to scale in complex multi-agent architectures |
 | [Open-Weight Models Shift the Burden](open-weight-models-shift-the-burden.md) | Self-hosted models inherit the provider's control responsibilities |
 | [PACE Resilience](PACE-RESILIENCE.md) | How the three-layer architecture achieves operational resilience through layered, independent control redundancy |
