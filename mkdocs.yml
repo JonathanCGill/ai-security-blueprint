@@ -247,6 +247,8 @@ nav:
         - Automated Risk Tiering: insights/automated-risk-tiering.md
         - Beyond Security: insights/beyond-security.md
 
+  - Downloads: downloads.md
+
   - Reference:
     - Regulatory:
       - extensions/regulatory/README.md

@@ -22,6 +22,7 @@ AI systems fail quietly. The worst failures look like normal responses. Testing 
 
 [Quick Start Guide](QUICK_START.md){ .md-button .md-button--primary }
 [See the Architecture](ARCHITECTURE.md){ .md-button }
+[Downloads](downloads.md){ .md-button }
 
 </div>
 
