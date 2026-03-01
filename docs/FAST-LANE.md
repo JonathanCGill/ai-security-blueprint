@@ -159,10 +159,7 @@ Fast Lane deployments should be reviewed annually to confirm they still meet all
 
 The Fast Lane sits below Tier 1. It's not a separate classification - it's a **pre-qualification** that exempts a deployment from the full Tier 1 assessment process.
 
-```
-Fast Lane  →  Tier 1  →  Tier 2  →  Tier 3
-(self-certify)  (security review)  (security + risk)  (security + risk + regulatory)
-```
+![Fast Lane to Tier 3 Progression](images/fast-lane-tier-progression.svg)
 
 If a Fast Lane deployment is re-assessed and found to need Tier 1 controls, the gap is small: add a Judge (even sampling at 10-20%), define a proper PACE plan with transition triggers, and schedule quarterly testing. The usage logs from the Fast Lane period provide the baseline data to calibrate the Judge.
 

@@ -18,9 +18,8 @@ Real-time controls that block known-bad inputs and outputs.
 | **Length limits** | Context stuffing |
 
 **Processing flow:**
-```
-Input → Decode → Normalise → Pattern Match → ML Classify → Pass/Block
-```
+
+![Input Processing Flow](../images/input-processing-flow.svg)
 
 ### Output Guardrails
 
@@ -70,15 +69,7 @@ Async evaluation of interactions for quality and policy compliance.
 
 ### Architecture
 
-**Simple (low volume):**
-```
-Interactions → Judge → Findings → HITL queue
-```
-
-**Two-tier (high volume):**
-```
-Interactions → Tier 1 (fast/cheap) → Flags only → Tier 2 (thorough) → HITL
-```
+![Judge Architecture - Simple and Two-Tier](../images/judge-simple-flow.svg)
 
 ### Evaluation Criteria
 

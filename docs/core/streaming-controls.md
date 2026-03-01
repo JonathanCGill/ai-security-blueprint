@@ -32,9 +32,7 @@ For Tier 2–3 - customer-facing, regulated, consequential - delivering unevalua
 
 Hold tokens in a server-side buffer. Release in chunks after evaluation.
 
-```
-LLM → Buffer (N tokens) → Guardrail check → Release to client → Buffer next N tokens → ...
-```
+![Buffer and Release Pattern](../images/streaming-buffer-release.svg)
 
 | Parameter | Setting | Trade-off |
 |-----------|---------|-----------|
@@ -51,13 +49,7 @@ LLM → Buffer (N tokens) → Guardrail check → Release to client → Buffer n
 
 Deliver tokens immediately. Evaluate the complete response asynchronously. Retract or flag if evaluation fails.
 
-```
-LLM → Client (real-time)
-  ↓ (parallel)
-LLM → Complete response → Judge evaluation
-  ↓ (if flagged)
-Client ← Retraction/warning message
-```
+![Post-Hoc Evaluation Pattern](../images/streaming-post-hoc.svg)
 
 | Step | Timing | What Happens |
 |------|--------|-------------|
@@ -74,9 +66,7 @@ Client ← Retraction/warning message
 
 Don't stream. Generate the complete response, evaluate it, then deliver.
 
-```
-LLM → Complete response → Guardrails → Judge → Deliver (or block)
-```
+![Non-Streaming Full Evaluation](../images/streaming-non-streaming.svg)
 
 | Trade-off | Impact |
 |-----------|--------|

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="90" viewBox="0 0 800 90">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="90" fill="#f8fafc"/>
+
+  <!-- Fast Lane -->
+  <rect x="20" y="15" width="150" height="36" rx="4" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="95" y="38" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">Fast Lane</text>
+  <text x="95" y="70" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">self-certify</text>
+
+  <line x1="170" y1="33" x2="198" y2="33" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Tier 1 -->
+  <rect x="200" y="15" width="150" height="36" rx="4" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="275" y="38" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#4338ca" text-anchor="middle">Tier 1</text>
+  <text x="275" y="70" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">security review</text>
+
+  <line x1="350" y1="33" x2="378" y2="33" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Tier 2 -->
+  <rect x="380" y="15" width="170" height="36" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="465" y="38" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e" text-anchor="middle">Tier 2</text>
+  <text x="465" y="70" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">security + risk</text>
+
+  <line x1="550" y1="33" x2="578" y2="33" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Tier 3 -->
+  <rect x="580" y="15" width="195" height="36" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="677" y="38" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#b91c1c" text-anchor="middle">Tier 3</text>
+  <text x="677" y="70" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">security + risk + regulatory</text>
+</svg>

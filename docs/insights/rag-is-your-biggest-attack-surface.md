@@ -14,15 +14,7 @@ The security implications are not simple.
 
 RAG creates a new data access path that bypasses your existing access controls.
 
-Traditional path:
-```
-User → Application → Database → Access Control → Data
-```
-
-RAG path:
-```
-User → LLM → Retrieval → Vector Store → (maybe access control?) → Data → LLM → User
-```
+![RAG Data Path Comparison](../images/rag-data-path-comparison.svg)
 
 The LLM sees the retrieved data. The LLM generates a response. If the retrieved data includes content the user shouldn't see, the LLM will happily summarise it for them.
 
