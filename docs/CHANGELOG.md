@@ -18,6 +18,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.8.4] - 2026-03-01
+
+### Added
+- **Why Containment Beats Evaluation** - New position paper page articulating the constrain-regardless architecture for sandbagging-resistant AI governance. Covers closed-loop vs open-loop control, action-space vs reasoning-space constraints, compound defence by design, enterprise-owned Judge positioning, and honest acknowledgement of limits. Aligns the framework with the published position paper.
+
+### Changed
+- **Architecture Overview** - Added closed-loop control system framing, constrain-regardless language, and enterprise-owned Judge positioning.
+- **Foundations README** - Added action-space constraint language, enterprise-owned Judge emphasis, and compound defence by design framing.
+- **Evaluation Integrity Risks** - Reframed from "mitigate sandbagging" to "sandbagging is operationally irrelevant as a breakout vector" under the constrain-regardless architecture.
+- **Containment Through Declared Intent** - Added constrain-regardless framing, action-space vs reasoning-space distinction, parental analogy, and closed-loop control system language.
+
+---
+
 ## [0.8.3] - 2026-03-01
 
 ### Added

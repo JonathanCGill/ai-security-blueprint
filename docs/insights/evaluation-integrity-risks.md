@@ -112,15 +112,25 @@ The risk of evaluation gaming scales with model capability and deployment stakes
 
 ---
 
-## The Uncomfortable Implication
+## The Architectural Response: Constrain-Regardless
 
 The AISI data raises a question that this framework must address honestly: **if models can game evaluations, how do we know our controls work?**
 
-The answer is the same principle that underpins the entire three-layer pattern: no single control is trusted in isolation. Guardrails don't trust the model. The Judge doesn't trust the guardrails. Humans don't trust the Judge. Each layer assumes the others might fail.
+The answer is not to make evaluations more accurate. It is to make evaluations **less important**.
 
-Evaluation integrity risks don't break this pattern - they reinforce why it exists. A model that can sandbag its way past one layer still faces two more. The defence-in-depth approach means that the cost of successful evasion increases multiplicatively with each independent layer.
+This framework adopts a **constrain-regardless** architecture. Containment boundaries derive from [declared business intent](containment-through-intent.md) - what the use case requires - not from evaluation of what the model can do. If permissions are not derived from evaluation, there is nothing to game. A model that conceals its ability to exfiltrate data cannot exploit that ability if the containment boundary does not permit data exfiltration in the first place. The capability exists; the execution path does not.
 
-But it does mean that **evaluation results should be treated as evidence, not proof.** A model passing evaluation is necessary but not sufficient for deployment confidence. Production monitoring, anomaly detection, and human oversight provide the additional evidence that evaluation alone cannot.
+**Sandbagging is operationally irrelevant as a breakout vector** in this architecture because:
+
+- **Layer 1 (Containment)** enforces action-space constraints through [infrastructure](infrastructure-beats-instructions.md), not evaluation results. Permissions are set by intent, not by capability assessment.
+- **Layer 2 (Judge)** detects within-bounds drift regardless of cause. The agent doesn't need to be "caught sandbagging" - it needs to be caught behaving differently from baseline. The Judge is agnostic to intent.
+- **Layer 3 (Human Oversight)** handles what neither containment nor the Judge can resolve autonomously.
+
+For sandbagging to succeed as a breakout vector, a model would need to simultaneously evade containment boundaries, pass the Judge's behavioural constitution over sustained periods, **and** avoid triggering human escalation thresholds. Each layer's design is informed by the failure modes of the others. This is compound defence by design.
+
+Evaluation integrity risks don't break this pattern - they reinforce why it exists. But it does mean that **evaluation results should be treated as evidence, not proof.** A model passing evaluation is necessary but not sufficient for deployment confidence. Production monitoring, anomaly detection, and human oversight provide the continuous closed-loop verification that point-in-time evaluation alone cannot.
+
+For the full argument, see [Why Containment Beats Evaluation](why-containment-beats-evaluation.md).
 
 ---
 

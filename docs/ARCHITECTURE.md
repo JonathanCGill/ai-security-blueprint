@@ -15,7 +15,7 @@ The industry is converging on the same answer independently. NVIDIA NeMo, AWS Be
 
 **Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain.**
 
-Each layer catches what the others miss. Remove any layer and you have a gap.
+Each layer catches what the others miss. Remove any layer and you have a gap. Together they form a **closed-loop control system**: containment boundaries define the desired state, the Judge continuously measures actual behaviour, drift detection computes the error, and human oversight applies corrective action. Unlike open-loop approaches that evaluate once and deploy, this architecture self-corrects continuously. See [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md).
 
 ---
 
@@ -23,11 +23,11 @@ Each layer catches what the others miss. Remove any layer and you have a gap.
 
 ![Single-Agent Security Architecture](images/single-agent-architecture.svg)
 
-For a single AI model - a chatbot, a document processor, an assistant - the three layers wrap the model's input and output:
+For a single AI model - a chatbot, a document processor, an assistant - the three layers wrap the model's input and output. Each layer is specifically designed to catch what the previous layer misses (compound defence by design, not by coincidence):
 
-- **Guardrails** run synchronously on every request. Deterministic pattern matching: content filters, PII detection, topic restrictions, rate limits. Fast and necessary, but insufficient alone - you cannot write a regex for every possible failure of a system that generates natural language.
-- **LLM-as-Judge** runs asynchronously, evaluating whether the response is appropriate, safe, within scope, and consistent with purpose. Different model, different provider if possible. If the primary model is compromised, the Judge must not be compromised with it.
-- **Human Oversight** scales with risk. Low-risk systems get spot checks. High-risk systems get human approval before execution. Only genuinely ambiguous cases reach human reviewers.
+- **Guardrails** (containment boundaries) run synchronously on every request. Deterministic pattern matching: content filters, PII detection, topic restrictions, rate limits. Permissions derive from **business intent** - what the use case requires - not from evaluation of the model's capabilities. This is a [constrain-regardless](insights/why-containment-beats-evaluation.md) architecture: action-space constraints that leave the model's reasoning unconstrained. Fast and necessary, but insufficient alone - you cannot write a regex for every possible failure of a system that generates natural language.
+- **LLM-as-Judge** runs asynchronously, evaluating whether the response is appropriate, safe, within scope, and consistent with purpose. Different model, different provider if possible - **enterprise-owned and configured**, not vendor-side safeguards. If the primary model is compromised, the Judge must not be compromised with it. Catches within-bounds adversarial behaviour that containment cannot address.
+- **Human Oversight** scales with risk. Low-risk systems get spot checks. High-risk systems get human approval before execution. Only genuinely ambiguous cases reach human reviewers. Handles what neither containment nor the Judge can resolve autonomously.
 
 Controls scale to risk tier - from minimal self-certification ([Fast Lane](FAST-LANE.md)) to full architecture with mandatory human approval.
 
