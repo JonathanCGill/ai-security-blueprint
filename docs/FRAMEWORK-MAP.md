@@ -16,7 +16,7 @@ This framework has two halves. The **Foundation** covers single-model AI deploym
 
 [![MASO Tube Map](images/maso-tube-map.svg)](images/maso-tube-map.svg)
 
-**MASO** - Six control domains, 93 controls, three implementation tiers, dual OWASP coverage. For systems where multiple agents collaborate autonomously. **→ [Start here](maso/)**
+**MASO** - Seven control domains, 123 controls, three implementation tiers, dual OWASP coverage. For systems where multiple agents collaborate autonomously. **→ [Start here](maso/)**
 
 ---
 

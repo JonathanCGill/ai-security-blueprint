@@ -27,13 +27,13 @@ The critical addition for multi-agent systems is the **Secure Inter-Agent Messag
 
 ![MASO Tube Map](../images/maso-tube-map.svg)
 
-Six coloured lines represent six control domains. Stations are key controls. Zones are implementation tiers. Interchanges mark where domains share control points (Judge Gate, PACE Bridge, Agent Registry). River PACE flows through the centre, mapping resilience phases to tier progression.
+Seven coloured lines represent seven control domains. Stations are key controls. Zones are implementation tiers. Interchanges mark where domains share control points (Judge Gate, PACE Bridge, Agent Registry). River PACE flows through the centre, mapping resilience phases to tier progression.
 
 ---
 
 ## Control Domains
 
-The framework organises 93 controls into six domains. The first five map to specific OWASP risks. The sixth - Prompt, Goal & Epistemic Integrity - addresses both the three OWASP risks that require cross-cutting controls and the eight epistemic risks identified in the [Emergent Risk Register](controls/risk-register.md) that have no OWASP equivalent.
+The framework organises 123 controls into seven domains. The first five map to specific OWASP risks. The sixth - Prompt, Goal & Epistemic Integrity - addresses both the three OWASP risks that require cross-cutting controls and the eight epistemic risks identified in the [Emergent Risk Register](controls/risk-register.md) that have no OWASP equivalent. The seventh - Privileged Agent Governance - addresses the unique risks of orchestrators, planners, and other agents with elevated authority.
 
 ### 0. [Prompt, Goal & Epistemic Integrity](controls/prompt-goal-and-epistemic-integrity.md)
 
@@ -70,6 +70,12 @@ Immutable decision chain logs capture the full reasoning and action history of e
 Model provenance tracking and AIBOM generation for every model in the agent system. MCP server vetting with signed manifests and runtime integrity checks. A2A trust chain validation for inter-agent protocol endpoints. Continuous scanning of the agent toolchain for known vulnerabilities and poisoned components.
 
 *Covers: LLM03, ASI04*
+
+### 6. [Privileged Agent Governance](controls/privileged-agent-governance.md)
+
+Orchestrators, planners, and meta-agents hold disproportionate authority - they can create agents, assign tasks, allocate resources, and modify workflows. These privileged agents require elevated controls: mandatory human approval gates, authority delegation limits, audit trails for every privilege exercise, and independent monitoring that the privileged agent cannot influence.
+
+*Covers: ASI03, ASI07, LLM06 (elevated controls for high-authority agents)*
 
 ---
 
@@ -149,7 +155,7 @@ Agents execute read operations and low-consequence writes autonomously. High-con
 
 ### [Tier 3 - Autonomous](implementation/tier-3-autonomous.md) (High Autonomy)
 
-Agents operate with minimal human intervention for pre-approved task categories. Human oversight focuses on exception handling and strategic review. Full PACE cycle operational and tested through regular red-team exercises. All six control domains fully implemented.
+Agents operate with minimal human intervention for pre-approved task categories. Human oversight focuses on exception handling and strategic review. Full PACE cycle operational and tested through regular red-team exercises. All seven control domains fully implemented.
 
 **Required controls:** Everything in Tier 2, plus kill switch tested and auditable, drift detection with baseline comparison, blast radius caps enforced, circuit breakers active, full OWASP coverage validated, regular adversarial testing.
 

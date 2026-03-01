@@ -47,7 +47,7 @@ The **PACE resilience sidebar** on the right shows that resilience planning runs
 | **Emerging Challenges** | Green | Foundation | Where the pattern meets its limits - seven frontier topics |
 | **Getting Started** | Teal | Foundation | Quick Start → Implementation Guide → Fast Lane |
 | **Testing & Assurance** | Pink | Both | Threat Modelling → Adversarial Testing → Red Team, with feedback loop back to Judge Assurance. Bridges to MASO Red Team. |
-| **MASO Control Domains** | Orange | MASO | Six domains: Prompt/Goal/Epistemic → Identity & Access → Data Protection → Execution Control → Observability → Supply Chain |
+| **MASO Control Domains** | Orange | MASO | Seven domains: Prompt/Goal/Epistemic → Identity & Access → Data Protection → Execution Control → Observability → Supply Chain → Privileged Agent Governance |
 | **Implementation Tiers** | Purple | MASO | Tier 1 (Supervised) → Tier 2 (Managed) → Tier 3 (Autonomous) |
 | **Threat Intelligence** | Dark Gold | MASO | Incident Tracker → Emerging Threats → MASO Red Team Playbook |
 | **Integration** | Brown | MASO | LangGraph → AutoGen/CrewAI → AWS Bedrock → Worked Examples |

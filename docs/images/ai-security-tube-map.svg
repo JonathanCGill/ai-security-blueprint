@@ -289,8 +289,8 @@
     <line x1="180" y1="600" x2="272" y2="600" stroke="#EE7C0E" stroke-width="10" stroke-linecap="round"/>
     <polygon points="195,590 180,600 195,610" fill="#EE7C0E"/>
     <text x="170" y="604" text-anchor="end" font-size="8.5" fill="#EE7C0E" font-weight="bold">MASO</text>
-    <text x="170" y="614" text-anchor="end" font-size="7" fill="#EE7C0E">6 DOMAINS</text>
-    <text x="170" y="624" text-anchor="end" font-size="7" fill="#EE7C0E">93 CONTROLS</text>
+    <text x="170" y="614" text-anchor="end" font-size="7" fill="#EE7C0E">7 DOMAINS</text>
+    <text x="170" y="624" text-anchor="end" font-size="7" fill="#EE7C0E">123 CONTROLS</text>
   </g>
 
   <!-- ============================================================ -->
@@ -578,7 +578,7 @@
   <g transform="translate(60, 1150)">
     <text x="0" y="0" font-size="10" fill="#555" font-weight="bold">Framework totals:</text>
     <text x="0" y="18" font-size="9" fill="#777">Foundation: 80 infrastructure controls · 4 risk tiers · 3 control layers · PACE resilience</text>
-    <text x="0" y="33" font-size="9" fill="#777">MASO: 6 domains · 93 controls · 99 tests · 3 implementation tiers · 30 emergent risks · dual OWASP coverage</text>
+    <text x="0" y="33" font-size="9" fill="#777">MASO: 7 domains · 123 controls · 99 tests · 3 implementation tiers · 30 emergent risks · dual OWASP coverage</text>
     <text x="0" y="48" font-size="9" fill="#777">12 lines · 50+ stations · 8 interchanges</text>
   </g>
 
