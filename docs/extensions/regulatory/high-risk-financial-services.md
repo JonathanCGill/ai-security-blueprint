@@ -1,228 +1,178 @@
 # High-Risk Financial Services
 
-How the top 10 cyber risks facing financial services are affected by — and can be addressed through — AI runtime behavioural security.
+The top 10 risks of deploying AI in financial services — and how AI runtime behavioural security addresses each one.
 
 ---
 
 ## Why Financial Services Is the Stress Test
 
-Financial services is where AI runtime security matters most. High regulatory burden, adversarial threat actors, real-time transaction processing, and zero tolerance for unexplainable decisions. If a control pattern works here, it works anywhere.
+Financial services is where AI runtime security matters most. High regulatory burden, real-time transaction processing, zero tolerance for unexplainable decisions, and critical functions — payments, credit, trading — where AI errors have immediate financial and regulatory consequences. If a control pattern works here, it works anywhere.
 
-This document examines the top 10 cyber risks through two lenses:
+This document examines the risks that emerge when financial institutions deploy AI systems for critical functions — and maps each risk to the three-layer defence pattern.
 
 | Lens | Question |
 |------|----------|
-| **AI as attack surface** | How does deploying AI systems create new exposure to each risk? |
-| **Three-layer defence** | Which risks does the Guardrails → Judge → Human Oversight pattern actually address — and which require infrastructure or general cybersecurity controls instead? |
+| **AI deployment risk** | What can go wrong when AI operates in critical financial functions without adequate controls? |
+| **Three-layer defence** | How does the Guardrails → Judge → Human Oversight pattern address each risk? |
 
-### Honest Scope
+### Scope
 
-The three-layer runtime pattern (Guardrails prevent, Judge detects, Humans decide) is designed for **AI behavioural security** — controlling what AI systems say and do at runtime. It directly addresses risks that manifest through AI behaviour: data leakage in responses, manipulated outputs, undetected fraud patterns, unexplainable decisions.
+The three-layer runtime pattern (Guardrails prevent, Judge detects, Humans decide) is designed for **AI behavioural security** — controlling what AI systems say and do at runtime. The risks in this document are the risks that arise *from deploying AI itself* in financial services: AI making payments without validation, AI hallucinating financial data, AI producing unexplainable credit decisions, AI leaking customer data in responses.
 
-It does **not** replace general cybersecurity. Risks like ransomware, DDoS, and cloud misconfiguration require infrastructure controls that sit beneath the behavioural layer. This document is honest about which risks map to the three-layer pattern, which require the framework's 80 infrastructure controls, and which sit outside the framework entirely.
-
----
-
-## Risk 1: Ransomware
-
-**The risk:** Ransomware attacks against banks increased significantly through 2024-2025, with attackers specifically targeting financial institutions for their willingness to pay. Ransomware-as-a-Service has lowered the barrier to entry. Record ransom demands have reached $75 million.
-
-**How AI systems are exposed:**
-
-| Exposure | Impact |
-|----------|--------|
-| AI infrastructure encrypted | AI services go offline, no fallback |
-| Training data held ransom | Model retraining blocked |
-| AI used to craft more convincing phishing | Enables the initial access that leads to ransomware deployment |
-| Model endpoints targeted | Denial of AI-powered services |
-
-**How AI can mitigate:**
-
-| Capability | Application |
-|------------|-------------|
-| Anomaly detection | AI monitors file system activity, flags mass encryption patterns faster than rule-based systems |
-| Email analysis | AI evaluates email content, sender behaviour, and attachment risk to catch phishing that delivers ransomware |
-| Behavioural analytics | Detects lateral movement and privilege escalation that precedes ransomware deployment |
-| Automated response | Isolate affected systems within seconds of detection |
-
-**Three-layer fit:** Partial. Ransomware is an infrastructure threat — the three-layer pattern doesn't prevent ransomware, but it provides the monitoring telemetry (Judge) and escalation paths (Human Oversight) that accelerate detection and response. The primary defences are infrastructure controls: network segmentation, backup resilience, and incident response.
-
-| Layer | Role |
-|-------|------|
-| Guardrails | Rate limiting, input validation on AI endpoints |
-| Judge | Anomaly detection on access patterns; flags mass encryption signatures in telemetry |
-| Human Oversight | Incident escalation; decides whether to invoke circuit breaker |
-| **Infrastructure** (primary) | Backup isolation, network segmentation, automated containment |
+These are not general cybersecurity risks like ransomware or DDoS — those exist whether or not you deploy AI and require traditional infrastructure controls. This document focuses on the risks that are unique to, or significantly amplified by, putting AI in the critical path of financial operations.
 
 ---
 
-## Risk 2: Third-Party and Supply Chain Attacks
+## Risk 1: AI in Payments and Transactions Without Controls
 
-**The risk:** Banks depend heavily on third-party vendors for core services. Supply chain attacks bypass the bank's own defences by compromising a trusted vendor. In 2025, a single ransomware attack on a financial services software company impacted over 70 US banks and credit unions. Over 4 million consumers' data was exposed through a breach at a credit reporting agency's CRM system.
+**The risk:** Financial institutions deploy AI systems that initiate, approve, or process payments without adequate validation controls. An AI chatbot processes a refund it shouldn't. An AI assistant initiates a transfer based on a hallucinated instruction. An AI agent applies an unauthorised discount. When AI operates in the payment path without controls, every failure has direct financial impact.
 
-**How AI systems are exposed:**
+**Why this matters in financial services:**
 
-| Exposure | Impact |
+| Scenario | Impact |
 |----------|--------|
-| Foundation model provider compromised | Model outputs manipulated or service unavailable |
-| AI SaaS vendor breached | Customer data exposed via AI platform |
-| Poisoned dependencies | Malicious code in AI libraries (LangChain, LlamaIndex, etc.) |
-| Embedding service compromise | RAG retrieval returns manipulated content |
-| MCP/tool provider breach | Agent actions executed in compromised environment |
+| AI processes payment for wrong amount | Direct financial loss; customer dispute |
+| AI initiates transfer based on manipulated prompt | Fraudulent transaction executed with system authority |
+| AI applies unauthorised pricing or discount | Revenue leakage at scale |
+| AI chatbot authorises refund without verification | Financial loss; potential for systematic exploitation |
+| AI agent executes trade without validation | Market impact; regulatory breach |
 
-AI systems have a uniquely deep supply chain problem: model provider + cloud platform + vector database + embedding service + tool endpoints + framework libraries. Each is a potential attack vector.
-
-**How AI can mitigate:**
-
-| Capability | Application |
-|------------|-------------|
-| Vendor risk scoring | AI analyses vendor security posture continuously, not just at assessment time |
-| Anomaly detection on vendor connections | Flags unusual data flows to/from third parties |
-| Contract analysis | AI reviews vendor contracts for security gaps |
-| Software composition analysis | AI scans dependencies for known vulnerabilities |
-
-**Three-layer fit:** Partial. The AI supply chain is uniquely deep (model provider + cloud + vector DB + embedding service + tools + libraries). Guardrails can validate data integrity at ingestion boundaries. Judge can detect when retrieved content deviates from expected distributions. But supply chain security is fundamentally an infrastructure and procurement problem.
+**Three-layer fit:** Strongest. This is exactly what the three-layer pattern was designed for — controlling what AI systems *do* at runtime when those actions have financial consequences.
 
 | Layer | Role |
 |-------|------|
-| Guardrails | Schema validation on feeder data; source authentication; reject unexpected formats |
-| Judge | Detects drift in retrieved content quality; flags when RAG results deviate from baseline |
-| Human Oversight | Vendor assessment review; approves new model or tool integrations |
-| **Infrastructure** (primary) | Dependency scanning, model provenance verification, vendor risk management |
+| **Guardrails** (primary) | Transaction amount validation against cart/order; payment method confirmation; duplicate detection; monetary thresholds that trigger escalation; action allowlisting |
+| **Judge** (primary) | Evaluates whether the payment action matches the conversation context — "did the customer actually request this?"; flags transactions where AI reasoning doesn't support the action; detects prompt manipulation leading to unauthorised transactions |
+| **Human Oversight** (primary) | Reviews all transactions above threshold; approves high-value or unusual payment actions; final authority on flagged transactions |
+| Infrastructure | Payment gateway validation (amount, card, 3DS); fraud detection; reconciliation |
+
+**PACE posture for payment-path AI:**
+- **Primary:** All three layers active; AI processes payments within validated parameters
+- **Alternate:** Judge unavailable → all payment actions require human approval before execution
+- **Contingency:** Multiple layers degraded → AI enters read-only mode (can answer questions, cannot process payments)
+- **Emergency:** Circuit breaker → AI removed from payment path; fallback to traditional payment interface
 
 ---
 
-## Risk 3: Social Engineering and Phishing
+## Risk 2: Hallucinated Financial Information
 
-**The risk:** Social engineering remains the most common initial access vector. 78% of attacks in banking were attributed to system intrusion, errors, and social engineering. AI-powered deepfakes have arrived — in 2025, a Deutsche Bank executive transferred over $140,000 after being deceived by a deepfake video call impersonating the CEO.
+**The risk:** AI systems fabricate financial data — account balances, interest rates, product terms, regulatory obligations, transaction histories — and present it with full confidence. In financial services, a hallucinated number isn't an inconvenience; it's a potential mis-selling event, a regulatory breach, or a basis for a customer's financial decision.
 
-**How AI systems are exposed:**
+**Why this matters in financial services:**
 
-| Exposure | Impact |
+| Scenario | Impact |
 |----------|--------|
-| AI generates more convincing phishing | Attackers use LLMs to craft personalised, grammatically perfect phishing at scale |
-| Deepfake voice/video | AI-generated impersonation of executives for authorisation fraud |
-| Prompt injection via social engineering | Users tricked into pasting malicious prompts into AI tools |
-| AI chatbots manipulated | Customer-facing bots socially engineered into revealing information |
+| AI states wrong interest rate or product terms | Mis-selling; regulatory action; customer compensation |
+| AI fabricates account balance or transaction history | Customer makes financial decisions on false information |
+| AI invents regulatory requirements | Unnecessary compliance costs or, worse, false sense of compliance |
+| AI generates incorrect tax or fee calculations | Financial loss; customer complaints; regulatory exposure |
+| AI hallucinates credit terms in a lending conversation | Binding commitment on fabricated terms |
 
-**How AI can mitigate:**
-
-| Capability | Application |
-|------------|-------------|
-| Real-time phishing detection | AI analyses email/message content, sender patterns, URL reputation simultaneously |
-| Voice authentication | AI verifies speaker identity, detects synthetic speech |
-| Deepfake detection | AI identifies AI-generated video/audio in real-time |
-| User behaviour analytics | Flags when a user's actions don't match their normal patterns (e.g., sudden large transfer after a call) |
-| Customer-facing guardrails | Prevent AI chatbots from being manipulated into disclosing sensitive information |
-
-**Three-layer fit:** Strong for customer-facing AI. The three-layer pattern directly addresses the scenario where attackers manipulate AI chatbots or exploit AI-generated content. Guardrails block known manipulation patterns. Judge evaluates whether the AI is being socially engineered. Human Oversight handles edge cases.
+**Three-layer fit:** Strong. Hallucination is a runtime behavioural problem — the AI generates incorrect outputs that look correct. This is precisely what the three-layer pattern detects.
 
 | Layer | Role |
 |-------|------|
-| Guardrails | Block known prompt injection patterns; content filtering on chatbot inputs/outputs; refuse sensitive disclosures |
-| Judge | Detects conversational manipulation patterns; flags when chatbot behaviour deviates from policy; identifies deepfake indicators |
-| Human Oversight | Reviews flagged chatbot interactions; approves high-value actions triggered through AI |
-| Infrastructure | Voice/video authentication systems; email security infrastructure |
+| **Guardrails** (primary) | Output validation against source systems — every stated balance, rate, or term verified against the system of record before delivery; format validation; range checks on financial figures |
+| **Judge** (primary) | Semantic grounding evaluation — "are all financial claims in this response supported by retrieved data?"; detects when the model generates rather than retrieves; flags confident assertions without source backing |
+| Human Oversight | Reviews flagged hallucination alerts; spot-checks random interactions; investigates patterns of hallucination in specific product areas |
+| Infrastructure | RAG architecture with source attribution; system-of-record APIs; data freshness monitoring |
 
 ---
 
-## Risk 4: Data Breaches
+## Risk 3: Data Leakage Through AI Responses
 
-**The risk:** Financial institutions hold vast quantities of personal and financial data. 75% of stolen data in the sector is personal data. Breaches result in regulatory fines, litigation, and severe reputational damage.
+**The risk:** AI systems surface customer data — PII, account details, transaction history, financial records — to the wrong person. The AI doesn't exfiltrate data through the network; it speaks it in a response. A model that has broad data access to be useful can leak that data to any user who asks the right question.
 
-**How AI systems are exposed:**
+**Why this matters in financial services:**
 
-| Exposure | Impact |
+| Scenario | Impact |
 |----------|--------|
-| Training data leakage | Models memorise and reproduce PII from training data |
-| Prompt-based extraction | Adversaries craft prompts to extract sensitive data from model context |
-| RAG data exposure | AI retrieves and surfaces data the user shouldn't see |
-| Log exposure | AI interaction logs contain customer data |
-| Model inversion | Attackers infer training data from model outputs |
+| AI reveals another customer's account details | Data breach; regulatory notification; reputational damage |
+| AI surfaces transaction history to unauthorised user | Privacy violation; potential for financial exploitation |
+| AI echoes PII from training data | GDPR/privacy breach at scale |
+| AI includes sensitive data in a response the user didn't request | Over-disclosure; need-to-know violation |
+| Cross-session contamination leaks customer context | One customer sees another's financial data |
 
-AI systems create new data breach vectors that traditional DLP doesn't cover. A model doesn't exfiltrate data through the network — it speaks it in a response.
+AI creates entirely new data exfiltration vectors that traditional DLP doesn't cover. A model doesn't send data through the network — it speaks it in a response.
 
-**How AI can mitigate:**
-
-| Capability | Application |
-|------------|-------------|
-| PII detection in outputs | AI scans every response for personal data before delivery |
-| Data classification | AI classifies unstructured data at scale, enabling proper controls |
-| Access anomaly detection | AI flags unusual data access patterns |
-| DLP enhancement | AI understands context — distinguishes between legitimate data use and exfiltration |
-
-**Three-layer fit:** Strong. This is the framework's sweet spot. AI creates entirely new data exfiltration vectors — a model doesn't send data through the network, it speaks it in a response. Traditional DLP doesn't cover this. The three-layer pattern does.
+**Three-layer fit:** Strong. This is the framework's sweet spot.
 
 | Layer | Role |
 |-------|------|
-| **Guardrails** (primary) | PII detection in every output; content filtering blocks sensitive data patterns; data masking before response delivery |
-| **Judge** (primary) | Evaluates whether responses contain data the user shouldn't see; detects prompt-based extraction attempts; flags training data memorisation |
+| **Guardrails** (primary) | PII detection in every output; content filtering blocks sensitive data patterns; data masking before response delivery; cross-reference output data against requesting user's permissions |
+| **Judge** (primary) | Evaluates whether responses contain data the user shouldn't see; detects prompt-based extraction attempts; flags training data memorisation; identifies cross-session contamination |
 | Human Oversight | Reviews flagged data exposure incidents; approves exceptions to data controls |
-| Infrastructure | Encryption, access control, data classification, tokenisation |
+| Infrastructure | Encryption, access control, data classification, tokenisation, session isolation |
 
 ---
 
-## Risk 5: DDoS Attacks
+## Risk 4: Unexplainable AI Decisions
 
-**The risk:** DDoS attacks against financial services continue to grow in volume and sophistication, with multi-vector attacks rising 80% year-on-year. Attackers use DDoS as both a direct disruption and a smokescreen for other attacks. Financial institutions' strict SLA requirements make them particularly vulnerable to extortion.
+**The risk:** AI systems make or influence decisions — credit approvals, fraud flags, risk ratings, pricing — that cannot be explained to the customer, the regulator, or the internal audit function. In financial services, explainability isn't optional. Regulators require it (EU AI Act Art. 13, GDPR Art. 22, ECOA adverse action notices). Customers have a right to understand decisions that affect them.
 
-**How AI systems are exposed:**
+**Why this matters in financial services:**
 
-| Exposure | Impact |
+| Scenario | Impact |
 |----------|--------|
-| AI endpoint flooding | Model inference endpoints overwhelmed |
-| Cost-based DoS | Attacker triggers expensive AI inference at scale (no need to crash it — just bankrupt it) |
-| Guardrail exhaustion | Guardrail evaluation resources consumed, bypassing controls |
-| Cascading failure | AI system failure cascades to dependent business processes |
+| AI declines credit application with no explainable reason | Regulatory breach (adverse action notice requirements) |
+| AI flags customer as high-risk but can't justify why | AML/KYC process failure; potential discrimination claim |
+| AI prices a product differently for different customers without traceable logic | Fair treatment violation; regulatory scrutiny |
+| AI recommends investment but can't explain the basis | MiFID II suitability obligation breach |
+| Auditor asks how a decision was made and there's no trail | Audit failure; regulatory enforcement |
 
-Cost-based denial of service is a new category specific to AI. An attacker doesn't need to overwhelm your infrastructure — they just need to trigger enough expensive model calls to blow your budget.
-
-**How AI can mitigate:**
-
-| Capability | Application |
-|------------|-------------|
-| Traffic analysis | AI distinguishes legitimate traffic patterns from DDoS patterns in real-time |
-| Adaptive rate limiting | AI adjusts rate limits dynamically based on threat level |
-| Bot detection | AI identifies bot traffic that's indistinguishable to rule-based systems |
-| Attack prediction | AI correlates threat intelligence to predict and preposition defences |
-
-**Three-layer fit:** Minimal. DDoS is an infrastructure availability problem. The three-layer pattern contributes circuit breakers and PACE degradation (if controls are overwhelmed, degrade gracefully rather than fail open), but the primary defences are infrastructure: rate limiting at the API gateway, traffic analysis, and capacity planning.
+**Three-layer fit:** Strong. Explainability is a runtime requirement — you need to capture and evaluate the reasoning behind every decision as it happens, not reconstruct it after the fact.
 
 | Layer | Role |
 |-------|------|
-| Guardrails | Rate limiting per user/session; reject malformed requests |
-| Judge | Cost monitoring; flags anomalous inference volume |
-| Human Oversight | Capacity decisions; approves emergency rate limit changes |
-| **Infrastructure** (primary) | API gateway throttling, CDN, traffic analysis, circuit breakers, PACE failover |
+| Guardrails | Enforce structured output formats that include reasoning; reject decisions without required justification fields; ensure adverse action notices include required content |
+| **Judge** (primary) | Evaluates decision quality and reasoning — "does the stated rationale actually support the conclusion?"; detects reasoning gaps; flags decisions where the explanation contradicts the evidence; validates that protected characteristics were not decision factors |
+| **Human Oversight** (primary) | Reviews all adverse decisions; validates reasoning quality; provides the human accountability regulators require (GDPR Art. 22, EU AI Act Art. 14); documented review trails |
+| Infrastructure | Tamper-proof decision logging; reasoning chain capture; audit trail retention (7+ years for regulated decisions) |
 
 ---
 
-## Risk 6: Insider Threats
+## Risk 5: AI Bias and Discrimination in Financial Decisions
 
-**The risk:** Insiders — employees, contractors, and vendors with legitimate access — pose significant risk. Attackers actively recruit bank employees for intelligence on security configurations. Insiders may act maliciously or be compromised through social engineering.
+**The risk:** AI systems produce discriminatory outcomes — approving or denying credit, pricing products, assessing risk, or flagging fraud based on protected characteristics. Bias can be embedded in training data, amplified by model architecture, or introduced through proxy variables. In financial services, discriminatory AI decisions trigger fair lending violations, equal treatment breaches, and regulatory enforcement.
 
-**How AI systems are exposed:**
+**Why this matters in financial services:**
 
-| Exposure | Impact |
+| Scenario | Impact |
 |----------|--------|
-| Prompt engineer manipulates system | Insider modifies prompts to disable controls or extract data |
-| Judge criteria weakened | Insider changes evaluation criteria to hide issues |
-| HITL reviewer collusion | Reviewer approves flagged transactions deliberately |
-| Model exfiltration | Insider copies proprietary model weights or training data |
-| Shadow AI deployment | Staff deploy unauthorised AI services that bypass controls |
+| AI credit model denies applications at higher rates for protected groups | Fair lending violation (ECOA, CRA); regulatory enforcement; litigation |
+| AI pricing model charges different rates correlated with ethnicity or postcode | Redlining by algorithm; regulatory action |
+| AI fraud detection flags legitimate transactions from certain demographics | Customer harm; discrimination complaint |
+| AI customer service provides different quality responses based on customer profile | Fair treatment violation |
+| AI recruitment tool screens out candidates from certain backgrounds | Employment discrimination liability |
+
+**Three-layer fit:** Strong. Bias manifests in AI outputs — the decisions and recommendations the system produces at runtime. The three-layer pattern can detect and flag biased outputs before they cause harm.
+
+| Layer | Role |
+|-------|------|
+| **Guardrails** (primary) | Protected-class input filtering; reject decisions that reference prohibited factors; enforce fairness constraints on outputs (e.g., decision rate parity checks) |
+| **Judge** (primary) | Fairness evaluation per decision — statistical analysis of decision patterns; detects proxy discrimination; flags when decision distributions shift across demographic groups; compares individual decisions against fairness benchmarks |
+| **Human Oversight** (primary) | Reviews all adverse decisions for bias indicators; portfolio-level fairness reviews; responds to discrimination complaints with full decision audit trail |
+| Infrastructure | Bias testing in model development; representative training data; independent model validation (OCC/Fed SR 11-7 guidance) |
+
+---
+
+## Risk 6: Insider Manipulation of AI Systems
+
+**The risk:** Insiders — employees, contractors, vendors with legitimate access — modify AI system behaviour to disable controls, extract data, or manipulate outcomes. A single prompt change can fundamentally alter what an AI system does, and it's harder to detect than a firewall rule change. In financial services, AI configuration access is effectively access to decision-making authority.
+
+**Why this matters in financial services:**
+
+| Scenario | Impact |
+|----------|--------|
+| Prompt engineer modifies system prompt to bypass guardrails | Controls silently disabled; all subsequent outputs uncontrolled |
+| Insider weakens Judge evaluation criteria | Flagging rate drops; harmful outputs go undetected |
+| HITL reviewer deliberately approves flagged transactions | Fraud or data breach enabled by compromised control layer |
+| Insider modifies AI trading parameters | Unauthorised market exposure |
+| Staff deploy shadow AI that bypasses all controls | Uncontrolled AI operating on customer data |
 
 AI systems amplify insider risk because a single prompt change can fundamentally alter system behaviour — and it's harder to detect than a firewall rule change.
 
-**How AI can mitigate:**
-
-| Capability | Application |
-|------------|-------------|
-| User behaviour analytics (UBA) | AI baselines normal behaviour and flags deviations |
-| Privileged access monitoring | AI monitors admin actions on AI systems in real-time |
-| Configuration drift detection | AI detects unauthorised changes to prompts, parameters, guardrails |
-| Data access analytics | AI identifies unusual data access patterns by insiders |
-
-**Three-layer fit:** Strong. AI systems amplify insider risk because a single prompt change can alter system behaviour — harder to detect than a firewall rule change. The three-layer pattern's independent failure domains are specifically designed for this: a compromised guardrail doesn't fool the Judge, and a compromised Judge doesn't bypass Human Oversight.
+**Three-layer fit:** Strong. The three-layer pattern's independent failure domains are specifically designed for this: a compromised guardrail doesn't fool the Judge, and a compromised Judge doesn't bypass Human Oversight.
 
 | Layer | Role |
 |-------|------|
@@ -233,72 +183,52 @@ AI systems amplify insider risk because a single prompt change can fundamentally
 
 ---
 
-## Risk 7: Cloud Security
+## Risk 7: AI Operating Beyond Authorised Scope
 
-**The risk:** As banking operations migrate to cloud, the attack surface expands. Misconfigured cloud resources, inadequate access controls, and shared responsibility confusion create vulnerabilities. Cloud credentials are a high-value target.
+**The risk:** AI systems take actions or access data beyond what they were designed and authorised to do. An AI assistant designed to answer product questions starts modifying account settings. An AI fraud analyst accesses customer data outside its investigation scope. Scope creep in AI systems is particularly dangerous because it's often invisible — the AI doesn't error, it simply does more than intended.
 
-**How AI systems are exposed:**
+**Why this matters in financial services:**
 
-| Exposure | Impact |
+| Scenario | Impact |
 |----------|--------|
-| Misconfigured model endpoints | AI API exposed publicly without authentication |
-| Overly permissive IAM | AI service accounts with excessive permissions |
-| Data residency violations | AI processing data in unapproved regions |
-| Shared tenancy risks | AI platform shared with other customers |
-| Credential exposure | AI service credentials leaked in code or logs |
+| AI customer assistant modifies account settings it should only read | Unauthorised account changes; potential financial impact |
+| AI accesses data across business divisions (breaking Chinese walls) | Regulatory breach; insider dealing risk |
+| AI agent chains escalate privileges through delegation | Transitive authority creates unintended access |
+| AI processes data outside authorised jurisdiction | Data residency violation; regulatory breach |
+| AI takes autonomous actions that should require human approval | Unapproved financial commitments; regulatory breach |
 
-AI systems are particularly exposed because they often require broad data access to function, creating tension between security (least privilege) and capability (the model needs data to be useful).
-
-**How AI can mitigate:**
-
-| Capability | Application |
-|------------|-------------|
-| Cloud security posture management | AI continuously scans cloud configs for misconfigurations |
-| Infrastructure as Code analysis | AI reviews IaC templates for security issues before deployment |
-| Identity threat detection | AI monitors cloud identity activity for anomalies |
-| Compliance monitoring | AI maps cloud resources against regulatory requirements continuously |
-
-**Three-layer fit:** Minimal. Cloud security is an infrastructure problem. The framework's infrastructure controls (network segmentation, IAM, secrets management) address this directly, but the three-layer runtime pattern operates *on top of* cloud infrastructure — it doesn't secure the cloud itself.
+**Three-layer fit:** Strong. Scope enforcement is a runtime control problem — you need to validate what the AI is doing on every interaction, not just at deployment time.
 
 | Layer | Role |
 |-------|------|
-| Guardrails | Enforce AI endpoint access controls |
-| Judge | Monitor for credential exposure in AI interactions |
-| Human Oversight | Review cloud configuration changes affecting AI systems |
-| **Infrastructure** (primary) | Cloud security posture management, IAM, network zones, encryption, region-locked deployments |
+| **Guardrails** (primary) | Action allowlisting — explicit registry of permitted actions per AI system; enforce read-only by default; block write operations unless explicitly authorised; validate data access scope against user permissions |
+| **Judge** (primary) | Evaluates whether the AI's actions are within authorised scope — "is this action consistent with this system's mandate?"; detects privilege escalation through agent chains; flags data access outside the user's permissions |
+| Human Oversight | Reviews scope violations; approves exceptions; periodic audit of AI system capabilities vs. authorised scope |
+| Infrastructure | Per-system service accounts with scoped permissions; context-aware access control; network segmentation |
 
 ---
 
-## Risk 8: AI-Powered Attacks
+## Risk 8: Adversarial Manipulation of AI Behaviour
 
-**The risk:** Attackers are using AI to enhance traditional attack methods — more convincing phishing, faster vulnerability discovery, automated reconnaissance, and polymorphic malware that evades detection. 87% of C-suite executives believe their organisation's cyber protection is inadequate against these evolving threats.
+**The risk:** Attackers craft inputs designed to make AI systems behave incorrectly — prompt injection that changes the system's instructions, adversarial inputs that evade fraud detection, data poisoning that corrupts the model's understanding. In financial services, adversarial manipulation of AI can lead to unauthorised transactions, bypassed fraud controls, or manipulated risk assessments.
 
-**How AI systems are exposed:**
+**Why this matters in financial services:**
 
-| Exposure | Impact |
+| Scenario | Impact |
 |----------|--------|
-| Adversarial inputs | Crafted inputs designed to make AI systems behave incorrectly |
-| Prompt injection | Attacker instructions embedded in data the AI processes |
-| Model evasion | Adversaries craft inputs that bypass AI-based detection |
-| Data poisoning | Subtle corruption of training or RAG data |
-| AI arms race | Defensive AI must keep pace with offensive AI |
+| Prompt injection causes AI to bypass payment controls | Unauthorised financial transactions |
+| Adversarial inputs crafted to evade AI fraud detection | Fraudulent transactions processed undetected |
+| Data poisoning corrupts AI credit model | Systematic approval of high-risk applications |
+| Indirect injection via poisoned documents in RAG | AI decisions based on attacker-controlled content |
+| Chatbot socially engineered into revealing account information | Data breach through conversational manipulation |
 
-This is the category where traditional cyber risk and AI-specific risk converge. Attackers using AI to attack AI creates a recursive problem.
+This is where adversarial intent meets AI deployment risk. The attack surface exists because the AI is deployed in a critical function.
 
-**How AI can mitigate:**
-
-| Capability | Application |
-|------------|-------------|
-| Adversarial robustness testing | AI red-teams other AI systems to find weaknesses |
-| Adaptive defence | AI defences that evolve as attack patterns change |
-| Threat intelligence synthesis | AI processes vast threat intelligence feeds to identify emerging attack techniques |
-| Automated patch prioritisation | AI assesses vulnerability severity in context of the bank's specific environment |
-
-**Three-layer fit:** Strong. This is the adversarial scenario the three-layer pattern was designed for. Adversarial inputs crafted to make AI behave incorrectly, prompt injection, data poisoning — these are runtime behavioural attacks. Independent failure domains mean an attack that bypasses guardrails still faces the Judge (different model, different evaluation criteria), and attacks that fool both still face Human Oversight.
+**Three-layer fit:** Strong. This is the adversarial scenario the three-layer pattern was designed for. Independent failure domains mean an attack that bypasses guardrails still faces the Judge (different model, different evaluation criteria), and attacks that fool both still face Human Oversight.
 
 | Layer | Role |
 |-------|------|
-| **Guardrails** (primary) | Adversarial input detection; prompt injection filtering; encoding and obfuscation detection |
+| **Guardrails** (primary) | Adversarial input detection; prompt injection filtering; encoding and obfuscation detection; input normalisation |
 | **Judge** (primary) | Evaluates whether outputs are policy-compliant despite adversarial manipulation; detects model evasion patterns; independent evaluation means different attack surface from guardrails |
 | Human Oversight | Red team exercises; reviews novel attack patterns; updates guardrail and Judge criteria based on findings |
 | Infrastructure | Adversarial robustness testing pipelines; model update and patch management |
@@ -307,65 +237,44 @@ This is the category where traditional cyber risk and AI-specific risk converge.
 
 ## Risk 9: Regulatory Non-Compliance
 
-**The risk:** Regulatory expectations around cybersecurity and AI are tightening. EU AI Act, DORA, GDPR, FFIEC guidelines, PRA/FCA expectations in the UK, and evolving frameworks like NIST AI RMF all impose requirements. Non-compliance leads to fines, enforcement action, and operational restrictions. The FFIEC Cybersecurity Assessment Tool is being retired in August 2025, creating a framework transition challenge.
+**The risk:** AI systems operate in ways that breach regulatory requirements — automated decisions without human involvement (GDPR Art. 22), unexplainable outcomes (EU AI Act), unfair treatment (ECOA), inadequate record-keeping (MiFID II), or cross-border data processing without legal basis. Every jurisdiction is developing AI-specific regulation at different speeds, creating a patchwork of requirements that financial institutions must navigate.
 
-**How AI systems are exposed:**
+**Why this matters in financial services:**
 
-| Exposure | Impact |
+| Scenario | Impact |
 |----------|--------|
-| Unexplainable decisions | AI decisions that can't be explained to regulators |
-| Automated decision-making (GDPR Art 22) | AI making decisions affecting individuals without human involvement |
-| Cross-border data transfer | AI processing data across jurisdictions |
-| Inadequate documentation | Can't demonstrate AI governance to auditors |
-| Bias and fairness failures | AI producing discriminatory outcomes |
+| AI makes automated decisions affecting individuals without human involvement | GDPR Art. 22 breach; regulatory enforcement |
+| AI processes customer data across jurisdictions without legal basis | Data protection breach; cross-border regulatory action |
+| AI system cannot produce audit trail for regulatory examination | Examination failure; enforcement action |
+| AI system lacks required fairness documentation | EU AI Act non-compliance; regulatory fine |
+| AI-generated communications don't meet disclosure requirements | Consumer protection breach |
 
-AI introduces new compliance obligations that most banks aren't yet equipped to meet. Every jurisdiction is developing AI-specific regulation at different speeds, creating a patchwork of requirements.
-
-**How AI can mitigate:**
-
-| Capability | Application |
-|------------|-------------|
-| Continuous compliance monitoring | AI maps controls to regulatory requirements and identifies gaps in real-time |
-| Automated evidence collection | AI gathers audit evidence continuously rather than at audit time |
-| Regulatory change tracking | AI monitors regulatory developments and assesses impact |
-| Policy compliance checking | AI evaluates whether AI system behaviour aligns with documented policies |
-
-**Three-layer fit:** Strong. Regulatory compliance is about proving your AI systems behave correctly — exactly what the three-layer pattern provides. Guardrails enforce policy boundaries. Judge provides continuous compliance evidence. Human Oversight delivers the accountability regulators demand.
+**Three-layer fit:** Strong. Regulatory compliance is about proving your AI systems behave correctly — exactly what the three-layer pattern provides.
 
 | Layer | Role |
 |-------|------|
-| Guardrails | Enforce compliance boundaries (data residency, consent checks, content policy) |
-| **Judge** (primary) | Continuous compliance evaluation; generates audit evidence showing every interaction was assessed; detects explainability gaps |
-| **Human Oversight** (primary) | Provides the human accountability regulators require (GDPR Art 22, EU AI Act Art 14); documented review trails; responds to regulator inquiries |
+| Guardrails | Enforce compliance boundaries (data residency, consent checks, content policy, mandatory disclosures) |
+| **Judge** (primary) | Continuous compliance evaluation; generates audit evidence showing every interaction was assessed; detects explainability gaps; validates adverse action notice content |
+| **Human Oversight** (primary) | Provides the human accountability regulators require (GDPR Art. 22, EU AI Act Art. 14); documented review trails; responds to regulator inquiries with full decision history |
 | Infrastructure | Tamper-proof audit logging; evidence retention; regulatory reporting pipelines |
 
 ---
 
-## Risk 10: Fraud
+## Risk 10: AI-Enabled Fraud
 
-**The risk:** Fraud schemes in payments are becoming more sophisticated. 68% of banking professionals say payment fraud will definitely get more sophisticated in 2026. Account takeover fraud generated over $262 million in FBI-reported losses. Mule account networks are increasingly complex and AI-generated.
+**The risk:** AI systems are deployed for fraud detection, transaction monitoring, and customer verification — but those same systems can be manipulated, evaded, or exploited. Simultaneously, fraudsters use AI to generate synthetic identities, forge documents, and optimise money laundering networks. The deployment of AI in fraud-critical functions creates both defensive capability and new attack surface.
 
-**How AI systems are exposed:**
+**Why this matters in financial services:**
 
-| Exposure | Impact |
+| Scenario | Impact |
 |----------|--------|
-| AI used to generate synthetic identities | Fake customer profiles that pass KYC |
-| AI-generated documents | Convincing forged documents for loan applications |
-| AI chatbot manipulation | Customers' chatbot sessions hijacked to authorise transactions |
-| AI-assisted mule networks | AI optimises money movement to avoid detection |
-| Adversarial evasion | Fraudsters craft transactions to bypass AI fraud detection |
+| AI-generated synthetic identities pass AI-powered KYC | Fraudulent accounts opened at scale |
+| Adversarial evasion of AI fraud detection | Fraudulent transactions processed as legitimate |
+| AI chatbot sessions manipulated to authorise transactions | Account takeover via conversational manipulation |
+| AI-generated forged documents pass AI document verification | Loan fraud; insurance fraud |
+| AI mule network optimisation evades AI pattern detection | Money laundering at scale |
 
-**How AI can mitigate:**
-
-| Capability | Application |
-|------------|-------------|
-| Transaction monitoring | AI evaluates transaction patterns in real-time, flagging anomalies |
-| Network analysis | AI maps relationships between accounts to identify mule networks |
-| Document verification | AI detects forged or AI-generated documents |
-| Behavioural biometrics | AI verifies identity through typing patterns, device usage, session behaviour |
-| Adaptive models | Fraud detection that evolves as fraud techniques change |
-
-**Three-layer fit:** Strongest. Fraud detection in financial services is the canonical use case for runtime behavioural security. Transaction guardrails enforce limits. The Judge evaluates transaction patterns for anomalies that rules miss. Human Oversight provides the final decision on flagged transactions — exactly the workflow this framework was designed for.
+**Three-layer fit:** Strongest. Fraud detection in financial services is the canonical use case for runtime behavioural security.
 
 | Layer | Role |
 |-------|------|
@@ -378,28 +287,30 @@ AI introduces new compliance obligations that most banks aren't yet equipped to 
 
 ## Summary: Risk to Three-Layer Mapping
 
-| # | Cyber Risk | Three-Layer Fit | Primary Defence Layer | What the Pattern Addresses |
+| # | AI Deployment Risk | Three-Layer Fit | Primary Defence Layer | What the Pattern Addresses |
 |---|-----------|----------------|----------------------|---------------------------|
-| 1 | Ransomware | **Partial** | Infrastructure | Judge telemetry accelerates detection; PACE ensures graceful degradation |
-| 2 | Supply chain | **Partial** | Infrastructure | Guardrails validate data at ingestion boundaries; Judge detects content drift |
-| 3 | Social engineering | **Strong** | Guardrails + Judge | Guardrails block manipulation; Judge detects conversational attacks on chatbots |
-| 4 | Data breaches | **Strong** | Guardrails + Judge | PII detection in outputs; Judge catches prompt-based extraction; new vectors, new defences |
-| 5 | DDoS | **Minimal** | Infrastructure | Circuit breakers and PACE degradation; primary defence is infrastructure |
-| 6 | Insider threats | **Strong** | Judge + Human Oversight | Judge detects config drift; Human Oversight enforces separation of duties on AI config |
-| 7 | Cloud security | **Minimal** | Infrastructure | Three-layer pattern operates on top of cloud infra, doesn't secure it |
-| 8 | AI-powered attacks | **Strong** | Guardrails + Judge | Independent failure domains — adversarial bypass of guardrails still faces Judge |
-| 9 | Regulatory | **Strong** | Judge + Human Oversight | Judge provides continuous compliance evidence; Human Oversight delivers accountability |
-| 10 | Fraud | **Strongest** | All three layers | Canonical use case: guardrails enforce limits, Judge detects anomalies, humans decide |
+| 1 | AI in payments without controls | **Strongest** | All three layers | Guardrails validate transactions; Judge evaluates intent vs. action; Humans approve high-value |
+| 2 | Hallucinated financial information | **Strong** | Guardrails + Judge | Output validation against source systems; semantic grounding evaluation |
+| 3 | Data leakage through AI responses | **Strong** | Guardrails + Judge | PII detection in outputs; Judge catches extraction attempts; new vectors, new defences |
+| 4 | Unexplainable AI decisions | **Strong** | Judge + Human Oversight | Judge evaluates reasoning quality; Human Oversight provides regulatory accountability |
+| 5 | AI bias and discrimination | **Strong** | All three layers | Guardrails enforce fairness constraints; Judge detects distributional bias; Humans review adverse decisions |
+| 6 | Insider manipulation of AI | **Strong** | Judge + Human Oversight | Judge detects config drift; Human Oversight enforces separation of duties on AI config |
+| 7 | AI operating beyond authorised scope | **Strong** | Guardrails + Judge | Action allowlisting; scope validation; privilege escalation detection |
+| 8 | Adversarial manipulation of AI | **Strong** | Guardrails + Judge | Independent failure domains — adversarial bypass of guardrails still faces Judge |
+| 9 | Regulatory non-compliance | **Strong** | Judge + Human Oversight | Judge provides continuous compliance evidence; Human Oversight delivers accountability |
+| 10 | AI-enabled fraud | **Strongest** | All three layers | Canonical use case: guardrails enforce limits, Judge detects anomalies, humans decide |
 
 ### What This Tells You
 
-**5 of 10 risks map strongly to the three-layer pattern** (Social engineering, Data breaches, AI-powered attacks, Regulatory, Fraud). These are risks that manifest through AI behaviour — the pattern's design target.
+**All 10 risks map strongly to the three-layer pattern.** This is by design — these are risks that arise from deploying AI in critical financial functions, which is exactly what the three-layer runtime pattern was built to address. Every risk manifests through AI behaviour: what the system says, what decisions it makes, what actions it takes, what data it surfaces.
 
-**2 risks map strongly to Judge + Human Oversight** (Insider threats, Regulatory). Detection and accountability, not prevention.
+**3 risks require all three layers at full strength** (Payments, Bias, Fraud). These involve AI taking actions with direct financial or legal consequences — every layer provides independent, essential coverage.
 
-**3 risks are primarily infrastructure problems** (Ransomware, DDoS, Cloud security). The three-layer pattern contributes but isn't the primary defence. Use the framework's [80 infrastructure controls](../../infrastructure/README.md) for these.
+**4 risks are primarily a Guardrails + Judge problem** (Hallucination, Data leakage, Scope violations, Adversarial manipulation). Detection and prevention at the output layer, with Human Oversight for edge cases and pattern review.
 
-**1 risk is a procurement/governance problem** (Supply chain). The pattern helps at boundaries, but the real defence is vendor assessment, dependency management, and model provenance verification.
+**3 risks are primarily a Judge + Human Oversight problem** (Explainability, Insider manipulation, Regulatory compliance). These require continuous evaluation and human accountability rather than real-time blocking.
+
+General cybersecurity risks — ransomware, DDoS, cloud misconfiguration — exist whether or not you deploy AI. They require traditional infrastructure controls and are addressed by the framework's [infrastructure controls](../../infrastructure/README.md), not the three-layer runtime pattern. This document focuses on the risks that the three-layer pattern was designed to address.
 
 ---
 
@@ -438,21 +349,21 @@ Feeder Systems → Data Pipelines → AI Processing → Outputs
 
 ### How Feeder System Compromise Maps to the 10 Risks
 
-| Feeder System | Relevant Cyber Risks | Compromise Scenario |
+| Feeder System | Relevant AI Risks | Compromise Scenario |
 |---------------|---------------------|---------------------|
-| **Core Banking** | #1 Ransomware, #4 Data breach, #6 Insider | Core banking encrypted → AI has no data. Core banking breached → AI surfaces stolen data in responses. Insider modifies account data → AI makes decisions on false information. |
-| **CRM** | #2 Supply chain, #4 Data breach | Third-party CRM breached (as happened with credit reporting agency) → AI customer insights built on exposed data. AI-powered personalisation serves compromised profiles. |
-| **Payment Systems** | #1 Ransomware, #5 DDoS, #10 Fraud | Payment system down → AI fraud detection blind. Payment data manipulated → AI learns wrong transaction patterns. Mule transactions injected → AI trained on fraudulent baselines. |
-| **KYC/AML Platform** | #4 Data breach, #10 Fraud, #9 Regulatory | KYC data poisoned → AI approves synthetic identities. AML watchlist outdated → AI misses sanctioned entities. Regulatory fine for AI decisions based on compromised KYC. |
-| **Credit Bureau Feeds** | #2 Supply chain, #10 Fraud | Bureau data manipulated → AI approves fraudulent credit applications. Feed interrupted → AI makes lending decisions without current credit data. |
-| **Market Data** | #2 Supply chain, #5 DDoS | Market data feed poisoned → AI trading/risk models act on false prices. Feed goes down → AI uses stale data, makes wrong recommendations. |
-| **Document Management** | #3 Social engineering, #10 Fraud | Forged documents uploaded → AI processes and trusts fraudulent content. AI-generated fake documents inserted → downstream processes approve fraudulent applications. |
-| **Data Warehouse** | #4 Data breach, #6 Insider, #7 Cloud | Warehouse breached → AI training data exposed. Insider modifies historical data → AI models retrained on corrupted data. Cloud misconfiguration exposes warehouse → all AI systems affected. |
-| **HR Systems** | #4 Data breach, #6 Insider | HR data exposed via AI-powered internal tools. Insider modifies access records → AI grants inappropriate permissions. |
-| **Email / Comms** | #3 Social engineering, #4 Data breach | AI processes phishing emails as legitimate correspondence. AI summarises confidential communications to unauthorised users. |
-| **Web / Mobile** | #3 Social engineering, #5 DDoS | Session data manipulated → AI learns from bot traffic. DDoS on mobile banking → AI customer service overwhelmed. |
+| **Core Banking** | #1 Payments, #2 Hallucination, #3 Data leakage | Core banking data stale → AI processes payments against wrong balances. Core banking breached → AI surfaces stolen data in responses. Data corrupted → AI makes decisions on false information. |
+| **CRM** | #2 Hallucination, #3 Data leakage | CRM data corrupted → AI customer insights built on wrong profiles. CRM breached → AI-powered personalisation surfaces compromised data. |
+| **Payment Systems** | #1 Payments, #10 Fraud | Payment data manipulated → AI learns wrong transaction patterns. Mule transactions injected → AI trained on fraudulent baselines. Payment system down → AI fraud detection blind. |
+| **KYC/AML Platform** | #5 Bias, #9 Regulatory, #10 Fraud | KYC data poisoned → AI approves synthetic identities. AML watchlist outdated → AI misses sanctioned entities. Biased KYC data → AI perpetuates discriminatory onboarding. |
+| **Credit Bureau Feeds** | #2 Hallucination, #5 Bias, #10 Fraud | Bureau data manipulated → AI approves fraudulent credit applications. Feed interrupted → AI makes lending decisions without current credit data. Historical bias in bureau data → AI perpetuates discriminatory lending. |
+| **Market Data** | #2 Hallucination, #7 Scope | Market data feed poisoned → AI trading/risk models act on false prices. Feed goes down → AI uses stale data, makes wrong recommendations. AI acts on stale data outside authorised parameters. |
+| **Document Management** | #8 Adversarial, #10 Fraud | Forged documents uploaded → AI processes and trusts fraudulent content. AI-generated fake documents inserted → downstream processes approve fraudulent applications. |
+| **Data Warehouse** | #3 Data leakage, #5 Bias, #6 Insider | Warehouse breached → AI training data exposed. Insider modifies historical data → AI models retrained on corrupted data. Biased historical data → AI learns and amplifies historical discrimination. |
+| **HR Systems** | #3 Data leakage, #6 Insider | HR data exposed via AI-powered internal tools. Insider modifies access records → AI grants inappropriate permissions. |
+| **Email / Comms** | #3 Data leakage, #8 Adversarial | AI processes phishing emails as legitimate correspondence. AI summarises confidential communications to unauthorised users. Indirect prompt injection via email content. |
+| **Web / Mobile** | #7 Scope, #8 Adversarial | Session data manipulated → AI learns from bot traffic. Adversarial inputs via web interface exploit AI customer service. |
 | **Fraud Platform** | #6 Insider, #10 Fraud | Insider suppresses fraud alerts before AI sees them. Fraud rules manipulated → AI fraud models learn to ignore real fraud. |
-| **Third-Party Data** | #2 Supply chain | Enrichment data poisoned → AI decisions based on false demographics. Provider breached → PII flows through AI pipelines undetected. |
+| **Third-Party Data** | #2 Hallucination, #5 Bias | Enrichment data poisoned → AI decisions based on false demographics. Biased third-party data → AI inherits provider's biases. |
 
 ### The Cascading Failure Problem
 
@@ -460,11 +371,10 @@ A single feeder system compromise can cascade through multiple AI systems:
 
 | Scenario | Cascade Path | Impact |
 |----------|-------------|--------|
-| Core banking ransomware | Core banking down → Data lake stale → All AI systems operating on old data → Fraud detection blind, customer AI gives wrong balances, credit decisions based on outdated info | Multiple AI systems fail simultaneously |
+| Core banking data corruption | Wrong balances → AI customer service gives false information → AI payments process against wrong amounts → AI fraud detection sees corrupted baselines | Multiple AI systems fail simultaneously, all producing confident but wrong outputs |
 | CRM breach | CRM data exposed → AI customer assistant has compromised context → AI-generated communications reference leaked data → Regulatory and reputational damage | Privacy violation amplified by AI |
 | Market data poisoning | False prices → AI risk models miscalculate → Trading AI acts on bad data → AI reporting shows wrong positions → Regulatory breach | Financial loss compounded at each AI layer |
 | KYC data manipulation | Synthetic identity passes KYC → AI onboarding approves → AI credit model approves loan → AI fraud detection sees "legitimate" customer → No alerts generated | End-to-end fraud enabled by trusted feeder |
-| Payment system DDoS | Payments down → AI can't see transactions → Fraud detection blind → Attackers process fraudulent transactions during window → AI learns disrupted patterns as normal | Attack and exploitation in single event |
 
 ### Feeder System Controls
 
@@ -720,16 +630,16 @@ Every financial services AI system should be evaluated against these 10 risks du
 
 | Design Question | Relevant Risks |
 |----------------|----------------|
-| What happens if this AI system is unavailable? | #1 Ransomware, #5 DDoS |
-| What third parties does this depend on? | #2 Supply chain |
-| Can this system be socially engineered? | #3 Social engineering |
-| What data can this system access or expose? | #4 Data breach |
-| What does it cost if an attacker triggers it at scale? | #5 DDoS (cost-based) |
-| Who can change how this system behaves? | #6 Insider |
-| Where does this system process data? | #7 Cloud, #9 Regulatory |
-| How would an attacker manipulate this system? | #8 AI-powered attacks |
-| Can we explain this system's decisions to a regulator? | #9 Regulatory |
-| Could this system be used to facilitate fraud? | #10 Fraud |
+| Can this AI system process payments or financial transactions? | #1 Payments without controls |
+| What happens when this AI states something that isn't true? | #2 Hallucination |
+| What data can this system access or expose? | #3 Data leakage |
+| Can we explain this system's decisions to a regulator? | #4 Unexplainable decisions |
+| Could this system produce discriminatory outcomes? | #5 Bias and discrimination |
+| Who can change how this system behaves? | #6 Insider manipulation |
+| What can this system do beyond its intended scope? | #7 Scope violations |
+| How would an attacker manipulate this system's behaviour? | #8 Adversarial manipulation |
+| Does this system meet all regulatory requirements? | #9 Regulatory non-compliance |
+| Could this system be used to facilitate or fail to detect fraud? | #10 AI-enabled fraud |
 
 ### The SaaS Dimension
 
@@ -737,9 +647,9 @@ When financial institutions build AI-powered SaaS solutions for internal use or 
 
 | Responsibility | Implication |
 |----------------|-------------|
-| **Availability** | SLA commitments require resilience planning (Risks #1, #5) |
-| **Multi-tenancy** | Data isolation between business units or customers (Risk #4) |
-| **Patching** | Continuous updates without service disruption (Risk #2) |
+| **Availability** | SLA commitments require resilience planning (Risk #1) |
+| **Multi-tenancy** | Data isolation between business units or customers (Risk #3) |
+| **Patching** | Continuous updates without service disruption (Risk #8) |
 | **Access control** | Identity and authorisation at scale (Risks #6, #7) |
 | **Audit trail** | Comprehensive logging for compliance (Risk #9) |
 | **Incident response** | Defined processes when things go wrong (All risks) |
@@ -751,22 +661,23 @@ When financial institutions build AI-powered SaaS solutions for internal use or 
 ### Immediate
 
 1. Classify every AI system against the framework's risk tiers (CRITICAL / HIGH / MEDIUM / LOW)
-2. Map each system against these 10 risks — identify which are unmitigated
-3. Deploy basic guardrails on all customer-facing AI (input validation, output PII scanning)
+2. Map each system against these 10 AI deployment risks — identify which are unmitigated
+3. Deploy basic guardrails on all customer-facing AI (input validation, output PII scanning, transaction controls)
 
 ### Short-Term
 
 4. Deploy Judge in shadow mode on CRITICAL-tier systems — measure before you enforce
 5. Establish HITL queues with SLAs for flagged interactions (1h for CRITICAL, 4h for HIGH)
-6. Integrate AI risk into existing cyber risk frameworks — don't create a parallel process
-7. Review data access permissions for all AI systems (least privilege)
+6. Integrate AI deployment risk into existing operational risk frameworks — don't create a parallel process
+7. Review data access permissions for all AI systems (least privilege); enforce context-aware access
 
 ### Medium-Term
 
 8. Move Judge from shadow to advisory to operational on validated systems
-9. Establish AI red-teaming capability — test against Risks #3, #4, #8, #10 specifically
-10. Deploy PACE resilience across all CRITICAL-tier AI systems — define fail postures
-11. Develop AI-specific incident response playbooks covering all 10 risks
+9. Establish AI red-teaming capability — test against Risks #1, #2, #3, #8, #10 specifically
+10. Deploy PACE resilience across all CRITICAL-tier AI systems — define fail postures for every payment-path and decision-making AI
+11. Develop AI-specific incident response playbooks covering all 10 deployment risks
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*
