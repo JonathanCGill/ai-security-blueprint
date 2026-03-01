@@ -16,7 +16,7 @@ A position paper arguing that runtime containment — constraining what AI syste
 
 Covers the limitations of pre-deployment evaluation, the case for runtime enforcement, and how containment-first thinking changes control architecture.
 
-[:material-file-pdf-box: Download PDF](Downloads/Why Containment Beats Evaluation.pdf){ .md-button }
+[Download PDF](Downloads/Why Containment Beats Evaluation.pdf){ .md-button }
 
 > See also: [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md) (online version)
 
@@ -28,7 +28,7 @@ Covers the limitations of pre-deployment evaluation, the case for runtime enforc
 
 Comprehensive training material for practitioners implementing Multi-Agent Security Operations (MASO). Covers the MASO framework, control domains, implementation tiers, and practical guidance for securing multi-agent AI systems.
 
-[:material-file-pdf-box: Download PDF](Downloads/MASO-Practitioner-Training v.1.pdf){ .md-button }
+[Download PDF](Downloads/MASO-Practitioner-Training v.1.pdf){ .md-button }
 
 > See also: [Multi-Agent Security Operations (MASO)](maso/README.md) (online reference)
 
