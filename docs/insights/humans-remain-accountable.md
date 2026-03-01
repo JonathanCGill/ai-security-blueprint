@@ -141,6 +141,8 @@ The solution isn't less capable AI. It's systems designed to keep humans engaged
 
 **Individual level:** Every person who touches an AI decision can explain their role and justify their actions.
 
+**Business process level:** Where dedicated HITL reviewers can't scale, the humans already in the business process — underwriters, analysts, adjusters, traders — provide accountability at the point of commitment. See [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md).
+
 ---
 
 ## The Bottom Line

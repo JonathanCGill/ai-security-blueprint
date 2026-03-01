@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#475569"/>
+    </marker>
+    <marker id="arrow-light" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="440" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="400" y="32" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="middle">HITBP Feedback Loop</text>
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Business process corrections feed back to improve AI controls</text>
+
+  <!-- === SOURCE: Human catches error === -->
+  <rect x="50" y="80" width="200" height="80" rx="8" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+  <text x="150" y="108" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#9d174d" text-anchor="middle">Business Process</text>
+  <text x="150" y="126" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#9d174d" text-anchor="middle">Human</text>
+  <text x="150" y="148" font-family="Arial, sans-serif" font-size="10" fill="#be185d" text-anchor="middle">Catches AI error in context</text>
+
+  <!-- Arrow down to Record -->
+  <line x1="150" y1="160" x2="150" y2="195" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Record Correction -->
+  <rect x="50" y="200" width="200" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="150" y="225" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#475569" text-anchor="middle">Record Correction</text>
+  <text x="150" y="245" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">What was wrong + category</text>
+
+  <!-- Arrow down to Classify -->
+  <line x1="150" y1="260" x2="150" y2="295" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Classify Failure -->
+  <rect x="50" y="300" width="200" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="150" y="325" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#475569" text-anchor="middle">Classify Failure Type</text>
+  <text x="150" y="345" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Hallucination / Bias / Scope / Data</text>
+
+  <!-- Arrow right from Classify to routing -->
+  <line x1="250" y1="330" x2="325" y2="330" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Route Feedback -->
+  <rect x="335" y="300" width="140" height="60" rx="8" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="405" y="325" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#4338ca" text-anchor="middle">Route</text>
+  <text x="405" y="345" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#4338ca" text-anchor="middle">Feedback</text>
+
+  <!-- Three output paths from Route -->
+
+  <!-- Path 1: To Guardrail Update (top) -->
+  <path d="M 475 310 L 560 310 L 560 125" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="490" y="80" width="140" height="80" rx="8" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+  <text x="560" y="108" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#166534" text-anchor="middle">Guardrail</text>
+  <text x="560" y="126" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#166534" text-anchor="middle">Update</text>
+  <text x="560" y="148" font-family="Arial, sans-serif" font-size="10" fill="#166534" text-anchor="middle">New blocking rule</text>
+
+  <!-- Path 2: To Judge Calibration (middle) -->
+  <line x1="475" y1="330" x2="600" y2="330" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="610" y="300" width="140" height="60" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="680" y="325" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#b45309" text-anchor="middle">Judge</text>
+  <text x="680" y="345" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#b45309" text-anchor="middle">Calibration</text>
+
+  <!-- Path 3: To Model Retraining (bottom) -->
+  <path d="M 475 350 L 560 350 L 560 405" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="490" y="380" width="140" height="50" rx="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="560" y="410" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">Model Retraining</text>
+  <text x="560" y="425" font-family="Arial, sans-serif" font-size="10" fill="#3b82f6" text-anchor="middle">Signal</text>
+
+  <!-- Close the Loop arrow - from all three back to human -->
+  <path d="M 750 330 L 770 330 L 770 120 L 255 120" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow-light)"/>
+  <text x="770" y="225" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" transform="rotate(-90, 770, 225)" text-anchor="middle">Close the loop — human sees fix</text>
+</svg>

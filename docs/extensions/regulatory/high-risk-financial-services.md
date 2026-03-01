@@ -628,6 +628,8 @@ AI introduces data residency complications that traditional banking systems don'
 
 Every financial services AI system should be evaluated against these 10 risks during design — and classified against the framework's risk tiers. Most customer-facing and regulated AI systems in financial services will be CRITICAL or HIGH tier, requiring all three defence layers at full strength.
 
+**Human oversight at scale:** Many of these risks assume HITL reviewers in the three-layer pattern. For high-volume financial services AI, dedicated HITL often doesn't scale. See [Humans in the Business Process](../technical/humans-in-the-business-process.md) for an approach that uses existing business process checkpoints — underwriters, analysts, adjusters, compliance officers — as a detection and correction layer without adding dedicated AI reviewers.
+
 | Design Question | Relevant Risks |
 |----------------|----------------|
 | Can this AI system process payments or financial transactions? | #1 Payments without controls |

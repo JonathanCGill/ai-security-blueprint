@@ -275,6 +275,7 @@ nav:
       - Support Systems Risk: extensions/technical/support-systems-risk.md
       - Technical Controls: extensions/technical/technical-controls.md
       - AI Endpoint Hardening: extensions/technical/ai-endpoint-hardening.md
+      - Humans in the Business Process: extensions/technical/humans-in-the-business-process.md
       - Runtime Telemetry Reference: extensions/technical/runtime-telemetry-reference.md
     - Templates:
       - extensions/templates/README.md

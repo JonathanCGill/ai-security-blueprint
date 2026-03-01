@@ -78,6 +78,8 @@ Human Oversight is the Contingency layer: slow, expensive, but brings judgment t
 | C → E | Zero qualified reviewers available; queue wait time >5x SLA with no resolution timeline |
 | Recovery: E → P | Reviewers available and confirmed; queue backlog cleared or triaged; SLA performance confirmed for >4 hours |
 
+> **See also:** [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md) describes how existing business process checkpoints can serve as an Alternate or Contingency layer when dedicated HITL reviewers degrade — without adding new reviewers or changing the automated decision.
+
 ---
 
 ## Cross-Layer PACE: Architecture-Level Resilience

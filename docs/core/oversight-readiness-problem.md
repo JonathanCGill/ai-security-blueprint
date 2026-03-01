@@ -253,6 +253,17 @@ Human oversight of AI systems is not a checkbox. It is an engineered control tha
 The core principle is simple: **if your system is only safe when the human performs perfectly, it is not safe.** The guardrails and LLM-as-Judge layers must be strong enough that human oversight is defence-in-depth, not the primary safety mechanism. And the human oversight layer must be actively maintained, continuously measured, and deliberately designed to force the engagement that passive monitoring cannot sustain.
 
 The ironies of automation guarantee that the moment you most need human judgement is the moment it is least likely to be available. Design accordingly.
+
+---
+
+## Related
+
+| Topic | Document |
+|-------|----------|
+| When direct AI supervision doesn't scale | [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md) — using existing business process checkpoints as a detection and correction layer, extending HITL without adding reviewers |
+| The human constraints behind oversight failure | [Human Factors](../strategy/human-factors.md) — skills, time, capacity, willingness, sustainability |
+| The principle behind human oversight | [Humans Remain Accountable](../insights/humans-remain-accountable.md) — AI assists, humans own outcomes |
+
 ---
 
 *AI Runtime Behaviour Security, 2026 (Jonathan Gill).*
