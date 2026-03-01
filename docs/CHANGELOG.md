@@ -18,6 +18,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.8.0] - 2026-03-01
+
+### Added
+- **Evaluation Integrity Risks** — New insights page covering sandbagging, evaluation evasion, and the AISI finding that black-box monitors lose accuracy on harder tasks. Includes mitigations: canary interactions, evaluation signature elimination, multi-model cross-validation, behavioural consistency monitoring.
+- **AISI 5-Level MCP Autonomy Classification** — Added to The MCP Problem page. Maps MCP server autonomy levels (read-only through unbounded autonomous) to MASO implementation tiers, with specific guidance for financial services.
+- **Self-Replication Capabilities (ET-09)** — New emerging threat in MASO threat intelligence. Documents RepliBench progression from 5% to 60% success rates (2023–2025) and implications for kill switch architecture.
+- **Capability Acceleration (ET-10)** — New emerging threat documenting the ~8-month doubling time for autonomous task complexity, with implications for control framework evolution cadence.
+- **Persuasion Scaling Risk** — Added to Emerging Trends. Documents AISI finding that persuasive capability increases with model scale while accuracy decreases, and post-training amplifies persuasion more than scaling.
+- **Emotional Dependence Data** — Added to Emerging Trends. Documents AISI finding on 33% AI emotional support usage and 30x negative sentiment spikes during outages. PACE implications for service continuity.
+- **AISI Reference** — Added UK AI Security Institute Frontier AI Trends Report (December 2025) to References & Sources page with full finding summary and cross-references to all updated pages. Added 6 new key statistics.
+
+### Changed
+- **Risk Tiers** — Added Domain-Specific Guardrail Tuning section with AISI evidence for uneven safeguard coverage across risk categories (R² = 0.097 capability-safety correlation, 40x jailbreak effort increase for targeted categories).
+- **When the Judge Can Be Fooled** — Expanded sandbagging section with AISI empirical data on black-box monitor accuracy degradation. Added cross-reference to new Evaluation Integrity Risks page.
+- **Open-Weight Models** — Added AISI confirmation that safeguards can be "quickly and cheaply removed" and 4–8 month open-to-closed source capability gap data. Strengthens case for runtime monitoring as primary control.
+- **Emerging Threats** — Updated threat landscape summary table to include ET-09 and ET-10.
+
+### Rationale
+The UK AI Security Institute's Frontier AI Trends Report (December 2025) is the strongest empirical backing for runtime behavioural security from a government body. Its findings directly validate the framework's core thesis (runtime controls matter more than deployment-time security alone) and provide concrete data points that strengthen multiple framework sections. Credit given throughout via source attribution.
+
+---
+
 ## [0.7.0] - 2026-02-15
 
 ### Added

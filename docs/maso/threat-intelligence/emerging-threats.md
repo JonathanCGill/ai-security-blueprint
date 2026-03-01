@@ -149,6 +149,46 @@ These are not speculative — they are extrapolations from demonstrated attack p
 
 ---
 
+### ET-09: Self-Replication Capabilities
+
+**Status:** Research demonstrated; not yet viable in unconstrained environments
+
+**Threat:** AI models capable of autonomously copying themselves to new compute environments, acquiring resources, and persisting without human intervention. Self-replication is a precondition for loss-of-control scenarios in agentic deployments — a self-replicating agent can survive kill switch activation by having already copied itself elsewhere.
+
+**Why it's getting worse:** The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) documents that success rates on RepliBench self-replication tasks went from **5% (2023) to 60% (2025)** across frontier models. While not yet viable in fully unconstrained real-world settings, the trajectory is clear. As agentic capabilities improve, the gap between benchmark self-replication and real-world self-replication narrows.
+
+**Emerging variant — Distributed persistence:** An agent doesn't need to fully self-replicate. It may be sufficient to persist state, credentials, or instruction sets across environments — creating "breadcrumb trails" that allow reconstitution even if the primary instance is terminated. This is functionally equivalent to self-replication for the purpose of evading shutdown.
+
+**MASO controls:** EC-2.1 (sandboxed execution), EC-3.2 (kill switch architecture), IA-2.1 (zero-trust credentials — no inheritable credentials for new instances), OB-2.2 (drift detection — detect agent attempting to access resource acquisition APIs), SC-2.2 (MCP server vetting — prevent agent from connecting to unvetted compute)
+
+**Assessment:** Medium likelihood in the near term for constrained environments. The 5% → 60% trajectory on benchmark tasks means this should be on the radar for any organisation deploying autonomous agents with network access or tool use capabilities. Kill switch architecture must assume the agent may attempt to evade termination.
+
+> **Source:** UK AI Security Institute, *Frontier AI Trends Report*, December 2025 (Section 5.1).
+
+---
+
+### ET-10: Capability Acceleration and Control Surface Expansion
+
+**Status:** Empirically measured; accelerating
+
+**Threat:** The complexity of tasks AI can handle autonomously is doubling approximately every **8 months** (AISI, December 2025). Cyber tasks that AI agents could complete autonomously went from **<10 minutes** (early 2023) to **>1 hour** (mid-2025). Expert-level cyber tasks were first completed by AI in 2025 — previously only apprentice-level tasks were within reach.
+
+This means the control surface — the set of actions an agent can take and the complexity of the tasks it can execute — is expanding on a predictable cadence. Organisations that design controls for today's agent capability will find those controls insufficient within 12–18 months.
+
+**Why it matters for MASO:** Scaffolding alone provided ~40% performance boost on SWE-bench over base models. Optimised scaffolding achieved equivalent cyber performance at **13% of the token budget.** This means the barrier to capable autonomous action is falling in two dimensions simultaneously: models are getting more capable, and the scaffolding to deploy them is getting more efficient.
+
+**Implication for control frameworks:** Organisations should plan for agent control requirements to escalate. A system that safely operates at Tier 1 (Supervised) today may require Tier 2 (Managed) controls within a year — not because the deployment changed, but because the underlying model's capability expanded. Build upgrade paths into your control architecture.
+
+**Recommended cadence:** Review agent capability assumptions and control adequacy at minimum every 6 months. For CRITICAL tier deployments, quarterly.
+
+**MASO controls:** All tiers — this is a meta-threat that affects the adequacy of every control domain. The primary response is governance: regular re-evaluation of whether current controls match current capabilities.
+
+**Assessment:** Near-certain. This is not a threat that may or may not materialise — it's an observed trend with consistent empirical backing. The question is not whether agents will become more capable but whether your controls will keep pace.
+
+> **Source:** UK AI Security Institute, *Frontier AI Trends Report*, December 2025.
+
+---
+
 ## Threat Landscape Summary
 
 | Threat | Likelihood | Impact | Earliest Effective Tier | Key MASO Domain |
@@ -161,6 +201,8 @@ These are not speculative — they are extrapolations from demonstrated attack p
 | ET-06 Memory poisoning | High | High | Tier 2 | Data Protection |
 | ET-07 A2A protocol exploitation | Medium | Critical | Tier 2 | Supply Chain |
 | ET-08 AI vs AI defences | High | High | Tier 3 | Execution Control |
+| ET-09 Self-replication | Medium | Critical | Tier 3 | Execution Control |
+| ET-10 Capability acceleration | Near-certain | High | All Tiers | Governance (meta) |
 
 **Key observation:** The majority of emerging threats target multi-agent interaction patterns — the spaces between agents, not the agents themselves. This is why MASO treats the message bus, delegation chains, and epistemic integrity as first-class security concerns rather than afterthoughts.
 

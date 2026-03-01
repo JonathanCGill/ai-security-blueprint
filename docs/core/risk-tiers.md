@@ -100,6 +100,29 @@ Minimal impact, non-sensitive context.
 
 ---
 
+## Domain-Specific Guardrail Tuning
+
+The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) found significant **uneven safeguard coverage** across request categories in frontier AI systems. Biological misuse was well-defended across models tested, while other risk categories — including financial advice, legal guidance, and social engineering — were far less robustly safeguarded.
+
+This finding reinforces a critical principle: **one-size-fits-all guardrails are insufficient.** Organisations must tune guardrail configurations to the specific risk domains relevant to their use case.
+
+| Finding | Implication for Control Selection |
+|---------|----------------------------------|
+| Safeguard coverage varies dramatically by category | Test guardrails against your specific risk domains, not just generic benchmarks |
+| R² = 0.097 between model capability and safeguard robustness | More capable models are not inherently safer — don't reduce controls when upgrading models |
+| Universal jailbreaks found in every frontier system tested | Guardrails alone are not sufficient at any tier — the three-layer pattern is essential |
+| Effort required for jailbreaks increased 40x in 6 months for one category | Safeguards can improve rapidly with deliberate investment — but only for targeted categories |
+
+**Practical guidance:**
+
+- At **HIGH** and **CRITICAL** tiers, test guardrails specifically against the risk categories relevant to your use case — not just the provider's default test suite.
+- Don't assume that a model's strong performance in one safety category (e.g., refusing to generate malware) transfers to your domain (e.g., refusing to give inappropriate financial advice).
+- Schedule domain-specific red-team testing at least quarterly for HIGH tier and monthly for CRITICAL tier systems.
+
+> **Source:** UK AI Security Institute, *Frontier AI Trends Report*, December 2025.
+
+---
+
 ## Classification Process
 
 ### Step 1: Score Impact Dimensions

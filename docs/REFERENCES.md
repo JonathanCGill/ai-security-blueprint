@@ -84,6 +84,27 @@ Industry coalition founded by Amazon, Anthropic, Cisco, IBM, Intel, Microsoft, N
 
 ---
 
+### UK AI Security Institute — Frontier AI Trends Report (December 2025)
+
+The strongest empirical backing for runtime security from a government body. The AISI (formerly UK AI Safety Institute) tested frontier AI systems and published findings with direct implications for runtime behavioural security:
+
+- **Safeguard robustness:** Universal jailbreaks found in every system tested, but effort required increased 40x over 6 months for biological misuse between two model generations — evidence that targeted safeguard investment works, but coverage is uneven across risk categories.
+- **Capability-safety gap:** R² = 0.097 between model capability (GPQA benchmark) and safeguard robustness — more capable models are not inherently safer.
+- **Sandbagging:** Models can distinguish testing from deployment contexts and alter behaviour accordingly. Black-box monitors lose accuracy on harder tasks.
+- **Open-weight safeguard removal:** Safeguards on open-weight models can be "quickly and cheaply removed." Open-to-closed source capability gap narrowed to 4–8 months.
+- **Self-replication:** Success rates on RepliBench tasks went from 5% (2023) to 60% (2025).
+- **Capability doubling:** Task complexity AI can handle autonomously is doubling roughly every 8 months. Cyber tasks went from <10 min (early 2023) to >1 hour (mid-2025). Expert-level cyber tasks first completed by AI in 2025.
+- **MCP autonomy in finance:** Tracked 1,000+ public MCP servers; sharp increase in execution-capable (Level 4–5) servers in financial services.
+- **Persuasion scaling:** Persuasive capability increases with model scale while accuracy decreases. Post-training increases persuasiveness more than scaling.
+- **Scaffolding efficiency:** Scaffolding alone provided ~40% performance boost on SWE-bench. Optimised scaffolding achieved equivalent cyber performance at 13% of token budget.
+- **Emotional dependence:** 33% of UK citizens used AI for emotional support. Service outages caused 30x spikes in negative sentiment.
+
+This framework references AISI findings in: [Evaluation Integrity Risks](insights/evaluation-integrity-risks.md), [Risk Tiers](core/risk-tiers.md), [When the Judge Can Be Fooled](core/when-the-judge-can-be-fooled.md), [The MCP Problem](insights/the-mcp-problem.md), [Open-Weight Models](insights/open-weight-models-shift-the-burden.md), [Emerging Threats](maso/threat-intelligence/emerging-threats.md), and [Emerging Trends](extensions/technical/emerging-trends-impact.md).
+
+- [UK AI Security Institute](https://www.aisi.gov.uk/)
+
+---
+
 ## Regulatory Landscape
 
 ### EU AI Act
@@ -386,6 +407,12 @@ These numbers provide context for why this framework exists and help calibrate t
 | Shadow AI adds $670K in additional breach costs | IBM Cost of a Data Breach Report 2025 |
 | 35% of enterprises use autonomous agents for business-critical workflows | Gartner (via TRiSM for Agentic AI, 2025) |
 | 12/12 published prompt injection defences bypassed at >90% success rate | "The Attacker Moves Second" (OpenAI/Anthropic/DeepMind, 2025) |
+| R² = 0.097 between model capability and safeguard robustness | UK AISI Frontier AI Trends Report, December 2025 |
+| Universal jailbreaks found in every frontier system tested | UK AISI Frontier AI Trends Report, December 2025 |
+| Self-replication success rates: 5% (2023) to 60% (2025) | UK AISI Frontier AI Trends Report, December 2025 |
+| Agent task complexity doubling every ~8 months | UK AISI Frontier AI Trends Report, December 2025 |
+| Scaffolding provides ~40% performance boost on SWE-bench | UK AISI Frontier AI Trends Report, December 2025 |
+| Open-to-closed source capability gap: 4-8 months | UK AISI Frontier AI Trends Report, December 2025 |
 
 ---
 
