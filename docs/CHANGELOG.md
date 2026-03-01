@@ -18,6 +18,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.8.2] - 2026-03-01
+
+### Added
+- **CoSAI Principles Alignment** - Updated References with full alignment mapping to CoSAI's Principles for Secure-by-Design Agentic Systems (July 2025). Demonstrates how the framework's three-layer pattern, PACE resilience, and MASO controls operationalise CoSAI's three principles.
+- **Producer/Implementer/Principal Accountability** - Added supply chain accountability model to the AI Governance Operating Model. Complements the three-lines governance model with a supply chain lens for distributing responsibility across technology producers, service implementers, and human principals. Credit to CoSAI.
+- **SLSA-Style Supply Chain Provenance** - Added to ET-04 (MCP as Attack Surface). Recommends adapting SLSA for verifiable provenance of agent and model artifacts: signed build provenance, content hashes for tool definitions, and verifiable chain from source to deployment.
+
+---
+
 ## [0.8.1] - 2026-03-01
 
 ### Added

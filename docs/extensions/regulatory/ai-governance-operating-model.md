@@ -82,6 +82,26 @@ The AI governance function operates within the standard three lines model:
 **Accountable for:**
 - Independent opinion on AI governance effectiveness
 
+### Supply Chain Accountability: Producer, Implementer, Principal
+
+The three-lines model above maps to *organisational structure* - who does what inside the enterprise. A complementary lens maps accountability across the *AI supply chain* - useful for answering "whose fault is it when the open-weight model misbehaves?" or "who is responsible for the MCP server that injected instructions?"
+
+This distinction, drawn from the [CoSAI Principles for Secure-by-Design Agentic Systems](https://github.com/cosai-oasis/cosai-tsc/blob/main/security-principles-for-agentic-systems.md) (July 2025), distributes accountability across three stakeholder types:
+
+| Role | Who | Accountable For | Example |
+|------|-----|----------------|---------|
+| **Producer** | Technology vendor, model provider, MCP server publisher | Component security, provenance, vulnerability disclosure, safeguard integrity | Anthropic provides Claude with constitutional classifiers; an MCP server author publishes a signed tool manifest |
+| **Implementer** | Enterprise AI/ML team, platform engineers, integrators | Deployment security, configuration, control implementation, runtime monitoring | The AI team configures guardrails, deploys the Judge, manages model selection, vets MCP servers |
+| **Principal** | Business owner, risk owner, human-in-the-loop | Business outcomes, risk acceptance, oversight decisions, regulatory compliance | The product owner signs off on the risk tier; the HITL reviewer approves the loan decision |
+
+**Why both models are needed:** The three-lines model tells the organisation who owns controls internally. The producer/implementer/principal model tells the organisation where to direct accountability when a component fails - was the vulnerability in the model itself (producer), in how it was configured (implementer), or in the decision to deploy it for this use case (principal)?
+
+This matters most for:
+
+- **Open-weight models** where safeguards can be removed - the producer's safeguards are a starting point, not a guarantee. The implementer must add runtime controls. The principal must accept the residual risk.
+- **MCP server supply chain** where third-party tools run inside your trust boundary. The producer publishes the server. The implementer must vet, sign, and sandbox it. The principal accepts the risk of granting tool access.
+- **Incident attribution** where root cause analysis must distinguish between a model deficiency (producer), a misconfiguration (implementer), and an inappropriate deployment decision (principal).
+
 ---
 
 ## Centralised AI Governance Function

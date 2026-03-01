@@ -79,6 +79,8 @@ These are not speculative - they are extrapolations from demonstrated attack pri
 
 **MASO controls:** SC-1.2 (signed tool manifests), SC-2.2 (MCP server vetting), SC-2.3 (runtime component audit), SC-3.1 (cryptographic trust chain), PG-1.1 (input guardrails per agent)
 
+**Supply chain provenance:** CoSAI's [Principles for Secure-by-Design Agentic Systems](https://github.com/cosai-oasis/cosai-tsc/blob/main/security-principles-for-agentic-systems.md) (July 2025) recommends adapting [SLSA](https://slsa.dev/) (Supply-chain Levels for Software Artifacts) to provide verifiable provenance for agent and model artifacts. For MCP servers, this means: signed build provenance (who built it, from what source, on what infrastructure), content hashes for tool definitions and resource schemas, and a verifiable chain from source repository to deployed server. Organisations should treat MCP server onboarding with the same rigour as software dependency management - lockfiles, hash verification, and automated scanning for known vulnerabilities.
+
 **Assessment:** High likelihood, already occurring. MCP supply chain security is the agent equivalent of dependency security - it needs the same rigour (signing, vetting, runtime verification) that took the software industry a decade to learn.
 
 ---
