@@ -18,6 +18,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.8.3] - 2026-03-01
+
+### Added
+- **Containment Through Declared Intent** - New insights page articulating the framework's unified defence thesis. Declared intent is the organising principle that gives every layer (guardrails, Judge, monitoring, human oversight, PACE) its reference point. Covers how intent flows through the defence stack, downstream intent awareness between agents, the confinement model, and honest assessment of where the theory breaks down.
+
+---
+
 ## [0.8.2] - 2026-03-01
 
 ### Added
