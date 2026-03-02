@@ -1,5 +1,5 @@
 ---
-description: Honest answers to the questions practitioners actually ask about AI runtime security — cost, resources, practicality, and scale.
+description: Honest answers to the questions practitioners actually ask about AI runtime security - cost, resources, practicality, and scale.
 ---
 
 # Frequently Asked Questions
@@ -12,11 +12,11 @@ Honest answers to the questions we hear most.
 
 It can be. But it doesn't have to start that way.
 
-Guardrails can be enabled in managed services like AWS Bedrock, Azure AI Content Safety, or Databricks with minimal configuration. You're not building from scratch — you're turning on capabilities that already exist in the platforms you're paying for.
+Guardrails can be enabled in managed services like AWS Bedrock, Azure AI Content Safety, or Databricks with minimal configuration. You're not building from scratch - you're turning on capabilities that already exist in the platforms you're paying for.
 
 A Judge layer doesn't need to evaluate every interaction. Sample 5% of traffic on a medium-risk system and you've got meaningful oversight at a fraction of the cost of 100% coverage. Scale up only where the risk justifies it.
 
-The real cost question isn't "how much does this cost?" — it's "what does it cost when something goes wrong without it?"
+The real cost question isn't "how much does this cost?" - it's "what does it cost when something goes wrong without it?"
 
 ---
 
@@ -24,7 +24,7 @@ The real cost question isn't "how much does this cost?" — it's "what does it c
 
 You don't need a dedicated AI security team to start.
 
-Turn on platform guardrails. That's configuration, not engineering. Enable logging through CloudTrail, CloudWatch, or your platform's equivalent — most of this telemetry is already being generated, you just need to look at it. Assign a system owner to review flagged interactions for 30 minutes a week.
+Turn on platform guardrails. That's configuration, not engineering. Enable logging through CloudTrail, CloudWatch, or your platform's equivalent - most of this telemetry is already being generated, you just need to look at it. Assign a system owner to review flagged interactions for 30 minutes a week.
 
 That's a starting point. Not the finish line, but a defensible one.
 
@@ -34,7 +34,7 @@ Everything starts somewhere. The Quick Start guide is designed to get you from z
 
 ## "Does this work in practice?"
 
-The three-layer pattern — Guardrails, Judge, Human Oversight — is where the industry is converging. Guardrails block known-bad patterns in real time. Judges catch what guardrails miss through asynchronous evaluation. Humans decide the edge cases that machines shouldn't.
+The three-layer pattern - Guardrails, Judge, Human Oversight - is where the industry is converging. Guardrails block known-bad patterns in real time. Judges catch what guardrails miss through asynchronous evaluation. Humans decide the edge cases that machines shouldn't.
 
 Does every layer work perfectly? No. Guardrails need tuning to reduce false positives. Judges need calibration against your specific use case. Humans need clear escalation paths or they become a bottleneck.
 
@@ -46,7 +46,7 @@ But the pattern is sound. It gives you defence in depth without requiring perfec
 
 No. You don't.
 
-Judges add latency and cost. Put them where the **risk of errors outweighs the cost of evaluation** — not everywhere.
+Judges add latency and cost. Put them where the **risk of errors outweighs the cost of evaluation** - not everywhere.
 
 A low-risk internal FAQ bot? Guardrails and logging are probably enough. A system making credit decisions or generating customer-facing communications at scale? That's where judge evaluation earns its keep.
 
@@ -58,7 +58,7 @@ Match the control to the risk. The [Risk Tiers](core/risk-tiers.md) framework ex
 
 At minimum, where regulations require it. The EU AI Act, financial services regulations, and sector-specific rules increasingly mandate human oversight for high-risk AI systems. That's your compliance baseline.
 
-Beyond that, humans are needed where the consequences of errors are serious and irreversible — decisions affecting people's rights, health, or finances. Humans don't scale, so use them where they matter most: reviewing edge cases, calibrating controls, and making decisions that carry accountability.
+Beyond that, humans are needed where the consequences of errors are serious and irreversible - decisions affecting people's rights, health, or finances. Humans don't scale, so use them where they matter most: reviewing edge cases, calibrating controls, and making decisions that carry accountability.
 
 The framework's [Human Factors](strategy/human-factors.md) page goes deeper on where human oversight adds genuine value versus where it becomes theatre.
 
@@ -78,7 +78,7 @@ Adopt a **risk-aligned approach**. Look at your use cases, assess the risks, and
 
 Use the data your AI systems already provide.
 
-CloudTrail logs API calls. CloudWatch captures metrics and operational data. Bedrock provides invocation logging. Azure AI has diagnostic logs. Databricks has audit logs and model serving metrics. Your platform is generating telemetry — the question is whether anyone is looking at it.
+CloudTrail logs API calls. CloudWatch captures metrics and operational data. Bedrock provides invocation logging. Azure AI has diagnostic logs. Databricks has audit logs and model serving metrics. Your platform is generating telemetry - the question is whether anyone is looking at it.
 
 Start by turning on what's available. Establish baselines. Look for anomalies. You don't need a custom observability platform on day one. You need eyes on the data your systems are already producing.
 
@@ -90,7 +90,7 @@ The [Logging & Observability](infrastructure/controls/logging-and-observability.
 
 Honestly? I don't know yet. I believe it can.
 
-The patterns — guardrails as automated first-line defence, sampling-based judge evaluation, risk-tiered human oversight — are designed to scale. Guardrails operate at the request level with minimal latency. Judges can be asynchronous and sampled. Human review focuses on the long tail of edge cases, not every interaction.
+The patterns - guardrails as automated first-line defence, sampling-based judge evaluation, risk-tiered human oversight - are designed to scale. Guardrails operate at the request level with minimal latency. Judges can be asynchronous and sampled. Human review focuses on the long tail of edge cases, not every interaction.
 
 But the evidence base for AI runtime security at true enterprise scale is still emerging. We're all learning.
 
@@ -110,9 +110,28 @@ What exists today is a practitioner-tested structure for thinking about and impl
 
 Yes. Please.
 
-This framework doesn't have all the answers. If you've found practical solutions to AI runtime security challenges — monitoring patterns that work, judge configurations that catch real issues, human review processes that don't become bottlenecks — the community benefits from your experience.
+This framework doesn't have all the answers. If you've found practical solutions to AI runtime security challenges - monitoring patterns that work, judge configurations that catch real issues, human review processes that don't become bottlenecks - the community benefits from your experience.
+
+There are plenty of ways to get involved:
+
+- **Clone the repo** and explore the framework in your own environment
+- **Raise an issue** when something doesn't make sense or doesn't match your reality
+- **Add comments** on existing discussions
+- **Give your opinion** - agreement and disagreement are both valuable
+- **Submit a PR** with your better idea, a correction, or a new pattern you've seen work
+- **Point out where this doesn't match reality** - that's how the framework improves
 
 See the [Contributing](CONTRIBUTING.md) guide or open an issue on [GitHub](https://github.com/JonathanCGill/ai-runtime-behaviour-security). The problems we're all facing are similar. The solutions don't need to be discovered independently by every organisation.
+
+---
+
+## "Can I use this for my own work?"
+
+Absolutely. This framework is [MIT licensed](https://github.com/JonathanCGill/ai-runtime-behaviour-security). You can copy it, fork it, adapt it, build on it, or use any of the ideas in your own work - no permission needed.
+
+Want to build your own site with your own take on AI runtime security? Go for it. Want to take one section and expand it for your industry? Do that. Want to disagree with the entire approach and publish something better? Even better - the field needs more voices and more perspectives.
+
+The ideas here are shared openly because AI security is too important to gatekeep. If something in this framework helps you build safer AI systems, that's the point.
 
 ---
 
