@@ -250,6 +250,8 @@ nav:
 
   - Downloads: downloads.md
 
+  - FAQ: FAQ.md
+
   - Reference:
     - Regulatory:
       - extensions/regulatory/README.md
