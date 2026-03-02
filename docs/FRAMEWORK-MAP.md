@@ -85,7 +85,7 @@ For infrastructure enforcement: [Infrastructure Controls](infrastructure/) - 80 
 3. [Anomaly Detection Ops](extensions/technical/anomaly-detection-ops.md) - baselining and detection engineering
 4. [Cost & Latency](extensions/technical/cost-and-latency.md) - budget the evaluation layer
 
-For multi-agent monitoring, the [MASO Observability domain](maso/controls/observability.md) covers decision chain audit, anomaly scoring, drift detection, and independent kill switch architecture. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps 10 real-world AI security incidents to specific controls.
+For multi-agent monitoring, the [MASO Observability domain](maso/controls/observability.md) covers decision chain audit, anomaly scoring, drift detection, and independent kill switch architecture. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps known real-world AI security incidents to specific controls.
 
 ### "I need regulatory alignment"
 
@@ -148,7 +148,7 @@ For multi-agent monitoring, the [MASO Observability domain](maso/controls/observ
 | [Tier 1 - Supervised](maso/implementation/tier-1-supervised.md) | Human approves all writes |
 | [Tier 2 - Managed](maso/implementation/tier-2-managed.md) | NHI, signed bus, Judge, continuous monitoring |
 | [Tier 3 - Autonomous](maso/implementation/tier-3-autonomous.md) | Self-healing PACE, adversarial testing, kill switch |
-| [Incident Tracker](maso/threat-intelligence/incident-tracker.md) | 10 real-world incidents mapped to controls (18 total across framework) |
+| [Incident Tracker](maso/threat-intelligence/incident-tracker.md) | Known real-world incidents mapped to controls with confidence ratings |
 | [Emerging Threats](maso/threat-intelligence/emerging-threats.md) | 8 forward-looking threat patterns |
 | [Red Team Playbook](maso/red-team/red-team-playbook.md) | 13 adversarial test scenarios |
 | [Integration Guide](maso/integration/integration-guide.md) | LangGraph, AutoGen, CrewAI, Bedrock patterns |

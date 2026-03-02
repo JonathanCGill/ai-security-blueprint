@@ -341,7 +341,7 @@
 
     <use href="#stn" x="280" y="800" stroke="#B36305"/>
     <text x="280" y="822" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#B36305">Incident Tracker</text>
-    <text x="280" y="833" text-anchor="middle" font-size="8" fill="#B36305">10 real-world incidents</text>
+    <text x="280" y="833" text-anchor="middle" font-size="8" fill="#B36305">Known real-world incidents</text>
 
     <use href="#stn" x="530" y="800" stroke="#B36305"/>
     <text x="530" y="822" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#B36305">Emerging Threats</text>

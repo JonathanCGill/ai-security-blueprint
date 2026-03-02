@@ -39,7 +39,7 @@ AI systems fail quietly. The worst failures look like normal responses. Testing 
 
 ## Built on Real Incidents, Not Theory
 
-Every control maps to a real failure mode. 10 documented AI incidents traced to specific controls that would have caught them. Take what's useful, adapt it, ignore what doesn't fit.
+Every control maps to a real failure mode, built on known incidents traced to specific controls that would have caught them. Take what's useful, adapt it, ignore what doesn't fit.
 
 ---
 

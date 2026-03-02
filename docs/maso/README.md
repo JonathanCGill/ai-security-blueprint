@@ -165,7 +165,7 @@ Agents operate with minimal human intervention for pre-approved task categories.
 
 | Document | Purpose |
 |----------|---------|
-| [Incident Tracker](threat-intelligence/incident-tracker.md) | 10 real-world AI security incidents mapped to MASO controls, with multi-agent amplification analysis and minimum effective tier |
+| [Incident Tracker](threat-intelligence/incident-tracker.md) | Real-world AI security incidents mapped to framework controls, with confidence ratings and prevention mechanisms |
 | [Emerging Threats](threat-intelligence/emerging-threats.md) | 8 forward-looking threat patterns: cross-agent worms, agent collusion, transitive authority exploitation, MCP supply chain, epistemic cascading failure, memory poisoning, A2A protocol attacks, AI vs AI defences |
 
 ### Threat Intelligence Grounding

@@ -16,7 +16,7 @@ That's an important fact and we're stating it clearly rather than hoping no one 
 What this reference *is*:
 
 - **A practitioner's synthesis.** 30+ years in IT, 20+ in enterprise security, applied to the specific problem of runtime AI security. The architecture draws on real operational experience in financial services, government, and critical infrastructure - applied to AI, not invented from theory.
-- **Aligned to real incidents.** Every major control addresses a documented, public security failure - retroactively analysed, not empirically tested. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps 10 real-world incidents to specific controls, with a further 8 [risk stories](insights/risk-stories.md) documenting production failures across industries. The [Validated Against Real Incidents](VALIDATED-AGAINST.md) page inverts this - showing which controls align to the most documented incidents.
+- **Aligned to real incidents.** Every major control addresses a documented, public security failure - retroactively analysed, not empirically tested. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps known real-world incidents to specific controls, with [risk stories](insights/risk-stories.md) documenting production failures across industries. The [Validated Against Real Incidents](VALIDATED-AGAINST.md) page inverts this - showing which controls align to the most documented incidents.
 - **Aligned to established standards.** Full crosswalks to OWASP LLM Top 10 (2025), OWASP Agentic Top 10 (2026), NIST AI RMF, ISO 42001, EU AI Act, NIST SP 800-218A, and MITRE ATLAS. These aren't surface-level mappings - they're control-by-control alignments.
 - **Consistent with production patterns.** The three-layer model (Guardrails, Judge, Human Oversight) exists in production at NVIDIA NeMo, AWS Bedrock, Azure AI Content Safety, LangChain, and Guardrails AI. This reference didn't invent the pattern - it codified it.
 
@@ -44,7 +44,7 @@ Controls proven effective through real-world deployment and operational measurem
 
 Controls retroactively mapped to real-world security incidents, showing they would have prevented or detected the failure.
 
-**Current status: 10 incidents mapped in the tracker, 18 across the framework.** Each tracked incident includes the specific attack vector, the controls that address it, the minimum effective implementation tier, and analysis of how the attack would amplify in a multi-agent system. The 8 [risk stories](insights/risk-stories.md) provide additional production failure evidence mapped to framework controls.
+**Current status: Known incidents mapped in the tracker, with additional coverage across the framework.** Each tracked incident includes the specific attack vector, the controls that address it, and a confidence rating for the mapping. The [risk stories](insights/risk-stories.md) provide additional production failure evidence mapped to framework controls.
 
 See: [Validated Against Real Incidents](VALIDATED-AGAINST.md)
 

@@ -87,7 +87,7 @@ The UK AI Security Institute's Frontier AI Trends Report (December 2025) is the 
   - Explicit documentation of known gaps
   - Call for pilot partners and peer review
 - **VALIDATED-AGAINST.md** - Control-by-control incident validation
-  - 32 controls mapped to 10 real-world incidents
+  - Controls mapped to known real-world incidents with confidence ratings
   - Evidence strength ratings (Strong: 3+ incidents, Moderate: 1–2, Threat-modelled: 0)
   - Validation coverage map by MASO domain
   - Top 5 most-validated controls identified
