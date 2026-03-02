@@ -92,7 +92,7 @@ MASO added:
 
 - 6 control domains (Prompt/Goal/Epistemic Integrity, Identity & Access, Data Protection, Execution Control, Observability, Supply Chain)
 - 3 implementation tiers with graduation criteria
-- Incident Tracker mapping 10 real-world incidents to controls, plus 8 risk stories from production failures
+- Incident Tracker mapping known real-world incidents to controls, plus risk stories from production failures
 - Red Team Playbook with 13 adversarial test scenarios
 - Integration patterns for LangGraph, AutoGen, CrewAI, AWS Bedrock
 - Worked examples in financial services, healthcare, and critical infrastructure
