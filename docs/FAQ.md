@@ -112,7 +112,26 @@ Yes. Please.
 
 This framework doesn't have all the answers. If you've found practical solutions to AI runtime security challenges — monitoring patterns that work, judge configurations that catch real issues, human review processes that don't become bottlenecks — the community benefits from your experience.
 
+There are plenty of ways to get involved:
+
+- **Clone the repo** and explore the framework in your own environment
+- **Raise an issue** when something doesn't make sense or doesn't match your reality
+- **Add comments** on existing discussions
+- **Give your opinion** — agreement and disagreement are both valuable
+- **Submit a PR** with your better idea, a correction, or a new pattern you've seen work
+- **Point out where this doesn't match reality** — that's how the framework improves
+
 See the [Contributing](CONTRIBUTING.md) guide or open an issue on [GitHub](https://github.com/JonathanCGill/ai-runtime-behaviour-security). The problems we're all facing are similar. The solutions don't need to be discovered independently by every organisation.
+
+---
+
+## "Can I use this for my own work?"
+
+Absolutely. This framework is [MIT licensed](https://github.com/JonathanCGill/ai-runtime-behaviour-security). You can copy it, fork it, adapt it, build on it, or use any of the ideas in your own work — no permission needed.
+
+Want to build your own site with your own take on AI runtime security? Go for it. Want to take one section and expand it for your industry? Do that. Want to disagree with the entire approach and publish something better? Even better — the field needs more voices and more perspectives.
+
+The ideas here are shared openly because AI security is too important to gatekeep. If something in this framework helps you build safer AI systems, that's the point.
 
 ---
 
