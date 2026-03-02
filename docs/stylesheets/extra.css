@@ -92,3 +92,8 @@ img[src$=".svg"] {
     padding: 0.3em 0.4em;
   }
 }
+
+/* Giscus comments: ensure full width within content area */
+.giscus {
+  margin-top: 2rem;
+}

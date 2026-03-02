@@ -2,6 +2,7 @@
 description: Downloadable resources including position papers and practitioner training materials for AI runtime behaviour security.
 og_title: Downloads - AI Runtime Behaviour Security
 og_description: Position papers and practitioner training materials for AI runtime behaviour security, available as PDF downloads.
+comments: false
 ---
 
 # Downloads
