@@ -12,7 +12,7 @@ Honest answers to the questions we hear most.
 
 It can be. But it doesn't have to start that way.
 
-Guardrails can be enabled in managed services like AWS Bedrock, Azure AI Content Safety, or Databricks with minimal configuration. You're not building from scratch - you're turning on capabilities that already exist in the platforms you're paying for.
+Guardrails can be enabled in managed services like AWS Bedrock, Azure AI Content Safety, or Databricks with minimal configuration. You're not building from scratch - you're turning on capabilities that already exist in the platforms you're paying for. On Bedrock, for example, you can enable content filtering and PII detection without writing new code. These filters run inline with model invocations and generate logs you can route to CloudWatch automatically.
 
 A Judge layer doesn't need to evaluate every interaction. Sample 5% of traffic on a medium-risk system and you've got meaningful oversight at a fraction of the cost of 100% coverage. Scale up only where the risk justifies it.
 
@@ -28,7 +28,9 @@ Turn on platform guardrails. That's configuration, not engineering. Enable loggi
 
 That's a starting point. Not the finish line, but a defensible one.
 
-Everything starts somewhere. The Quick Start guide is designed to get you from zero to working controls in 30 minutes with what you already have.
+Think of it as a progression. Start with guardrails and basic logging. Over time, introduce sampled judge evaluations and human edge-case reviews as your adoption and risk appetite grow. You don't need full maturity on day one - you need a direction of travel.
+
+The Quick Start guide is designed to get you from zero to working controls in 30 minutes with what you already have.
 
 ---
 
@@ -38,7 +40,9 @@ The three-layer pattern - Guardrails, Judge, Human Oversight - is where the indu
 
 Does every layer work perfectly? No. Guardrails need tuning to reduce false positives. Judges need calibration against your specific use case. Humans need clear escalation paths or they become a bottleneck.
 
-But the pattern is sound. It gives you defence in depth without requiring perfection from any single layer. Start with guardrails, add a sampling judge, and put a human review process in place. Iterate from there.
+Concretely: a guardrail that blocks prompt injection patterns will catch the obvious attacks on day one. After a week of reviewing logs, you tune it to reduce false positives on legitimate queries that happen to contain code snippets. That iteration cycle is exactly how these controls mature in production.
+
+The pattern is sound. It gives you defence in depth without requiring perfection from any single layer. Start with guardrails, add a sampling judge, and put a human review process in place. Iterate from there.
 
 ---
 
