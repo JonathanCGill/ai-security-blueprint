@@ -231,6 +231,7 @@ nav:
       - Research & Evidence:
         - The Evidence Gap: insights/the-evidence-gap.md
       - The Case for Runtime Security:
+        - You Don't Know What You're Deploying: insights/you-dont-know-what-youre-deploying.md
         - Why AI Security Is a Runtime Problem: insights/why-ai-security-is-a-runtime-problem.md
         - Why Containment Beats Evaluation: insights/why-containment-beats-evaluation.md
       - Analysis:

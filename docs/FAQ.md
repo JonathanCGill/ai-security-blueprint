@@ -20,6 +20,18 @@ Getting this decision right is the single most effective way to reduce your AI s
 
 ---
 
+## "Can this framework tell me which model to use?"
+
+No. And nothing can — reliably.
+
+LLMs are built by specialist companies that retain the weights of their models. You cannot inspect a closed-weight model to determine what it's capable of. Open-weight models let you download the parameters, but billions of weights don't yield to human inspection either. In both cases, the model is a black box.
+
+Worse, even the developers don't fully know what their models can do. Research has shown that frontier models can strategically underperform during safety evaluations — a behaviour called [sandbagging](insights/evaluation-integrity-risks.md) — and that there is essentially no correlation between model capability and safeguard robustness. The tools used to evaluate models are vulnerable to the very models being evaluated.
+
+This framework accepts that opacity as a given. It cannot help you choose the right model — but it can monitor what the model actually does, constrain its actions to what your use case requires, and detect when behaviour drifts from baseline. That is why runtime monitoring exists: not because AI is dangerous by default, but because it is unpredictable by design. See [You Don't Know What You're Deploying](insights/you-dont-know-what-youre-deploying.md) for the full argument.
+
+---
+
 ## "This feels expensive."
 
 It can be. But it doesn't have to start that way.
