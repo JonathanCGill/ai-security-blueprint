@@ -2,7 +2,7 @@
 
 **Runtime behavioural security for AI systems — from single-model deployments to autonomous multi-agent orchestration.**
 
-[![Controls: 173](https://img.shields.io/badge/Controls-173-blue?style=flat-square)](docs/foundations/) [![Tests: 99](https://img.shields.io/badge/Tests-99-blue?style=flat-square)](docs/maso/red-team/red-team-playbook.md) [![OWASP: Full Coverage](https://img.shields.io/badge/OWASP-Full_Coverage-brightgreen?style=flat-square)](docs/maso/controls/risk-register.md) [![PACE Resilience](https://img.shields.io/badge/PACE-Resilience-orange?style=flat-square)](docs/PACE-RESILIENCE.md) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Controls: 200+](https://img.shields.io/badge/Controls-200%2B-blue?style=flat-square)](docs/foundations/) [![Tests: 99](https://img.shields.io/badge/Tests-99-blue?style=flat-square)](docs/maso/red-team/red-team-playbook.md) [![OWASP: Full Coverage](https://img.shields.io/badge/OWASP-Full_Coverage-brightgreen?style=flat-square)](docs/maso/controls/risk-register.md) [![PACE Resilience](https://img.shields.io/badge/PACE-Resilience-orange?style=flat-square)](docs/PACE-RESILIENCE.md) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 > You tested your AI before deployment. You proved it worked. Then it hallucinated a medical dosage, leaked customer data, or approved a transaction it shouldn't have.
 
@@ -10,7 +10,7 @@ Traditional security assumes deterministic systems — same input, same output, 
 
 **This is a thinking tool** — not a product, not a vendor pitch, not a compliance checklist. It's an open-source framework for reasoning about what controls your AI systems actually need, given your threat model, risk appetite, and regulatory context. Two organisations reading this should arrive at different implementations, because they have different contexts. That's the point.
 
-173 controls. 10 real incidents mapped. 8 standards aligned. MIT licensed.
+200+ controls. Pick what fits your risk. 10 real incidents mapped. 8 standards aligned. MIT licensed.
 
 ---
 

@@ -13,7 +13,7 @@ comments: false
 
 AI systems fail quietly. The worst failures look like normal responses. Testing alone cannot catch them. **Runtime controls can.**
 
-**203 controls. 10 real-world incidents. Open-source practitioner's reference.** Covers single-model deployments through autonomous multi-agent orchestration - aligned to OWASP, NIST, ISO 42001, EU AI Act, and DORA.
+**200+ controls. Pick what fits your risk. 10 real-world incidents mapped. Open-source practitioner's reference.** Covers single-model deployments through autonomous multi-agent orchestration - aligned to OWASP, NIST, ISO 42001, EU AI Act, and DORA.
 
 ![Four-layer runtime security: Guardrails → Judge → Human → Circuit Breaker](images/runtime-layers.svg)
 
