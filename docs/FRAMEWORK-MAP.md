@@ -148,7 +148,7 @@ For multi-agent monitoring, the [MASO Observability domain](maso/controls/observ
 | [Tier 1 - Supervised](maso/implementation/tier-1-supervised.md) | Human approves all writes |
 | [Tier 2 - Managed](maso/implementation/tier-2-managed.md) | NHI, signed bus, Judge, continuous monitoring |
 | [Tier 3 - Autonomous](maso/implementation/tier-3-autonomous.md) | Self-healing PACE, adversarial testing, kill switch |
-| [Incident Tracker](maso/threat-intelligence/incident-tracker.md) | 10 real-world incidents mapped to controls |
+| [Incident Tracker](maso/threat-intelligence/incident-tracker.md) | 10 real-world incidents mapped to controls (18 total across framework) |
 | [Emerging Threats](maso/threat-intelligence/emerging-threats.md) | 8 forward-looking threat patterns |
 | [Red Team Playbook](maso/red-team/red-team-playbook.md) | 13 adversarial test scenarios |
 | [Integration Guide](maso/integration/integration-guide.md) | LangGraph, AutoGen, CrewAI, Bedrock patterns |

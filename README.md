@@ -10,7 +10,7 @@ Traditional security assumes deterministic systems — same input, same output, 
 
 **This is a thinking tool** — not a product, not a vendor pitch, not a compliance checklist. It's an open-source framework for reasoning about what controls your AI systems actually need, given your threat model, risk appetite, and regulatory context. Two organisations reading this should arrive at different implementations, because they have different contexts. That's the point.
 
-200+ controls. Pick what fits your risk. 10 real incidents mapped. 8 standards aligned. MIT licensed.
+200+ controls. Pick what fits your risk. 18 real incidents mapped. 8 standards aligned. MIT licensed.
 
 ---
 
