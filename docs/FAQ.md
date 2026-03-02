@@ -8,6 +8,18 @@ Honest answers to the questions we hear most.
 
 ---
 
+## "Do we actually need AI for this?"
+
+Ask this question before anything else. Seriously.
+
+If a process can be solved with RPA, a rules engine, or straightforward code, that's almost certainly the better option. It's cheaper to build, cheaper to run, and cheaper to secure. Every AI system you deploy brings runtime behaviour you need to monitor, guardrails you need to tune, and risks you need to manage. If you don't need a model making decisions, don't introduce one just because you can.
+
+AI earns its place when the problem genuinely requires language understanding, reasoning over unstructured data, or handling inputs that can't be reduced to deterministic rules. If you're automating a form submission or routing tickets based on keywords, you don't need a large language model. You need a script.
+
+Getting this decision right is the single most effective way to reduce your AI security workload. The safest AI system is the one you didn't need to build.
+
+---
+
 ## "This feels expensive."
 
 It can be. But it doesn't have to start that way.
@@ -75,6 +87,18 @@ No. This framework is designed to **provoke thought** about AI runtime risks, no
 Realistically, only the most high-risk AI use cases need a full set of controls. A low-risk internal tool doesn't need the same governance as an autonomous agent making financial decisions. Treating everything the same wastes resources and creates compliance fatigue.
 
 Adopt a **risk-aligned approach**. Look at your use cases, assess the risks, and enable what's needed and practical for your organisation. The controls exist as a menu, not a mandate.
+
+---
+
+## "What about normal security controls?"
+
+This framework focuses on AI-specific runtime behaviour. It doesn't replace your existing information security foundations - it depends on them.
+
+Access controls, network segmentation, firewalls, zero-trust architecture, identity management, encryption at rest and in transit - all of these still apply to AI systems, and arguably matter more. A model endpoint without proper authentication is a bigger problem than one without a judge layer. A RAG pipeline pulling from a data store with weak access controls has a data quality and data security problem before it has an AI behaviour problem.
+
+The same risk-aligned approach applies here. Not every AI deployment needs the same level of infrastructure hardening, but every one needs the basics. Proper IAM on model endpoints. Network controls on data stores feeding your RAG pipelines. Data classification so you know what's flowing into and out of your models. These are the foundations this framework sits on top of.
+
+Get these right and you reduce the workload on your AI-specific controls significantly. Get them wrong and no amount of guardrails or judges will save you.
 
 ---
 
