@@ -331,14 +331,6 @@ Documented AI safety incidents surged from 149 in 2023 to 233 in 2024 - a 56.4% 
 
 These incidents are referenced throughout the framework to ground controls in demonstrated (not theoretical) risk. Each one maps to specific control domains.
 
-### Samsung ChatGPT Data Leak (March–April 2023)
-
-Samsung semiconductor engineers entered proprietary source code and internal meeting transcripts into ChatGPT within a 20-day window. Samsung banned generative AI tools company-wide. Similar restrictions followed at JPMorgan, Goldman Sachs, and other institutions.
-
-Maps to: Data Protection, Guardrails (DLP).
-
-- [AI Incident Database: Incident 768](https://incidentdatabase.ai/cite/768/)
-
 ### Air Canada Chatbot - Moffatt v. Air Canada (February 2024)
 
 Air Canada's chatbot gave incorrect bereavement fare information. The airline argued the chatbot was "a separate legal entity responsible for its own actions." The BC Civil Resolution Tribunal ruled against Air Canada: *"It makes no difference whether the information comes from a static page or a chatbot."* Ordered to pay $812.02.

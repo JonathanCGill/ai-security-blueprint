@@ -83,8 +83,8 @@ AI risk isn't theoretical. These are public, documented incidents:
 - **Air Canada (2024)** - Chatbot fabricated a bereavement fare policy. Customer relied on it. Airline held liable by tribunal. *No runtime monitoring detected the hallucination before the customer acted on it.*
 - **Chevrolet dealership (2023)** - AI chatbot agreed to sell a vehicle for $1. *No guardrail prevented the commitment. No human oversight caught it.*
 - **DPD (2024)** - Customer service AI swore at customers and criticised the company. Went viral. *No behavioural monitoring flagged the output before delivery.*
-- **Samsung (2023)** - Engineers pasted proprietary source code into an AI tool. Data exfiltrated to the model provider. *No data loss prevention on the AI interface.*
 - **Mata v. Avianca (2023)** - Lawyer submitted AI-generated legal brief citing fabricated case law. Sanctioned by the court. *No independent evaluation verified the AI's output.*
+- **Microsoft Copilot EchoLeak (2025)** - Indirect prompt injection in email content caused Copilot to exfiltrate sensitive data. *No untrusted content isolation or exfiltration detection.*
 
 Every one of these was preventable with controls this framework describes. Every one caused measurable financial, legal, or reputational damage.
 

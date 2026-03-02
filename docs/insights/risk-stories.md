@@ -2,7 +2,7 @@
 
 *Real incidents. Concrete controls. Honest limits.*
 
-These are grounded accounts of AI systems that failed in production, mapped to specific controls in this framework. Stories 1–5 show where missing control layers caused or worsened the incident. Stories 6–8 show where the absence of both the three-layer architecture *and* a defined resilience posture (PACE) turned manageable problems into public failures. No hypotheticals.
+These are grounded accounts of AI systems that failed in production, mapped to specific controls in this framework. Stories 1–4 show where missing control layers caused or worsened the incident. Stories 5–7 show where the absence of both the three-layer architecture *and* a defined resilience posture (PACE) turned manageable problems into public failures. No hypotheticals.
 
 ---
 
@@ -96,39 +96,7 @@ The tribunal's ruling that companies are liable for chatbot outputs regardless o
 
 ---
 
-## Story 4: The Code Leak
-
-**Samsung Electronics - March 2023**
-
-Three weeks after Samsung lifted a ban on employees using ChatGPT, three separate incidents occurred within a 20-day span. One engineer pasted semiconductor source code into ChatGPT to find a bug fix. Another shared confidential code to optimise test sequences for identifying defective chips. A third uploaded an entire internal meeting transcript to generate meeting minutes. Since ChatGPT retains user inputs for model training, Samsung's proprietary code and internal discussions were now in the hands of OpenAI, irrecoverable. Samsung subsequently banned ChatGPT entirely, then later developed internal AI tools with security controls.
-
-### What Failed
-
-This isn't a chatbot failure - it's a data leakage incident. Employees used a public AI service as a productivity tool and fed it proprietary data. There were no technical controls preventing confidential data from leaving the organisation via AI tools. The company relied on policy ("don't do this") rather than infrastructure ("you can't do this").
-
-### What the Framework Would Have Changed
-
-**Risk classification:** Internal AI tools used by employees handling proprietary data. The framework's [Risk Tiers](../core/risk-tiers.md) would classify this as Tier 1 (internal use) but the data sensitivity (proprietary source code, trade secrets) pushes the data protection requirements higher.
-
-**Guardrails (Primary layer):** Data Loss Prevention (DLP) guardrails that scan outbound prompts for patterns matching source code, confidential markings, or structured data formats would have blocked the most obvious cases. The [Infrastructure Controls](../infrastructure/) section includes data protection controls specifically for AI interactions.
-
-**Infrastructure layer:** This is primarily an infrastructure problem, not a behavioural one. The framework's infrastructure controls include outbound data classification for AI service interactions, API gateway enforcement that routes all AI traffic through a monitored proxy, and data exfiltration detection. The engineer shouldn't have been able to paste source code into ChatGPT because the infrastructure should have intercepted it.
-
-**The First Control:** The framework's insight on [choosing the right tool](the-first-control.md) applies here. Using a public AI service for proprietary code review is the wrong tool for the job. An internal code analysis tool, or a self-hosted model with no data leaving the organisation, is the correct architectural choice. Samsung eventually reached this conclusion - building internal AI tools - but only after the damage was done.
-
-### Honest Limits
-
-**The framework's guardrails are designed for AI system outputs, not inputs.** The three-layer pattern (Guardrails → Judge → Human) focuses on controlling what the AI produces, not what humans feed into it. DLP for AI inputs is covered in the Infrastructure Controls section, but it's a different problem from the core framework.
-
-**The real limit** is user behaviour. Technical controls can block obvious patterns (source code, classified documents) but can't prevent a knowledgeable user from rephrasing proprietary information in a way that passes DLP filters. The framework's infrastructure controls reduce the risk surface; they don't eliminate it. Organisational controls (training, acceptable use policy, consequence management) remain necessary alongside technical controls.
-
-### What Samsung Did Right (Eventually)
-
-Samsung's eventual solution - building internal AI tools and restricting access to external services - is the correct architectural response. The framework would have recommended this from the start: for organisations handling trade secrets, self-hosted or enterprise-tier AI services with contractual data protections are a prerequisite, not an afterthought.
-
----
-
-## Story 5: The Personality That Wouldn't Stay Down
+## Story 4: The Personality That Wouldn't Stay Down
 
 **Microsoft Bing / "Sydney" - February 2023**
 
@@ -156,7 +124,7 @@ Sydney is the case that proves defence in depth isn't enough if all your layers 
 
 ---
 
-## Story 6: The Slow Collapse
+## Story 5: The Slow Collapse
 
 **Klarna - 2024–2025**
 
@@ -193,7 +161,7 @@ The framework wouldn't have prevented the initial business decision to reduce he
 
 ---
 
-## Story 7: The 260 McNuggets
+## Story 6: The 260 McNuggets
 
 **McDonald's / IBM - 2021–2024**
 
@@ -230,7 +198,7 @@ The framework's three-layer pattern is designed primarily for text-based AI syst
 
 ---
 
-## Story 8: The Government That Couldn't Say "I Don't Know"
+## Story 7: The Government That Couldn't Say "I Don't Know"
 
 **NYC MyCity Chatbot - October 2023 to January 2026**
 
@@ -275,9 +243,9 @@ The framework can't prevent a political decision to keep a broken system running
 
 **For security teams:** These stories are evidence for your risk assessments. When someone says "it's just a chatbot, what could go wrong?" - point them here.
 
-**For the honest conversation:** Story 5 (Sydney) shows where the framework has real limits against emergent model behaviour. Stories 6–8 show something different: systems that failed not because the problems were hard, but because nobody defined what should happen when things went wrong. Klarna had no quality threshold. McDonald's had no fallback. NYC had no circuit breaker. PACE exists because "we'll figure it out when it happens" is not a resilience strategy.
+**For the honest conversation:** Story 4 (Sydney) shows where the framework has real limits against emergent model behaviour. Stories 5–7 show something different: systems that failed not because the problems were hard, but because nobody defined what should happen when things went wrong. Klarna had no quality threshold. McDonald's had no fallback. NYC had no circuit breaker. PACE exists because "we'll figure it out when it happens" is not a resilience strategy.
 
-**For the three-layer + PACE argument:** Stories 1–5 show what happens when individual control layers are missing. Stories 6–8 show what happens when the layers are missing *and* there's no defined response to failure. The three layers detect and prevent. PACE defines what happens when detection comes too late or prevention fails. You need both.
+**For the three-layer + PACE argument:** Stories 1–4 show what happens when individual control layers are missing. Stories 5–7 show what happens when the layers are missing *and* there's no defined response to failure. The three layers detect and prevent. PACE defines what happens when detection comes too late or prevention fails. You need both.
 
 ---
 
