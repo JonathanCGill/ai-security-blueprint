@@ -1,16 +1,12 @@
 # AI Runtime Behaviour Security
 
-**Runtime behavioural security for AI systems — from single-model deployments to autonomous multi-agent orchestration.**
+## AI systems don't just have vulnerabilities. They have behaviours.
 
 [![Controls: 200+](https://img.shields.io/badge/Controls-200%2B-blue?style=flat-square)](docs/foundations/) [![Tests: 99](https://img.shields.io/badge/Tests-99-blue?style=flat-square)](docs/maso/red-team/red-team-playbook.md) [![OWASP: Full Coverage](https://img.shields.io/badge/OWASP-Full_Coverage-brightgreen?style=flat-square)](docs/maso/controls/risk-register.md) [![PACE Resilience](https://img.shields.io/badge/PACE-Resilience-orange?style=flat-square)](docs/PACE-RESILIENCE.md) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-> You tested your AI before deployment. You proved it worked. Then it hallucinated a medical dosage, leaked customer data, or approved a transaction it shouldn't have.
+**A practical, open-source framework for securing AI systems at runtime — where prompt injection, model manipulation, and agent drift actually happen.**
 
-Traditional security assumes deterministic systems — same input, same output, testable, provable. AI isn't deterministic. The same prompt produces different responses every time. Your test suite proves the system *can* behave correctly. It cannot prove it *will* on the next request.
-
-**This is a thinking tool** — not a product, not a vendor pitch, not a compliance checklist. It's an open-source framework for reasoning about what controls your AI systems actually need, given your threat model, risk appetite, and regulatory context. Two organisations reading this should arrive at different implementations, because they have different contexts. That's the point.
-
-200+ controls. Pick what fits your risk. Based on real-world incidents. Open-source practitioner's reference.
+Most AI security guidance stops at the model layer. This framework addresses what happens after deployment: how AI systems behave in production, how that behaviour is monitored, and how it's contained when things go wrong. Built from 20+ years of enterprise cybersecurity experience in regulated financial services.
 
 ---
 
