@@ -1,6 +1,6 @@
 ---
 title: AI Runtime Behaviour Security
-description: A practitioner's reference for runtime AI security. Guardrails, LLM-as-Judge, human oversight, and PACE resilience - from single-model deployments to autonomous multi-agent orchestration. Take what's useful, adapt it, ignore what doesn't fit.
+description: A practical, open-source framework for securing AI systems at runtime - where prompt injection, model manipulation, and agent drift actually happen.
 hide:
   - toc
   - path
@@ -10,13 +10,11 @@ hide:
 
 # AI Runtime Behaviour Security
 
-AI systems fail quietly. The worst failures look like normal responses. Testing alone cannot catch them. **Runtime controls can.**
+## AI systems don't just have vulnerabilities. They have behaviours.
 
-**200+ controls. Pick what fits your risk. Based on real-world incidents. Open-source practitioner's reference.** Covers single-model deployments through autonomous multi-agent orchestration - aligned to OWASP, NIST, ISO 42001, EU AI Act, and DORA.
+**A practical, open-source framework for securing AI systems at runtime - where prompt injection, model manipulation, and agent drift actually happen.**
 
-![Four-layer runtime security: Guardrails → Judge → Human → Circuit Breaker](images/runtime-layers.svg)
-
-**The organising principle:** If you declare what an agent is supposed to do - its intent, constraints, and boundaries - every control layer has a reference point. [Guardrails](ARCHITECTURE.md#single-agent-architecture) enforce hard limits derived from that intent. The [Judge](core/judge-assurance.md) evaluates whether actions align with it. [Humans](insights/humans-remain-accountable.md) handle the exceptions. [Monitoring](maso/controls/observability.md) detects when behaviour deviates from it. [PACE](PACE-RESILIENCE.md) manages what happens when the intent cannot be fulfilled safely. No single layer is sufficient. No single layer needs to be. Together, underpinned by declared intent, they [confine AI behaviour to defensible limits](insights/containment-through-intent.md).
+Most AI security guidance stops at the model layer. This framework addresses what happens after deployment: how AI systems behave in production, how that behaviour is monitored, and how it's contained when things go wrong. Built from 20+ years of enterprise cybersecurity experience in regulated financial services.
 
 <div style="text-align: center" markdown>
 
@@ -26,42 +24,85 @@ AI systems fail quietly. The worst failures look like normal responses. Testing 
 
 </div>
 
-!!! tip "Start here"
+---
 
-    **Executives** - [2-minute cheat sheet](CHEATSHEET.md) covers risk tiers, control layers, and what to ask your team.
+<div class="landing-cards" markdown>
 
-    **Architects** - [Architecture overview](ARCHITECTURE.md) shows the four-layer pattern and how single-agent extends to multi-agent.
+<div class="landing-card" markdown>
 
-    **Practitioners** - [Quick start](QUICK_START.md) gets you from zero to working controls.
+### For Security Leaders
+
+**"I need to govern AI risk across the enterprise"**
+
+Start with the three-layer architecture: guardrails, LLM-as-Judge evaluation, and human oversight. Map it to your existing risk framework and regulatory obligations.
+
+[Framework Overview](ARCHITECTURE.md){ .md-button }
+
+</div>
+
+<div class="landing-card" markdown>
+
+### For Security Architects & Engineers
+
+**"I need to implement runtime controls"**
+
+Go straight to the technical controls: behavioural boundaries, output validation, agent containment patterns, and integration with AWS Bedrock, Azure AI, or self-hosted models.
+
+[Technical Implementation](QUICK_START.md){ .md-button }
+
+</div>
+
+<div class="landing-card" markdown>
+
+### For Compliance & Risk
+
+**"I need to show regulators we have this covered"**
+
+See how the framework maps to ISO 42001, EU AI Act, NIST AI RMF, and banking-specific requirements. Ready-made crosswalks for audit and compliance conversations.
+
+[Regulatory Mapping](stakeholders/compliance-and-legal.md){ .md-button }
+
+</div>
+
+</div>
 
 ---
 
-## Built on Real Incidents, Not Theory
+## Three layers. One principle: contain behaviour, don't just classify risk.
 
-Every control maps to a real failure mode, built on known incidents traced to specific controls that would have caught them. Take what's useful, adapt it, ignore what doesn't fit.
+| Layer | What it does | Why it matters |
+| --- | --- | --- |
+| **Guardrails** | Enforces behavioural boundaries at the input and output level | Stops known-bad patterns before they reach users or downstream systems |
+| **LLM-as-Judge** | Uses a secondary model to evaluate outputs against policy | Catches nuanced violations that rule-based systems miss |
+| **Human Oversight** | Escalation, review, and override for high-stakes decisions | Keeps humans in the loop where regulatory and ethical stakes demand it |
 
----
+![Four-layer runtime security: Guardrails → Judge → Human → Circuit Breaker](images/runtime-layers.svg)
 
-## What You Get
-
-- **Classify risk and right-size controls** - not every AI system needs the same governance. Tier your deployments from [fast-lane self-certification](FAST-LANE.md) to full human-in-the-loop oversight.
-- **Controls that work at runtime** - [guardrails](ARCHITECTURE.md#single-agent-architecture) for known threats, LLM-as-Judge for unknown threats, human oversight for edge cases, circuit breakers for when everything else fails.
-- **Resilience when controls fail** - every control has a defined failure mode and a predetermined safe state. [PACE methodology](PACE-RESILIENCE.md): Primary, Alternate, Contingency, Emergency.
-
-Use the parts that fit your environment. Skip the parts that don't. If your existing tools already satisfy a control, you don't need new ones.
+[See the full architecture diagram](ARCHITECTURE.md){ .md-button }
 
 ---
 
-## Navigate
+!!! abstract "MASO - Multi-Agent Security Operations"
 
-| I want to... | Go to |
-| --- | --- |
-| **See how the layers work** | [Architecture Overview](ARCHITECTURE.md) - single-agent and multi-agent patterns |
-| **Secure a single-model AI system** | [Foundation Controls](foundations/) - 80 controls, risk tiers, PACE resilience |
-| **Secure a multi-agent system** | [Multi-Agent Controls (MASO)](maso/) - 123 controls, 7 domains, 3 tiers |
-| **Deploy low-risk AI fast** | [Fast Lane](FAST-LANE.md) - self-certification for internal, read-only, no regulated data |
-| **Classify a system by risk** | [Risk Tiers](core/risk-tiers.md) - six-dimension scored profile |
-| **Map to compliance requirements** | [Compliance & Legal](stakeholders/compliance-and-legal.md) - ISO 42001, EU AI Act, DORA |
+    As AI moves from single-model deployments to multi-agent orchestration, the attack surface multiplies. MASO addresses agent-to-agent trust, delegation boundaries, and coordinated containment.
+
+    [Explore the MASO Framework](maso/){ .md-button }
+
+!!! abstract "ISO 42001 Clause Mapping"
+
+    Clause-by-clause mapping showing how runtime behaviour controls satisfy ISO 42001 requirements. Built for teams preparing for certification or audit.
+
+    [View the Mapping](extensions/regulatory/iso-42001-clause-mapping.md){ .md-button }
+
+---
+
+## Take the framework with you
+
+Download the executive summary - a single document covering the architecture, key controls, and regulatory alignment. No email required. Share it with your team, your CISO, or your auditors.
+
+[Download PDF (Executive Summary)](downloads.md){ .md-button .md-button--primary }
+
+---
 
 ??? question "Common questions - cost, Judge reliability, supply chain, human factors"
 
@@ -95,25 +136,17 @@ Use the parts that fit your environment. Skip the parts that don't. If your exis
 
 ---
 
-## See Inside
+<div class="credibility-strip" markdown>
 
-> *Your AI system returns a confident, well-formatted answer. It's wrong. Your guardrail didn't catch it - it looked normal. Your test suite didn't cover it - the input was novel. Now what?*
+**Open source on GitHub** - star, fork, or contribute  ·  **Built by a practitioner, not a vendor**  ·  **Based on real-world incidents in regulated financial services**
 
-That's the problem this reference addresses. The [Architecture Overview](ARCHITECTURE.md) shows the four-layer pattern. The [Quick Start](QUICK_START.md) gets you from zero to working controls. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) shows where real systems failed - and which controls would have caught it.
-
----
-
-## Standards Alignment
-
-OWASP LLM Top 10 · OWASP Agentic Top 10 · NIST AI RMF · ISO 42001 · NIST SP 800-218A · MITRE ATLAS · EU AI Act · DORA
-
-→ [Full standards mapping](infrastructure/mappings/controls-to-three-layers.md)
+</div>
 
 ---
 
 ## How to Use This
 
-??? abstract "What it provides, what it doesn't, and how to approach it"
+??? info "What it provides, what it doesn't, and how to approach it"
 
     This is a practitioner's reference - not a standard, not a certification, not a product pitch. Take what's useful, adapt it to your environment, ignore what doesn't fit.
 
@@ -132,34 +165,6 @@ OWASP LLM Top 10 · OWASP Agentic Top 10 · NIST AI RMF · ISO 42001 · NIST SP 
     - Not a product recommendation. Tool and vendor references are illustrative, not endorsements.
     - Not a substitute for professional security assessment of your specific deployment.
     - Not a finished document. AI security is moving fast. This will evolve as the landscape does.
-
----
-
-## Repository Structure
-
-??? info "Repository structure"
-
-    ```
-    ├── README.md                          # This document - start here
-    ├── TUBE-MAP.md                        # Complete framework tube map with guide
-    ├── foundations/
-    │   └── README.md                      # Single-model AI security framework
-    ├── maso/
-    │   ├── README.md                      # Multi-Agent Security Operations
-    │   ├── controls/                      # 6 domain specifications + risk register
-    │   ├── implementation/                # 3 tier guides (supervised, managed, autonomous)
-    │   ├── threat-intelligence/           # Incident tracker + emerging threats
-    │   ├── red-team/                      # Adversarial test playbook (13 scenarios)
-    │   ├── integration/                   # LangGraph, AutoGen, CrewAI, AWS Bedrock patterns
-    │   └── examples/                      # Financial services, healthcare, critical infrastructure
-    ├── stakeholders/                      # Role-based entry points (security, risk, architecture, product, engineering, compliance)
-    ├── images/                            # All SVGs (tube map, architecture, OWASP coverage, stakeholder map)
-    ├── core/                              # Risk tiers, controls, IAM governance, checklists
-    ├── infrastructure/                    # 80 technical controls, 11 domains
-    ├── extensions/                        # Regulatory, templates, worked examples
-    ├── insights/                          # Analysis articles and emerging challenges
-    └── strategy/                          # AI strategy - alignment, data, human factors, progression
-    ```
 
 ---
 

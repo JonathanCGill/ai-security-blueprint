@@ -69,6 +69,44 @@ img[src$=".svg"] {
   display: none;
 }
 
+/* Landing page: 3-card grid layout */
+.landing-cards {
+  display: flex;
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.landing-card {
+  flex: 1;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+  padding: 1.2rem 1.4rem;
+  background: var(--md-code-bg-color);
+}
+
+.landing-card h3 {
+  margin-top: 0 !important;
+  font-size: 1.05rem;
+}
+
+.landing-card p:last-of-type {
+  margin-bottom: 0.5rem;
+}
+
+/* Stack cards on mobile */
+@media (max-width: 768px) {
+  .landing-cards {
+    flex-direction: column;
+  }
+}
+
+/* Credibility strip: subtle, centred */
+.credibility-strip {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--md-default-fg-color--light);
+}
+
 /* Mobile: tighten tables so 3-4 column tables remain readable */
 @media (max-width: 768px) {
   .md-typeset table:not([class]) {
