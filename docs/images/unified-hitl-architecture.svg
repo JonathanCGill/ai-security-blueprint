@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="580" viewBox="0 0 900 580">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#475569"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3b82f6"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="580" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="450" y="28" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle">Unified HITL Architecture</text>
+
+  <!-- Outer border -->
+  <rect x="30" y="45" width="840" height="510" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+
+  <!-- PLATFORM SOURCES column -->
+  <text x="155" y="75" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">PLATFORM SOURCES</text>
+
+  <!-- Bedrock box -->
+  <rect x="60" y="95" width="190" height="70" rx="6" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+  <text x="155" y="125" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#c2410c" text-anchor="middle">Bedrock</text>
+  <text x="155" y="145" font-family="Arial, sans-serif" font-size="10" fill="#c2410c" text-anchor="middle">Logs</text>
+
+  <!-- Databricks box -->
+  <rect x="60" y="190" width="190" height="70" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="155" y="220" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">Databricks</text>
+  <text x="155" y="240" font-family="Arial, sans-serif" font-size="10" fill="#b91c1c" text-anchor="middle">MLflow</text>
+
+  <!-- Foundry box -->
+  <rect x="60" y="285" width="190" height="70" rx="6" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="155" y="315" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#166534" text-anchor="middle">Foundry</text>
+  <text x="155" y="335" font-family="Arial, sans-serif" font-size="10" fill="#166534" text-anchor="middle">AIP Evals</text>
+
+  <!-- Arrows from sources to router -->
+  <line x1="250" y1="130" x2="360" y2="190" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="250" y1="225" x2="360" y2="225" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="250" y1="320" x2="360" y2="260" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- AGO CENTRAL QUEUE column -->
+  <text x="580" y="75" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">AGO CENTRAL QUEUE</text>
+
+  <!-- Finding Router box -->
+  <rect x="370" y="95" width="280" height="175" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="510" y="125" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#4338ca" text-anchor="middle">FINDING ROUTER</text>
+
+  <text x="510" y="155" font-family="Arial, sans-serif" font-size="10" fill="#4338ca" text-anchor="middle">Normalise format</text>
+  <circle cx="420" cy="151" r="3" fill="#6366f1"/>
+
+  <text x="510" y="180" font-family="Arial, sans-serif" font-size="10" fill="#4338ca" text-anchor="middle">Apply routing rules</text>
+  <circle cx="420" cy="176" r="3" fill="#6366f1"/>
+
+  <text x="510" y="205" font-family="Arial, sans-serif" font-size="10" fill="#4338ca" text-anchor="middle">Assign to queue</text>
+  <circle cx="420" cy="201" r="3" fill="#6366f1"/>
+
+  <text x="510" y="230" font-family="Arial, sans-serif" font-size="10" fill="#4338ca" text-anchor="middle">Track SLA</text>
+  <circle cx="420" cy="226" r="3" fill="#6366f1"/>
+
+  <!-- Arrow from Router to Queues -->
+  <line x1="510" y1="270" x2="510" y2="310" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <!-- HITL Queues box -->
+  <rect x="370" y="320" width="280" height="220" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="510" y="350" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e40af" text-anchor="middle">HITL QUEUES</text>
+
+  <!-- Immediate queue -->
+  <rect x="395" y="370" width="230" height="40" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="510" y="395" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">Immediate (2hr SLA)</text>
+
+  <!-- Priority queue -->
+  <rect x="395" y="425" width="230" height="40" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="510" y="450" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#b45309" text-anchor="middle">Priority (24hr SLA)</text>
+
+  <!-- Standard queue -->
+  <rect x="395" y="480" width="230" height="40" rx="4" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="510" y="505" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#166534" text-anchor="middle">Standard (1wk SLA)</text>
+
+  <!-- Reviewer icons -->
+  <rect x="700" y="370" width="140" height="150" rx="6" fill="#f3e8ff" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="770" y="395" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#7e22ce" text-anchor="middle">REVIEWERS</text>
+  <text x="770" y="425" font-family="Arial, sans-serif" font-size="10" fill="#7e22ce" text-anchor="middle">AGO Analysts</text>
+  <text x="770" y="450" font-family="Arial, sans-serif" font-size="10" fill="#7e22ce" text-anchor="middle">BU SMEs</text>
+  <text x="770" y="475" font-family="Arial, sans-serif" font-size="10" fill="#7e22ce" text-anchor="middle">Compliance</text>
+  <text x="770" y="500" font-family="Arial, sans-serif" font-size="10" fill="#7e22ce" text-anchor="middle">Escalation Mgrs</text>
+
+  <!-- Arrows from queues to reviewers -->
+  <line x1="625" y1="390" x2="695" y2="420" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="625" y1="445" x2="695" y2="450" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="625" y1="500" x2="695" y2="480" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrow)"/>
+</svg>
