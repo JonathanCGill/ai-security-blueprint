@@ -1,35 +1,55 @@
 # About the Author
 
-**Jonathan Gill** is a cybersecurity practitioner with over 30 years in information technology and 20+ years in enterprise cybersecurity. His career spans UNIX system administration, building national-scale ISP infrastructure, enterprise security architecture at major financial institutions, and diplomatic IT service.
+**Jonathan Gill** is a cybersecurity practitioner with over 30 years in information technology and 20+ years in enterprise security, now focused on the security challenges of generative and agentic AI in regulated environments.
+
+He develops threat models, risk frameworks, and practical mitigations for AI systems — with particular emphasis on runtime behavioural risks, loss-of-control scenarios, and oversight gaps in autonomous AI deployments.
 
 ---
 
 ## Current Focus
 
-AI security governance: designing control architectures that address the unique challenges of securing non-deterministic systems at enterprise scale, and translating complex technical risk into actionable guidance for engineering teams and executive leadership.
+AI security governance at enterprise scale: designing regulator-ready AI security control frameworks, assessing generative and agentic AI solutions, and defining security guardrails for cloud-native AI platforms. Translating complex technical risk into actionable guidance for engineering teams, regulators, and executive leadership.
 
 This framework — AI Runtime Behaviour Security — is the result of that work. It exists because most AI security guidance stops at the model layer, and the industry needs practical, open-source reference material for what happens after deployment.
 
 ---
 
-## Background
+## Expertise
 
-| Domain | Experience |
-|--------|-----------|
-| **Enterprise Cybersecurity** | 20+ years designing and implementing security architecture for regulated financial services |
-| **Infrastructure & Operations** | National-scale ISP infrastructure, UNIX systems administration, network engineering |
-| **AI Security** | Runtime behaviour controls, LLM-as-Judge architectures, multi-agent security operations |
-| **Governance & Risk** | Security strategy, regulatory alignment (ISO 42001, EU AI Act, NIST AI RMF), board-level risk reporting |
+- **Agentic AI risk modelling** — threat models for multi-agent systems, long-horizon agentic behaviour, orchestrator compromise, tool-use escalation, and loss-of-control scenarios
+- **AI security controls design** — three-layer architecture (guardrails, LLM-as-Judge, human oversight) with defined failure modes and escalation paths
+- **Multi-Agent Security Operations (MASO)** — identity, execution control, observability, privileged agent governance, and emergent risk in autonomous agent systems
+- **Threat-driven security assessment** — penetration testing across large enterprise portfolios, aligned to realistic adversary behaviour
+- **Regulatory and standards alignment** — ISO 42001, ISO 27001, NIST AI RMF, NIST CSF 2.0, NIST SP 800-218A, EU AI Act, OWASP LLM Top 10
+- **Cloud and platform security** — architecture review across AWS, Azure, and Databricks, including AI platform-specific security patterns
 
 ---
 
-## Why This Framework
+## Career Path
 
-AI systems don't just have vulnerabilities — they have behaviours. Traditional security thinking focuses on preventing known-bad inputs and patching known vulnerabilities. But language models and agentic systems introduce a fundamentally different challenge: non-deterministic behaviour that can drift, be manipulated, or produce harmful outputs even when the system is functioning "correctly."
+Over 30 years across infrastructure, security engineering, consulting, and leadership — progressing from systems administration through to principal-level cybersecurity roles.
 
-This framework was built to address that gap — providing practitioners with a structured way to think about runtime controls, containment, and oversight for AI systems in production.
+| Period | Role | Context |
+|--------|------|---------|
+| 2025 – present | Principal Cybersecurity Officer — AI, Cloud & Platform Cyber Risk | Major financial institution |
+| 2022 – 2025 | Head of Cybersecurity Consulting and Penetration Testing | Major financial institution |
+| 2013 – 2022 | Lead Security Consultant / Cloud Architecture Forum Chair | Major financial institution |
+| 2007 – 2010 | Business Information Security Officer / Solutions Architect | Citi (global banking) |
+| 2001 – 2007 | Lead Security Engineer | Egg — one of the UK's first fully online banks |
+| 1999 – 2001 | Network Manager | Botswana Telecommunications Corporation — built a national ISP from scratch |
+| 1992 – 1998 | UNIX & Applications Systems Administrator | Diplomatic IT service |
 
-It is a personal project. It is not affiliated with, endorsed by, or representative of any employer, organisation, or other entity.
+---
+
+## Education & Certifications
+
+**BSc (Hons) Open, Information Technology** — The Open University (2003–2007)
+
+- CISSP — Certified Information Systems Security Professional
+- CCSP — Certified Cloud Security Professional
+- Microsoft Certified: Azure Fundamentals
+- AWS: Generative AI Applications with Amazon Bedrock
+- Practical Introduction to Quantum-Safe Cryptography
 
 ---
 
@@ -43,6 +63,8 @@ It is a personal project. It is not affiliated with, endorsed by, or representat
 ## AI Assistance Disclosure
 
 This framework was written with AI assistance (Claude and ChatGPT) for drafting, structuring, and research synthesis. Architecture, control design, risk analysis, and editorial judgment are the author's.
+
+This is a personal project. It is not affiliated with, endorsed by, or representative of any employer, organisation, or other entity.
 
 ---
 
