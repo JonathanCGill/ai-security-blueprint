@@ -249,6 +249,7 @@ nav:
         - The Constraint Curve: insights/the-constraint-curve.md
         - The Hallucination Boundary: insights/the-hallucination-boundary.md
         - Automated Risk Tiering: insights/automated-risk-tiering.md
+        - Graph-Based Agent Monitoring: insights/graph-based-agent-monitoring.md
         - Beyond Security: insights/beyond-security.md
 
   - Downloads: downloads.md
