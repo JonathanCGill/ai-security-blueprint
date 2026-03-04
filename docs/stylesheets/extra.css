@@ -171,6 +171,7 @@ img[src$=".svg"] {
 /* ── Single-row navbar ── */
 .md-header {
   box-shadow: none;
+  background-color: #1a1a2e !important;
 }
 
 .md-header__inner {
