@@ -76,11 +76,6 @@ img[src$=".svg"] {
   display: none;
 }
 
-/* Homepage hero area */
-.home-hero .md-content__inner {
-  max-width: 45rem;
-}
-
 /* Subtitle line under hidden h1 */
 .home-subtitle {
   text-align: center;
@@ -158,6 +153,11 @@ img[src$=".svg"] {
   .md-typeset table:not([class]) th {
     padding: 0.3em 0.4em;
   }
+}
+
+/* Footer: match the header (primary) colour */
+.md-footer {
+  background-color: var(--md-primary-fg-color);
 }
 
 /* Giscus comments: ensure full width within content area */
