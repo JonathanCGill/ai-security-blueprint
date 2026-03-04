@@ -137,6 +137,14 @@ img[src$=".svg"] {
   max-width: 26rem !important;
 }
 
+/* ── Mobile: inset content from screen edges ── */
+@media (max-width: 768px) {
+  .md-content__inner {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
 /* ── Mobile: tighten tables ── */
 @media (max-width: 768px) {
   .md-typeset table:not([class]) {
