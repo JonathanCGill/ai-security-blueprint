@@ -1,34 +1,34 @@
 # Controls to Three-Layer Mapping
 
-> Maps all 80 infrastructure controls to the three-layer behavioural security pattern: **Guardrails → LLM-as-Judge → Human Oversight**.
+> Maps all 80 infrastructure controls to the three-layer behavioral security pattern: **Guardrails → LLM-as-Judge → Human Oversight**.
 >
 > Part of the [AI Security Infrastructure Controls](../README.md) framework.
-> Companion to [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security).
+> Companion to [AI Runtime Security](https://github.com/JonathanCGill/ai-runtime-behavior-security).
 
 ## How to Read This Mapping
 
-Every infrastructure control supports all three layers of the behavioural security pattern. The table below summarises how each control contributes to each layer. Detailed descriptions are in the individual control documents.
+Every infrastructure control supports all three layers of the behavioral security pattern. The table below summarises how each control contributes to each layer. Detailed descriptions are in the individual control documents.
 
 The three layers operate as concentric defences:
 
 - **Guardrails** prevent - they block or constrain before or during model execution.
-- **Judge** detects - it evaluates outputs and behaviour against policy, asynchronously.
+- **Judge** detects - it evaluates outputs and behavior against policy, asynchronously.
 - **Human Oversight** decides - humans review, approve, investigate, and adjust.
 
-Infrastructure controls make these layers enforceable. Without the infrastructure, the behavioural pattern is aspirational.
+Infrastructure controls make these layers enforceable. Without the infrastructure, the behavioral pattern is aspirational.
 
 ## Identity & Access Management
 
 | Control | Guardrails | Judge | Human Oversight |
 |---------|-----------|-------|-----------------|
 | **IAM-01** Authenticate all entities | Authentication gates prevent unauthorised access to model endpoints and tools | Judge receives verified identity context for evaluation, ensuring attributable actions | Human reviewers can trace every action to an authenticated identity |
-| **IAM-02** Enforce least privilege | Permission boundaries limit what each entity can do - the primary access guardrail | Judge can detect actions that fall within permissions but outside expected behavioural patterns | Humans define and review permission sets; least privilege reduces scope of decisions requiring oversight |
+| **IAM-02** Enforce least privilege | Permission boundaries limit what each entity can do - the primary access guardrail | Judge can detect actions that fall within permissions but outside expected behavioral patterns | Humans define and review permission sets; least privilege reduces scope of decisions requiring oversight |
 | **IAM-03** Separate control/data planes | Prevents runtime paths from modifying security configuration - structural guardrail | Judge configuration is protected from manipulation via the data plane | Humans access control plane via MFA/VPN; configuration changes are human-only |
-| **IAM-04** Constrain agent tool invocation | Gateway enforces tool manifest - the guardrail for all agent actions | Gateway logs feed Judge evaluation of agent tool usage patterns | Humans define manifests and review agent behaviour against declared scope |
+| **IAM-04** Constrain agent tool invocation | Gateway enforces tool manifest - the guardrail for all agent actions | Gateway logs feed Judge evaluation of agent tool usage patterns | Humans define manifests and review agent behavior against declared scope |
 | **IAM-05** Human approval for high-impact actions | Approval routing pauses irreversible actions - guardrail that defers to humans | Judge evaluates the pattern of actions requiring approval and approval outcomes | Direct human involvement in high-impact decisions; the oversight layer in action |
 | **IAM-06** Session-scoped credentials | Credential scope limits blast radius of compromise - time-bounded guardrail | Judge monitors credential usage patterns within sessions for anomalies | Session scope gives humans a bounded window to review; credentials expire automatically |
 | **IAM-07** Prevent credential exposure in context | Out-of-band credential injection prevents extraction via prompt injection - fundamental guardrail | Judge monitors for credential-like patterns in model outputs as a detection signal | Humans design credential architecture; exposure incidents trigger human investigation |
-| **IAM-08** Audit all access changes | Audit trail deters unauthorised changes - indirect guardrail via accountability | Judge can correlate access changes with subsequent behavioural changes in the system | Humans review access change audit trails; changes are attributable and reviewable |
+| **IAM-08** Audit all access changes | Audit trail deters unauthorised changes - indirect guardrail via accountability | Judge can correlate access changes with subsequent behavioral changes in the system | Humans review access change audit trails; changes are attributable and reviewable |
 
 ## Logging & Observability
 
@@ -37,12 +37,12 @@ Infrastructure controls make these layers enforceable. Without the infrastructur
 | **LOG-01** Log all model I/O | Logged I/O enables guardrail effectiveness measurement and tuning | Model I/O logs are the primary input for Judge evaluation of outputs | I/O logs give humans the raw data to review what the model actually said |
 | **LOG-02** Log guardrail decisions | Guardrail decision logs prove enforcement is active and measure block/pass rates | Judge uses guardrail decision logs to evaluate whether guardrails are functioning correctly | Humans review guardrail decision logs to tune rules and investigate bypasses |
 | **LOG-03** Log Judge evaluations | Guardrail tuning is informed by Judge evaluation trends (feedback loop) | Judge evaluation logs enable meta-evaluation - assessing whether the Judge itself is effective | Humans review Judge logs to calibrate thresholds and assess Judge accuracy |
-| **LOG-04** Log agent decision chains | Chain logs reveal when guardrails are being tested or probed by agent behaviour | Judge reconstructs full agent chains to evaluate whether multi-step behaviour was appropriate | Humans can forensically reconstruct what an agent did and why |
-| **LOG-05** Detect behavioural drift | Drift detection is a guardrail that triggers when model behaviour moves outside baseline bounds | Judge evaluation criteria can be updated based on drift detection signals | Drift alerts bring humans into the loop when automated systems detect change |
+| **LOG-04** Log agent decision chains | Chain logs reveal when guardrails are being tested or probed by agent behavior | Judge reconstructs full agent chains to evaluate whether multi-step behavior was appropriate | Humans can forensically reconstruct what an agent did and why |
+| **LOG-05** Detect behavioral drift | Drift detection is a guardrail that triggers when model behavior moves outside baseline bounds | Judge evaluation criteria can be updated based on drift detection signals | Drift alerts bring humans into the loop when automated systems detect change |
 | **LOG-06** Detect prompt injection | Injection detection is a direct guardrail - blocking or flagging injection attempts | Judge evaluates whether injection attempts correlate with unusual model outputs | Injection detection alerts trigger human investigation of targeted attacks |
 | **LOG-07** Protect log integrity | Log integrity ensures guardrail decision records cannot be tampered with | Judge relies on trustworthy logs - tampered logs produce unreliable evaluations | Humans need tamper-proof logs for audit, compliance, and investigation |
 | **LOG-08** Enforce retention policies | Retention ensures guardrail and evaluation data is available for the required period | Judge evaluation data is retained for trend analysis and meta-evaluation | Humans have historical data for audits, investigations, and compliance |
-| **LOG-09** Redact sensitive data in logs | PII redaction in logs prevents logging infrastructure from becoming a data leakage vector | Judge evaluates redacted logs - it does not need PII to assess behavioural patterns | Humans can review logs without exposure to unnecessary sensitive data |
+| **LOG-09** Redact sensitive data in logs | PII redaction in logs prevents logging infrastructure from becoming a data leakage vector | Judge evaluates redacted logs - it does not need PII to assess behavioral patterns | Humans can review logs without exposure to unnecessary sensitive data |
 | **LOG-10** Correlate with enterprise SIEM | SIEM correlation connects AI guardrail events with broader security monitoring | Judge signals (evaluation failures, drift alerts) feed enterprise detection capabilities | Security operations teams gain visibility into AI-specific events alongside traditional alerts |
 
 ## Network & Segmentation
@@ -52,7 +52,7 @@ Infrastructure controls make these layers enforceable. Without the infrastructur
 | **NET-01** Define network zone architecture | Zone boundaries are structural guardrails - they physically enforce separation | Judge infrastructure is isolated in its own zone, protecting evaluation independence | Zone architecture is designed by humans and enforced by infrastructure, not instructions |
 | **NET-02** Prevent guardrail bypass at network level | Network-enforced guardrail bypass prevention - no path to the model that skips guardrails | Judge can verify from logs that all model interactions transited the guardrail path | Humans can audit network policy to confirm no bypass paths exist |
 | **NET-03** Isolate Judge evaluation infrastructure | Judge isolation ensures guardrails cannot influence Judge evaluation | Direct protection of Judge independence - separate zone, async data flow, no runtime influence | Humans can verify Judge isolation through network policy review |
-| **NET-04** Control agent egress destinations | Egress proxy is a network-level guardrail on agent external communications | Judge can evaluate egress patterns against expected behaviour | Humans define egress allowlists and review blocked egress attempts |
+| **NET-04** Control agent egress destinations | Egress proxy is a network-level guardrail on agent external communications | Judge can evaluate egress patterns against expected behavior | Humans define egress allowlists and review blocked egress attempts |
 | **NET-05** Separate ingestion from runtime | Ingestion isolation prevents poisoned data from reaching runtime directly - structural guardrail | Judge can monitor ingestion pipeline outputs independently from runtime | Humans control ingestion approval processes without runtime pressure |
 | **NET-06** Protect control plane network path | Control plane protection prevents unauthorised modification of guardrail and Judge configuration | Judge configuration is protected by control plane network restrictions | Only authorised humans (MFA + VPN) can modify system configuration |
 | **NET-07** Enforce API gateway as single entry | Single entry point ensures all guardrails are applied to every request | All model interactions transit a path that generates Judge-consumable logs | Gateway provides humans with a single point of monitoring and control |
@@ -128,7 +128,7 @@ Infrastructure controls make these layers enforceable. Without the infrastructur
 | **SESS-01** Define session boundaries | Time/token/action limits are structural guardrails on agent runtime | Judge evaluates whether sessions approach or reach limits, signalling potential issues | Humans define session limits based on task requirements and risk |
 | **SESS-02** Isolate sessions | Session isolation prevents cross-contamination - a blast radius guardrail | Judge evaluates each session independently; isolation ensures evaluation integrity | Humans review sessions individually without cross-session confusion |
 | **SESS-03** Limit session scope | Task scope constraints prevent agents from exceeding their declared purpose | Judge evaluates whether actions within a session are consistent with the declared task | Humans define task scope and review sessions where scope boundaries were tested |
-| **SESS-04** Implement progressive trust | Progressive trust starts with minimal permissions - a conservative guardrail that relaxes with evidence | Judge evaluates whether trust escalation is justified by the session's clean behaviour history | Humans define trust escalation criteria and review escalation decisions |
+| **SESS-04** Implement progressive trust | Progressive trust starts with minimal permissions - a conservative guardrail that relaxes with evidence | Judge evaluates whether trust escalation is justified by the session's clean behavior history | Humans define trust escalation criteria and review escalation decisions |
 | **SESS-05** Clean up session state | Session cleanup prevents state leakage - a guardrail on persistent attack surface | Judge evaluates cleanup completeness, detecting residual state that could affect future sessions | Humans define cleanup policies and review cleanup audit logs |
 
 ## Agentic - Delegation Chains
@@ -139,16 +139,16 @@ Infrastructure controls make these layers enforceable. Without the infrastructur
 | **DEL-02** Maintain audit trail | Audit trail proves delegation guardrails are functioning | Complete chain logs are primary Judge input for multi-agent evaluation | Humans can reconstruct full chains for investigation and review |
 | **DEL-03** Limit delegation depth | Depth limits are structural guardrails on chain complexity | Shorter chains are within Judge evaluation capacity; limits ensure evaluability | Depth limits keep chains tractable for human review |
 | **DEL-04** Require explicit authorisation | Delegation manifests are guardrails on agent-to-agent trust | Judge verifies all delegations match declared authorisations | Humans define delegation topology through manifests |
-| **DEL-05** Propagate user identity | Identity propagation ensures user permissions constrain the entire chain - a fundamental guardrail | User identity enables Judge to evaluate actions against user-level behavioural baselines | Every action in every chain is attributable to the initiating human |
+| **DEL-05** Propagate user identity | Identity propagation ensures user permissions constrain the entire chain - a fundamental guardrail | User identity enables Judge to evaluate actions against user-level behavioral baselines | Every action in every chain is attributable to the initiating human |
 
 ## Agentic - Sandbox Patterns
 
 | Control | Guardrails | Judge | Human Oversight |
 |---------|-----------|-------|-----------------|
-| **SAND-01** Execute in isolated sandboxes | Sandbox isolation is the guardrail boundary for generated code execution | Judge evaluates code behaviour within the sandbox, using execution logs as evidence | Humans define isolation levels based on risk tier |
+| **SAND-01** Execute in isolated sandboxes | Sandbox isolation is the guardrail boundary for generated code execution | Judge evaluates code behavior within the sandbox, using execution logs as evidence | Humans define isolation levels based on risk tier |
 | **SAND-02** Restrict file system access | File system restrictions prevent generated code from accessing data outside declared scope | Judge monitors file access patterns for anomalies | Humans define allowed paths and review access violations |
 | **SAND-03** Restrict network access | Default-deny network is a guardrail preventing code from communicating externally | Judge evaluates any permitted network access for anomalous patterns | Humans approve exceptions to default-deny network policy |
 | **SAND-04** Enforce resource limits | Resource limits are guardrails against denial of service and resource abuse | Judge monitors resource consumption patterns for anomalies | Humans define resource limits and review high-consumption sessions |
 | **SAND-05** Prevent persistent state | Ephemeral environments prevent state accumulation - a guardrail on long-term compromise | Judge evaluates that session state does not persist beyond session boundaries | Humans verify ephemeral policy compliance |
-| **SAND-06** Scan code before execution | Pre-execution scanning is a guardrail catching malicious or dangerous code before it runs | Judge evaluates scanning results alongside execution behaviour | Humans review scan findings and define scanning policy |
+| **SAND-06** Scan code before execution | Pre-execution scanning is a guardrail catching malicious or dangerous code before it runs | Judge evaluates scanning results alongside execution behavior | Humans review scan findings and define scanning policy |
 

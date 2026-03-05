@@ -14,7 +14,7 @@ If you deploy a Judge without evaluating its accuracy, you've added cost and lat
 |-------------|--------|
 | **False negatives** | Judge approves harmful outputs - the whole point of the Judge is defeated |
 | **False positives** | Judge flags benign outputs - users lose trust, teams disable the Judge |
-| **Judge drift** | Judge model is updated by provider, changing evaluation behaviour without notice |
+| **Judge drift** | Judge model is updated by provider, changing evaluation behavior without notice |
 | **Judge manipulation** | Adversarial inputs crafted to pass the Judge while failing for humans |
 | **Evaluation collapse** | Judge uses same reasoning patterns as the generator - shared blind spots |
 

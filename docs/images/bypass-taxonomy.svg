@@ -120,7 +120,7 @@
   <text x="112" y="490" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#64748b">Judge detection</text>
   
   <text x="287" y="460" font-family="Arial, sans-serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#ea580c">Audit logging</text>
-  <text x="287" y="475" font-family="Arial, sans-serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#ea580c">Behaviour monitoring</text>
+  <text x="287" y="475" font-family="Arial, sans-serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#ea580c">Behavior monitoring</text>
   <text x="287" y="490" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#64748b">Attestation</text>
   
   <text x="462" y="460" font-family="Arial, sans-serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#ca8a04">Sandbox</text>

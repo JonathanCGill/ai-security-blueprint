@@ -20,7 +20,7 @@ But failures actually come from here:
 | Support System Failure | Probability | Industry Attention |
 |-----------------------|------------|-------------------|
 | API key rotation breaks production | Medium | Low |
-| Model provider silently changes behaviour | Medium | Low |
+| Model provider silently changes behavior | Medium | Low |
 | Logging pipeline fails | Medium | Very Low |
 | Key person leaves | High | Very Low |
 | Stale RAG data serves wrong answers | High | Low |
@@ -53,7 +53,7 @@ Your AI system depends on things you don't control.
 |---------|---------------|-------------------|
 | Multi-provider capability | Ability to switch models | AI.15 Continuity |
 | Version pinning | Pin to specific model versions | AI.14 Configuration |
-| Behaviour monitoring | Detect output drift after provider changes | AI.8 Judge |
+| Behavior monitoring | Detect output drift after provider changes | AI.8 Judge |
 | Contractual protections | SLAs, deprecation notice, data handling | AI.13 Supplier |
 | Capacity planning | Understand rate limits vs demand | AI.15 Continuity |
 
@@ -100,14 +100,14 @@ This is arguably the highest-probability, highest-impact category. When RAG data
 
 ### 2. Configuration Risk
 
-AI systems are extraordinarily sensitive to configuration. A one-word change in a system prompt can fundamentally alter behaviour.
+AI systems are extraordinarily sensitive to configuration. A one-word change in a system prompt can fundamentally alter behavior.
 
 #### 2.1 Prompt and Parameter Configuration
 
 | Risk | Scenario | Impact |
 |------|----------|--------|
 | **Prompt regression** | System prompt changed, quality drops | Degraded output quality |
-| **Parameter drift** | Temperature/token settings changed | Inconsistent behaviour |
+| **Parameter drift** | Temperature/token settings changed | Inconsistent behavior |
 | **Guardrail misconfiguration** | Rule disabled or threshold changed | Security control gap |
 | **Judge criteria change** | Evaluation criteria modified without review | Assurance gap |
 | **Circuit breaker override** | Limits relaxed "temporarily" | Agent runaway |
@@ -280,9 +280,9 @@ AI costs are variable, opaque, and can spike without warning.
 |------|----------|--------|
 | **Library upgrade** | Python package update breaks integration | Production outage |
 | **SDK change** | Provider SDK breaking change | Build failures or runtime errors |
-| **Upstream model update** | Provider updates model behind same version string | Behaviour change |
+| **Upstream model update** | Provider updates model behind same version string | Behavior change |
 | **Framework migration** | LangChain / LlamaIndex major version change | Significant rework |
-| **Undocumented change** | Someone changes something, doesn't tell anyone | Mysterious behaviour shift |
+| **Undocumented change** | Someone changes something, doesn't tell anyone | Mysterious behavior shift |
 
 **Controls:**
 
@@ -342,7 +342,7 @@ These risks map to existing control families, but most need strengthening:
 | Monitor logging pipeline health | If logging fails, everything downstream is blind |
 | Set budget alerts on AI spend | Prevent surprise bills |
 | Document who knows what | Identify key-person risks |
-| Pin model versions | Prevent silent behaviour changes |
+| Pin model versions | Prevent silent behavior changes |
 | Put prompts in version control | If they're not in git, they're not controlled |
 
 ### Do Next (Month 1)

@@ -46,7 +46,7 @@ Your guardrails check each turn. They don't see the pattern across turns.
 
 ### Context poisoning
 
-An attacker feeds information into the context - through conversation, uploaded documents, or compromised knowledge bases - that shapes future behaviour.
+An attacker feeds information into the context - through conversation, uploaded documents, or compromised knowledge bases - that shapes future behavior.
 
 The poison doesn't trigger immediately. It waits until the right query activates it.
 
@@ -66,7 +66,7 @@ The memory persists. Future sessions inherit the manipulation.
 
 Even without attackers, long-running context accumulates noise, inconsistencies, and drift from original intent.
 
-A system that started with clear guidelines develops "local rules" embedded in its context. Reviewers see current behaviour; they don't see the accumulated state that produced it.
+A system that started with clear guidelines develops "local rules" embedded in its context. Reviewers see current behavior; they don't see the accumulated state that produced it.
 
 ## What Breaks
 
@@ -98,7 +98,7 @@ For long-running or memory-enabled systems, the Judge needs:
 
 Traditional security assumes sessions. User authenticates, does work, session ends, state clears.
 
-Persistent memory blurs sessions. State from one session influences another. A compromise in Tuesday's session affects Friday's behaviour.
+Persistent memory blurs sessions. State from one session influences another. A compromise in Tuesday's session affects Friday's behavior.
 
 Where do you draw accountability boundaries when state doesn't respect them?
 
@@ -127,7 +127,7 @@ If your system has persistent memory:
 
 Don't just monitor individual interactions. Monitor patterns over time:
 
-- Drift from baseline behaviour
+- Drift from baseline behavior
 - Anomalous context growth
 - Unusual retrieval patterns
 - Memory accumulation rate

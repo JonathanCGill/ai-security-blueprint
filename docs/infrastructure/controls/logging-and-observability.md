@@ -1,14 +1,14 @@
 # Logging & Observability for AI Systems
 
-> **Control Domain:** Behavioural Controls  
-> **Purpose:** Capture, correlate, and analyse AI system behaviour to detect drift, anomalies, misuse, and control failures in production.  
+> **Control Domain:** Behavioral Controls  
+> **Purpose:** Capture, correlate, and analyse AI system behavior to detect drift, anomalies, misuse, and control failures in production.  
 > **Relationship:** Enables the LLM-as-Judge layer (by providing the data the Judge evaluates) and the Human Oversight layer (by surfacing the signals humans need to make decisions).
 
 ## Why AI Logging Is Different
 
 Traditional application logging records discrete events: user logged in, API called, error thrown. AI systems require a fundamentally different approach because:
 
-1. **Non-determinism.** The same input produces different outputs. You can't diff against expected output - you must evaluate *behavioural patterns* over time.
+1. **Non-determinism.** The same input produces different outputs. You can't diff against expected output - you must evaluate *behavioral patterns* over time.
 2. **Semantic content.** A model response that is technically well-formed (valid JSON, no errors) can still be harmful, biased, or wrong. Logging must capture enough semantic context for evaluation.
 3. **Multi-step reasoning.** Agentic systems chain decisions. A single harmful outcome may result from a sequence of individually reasonable steps. Logging must preserve the full chain.
 4. **Adversarial inputs.** Prompt injection attempts must be detectable in logs. This means logging raw inputs *before* guardrail processing, not just the sanitised versions.
@@ -22,7 +22,7 @@ Traditional application logging records discrete events: user logged in, API cal
 | LOG-02 | Log guardrail decisions (pass, block, modify) with rationale | All |
 | LOG-03 | Log Judge evaluations with scores and reasoning | Tier 2+ |
 | LOG-04 | Log agent actions, tool invocations, and decision chains | Tier 2+ (agentic) |
-| LOG-05 | Detect behavioural drift from established baselines | Tier 2+ |
+| LOG-05 | Detect behavioral drift from established baselines | Tier 2+ |
 | LOG-06 | Detect and alert on prompt injection attempts | All |
 | LOG-07 | Protect log integrity (append-only, tamper-evident) | Tier 2+ |
 | LOG-08 | Implement retention policies aligned with regulatory requirements | All |
@@ -31,7 +31,7 @@ Traditional application logging records discrete events: user logged in, API cal
 
 ## LOG-01: Model Input/Output Logging
 
-Every interaction with a model endpoint must be logged with sufficient context to reconstruct what happened and evaluate whether the behaviour was acceptable.
+Every interaction with a model endpoint must be logged with sufficient context to reconstruct what happened and evaluate whether the behavior was acceptable.
 
 ### Required Fields
 
@@ -89,7 +89,7 @@ Guardrail logs enable:
 - **False positive analysis:** How often are guardrails blocking legitimate requests? High false positive rates degrade user trust and create pressure to weaken controls.
 - **Evasion detection:** Patterns of near-miss inputs (confidence scores just above the pass threshold) may indicate adversarial probing.
 - **Coverage gaps:** Categories of content that are never flagged may indicate missing guardrail rules.
-- **Drift detection:** Changes in the distribution of guardrail decisions over time may indicate changes in user behaviour or model behaviour.
+- **Drift detection:** Changes in the distribution of guardrail decisions over time may indicate changes in user behavior or model behavior.
 
 ## LOG-03: Judge Evaluation Logging
 
@@ -146,9 +146,9 @@ Logs must support reconstruction of the full decision chain for any agent task:
 
 This chain is the forensic record. Without it, you cannot explain *why* the agent did what it did.
 
-## LOG-05: Behavioural Drift Detection
+## LOG-05: Behavioral Drift Detection
 
-AI systems drift. Model behaviour changes with updates. User behaviour changes over time. Adversaries probe incrementally. Drift detection identifies when behaviour moves outside established baselines.
+AI systems drift. Model behavior changes with updates. User behavior changes over time. Adversaries probe incrementally. Drift detection identifies when behavior moves outside established baselines.
 
 ### Baseline Metrics
 
@@ -163,7 +163,7 @@ Establish baselines for:
 | Tool invocation frequency (agentic) | Permission abuse, automation runaway |
 | Token consumption per session | Cost anomalies, prompt injection (inflated context) |
 | Error rate by type | Infrastructure issues, model degradation |
-| User behaviour clustering | Adversarial user identification |
+| User behavior clustering | Adversarial user identification |
 
 ### Alerting Thresholds
 
@@ -275,7 +275,7 @@ AI system logs should flow to the enterprise SIEM/SOAR with:
 | LOG-02 Guardrail decisions | Enables guardrail effectiveness analysis | Judge compares its findings to guardrail decisions | Humans tune guardrails based on log data |
 | LOG-03 Judge evaluations | Identifies guardrail gaps | Enables Judge calibration and improvement | Humans review Judge accuracy |
 | LOG-04 Agent actions | Guardrails on tool parameters logged | Judge evaluates action chains | Humans review agent decisions and approve high-risk actions |
-| LOG-05 Drift detection | Detects guardrail effectiveness decay | Detects Judge calibration drift | Alerts humans when the system moves outside expected behaviour |
+| LOG-05 Drift detection | Detects guardrail effectiveness decay | Detects Judge calibration drift | Alerts humans when the system moves outside expected behavior |
 | LOG-06 Injection detection | Captures what guardrails missed | Judge flags injection-like outputs | Humans investigate confirmed injection attempts |
 | LOG-07 Log integrity | Guardrail logs can't be tampered with | Judge logs are independently verifiable | Humans trust the audit trail |
 | LOG-08 Retention | Historical guardrail data available for analysis | Historical Judge data enables trend analysis | Compliance and regulatory requirements met |
@@ -288,7 +288,7 @@ AI system logs should flow to the enterprise SIEM/SOAR with:
 - [ ] Guardrail decisions logged for every evaluation (including passes)
 - [ ] Judge evaluations logged with scores, reasoning, and criteria version
 - [ ] Agent decision chains reconstructable from logs
-- [ ] Behavioural baselines established and drift alerting configured
+- [ ] Behavioral baselines established and drift alerting configured
 - [ ] Raw inputs (pre-guardrail) preserved for injection forensics
 - [ ] Logs stored in append-only, tamper-evident storage
 - [ ] Retention policies defined and enforced per data type

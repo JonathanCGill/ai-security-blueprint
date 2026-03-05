@@ -12,7 +12,7 @@ Controls for the AI supply chain: model provenance, framework dependencies, and 
 
 #### API-Accessed Models (OpenAI, Anthropic, Google, etc.)
 
-You cannot verify the model weights. Your controls are contractual and behavioural.
+You cannot verify the model weights. Your controls are contractual and behavioral.
 
 | Control | Implementation |
 |---------|---------------|

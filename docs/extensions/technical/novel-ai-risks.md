@@ -11,7 +11,7 @@ Not every risk associated with AI is a novel risk. Many are traditional cyber or
 | API key leaked → unauthorised access | Prompt injection → AI follows attacker instructions embedded in data |
 | Database breach → data stolen | Hallucination → AI generates data that doesn't exist |
 | Server goes down → service unavailable | Model drift → AI silently gets worse with no error signal |
-| Insider modifies code → system behaves differently | Emergent behaviour → AI does things nobody programmed it to do |
+| Insider modifies code → system behaves differently | Emergent behavior → AI does things nobody programmed it to do |
 | DDoS → service overwhelmed | Inference cost attack → AI processes expensive requests without crashing |
 | Bad input → application error | Adversarial input → AI makes confidently wrong decision on crafted data |
 
@@ -29,7 +29,7 @@ Not every risk associated with AI is a novel risk. Many are traditional cyber or
 |--------|-------------|
 | Can't exhaustively test | You can never test all possible outputs |
 | Audit challenges | "Show me what the system would have done" has no definitive answer |
-| Regulatory evidence | Hard to demonstrate compliance when behaviour isn't repeatable |
+| Regulatory evidence | Hard to demonstrate compliance when behavior isn't repeatable |
 | Customer consistency | Two customers with identical profiles may get different answers |
 | Incident investigation | "What happened?" is harder when the system wouldn't necessarily do the same thing again |
 
@@ -62,7 +62,7 @@ Not every risk associated with AI is a novel risk. Many are traditional cyber or
 |---------|--------------|-----------------|
 | AI.7.1 Input Guardrails | Filters known patterns | **Acknowledge limitation: guardrails reduce but cannot eliminate prompt injection. Defence-in-depth is the only strategy.** |
 | AI.7.2 Output Guardrails | Filters outputs | **Strengthen: output guardrails are the primary defence for indirect injection where input guardrails can't see the malicious content.** |
-| AI.8.1 Judge Evaluation | Evaluates quality | **Add: Judge should specifically evaluate for signs of instruction override - behavioural anomalies that suggest the model followed injected instructions.** |
+| AI.8.1 Judge Evaluation | Evaluates quality | **Add: Judge should specifically evaluate for signs of instruction override - behavioral anomalies that suggest the model followed injected instructions.** |
 | AG.2.1 Action Guardrails | Validates agent actions | **Critical: every action must be validated independently. Don't trust the model's "reasoning" for why it's taking an action.** |
 | AG.2.5 Tool Protocol Security | Secures tool calls | **Add: sanitise all tool responses before including in context. Tool outputs are an injection vector.** |
 | **NEW CONTROL NEEDED** | - | **AI context isolation: prevent cross-user context contamination. Stateless sessions. No shared memory between users.** |
@@ -91,7 +91,7 @@ Not every risk associated with AI is a novel risk. Many are traditional cyber or
 | AI.9.1 HITL | Human review | **Strengthen: HITL must verify factual claims, not just assess tone/quality. Reviewers need access to source data.** |
 | **NEW CONTROL NEEDED** | - | **Grounding verification: for high-risk outputs, require automated cross-reference against source data before delivery. AI must cite its sources.** |
 
-### 4. Emergent Behaviour
+### 4. Emergent Behavior
 
 **What's new:** Traditional systems do exactly what they're programmed to do. AI models develop capabilities that weren't explicitly programmed - abilities that emerge from the complexity of training. These capabilities can be beneficial or dangerous, and they're hard to predict or test for.
 
@@ -140,7 +140,7 @@ Not every risk associated with AI is a novel risk. Many are traditional cyber or
 
 ### 6. Training Data Influence
 
-**What's new:** Traditional systems behave according to their code. AI systems behave according to their training data, which you likely didn't curate, may not have seen, and can't fully audit. The training data of foundation models is typically proprietary and undisclosed. Your system's behaviour is shaped by data you don't control.
+**What's new:** Traditional systems behave according to their code. AI systems behave according to their training data, which you likely didn't curate, may not have seen, and can't fully audit. The training data of foundation models is typically proprietary and undisclosed. Your system's behavior is shaped by data you don't control.
 
 **Why it matters for banking:**
 
@@ -194,9 +194,9 @@ Not every risk associated with AI is a novel risk. Many are traditional cyber or
 | Impact | Consequence |
 |--------|-------------|
 | Poisoned knowledge base | Attacker plants malicious content in documents the AI retrieves |
-| Compromised RAG | Vector store returns manipulated chunks that alter AI behaviour |
+| Compromised RAG | Vector store returns manipulated chunks that alter AI behavior |
 | Data-driven instruction | Retrieved financial data contains embedded instructions |
-| Cross-system contamination | Content from one system poisons AI behaviour when retrieved in another context |
+| Cross-system contamination | Content from one system poisons AI behavior when retrieved in another context |
 
 **Framework impact:**
 
@@ -265,7 +265,7 @@ Not every risk associated with AI is a novel risk. Many are traditional cyber or
 |--------|-------------|
 | Slow quality decline | AI outputs get gradually worse but nobody notices |
 | Stale context | RAG data becomes outdated; AI gives increasingly irrelevant answers |
-| Model drift | Provider updates model; behaviour shifts subtly |
+| Model drift | Provider updates model; behavior shifts subtly |
 | Guardrail erosion | Guardrail effectiveness decreases as attackers adapt |
 | Metric gaming | AI optimises for measurable metrics while actual quality drops |
 
@@ -310,11 +310,11 @@ Not every risk associated with AI is a novel risk. Many are traditional cyber or
 | 1 | Non-determinism | None | Same input, different output | Testing and audit methods assume determinism |
 | 2 | Prompt injection | SQL injection (partially) | No reliable fix exists; instructions and data share same channel | Guardrails can reduce but can't eliminate |
 | 3 | Hallucination | None | System generates false data with no error signal | Output validation against source data |
-| 4 | Emergent behaviour | None | System does things it wasn't programmed to do | Capability assessment on model change |
+| 4 | Emergent behavior | None | System does things it wasn't programmed to do | Capability assessment on model change |
 | 5 | Opacity | Compiled code (partially) | Billions of parameters, no traceable logic | Explainability requirements per risk tier |
-| 6 | Training data influence | None | Behaviour shaped by data you don't control | Training data risk assessment |
+| 6 | Training data influence | None | Behavior shaped by data you don't control | Training data risk assessment |
 | 7 | Semantic attack surface | Syntax-based attacks | Attacks exploit meaning, not structure | Intent-based detection, not pattern matching |
-| 8 | Context window poisoning | None | Retrieved data can hijack model behaviour | RAG content integrity validation |
+| 8 | Context window poisoning | None | Retrieved data can hijack model behavior | RAG content integrity validation |
 | 9 | Autonomous goal pursuit | Batch jobs (very partially) | AI chooses its own actions | Outcome validation, not just action validation |
 | 10 | Confidence without competence | None | Wrong answers sound identical to right answers | Confidence calibration, user training |
 | 11 | Invisible degradation | Silent errors (partially) | Quality degrades with no failure signal | Continuous baseline comparison |
@@ -328,7 +328,7 @@ The existing framework covers most of these risks partially, but **8 new control
 |-------------|---------------|----------|
 | **AI context isolation** | #2 Prompt injection | High - prevents cross-user contamination |
 | **Grounding verification** | #3 Hallucination | High - verify claims against source data |
-| **Model capability assessment** | #4 Emergent behaviour | Medium - assess before deployment |
+| **Model capability assessment** | #4 Emergent behavior | Medium - assess before deployment |
 | **Explainability tiers** | #5 Opacity | High - regulatory requirement |
 | **Training data risk assessment** | #6 Training data | Medium - vendor due diligence enhancement |
 | **RAG content integrity** | #8 Context poisoning | High - attacks the knowledge layer |
@@ -367,7 +367,7 @@ Traditional cybersecurity assumes:
 
 **AI violates all six assumptions.**
 
-The framework addresses this through layered defence - Guardrails, Judge, HITL - but it needs to be honest about what it can't solve. Prompt injection has no complete fix. Hallucination can be reduced but not eliminated. Emergent behaviour can't be fully predicted. Opacity is inherent to the technology.
+The framework addresses this through layered defence - Guardrails, Judge, HITL - but it needs to be honest about what it can't solve. Prompt injection has no complete fix. Hallucination can be reduced but not eliminated. Emergent behavior can't be fully predicted. Opacity is inherent to the technology.
 
 The correct response is not to avoid AI. It's to:
 

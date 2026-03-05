@@ -2,7 +2,7 @@
 
 **Every major control in this framework addresses a documented, public AI security failure. This page shows how.**
 
-> Part of [AI Runtime Behaviour Security](./)
+> Part of [AI Runtime Security](./)
 > Last updated: March 2026
 
 ## How to Read This Page
@@ -200,7 +200,7 @@ The second most broadly validated control category. Deployed as specialised judg
 | INC-05: HackerOne exfil | Automatic session termination when egress anomalies exceed threshold |
 | INC-08: NYC MyCity | Error-rate monitoring triggers automatic scope restriction or shutdown |
 
-**Why circuit breakers appear so often:** They're the last line of defence. When guardrails miss an injection, when the Judge doesn't catch a subtle attack, the circuit breaker provides a hard stop based on observable behaviour anomalies. Five of nine incidents would have been contained by this single control.
+**Why circuit breakers appear so often:** They're the last line of defence. When guardrails miss an injection, when the Judge doesn't catch a subtle attack, the circuit breaker provides a hard stop based on observable behavior anomalies. Five of nine incidents would have been contained by this single control.
 
 ### Audit Logging / Action Logging
 
@@ -273,5 +273,5 @@ This is a living document. As new AI security incidents are publicly disclosed:
 3. Controls that were "threat-modelled only" may be upgraded to "incident-validated"
 4. New controls may be added if incidents reveal gaps
 
-If you know of a public AI security incident not listed here, [open an issue](https://github.com/JonathanCGill/ai-runtime-behaviour-security/issues). We'll map it to controls and update both pages.
+If you know of a public AI security incident not listed here, [open an issue](https://github.com/JonathanCGill/ai-runtime-behavior-security/issues). We'll map it to controls and update both pages.
 

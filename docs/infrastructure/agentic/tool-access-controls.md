@@ -1,7 +1,7 @@
 # Tool Access Controls
 
 > Part of the [AI Security Infrastructure Controls](../README.md) framework - Agentic AI Controls.
-> Companion to [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security).
+> Companion to [AI Runtime Security](https://github.com/JonathanCGill/ai-runtime-behavior-security).
 
 ## Overview
 
@@ -119,7 +119,7 @@ Not all tool actions carry the same risk. Reading a file is different from delet
 
 ### Objective
 
-Prevent runaway agent behaviour, resource exhaustion, and data exfiltration by enforcing invocation rate limits at the gateway. Rate limits apply per agent session, per tool, and per time window.
+Prevent runaway agent behavior, resource exhaustion, and data exfiltration by enforcing invocation rate limits at the gateway. Rate limits apply per agent session, per tool, and per time window.
 
 ### Requirements
 
@@ -137,8 +137,8 @@ Prevent runaway agent behaviour, resource exhaustion, and data exfiltration by e
 | Layer | How TOOL-05 Supports It |
 |-------|------------------------|
 | **Guardrails** | Rate limits are a quantitative guardrail that prevents accumulation attacks - where no single invocation is harmful, but the volume of invocations achieves a harmful outcome (e.g., enumerating records). |
-| **Judge** | Rate limit proximity and burst patterns feed Judge evaluation as signals of potential anomalous behaviour. |
-| **Human Oversight** | Rate limit alerts surface agent sessions that may require human review, directing attention to potentially problematic behaviour. |
+| **Judge** | Rate limit proximity and burst patterns feed Judge evaluation as signals of potential anomalous behavior. |
+| **Human Oversight** | Rate limit alerts surface agent sessions that may require human review, directing attention to potentially problematic behavior. |
 
 ## TOOL-06 - Log Every Tool Invocation with Full Context
 
@@ -164,6 +164,6 @@ Every tool invocation - whether permitted or denied - must be logged with suffic
 | Layer | How TOOL-06 Supports It |
 |-------|------------------------|
 | **Guardrails** | Invocation logs provide evidence that guardrail enforcement (via the gateway) is functioning correctly. Logs of denied invocations prove the guardrails are active. |
-| **Judge** | Complete invocation logs are a primary input for Judge evaluation of agent behaviour - the Judge can assess whether the sequence and pattern of tool use was appropriate. |
+| **Judge** | Complete invocation logs are a primary input for Judge evaluation of agent behavior - the Judge can assess whether the sequence and pattern of tool use was appropriate. |
 | **Human Oversight** | Full invocation logs give human reviewers the ability to understand exactly what an agent did, why it was allowed, and what it received in response. |
 

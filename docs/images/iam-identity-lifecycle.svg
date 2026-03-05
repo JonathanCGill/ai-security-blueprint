@@ -61,7 +61,7 @@
   <rect x="760" y="290" width="300" height="150" rx="6" fill="#0f3460" stroke="#1a6f9a" stroke-width="1.5" filter="url(#shadow)"/>
   <text x="780" y="315" fill="#4ecca3" font-size="14" font-weight="700">4. MONITORING</text>
   <text x="780" y="335" fill="#e6e6e6" font-size="11">All actions logged (tamper-proof)</text>
-  <text x="780" y="352" fill="#e6e6e6" font-size="11">Behavioural baseline comparison</text>
+  <text x="780" y="352" fill="#e6e6e6" font-size="11">Behavioral baseline comparison</text>
   <text x="780" y="369" fill="#e6e6e6" font-size="11">Permission usage tracking</text>
   <text x="780" y="386" fill="#e6e6e6" font-size="11">Anomaly detection via Judge</text>
   <text x="780" y="403" fill="#8b949e" font-size="10">IAM-08 · LOG-01 · OWASP ASI10</text>
@@ -116,5 +116,5 @@
   <text x="550" y="645" text-anchor="middle" fill="#8b949e" font-size="10">Standards: NIST SP 800-207 (Zero Trust) · ISO 27001:2022 A.5.15-A.5.17 · ISO 42001:2023 · OWASP NHI Top 10 · OWASP Agentic Top 10 · SPIFFE/SVID</text>
 
   <!-- Footer -->
-  <text x="550" y="680" text-anchor="middle" fill="#484f58" font-size="10">AI Runtime Behaviour Security - IAM Governance · Agent Identity Lifecycle · github.com/JonathanCGill</text>
+  <text x="550" y="680" text-anchor="middle" fill="#484f58" font-size="10">AI Runtime Security - IAM Governance · Agent Identity Lifecycle · github.com/JonathanCGill</text>
 </svg>

@@ -2,11 +2,11 @@
 
 **Insider Risk Analysts, UEBA Engineers, Behavioral Analytics Teams - your programme already solves the problem AI agents create. Here's how to extend it.**
 
-> *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
+> *Part of [Stakeholder Views](README.md) · [AI Runtime Security](../)*
 
 ## The Problem You Already Solve
 
-You monitor humans for behavioural anomalies. You build baselines for how people normally work - when they log in, what they access, how much data they move, who they communicate with. When behaviour deviates from that baseline, you investigate.
+You monitor humans for behavioral anomalies. You build baselines for how people normally work - when they log in, what they access, how much data they move, who they communicate with. When behavior deviates from that baseline, you investigate.
 
 You classify threats into three categories: negligent insiders who create risk through carelessness, compromised insiders whose credentials have been stolen, and malicious insiders who deliberately abuse their access.
 
@@ -14,7 +14,7 @@ You use UEBA to score risk across multiple dimensions - temporal patterns, acces
 
 **AI agents are the next entity in your programme.**
 
-An agent has an identity (a non-human identity - NHI). It has access privileges (tools, APIs, data sources). It has a behavioural baseline (what it normally does, when, how often, at what volume). It can be negligent (drifting through accumulated context), compromised (prompt-injected, memory-poisoned), or malicious (sleeper agent, training-time backdoor).
+An agent has an identity (a non-human identity - NHI). It has access privileges (tools, APIs, data sources). It has a behavioral baseline (what it normally does, when, how often, at what volume). It can be negligent (drifting through accumulated context), compromised (prompt-injected, memory-poisoned), or malicious (sleeper agent, training-time backdoor).
 
 Everything you built for humans applies. The analytical framework transfers. The detection techniques transfer. The risk scoring transfers.
 
@@ -35,7 +35,7 @@ The framework's [Insider Risk Parallel](../insights/behavioral-anomaly-detection
 | **New communication destinations** | Agent calling new external APIs or previously unused tools | Exfiltration via tool invocation; supply chain redirect |
 | **Peer group deviation** | One agent in a fleet diverges while peers remain stable | Individual compromise; selective poisoning; configuration drift |
 | **Session anomalies** | Unusual invocation frequency, duration, or concurrency | Agent driven by attacker with different usage patterns |
-| **Behavioural change after events** | Behaviour shift correlating with model updates, config changes, or memory additions | Regression; memory poisoning taking effect; configuration tampering |
+| **Behavioral change after events** | Behavior shift correlating with model updates, config changes, or memory additions | Regression; memory poisoning taking effect; configuration tampering |
 
 These aren't analogies. They're the same indicators, applied to a different entity type.
 
@@ -58,7 +58,7 @@ The framework's [Observability Controls](../maso/controls/observability.md) defi
 | Response latency | 0.05 | Session timing |
 | Message volume | 0.10 | Communication volume |
 | Error rate | 0.10 | Failed access attempts |
-| Content drift | 0.15 | Behavioural drift from role baseline |
+| Content drift | 0.15 | Behavioral drift from role baseline |
 | Cost trajectory | 0.05 | Resource consumption |
 | **Temporal profile** | 0.10 | **Working hours analysis** - your strongest signal |
 | **Peer group deviation** | 0.10 | **Peer comparison** - your most powerful technique |
@@ -85,7 +85,7 @@ Read these in order. Total time: ~60 minutes.
 
 **If you run UEBA on Microsoft Sentinel:** Your entity profiles and peer group profiles already support non-human entities. Adding agent NHIs to the monitored entity set is a configuration change, not a new capability.
 
-**If you run Splunk/Exabeam/Securonix:** The same principle applies - agent identities are entities. Enrol them in your existing behavioural analytics pipeline.
+**If you run Splunk/Exabeam/Securonix:** The same principle applies - agent identities are entities. Enrol them in your existing behavioral analytics pipeline.
 
 ## What You Can Do Monday Morning
 
@@ -97,7 +97,7 @@ Read these in order. Total time: ~60 minutes.
     - "Entity active outside established schedule" → flag and investigate
     - "Entity accessing resources outside declared scope" → flag and investigate
     - "Entity data transfer volume >2σ above baseline" → flag and investigate
-    - "Entity behaviour diverges from peer group" → flag and investigate
+    - "Entity behavior diverges from peer group" → flag and investigate
 
 4. **Add agent scenarios to your next insider threat exercise.** Your red team tests whether employees can exfiltrate data. Add a scenario where an agent is the exfiltration vector - prompt-injected to send data to an external endpoint, or memory-poisoned to gradually widen its access scope.
 
@@ -106,16 +106,16 @@ Read these in order. Total time: ~60 minutes.
 ## Common Objections - With Answers
 
 **"Agents aren't insiders - they're software."**
-So are service accounts, and your programme already monitors those. The "E" in UEBA exists precisely because non-human entities exhibit the same behavioural patterns as human users - and the same deviations when compromised. An agent with an NHI, access privileges, and a behavioural baseline *is* an entity in your programme. The only question is whether you've enrolled it.
+So are service accounts, and your programme already monitors those. The "E" in UEBA exists precisely because non-human entities exhibit the same behavioral patterns as human users - and the same deviations when compromised. An agent with an NHI, access privileges, and a behavioral baseline *is* an entity in your programme. The only question is whether you've enrolled it.
 
 **"The AI security team handles this."**
-The AI security team builds guardrails and evaluation layers. You build behavioural baselines and detect anomalies. These are complementary, not competing. The guardrails catch known-bad patterns in real-time. Your UEBA catches behavioural drift, temporal anomalies, and peer group deviations that guardrails don't look for. The [three-layer model](../core/controls.md) needs both.
+The AI security team builds guardrails and evaluation layers. You build behavioral baselines and detect anomalies. These are complementary, not competing. The guardrails catch known-bad patterns in real-time. Your UEBA catches behavioral drift, temporal anomalies, and peer group deviations that guardrails don't look for. The [three-layer model](../core/controls.md) needs both.
 
 **"We don't have the data to baseline agents."**
 You have the same data you use for service accounts - authentication logs, API call logs, access logs, session metadata. Agent frameworks (LangChain, CrewAI, AutoGen) generate structured logs. The framework's [Observability Controls](../maso/controls/observability.md) specify exactly what to capture. Start with 30 days of collection; refine from there.
 
 **"Our UEBA platform doesn't support AI agents as an entity type."**
-It doesn't need to explicitly. If it supports custom entity types or service account monitoring, you can model agents the same way. The behavioural signals (temporal patterns, access scope, volume, peer comparison) are platform-agnostic. The entity type label matters less than the data feeding the model.
+It doesn't need to explicitly. If it supports custom entity types or service account monitoring, you can model agents the same way. The behavioral signals (temporal patterns, access scope, volume, peer comparison) are platform-agnostic. The entity type label matters less than the data feeding the model.
 
 **"This doubles the workload for our team."**
 It extends existing capability, it doesn't duplicate it. Your correlation rules, risk scoring models, investigation workflows, and escalation procedures all apply. The new work is: inventorying agent NHIs, enrolling them, and tuning thresholds during the initial baselining period. After that, agents are just another set of entities in your existing programme.
@@ -124,7 +124,7 @@ It extends existing capability, it doesn't duplicate it. Your correlation rules,
 
 Insider risk programmes exist because organisations learned that perimeter security isn't enough - threats come from inside too. AI agents create the same lesson for a new era: the entity inside your perimeter, with legitimate access, behaving anomalously.
 
-The 15+ years your discipline has invested in UEBA, behavioural baselines, peer group comparison, and composite risk scoring is directly applicable. Agents are entities. Entities have baselines. Deviations from baselines are investigated. The analytical framework doesn't change. The entity type does.
+The 15+ years your discipline has invested in UEBA, behavioral baselines, peer group comparison, and composite risk scoring is directly applicable. Agents are entities. Entities have baselines. Deviations from baselines are investigated. The analytical framework doesn't change. The entity type does.
 
 The organisations that extend their insider risk programmes to cover AI agents will detect compromises that organisations relying solely on guardrails and output evaluation will miss. Your programme is the missing layer.
 

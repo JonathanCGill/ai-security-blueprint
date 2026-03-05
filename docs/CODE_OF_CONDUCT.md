@@ -4,7 +4,7 @@
 
 We are committed to providing a welcoming and inclusive environment for everyone who wants to contribute to or use this framework, regardless of background, identity, or experience level.
 
-## Expected Behaviour
+## Expected Behavior
 
 - **Be respectful** - Treat all participants with respect and consideration
 - **Be constructive** - Focus on what's best for the community and the framework
@@ -21,7 +21,7 @@ This code of conduct applies to:
 
 ## Reporting Issues
 
-If you experience or witness unacceptable behaviour, please report it by opening a GitHub issue or contacting the maintainers directly.
+If you experience or witness unacceptable behavior, please report it by opening a GitHub issue or contacting the maintainers directly.
 
 ## Enforcement
 

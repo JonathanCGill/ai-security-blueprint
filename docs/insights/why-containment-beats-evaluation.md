@@ -40,7 +40,7 @@ The difference between these paradigms can be expressed in control systems terms
 
 **Open-loop control** (evaluate-then-permit): Measure the system's state once during evaluation. Set control parameters based on that measurement. Operate without further verification. If the initial measurement is wrong - whether due to sandbagging, evaluation limitations, or capability changes after deployment - the control parameters remain miscalibrated indefinitely.
 
-**Closed-loop control** (this framework): Define the desired operating state (containment boundaries). Continuously measure actual operating state (LLM-as-Judge). Compute the error between desired and actual (behavioural drift detection). Apply corrective action (escalation to human oversight). The accuracy of initial evaluation is useful but not load-bearing. The system self-corrects.
+**Closed-loop control** (this framework): Define the desired operating state (containment boundaries). Continuously measure actual operating state (LLM-as-Judge). Compute the error between desired and actual (behavioral drift detection). Apply corrective action (escalation to human oversight). The accuracy of initial evaluation is useful but not load-bearing. The system self-corrects.
 
 The three-layer architecture is explicitly a closed-loop control system:
 
@@ -48,7 +48,7 @@ The three-layer architecture is explicitly a closed-loop control system:
 |---|---|
 | **Setpoint** (desired state) | [Declared intent specification](containment-through-intent.md) |
 | **Sensor** (measurement) | [LLM-as-Judge](../core/judge-assurance.md) + [Observability](../maso/controls/observability.md) |
-| **Comparator** (error detection) | [Behavioural drift detection](behavioral-anomaly-detection.md) |
+| **Comparator** (error detection) | [Behavioral drift detection](behavioral-anomaly-detection.md) |
 | **Actuator** (correction) | [Human oversight escalation](humans-remain-accountable.md) + [PACE degradation](../PACE-RESILIENCE.md) |
 
 Closed-loop systems can still fail - through sensor error (judge blind spots), actuator failure (escalation processes that do not respond effectively), or feedback delay (drift that accumulates faster than detection). But closed-loop systems degrade gracefully and are self-correcting by design. Open-loop systems fail silently and without recovery.
@@ -61,17 +61,17 @@ The three layers are not just defence-in-depth by coincidence. Each layer is spe
 
 **Layer 1 - Containment Boundaries (Guardrails):** Define what the agent is permitted to do based on business intent. Enforced through [infrastructure controls](../infrastructure/): API restrictions, tool permissions, data scopes, action whitelists. This neutralises sandbagging as a breakout vector - there is nothing to game.
 
-**What Layer 1 does not catch:** Adversarial behaviour *within* permitted bounds. An agent that subtly degrades output quality, optimises for unintended objectives, or produces technically compliant but strategically misaligned results.
+**What Layer 1 does not catch:** Adversarial behavior *within* permitted bounds. An agent that subtly degrades output quality, optimises for unintended objectives, or produces technically compliant but strategically misaligned results.
 
-**Layer 2 - Enterprise-Owned LLM-as-Judge:** A separate model, configured with an enterprise-defined behavioural constitution, continuously evaluates outputs against expected patterns. Behavioural degradation manifests as a change in the statistical distribution of outputs over time. The Judge detects this drift **regardless of its cause**. The agent does not need to be "caught sandbagging"; it needs to be caught behaving differently from baseline.
+**Layer 2 - Enterprise-Owned LLM-as-Judge:** A separate model, configured with an enterprise-defined behavioral constitution, continuously evaluates outputs against expected patterns. Behavioral degradation manifests as a change in the statistical distribution of outputs over time. The Judge detects this drift **regardless of its cause**. The agent does not need to be "caught sandbagging"; it needs to be caught behaving differently from baseline.
 
 The Judge must be **owned, configured, and governed by the deploying organisation** - not vendor-side safeguards. Vendor safeguards prevent the model from producing harmful outputs. Enterprise-owned judges verify the model is producing the **correct outputs for a specific business context**. These are different objectives with different threat models. See [Judge Model Selection](../extensions/technical/judge-model-selection.md).
 
-**What Layer 2 does not catch:** Correlated failures (judge shares blind spots with base model), ambiguous cases where the Judge's confidence is insufficient, and novel behaviour patterns outside baseline.
+**What Layer 2 does not catch:** Correlated failures (judge shares blind spots with base model), ambiguous cases where the Judge's confidence is insufficient, and novel behavior patterns outside baseline.
 
 **Layer 3 - Human Oversight Escalation:** Triggered by defined thresholds: judge confidence below threshold, anomalous patterns, high-stakes decisions, periodic audit. This layer handles what the first two cannot resolve autonomously.
 
-**The compound requirement:** For sandbagging or any adversarial behaviour to succeed, a model would need to simultaneously: remain within its containment boundary (evading all technical controls), produce output that passes the Judge's behavioural constitution over sustained periods without triggering drift detection, **and** avoid triggering any human escalation threshold. This is not defence-in-depth by accident - it is defence-in-depth by design, where each layer is specifically calibrated to catch what the previous layer misses.
+**The compound requirement:** For sandbagging or any adversarial behavior to succeed, a model would need to simultaneously: remain within its containment boundary (evading all technical controls), produce output that passes the Judge's behavioral constitution over sustained periods without triggering drift detection, **and** avoid triggering any human escalation threshold. This is not defence-in-depth by accident - it is defence-in-depth by design, where each layer is specifically calibrated to catch what the previous layer misses.
 
 ## Action-Space vs Reasoning-Space Constraints
 
@@ -111,7 +111,7 @@ The constrain-regardless architecture does not attempt to detect sandbagging or 
 | Security owned by model developer | Security owned by deploying organisation |
 | Scales poorly with model capability | Independent of model capability |
 
-This does not mean either risk is harmless. A model that sandbags within its permitted bounds - subtly degrading output quality - is still a threat. A model that sandbugs - producing confident, plausible, wrong outputs within its permissions - is equally dangerous. But both threats are in the Judge's domain (Layer 2), not the containment boundary's domain (Layer 1). The architecture addresses them through continuous behavioural monitoring, not through better pre-deployment evaluation.
+This does not mean either risk is harmless. A model that sandbags within its permitted bounds - subtly degrading output quality - is still a threat. A model that sandbugs - producing confident, plausible, wrong outputs within its permissions - is equally dangerous. But both threats are in the Judge's domain (Layer 2), not the containment boundary's domain (Layer 1). The architecture addresses them through continuous behavioral monitoring, not through better pre-deployment evaluation.
 
 For the detailed treatment of sandbagging mitigations and AISI evidence, see [Evaluation Integrity Risks](evaluation-integrity-risks.md).
 
@@ -121,7 +121,7 @@ Intellectual honesty requires acknowledging what this architecture does not solv
 
 **Judge brittleness.** The Judge is itself a model, subject to drift, hallucination, and correlated blind spots - particularly if it shares architectural lineage with the base model. Judge calibration is an ongoing operational requirement. See [When the Judge Can Be Fooled](../core/when-the-judge-can-be-fooled.md).
 
-**Within-bounds adversarial behaviour.** Containment prevents breakout. It does not prevent a model from pursuing misaligned objectives within its permitted action space - subtle bias, slow-burn optimisation, technically compliant but strategically harmful results.
+**Within-bounds adversarial behavior.** Containment prevents breakout. It does not prevent a model from pursuing misaligned objectives within its permitted action space - subtle bias, slow-burn optimisation, technically compliant but strategically harmful results.
 
 **Escalation fatigue.** Three interlocking layers require three layers of operational support. Containment boundaries evolve with business processes. Judge baselines shift with model updates. Human reviewers develop alert fatigue. The architecture introduces cost that must be justified by risk.
 

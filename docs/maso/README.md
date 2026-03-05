@@ -52,7 +52,7 @@ Every tool invocation runs in a sandboxed environment with strict parameter allo
 
 ### 4. [Observability](controls/observability.md)
 
-Immutable decision chain logs capture the full reasoning and action history of every agent. Behavioural drift detection compares current agent behaviour against established baselines. Per-agent anomaly scoring feeds into the PACE escalation logic. SIEM and SOAR integration enables correlation with broader security operations.
+Immutable decision chain logs capture the full reasoning and action history of every agent. Behavioral drift detection compares current agent behavior against established baselines. Per-agent anomaly scoring feeds into the PACE escalation logic. SIEM and SOAR integration enables correlation with broader security operations.
 
 *Covers: ASI09, ASI10, LLM09, LLM10*
 
@@ -93,7 +93,7 @@ These risks apply to each individual agent. In a multi-agent context, each risk 
 
 ### OWASP Top 10 for Agentic Applications (2026)
 
-These risks are specific to autonomous agent behaviour - the primary threat surface for MASO.
+These risks are specific to autonomous agent behavior - the primary threat surface for MASO.
 
 | Risk | Description | MASO Controls |
 |------|-------------|--------------|
@@ -106,7 +106,7 @@ These risks are specific to autonomous agent behaviour - the primary threat surf
 | **ASI07: Insecure Inter-Agent Communication** | Spoofed, tampered, or replayed messages between agents. | Signed and encrypted message bus · Mutual TLS per agent · Schema validation · Rate limiting · Replay protection |
 | **ASI08: Cascading Failures** | Single fault propagates with escalating impact. Hallucination → flawed plan → destructive action. | Blast radius caps · Circuit breaker patterns · PACE escalation triggers · Independent error detection per agent |
 | **ASI09: Human-Agent Trust Exploitation** | Agents produce confident, authoritative explanations that manipulate operators into approving harmful actions. Multi-agent consensus amplifies this. | Confidence calibration · Independent human verification · Decision audit trails · No agent can claim consensus authority |
-| **ASI10: Rogue Agents** | Behavioural drift, misalignment, concealment, or self-directed action. Rogue behaviour in one agent may be concealed by collaborating agents. | Continuous drift detection · Kill switch · Anomaly scoring against baselines · Regular red-team testing |
+| **ASI10: Rogue Agents** | Behavioral drift, misalignment, concealment, or self-directed action. Rogue behavior in one agent may be concealed by collaborating agents. | Continuous drift detection · Kill switch · Anomaly scoring against baselines · Regular red-team testing |
 
 ## PACE Resilience for Multi-Agent Operations
 
@@ -114,13 +114,13 @@ These risks are specific to autonomous agent behaviour - the primary threat surf
 
 The [PACE methodology](../) (Primary, Alternate, Contingency, Emergency) from the parent framework is extended for multi-agent failure modes.
 
-**Primary - Normal Operations.** All agents active within designated roles. Full three-layer security stack operational. Inter-agent communication through the signed message bus. Behavioural baselines actively monitored.
+**Primary - Normal Operations.** All agents active within designated roles. Full three-layer security stack operational. Inter-agent communication through the signed message bus. Behavioral baselines actively monitored.
 
-**Alternate - Agent Failover.** Triggered when a single agent shows anomalous behaviour. The anomalous agent is isolated. A backup agent (potentially from a different provider) is activated. Tool permissions tightened to read-only. All write operations require human approval. Transition authority: automated (monitoring agent or orchestrator can initiate P→A without human approval, but must notify).
+**Alternate - Agent Failover.** Triggered when a single agent shows anomalous behavior. The anomalous agent is isolated. A backup agent (potentially from a different provider) is activated. Tool permissions tightened to read-only. All write operations require human approval. Transition authority: automated (monitoring agent or orchestrator can initiate P→A without human approval, but must notify).
 
-**Contingency - Degraded Mode.** Triggered when multiple agents are compromised, message bus integrity is questioned, or the alternate agent also exhibits anomalous behaviour. Multi-agent orchestration is suspended. Single pre-validated agent operates in fully supervised mode. All agent state captured for forensics. Transition authority: security team or AI security officer.
+**Contingency - Degraded Mode.** Triggered when multiple agents are compromised, message bus integrity is questioned, or the alternate agent also exhibits anomalous behavior. Multi-agent orchestration is suspended. Single pre-validated agent operates in fully supervised mode. All agent state captured for forensics. Transition authority: security team or AI security officer.
 
-**Emergency - Full Shutdown.** Triggered by cascading failures, confirmed exfiltration, coordinated manipulation, or rogue behaviour. All agents terminated. Tool access revoked. Memory and context snapshots preserved in immutable storage. Full rollback initiated. Transition authority: CISO or incident commander.
+**Emergency - Full Shutdown.** Triggered by cascading failures, confirmed exfiltration, coordinated manipulation, or rogue behavior. All agents terminated. Tool access revoked. Memory and context snapshots preserved in immutable storage. Full rollback initiated. Transition authority: CISO or incident commander.
 
 **Recovery (E→P):** Requires post-incident review confirming root cause identification, control remediation, and updated baselines before returning to Primary.
 
@@ -128,13 +128,13 @@ The [PACE methodology](../) (Primary, Alternate, Contingency, Emergency) from th
 
 ### [Tier 1 - Supervised](implementation/tier-1-supervised.md) (Low Autonomy)
 
-All agent actions require human approval. Inter-agent communication is logged but not encrypted. Behavioural monitoring is periodic (batch review). Suitable for pilot deployments and low-consequence use cases.
+All agent actions require human approval. Inter-agent communication is logged but not encrypted. Behavioral monitoring is periodic (batch review). Suitable for pilot deployments and low-consequence use cases.
 
 **Minimum controls:** Guardrails layer, basic tool scoping, human-in-the-loop for all writes, action audit log.
 
 ### [Tier 2 - Managed](implementation/tier-2-managed.md) (Medium Autonomy)
 
-Agents execute read operations and low-consequence writes autonomously. High-consequence actions escalate to human oversight. Inter-agent communication is signed and validated. Behavioural monitoring is continuous with automated anomaly alerting. PACE Alternate and Contingency fully configured.
+Agents execute read operations and low-consequence writes autonomously. High-consequence actions escalate to human oversight. Inter-agent communication is signed and validated. Behavioral monitoring is continuous with automated anomaly alerting. PACE Alternate and Contingency fully configured.
 
 **Required controls:** All three security layers, per-agent NHI, signed message bus, LLM-as-Judge evaluation, continuous anomaly scoring, PACE A and C configured and tested.
 
@@ -155,9 +155,9 @@ Agents operate with minimal human intervention for pre-approved task categories.
 
 Every control in MASO is grounded in observed or demonstrated attack patterns:
 
-**Confirmed Incidents (2025):** EchoLeak (indirect prompt injection → data exfiltration, informs ASI01/LLM01), Amazon Q Exploit (tool misuse via manipulated inputs, informs ASI02), GitHub MCP Exploit (poisoned MCP server components, informs ASI04), AutoGPT RCE (natural language → code execution, informs ASI05), Gemini Memory Attack (persistent memory poisoning, informs ASI06), Replit Meltdown (rogue agent behaviour, informs ASI10).
+**Confirmed Incidents (2025):** EchoLeak (indirect prompt injection → data exfiltration, informs ASI01/LLM01), Amazon Q Exploit (tool misuse via manipulated inputs, informs ASI02), GitHub MCP Exploit (poisoned MCP server components, informs ASI04), AutoGPT RCE (natural language → code execution, informs ASI05), Gemini Memory Attack (persistent memory poisoning, informs ASI06), Replit Meltdown (rogue agent behavior, informs ASI10).
 
-**Emerging Patterns:** Multi-agent consensus manipulation via shared knowledge base poisoning (ASI09), transitive delegation attacks creating implicit privilege escalation, agent-to-agent prompt injection through inter-agent output, credential harvesting via poisoned MCP tool descriptors, behavioural slow drift evading threshold-based detection.
+**Emerging Patterns:** Multi-agent consensus manipulation via shared knowledge base poisoning (ASI09), transitive delegation attacks creating implicit privilege escalation, agent-to-agent prompt injection through inter-agent output, credential harvesting via poisoned MCP tool descriptors, behavioral slow drift evading threshold-based detection.
 
 ## Red Team Operations
 
@@ -206,7 +206,7 @@ These questions come up in every MASO deployment. The answers sit across the fra
 
 ## Relationship to Parent Framework
 
-MASO is the multi-agent extension of [AI Runtime Behaviour Security](../). It inherits the three-layer defence model, PACE resilience methodology, risk classification matrix, and regulatory mapping framework.
+MASO is the multi-agent extension of [AI Runtime Security](../). It inherits the three-layer defence model, PACE resilience methodology, risk classification matrix, and regulatory mapping framework.
 
 It extends into multi-agent territory by addressing multi-model orchestration security, inter-agent communication integrity, the OWASP Agentic Top 10 (2026), compound risk dynamics, Non-Human Identity management, and kill switch architecture.
 

@@ -92,7 +92,7 @@
   <!-- Judge -->
   <rect x="390" y="520" width="310" height="75" rx="5" fill="#1a3a5c" stroke="#c084fc" stroke-width="1"/>
   <text x="545" y="543" text-anchor="middle" fill="#c084fc" font-size="12" font-weight="700">Judge - DETECT</text>
-  <text x="545" y="560" text-anchor="middle" fill="#e6e6e6" font-size="10">Behavioural anomaly detection on access</text>
+  <text x="545" y="560" text-anchor="middle" fill="#e6e6e6" font-size="10">Behavioral anomaly detection on access</text>
   <text x="545" y="575" text-anchor="middle" fill="#e6e6e6" font-size="10">Permission usage drift, credential misuse</text>
   <text x="545" y="588" text-anchor="middle" fill="#8b949e" font-size="9">Probabilistic. Independent model. Async eval.</text>
 
@@ -121,5 +121,5 @@
   <text x="954" y="675" text-anchor="middle" fill="#8b949e" font-size="9">cascade compromise in 4hrs (sim.)</text>
 
   <!-- Footer -->
-  <text x="550" y="730" text-anchor="middle" fill="#484f58" font-size="10">AI Runtime Behaviour Security - IAM Governance · Threat Landscape · github.com/JonathanCGill</text>
+  <text x="550" y="730" text-anchor="middle" fill="#484f58" font-size="10">AI Runtime Security - IAM Governance · Threat Landscape · github.com/JonathanCGill</text>
 </svg>

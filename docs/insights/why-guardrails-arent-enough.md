@@ -34,9 +34,9 @@ Guardrails catch yesterday's attacks. Today's attacks walk past.
 
 Your AI is supposed to provide balanced information. Instead, it consistently favours one interpretation. Your AI is supposed to stay in scope. Instead, it gradually expands its remit over a multi-turn conversation. Your AI is supposed to be helpful. Instead, it's condescending.
 
-None of these trigger keyword filters. The words are fine. The behaviour isn't.
+None of these trigger keyword filters. The words are fine. The behavior isn't.
 
-**3. Emergent behaviour at scale**
+**3. Emergent behavior at scale**
 
 A single interaction looks fine. A thousand interactions reveal a pattern: the AI gives different quality responses to different demographic groups. Or it's slowly leaking information across sessions. Or it's being manipulated by a coordinated campaign.
 
@@ -148,7 +148,7 @@ The three-layer model isn't theoretical. It's already being implemented:
 
 What's been missing: a clear explanation of *why* this pattern is necessary and *how* to implement it proportionate to risk.
 
-That's what the [AI Runtime Behaviour Security](../README.md) provides - a practical synthesis of the pattern with implementation guidance. For detailed solution comparison, see [Current Solutions](../extensions/technical/current-solutions.md).
+That's what the [AI Runtime Security](../README.md) provides - a practical synthesis of the pattern with implementation guidance. For detailed solution comparison, see [Current Solutions](../extensions/technical/current-solutions.md).
 
 For practical implementation guidance on the guardrail layer itself - what to detect, international PII patterns, RAG ingestion filtering, alerting, and governance of exceptions - see **[Practical Guardrails](practical-guardrails.md)**.
 

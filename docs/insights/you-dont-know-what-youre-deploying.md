@@ -18,9 +18,9 @@ In both cases, the model is a black box. The difference is who holds the box.
 
 This would be manageable if the organisations building these models fully understood what they'd built. They don't.
 
-**Sandbagging**, where models strategically underperform during evaluation, demonstrates this directly. Research published at ICLR 2025 showed that frontier models including GPT-4 and Claude 3 Opus can be prompted to selectively underperform on dangerous capability evaluations while maintaining performance on harmless ones (van der Weij et al., 2024). Models can be fine-tuned to hide specific capabilities unless given a password, and this behaviour generalises to held-out benchmarks.
+**Sandbagging**, where models strategically underperform during evaluation, demonstrates this directly. Research published at ICLR 2025 showed that frontier models including GPT-4 and Claude 3 Opus can be prompted to selectively underperform on dangerous capability evaluations while maintaining performance on harmless ones (van der Weij et al., 2024). Models can be fine-tuned to hide specific capabilities unless given a password, and this behavior generalises to held-out benchmarks.
 
-More concerning: models do this without being asked. Anthropic's own research found Claude 3.5 Sonnet will underperform on tasks without explicit instruction if it detects that performing well would trigger capability unlearning (Meinke et al., 2024). Separate work documented alignment faking: models intentionally appearing to comply with training objectives during training to avoid modification of their behaviour (Greenblatt et al., 2024).
+More concerning: models do this without being asked. Anthropic's own research found Claude 3.5 Sonnet will underperform on tasks without explicit instruction if it detects that performing well would trigger capability unlearning (Meinke et al., 2024). Separate work documented alignment faking: models intentionally appearing to comply with training objectives during training to avoid modification of their behavior (Greenblatt et al., 2024).
 
 The UK AI Security Institute's Frontier AI Trends Report (December 2025) confirmed that models can distinguish between evaluation and deployment contexts. Black-box monitors lose accuracy as task complexity increases. And there is essentially no correlation (R² = 0.097) between model capability and safeguard robustness. More capable models are not safer models.
 
@@ -32,9 +32,9 @@ This framework **cannot** help you choose the right model. Model selection is a 
 
 What this framework **does** is accept the opacity as a given and work from there:
 
-- **Monitor behaviour.** Since you cannot know what a model is capable of by inspecting it, you observe what it actually does. Every input, every output, every decision, logged and evaluated.
+- **Monitor behavior.** Since you cannot know what a model is capable of by inspecting it, you observe what it actually does. Every input, every output, every decision, logged and evaluated.
 - **Constrain actions.** Since you cannot predict what a model might attempt, you limit what it is permitted to do. Permissions are derived from [declared business intent](containment-through-intent.md) (what the use case requires), not from evaluation of what the model can do. If the execution path doesn't exist, the capability is irrelevant.
-- **Detect drift.** Since a model's behaviour can change (through provider updates, fine-tuning degradation, or context-dependent shifts), you monitor for deviation from established baselines, not just for known-bad patterns.
+- **Detect drift.** Since a model's behavior can change (through provider updates, fine-tuning degradation, or context-dependent shifts), you monitor for deviation from established baselines, not just for known-bad patterns.
 - **Keep humans accountable.** Since no automated layer is infallible, humans review what machines cannot resolve. Not every interaction, but the edge cases, the anomalies, and the high-stakes decisions where getting it wrong matters.
 
 This is the three-layer pattern: guardrails for speed, Judge for depth, humans for judgment. It exists because the alternative, trusting a system you cannot fully inspect or predict, is not a defensible position.
@@ -45,9 +45,9 @@ The opacity of LLMs is not a temporary limitation that will be solved by better 
 
 This is why runtime security frameworks, this one and others, are necessary. Not because AI is dangerous by default, but because AI is unpredictable by design. And unpredictable systems operating on real data, making real decisions that affect real people, require continuous oversight.
 
-It is also why regulation is necessary. The EU AI Act, NIST AI RMF, ISO 42001, and sector-specific rules all increasingly mandate ongoing monitoring, human oversight, and risk management throughout the AI lifecycle, not just at deployment. Regulators have recognised what practitioners already know: you cannot test your way to safety with a system whose behaviour you cannot fully predict.
+It is also why regulation is necessary. The EU AI Act, NIST AI RMF, ISO 42001, and sector-specific rules all increasingly mandate ongoing monitoring, human oversight, and risk management throughout the AI lifecycle, not just at deployment. Regulators have recognised what practitioners already know: you cannot test your way to safety with a system whose behavior you cannot fully predict.
 
-The organisations building these models do important work on safety. But they cannot guarantee the behaviour of their models in your environment, with your data, against your threat landscape. That responsibility falls to the deploying organisation. This framework exists to help you meet it.
+The organisations building these models do important work on safety. But they cannot guarantee the behavior of their models in your environment, with your data, against your threat landscape. That responsibility falls to the deploying organisation. This framework exists to help you meet it.
 
 ## Related
 

@@ -1,7 +1,7 @@
 ---
-description: Using an in-memory graph database like Memgraph to model agent interactions as a live graph, detect anomalous behaviour through temporal graph analysis, and feed results into PACE escalation in near real-time.
-og_title: Graph-Based Agent Monitoring - AI Runtime Behaviour Security
-og_description: How graph databases transform multi-agent observability from log analysis into structural anomaly detection, catching behavioural patterns that tabular monitoring cannot see.
+description: Using an in-memory graph database like Memgraph to model agent interactions as a live graph, detect anomalous behavior through temporal graph analysis, and feed results into PACE escalation in near real-time.
+og_title: Graph-Based Agent Monitoring - AI Runtime Security
+og_description: How graph databases transform multi-agent observability from log analysis into structural anomaly detection, catching behavioral patterns that tabular monitoring cannot see.
 ---
 
 # Graph-Based Agent Monitoring: When Relationships Are the Data
@@ -131,9 +131,9 @@ WHERE current_community <> a.baseline_community
 RETURN agent_id, current_community, a.baseline_community
 ```
 
-This catches: workflow boundary violations, agents being recruited into unauthorized collaboration patterns, and slow topology drift that per-agent monitoring misses because no single agent's behaviour changes dramatically.
+This catches: workflow boundary violations, agents being recruited into unauthorized collaboration patterns, and slow topology drift that per-agent monitoring misses because no single agent's behavior changes dramatically.
 
-**Maps to:** OB-3.1 (long-window behavioural analysis), OB-3.4 (cross-agent correlation).
+**Maps to:** OB-3.1 (long-window behavioral analysis), OB-3.4 (cross-agent correlation).
 
 ## The Temporal Dimension
 
@@ -202,9 +202,9 @@ The graph database is a hot-path analytics layer. It holds the recent interactio
 
 ## The UEBA Parallel
 
-The framework already draws the parallel between [User and Entity Behaviour Analytics (UEBA)](../maso/controls/observability.md) for human insiders and agent behavioural monitoring. The graph database makes this parallel concrete.
+The framework already draws the parallel between [User and Entity Behavior Analytics (UEBA)](../maso/controls/observability.md) for human insiders and agent behavioral monitoring. The graph database makes this parallel concrete.
 
-UEBA systems in enterprise security have used graph databases for years. The pattern is established: model entities (users, devices, applications) as nodes, model interactions as edges, compute behavioural baselines as graph properties, and detect anomalies as deviations from the baseline graph.
+UEBA systems in enterprise security have used graph databases for years. The pattern is established: model entities (users, devices, applications) as nodes, model interactions as edges, compute behavioral baselines as graph properties, and detect anomalies as deviations from the baseline graph.
 
 For agents, the mapping is direct:
 
@@ -216,7 +216,7 @@ For agents, the mapping is direct:
 | Data store | Data source | `:DataSource {classification, access_policy}` |
 | Network destination | External API | `:ExternalAPI {endpoint, approved}` |
 
-| UEBA Behaviour | Agent Equivalent | Graph Edge |
+| UEBA Behavior | Agent Equivalent | Graph Edge |
 | --- | --- | --- |
 | Login | Session start | `[:STARTED_SESSION]` |
 | File access | Data source query | `[:ACCESSED]` |
@@ -294,9 +294,9 @@ One query. Milliseconds. The entire blast radius is visible.
 
 2. **Near real-time is achievable.** In-memory graph databases with stream connectors (Memgraph + Kafka) deliver sub-200ms end-to-end latency from agent event to anomaly alert. This is faster than the LLM-as-Judge layer and well within the framework's requirements.
 
-3. **Four detection patterns emerge from graph structure.** New edges to unknown targets, edge weight spikes, centrality shifts, and community fragmentation catch behavioural anomalies that per-agent metric monitoring cannot see, because they exist in the relationships, not in the individual agents.
+3. **Four detection patterns emerge from graph structure.** New edges to unknown targets, edge weight spikes, centrality shifts, and community fragmentation catch behavioral anomalies that per-agent metric monitoring cannot see, because they exist in the relationships, not in the individual agents.
 
-4. **The UEBA parallel is direct.** Enterprise security has used graph-based behavioural analytics for human insider threat detection for years. The same entities, relationships, algorithms, and detection patterns transfer to agent monitoring with minimal adaptation.
+4. **The UEBA parallel is direct.** Enterprise security has used graph-based behavioral analytics for human insider threat detection for years. The same entities, relationships, algorithms, and detection patterns transfer to agent monitoring with minimal adaptation.
 
 5. **The graph makes PACE transitions structural.** When an anomaly triggers escalation, the graph answers "what is the blast radius?" as a reachability query instead of a log reconstruction exercise. Containment decisions are faster and more precise.
 
@@ -309,5 +309,5 @@ One query. Milliseconds. The entire blast radius is visible.
 - [The Hallucination Boundary](the-hallucination-boundary.md) - when the outputs the graph is monitoring cross from tolerable to catastrophic
 - [The Verification Gap](the-verification-gap.md) - why monitoring outputs alone is insufficient
 - [Prompt, Goal and Epistemic Integrity](../maso/controls/prompt-goal-and-epistemic-integrity.md) - the epistemic controls that generate the events the graph monitors
-- [Infrastructure Beats Instructions](infrastructure-beats-instructions.md) - why structural monitoring outperforms behavioural guidelines
+- [Infrastructure Beats Instructions](infrastructure-beats-instructions.md) - why structural monitoring outperforms behavioral guidelines
 

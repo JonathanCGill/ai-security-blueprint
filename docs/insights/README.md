@@ -1,5 +1,5 @@
 ---
-description: Research insights on why runtime behavioural monitoring solves AI security challenges that pre-deployment testing alone cannot address.
+description: Research insights on why runtime behavioral monitoring solves AI security challenges that pre-deployment testing alone cannot address.
 ---
 
 # Insights
@@ -84,6 +84,6 @@ Deeper examinations of where the framework meets production reality - what works
 | [The Constraint Curve](the-constraint-curve.md) | Every constraint reduces both risk and capability - proportionate controls find the peak; over-constraining destroys the value that justified using an LLM |
 | [The Hallucination Boundary](the-hallucination-boundary.md) | The same hallucination is a nuisance in one context and a catastrophe in another - tolerance is a function of decision authority, blast radius, and reversibility |
 | [Automated Risk Tiering](automated-risk-tiering.md) | Classification should take two minutes, produce an immediate result, and auto-apply the controls that make the risk manageable |
-| [Graph-Based Agent Monitoring](graph-based-agent-monitoring.md) | Using an in-memory graph database to model agent interactions as a live graph, detect anomalous behaviour through temporal graph analysis, and feed results into PACE escalation in near real-time |
+| [Graph-Based Agent Monitoring](graph-based-agent-monitoring.md) | Using an in-memory graph database to model agent interactions as a live graph, detect anomalous behavior through temporal graph analysis, and feed results into PACE escalation in near real-time |
 | [Beyond Security](beyond-security.md) | The framework's architecture - layered independence, tiering, PACE, quantitative compounding - transfers to drift, fairness, explainability, and reliability |
 

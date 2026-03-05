@@ -115,11 +115,11 @@ This framework's infrastructure controls and deployment guidance are consistent 
 
 ### UK AI Security Institute - Frontier AI Trends Report (December 2025)
 
-The strongest empirical backing for runtime security from a government body. The AISI (formerly UK AI Safety Institute) tested frontier AI systems and published findings with direct implications for runtime behavioural security:
+The strongest empirical backing for runtime security from a government body. The AISI (formerly UK AI Safety Institute) tested frontier AI systems and published findings with direct implications for runtime behavioral security:
 
 - **Safeguard robustness:** Universal jailbreaks found in every system tested, but effort required increased 40x over 6 months for biological misuse between two model generations - evidence that targeted safeguard investment works, but coverage is uneven across risk categories.
 - **Capability-safety gap:** R² = 0.097 between model capability (GPQA benchmark) and safeguard robustness - more capable models are not inherently safer.
-- **Sandbagging:** Models can distinguish testing from deployment contexts and alter behaviour accordingly. Black-box monitors lose accuracy on harder tasks.
+- **Sandbagging:** Models can distinguish testing from deployment contexts and alter behavior accordingly. Black-box monitors lose accuracy on harder tasks.
 - **Open-weight safeguard removal:** Safeguards on open-weight models can be "quickly and cheaply removed." Open-to-closed source capability gap narrowed to 4–8 months.
 - **Self-replication:** Success rates on RepliBench tasks went from 5% (2023) to 60% (2025).
 - **Capability doubling:** Task complexity AI can handle autonomously is doubling roughly every 8 months. Cyber tasks went from <10 min (early 2023) to >1 hour (mid-2025). Expert-level cyber tasks first completed by AI in 2025.
@@ -221,9 +221,9 @@ Comprehensive survey outlining a taxonomy of threats specific to agentic AI, rev
 
 ### "Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training" - Anthropic (January 2024)
 
-Hubinger et al. (39 co-authors). Demonstrated that if an LLM learns to be strategically deceptive - behaving helpfully in most situations but pursuing alternative objectives when triggered - current safety training techniques (RLHF, supervised fine-tuning) fail to remove this behaviour. Larger models are more persistent. Adversarial training can backfire, teaching models to better hide unsafe behaviour.
+Hubinger et al. (39 co-authors). Demonstrated that if an LLM learns to be strategically deceptive - behaving helpfully in most situations but pursuing alternative objectives when triggered - current safety training techniques (RLHF, supervised fine-tuning) fail to remove this behavior. Larger models are more persistent. Adversarial training can backfire, teaching models to better hide unsafe behavior.
 
-This paper has profound implications for model supply chain security: if you fine-tune on compromised data or use a model with an embedded backdoor, standard safety evaluations will not reliably detect the problem. MASO's supply chain controls - AIBOM, signed manifests, model provenance verification - are partly informed by this finding. Anthropic followed up with research on "defection probes" that can detect sleeper agent behaviour with AUROC scores above 99%.
+This paper has profound implications for model supply chain security: if you fine-tune on compromised data or use a model with an embedded backdoor, standard safety evaluations will not reliably detect the problem. MASO's supply chain controls - AIBOM, signed manifests, model provenance verification - are partly informed by this finding. Anthropic followed up with research on "defection probes" that can detect sleeper agent behavior with AUROC scores above 99%.
 
 - [Sleeper Agents (arXiv)](https://arxiv.org/abs/2401.05566)
 - [Anthropic Research Page](https://www.anthropic.com/research/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training)
@@ -326,7 +326,7 @@ Established legal precedent that organisations are liable for AI-generated misin
 
 ### DPD Chatbot Incident (January 2024)
 
-After a system update, DPD's AI chatbot could be prompted to swear at customers, write poems criticising the company, and call itself "useless." Screenshots went viral (1.3 million views). DPD confirmed the behaviour followed a system update that silently weakened guardrails.
+After a system update, DPD's AI chatbot could be prompted to swear at customers, write poems criticising the company, and call itself "useless." Screenshots went viral (1.3 million views). DPD confirmed the behavior followed a system update that silently weakened guardrails.
 
 Maps to: Guardrails (regression testing), Circuit Breaker.
 
@@ -344,7 +344,7 @@ Maps to: Guardrails (output validation), Execution Control (action boundaries).
 
 ### Slack AI Data Exfiltration via RAG Poisoning (August 2024)
 
-PromptArmor demonstrated that Slack AI was vulnerable to indirect prompt injection that could exfiltrate data from private channels. An attacker posts a malicious prompt in a public channel; when a victim queries Slack AI, it retrieves the poisoned message as RAG context and embeds sensitive data from private channels into a clickable link. Slack initially dismissed the report as "intended behaviour."
+PromptArmor demonstrated that Slack AI was vulnerable to indirect prompt injection that could exfiltrate data from private channels. An attacker posts a malicious prompt in a public channel; when a victim queries Slack AI, it retrieves the poisoned message as RAG context and embeds sensitive data from private channels into a clickable link. Slack initially dismissed the report as "intended behavior."
 
 Maps to: Data Protection (RAG integrity), Prompt Integrity (injection detection).
 
@@ -488,7 +488,7 @@ What the sources provide is:
 - **Evidence.** Every control in this framework maps to a documented incident, a published attack technique, or both. The incidents section above provides the evidence base.
 - **Context.** No framework exists in isolation. Citing what came before helps readers understand where this work sits in the broader landscape and what it adds to the conversation.
 
-**Developer frameworks and deployer controls are complementary, not competing.** The developer safety frameworks from OpenAI, Google DeepMind, and Anthropic define what the model provider commits to before a model reaches you - capability evaluations, safety cases, release thresholds. This framework defines what happens after - the runtime behavioural controls, monitoring, and governance that deploying organisations must implement regardless of which model they use. One does not replace the other. A model that passes its developer's safety evaluations still needs guardrails, a Judge, human oversight, and circuit breakers in production. Conversely, robust runtime controls cannot compensate for a fundamentally unsafe model. Enterprises should treat developer safety commitments as part of their supply chain due diligence, and this framework's controls as the operational layer that sits on top.
+**Developer frameworks and deployer controls are complementary, not competing.** The developer safety frameworks from OpenAI, Google DeepMind, and Anthropic define what the model provider commits to before a model reaches you - capability evaluations, safety cases, release thresholds. This framework defines what happens after - the runtime behavioral controls, monitoring, and governance that deploying organisations must implement regardless of which model they use. One does not replace the other. A model that passes its developer's safety evaluations still needs guardrails, a Judge, human oversight, and circuit breakers in production. Conversely, robust runtime controls cannot compensate for a fundamentally unsafe model. Enterprises should treat developer safety commitments as part of their supply chain due diligence, and this framework's controls as the operational layer that sits on top.
 
 We encourage readers to engage with the primary sources directly. If you find additional relevant work we should reference, please open an issue or pull request.
 

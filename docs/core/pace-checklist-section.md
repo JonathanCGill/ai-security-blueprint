@@ -32,7 +32,7 @@ These items apply to every AI system, regardless of risk tier.
 
 ### PACE Plan
 
-- [ ] P (Primary) and A (Alternate) behaviour defined for each control layer (one sentence each)
+- [ ] P (Primary) and A (Alternate) behavior defined for each control layer (one sentence each)
 - [ ] C (Contingency) and E (Emergency) combined statement: "Disable feature via [mechanism], revert to [manual process], contact [name]"
 - [ ] PACE plan documented as paragraph in system runbook
 
@@ -49,7 +49,7 @@ These items apply to every AI system, regardless of risk tier.
 
 ### PACE Plan
 
-- [ ] Full P/A/C/E defined for each control layer with specific behaviours at each level
+- [ ] Full P/A/C/E defined for each control layer with specific behaviors at each level
 - [ ] Transition triggers defined (measurable conditions for each state change)
 - [ ] Automated transition mechanisms configured where possible (circuit breaker, health checks)
 - [ ] Escalation contact list documented (primary and alternate for each control layer)

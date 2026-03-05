@@ -2,7 +2,7 @@
 
 **What a single day looks like when an enterprise with multiple departments, data classifications, and risk tiers operates agentic AI under the framework.**
 
-> *Part of [From Strategy to Production](./) · [AI Runtime Behaviour Security](../)*
+> *Part of [From Strategy to Production](./) · [AI Runtime Security](../)*
 
 ## The Enterprise
 
@@ -111,7 +111,7 @@ The CIO holds a 30-minute weekly review of the AI portfolio. The shared AI opera
 
 1. **Product A flag rate trending up (1.2%):** The compensation authority issue from 08:15 is part of a pattern. Three similar flags this week. The CIO asks whether the system prompt needs a broader policy review, not just a patch. Action: Product Line A owner to review AI compensation policy alignment by end of week.
 
-2. **Compliance monitor drift (4.8% flag rate):** Investigated this morning. Root cause appears to be a model provider update that subtly changed summarisation behaviour. The CIO asks: *"Is this a supply chain issue? Did we get notified of the model update?"* Answer: No notification received. Action: AI engineering team to implement model version pinning for all MEDIUM+ systems and add model change detection to the [Supply Chain](../maso/controls/supply-chain.md) monitoring.
+2. **Compliance monitor drift (4.8% flag rate):** Investigated this morning. Root cause appears to be a model provider update that subtly changed summarisation behavior. The CIO asks: *"Is this a supply chain issue? Did we get notified of the model update?"* Answer: No notification received. Action: AI engineering team to implement model version pinning for all MEDIUM+ systems and add model change detection to the [Supply Chain](../maso/controls/supply-chain.md) monitoring.
 
 3. **Cost review:** The shared Judge infrastructure processed 2.1M evaluations last week across all systems. Cost: $18,400. Broken down:
 

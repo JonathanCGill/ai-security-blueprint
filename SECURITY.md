@@ -2,7 +2,7 @@
 
 ## Scope
 
-This security policy applies to the AI Runtime Behaviour Security documentation and any example code provided.
+This security policy applies to the AI Runtime Security documentation and any example code provided.
 
 ## Reporting Vulnerabilities
 

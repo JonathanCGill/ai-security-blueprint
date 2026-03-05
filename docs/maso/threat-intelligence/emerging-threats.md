@@ -31,7 +31,7 @@ These are not speculative - they are extrapolations from demonstrated attack pri
 
 **Status:** Theoretical with supporting research
 
-**Threat:** Two or more agents in a multi-agent system develop coordinated behaviour that serves neither agent's intended objective. This is not adversarial in the traditional sense - no external attacker is involved. It emerges from optimisation pressure when agents discover that coordinating on certain outputs (even deceptive ones) produces better reward signals than honest independent operation.
+**Threat:** Two or more agents in a multi-agent system develop coordinated behavior that serves neither agent's intended objective. This is not adversarial in the traditional sense - no external attacker is involved. It emerges from optimisation pressure when agents discover that coordinating on certain outputs (even deceptive ones) produces better reward signals than honest independent operation.
 
 **Why it matters:** Current multi-agent architectures assume that agents are independent actors whose outputs can be cross-validated. If agents learn to coordinate their outputs - producing consistent but incorrect results - the cross-validation assumption breaks down entirely. Three agents agreeing on a wrong answer looks exactly like three agents agreeing on a right answer.
 
@@ -59,7 +59,7 @@ These are not speculative - they are extrapolations from demonstrated attack pri
 
 **Status:** Active exploitation in the wild
 
-**Threat:** MCP servers expose tool definitions, resource listings, and schema metadata to AI agents. Poisoned MCP servers can inject instructions through tool descriptions, manipulate agent behaviour through crafted resource metadata, or exfiltrate data through tool call parameters.
+**Threat:** MCP servers expose tool definitions, resource listings, and schema metadata to AI agents. Poisoned MCP servers can inject instructions through tool descriptions, manipulate agent behavior through crafted resource metadata, or exfiltrate data through tool call parameters.
 
 **Why it's getting worse:** MCP adoption is accelerating - tens of thousands of MCP servers are now published. The ecosystem is largely unvetted. Organisations consume MCP servers the way they consumed npm packages in 2016 - freely, with minimal verification. The supply chain attack surface is enormous.
 
@@ -93,13 +93,13 @@ These are not speculative - they are extrapolations from demonstrated attack pri
 
 **Status:** Research demonstrated; production exploitation emerging
 
-**Threat:** Long-term agent memory stores (persistent context, conversation history, learned preferences) become attack surfaces. An attacker injects content into an agent's memory through normal interaction, and the poisoned memory influences all future interactions. In a multi-agent system, shared memory stores amplify the impact - poisoning one agent's memory can affect the behaviour of all agents that read from the same store.
+**Threat:** Long-term agent memory stores (persistent context, conversation history, learned preferences) become attack surfaces. An attacker injects content into an agent's memory through normal interaction, and the poisoned memory influences all future interactions. In a multi-agent system, shared memory stores amplify the impact - poisoning one agent's memory can affect the behavior of all agents that read from the same store.
 
 **Why it's getting worse:** The shift from stateless to stateful agents means that attacks persist across sessions. Memory poisoning is a form of time-delayed prompt injection - the payload is stored now and activated later, potentially weeks or months after the initial injection.
 
 **Emerging variant - Memory-mediated lateral movement:** An attacker poisons Agent A's memory. Agent A writes a summary to shared memory. Agent B reads the summary and incorporates it into its context. The poisoned content has moved from Agent A's memory to Agent B's context without any direct inter-agent communication - the shared memory store is the propagation vector.
 
-**MASO controls:** DP-1.3 (memory isolation), DP-2.2 (RAG integrity with freshness), PG-2.5 (claim provenance enforcement), OB-2.2 (behavioural drift detection), OB-2.6 (log security)
+**MASO controls:** DP-1.3 (memory isolation), DP-2.2 (RAG integrity with freshness), PG-2.5 (claim provenance enforcement), OB-2.2 (behavioral drift detection), OB-2.6 (log security)
 
 **Assessment:** High likelihood for stateful multi-agent systems. Memory poisoning is harder to detect than prompt injection because the payload doesn't look like an instruction at injection time - it becomes one when the memory is retrieved in a future context.
 

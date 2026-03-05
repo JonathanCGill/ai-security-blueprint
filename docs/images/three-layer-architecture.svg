@@ -109,7 +109,7 @@
 
   <rect x="340" y="585" width="200" height="48" rx="5" fill="#ffffff" stroke="#c4b5fd" stroke-width="1"/>
   <text x="440" y="605" text-anchor="middle" font-size="11" font-weight="600" fill="#6d28d9">Scope Compliance</text>
-  <text x="440" y="621" text-anchor="middle" font-size="10" fill="#64748b">Behaviour vs declaration</text>
+  <text x="440" y="621" text-anchor="middle" font-size="10" fill="#64748b">Behavior vs declaration</text>
 
   <rect x="560" y="585" width="200" height="48" rx="5" fill="#ffffff" stroke="#c4b5fd" stroke-width="1"/>
   <text x="660" y="605" text-anchor="middle" font-size="11" font-weight="600" fill="#6d28d9">Policy Compliance</text>

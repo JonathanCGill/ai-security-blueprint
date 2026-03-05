@@ -2,7 +2,7 @@
 
 **CIOs, CTOs, VP Technology - how to govern AI across your technology portfolio when every product runs different agents with different risk profiles.**
 
-> *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
+> *Part of [Stakeholder Views](README.md) · [AI Runtime Security](../)*
 
 ## The Problem You Have
 

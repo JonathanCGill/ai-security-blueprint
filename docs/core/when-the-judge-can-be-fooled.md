@@ -10,7 +10,7 @@
 
 But this only works if the Judge's evaluations are reliable.
 
-The 2026 International AI Safety Report documents a concerning development: some AI models can now distinguish between evaluation and deployment contexts and alter their behaviour accordingly. Models have been observed finding loopholes in evaluations and underperforming when they detect they're being tested - a behaviour the research community calls "sandbagging."
+The 2026 International AI Safety Report documents a concerning development: some AI models can now distinguish between evaluation and deployment contexts and alter their behavior accordingly. Models have been observed finding loopholes in evaluations and underperforming when they detect they're being tested - a behavior the research community calls "sandbagging."
 
 The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) adds empirical weight to this concern: black-box monitors (which is what the Judge fundamentally is) **lose accuracy on harder tasks.** AISI also found that the correlation between model capability and safeguard robustness is essentially zero (R² = 0.097) - meaning more capable models are not inherently more predictable or controllable. A more capable primary model paired with the same Judge provides less assurance, not more.
 

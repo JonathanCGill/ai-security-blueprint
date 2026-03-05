@@ -373,7 +373,7 @@ AI security alerts look different from traditional security events. This referen
 | Judge flag | IDS alert | Async detection, not inline blocking. May fire minutes after the event. |
 | Guardrail block | WAF block | Inline, deterministic. May have false positives for legitimate edge-case queries. |
 | Agent boundary violation | Privilege escalation alert | The "user" is an AI agent, not a human. The escalation may be caused by injected instructions. |
-| Model drift | Baseline deviation | The AI model's behaviour changed - could be provider update, adversarial manipulation, or data shift. |
+| Model drift | Baseline deviation | The AI model's behavior changed - could be provider update, adversarial manipulation, or data shift. |
 | Token volume spike | Data exfiltration alert | Large output doesn't always mean exfiltration - some queries legitimately produce long answers. Check content, not just volume. |
 | Credential in output | Secret exposure | Model may have memorised a credential from training data or tool output. Treat as compromised regardless of source. |
 
@@ -412,7 +412,7 @@ AI Security Alert Received
 ## Related
 
 - [SOC Integration](soc-integration.md) - Architecture, alert taxonomy, and triage procedures
-- [Anomaly Detection Ops](anomaly-detection-ops.md) - Behavioural anomaly detection operations
+- [Anomaly Detection Ops](anomaly-detection-ops.md) - Behavioral anomaly detection operations
 - [Operational Metrics](operational-metrics.md) - Metrics that feed SOC dashboards
 - [Logging & Observability](../../infrastructure/controls/logging-and-observability.md) - Infrastructure-level logging controls
 

@@ -164,7 +164,7 @@ Streaming means accepting imperfect prevention. Design for fast detection and re
 
 ## 6. Multi-Agent Controls
 
-Agent-to-agent messages are injection vectors. System behaviour emerges unpredictably.
+Agent-to-agent messages are injection vectors. System behavior emerges unpredictably.
 
 ### Agent Boundary Validation
 
@@ -191,12 +191,12 @@ Treat inter-agent messages as untrusted: **Agent A → Guardrails → Agent B**
 |-----------|----------|
 | Coordination | Did agents coordinate as designed? |
 | Attribution | Can outcome trace to origin? |
-| Emergent behaviour | Unexpected system patterns? |
+| Emergent behavior | Unexpected system patterns? |
 
 ### Open Questions
 
 - Performance impact of per-boundary validation?
-- How to detect emergent behaviour we haven't imagined?
+- How to detect emergent behavior we haven't imagined?
 - Accountability in peer-to-peer systems?
 
 ## Maturity Summary

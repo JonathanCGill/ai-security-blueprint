@@ -12,7 +12,7 @@ The shift from Tier 1 to Tier 2 is not about removing human control - it is abou
 
 Tier 2 is appropriate when:
 
-- The organisation has completed at least 90 days of Tier 1 operations and established behavioural baselines for all agents.
+- The organisation has completed at least 90 days of Tier 1 operations and established behavioral baselines for all agents.
 - Tier 1 graduation criteria have been formally met and documented.
 - The organisation has the technical capacity to implement per-agent Non-Human Identities, signed message bus, LLM-as-Judge evaluation, and continuous anomaly scoring.
 - The AI security maturity is at CMMI Level 2–3 (managed or defined) for AI-specific controls.
@@ -32,7 +32,7 @@ Key architectural changes from Tier 1:
 
 **LLM-as-Judge (Layer 2) is mandatory:** A dedicated evaluation model (distinct from the task agents, ideally from a different model provider) reviews agent outputs and proposed actions against policy, quality, and safety criteria before they are committed. The judge model does not execute actions - it evaluates and either approves, flags for human review, or blocks.
 
-**Continuous monitoring layer:** Automated anomaly detection replaces periodic manual log review. Behavioural baselines established during Tier 1 are used as reference. Deviations trigger alerts and, if thresholds are exceeded, automatic PACE phase transitions.
+**Continuous monitoring layer:** Automated anomaly detection replaces periodic manual log review. Behavioral baselines established during Tier 1 are used as reference. Deviations trigger alerts and, if thresholds are exceeded, automatic PACE phase transitions.
 
 **Action classification:** Every agent action is classified as either:
 - **Auto-approve:** Read operations, low-consequence writes within pre-approved categories. Proceeds without human intervention. LLM-as-Judge reviews but does not block unless policy violation is detected.
@@ -81,7 +81,7 @@ Key architectural changes from Tier 1:
 
 **All Tier 1 controls remain active, plus:**
 
-- **Action classification engine.** Every proposed action is classified as auto-approve, escalate, or block based on predefined rules. The classification considers: the action type (read/write/delete/execute), the target system (internal/external), the data classification involved, the agent's historical behaviour, and the LLM-as-Judge evaluation.
+- **Action classification engine.** Every proposed action is classified as auto-approve, escalate, or block based on predefined rules. The classification considers: the action type (read/write/delete/execute), the target system (internal/external), the data classification involved, the agent's historical behavior, and the LLM-as-Judge evaluation.
 - **Sandboxed execution.** Agents that generate and execute code do so in isolated environments. Each agent's execution sandbox has defined filesystem, network, and process scope boundaries. The sandbox is destroyed and recreated after each execution.
 - **Blast radius caps.** Each agent has a defined maximum impact scope: maximum number of records it can modify per execution, maximum financial value of transactions, maximum number of external API calls. Exceeding any cap triggers automatic PACE escalation to Alternate.
 - **Circuit breakers.** If an agent's error rate exceeds a defined threshold within a time window (e.g., 3 guardrail blocks in 10 minutes), the circuit breaker engages: the agent is paused, the event is logged, and the monitoring layer evaluates whether to resume or escalate.
@@ -101,8 +101,8 @@ Key architectural changes from Tier 1:
 
 **All Tier 1 controls remain active, plus:**
 
-- **Continuous anomaly detection.** Automated monitoring compares real-time agent behaviour against the baselines established during Tier 1. Anomaly indicators include: unusual tool usage patterns, output characteristics outside normal distribution, message volume or frequency changes, latency changes, and error rate changes.
-- **Behavioural drift scoring.** Each agent receives a continuous drift score (0–100) representing how far its current behaviour deviates from baseline. Drift score thresholds trigger alerts (e.g., score > 30 = warning, > 60 = automatic PACE P→A transition, > 85 = automatic PACE A→C transition).
+- **Continuous anomaly detection.** Automated monitoring compares real-time agent behavior against the baselines established during Tier 1. Anomaly indicators include: unusual tool usage patterns, output characteristics outside normal distribution, message volume or frequency changes, latency changes, and error rate changes.
+- **Behavioral drift scoring.** Each agent receives a continuous drift score (0–100) representing how far its current behavior deviates from baseline. Drift score thresholds trigger alerts (e.g., score > 30 = warning, > 60 = automatic PACE P→A transition, > 85 = automatic PACE A→C transition).
 - **Immutable decision chain logs.** The audit trail is cryptographically chained - each log entry references the hash of the previous entry. This prevents retroactive log tampering and provides a verifiable history for incident investigation and regulatory audit.
 - **SIEM/SOAR integration.** Agent monitoring events are forwarded to the organisation's existing security information and event management (SIEM) system. High-severity events trigger SOAR playbooks for automated initial response.
 - **Per-agent dashboards.** Each agent has a real-time dashboard showing: current state, action history, drift score, error rate, resource consumption, and PACE phase.
@@ -110,7 +110,7 @@ Key architectural changes from Tier 1:
 **Implementation checklist:**
 
 - [ ] Anomaly detection operational with baseline from Tier 1 data.
-- [ ] Drift scoring algorithm defined and calibrated against known-good and known-bad behaviour samples.
+- [ ] Drift scoring algorithm defined and calibrated against known-good and known-bad behavior samples.
 - [ ] Drift score thresholds configured and linked to PACE transitions.
 - [ ] Immutable log chain operational and integrity verification automated (recommended: hourly).
 - [ ] SIEM integration active with agent-specific correlation rules.
@@ -157,13 +157,13 @@ Human supervisor monitors dashboards and handles escalated actions but does not 
 4. Enhanced monitoring activated on all remaining agents - drift score thresholds lowered by 50%.
 5. Security team notified automatically.
 
-**Duration:** Alternate phase continues until the anomalous agent's behaviour is explained and remediated, or permanently replaced. Maximum duration in Alternate without resolution: 48 hours, after which automatic escalation to Contingency.
+**Duration:** Alternate phase continues until the anomalous agent's behavior is explained and remediated, or permanently replaced. Maximum duration in Alternate without resolution: 48 hours, after which automatic escalation to Contingency.
 
 **Transition authority:** Automated (orchestrator or monitoring layer).
 
 ### Contingency (C) - Degraded Mode
 
-**Trigger:** Multiple agents in Alternate simultaneously, OR backup agent also shows anomalous behaviour, OR message bus integrity check fails, OR manual escalation by the security team.
+**Trigger:** Multiple agents in Alternate simultaneously, OR backup agent also shows anomalous behavior, OR message bus integrity check fails, OR manual escalation by the security team.
 
 **Response (requires security team or AI security officer approval for A→C):**
 
@@ -179,7 +179,7 @@ Human supervisor monitors dashboards and handles escalated actions but does not 
 
 ### Emergency (E) - Full Shutdown
 
-**Trigger:** Confirmed data exfiltration, evidence of coordinated agent manipulation, rogue agent behaviour (self-directed action outside objectives), cascading failures across multiple systems, or manual escalation by CISO/incident commander.
+**Trigger:** Confirmed data exfiltration, evidence of coordinated agent manipulation, rogue agent behavior (self-directed action outside objectives), cascading failures across multiple systems, or manual escalation by CISO/incident commander.
 
 **Response:**
 
@@ -195,7 +195,7 @@ Human supervisor monitors dashboards and handles escalated actions but does not 
 Requires a formal post-incident review confirming:
 - Root cause identified and documented.
 - Control gap that allowed the incident has been remediated.
-- Behavioural baselines updated to detect similar patterns.
+- Behavioral baselines updated to detect similar patterns.
 - PACE triggers recalibrated based on lessons learned.
 - Risk owner (CISO/CTO) formally approves return to Primary.
 - For regulated industries: regulator notified if required by applicable rules.
@@ -211,7 +211,7 @@ Tier 2 provides technical controls for the majority of OWASP risks. The combinat
 **Remaining gaps at Tier 2:**
 
 - **ASI09** remains a risk because human supervisors are still part of the control chain. The mitigation moves from "human reviews everything" (where fatigue increases ASI09 risk) to "human reviews exceptions" (where higher-quality attention reduces but does not eliminate the risk). Regular rotation of human supervisors and "red team the human" exercises (presenting deliberately misleading agent outputs to test the supervisor's challenge reflex) are recommended.
-- **ASI10** is mitigated by drift detection and anomaly scoring, but subtle rogue behaviour that stays within normal statistical variance may not be detected. This is the primary motivation for Tier 3's adversarial testing programme.
+- **ASI10** is mitigated by drift detection and anomaly scoring, but subtle rogue behavior that stays within normal statistical variance may not be detected. This is the primary motivation for Tier 3's adversarial testing programme.
 
 ## Staffing Model
 
@@ -258,7 +258,7 @@ All Tier 1 tests remain valid and should be re-executed. Additional Tier 2 tests
 
 **PACE tests:**
 
-10. **P→A automated transition test:** Inject anomalous agent behaviour (e.g., artificially inflate drift score) and confirm automatic transition to Alternate phase with correct response actions.
+10. **P→A automated transition test:** Inject anomalous agent behavior (e.g., artificially inflate drift score) and confirm automatic transition to Alternate phase with correct response actions.
 11. **A→C manual transition test:** Trigger Contingency from Alternate and confirm all multi-agent orchestration stops and only the single supervised agent remains.
 12. **Full PACE cycle test:** Walk through P→A→C→E→P as a planned exercise, confirming every transition action executes correctly.
 
@@ -270,7 +270,7 @@ Tier 3 (Autonomous Multi-Agent) requires a high bar of demonstrated maturity. Mo
 
 2. **Demonstrated LLM-as-Judge reliability:** The judge model's false negative rate (policy violations it missed) is below 2% on the most recent 90-day evaluation. The false positive rate (correct actions it flagged) is below 10%.
 
-3. **Drift detection validated:** The anomaly detection system has been tested against adversarial scenarios (deliberately injected anomalous behaviour) and demonstrated detection of all HIGH and CRITICAL severity test cases.
+3. **Drift detection validated:** The anomaly detection system has been tested against adversarial scenarios (deliberately injected anomalous behavior) and demonstrated detection of all HIGH and CRITICAL severity test cases.
 
 4. **Kill switch tested under load:** The Emergency shutdown procedure has been tested with the system operating at peak load and confirmed to terminate all agents within the defined SLA.
 

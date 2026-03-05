@@ -139,7 +139,7 @@ Standard AI controls assume discrete request/response interactions. Agentic AI b
 | **Time limit** | >N minutes elapsed | Halt, require human review |
 | **Cost limit** | >$N spent (API, compute) | Halt, require human review |
 | **Error rate** | >N% actions failing | Halt, investigate |
-| **Anomaly** | Behaviour outside baseline | Halt, investigate |
+| **Anomaly** | Behavior outside baseline | Halt, investigate |
 | **Deviation** | Execution diverges from plan | Halt, require re-approval |
 
 **Limits by tier:**

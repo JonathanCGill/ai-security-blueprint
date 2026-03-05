@@ -4,7 +4,7 @@
 
 *Click the image to view full-size. Right-click to save or print (landscape, A3 recommended).*
 
-[![AI Runtime Behaviour Security - Complete Tube Map](images/ai-security-tube-map.svg)](images/ai-security-tube-map.svg)
+[![AI Runtime Security - Complete Tube Map](images/ai-security-tube-map.svg)](images/ai-security-tube-map.svg)
 
 ## How to Read the Map
 
@@ -16,7 +16,7 @@ The **PACE resilience sidebar** on the right shows that resilience planning runs
 
 ### Zones (left to right)
 
-**Understand** - Why runtime behavioural security is necessary. The Insights line and Emerging Challenges line explain the problem.
+**Understand** - Why runtime behavioral security is necessary. The Insights line and Emerging Challenges line explain the problem.
 
 **Implement** - The three-layer pattern (Guardrails → Judge → Human Oversight) and the six MASO control domains. This is where the controls live.
 

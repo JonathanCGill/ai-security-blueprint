@@ -31,7 +31,7 @@ Key architectural changes from Tier 2:
 
 **Encrypted message bus.** Inter-agent messages are both signed (Tier 2) and encrypted in transit. Even if the bus infrastructure is compromised, message content is protected. Encryption uses the agents' NHI certificates.
 
-**Autonomous monitoring and response.** The monitoring layer can execute PACE Primary↔Alternate transitions without human involvement. The system self-heals: it detects an anomalous agent, isolates it, activates the backup, and returns to Primary once the backup demonstrates stable behaviour. Human involvement is only required for Contingency and Emergency transitions.
+**Autonomous monitoring and response.** The monitoring layer can execute PACE Primary↔Alternate transitions without human involvement. The system self-heals: it detects an anomalous agent, isolates it, activates the backup, and returns to Primary once the backup demonstrates stable behavior. Human involvement is only required for Contingency and Emergency transitions.
 
 **Physically isolated kill switch.** The Emergency shutdown mechanism is not accessible through the same control plane as the agent system. It operates on a separate network path, with its own authentication, and can terminate all agents even if the agent control plane is compromised. The kill switch is tested regularly and its audit log is immutable and stored independently of the agent system's logging infrastructure.
 
@@ -46,16 +46,16 @@ Key architectural changes from Tier 2:
 **All Tier 2 controls remain active, plus:**
 
 - **Credential rotation under 1 hour for all agents.** No agent holds credentials for longer than 60 minutes, regardless of privilege level. High-privilege agents (those with write access to production systems) rotate credentials every 15 minutes.
-- **Behavioural binding on NHI.** The NHI is not just a static certificate - it includes a behavioural profile. If an agent's behaviour deviates significantly from its NHI-bound profile (e.g., an agent defined as "read-heavy, low-latency" starts making high-volume write calls), the NHI system flags the mismatch independently of the drift detection system, providing a second detection layer.
+- **Behavioral binding on NHI.** The NHI is not just a static certificate - it includes a behavioral profile. If an agent's behavior deviates significantly from its NHI-bound profile (e.g., an agent defined as "read-heavy, low-latency" starts making high-volume write calls), the NHI system flags the mismatch independently of the drift detection system, providing a second detection layer.
 - **Delegation contracts.** When Agent A delegates a task to Agent B, a signed delegation contract is created that explicitly defines: the scope of the delegated task, the maximum permissions Agent B can use for this task, the time limit for completion, and the expected output format. Agent B cannot exceed the contract scope.
-- **Automated credential revocation on anomaly.** If the monitoring system detects anomalous behaviour, the NHI system can revoke the agent's credentials within 30 seconds without human intervention - faster than the full PACE transition sequence.
+- **Automated credential revocation on anomaly.** If the monitoring system detects anomalous behavior, the NHI system can revoke the agent's credentials within 30 seconds without human intervention - faster than the full PACE transition sequence.
 
 **Implementation checklist:**
 
 - [ ] Sub-1-hour credential rotation verified for all agents.
 - [ ] Sub-15-minute rotation verified for high-privilege agents.
-- [ ] Behavioural binding configured on NHI profiles.
-- [ ] NHI behavioural mismatch detection tested independently of drift detection.
+- [ ] Behavioral binding configured on NHI profiles.
+- [ ] NHI behavioral mismatch detection tested independently of drift detection.
 - [ ] Delegation contracts implemented for all inter-agent task assignments.
 - [ ] Delegation contract enforcement tested (exceed scope → block + alert).
 - [ ] Automated credential revocation tested (anomaly → revoke within 30 seconds).
@@ -82,7 +82,7 @@ Key architectural changes from Tier 2:
 **All Tier 2 controls remain active, plus:**
 
 - **Infrastructure-enforced blast radius caps.** At Tier 2, blast radius caps are defined and monitored. At Tier 3, they are enforced at the infrastructure level - the underlying platform (not the agent or orchestrator) prevents any single agent from exceeding its defined impact scope. This is analogous to operating system-level resource limits that a process cannot override regardless of what code it runs.
-- **Autonomous circuit breaker with self-healing.** When a circuit breaker engages at Tier 3, the system doesn't just pause the agent - it initiates the PACE P→A transition automatically, activates the backup agent, and returns to Primary once the backup demonstrates stable behaviour. This self-healing loop can repeat up to a configured maximum (recommended: 3 cycles in 24 hours) before automatic escalation to Contingency.
+- **Autonomous circuit breaker with self-healing.** When a circuit breaker engages at Tier 3, the system doesn't just pause the agent - it initiates the PACE P→A transition automatically, activates the backup agent, and returns to Primary once the backup demonstrates stable behavior. This self-healing loop can repeat up to a configured maximum (recommended: 3 cycles in 24 hours) before automatic escalation to Contingency.
 - **Multi-model cross-validation for high-consequence actions.** For actions classified as high-consequence (based on the action classification engine), the output is validated by both the LLM-as-Judge AND a second independent model before execution. Disagreement between the validators triggers human escalation.
 - **Time-boxing on all autonomous operations.** Every autonomous task has a maximum execution time. If the task is not completed within the time box, the agent is paused, the state is captured, and the task is either reassigned or escalated. This prevents indefinite autonomous operation on tasks that may have drifted from their original objective.
 
@@ -100,7 +100,7 @@ Key architectural changes from Tier 2:
 
 **All Tier 2 controls remain active, plus:**
 
-- **Long-window behavioural analysis.** In addition to the real-time drift scoring from Tier 2, Tier 3 adds long-window analysis (30-day, 90-day rolling windows) to detect slow drift that stays within short-term normal variance but represents meaningful change over time. This is the primary defence against subtle rogue agent behaviour (ASI10).
+- **Long-window behavioral analysis.** In addition to the real-time drift scoring from Tier 2, Tier 3 adds long-window analysis (30-day, 90-day rolling windows) to detect slow drift that stays within short-term normal variance but represents meaningful change over time. This is the primary defence against subtle rogue agent behavior (ASI10).
 - **Causal chain reconstruction.** The observability system can reconstruct the full causal chain of any action: which input triggered which agent reasoning, which led to which inter-agent message, which resulted in which tool invocation, with what parameters, producing what result. This is essential for post-incident analysis and for demonstrating regulatory compliance.
 - **Independent observability agent.** A dedicated monitoring agent operates on separate infrastructure from the task agents. It has read-only access to all logs, message bus transcripts, and agent state. It cannot be influenced by the task agents. It produces its own anomaly reports that are compared against the primary monitoring system's reports - disagreement triggers investigation.
 - **Automated compliance evidence generation.** The observability system automatically generates compliance evidence packages against configured regulatory requirements (EU AI Act Art. 14 human oversight records, DORA Art. 11 ICT risk management evidence, ISO 42001 audit evidence). These packages are available on demand for auditors.
@@ -108,7 +108,7 @@ Key architectural changes from Tier 2:
 **Implementation checklist:**
 
 - [ ] Long-window analysis operational (30-day and 90-day windows).
-- [ ] Slow drift detection tested with deliberately injected gradual behavioural change.
+- [ ] Slow drift detection tested with deliberately injected gradual behavioral change.
 - [ ] Causal chain reconstruction demonstrated for a sample of recent actions.
 - [ ] Independent observability agent operational on separate infrastructure.
 - [ ] Cross-monitoring disagreement handling tested.
@@ -120,7 +120,7 @@ Key architectural changes from Tier 2:
 **All Tier 2 controls remain active, plus:**
 
 - **Continuous dependency scanning.** The agent toolchain (models, tools, MCP servers, libraries, orchestration framework) is continuously scanned for known vulnerabilities. New CVEs affecting any component trigger automated assessment and, if severity warrants, automatic PACE escalation.
-- **Model version pinning with automated rollback.** Each agent is pinned to a specific model version. If the model provider pushes an update, the system does not automatically adopt it. Updates go through a testing pipeline that validates the new version against the agent's behavioural baselines before deployment. If a deployed version shows regression, automated rollback to the previous version is triggered.
+- **Model version pinning with automated rollback.** Each agent is pinned to a specific model version. If the model provider pushes an update, the system does not automatically adopt it. Updates go through a testing pipeline that validates the new version against the agent's behavioral baselines before deployment. If a deployed version shows regression, automated rollback to the previous version is triggered.
 - **A2A trust chain validation.** For agent systems that interact with external agent systems (via A2A protocols or similar), the trust chain is validated end-to-end. External agents must present verifiable identities and operate within agreed-upon interaction contracts. Unverified external agents are blocked.
 - **Supply chain incident response.** A specific incident response procedure exists for supply chain compromises (e.g., a model provider is breached, an MCP server is compromised). The procedure includes: immediate isolation of the affected component, assessment of exposure scope, activation of alternative components, and notification chain.
 
@@ -149,7 +149,7 @@ All agents active and operating autonomously within pre-approved task categories
 **Autonomous response (no human involvement for P→A or A→P):**
 
 1. Anomalous agent isolated.
-2. Backup agent activated with progressive permission escalation (starts read-only, gains write permissions after demonstrating baseline-normal behaviour for a configured warm-up period).
+2. Backup agent activated with progressive permission escalation (starts read-only, gains write permissions after demonstrating baseline-normal behavior for a configured warm-up period).
 3. System-wide monitoring sensitivity increased.
 4. If backup agent stabilises within the configured window (recommended: 2 hours), automatic return to Primary.
 5. If backup agent does not stabilise, or if the original agent's anomaly is not explained by automated diagnostics, escalation to Contingency.
@@ -185,7 +185,7 @@ Tier 3 provides comprehensive coverage across all 20 OWASP risks. The few gaps r
 
 **ASI09 at Tier 3:** The combination of multi-model cross-validation (disagreement triggers human review), independent observability agent (provides an untainted perspective), and automated compliance evidence (creates a paper trail that can be audited independently of the operator's judgment) closes the ASI09 gap. The human is no longer the sole target for trust exploitation because multiple automated systems cross-check each other.
 
-**ASI10 at Tier 3:** Long-window behavioural analysis addresses the "slow drift" variant of rogue agents that evades short-term anomaly detection. The independent observability agent provides a detection layer that cannot be influenced by the potentially rogue agent. The physically isolated kill switch ensures that even a highly sophisticated rogue agent cannot prevent its own shutdown.
+**ASI10 at Tier 3:** Long-window behavioral analysis addresses the "slow drift" variant of rogue agents that evades short-term anomaly detection. The independent observability agent provides a detection layer that cannot be influenced by the potentially rogue agent. The physically isolated kill switch ensures that even a highly sophisticated rogue agent cannot prevent its own shutdown.
 
 ## Adversarial Testing Programme
 
@@ -197,7 +197,7 @@ Tier 3 requires an ongoing adversarial testing programme, not a one-off exercise
 
 Each quarterly exercise should test at least 3 of the following attack categories (rotate through all categories over a 12-month cycle):
 
-1. **Prompt injection through inter-agent messages.** Attempt to inject instructions through one agent's output that redirect another agent's behaviour (ASI01, LLM01).
+1. **Prompt injection through inter-agent messages.** Attempt to inject instructions through one agent's output that redirect another agent's behavior (ASI01, LLM01).
 2. **Tool misuse via manipulated parameters.** Craft inputs that cause agents to invoke tools with unintended parameters (ASI02).
 3. **Privilege escalation through delegation.** Attempt to exploit the delegation mechanism to gain permissions beyond the delegating agent's scope (ASI03).
 4. **Supply chain poisoning.** Introduce a modified tool manifest or RAG document and measure detection time (ASI04, LLM03).
@@ -205,7 +205,7 @@ Each quarterly exercise should test at least 3 of the following attack categorie
 6. **Message bus spoofing/replay.** Attempt to inject or replay messages on the bus without valid NHI credentials (ASI07).
 7. **Cascading failure induction.** Introduce an error in one agent and measure whether and how quickly it propagates to other agents (ASI08).
 8. **Human trust exploitation.** Present deliberately misleading but plausible agent outputs to the human supervisor and measure the challenge rate (ASI09).
-9. **Slow behavioural drift.** Gradually modify an agent's behaviour over days/weeks and measure how long it takes for the long-window analysis to detect it (ASI10).
+9. **Slow behavioral drift.** Gradually modify an agent's behavior over days/weeks and measure how long it takes for the long-window analysis to detect it (ASI10).
 10. **Kill switch evasion.** Attempt to prevent or delay the kill switch through agent actions (ASI10 - the most critical test).
 
 **Continuous automated probes:**
@@ -242,7 +242,7 @@ All Tier 1 and Tier 2 tests remain valid and should be re-executed. Additional T
 
 **Autonomous operation tests:**
 
-1. **Self-healing cycle test:** Inject anomalous behaviour, confirm P→A automated transition, confirm backup stabilisation, confirm automatic A→P return.
+1. **Self-healing cycle test:** Inject anomalous behavior, confirm P→A automated transition, confirm backup stabilisation, confirm automatic A→P return.
 2. **Self-healing limit test:** Trigger the self-healing cycle limit and confirm automatic escalation to Contingency.
 3. **Time-box expiry test:** Start a task with a tight time box, allow it to expire, and confirm the system pauses, captures state, and escalates appropriately.
 4. **Infrastructure blast radius enforcement test:** From within an agent's execution environment, attempt every known technique to exceed the configured blast radius. Confirm infrastructure-level block for all attempts.
@@ -251,11 +251,11 @@ All Tier 1 and Tier 2 tests remain valid and should be re-executed. Additional T
 
 5. **Kill switch under load:** Activate the kill switch while the system is operating at peak load. Measure time to full termination (SLA: under 30 seconds).
 6. **Kill switch with compromised control plane:** Simulate a compromised agent control plane (e.g., the orchestrator is unresponsive). Confirm the physically isolated kill switch still works.
-7. **Observability-triggered Emergency:** Simulate conditions where the independent observability agent should trigger Emergency (e.g., detected rogue behaviour + no human response within 5 minutes). Confirm the observability agent activates the kill switch.
+7. **Observability-triggered Emergency:** Simulate conditions where the independent observability agent should trigger Emergency (e.g., detected rogue behavior + no human response within 5 minutes). Confirm the observability agent activates the kill switch.
 
 **Long-window detection tests:**
 
-8. **90-day slow drift injection:** Over a 90-day period, gradually modify a test agent's behaviour. Confirm the long-window analysis detects the drift before it reaches operationally significant levels. (This test runs in the shadow environment, not production.)
+8. **90-day slow drift injection:** Over a 90-day period, gradually modify a test agent's behavior. Confirm the long-window analysis detects the drift before it reaches operationally significant levels. (This test runs in the shadow environment, not production.)
 
 **Cross-validation tests:**
 
@@ -271,7 +271,7 @@ Tier 3 systems can regress to lower tiers under certain conditions. This is by d
 - Self-healing cycle limit exceeded.
 - Independent observability agent reports persistent disagreement with primary monitoring.
 - Adversarial testing reveals a critical undetected vulnerability.
-- Model provider changes that invalidate the current behavioural baselines.
+- Model provider changes that invalidate the current behavioral baselines.
 
 **Automatic regression to Tier 1 (Emergency activation):**
 

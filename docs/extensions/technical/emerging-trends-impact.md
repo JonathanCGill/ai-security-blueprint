@@ -1,4 +1,4 @@
-# Emerging AI Trends - Impact on AI Runtime Behaviour Security
+# Emerging AI Trends - Impact on AI Runtime Security
 
 This document assesses how emerging AI trends affect the reference architecture and identifies required adaptations.
 
@@ -190,7 +190,7 @@ These align with existing Model Risk Management (SR 11-7) requirements.
 - Can't insert guardrails between user and model
 - Logging may be limited or delayed
 - Judge can't evaluate in real-time
-- Less control over model behaviour
+- Less control over model behavior
 
 **Adaptations:**
 
@@ -215,7 +215,7 @@ These align with existing Model Risk Management (SR 11-7) requirements.
 **Challenges:**
 - Which AI is "responsible" for an outcome?
 - How to evaluate a chain of AI interactions?
-- Emergent behaviour from AI combinations
+- Emergent behavior from AI combinations
 - Attack propagation across AI systems
 
 **Required adaptations:**
@@ -264,7 +264,7 @@ The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) found
 
 AISI reported that **33% of UK citizens had used AI for emotional support.** Service outages caused **30x spikes in negative sentiment.** While this is primarily a consumer concern, it has enterprise relevance:
 
-- **Employee wellbeing:** Organisations deploying AI assistants that employees rely on daily should consider the wellbeing impact of service discontinuation or significant changes in AI behaviour after model updates.
+- **Employee wellbeing:** Organisations deploying AI assistants that employees rely on daily should consider the wellbeing impact of service discontinuation or significant changes in AI behavior after model updates.
 - **Customer-facing systems:** AI systems that build rapport with customers (support agents, advisory tools) create implicit expectations of continuity.
 - **PACE implications:** Emergency shutdown (PACE-E) procedures should account for the fact that abrupt AI removal may have user-impact beyond the operational - particularly in health, HR, or employee assistance contexts.
 

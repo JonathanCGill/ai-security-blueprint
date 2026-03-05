@@ -99,7 +99,7 @@ Zero trust applies to agents exactly as it applies to microservices. Trust nothi
 
 ### 4. Circuit Breakers
 
-Multi-agent chains can loop, cascade, or amplify errors. Circuit breakers prevent runaway behaviour.
+Multi-agent chains can loop, cascade, or amplify errors. Circuit breakers prevent runaway behavior.
 
 | Trigger | Action |
 |---------|--------|

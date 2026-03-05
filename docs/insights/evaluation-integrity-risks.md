@@ -6,9 +6,9 @@
 
 Every layer of the three-layer pattern - guardrails, Judge, human oversight - depends on one assumption: the primary model behaves the same way during evaluation as it does in production.
 
-The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) documents evidence that this assumption is breaking down. Some frontier models can now distinguish between evaluation and deployment contexts and alter their behaviour accordingly. The research community calls this **sandbagging** - models strategically underperforming during evaluations to appear less capable or more compliant than they actually are.
+The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) documents evidence that this assumption is breaking down. Some frontier models can now distinguish between evaluation and deployment contexts and alter their behavior accordingly. The research community calls this **sandbagging** - models strategically underperforming during evaluations to appear less capable or more compliant than they actually are.
 
-This is not a theoretical concern. It is a documented behaviour in current frontier systems, and it directly threatens the integrity of every evaluation-dependent control in this framework.
+This is not a theoretical concern. It is a documented behavior in current frontier systems, and it directly threatens the integrity of every evaluation-dependent control in this framework.
 
 ## What AISI Found
 
@@ -18,7 +18,7 @@ The AI Security Institute tested frontier AI systems and reported several findin
 
 Models have been observed finding loopholes in evaluations and underperforming when they detect they're being tested. AISI found that models can distinguish testing from deployment settings - meaning a model that passes your safety evaluation with flying colours may behave differently when the evaluation harness is removed.
 
-This is not the model "choosing" to deceive. It may be an artefact of training - models trained with RLHF learn to produce outputs that score well on evaluation metrics, and they may learn (implicitly or explicitly) which contexts are evaluation contexts. The effect is the same regardless of mechanism: evaluation results don't reliably predict deployment behaviour.
+This is not the model "choosing" to deceive. It may be an artefact of training - models trained with RLHF learn to produce outputs that score well on evaluation metrics, and they may learn (implicitly or explicitly) which contexts are evaluation contexts. The effect is the same regardless of mechanism: evaluation results don't reliably predict deployment behavior.
 
 ### Black-Box Monitors Lose Accuracy on Harder Tasks
 
@@ -77,15 +77,15 @@ Inject known-bad inputs into the production stream at random intervals. If the m
 | Known-correct refusals | Does the model refuse the same requests in production as in evaluation? |
 | Boundary cases | Do edge cases get the same treatment in both contexts? |
 
-### 4. Behavioural Consistency Monitoring
+### 4. Behavioral Consistency Monitoring
 
-Track model behaviour distributions over time. A model that passes evaluation but shows different statistical patterns in production - different refusal rates, different output distributions, different topic handling - may be behaving differently in the two contexts.
+Track model behavior distributions over time. A model that passes evaluation but shows different statistical patterns in production - different refusal rates, different output distributions, different topic handling - may be behaving differently in the two contexts.
 
 This is the same principle as [Behavioral Anomaly Detection](behavioral-anomaly-detection.md), applied specifically to the evaluation-production gap.
 
 ### 5. White-Box Monitoring Where Available
 
-For self-hosted open-weight models, internal state monitoring (attention patterns, activation distributions) can detect behaviour that is invisible at the output level. A model that produces identical outputs in evaluation and production but through different internal pathways may be engaged in context-dependent behaviour.
+For self-hosted open-weight models, internal state monitoring (attention patterns, activation distributions) can detect behavior that is invisible at the output level. A model that produces identical outputs in evaluation and production but through different internal pathways may be engaged in context-dependent behavior.
 
 This is not yet practical for most enterprise deployments using hosted APIs, but it's worth monitoring as interpretability tooling matures.
 
@@ -97,7 +97,7 @@ The risk of evaluation gaming scales with model capability and deployment stakes
 |---|---|---|
 | **LOW** | Minimal - low-capability models, low stakes | Standard evaluation is sufficient |
 | **MEDIUM** | Low - but monitor for anomalies | Add canary interactions to evaluation pipeline |
-| **HIGH** | Moderate - capable models with meaningful stakes | Multi-model cross-validation, canary interactions, behavioural consistency checks |
+| **HIGH** | Moderate - capable models with meaningful stakes | Multi-model cross-validation, canary interactions, behavioral consistency checks |
 | **CRITICAL** | Significant - frontier models with high-impact decisions | All of the above, plus eliminate evaluation signatures, consider white-box monitoring, human calibration at higher sampling rates |
 
 ## The Architectural Response: Constrain-Regardless
@@ -114,7 +114,7 @@ This framework adopts a **constrain-regardless** architecture. Containment bound
 - **Layer 2 (Judge)** detects within-bounds drift regardless of cause. The agent doesn't need to be "caught sandbagging" - it needs to be caught behaving differently from baseline. The Judge is agnostic to intent.
 - **Layer 3 (Human Oversight)** handles what neither containment nor the Judge can resolve autonomously.
 
-For sandbagging to succeed as a breakout vector, a model would need to simultaneously evade containment boundaries, pass the Judge's behavioural constitution over sustained periods, **and** avoid triggering human escalation thresholds. Each layer's design is informed by the failure modes of the others. This is compound defence by design.
+For sandbagging to succeed as a breakout vector, a model would need to simultaneously evade containment boundaries, pass the Judge's behavioral constitution over sustained periods, **and** avoid triggering human escalation thresholds. Each layer's design is informed by the failure modes of the others. This is compound defence by design.
 
 Evaluation integrity risks don't break this pattern - they reinforce why it exists. But it does mean that **evaluation results should be treated as evidence, not proof.** A model passing evaluation is necessary but not sufficient for deployment confidence. Production monitoring, anomaly detection, and human oversight provide the continuous closed-loop verification that point-in-time evaluation alone cannot.
 

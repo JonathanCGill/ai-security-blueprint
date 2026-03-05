@@ -321,7 +321,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Operational review with business owner | Day 7, 14, 30 | All |
 | First PACE transition test | Day 30 | Engineering |
 
-**Guardrail:** Gradual rollout is the absorb control - it contains the blast radius of unexpected behaviour. The first 30 days of monitoring generate the baseline that ongoing governance uses. If calibration reveals problems, the deployment can be paused or rolled back without affecting the full user population. Operational handover to the steady-state team happens when monitoring confirms stability, not on a fixed schedule.
+**Guardrail:** Gradual rollout is the absorb control - it contains the blast radius of unexpected behavior. The first 30 days of monitoring generate the baseline that ongoing governance uses. If calibration reveals problems, the deployment can be paused or rolled back without affecting the full user population. Operational handover to the steady-state team happens when monitoring confirms stability, not on a fixed schedule.
 
 ## Stage 8: Ongoing Governance
 

@@ -1,6 +1,6 @@
 # Adopters
 
-Organisations and individuals using or adapting the AI Runtime Behaviour Security.
+Organisations and individuals using or adapting the AI Runtime Security.
 
 ## Why List Adopters?
 
@@ -51,7 +51,7 @@ Organisations currently evaluating the framework.
 
 Individuals and organisations who have contributed improvements.
 
-*See [GitHub contributors](https://github.com/JonathanCGill/ai-runtime-behaviour-security/graphs/contributors)*
+*See [GitHub contributors](https://github.com/JonathanCGill/ai-runtime-behavior-security/graphs/contributors)*
 
 ## Share Your Experience
 

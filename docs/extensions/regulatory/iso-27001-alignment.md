@@ -1,6 +1,6 @@
 # ISO 27001:2022 Alignment
 
-This document maps the AI Runtime Behaviour Security to ISO 27001:2022 information security requirements.
+This document maps the AI Runtime Security to ISO 27001:2022 information security requirements.
 
 ## Executive Summary
 
@@ -226,7 +226,7 @@ Physical controls (A.7.1 - A.7.14) apply to AI systems as they do to any informa
 | Aspect | What to Monitor |
 |--------|----------------|
 | Availability | API uptime, response times |
-| Behaviour changes | Unexpected changes in model behaviour |
+| Behavior changes | Unexpected changes in model behavior |
 | Security advisories | Vendor security announcements |
 | Version changes | Model version updates |
 | Cost anomalies | Unexpected usage or cost spikes |
@@ -430,5 +430,5 @@ When documenting AI systems in your Statement of Applicability (SoA):
 
 **The AI framework operates within the ISMS, not parallel to it.**
 
-AI systems are information systems. ISO 27001 controls apply. The AI framework adds AI-specific controls where the standard controls are insufficient for AI-specific risks (prompt injection, model manipulation, agentic behaviour, etc.).
+AI systems are information systems. ISO 27001 controls apply. The AI framework adds AI-specific controls where the standard controls are insufficient for AI-specific risks (prompt injection, model manipulation, agentic behavior, etc.).
 

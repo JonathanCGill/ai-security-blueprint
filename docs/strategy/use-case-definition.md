@@ -232,7 +232,7 @@ A well-defined use case produces specific, actionable outputs for every governan
 | Risk tier | Judge sampling rate | LOW: 1–5%; MEDIUM: 5–10%; HIGH: 20–50%; CRITICAL: 100% |
 | Risk tier | Log retention period | LOW: 90 days; MEDIUM: 1 year; HIGH: 3 years; CRITICAL: 7 years |
 | Risk tier | Review SLA | LOW: best effort; MEDIUM: 24hr; HIGH: 4hr; CRITICAL: 1hr |
-| Scope boundaries (Q1) | Monitoring baselines | Expected behaviour → anomaly detection thresholds |
+| Scope boundaries (Q1) | Monitoring baselines | Expected behavior → anomaly detection thresholds |
 
 ## Who Needs to See Use Case Definitions
 
@@ -430,7 +430,7 @@ For practical use. Complete each section before submitting for risk classificati
 
 | | Description |
 |---|-------------|
-| **What it does** | *Specific, bounded description of system behaviour in this deployment* |
+| **What it does** | *Specific, bounded description of system behavior in this deployment* |
 | **What it does NOT do** | *Explicit negative scope - list capabilities the system is prevented from exercising* |
 
 ### Section 3 - Decision Authority

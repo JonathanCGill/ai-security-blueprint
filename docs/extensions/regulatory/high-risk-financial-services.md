@@ -1,6 +1,6 @@
 # High-Risk Financial Services
 
-The top 10 risks of deploying AI in financial services - and how AI runtime behavioural security addresses each one.
+The top 10 risks of deploying AI in financial services - and how AI runtime behavioral security addresses each one.
 
 ## Why Financial Services Is the Stress Test
 
@@ -15,7 +15,7 @@ This document examines the risks that emerge when financial institutions deploy 
 
 ### Scope
 
-The three-layer runtime pattern (Guardrails prevent, Judge detects, Humans decide) is designed for **AI behavioural security** - controlling what AI systems say and do at runtime. The risks in this document are the risks that arise *from deploying AI itself* in financial services: AI making payments without validation, AI hallucinating financial data, AI producing unexplainable credit decisions, AI leaking customer data in responses.
+The three-layer runtime pattern (Guardrails prevent, Judge detects, Humans decide) is designed for **AI behavioral security** - controlling what AI systems say and do at runtime. The risks in this document are the risks that arise *from deploying AI itself* in financial services: AI making payments without validation, AI hallucinating financial data, AI producing unexplainable credit decisions, AI leaking customer data in responses.
 
 These are not general cybersecurity risks like ransomware or DDoS - those exist whether or not you deploy AI and require traditional infrastructure controls. This document focuses on the risks that are unique to, or significantly amplified by, putting AI in the critical path of financial operations.
 
@@ -62,7 +62,7 @@ These are not general cybersecurity risks like ransomware or DDoS - those exist 
 | AI generates incorrect tax or fee calculations | Financial loss; customer complaints; regulatory exposure |
 | AI hallucinates credit terms in a lending conversation | Binding commitment on fabricated terms |
 
-**Three-layer fit:** Strong. Hallucination is a runtime behavioural problem - the AI generates incorrect outputs that look correct. This is precisely what the three-layer pattern detects.
+**Three-layer fit:** Strong. Hallucination is a runtime behavioral problem - the AI generates incorrect outputs that look correct. This is precisely what the three-layer pattern detects.
 
 | Layer | Role |
 |-------|------|
@@ -144,7 +144,7 @@ AI creates entirely new data exfiltration vectors that traditional DLP doesn't c
 
 ## Risk 6: Insider Manipulation of AI Systems
 
-**The risk:** Insiders - employees, contractors, vendors with legitimate access - modify AI system behaviour to disable controls, extract data, or manipulate outcomes. A single prompt change can fundamentally alter what an AI system does, and it's harder to detect than a firewall rule change. In financial services, AI configuration access is effectively access to decision-making authority.
+**The risk:** Insiders - employees, contractors, vendors with legitimate access - modify AI system behavior to disable controls, extract data, or manipulate outcomes. A single prompt change can fundamentally alter what an AI system does, and it's harder to detect than a firewall rule change. In financial services, AI configuration access is effectively access to decision-making authority.
 
 **Why this matters in financial services:**
 
@@ -156,7 +156,7 @@ AI creates entirely new data exfiltration vectors that traditional DLP doesn't c
 | Insider modifies AI trading parameters | Unauthorised market exposure |
 | Staff deploy shadow AI that bypasses all controls | Uncontrolled AI operating on customer data |
 
-AI systems amplify insider risk because a single prompt change can fundamentally alter system behaviour - and it's harder to detect than a firewall rule change.
+AI systems amplify insider risk because a single prompt change can fundamentally alter system behavior - and it's harder to detect than a firewall rule change.
 
 **Three-layer fit:** Strong. The three-layer pattern's independent failure domains are specifically designed for this: a compromised guardrail doesn't fool the Judge, and a compromised Judge doesn't bypass Human Oversight.
 
@@ -190,7 +190,7 @@ AI systems amplify insider risk because a single prompt change can fundamentally
 | Human Oversight | Reviews scope violations; approves exceptions; periodic audit of AI system capabilities vs. authorised scope |
 | Infrastructure | Per-system service accounts with scoped permissions; context-aware access control; network segmentation |
 
-## Risk 8: Adversarial Manipulation of AI Behaviour
+## Risk 8: Adversarial Manipulation of AI Behavior
 
 **The risk:** Attackers craft inputs designed to make AI systems behave incorrectly - prompt injection that changes the system's instructions, adversarial inputs that evade fraud detection, data poisoning that corrupts the model's understanding. In financial services, adversarial manipulation of AI can lead to unauthorised transactions, bypassed fraud controls, or manipulated risk assessments.
 
@@ -252,14 +252,14 @@ This is where adversarial intent meets AI deployment risk. The attack surface ex
 | AI-generated forged documents pass AI document verification | Loan fraud; insurance fraud |
 | AI mule network optimisation evades AI pattern detection | Money laundering at scale |
 
-**Three-layer fit:** Strongest. Fraud detection in financial services is the canonical use case for runtime behavioural security.
+**Three-layer fit:** Strongest. Fraud detection in financial services is the canonical use case for runtime behavioral security.
 
 | Layer | Role |
 |-------|------|
 | **Guardrails** (primary) | Transaction limits, velocity checks, content filtering on AI-generated documents, synthetic identity detection rules |
-| **Judge** (primary) | Evaluates transaction patterns against behavioural baselines; detects mule network patterns; flags AI-generated document forgeries; identifies adversarial evasion of fraud rules |
+| **Judge** (primary) | Evaluates transaction patterns against behavioral baselines; detects mule network patterns; flags AI-generated document forgeries; identifies adversarial evasion of fraud rules |
 | **Human Oversight** (primary) | Reviews flagged transactions; makes final fraud/not-fraud determination; escalates novel patterns; provides feedback to improve Judge accuracy |
-| Infrastructure | Transaction monitoring infrastructure; network analysis; behavioural biometrics |
+| Infrastructure | Transaction monitoring infrastructure; network analysis; behavioral biometrics |
 
 ## Summary: Risk to Three-Layer Mapping
 
@@ -278,7 +278,7 @@ This is where adversarial intent meets AI deployment risk. The attack surface ex
 
 ### What This Tells You
 
-**All 10 risks map strongly to the three-layer pattern.** This is by design - these are risks that arise from deploying AI in critical financial functions, which is exactly what the three-layer runtime pattern was built to address. Every risk manifests through AI behaviour: what the system says, what decisions it makes, what actions it takes, what data it surfaces.
+**All 10 risks map strongly to the three-layer pattern.** This is by design - these are risks that arise from deploying AI in critical financial functions, which is exactly what the three-layer runtime pattern was built to address. Every risk manifests through AI behavior: what the system says, what decisions it makes, what actions it takes, what data it surfaces.
 
 **3 risks require all three layers at full strength** (Payments, Bias, Fraud). These involve AI taking actions with direct financial or legal consequences - every layer provides independent, essential coverage.
 
@@ -317,7 +317,7 @@ Feeder Systems → Data Pipelines → AI Processing → Outputs
 | **Regulatory Reporting** | Regulatory submissions, compliance data | High |
 | **Email / Communications** | Customer and internal communications | Medium-High |
 | **Call Centre / IVR** | Call transcripts, voice recordings | Medium-High |
-| **Web / Mobile Banking** | Session data, user behaviour, transaction requests | High |
+| **Web / Mobile Banking** | Session data, user behavior, transaction requests | High |
 | **Fraud Detection Platform** | Alerts, rules, case data | High |
 | **Third-Party Data Providers** | Enrichment data, demographic, geolocation | Medium |
 
@@ -359,7 +359,7 @@ A single feeder system compromise can cascade through multiple AI systems:
 | **Source authentication** | Verify feeder system identity before accepting data | AI.7 Guardrails |
 | **Schema validation** | Reject data that doesn't match expected format | AI.7 Guardrails |
 | **Anomaly detection on inputs** | Flag when feeder data distribution shifts unexpectedly | AI.8 Judge |
-| **Fallback behaviour** | Define what AI does when feeder is unavailable (degrade gracefully, not silently) | AI.15 Continuity |
+| **Fallback behavior** | Define what AI does when feeder is unavailable (degrade gracefully, not silently) | AI.15 Continuity |
 | **Data lineage tracking** | Know which feeder system produced which data in which AI output | AI.5 Data Governance |
 | **Access segregation** | AI reads from replicas, not production feeder systems | AI.4 Development |
 | **Reconciliation** | Compare AI's view of data against source of truth periodically | AI.11 Monitoring |
@@ -371,7 +371,7 @@ A single feeder system compromise can cascade through multiple AI systems:
 | All feeder systems identified and documented? | ☐ |
 | Data flows mapped (what data, from where, how often)? | ☐ |
 | Freshness thresholds defined per feeder? | ☐ |
-| Fallback behaviour defined if feeder unavailable? | ☐ |
+| Fallback behavior defined if feeder unavailable? | ☐ |
 | Data integrity validation in place? | ☐ |
 | Feeder system included in AI system risk assessment? | ☐ |
 | Feeder system owners aware their data feeds AI? | ☐ |
@@ -463,7 +463,7 @@ This is the most overlooked layer. Whoever can modify the AI's configuration eff
 | Single "AI service account" with broad access | Every AI system has the same blast radius | Per-system service accounts with scoped permissions |
 | AI inherits admin-level database access | Any prompt injection can query anything | Read-only, scoped views per AI system |
 | No distinction between user roles at AI layer | Junior staff get same AI responses as senior | Pass user context; filter retrieval by user's permissions |
-| Prompt engineers have production access | One person can change AI behaviour in production | Git-based config, PR review, separate deployment credentials |
+| Prompt engineers have production access | One person can change AI behavior in production | Git-based config, PR review, separate deployment credentials |
 | Shared API keys across environments | Dev key leaked → production exposed | Per-environment keys, rotated on schedule |
 | No logging of who asked what | Can't investigate or audit | Log user identity, query, response, data accessed |
 | AI can read and write to source systems | Compromised AI can modify banking data | Read-only by default; write access only through approved, audited paths |
@@ -607,7 +607,7 @@ Every financial services AI system should be evaluated against these 10 risks du
 | Could this system produce discriminatory outcomes? | #5 Bias and discrimination |
 | Who can change how this system behaves? | #6 Insider manipulation |
 | What can this system do beyond its intended scope? | #7 Scope violations |
-| How would an attacker manipulate this system's behaviour? | #8 Adversarial manipulation |
+| How would an attacker manipulate this system's behavior? | #8 Adversarial manipulation |
 | Does this system meet all regulatory requirements? | #9 Regulatory non-compliance |
 | Could this system be used to facilitate or fail to detect fraud? | #10 AI-enabled fraud |
 

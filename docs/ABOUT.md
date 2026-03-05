@@ -6,20 +6,20 @@
 
 **Jonathan Gill** is a cybersecurity practitioner with over 30 years in information technology and 20+ years in enterprise security, now focused on the security challenges of generative and agentic AI in regulated environments.
 
-He develops threat models, risk frameworks, and practical mitigations for AI systems — with particular emphasis on runtime behavioural risks, loss-of-control scenarios, and oversight gaps in autonomous AI deployments.
+He develops threat models, risk frameworks, and practical mitigations for AI systems — with particular emphasis on runtime behavioral risks, loss-of-control scenarios, and oversight gaps in autonomous AI deployments.
 
 ## Current Focus
 
 AI security governance at enterprise scale: designing regulator-ready AI security control frameworks, assessing generative and agentic AI solutions, and defining security guardrails for cloud-native AI platforms. Translating complex technical risk into actionable guidance for engineering teams, regulators, and executive leadership.
 
-This framework — AI Runtime Behaviour Security — is the result of that work. It exists because most AI security guidance stops at the model layer, and the industry needs practical, open-source reference material for what happens after deployment.
+This framework — AI Runtime Security — is the result of that work. It exists because most AI security guidance stops at the model layer, and the industry needs practical, open-source reference material for what happens after deployment.
 
 ## Expertise
 
-- **Agentic AI risk modelling** — threat models for multi-agent systems, long-horizon agentic behaviour, orchestrator compromise, tool-use escalation, and loss-of-control scenarios
+- **Agentic AI risk modelling** — threat models for multi-agent systems, long-horizon agentic behavior, orchestrator compromise, tool-use escalation, and loss-of-control scenarios
 - **AI security controls design** — three-layer architecture (guardrails, LLM-as-Judge, human oversight) with defined failure modes and escalation paths
 - **Multi-Agent Security Operations (MASO)** — identity, execution control, observability, privileged agent governance, and emergent risk in autonomous agent systems
-- **Threat-driven security assessment** — penetration testing across large enterprise portfolios, aligned to realistic adversary behaviour
+- **Threat-driven security assessment** — penetration testing across large enterprise portfolios, aligned to realistic adversary behavior
 - **Regulatory and standards alignment** — ISO 42001, ISO 27001, NIST AI RMF, NIST CSF 2.0, NIST SP 800-218A, EU AI Act, OWASP LLM Top 10
 - **Cloud and platform security** — architecture review across AWS, Azure, and Databricks, including AI platform-specific security patterns
 

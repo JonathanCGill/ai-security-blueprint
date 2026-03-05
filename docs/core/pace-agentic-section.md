@@ -30,7 +30,7 @@ Each phase reduces the agent's autonomy while maintaining as much business value
 | **What the agent can do** | Execute actions, call tools, make decisions, manage state |
 | **Controls active** | Guardrails (P), Judge (P), Human Oversight on exception only |
 | **Human role** | Monitor dashboards. Review exceptions. Periodic audit sampling. |
-| **Trigger to Phase 2** | Judge flags behavioural anomaly; guardrail bypass rate exceeds threshold; action pattern deviates from baseline; external threat intelligence triggers review |
+| **Trigger to Phase 2** | Judge flags behavioral anomaly; guardrail bypass rate exceeds threshold; action pattern deviates from baseline; external threat intelligence triggers review |
 
 ### Phase 2: Constrained
 
@@ -111,7 +111,7 @@ When one agent in a multi-agent system transitions to a lower phase, the impact 
 
 Every agent that waits for another agent's output must have:
 - A defined **timeout** (not indefinite wait)
-- A **fallback behaviour** when the timeout expires (return cached result, return error, escalate to human)
+- A **fallback behavior** when the timeout expires (return cached result, return error, escalate to human)
 - No assumption that the other agent will respond
 
 **2. Orchestrator awareness of agent health.**
@@ -161,7 +161,7 @@ Recovery is not "restart and hope." It's a phased return through the degradation
 | 2 | Fix validated in non-production environment | Test suite passes; adversarial test suite passes |
 | 3 | Restart in **Supervised** phase (agent proposes, human approves) | Run for defined period (minimum 4 hours at Tier 2, 24 hours at Tier 3) with production traffic |
 | 4 | Promote to **Constrained** phase (reduced scope, enhanced monitoring) | Judge confidence scores within baseline for defined period |
-| 5 | Promote to **Normal** phase | All control layers healthy; monitoring confirms baseline behaviour; risk function sign-off (Tier 3) |
+| 5 | Promote to **Normal** phase | All control layers healthy; monitoring confirms baseline behavior; risk function sign-off (Tier 3) |
 
 At Tier 3, each step-up requires explicit authorisation. The agent does not return to Normal automatically.
 

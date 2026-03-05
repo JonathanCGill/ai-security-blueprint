@@ -4,7 +4,7 @@
 
 ## Scope
 
-This covers security controls for the RAG pipeline: ingestion, embedding, retrieval, and augmentation. It does not cover the LLM's own behaviour - that's addressed by the three-layer pattern.
+This covers security controls for the RAG pipeline: ingestion, embedding, retrieval, and augmentation. It does not cover the LLM's own behavior - that's addressed by the three-layer pattern.
 
 ## Architecture and Attack Surface
 

@@ -303,6 +303,6 @@
     <line x1="740" y1="6" x2="770" y2="6" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
     <text x="778" y="10" fill="#94a3b8" font-size="9">Feedback / Async</text>
 
-    <text x="900" y="10" fill="#475569" font-size="8">© 2026 AI Runtime Behaviour Security</text>
+    <text x="900" y="10" fill="#475569" font-size="8">© 2026 AI Runtime Security</text>
   </g>
 </svg>

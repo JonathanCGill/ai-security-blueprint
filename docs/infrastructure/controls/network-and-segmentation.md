@@ -8,7 +8,7 @@
 
 Traditional application network security segments by tier: web, application, database. AI systems introduce components that don't fit neatly into these tiers and have communication patterns that traditional network controls weren't designed for:
 
-| Component | Network Behaviour | Risk |
+| Component | Network Behavior | Risk |
 |-----------|-------------------|------|
 | **Model endpoints** | Receive prompts, return responses. May call external APIs for tool use. | Prompt injection payloads traverse the network as legitimate traffic |
 | **Vector stores** | Queried by models at inference time with embedding similarity searches | Data exfiltration via crafted embeddings or retrieval manipulation |
@@ -60,7 +60,7 @@ AI system components must be deployed into defined network zones with explicit t
 | Zone 1 → Zone 2 (Runtime) | ✅ | Authenticated, via gateway only |
 | Zone 2 → Zone 2 (Runtime internal) | ✅ | Model ↔ guardrails ↔ vector store (read) |
 | Zone 2 → Zone 3 (Evaluation) | ✅ | Async push of model I/O for evaluation |
-| Zone 3 → Zone 2 | ❌ | Judge cannot modify runtime behaviour directly |
+| Zone 3 → Zone 2 | ❌ | Judge cannot modify runtime behavior directly |
 | Zone 2 → Zone 4 (Ingestion) | ❌ | Runtime cannot write to ingestion pipeline |
 | Zone 4 → Zone 2 | ❌ | Ingestion cannot reach runtime inference |
 | Zone 4 → Vector Store (write) | ✅ | Ingestion writes embeddings |
@@ -103,7 +103,7 @@ The LLM-as-Judge must be independent of the primary model. If they share infrast
 ### What Judge Isolation Prevents
 
 - Primary model jailbreak does not affect Judge evaluation criteria.
-- Prompt injection that modifies primary model behaviour does not modify Judge behaviour.
+- Prompt injection that modifies primary model behavior does not modify Judge behavior.
 - Infrastructure compromise of the runtime zone does not compromise evaluation integrity.
 - Judge evaluations cannot be retroactively modified by the runtime system.
 

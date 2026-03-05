@@ -1,16 +1,16 @@
-# AI Runtime Behaviour Security
+# AI Runtime Security
 
-## AI systems don't just have vulnerabilities. They have behaviours.
+## AI systems don't just have vulnerabilities. They have behaviors.
 
 [![Controls: 200+](https://img.shields.io/badge/Controls-200%2B-blue?style=flat-square)](docs/foundations/) [![Tests: 99](https://img.shields.io/badge/Tests-99-blue?style=flat-square)](docs/maso/red-team/red-team-playbook.md) [![OWASP: Full Coverage](https://img.shields.io/badge/OWASP-Full_Coverage-brightgreen?style=flat-square)](docs/maso/controls/risk-register.md) [![PACE Resilience](https://img.shields.io/badge/PACE-Resilience-orange?style=flat-square)](docs/PACE-RESILIENCE.md) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 **A practical, open-source framework for securing AI systems at runtime — where prompt injection, model manipulation, and agent drift actually happen.**
 
-Most AI security guidance stops at the model layer. This framework addresses what happens after deployment: how AI systems behave in production, how that behaviour is monitored, and how it's contained when things go wrong. Built from 20+ years of enterprise cybersecurity experience in regulated financial services.
+Most AI security guidance stops at the model layer. This framework addresses what happens after deployment: how AI systems behave in production, how that behavior is monitored, and how it's contained when things go wrong. Built from 20+ years of enterprise cybersecurity experience in regulated financial services.
 
 ## The Problem You're Solving
 
-You can't fully test an AI system before deployment. The input space is natural language — effectively infinite. Emergent behaviour can't be predicted through conventional test suites. And adversarial inputs will find edge cases no QA team imagined.
+You can't fully test an AI system before deployment. The input space is natural language — effectively infinite. Emergent behavior can't be predicted through conventional test suites. And adversarial inputs will find edge cases no QA team imagined.
 
 So how do you know it's working correctly in production?
 
@@ -154,7 +154,7 @@ Three constraints strategies routinely underestimate: **[Data Reality](docs/stra
 - **Defence in depth as a design principle.** The layered approach exists because each layer covers gaps in the others. The question isn't "which layer do we need?" but "what happens when each layer fails?"
 - **Resilience thinking for AI products.** Traditional security asks "how do we prevent bad things?" This framework also asks "what happens when prevention fails?"
 - **Clarity on when tools are *not* needed.** Some controls are already handled by your existing infrastructure. The framework should help you see where you already have coverage, not convince you to buy something new.
-- **An AI-specific layer, not a replacement for everything else.** This framework addresses the controls that are unique to non-deterministic AI behaviour. It does not replace your existing DLP, API validation, database access controls, IAM, SIEM, secure coding practices, or incident response capabilities. Those controls still matter — arguably more than ever, because they are your safety net when AI-specific controls miss something.
+- **An AI-specific layer, not a replacement for everything else.** This framework addresses the controls that are unique to non-deterministic AI behavior. It does not replace your existing DLP, API validation, database access controls, IAM, SIEM, secure coding practices, or incident response capabilities. Those controls still matter — arguably more than ever, because they are your safety net when AI-specific controls miss something.
 
 **What it is not:**
 

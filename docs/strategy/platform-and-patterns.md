@@ -51,7 +51,7 @@ The platform must be evaluated against the criteria above before any AI system s
 
 ### Layer 2: Trusted Models
 
-A trusted model is one the organisation has evaluated for capability, security characteristics, licensing terms, and operational behaviour. It doesn't mean the model is perfect. It means the organisation understands its failure modes, has benchmarked its performance for relevant use cases, and has configured the appropriate Judge and guardrail pairing.
+A trusted model is one the organisation has evaluated for capability, security characteristics, licensing terms, and operational behavior. It doesn't mean the model is perfect. It means the organisation understands its failure modes, has benchmarked its performance for relevant use cases, and has configured the appropriate Judge and guardrail pairing.
 
 **What "trusted" means:**
 

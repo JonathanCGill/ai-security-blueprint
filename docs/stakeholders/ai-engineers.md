@@ -2,7 +2,7 @@
 
 **ML Engineers, AI Developers, Data Scientists, Platform Engineers - implementation patterns, not governance theory.**
 
-> *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
+> *Part of [Stakeholder Views](README.md) · [AI Runtime Security](../)*
 
 ## The Problem You Have
 

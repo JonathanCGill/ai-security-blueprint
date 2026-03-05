@@ -51,7 +51,7 @@ A customer browsing a traditional product page costs the same regardless of what
 This risk is amplified during peak trading — exactly when margins matter most. The [parent stress test overview](100-agent-stress-test-overview.md#ai-systems-may-not-scale-economically) frames the general principle. This document applies it to a concrete scenario where:
 
 - **Revenue is supposed to fund reinvestment.** The corporate plan depends on peak trading profits to invest in more technology. If the AI system consumes those profits, the technology roadmap stalls.
-- **Customer behaviour changes under peak conditions.** Gift buyers browse differently than regular buyers. Returns surge after peak. Payment decline rates increase. Every behavioural shift increases per-interaction cost.
+- **Customer behavior changes under peak conditions.** Gift buyers browse differently than regular buyers. Returns surge after peak. Payment decline rates increase. Every behavioral shift increases per-interaction cost.
 - **Cost pressure creates governance decisions, not just technical decisions.** When costs escalate, someone must decide whether to reduce Judge sampling, substitute cheaper models, or suspend personalisation. These are security and risk decisions disguised as cost decisions. Whether they are made by the right people, with the right information, under time pressure, is what this stress test examines.
 
 Stress Dimensions 1–8 test whether MASO's security controls survive at scale. Stress Dimension 9 tests whether the organisation's economics survive — and whether economic pressure causes the security controls to be weakened through human decisions rather than technical failures.
@@ -80,16 +80,16 @@ This exercise is designed for teams deploying customer-facing AI agent systems a
 
 ### The 5-Agent Reality
 
-MASO's observability controls (OB-2.1 anomaly scoring, OB-2.2 drift detection) build behavioural baselines for each agent and detect deviations. At 5 agents, each one has a unique profile.
+MASO's observability controls (OB-2.1 anomaly scoring, OB-2.2 drift detection) build behavioral baselines for each agent and detect deviations. At 5 agents, each one has a unique profile.
 
 ### The 10,000-Customer Reality
 
-At 60,000 concurrent instances, per-instance observability is neither feasible nor useful. Instance `payment-agent-7429` does not need its own behavioural baseline - it is identical to the other 9,999 payment agent instances. The meaningful unit of observation is the **agent type**, not the individual instance.
+At 60,000 concurrent instances, per-instance observability is neither feasible nor useful. Instance `payment-agent-7429` does not need its own behavioral baseline - it is identical to the other 9,999 payment agent instances. The meaningful unit of observation is the **agent type**, not the individual instance.
 
 This changes the observability model fundamentally:
 
-- **Aggregate metrics by type.** Monitor the *distribution* of Payment Agent behaviour across all 10,000 instances. Mean response time, error rate distribution, tool invocation patterns - all measured as population statistics.
-- **Flag outlier instances.** An individual instance that deviates from its type's population is the signal. Instance `payment-agent-7429` is taking 3x longer than its peers and invoking an unusual tool sequence. That instance is the anomaly - not a gradual drift in one agent's behaviour.
+- **Aggregate metrics by type.** Monitor the *distribution* of Payment Agent behavior across all 10,000 instances. Mean response time, error rate distribution, tool invocation patterns - all measured as population statistics.
+- **Flag outlier instances.** An individual instance that deviates from its type's population is the signal. Instance `payment-agent-7429` is taking 3x longer than its peers and invoking an unusual tool sequence. That instance is the anomaly - not a gradual drift in one agent's behavior.
 - **Statistical significance is free.** With 10,000 instances of the same type, you have enormous statistical power. A 2% shift in the Payment Agent population's error rate is detectable within minutes. In the 100-agent scenario, you might wait days for that signal.
 
 ### What to Assess
@@ -103,7 +103,7 @@ This changes the observability model fundamentally:
 
 | Control | Designed For | Adaptation Required |
 |---------|-------------|-------------------|
-| OB-2.1 Anomaly scoring | Per-agent behavioural baseline | Shift to per-type population baseline with instance-level outlier detection |
+| OB-2.1 Anomaly scoring | Per-agent behavioral baseline | Shift to per-type population baseline with instance-level outlier detection |
 | OB-2.2 Drift detection | Individual agent drift | Population-level drift detection across type cohort |
 | OB-2.5 Cost monitoring | Per-agent cost tracking | Aggregate by type; alert on per-instance cost outliers |
 | OB-1.1 Action audit log | Log every action with agent ID | Log every action, but analyse at type-aggregate level |
@@ -159,7 +159,7 @@ The solution is **risk-tiered Judge sampling**:
 |---------|-------------|-------------------|
 | EC-2.5 LLM-as-Judge | Per-action evaluation | Risk-tiered sampling strategy |
 | Guardrails (Layer 1) | Hard boundary enforcement | Must compensate for reduced Judge coverage on lower-risk actions |
-| OB-2.2 Drift detection | Behavioural change detection | Aggregate sampling results to detect systematic quality shifts |
+| OB-2.2 Drift detection | Behavioral change detection | Aggregate sampling results to detect systematic quality shifts |
 
 ## Stress Dimension 3: Human Oversight - Exception-Driven, Not Routine
 
@@ -292,7 +292,7 @@ The critical question is: **who decides the type-level transition?** Individual 
 | Control | Designed For | Adaptation Required |
 |---------|-------------|-------------------|
 | PACE three-axis model | Resilience within an orchestration | Add type-aggregate PACE layer above instance-level PACE |
-| OB-2.2 Drift detection | Per-agent behavioural baseline | Detect type-level failures by aggregating instance health signals |
+| OB-2.2 Drift detection | Per-agent behavioral baseline | Detect type-level failures by aggregating instance health signals |
 | OB-3.2 Circuit breaker | Emergency halt | Must support type-level halt (suspend all instances of one type) without affecting other types |
 
 ## Stress Dimension 7: Kill Switch - Graduated Shutdown
@@ -412,7 +412,7 @@ The escalation is not a single spike. It is a progressive divergence between rev
 
 #### Phase 2: +20% Above Norms — Margin Pressure
 
-**What's happening.** Peak day. Highest traffic of the year. Customer behaviour shifts: more returns of existing products (clearing for new purchases), more complex buying journeys (gift buying involves more browsing, more comparison, more advisor interaction), more payment retries (higher card decline rates from fraud detection systems under load).
+**What's happening.** Peak day. Highest traffic of the year. Customer behavior shifts: more returns of existing products (clearing for new purchases), more complex buying journeys (gift buying involves more browsing, more comparison, more advisor interaction), more payment retries (higher card decline rates from fraud detection systems under load).
 
 **Where the additional +10% comes from (cumulative +20%):**
 - **Agent conversation depth increases.** Gift buyers ask more questions. The Sales Advisor Agent averages 8 turns per customer instead of the normal 4. Token consumption per session nearly doubles for this agent type.

@@ -2,7 +2,7 @@
 
 **Business Unit Leaders, P&L Owners, General Managers - how to manage AI risk across your product lines when agents are operational, costs are real, and the risk is yours.**
 
-> *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
+> *Part of [Stakeholder Views](README.md) · [AI Runtime Security](../)*
 
 ## The Problem You Have
 
@@ -69,7 +69,7 @@ When you run multiple products with different agent sets, manage them as a portf
 | **Skills concentration risk** | Whether one person operates controls for multiple products | Cross-train or hire; single points of failure are unacceptable for HIGH/CRITICAL systems |
 | **Aggregate incident exposure** | Total expected incidents across all products | Board-level risk metric; drives insurance and regulatory conversations |
 
-**Multi-agent complexity:** If any product runs a multi-agent system (agents communicating with other agents), the control requirements increase. The [MASO Framework](../maso/) adds seven control domains: prompt integrity, identity and access, data protection, execution control, observability, supply chain, and privileged agent governance. This isn't optional overhead - it addresses risks (privilege escalation across agents, emergent behaviour, delegation chain attacks) that don't exist in single-agent systems.
+**Multi-agent complexity:** If any product runs a multi-agent system (agents communicating with other agents), the control requirements increase. The [MASO Framework](../maso/) adds seven control domains: prompt integrity, identity and access, data protection, execution control, observability, supply chain, and privileged agent governance. This isn't optional overhead - it addresses risks (privilege escalation across agents, emergent behavior, delegation chain attacks) that don't exist in single-agent systems.
 
 ### Operational staffing reality
 

@@ -10,11 +10,11 @@ This article examines the peer-reviewed evidence, industry data, and honest limi
 
 ## The Case for Runtime: Strong and Getting Stronger
 
-The foundational claim - that design-time testing is insufficient for non-deterministic AI - is well supported. Carnegie Mellon's Software Engineering Institute [identifies the core problem clearly](https://www.sei.cmu.edu/blog/the-challenges-of-testing-in-a-non-deterministic-world/): traditional quality assurance assumes deterministic behaviour, where given input X you always get output Y. AI agents break this assumption entirely.
+The foundational claim - that design-time testing is insufficient for non-deterministic AI - is well supported. Carnegie Mellon's Software Engineering Institute [identifies the core problem clearly](https://www.sei.cmu.edu/blog/the-challenges-of-testing-in-a-non-deterministic-world/): traditional quality assurance assumes deterministic behavior, where given input X you always get output Y. AI agents break this assumption entirely.
 
 The challenge runs deeper than stochastic outputs. Even setting temperature to zero and using fixed random seeds cannot guarantee identical outputs across runs, due to hardware-level floating-point effects and token probability ties. The SIGPLAN research community [frames the shift directly](https://blog.sigplan.org/2025/03/20/testing-ai-software-isnt-like-testing-plain-old-software/): testing AI software isn't like testing traditional software because multiple outputs may be "correct," creating a flexible correctness paradigm that conventional test oracles cannot handle.
 
-This makes the case for runtime monitoring real. If you cannot fully validate behaviour before deployment, you must observe it during deployment. The question is whether our monitoring tools are up to the job.
+This makes the case for runtime monitoring real. If you cannot fully validate behavior before deployment, you must observe it during deployment. The question is whether our monitoring tools are up to the job.
 
 ## Guardrails: Necessary, Brittle, Evolving
 
@@ -28,7 +28,7 @@ Three generations of guardrails have emerged:
 |---|---|---|---|
 | **Rule-based** | 2022–2023 | Keyword matching, regex, deny lists | Trivially bypassed with encoding or paraphrasing |
 | **Jailbreak-aware** | 2023–2024 | Learned classifiers (Llama Guard etc.) | Misses novel attacks; brittle to distribution shift |
-| **Contextual** | 2025+ | Full-conversation analysis, behavioural context | Higher latency; early-stage maturity |
+| **Contextual** | 2025+ | Full-conversation analysis, behavioral context | Higher latency; early-stage maturity |
 
 The [ADL's 2025 safety research](https://www.adl.org/resources/report/safety-divide-open-source-ai-models-fall-short-guardrails-antisemitic-dangerous) found that open-source models can be easily manipulated to generate harmful content, even with guardrails in place, underscoring the gap between guardrail intent and guardrail effectiveness.
 
@@ -55,7 +55,7 @@ The domain limitation is particularly important for enterprise security. If an L
 
 Mitigation strategies exist - randomised response ordering, majority voting across multiple runs, chain-of-thought prompting - and [research shows](https://arxiv.org/abs/2411.15594) they measurably improve alignment. But they add latency and cost, and none eliminate the biases entirely.
 
-**What the evidence supports:** LLM-as-Judge catches categories of failures that guardrails miss, particularly semantic policy violations and subtle behavioural drift. It is a meaningful assurance layer.
+**What the evidence supports:** LLM-as-Judge catches categories of failures that guardrails miss, particularly semantic policy violations and subtle behavioral drift. It is a meaningful assurance layer.
 
 **What it doesn't support:** Treating Judge findings as authoritative without human review. The measured bias and domain gap mean the Judge is a signal source, not a decision-maker - which is precisely how this framework positions it, and the research validates that design choice.
 
@@ -95,7 +95,7 @@ The framework's MASO (Multi-Agent Security Operations) extension addresses a rea
 
 The [ACM Computing Surveys](https://dl.acm.org/doi/10.1145/3716628) systematic review documented threats across six dimensions: perception, reasoning, action, agent-to-environment, agent-to-agent, and memory. Real-world exploits have already materialised: the [EchoLeak exploit (CVE-2025-32711)](https://arxiv.org/html/2510.23883v1) against Microsoft Copilot demonstrated how engineered email prompts could trigger automated sensitive data exfiltration without user interaction, receiving a CVSS score of 9.3.
 
-The research on [open challenges in multi-agent security](https://arxiv.org/html/2505.02077v1) warns that novel threats emerge from agent interaction that cannot be addressed by securing individual agents in isolation - including steganographic collusion channels, cascading jailbreaks across agent boundaries, and coordinated adversarial behaviours that evade single-agent detection.
+The research on [open challenges in multi-agent security](https://arxiv.org/html/2505.02077v1) warns that novel threats emerge from agent interaction that cannot be addressed by securing individual agents in isolation - including steganographic collusion channels, cascading jailbreaks across agent boundaries, and coordinated adversarial behaviors that evade single-agent detection.
 
 The framework's 128 MASO controls across seven domains are directionally aligned with these identified threats. But honesty demands acknowledging that the empirical validation base for multi-agent security controls is thin. Most controls are derived from threat modelling and architectural reasoning, not from measured effectiveness in production deployments. The field is building the aeroplane in flight.
 
@@ -160,7 +160,7 @@ The evidence supports this framework's core architecture more than it undermines
 
 ## Key Takeaways
 
-1. **The case for runtime monitoring over design-time-only testing is empirically strong.** Non-determinism, flexible correctness, and emergent behaviour make pre-deployment validation insufficient. This is well-established in the literature.
+1. **The case for runtime monitoring over design-time-only testing is empirically strong.** Non-determinism, flexible correctness, and emergent behavior make pre-deployment validation insufficient. This is well-established in the literature.
 
 2. **Each control layer has measured limitations.** Guardrails miss novel attacks. LLM-as-Judge carries systematic biases. Human oversight doesn't scale. No single layer is sufficient - but the combination is stronger than any alternative documented in the research.
 

@@ -14,9 +14,9 @@ Traditional incident response follows a pattern: detect, contain, eradicate, rec
 | **You can isolate the affected system** | Take the server offline | The model is stateless - the "infection" is in the prompt, not the system |
 | **You can determine impact** | Forensics reveals what the attacker accessed | AI context windows are ephemeral - what the model "saw" may not be fully logged |
 | **You can prevent recurrence** | Patch the vulnerability | The same injection technique can be paraphrased infinitely |
-| **Root cause is identifiable** | Vulnerability + exploit chain | Model behaviour is non-deterministic - the same input might not reproduce the issue |
+| **Root cause is identifiable** | Vulnerability + exploit chain | Model behavior is non-deterministic - the same input might not reproduce the issue |
 
-The core problem: **AI incidents often involve behavioural failures rather than system compromises.** The model isn't "hacked" in the traditional sense - it's manipulated into behaving in ways that violate policy. This requires IR procedures that address behaviour, not just infrastructure.
+The core problem: **AI incidents often involve behavioral failures rather than system compromises.** The model isn't "hacked" in the traditional sense - it's manipulated into behaving in ways that violate policy. This requires IR procedures that address behavior, not just infrastructure.
 
 ## Control Objectives
 
@@ -41,11 +41,11 @@ Standard incident categories (malware, unauthorised access, data breach) don't a
 
 | Category | Description | Example |
 |----------|-------------|---------|
-| **Prompt injection - successful** | Attacker bypassed guardrails and manipulated model behaviour | Model disclosed system prompt, executed unintended tool calls |
+| **Prompt injection - successful** | Attacker bypassed guardrails and manipulated model behavior | Model disclosed system prompt, executed unintended tool calls |
 | **Prompt injection - attempted** | Guardrails or Judge detected injection attempt | Blocked injection, but technique is novel and needs analysis |
 | **Guardrail failure** | Guardrails passed content that should have been blocked | PII in output not caught, harmful content not filtered |
 | **Judge disagreement** | Judge flagged content that guardrails passed (or vice versa) at significant rates | Systemic gap between detection layers |
-| **Model behavioural drift** | Model behaviour shifted outside baseline parameters | Response quality degradation, topic drift, tone changes |
+| **Model behavioral drift** | Model behavior shifted outside baseline parameters | Response quality degradation, topic drift, tone changes |
 | **Data poisoning** | Malicious content entered the vector store or training pipeline | Manipulated RAG responses, biased fine-tuning outcomes |
 | **Agent autonomy violation** | Agent took actions outside its declared permission set | Unauthorised tool invocation, exceeded scope |
 | **Credential exposure** | Credentials appeared in model context, output, or logs | API key in model response, token in log file |
@@ -81,7 +81,7 @@ AI incidents are detected through the logging and monitoring infrastructure (LOG
 
 ### Human-Reported
 
-- User reports unexpected model behaviour.
+- User reports unexpected model behavior.
 - Security team identifies AI-related IoCs during other investigations.
 - Vendor notifies of model vulnerability or incident.
 - Regulatory or legal inquiry triggers review.
@@ -102,7 +102,7 @@ AI containment differs from traditional containment. You can't "quarantine" a st
 ### AI-Specific Containment Principles
 
 - **Fail safe, not fail open:** If the guardrail system fails, block all traffic rather than allowing unfiltered access to the model.
-- **Preserve forensic data:** Before containment actions change system behaviour, ensure current logs and configurations are preserved.
+- **Preserve forensic data:** Before containment actions change system behavior, ensure current logs and configurations are preserved.
 - **Contain the session, not the system:** If a single user session is compromised (injection, exfiltration), terminate that session without disabling the entire system (unless the attack vector is systemic).
 - **Credential rotation is containment:** Any credential exposure triggers immediate rotation as a containment action, not a later remediation step.
 
@@ -132,13 +132,13 @@ AI incident investigation must account for non-determinism. The same input may n
 ### Investigation Framework
 
 1. **Reconstruct the interaction:** Use LOG-01 (model I/O) and LOG-04 (agent chains) to reconstruct exactly what happened during the incident.
-2. **Identify the trigger:** What input or sequence of inputs caused the undesired behaviour? Was it a single prompt or a multi-turn escalation?
+2. **Identify the trigger:** What input or sequence of inputs caused the undesired behavior? Was it a single prompt or a multi-turn escalation?
 3. **Assess guardrail performance:** Did guardrails evaluate the input/output? What was the confidence score? Did they pass content they should have blocked (LOG-02)?
 4. **Assess Judge performance:** Did the Judge evaluate the interaction? What was the verdict? Was there a guardrail/Judge disagreement (LOG-03)?
-5. **Determine scope:** Was this an isolated incident or part of a pattern? Search logs for similar inputs, techniques, or user behaviour.
+5. **Determine scope:** Was this an isolated incident or part of a pattern? Search logs for similar inputs, techniques, or user behavior.
 6. **Assess impact:** What data was exposed, what actions were taken, what decisions were influenced? For agent incidents, reconstruct the full action chain.
 7. **Identify the control gap:** Which control failed? Was it a guardrail rule gap, a Judge criteria gap, a network bypass, or a permission misconfiguration?
-8. **Attempt reproduction:** Try to reproduce the behaviour in a sandboxed environment. Accept that non-determinism may prevent exact reproduction - focus on reproducing the *category* of failure.
+8. **Attempt reproduction:** Try to reproduce the behavior in a sandboxed environment. Accept that non-determinism may prevent exact reproduction - focus on reproducing the *category* of failure.
 
 ## IR-06: Communication Protocols
 
@@ -146,7 +146,7 @@ AI incidents may require communication with stakeholders who don't exist in trad
 
 | Stakeholder | When to Notify | What to Communicate |
 |-------------|---------------|---------------------|
-| **Model provider** | Model vulnerability exploited, unexpected model behaviour | Technique details (sanitised), impact, request for guidance |
+| **Model provider** | Model vulnerability exploited, unexpected model behavior | Technique details (sanitised), impact, request for guidance |
 | **Data subjects** | PII exposed via AI system | What was exposed, how, remediation steps |
 | **Regulators** | Reportable breach involving AI system, EU AI Act compliance failure | Incident details per regulatory requirements |
 | **AI ethics/governance board** | Bias incident, harmful output to vulnerable user, autonomy violation | Full incident report, proposed controls |
@@ -165,7 +165,7 @@ AI post-incident reviews must go beyond traditional root cause analysis to addre
 - **Judge criteria update:** If the Judge missed the issue, what evaluation criteria need refinement?
 - **Detection improvement:** How can this incident type be detected earlier/faster?
 - **Injection technique catalogue:** If prompt injection was involved, add the technique to the internal injection pattern library (LOG-06).
-- **Baseline update:** If model drift was involved, update behavioural baselines (LOG-05).
+- **Baseline update:** If model drift was involved, update behavioral baselines (LOG-05).
 - **Non-determinism acknowledgement:** Accept that some AI failures may not have a single root cause. Focus on strengthening detection and response capability rather than expecting prevention of all possible failures.
 
 ## IR-08: Enterprise IR Integration

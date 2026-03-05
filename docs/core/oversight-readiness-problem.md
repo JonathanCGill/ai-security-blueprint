@@ -47,7 +47,7 @@ Not every degradation event requires a human in the loop. Mandating human review
 
 - The failure mode is **predictable and pre-classified**. The system has encountered this category before and a safe fallback is defined.
 - The consequence of the degraded state is **minor and reversible**. Rate limiting, model version rollback, switching to cache-only responses, or disabling a non-critical feature.
-- The degradation response is **deterministic**. The system follows a pre-defined state machine - the same input condition always produces the same fallback behaviour.
+- The degradation response is **deterministic**. The system follows a pre-defined state machine - the same input condition always produces the same fallback behavior.
 - **Time constraints preclude human involvement.** If the system must respond in milliseconds (e.g., real-time content filtering), the human cannot be in the synchronous path. Log, notify, and review asynchronously.
 
 In these cases, the correct architecture is: degrade automatically, log the event with full context, notify the operations team, and review in a subsequent cycle. The human adds value in the post-incident analysis, not in the real-time decision.
@@ -119,7 +119,7 @@ Every reviewer decision must be connected to its downstream consequence. If a re
 
 Without outcome feedback, the task becomes abstract and the motivation to maintain vigilance evaporates. The reviewer is making decisions in a vacuum, unable to calibrate the real-world weight of their judgement.
 
-Design the feedback loop to close within 48 hours where possible. Feedback delivered weeks later has minimal impact on behaviour. The most effective pattern is a daily digest showing: decisions made, outcomes observed, probes encountered (revealed post-hoc), and any near-misses.
+Design the feedback loop to close within 48 hours where possible. Feedback delivered weeks later has minimal impact on behavior. The most effective pattern is a daily digest showing: decisions made, outcomes observed, probes encountered (revealed post-hoc), and any near-misses.
 
 ### Mechanism 5: Rotation and Exposure Management
 
@@ -135,7 +135,7 @@ Cross-train multiple reviewers. Rotate on defined cycles. Ensure the rotation sc
 
 Not every escalation requires the same depth of human involvement. Design the interface to modulate the required engagement based on the system's confidence score:
 
-| Confidence Tier | Human Requirement | System Behaviour |
+| Confidence Tier | Human Requirement | System Behavior |
 |---|---|---|
 | High (>0.95) | None - log entry visible in audit trail | Proceeds automatically |
 | Medium-High (0.80–0.95) | Async notification - reviewer sees summary within SLA | Proceeds with safe default, reviewer can override |

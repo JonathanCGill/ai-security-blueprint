@@ -24,7 +24,7 @@
     <text x="70" y="32" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="bold" fill="#1e293b">Enters Pipeline</text>
     
     <text x="10" y="55" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b">• Rules engines</text>
-    <text x="10" y="68" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b">• Behavioural analytics</text>
+    <text x="10" y="68" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b">• Behavioral analytics</text>
     <text x="10" y="81" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b">• Sanctions screening</text>
     
     <rect x="5" y="95" width="120" height="55" rx="4" fill="#fef2f2"/>

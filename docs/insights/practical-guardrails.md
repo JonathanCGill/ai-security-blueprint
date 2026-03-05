@@ -37,7 +37,7 @@ These protect the AI system from being compromised. They cannot be turned off. T
 | Guardrail | What It Catches | Why It's Non-Negotiable |
 |-----------|----------------|------------------------|
 | **Prompt injection detection** | Attempts to override system instructions | Compromises the system's integrity |
-| **Jailbreak detection** | Structured attacks to bypass safety training | Removes all behavioural constraints |
+| **Jailbreak detection** | Structured attacks to bypass safety training | Removes all behavioral constraints |
 | **Encoding detection** | Base64, hex, Unicode, ROT13 obfuscation | Hides attacks from other guardrails |
 | **Indirect injection scanning** | Adversarial instructions in retrieved content | RAG and tool results become attack vectors |
 | **Rate limiting** | Brute-force probing, enumeration, abuse | Resource exhaustion, boundary mapping |
@@ -273,7 +273,7 @@ Some controls must be in place before an AI system is exposed to users - not as 
 | **Per-session rate limit** | Prevents automated session abuse | Max interactions per session |
 | **Global rate limit** | Prevents system overload | Max total requests, with queuing |
 | **Cost-based limit** | Prevents unexpected spend | Daily/monthly token budget per user or use case |
-| **Escalating limits** | Tightens limits on suspicious behaviour | Normal → reduced → blocked as anomalies detected |
+| **Escalating limits** | Tightens limits on suspicious behavior | Normal → reduced → blocked as anomalies detected |
 
 **Deploy rate limits before launch.** Calibrate after launch based on usage data. Don't wait for abuse to add limits - by then, the damage is done.
 

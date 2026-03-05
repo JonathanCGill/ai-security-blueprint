@@ -65,7 +65,7 @@ This means:
 **What "working" looks like:**
 - High block rate on known-bad (>95%)
 - Low false positive rate on legitimate (<5%)
-- Consistent behaviour across runs
+- Consistent behavior across runs
 
 **Limitations:** Novel attacks won't be in your test set. Guardrails will miss things.
 

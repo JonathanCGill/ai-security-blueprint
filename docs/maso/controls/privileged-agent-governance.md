@@ -58,7 +58,7 @@ All Tier 1 controls remain active, plus:
 | **PA-2.4** Judge disagreement protocol | When multiple validators disagree (EC-3.3), a defined resolution procedure activates | Procedure defines: who arbitrates, within what timeframe, with what evidence, and how the resolution is documented. Default: human escalation within 15 minutes. |
 | **PA-2.5** Observer precision monitoring | Observer false positive and false negative rates tracked and reported monthly | Target: < 5% false positive rate on PACE escalation triggers. False negatives measured through red team injection (PA-2.8). |
 | **PA-2.6** Kill switch dual authorisation | Observer kill switch requires secondary confirmation: either a second independent signal or a human within a defined window | Prevents single miscalibrated observer from taking down the system. Exception: if the confirming mechanism is unavailable, the kill switch fires after the defined window (fail-safe). |
-| **PA-2.7** Orchestrator behavioural baseline | Orchestrator decisions (agent selection, task decomposition patterns, retry frequency) baselined and monitored for drift | Uses the same anomaly scoring model as task agents (OB-2.2) but with orchestrator-specific signals. |
+| **PA-2.7** Orchestrator behavioral baseline | Orchestrator decisions (agent selection, task decomposition patterns, retry frequency) baselined and monitored for drift | Uses the same anomaly scoring model as task agents (OB-2.2) but with orchestrator-specific signals. |
 | **PA-2.8** Privileged agent red team | Quarterly adversarial testing of orchestrator, judge, and observer | Test scenarios: inject a goal-subverting decomposition plan, present the Judge with adversarial inputs designed to bypass criteria, trigger known anomalies to verify observer detection. |
 
 **What you're building at Tier 2:** Measurement. You can answer: are our privileged agents still performing correctly, and how do we know?
@@ -99,7 +99,7 @@ All Tier 2 controls remain active, plus:
 | PA-T2.4 | Observer false positive | Review observer escalation history. False positive rate is below threshold (< 5%). |
 | PA-T2.5 | Kill switch dual auth | Trigger a kill switch from the observer. Verify secondary confirmation is required before system shutdown. |
 | PA-T2.6 | Kill switch fail-safe | Trigger a kill switch when the secondary confirmation mechanism is unavailable. Kill switch fires after the defined window. |
-| PA-T2.7 | Orchestrator drift | Modify orchestrator behaviour (change agent selection patterns). Anomaly scoring detects the drift. |
+| PA-T2.7 | Orchestrator drift | Modify orchestrator behavior (change agent selection patterns). Anomaly scoring detects the drift. |
 | PA-T2.8 | Red team privileged agents | Execute quarterly red team scenarios. All three privileged agent types tested. Detection rates documented. |
 
 ### Tier 3 Tests

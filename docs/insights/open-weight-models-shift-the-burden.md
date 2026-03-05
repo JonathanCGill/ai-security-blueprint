@@ -33,7 +33,7 @@ With a hosted API, the provider typically applies baseline content filtering bef
 
 With open-weight models, **your guardrails are the only guardrails.** There is no provider-side safety net. If you haven't implemented input validation, output filtering, and topic restriction at the infrastructure layer, nothing else will do it for you.
 
-Fine-tuned or quantised variants add another complication. Safety training applied during the model's original post-training can degrade or disappear entirely after fine-tuning. A model that refused harmful requests in its base form may comply after domain-specific fine-tuning - not because you intended it to, but because the safety behaviour wasn't robust to the training process.
+Fine-tuned or quantised variants add another complication. Safety training applied during the model's original post-training can degrade or disappear entirely after fine-tuning. A model that refused harmful requests in its base form may comply after domain-specific fine-tuning - not because you intended it to, but because the safety behavior wasn't robust to the training process.
 
 ### LLM-as-Judge
 
@@ -53,7 +53,7 @@ Organisations deploying open-weight models should apply these additional control
 
 | Control | Rationale |
 | --- | --- |
-| **Safeguard validation on deployment** | Verify safety behaviours after any fine-tuning, quantisation, or format conversion. Don't assume base-model safety properties survive. |
+| **Safeguard validation on deployment** | Verify safety behaviors after any fine-tuning, quantisation, or format conversion. Don't assume base-model safety properties survive. |
 | **Independent guardrail layer** | Deploy guardrails as a separate service, not as prompt instructions in the model. [Infrastructure Beats Instructions](infrastructure-beats-instructions.md) applies with extra force here. |
 | **Model provenance tracking** | Document the exact model version, source, and any modifications. Open-weight supply chains are opaque - know what you're running. |
 | **Periodic re-evaluation** | No provider is pushing safety patches to your deployment. Schedule regular red-teaming and evaluation cycles. |

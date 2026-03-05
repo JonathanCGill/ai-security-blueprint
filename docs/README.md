@@ -1,5 +1,5 @@
 ---
-title: AI Runtime Behaviour Security
+title: AI Runtime Security
 description: A practical, open-source framework for securing AI systems at runtime - where prompt injection, model manipulation, and agent drift actually happen.
 template: home.html
 hide:
@@ -9,7 +9,7 @@ hide:
 comments: false
 ---
 
-# AI Runtime Behaviour Security
+# AI Runtime Security
 
 <div class="home-subtitle" markdown>
 
@@ -25,7 +25,7 @@ Enterprises are deploying large language models into production at pace. Custome
 
 This misses the point. The risk that actually matters in a regulated enterprise is not what the model can do. It is what the model does do, at runtime, in production, when it is interacting with real data, real users, and real business processes. A model that passed every benchmark can still hallucinate a regulatory disclosure, leak PII through a poorly scoped tool call, or take an action in a multi-agent chain that no human authorised.
 
-Most enterprises have no runtime behavioural controls. They deploy. They monitor logs. They hope.
+Most enterprises have no runtime behavioral controls. They deploy. They monitor logs. They hope.
 
 ### Why existing approaches fall short
 
@@ -35,7 +35,7 @@ In every other domain of enterprise security (network, identity, data) we layer 
 
 ### The approach
 
-AI Runtime Behaviour Security applies defence-in-depth at the point of execution. Three layers, each independent, each compensating for the others.
+AI Runtime Security applies defence-in-depth at the point of execution. Three layers, each independent, each compensating for the others.
 
 **Guardrails** enforce hard boundaries. Content policies, scope constraints, tool-use permissions. They are fast, deterministic, and limited. They catch the obvious failures.
 
@@ -43,7 +43,7 @@ AI Runtime Behaviour Security applies defence-in-depth at the point of execution
 
 **Human oversight** provides escalation paths, audit trails, and intervention capability. This is not human-in-the-loop for every transaction. That does not scale. It is structured checkpoints for high-risk decisions and anomaly-triggered review.
 
-Each layer operates independently. If guardrails miss something, the judge catches it. If the judge misjudges, human oversight provides the backstop. No single failure compromises the system. The principle is not new. Defence-in-depth has always been how we secure complex systems. What is new is applying it systematically to AI runtime behaviour.
+Each layer operates independently. If guardrails miss something, the judge catches it. If the judge misjudges, human oversight provides the backstop. No single failure compromises the system. The principle is not new. Defence-in-depth has always been how we secure complex systems. What is new is applying it systematically to AI runtime behavior.
 
 ### Why it matters for regulated industries
 

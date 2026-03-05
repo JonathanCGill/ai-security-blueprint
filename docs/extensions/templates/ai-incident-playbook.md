@@ -30,9 +30,9 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 
 ### Indicators
 - Guardrails flagging unusual input patterns
-- AI outputs that deviate from expected behaviour
+- AI outputs that deviate from expected behavior
 - Instructions appearing in outputs that don't match system prompt
-- User reporting unexpected AI behaviour
+- User reporting unexpected AI behavior
 - Judge flagging anomalous interactions
 
 ### Immediate Actions (First 30 minutes)
@@ -197,7 +197,7 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 ### Indicators
 - Provider notification of security incident
 - News reports of provider breach
-- Unexplained changes in model behaviour
+- Unexplained changes in model behavior
 - Provider communication about data exposure
 
 ### Immediate Actions
@@ -311,9 +311,9 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 
 ### Investigation
 1. Review full trajectory - planning, actions, reasoning
-2. Identify where agent deviated from expected behaviour
+2. Identify where agent deviated from expected behavior
 3. Was scope enforcement working? Did agent exceed boundaries?
-4. Was this goal hijacking (prompt injection) or emergent behaviour?
+4. Was this goal hijacking (prompt injection) or emergent behavior?
 5. Were circuit breakers triggered? If not, why not?
 
 ### Recovery
@@ -328,7 +328,7 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 - AI outputs contain unexpected content
 - RAG returning content that shouldn't exist
 - Knowledge base audit reveals unauthorised content
-- AI behaviour changed without prompt changes
+- AI behavior changed without prompt changes
 
 ### Immediate Actions
 1. **Identify the poisoned content** - What was added/modified?

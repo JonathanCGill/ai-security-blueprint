@@ -3,7 +3,7 @@
 > Maps infrastructure controls to ISO/IEC 42001:2023 Annex A - Controls for AI Management Systems.
 >
 > Part of the [AI Security Infrastructure Controls](../README.md) framework.
-> Companion to [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security).
+> Companion to [AI Runtime Security](https://github.com/JonathanCGill/ai-runtime-behavior-security).
 
 ## Scope and Limitations
 

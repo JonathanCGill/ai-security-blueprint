@@ -45,7 +45,7 @@ All Tier 1 controls remain active, plus:
 | **DP-2.2** RAG integrity and freshness validation | Knowledge base content checksummed at ingestion; periodic verification including content currency | Changes trigger automated review. Recommended: daily integrity checks. Freshness metadata tracks whether content has been superseded; documents past defined freshness window flagged for review (Amendment: DR-02). |
 | **DP-2.3** Infrastructure data fencing | Cross-agent data isolation enforced at platform level | Agent A at "confidential" cannot access Agent B's "restricted" data store, even with application-layer compromise. |
 | **DP-2.4** Memory isolation | Per-agent persistent memory isolated; agents cannot read/write other agents' memory | Shared state mediated exclusively through the message bus with DLP scanning. |
-| **DP-2.5** Derived data reclassification | Agent outputs are assessed for classification elevation when combining or enriching data from multiple sources | DLP evaluates whether the output classification should be higher than the input classification. Elevation rules defined per data type (e.g., combining identifiers with behavioural data = PII). Elevated data is tagged at the new classification before it enters the message bus (DR-03). |
+| **DP-2.5** Derived data reclassification | Agent outputs are assessed for classification elevation when combining or enriching data from multiple sources | DLP evaluates whether the output classification should be higher than the input classification. Elevation rules defined per data type (e.g., combining identifiers with behavioral data = PII). Elevated data is tagged at the new classification before it enters the message bus (DR-03). |
 
 ### Tier 3 - Autonomous
 
@@ -122,7 +122,7 @@ These external controls are outside the scope of this framework, but they should
 
 **Scanning outputs but not inter-agent messages.** DLP on final outputs catches data leakage to end users. But in a multi-agent system, the more dangerous leak path is agent-to-agent - where sensitive data crosses trust boundaries invisibly within the orchestration.
 
-**Inheriting input classification without reassessment.** An agent that combines public customer IDs with internal behavioural data produces output that is neither public nor internal - it's PII. If the output inherits the classification of the higher input ("internal"), it's still under-classified. Classification must be reassessed after processing, particularly when agents combine, enrich, or aggregate data from multiple sources. The output classification may be higher than any individual input.
+**Inheriting input classification without reassessment.** An agent that combines public customer IDs with internal behavioral data produces output that is neither public nor internal - it's PII. If the output inherits the classification of the higher input ("internal"), it's still under-classified. Classification must be reassessed after processing, particularly when agents combine, enrich, or aggregate data from multiple sources. The output classification may be higher than any individual input.
 
 **Dropping classification metadata between agents.** If classification tags don't travel with data through the message bus, downstream agents and DLP controls have no basis for enforcement. A message arriving without a classification tag should be treated as an error, not as unclassified.
 

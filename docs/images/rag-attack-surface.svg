@@ -132,7 +132,7 @@
   <circle cx="734" cy="398" r="8" fill="#D73A49"/>
   <text x="734" y="402" text-anchor="middle" font-size="10" font-weight="700" fill="white">5</text>
   <text x="747" y="394" font-size="9" font-weight="600" fill="#CB2431">Indirect prompt injection</text>
-  <text x="747" y="408" font-size="8" fill="#86181D">Retrieved content hijacks LLM behaviour</text>
+  <text x="747" y="408" font-size="8" fill="#86181D">Retrieved content hijacks LLM behavior</text>
   <line x1="875" y1="370" x2="875" y2="380" stroke="#D73A49" stroke-width="1" stroke-dasharray="3,3"/>
 
   <!-- Attack 6: Vector store as target -->

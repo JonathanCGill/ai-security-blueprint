@@ -14,7 +14,7 @@ Every component in the agent system - models, tools, MCP servers, RAG sources, p
 
 **Dynamic composition at runtime.** Modern agent frameworks support dynamic tool discovery and composition - an agent can discover and use an MCP server it has never interacted with before. This is powerful for flexibility and catastrophic for security. A poisoned MCP tool descriptor can trick an agent into passing credentials as tool parameters, executing unintended operations, or loading malicious code.
 
-**Model provider changes propagate silently.** When a model provider updates their model (version change, fine-tuning update, safety filter modification), every agent using that model is affected simultaneously. If the update introduces a regression - reduced safety filtering, changed behaviour on edge cases, or degraded quality - the agents inherit the regression with no notice.
+**Model provider changes propagate silently.** When a model provider updates their model (version change, fine-tuning update, safety filter modification), every agent using that model is affected simultaneously. If the update introduces a regression - reduced safety filtering, changed behavior on edge cases, or degraded quality - the agents inherit the regression with no notice.
 
 **Credential harvesting through tool manifests.** A poisoned tool manifest can describe a tool that requires "authentication tokens" as parameters. The agent, following its instructions to use the tool, passes credentials to the attacker's endpoint. This is a supply chain attack that doesn't require compromising the agent's code - only its tool configuration.
 
@@ -53,7 +53,7 @@ All Tier 2 controls remain active, plus:
 
 ## AIBOM Specification (Tier 2+)
 
-The AI Bill of Materials is the supply chain equivalent of an SBOM (Software Bill of Materials). It provides a complete, versioned inventory of every component that contributes to an agent's behaviour.
+The AI Bill of Materials is the supply chain equivalent of an SBOM (Software Bill of Materials). It provides a complete, versioned inventory of every component that contributes to an agent's behavior.
 
 **Required fields per agent:**
 
@@ -83,11 +83,11 @@ MCP (Model Context Protocol) servers extend agent capabilities by providing tool
 | Check | Description |
 |-------|-------------|
 | Source verification | Who built it? Is the source code available for review? |
-| Manifest inspection | Do the tool descriptions match the actual tool behaviour? Are parameter schemas well-defined? |
+| Manifest inspection | Do the tool descriptions match the actual tool behavior? Are parameter schemas well-defined? |
 | Credential handling | Does the tool request credentials as parameters? (Red flag - credentials should be injected by the platform, not passed by the agent.) |
-| Network behaviour | What external endpoints does the MCP server contact? Are they documented and expected? |
+| Network behavior | What external endpoints does the MCP server contact? Are they documented and expected? |
 | Data handling | What data does the MCP server access, store, or transmit? Does it comply with the agent's data classification? |
-| Update mechanism | How is the MCP server updated? Can updates change tool behaviour without notice? |
+| Update mechanism | How is the MCP server updated? Can updates change tool behavior without notice? |
 | Signing | Can the manifest be cryptographically signed? Is the signing key managed appropriately? |
 
 **Approval authority:** AI security team for Tier 2. AI Security Architect for Tier 3 (higher bar due to autonomous usage).

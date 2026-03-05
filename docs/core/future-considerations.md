@@ -44,7 +44,7 @@ These are important topics that fall outside the practical scope of an enterpris
 
 The Bengio report identifies three layers of defence: building safer models during training, adding controls at deployment, and monitoring after deployment. This framework addresses the second and third layers. Training-time safety - RLHF, constitutional AI, safety fine-tuning - is the responsibility of model developers, not deployers.
 
-Deployers should demand transparency from providers about training-time safety measures and should verify that safety behaviours survive fine-tuning and customisation. But specifying how models should be trained is outside this framework's scope and competence.
+Deployers should demand transparency from providers about training-time safety measures and should verify that safety behaviors survive fine-tuning and customisation. But specifying how models should be trained is outside this framework's scope and competence.
 
 ### Evaluation Gap
 

@@ -48,7 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.8.0] - 2026-03-01
 
 ### Added
-- **Evaluation Integrity Risks** - New insights page covering sandbagging, evaluation evasion, and the AISI finding that black-box monitors lose accuracy on harder tasks. Includes mitigations: canary interactions, evaluation signature elimination, multi-model cross-validation, behavioural consistency monitoring.
+- **Evaluation Integrity Risks** - New insights page covering sandbagging, evaluation evasion, and the AISI finding that black-box monitors lose accuracy on harder tasks. Includes mitigations: canary interactions, evaluation signature elimination, multi-model cross-validation, behavioral consistency monitoring.
 - **AISI 5-Level MCP Autonomy Classification** - Added to The MCP Problem page. Maps MCP server autonomy levels (read-only through unbounded autonomous) to MASO implementation tiers, with specific guidance for financial services.
 - **Self-Replication Capabilities (ET-09)** - New emerging threat in MASO threat intelligence. Documents RepliBench progression from 5% to 60% success rates (2023–2025) and implications for kill switch architecture.
 - **Capability Acceleration (ET-10)** - New emerging threat documenting the ~8-month doubling time for autonomous task complexity, with implications for control framework evolution cadence.
@@ -63,7 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Emerging Threats** - Updated threat landscape summary table to include ET-09 and ET-10.
 
 ### Rationale
-The UK AI Security Institute's Frontier AI Trends Report (December 2025) is the strongest empirical backing for runtime behavioural security from a government body. Its findings directly validate the framework's core thesis (runtime controls matter more than deployment-time security alone) and provide concrete data points that strengthen multiple framework sections. Credit given throughout via source attribution.
+The UK AI Security Institute's Frontier AI Trends Report (December 2025) is the strongest empirical backing for runtime behavioral security from a government body. Its findings directly validate the framework's core thesis (runtime controls matter more than deployment-time security alone) and provide concrete data points that strengthen multiple framework sections. Credit given throughout via source attribution.
 
 ## [0.7.0] - 2026-02-15
 
@@ -95,7 +95,7 @@ The framework is comprehensive but has no production deployments. Rather than ig
 - **Renamed: AI Security Blueprint → Enterprise AI Security Framework**
   - Better reflects the content scope (governance, compliance, org structure)
   - "Blueprint" implied buildable artifacts; "Framework" is accurate
-  - Later renamed to **AI Runtime Behaviour Security** (February 2026)
+  - Later renamed to **AI Runtime Security** (February 2026)
   
 ### Added
 - **IMPLEMENTATION_GUIDE.md** - New practical guide with working code

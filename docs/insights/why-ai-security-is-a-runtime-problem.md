@@ -98,7 +98,7 @@ The controls exist. The challenge is that most organisations are deploying multi
 
 ## What You Should Do Now
 
-If you are deploying AI in an enterprise, you need runtime behavioural security. Here is where to start:
+If you are deploying AI in an enterprise, you need runtime behavioral security. Here is where to start:
 
 **1. Classify your AI systems by use case, not by technology.** An internal chatbot summarising documentation is a different risk profile from an autonomous agent executing financial transactions. The controls must be proportionate to the risk, not uniform across all deployments.
 
@@ -118,5 +118,5 @@ AI security is not a design-time problem with a design-time solution. It is a ru
 
 The pattern is proven. NVIDIA NeMo Guardrails, AWS Bedrock Guardrails, Azure AI Content Safety, LangChain's evaluation framework - major platforms have converged on the same architecture independently. Guardrails for speed, Judge for depth, humans for nuance, circuit breakers for failure.
 
-The question is not whether your AI systems need runtime behavioural security. The question is whether you will implement it before or after an incident forces you to.
+The question is not whether your AI systems need runtime behavioral security. The question is whether you will implement it before or after an incident forces you to.
 

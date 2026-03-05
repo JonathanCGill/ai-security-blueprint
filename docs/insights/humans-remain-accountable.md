@@ -66,7 +66,7 @@ Every AI system needs an accountable owner - not the team, not the committee, a 
 | Role | Accountability |
 |------|----------------|
 | System owner | Business outcomes, customer impact |
-| Technical owner | System behaviour, control effectiveness |
+| Technical owner | System behavior, control effectiveness |
 | Compliance owner | Regulatory adherence, documentation |
 
 ### Decision documentation

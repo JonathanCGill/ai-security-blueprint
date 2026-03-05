@@ -217,5 +217,5 @@
   <text x="848" y="658" fill="#8b949e" font-size="9">Write-only to logs</text>
 
   <!-- Footer -->
-  <text x="550" y="695" text-anchor="middle" fill="#484f58" font-size="9">AI Runtime Behaviour Security - Technical Controls · Network &amp; Segmentation · github.com/JonathanCGill</text>
+  <text x="550" y="695" text-anchor="middle" fill="#484f58" font-size="9">AI Runtime Security - Technical Controls · Network &amp; Segmentation · github.com/JonathanCGill</text>
 </svg>

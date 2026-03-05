@@ -35,9 +35,9 @@ Treat agent identities with the same governance rigour as human identities: form
 
 No agent is trusted by default, regardless of where it runs or what created it.
 
-Every request from an agent - every tool invocation, every data retrieval, every delegation - must be evaluated against dynamic policy before it proceeds. This is NIST SP 800-207 (Zero Trust Architecture) applied to AI: continuous verification, per-session authorisation, no implicit trust based on network location or prior behaviour.
+Every request from an agent - every tool invocation, every data retrieval, every delegation - must be evaluated against dynamic policy before it proceeds. This is NIST SP 800-207 (Zero Trust Architecture) applied to AI: continuous verification, per-session authorisation, no implicit trust based on network location or prior behavior.
 
-**Implication:** A successful authentication does not grant access. Access is determined per-request by a policy engine that evaluates identity, context, behaviour, and risk.
+**Implication:** A successful authentication does not grant access. Access is determined per-request by a policy engine that evaluates identity, context, behavior, and risk.
 
 ### 3. Least Privilege and Zero Standing Privileges
 
@@ -114,7 +114,7 @@ Not all non-human identities are equal. AI systems introduce identity classes th
 | **Model-to-Model** | Judge evaluating primary model output | Separate identity, read-only | Session-scoped | Isolated: independent trust domain |
 | **MCP Tool Server** | External tool providing capabilities to agents | mTLS, OAuth 2.1 | Per-invocation | New: tool supply chain governance |
 
-The critical distinction is between *application services* (deterministic, predictable, auditable code paths) and *AI agents* (non-deterministic, autonomous, capable of novel behaviour). Traditional NHI governance handles the former. AI agent governance must handle the latter.
+The critical distinction is between *application services* (deterministic, predictable, auditable code paths) and *AI agents* (non-deterministic, autonomous, capable of novel behavior). Traditional NHI governance handles the former. AI agent governance must handle the latter.
 
 ## The Agent Identity Lifecycle
 
@@ -130,7 +130,7 @@ A new agent identity is created when - and only when - a legitimate business nee
 |-------------|--------|
 | **Unique identity** | Registered in the organisation's IdP - not a shared account, not an inherited role |
 | **Risk classification** | Assigned a framework risk tier (LOW / MEDIUM / HIGH / CRITICAL) that determines control intensity |
-| **Human sponsor** | A named individual accountable for this agent's existence and behaviour |
+| **Human sponsor** | A named individual accountable for this agent's existence and behavior |
 | **Purpose documentation** | What the agent does, what data it accesses, what tools it invokes, what its boundaries are |
 | **Initial permissions** | Scoped to the specific task - not "what the agent might need later" |
 
@@ -211,7 +211,7 @@ Every agent action is observed, logged, and evaluated - continuously, not after 
 | Requirement | Detail |
 |-------------|--------|
 | **Action logging** | Every tool invocation, data access, delegation event, and response logged with full context |
-| **Behavioural baseline** | Establish normal patterns per agent; flag deviations |
+| **Behavioral baseline** | Establish normal patterns per agent; flag deviations |
 | **Permission usage tracking** | Identify permissions granted but never used (candidates for removal) |
 | **Judge evaluation** | LLM-as-Judge evaluates access patterns for anomalies that rule-based systems miss |
 | **Credential access monitoring** | Track who accesses agent credentials, from where, and when |
@@ -307,7 +307,7 @@ AI agents face identity-based threats that traditional IAM was not designed to c
 |--------|-------------|-------|
 | **Shadow AI** | Business units deploy AI agents without IT governance | 44% of organisations report unsanctioned AI deployments |
 | **Agent as authorisation bypass** | Users instruct agents to perform actions they couldn't perform directly | Agent service accounts routinely have broader access than any individual user role |
-| **MCP tool poisoning** | Malicious instructions embedded in tool metadata manipulate agent behaviour | 13,000+ MCP servers launched on GitHub in 2025, faster than security can catalogue |
+| **MCP tool poisoning** | Malicious instructions embedded in tool metadata manipulate agent behavior | 13,000+ MCP servers launched on GitHub in 2025, faster than security can catalogue |
 | **Delegation chain compromise** | Compromised orchestrator cascades to all downstream agents | Simulated environments show 87% cascade rate within 4 hours |
 | **Token chain attacks** | Orchestrator holding tokens for downstream agents is compromised | Single compromise = access to all downstream systems |
 
@@ -322,12 +322,12 @@ AI agents face identity-based threats that traditional IAM was not designed to c
 
 ## How This Maps to the Three-Layer Defence
 
-IAM is not a standalone domain. It integrates with every layer of the runtime behavioural security pattern.
+IAM is not a standalone domain. It integrates with every layer of the runtime behavioral security pattern.
 
 | Layer | IAM Function | Controls |
 |-------|-------------|----------|
 | **Guardrails** | Enforce identity at every boundary. Validate tokens, check permissions, verify tool allowlists - before the agent acts | IAM-01, IAM-04, IAM-07, TOOL-01-06 |
-| **Judge** | Detect anomalous access patterns. Behavioural baseline comparison, permission usage drift, credential misuse - evaluated independently of the guardrails the agent interacted with | IAM-08, LOG-01-10 |
+| **Judge** | Detect anomalous access patterns. Behavioral baseline comparison, permission usage drift, credential misuse - evaluated independently of the guardrails the agent interacted with | IAM-08, LOG-01-10 |
 | **Human Oversight** | Approve high-risk actions, sponsor agent identities, conduct access reviews, respond to IAM incidents | IAM-05, IAM-03 |
 
 ### Independent Failure Domains
@@ -373,7 +373,7 @@ This governance model draws from internationally recognised standards and emergi
 | Tool allowlist defined and enforced at gateway? | N/A | Required | Required |
 | Delegation depth limits configured? | No delegation | Max 2 hops | Max 3 hops |
 | Automated credential rotation? | Recommended | Required | Required |
-| Behavioural baseline established? | Optional | Recommended | Required |
+| Behavioral baseline established? | Optional | Recommended | Required |
 | Access review schedule set? | Quarterly | Quarterly | Monthly |
 | Emergency revocation latency tested? | N/A | 5 minutes | 30 seconds |
 | Deprovisioning automation in place? | Recommended | Required | Required |
@@ -401,7 +401,7 @@ This governance model draws from internationally recognised standards and emergi
 | **Secrets and credentials** | [Infrastructure - Secrets & Credentials](../infrastructure/controls/secrets-and-credentials.md) | SEC-01 through SEC-08: context window isolation, short-lived tokens, vault management, credential scanning, rotation, agent isolation |
 | **Tool access controls** | [Infrastructure - Tool Access Controls](../infrastructure/agentic/tool-access-controls.md) | TOOL-01 through TOOL-06: allowlisting, gateway enforcement, parameter constraints, reversibility classification, rate limits, logging |
 | **Delegation chains** | [Infrastructure - Delegation Chains](../infrastructure/agentic/delegation-chains.md) | DEL-01 through DEL-05: least delegation, audit trails, depth limits, explicit authorisation, identity propagation |
-| **Multi-agent IAM** | [MASO - Identity & Access](../maso/controls/identity-and-access.md) | Tiered controls for multi-agent systems: NHI lifecycle, mutual authentication, behavioural binding, delegation contracts |
+| **Multi-agent IAM** | [MASO - Identity & Access](../maso/controls/identity-and-access.md) | Tiered controls for multi-agent systems: NHI lifecycle, mutual authentication, behavioral binding, delegation contracts |
 | **NHI lifecycle** | [Extensions - NHI Lifecycle](../extensions/technical/nhi-lifecycle.md) | Six-phase lifecycle: provisioning, authentication, authorisation, monitoring, review, deprovisioning |
 | **Financial services IAM** | [High-Risk Financial Services](../extensions/regulatory/high-risk-financial-services.md) | Four access control layers, financial services requirements, access control anti-patterns |
 | **IAM architecture diagram** | [IAM Control Layers](../infrastructure/diagrams/iam-control-layers.svg) | Visual: control plane / data plane separation with agent authorisation gateway |

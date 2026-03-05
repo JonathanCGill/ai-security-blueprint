@@ -1,8 +1,8 @@
 ---
-description: Runtime behavioural security controls for single-model AI deployments. Guardrails, LLM-as-Judge, and human oversight scaled to risk tiers.
+description: Runtime behavioral security controls for single-model AI deployments. Guardrails, LLM-as-Judge, and human oversight scaled to risk tiers.
 ---
 
-# AI Runtime Behaviour Security - Single-Agent Controls
+# AI Runtime Security - Single-Agent Controls
 
 > Most AI governance guidance assumes you can test your way to safety.
 > You cannot.
@@ -27,11 +27,11 @@ AI systems are non-deterministic. Same prompt, same model, same parameters - dif
 
 ![Single-Agent Security Architecture](../images/single-agent-architecture.svg)
 
-Three layers, one principle: **you can't fully test a non-deterministic system before deployment, so you continuously verify behaviour in production.** This is a [closed-loop control system](../insights/why-containment-beats-evaluation.md) - not evaluate-once-and-deploy, but constrain-and-continuously-verify.
+Three layers, one principle: **you can't fully test a non-deterministic system before deployment, so you continuously verify behavior in production.** This is a [closed-loop control system](../insights/why-containment-beats-evaluation.md) - not evaluate-once-and-deploy, but constrain-and-continuously-verify.
 
 **Layer 1 - Guardrails** (containment boundaries) block known-bad inputs and outputs at machine speed (~10ms). Deterministic pattern matching: content filters, PII detection, topic restrictions, rate limits. Permissions derive from business intent - what the use case requires - not from evaluation of the model's capabilities. These are **action-space constraints** that leave the model's reasoning unconstrained. Every request passes through. No exceptions.
 
-**Layer 2 - LLM-as-Judge** catches unknown-bad through independent model evaluation (~500ms–5s). A separate LLM, **enterprise-owned and configured**, evaluates task agent outputs against policy, factual grounding, tone, and safety criteria. Catches what guardrails can't pattern-match - including within-bounds adversarial behaviour that containment alone cannot address.
+**Layer 2 - LLM-as-Judge** catches unknown-bad through independent model evaluation (~500ms–5s). A separate LLM, **enterprise-owned and configured**, evaluates task agent outputs against policy, factual grounding, tone, and safety criteria. Catches what guardrails can't pattern-match - including within-bounds adversarial behavior that containment alone cannot address.
 
 **Layer 3 - Human Oversight** provides the accountability backstop. Scope scales with risk: low-risk systems get spot checks, high-risk systems get human approval before commit. Humans decide edge cases. Humans own outcomes. Handles what neither containment nor the Judge can resolve autonomously.
 
@@ -120,7 +120,7 @@ This section defines *what* to enforce. The [infrastructure](../infrastructure/)
 
 ![Defence in Depth Beyond the AI Layer](../images/defence-in-depth-beyond-ai.svg)
 
-The three-layer model above - guardrails, judge, human oversight - addresses controls specific to non-deterministic AI behaviour. It does not replace the security controls your organisation already has. It sits inside them.
+The three-layer model above - guardrails, judge, human oversight - addresses controls specific to non-deterministic AI behavior. It does not replace the security controls your organisation already has. It sits inside them.
 
 Your existing DLP systems apply to data flowing into and out of AI systems - both preventing sensitive data from reaching models and catching leakage that AI-specific controls miss. API gateways validate requests and enforce schemas regardless of whether the caller is human or AI. Database access controls and parameterised queries prevent injection even if an agent constructs a malicious query. IAM governs who can invoke AI systems in the first place. SIEM correlates AI events with network, endpoint, and application events. Secure coding practices in the systems agents interact with still matter - arguably more, because the caller is now non-deterministic.
 
@@ -177,7 +177,7 @@ When AI agents collaborate, delegate tasks, and take autonomous actions across t
 | Article | Key Argument |
 | --- | --- |
 | [The Verification Gap](../insights/the-verification-gap.md) | Current safety approaches can't confirm ground truth |
-| [Behavioral Anomaly Detection](../insights/behavioral-anomaly-detection.md) | Aggregating signals to detect drift from expected behaviour |
+| [Behavioral Anomaly Detection](../insights/behavioral-anomaly-detection.md) | Aggregating signals to detect drift from expected behavior |
 | [Multimodal AI Breaks Your Text-Based Guardrails](../insights/multimodal-breaks-guardrails.md) | Images, audio, and video create new attack surfaces |
 | [When AI Thinks Before It Answers](../insights/when-ai-thinks.md) | Reasoning models need reasoning-aware controls |
 | [When Agents Talk to Agents](../insights/when-agents-talk-to-agents.md) | Multi-agent accountability gaps → see [MASO](../maso/) |

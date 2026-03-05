@@ -213,7 +213,7 @@ AI models are inherently opaque - billions of parameters with no traceable decis
 
 | Type | Purpose | When |
 |------|---------|------|
-| Functional | Correct behaviour | Pre-deployment |
+| Functional | Correct behavior | Pre-deployment |
 | Security | Vulnerability identification | Pre-deployment |
 | Adversarial | Robustness against attacks | Pre-deployment, periodic |
 | Bias | Fairness across protected characteristics | Pre-deployment, periodic |
@@ -287,7 +287,7 @@ AI models are inherently opaque - billions of parameters with no traceable decis
 
 **Requirement:** Validate and protect the integrity of content retrieved for AI context.
 
-Retrieved content (RAG) is a primary attack vector. Poisoned knowledge base content can hijack model behaviour without triggering input guardrails, because the malicious content enters through the data path, not the user input path.
+Retrieved content (RAG) is a primary attack vector. Poisoned knowledge base content can hijack model behavior without triggering input guardrails, because the malicious content enters through the data path, not the user input path.
 
 **Implementation:**
 
@@ -326,7 +326,7 @@ Retrieved content (RAG) is a primary attack vector. Poisoned knowledge base cont
 
 ### AI.6.2 Model Validation
 
-**Requirement:** Validate model behaviour before and during deployment.
+**Requirement:** Validate model behavior before and during deployment.
 
 | Tier | Validation Required |
 |------|---------------------|
@@ -350,7 +350,7 @@ Retrieved content (RAG) is a primary attack vector. Poisoned knowledge base cont
 
 ### AI.6.3 Model Monitoring
 
-**Requirement:** Monitor model performance and behaviour in production.
+**Requirement:** Monitor model performance and behavior in production.
 
 **Implementation:**
 - Performance metrics (accuracy, latency, throughput)
@@ -366,7 +366,7 @@ Retrieved content (RAG) is a primary attack vector. Poisoned knowledge base cont
 |-------------|----------------|
 | Threshold alerts | Sudden failures, outages |
 | Trend analysis | Gradual quality decline over days/weeks |
-| Baseline comparison | Drift from validated behaviour |
+| Baseline comparison | Drift from validated behavior |
 | Distribution monitoring | Shift in output patterns |
 
 **Evidence:** Monitoring dashboards, alerts, trend reports
@@ -384,7 +384,7 @@ AI models can develop emergent capabilities that weren't explicitly programmed. 
 | New model deployment | Full capability assessment |
 | Model version upgrade | Delta assessment (what changed?) |
 | Provider announces new capabilities | Evaluate relevance and risk |
-| Anomalous behaviour detected | Investigate for unknown capabilities |
+| Anomalous behavior detected | Investigate for unknown capabilities |
 
 **Assessment scope:**
 
@@ -549,7 +549,7 @@ The Judge is an **async assurance mechanism** that evaluates AI interactions aft
 
 **Hallucination detection:** Judge compares AI output against the source data that was retrieved. Claims not supported by retrieved context should be flagged. This is the primary async defence against hallucination.
 
-**Instruction override detection:** Judge evaluates whether the model's behaviour in an interaction is consistent with its system prompt. Behavioural anomalies - sudden topic changes, policy deviations, unusual output formats - may indicate the model followed injected instructions.
+**Instruction override detection:** Judge evaluates whether the model's behavior in an interaction is consistent with its system prompt. Behavioral anomalies - sudden topic changes, policy deviations, unusual output formats - may indicate the model followed injected instructions.
 
 **Criteria-based evaluation:** Because AI is non-deterministic, Judge evaluates outputs against acceptance criteria, not expected exact outputs. "Was this response helpful, accurate, and within policy?" - not "Did this response match the expected answer?"
 
@@ -988,7 +988,7 @@ Without full context capture, incident investigation is impossible - you cannot 
 - Understanding of model provenance
 - **Training data practices assessment** (what data was used, how was bias mitigated, what content filtering was applied)
 - **Data retention policy** (does the provider retain your data? For how long? For what purpose?)
-- **Model update notification** (how does the provider communicate changes to model behaviour?)
+- **Model update notification** (how does the provider communicate changes to model behavior?)
 
 **Evidence:** Vendor assessment records, training data practice assessments
 
@@ -1004,7 +1004,7 @@ Without full context capture, incident investigation is impossible - you cannot 
 - Audit rights
 - Zero-retention options for sensitive data
 - Model deprecation notice periods
-- Behavioural change notification requirements
+- Behavioral change notification requirements
 
 **Evidence:** Contract terms
 
@@ -1025,7 +1025,7 @@ Without full context capture, incident investigation is impossible - you cannot 
 
 **Requirement:** Assess the risks associated with foundation model training data for each use case.
 
-The behaviour of AI systems is shaped by training data you don't control and likely can't fully audit. Training data risks include inherited bias, embedded misinformation, copyright issues, and cultural assumptions.
+The behavior of AI systems is shaped by training data you don't control and likely can't fully audit. Training data risks include inherited bias, embedded misinformation, copyright issues, and cultural assumptions.
 
 **Assessment per model per use case:**
 

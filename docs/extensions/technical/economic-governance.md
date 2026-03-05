@@ -8,7 +8,7 @@ Traditional software costs are predictable: compute scales linearly, storage cos
 
 LLM inference costs depend on input length, output length, model selection, and — increasingly — reasoning tokens that are invisible without instrumentation. Agentic systems compound the problem: autonomous agents retry, reformulate, and chain tool calls in patterns that make per-task costs unpredictable. A single agent loop can consume thousands of API calls before anyone notices.
 
-The result is a new class of operational risk: **economic risk from uncontrolled AI runtime behaviour.**
+The result is a new class of operational risk: **economic risk from uncontrolled AI runtime behavior.**
 
 This isn't hypothetical:
 
@@ -69,7 +69,7 @@ You cannot govern what you cannot see. Every AI interaction must be instrumented
 
 ### 2. Attribute: Know Who's Spending It
 
-Visibility without attribution doesn't change behaviour. Every AI cost must be attributable to a specific dimension:
+Visibility without attribution doesn't change behavior. Every AI cost must be attributable to a specific dimension:
 
 | Attribution Dimension | Purpose | Example |
 |----------------------|---------|---------|
@@ -106,7 +106,7 @@ Do not jump straight to blocking requests when budgets are approached. Use gradu
 | **Per-session budget** | Caps total spend within a single user session | Agentic systems where sessions can run for extended periods |
 | **Per-user daily/monthly limits** | Prevents individual users from consuming disproportionate budget | Multi-tenant systems; abuse prevention |
 | **Per-application budget** | Hard ceiling on total spend per application per period | Portfolio-level cost governance |
-| **Agent loop detection** | Detects and terminates repetitive agent behaviour | Agentic systems — the primary runaway cost driver |
+| **Agent loop detection** | Detects and terminates repetitive agent behavior | Agentic systems — the primary runaway cost driver |
 | **Circuit breaker** | Automatically halts AI processing when cost rate exceeds threshold | Emergency protection against cost spikes |
 
 #### The Agent Loop Problem
@@ -191,7 +191,7 @@ AI model providers offer varying levels of native cost controls. Organisations s
 | Provider | Native Budget Control | Limitation |
 |----------|----------------------|------------|
 | **Anthropic** | Hard monthly spend caps tied to usage tiers; token bucket rate limiting (RPM, TPM, TPD) | Organisation-level only; no per-application or per-user granularity |
-| **OpenAI** | Budget limit settings; configurable alerts | Reported to function as alerts rather than hard stops in some configurations — verify enforcement behaviour |
+| **OpenAI** | Budget limit settings; configurable alerts | Reported to function as alerts rather than hard stops in some configurations — verify enforcement behavior |
 | **Azure OpenAI** | TPM/RPM quotas per deployment | **No built-in hard spending cap.** Quotas control request rate but do not correlate to total monthly spending; exceeding limits triggers throttling, not blocking |
 | **AWS Bedrock** | Per-model throughput provisioning; CloudWatch billing alarms | Billing alarms are reactive, not preventive; no native per-request cost enforcement |
 | **Google Vertex AI** | Budget alerts via Cloud Billing; quota limits | Alerts are notifications, not enforcement; budget exceeded before alert arrives |

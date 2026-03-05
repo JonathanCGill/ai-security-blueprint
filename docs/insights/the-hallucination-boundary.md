@@ -1,6 +1,6 @@
 ---
 description: When an LLM hallucination is a nuisance and when it becomes catastrophic. A risk-based framework for hallucination tolerance tied to decision authority and blast radius.
-og_title: The Hallucination Boundary - AI Runtime Behaviour Security
+og_title: The Hallucination Boundary - AI Runtime Security
 og_description: Analysis of when LLM hallucinations cross from tolerable to catastrophic, with a risk curve showing how decision authority and multi-agent amplification shift the consequence.
 ---
 
@@ -155,7 +155,7 @@ The progression is deliberate. Each phase removes a degree of freedom from the m
 
 5. **When verification fails, stop generating.** The PACE degradation path for hallucination failure ends at retrieval-only mode. If you cannot verify the output, do not produce it.
 
-6. **Epistemic controls are structural, not behavioural.** Telling a model "do not hallucinate" is an instruction. Requiring claim provenance, prohibiting self-referential evidence, and preserving uncertainty metadata through the message schema is infrastructure. [Infrastructure beats instructions](infrastructure-beats-instructions.md).
+6. **Epistemic controls are structural, not behavioral.** Telling a model "do not hallucinate" is an instruction. Requiring claim provenance, prohibiting self-referential evidence, and preserving uncertainty metadata through the message schema is infrastructure. [Infrastructure beats instructions](infrastructure-beats-instructions.md).
 
 ## Related
 

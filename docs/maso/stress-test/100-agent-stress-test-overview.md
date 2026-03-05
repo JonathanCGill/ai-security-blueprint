@@ -17,7 +17,7 @@ The [worked examples](../examples/worked-examples.md) validate MASO against real
 MASO's controls were designed with scalability in mind, but design intent and operational reality diverge in predictable ways:
 
 - **Linear controls hit quadratic problems.** A control that inspects each agent's output scales linearly. A control that monitors communication *between* agents scales with the number of agent pairs - quadratically.
-- **Composition creates emergent behaviour.** Five agents with well-tested PACE transitions do not guarantee that fifty agents degrade gracefully when a shared dependency fails. Cascade dynamics only emerge at scale.
+- **Composition creates emergent behavior.** Five agents with well-tested PACE transitions do not guarantee that fifty agents degrade gracefully when a shared dependency fails. Cascade dynamics only emerge at scale.
 - **Operational cost becomes a constraint.** A Judge evaluation on every inter-agent message is sound security architecture. Whether the organisation can afford the compute and latency at 10,000 messages per second is an operational question the framework should help teams answer before they discover it in production.
 
 The purpose of this exercise is to help architects and security teams anticipate these breakpoints *before* they scale - not after an incident teaches them where the limits were.
@@ -149,9 +149,9 @@ When agents are organised into multiple clusters with dependencies between them,
 
 | Control | Designed For | Stress Point |
 |---------|-------------|-------------|
-| PACE three-axis model | Resilience within an orchestration | No defined behaviour for inter-cluster cascade |
+| PACE three-axis model | Resilience within an orchestration | No defined behavior for inter-cluster cascade |
 | OB-3.2 Circuit breaker | Emergency halt for one cluster | Coordinated halt across multiple clusters undefined |
-| OB-2.2 Drift detection | Per-agent behavioural baseline | Baseline behaviour changes when upstream clusters degrade |
+| OB-2.2 Drift detection | Per-agent behavioral baseline | Baseline behavior changes when upstream clusters degrade |
 
 ### Potential Framework Extension
 
@@ -172,7 +172,7 @@ MASO's observability controls (OB-2.1 anomaly scoring, OB-2.2 drift detection, O
 At 100 agents, the message volume changes the problem:
 
 - **Message throughput.** If each agent sends an average of 10 messages per minute to other agents, the system generates ~1,000 messages per minute. At peak (e.g., market open, incident response), this may spike to 10,000+ per minute. Every message needs anomaly scoring, drift comparison, and potentially DLP scanning.
-- **Anomaly baseline complexity.** Behavioural baselines at 5 agents are 5 profiles. At 100 agents, it is 100 profiles - plus the interaction patterns between agents, which is combinatorial. What constitutes "anomalous" for Agent 47's communication pattern with Agent 83?
+- **Anomaly baseline complexity.** Behavioral baselines at 5 agents are 5 profiles. At 100 agents, it is 100 profiles - plus the interaction patterns between agents, which is combinatorial. What constitutes "anomalous" for Agent 47's communication pattern with Agent 83?
 - **Alert fatigue.** More agents means more anomaly signals. If each agent generates a false positive alert once per day, 100 agents generate 100 false positives per day. The human review capacity for PACE escalation decisions becomes the bottleneck.
 - **Cost.** If every message is evaluated by a Judge model, the observability compute cost may exceed the task compute cost. The framework's [cost and latency guidance](../../extensions/technical/cost-and-latency.md) discusses sampling rates for single-model systems - the same logic applies at scale, but the trade-offs are sharper.
 
@@ -189,7 +189,7 @@ At 100 agents, the message volume changes the problem:
 | Control | Designed For | Stress Point |
 |---------|-------------|-------------|
 | OB-2.1 Anomaly scoring | Per-agent anomaly detection | 100 baselines + interaction pattern baselines |
-| OB-2.2 Drift detection | Behavioural change detection | Drift thresholds harder to calibrate at scale |
+| OB-2.2 Drift detection | Behavioral change detection | Drift thresholds harder to calibrate at scale |
 | OB-2.3 Communication profiling | Inter-agent traffic analysis | Volume may require sampling rather than full inspection |
 | EC-2.5 LLM-as-Judge | Per-action evaluation | Cost scales linearly with message count |
 
@@ -298,7 +298,7 @@ The [red team playbook](../red-team/red-team-playbook.md) tests individual attac
 At 100 agents, the attack surface is not 20x larger - it is combinatorially larger. An attacker can chain techniques:
 
 - **Injection + delegation laundering.** Inject a payload into a low-privilege agent (RT-01). The payload instructs the agent to delegate a seemingly benign task to a high-privilege agent (RT-02). The delegated task, once accepted, exploits the high-privilege agent's tool access. The attack crosses 3 agents and 2 control domains (prompt integrity, identity & access).
-- **Slow drift + judge evasion.** Gradually shift an agent's behaviour over hundreds of interactions (RT-07) while keeping each individual interaction within the anomaly detection threshold (RT-10). Once the agent's behavioural baseline has been sufficiently shifted, exploit the new baseline as "normal."
+- **Slow drift + judge evasion.** Gradually shift an agent's behavior over hundreds of interactions (RT-07) while keeping each individual interaction within the anomaly detection threshold (RT-10). Once the agent's behavioral baseline has been sufficiently shifted, exploit the new baseline as "normal."
 - **Supply chain + epistemic cascade.** Poison an MCP server (ET-04) that feeds data to a cluster of agents. The poisoned data propagates through the epistemic chain (ET-05) and is corroborated by multiple agents using the same poisoned source. The consensus diversity gate (PG-2.4) does not trigger because the agents use different models - the correlation is in the data, not the models.
 
 ### What to Assess

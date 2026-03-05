@@ -1,7 +1,7 @@
 # Delegation Chain Controls
 
 > Part of the [AI Security Infrastructure Controls](../README.md) framework - Agentic AI Controls.
-> Companion to [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security).
+> Companion to [AI Runtime Security](https://github.com/JonathanCGill/ai-runtime-behavior-security).
 
 ## Overview
 
@@ -59,7 +59,7 @@ Every delegation chain must produce a linked, chronological audit trail that all
 | Layer | How DEL-02 Supports It |
 |-------|----------------------|
 | **Guardrails** | The audit trail provides evidence that delegation guardrails (permission intersection, depth limits) are functioning correctly. |
-| **Judge** | The complete chain audit trail is a primary input for Judge evaluation of multi-agent workflows. The Judge can assess whether the chain's collective behaviour was appropriate. |
+| **Judge** | The complete chain audit trail is a primary input for Judge evaluation of multi-agent workflows. The Judge can assess whether the chain's collective behavior was appropriate. |
 | **Human Oversight** | End-to-end chain reconstruction is essential for human reviewers. Without it, multi-agent systems are opaque and unaccountable. |
 
 ## DEL-03 - Limit Delegation Depth
@@ -138,6 +138,6 @@ The identity of the originating user must be propagated through the entire deleg
 | Layer | How DEL-05 Supports It |
 |-------|----------------------|
 | **Guardrails** | User identity propagation ensures that guardrail enforcement always considers the user's authorisation level, even in deeply nested delegation chains. |
-| **Judge** | User identity in chain logs enables the Judge to evaluate whether actions taken on behalf of a user are consistent with that user's role, permissions, and historical behaviour patterns. |
+| **Judge** | User identity in chain logs enables the Judge to evaluate whether actions taken on behalf of a user are consistent with that user's role, permissions, and historical behavior patterns. |
 | **Human Oversight** | User identity propagation enables accountability. Every action by every agent in a chain is traceable to the human who initiated it. |
 

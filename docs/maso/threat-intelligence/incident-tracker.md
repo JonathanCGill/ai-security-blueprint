@@ -52,7 +52,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 
 ### INC-02: Microsoft Copilot "Reprompt" Exploit (2025)
 
-**What happened:** Attackers crafted URLs containing injection payloads in URL parameters. When a user opened these URLs in a Copilot-enabled environment, the parameters influenced Copilot's behaviour without the user's knowledge. The injected instructions silently directed Copilot to exfiltrate data through outbound requests, with no visible indication to the user that anything abnormal was occurring.
+**What happened:** Attackers crafted URLs containing injection payloads in URL parameters. When a user opened these URLs in a Copilot-enabled environment, the parameters influenced Copilot's behavior without the user's knowledge. The injected instructions silently directed Copilot to exfiltrate data through outbound requests, with no visible indication to the user that anything abnormal was occurring.
 
 **Failure class:** URL parameter injection → silent exfiltration
 
@@ -63,7 +63,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | Control | Mechanism | Effect |
 |---------|-----------|--------|
 | Input guardrails | URL parameters sanitised before entering LLM context; injection patterns detected and stripped | Prevents attacker-controlled parameters from reaching the model |
-| Context sanitisation | External inputs normalised and validated against expected schemas before inclusion in prompts | Blocks injection payloads that attempt to influence model behaviour |
+| Context sanitisation | External inputs normalised and validated against expected schemas before inclusion in prompts | Blocks injection payloads that attempt to influence model behavior |
 | Tool access constraints | Outbound tools (HTTP requests, file access) restricted to explicitly authorised targets | Even if injection reaches the model, exfiltration targets are blocked |
 | Exfiltration detection judge | Independent model evaluates outbound requests for signs of data leakage | Catches silent exfiltration that bypasses input-level controls |
 | Anomaly-triggered circuit breaker | Unusual outbound request patterns trigger automatic session termination | Stops the attack if detection layers are evaded |
@@ -134,7 +134,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 
 | Control | Mechanism | Effect |
 |---------|-----------|--------|
-| File-system scope restriction | Code interpreter can only access files within an explicitly defined directory scope | Prevents reading files outside the authorised workspace regardless of model behaviour |
+| File-system scope restriction | Code interpreter can only access files within an explicitly defined directory scope | Prevents reading files outside the authorised workspace regardless of model behavior |
 | Network egress controls | Outbound network access restricted to approved endpoints; all other traffic blocked | Prevents exfiltration even if the model successfully reads sensitive files |
 | Sensitive data exfiltration judge | Independent model evaluates code interpreter actions for patterns consistent with data exfiltration | Catches exfiltration attempts that use approved endpoints with unusual payloads |
 | Capability segmentation | File read capabilities and network capabilities operate under separate permission grants | Reading files doesn't automatically grant the ability to transmit their contents |

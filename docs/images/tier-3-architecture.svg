@@ -34,7 +34,7 @@
   <rect x="70" y="185" width="200" height="4" rx="2" fill="#00c9ff"/>
   <text x="170" y="211" text-anchor="middle" fill="#00c9ff" font-size="12" font-weight="700">Agent A (NHI-A)</text>
   <rect x="95" y="220" width="150" height="16" rx="4" fill="#0a1a2a" stroke="#00c9ff" stroke-width="0.5"/>
-  <text x="170" y="232" text-anchor="middle" fill="#00c9ff" font-size="7">Cert · Behavioural binding</text>
+  <text x="170" y="232" text-anchor="middle" fill="#00c9ff" font-size="7">Cert · Behavioral binding</text>
   <text x="170" y="254" text-anchor="middle" fill="#667" font-size="8">15-min rotation (high priv)</text>
   <text x="170" y="268" text-anchor="middle" fill="#667" font-size="8">Auto-revoke on anomaly (30s)</text>
   <text x="170" y="282" text-anchor="middle" fill="#667" font-size="8">Delegation contracts</text>
@@ -44,7 +44,7 @@
   <rect x="630" y="185" width="200" height="4" rx="2" fill="#00c9ff"/>
   <text x="730" y="211" text-anchor="middle" fill="#00c9ff" font-size="12" font-weight="700">Agent B (NHI-B)</text>
   <rect x="655" y="220" width="150" height="16" rx="4" fill="#0a1a2a" stroke="#00c9ff" stroke-width="0.5"/>
-  <text x="730" y="232" text-anchor="middle" fill="#00c9ff" font-size="7">Cert · Behavioural binding</text>
+  <text x="730" y="232" text-anchor="middle" fill="#00c9ff" font-size="7">Cert · Behavioral binding</text>
   <text x="730" y="254" text-anchor="middle" fill="#667" font-size="8">15-min rotation (high priv)</text>
   <text x="730" y="268" text-anchor="middle" fill="#667" font-size="8">Auto-revoke on anomaly (30s)</text>
   <text x="730" y="282" text-anchor="middle" fill="#667" font-size="8">Delegation contracts</text>

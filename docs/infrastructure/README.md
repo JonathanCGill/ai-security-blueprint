@@ -1,16 +1,16 @@
 ---
-description: Infrastructure controls that enforce AI behavioural security across identity, access, logging, network segmentation, and incident response.
+description: Infrastructure controls that enforce AI behavioral security across identity, access, logging, network segmentation, and incident response.
 ---
 
 # AI Security Infrastructure Controls
 
-**The infrastructure layer that makes behavioural AI security enforceable.**
+**The infrastructure layer that makes behavioral AI security enforceable.**
 
-Companion to [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security), which defines the three-layer behavioural security pattern (Guardrails → LLM-as-Judge → Human Oversight). This repo defines the 80 technical infrastructure controls that underpin that pattern.
+Companion to [AI Runtime Security](https://github.com/JonathanCGill/ai-runtime-behavior-security), which defines the three-layer behavioral security pattern (Guardrails → LLM-as-Judge → Human Oversight). This repo defines the 80 technical infrastructure controls that underpin that pattern.
 
 ## The Problem
 
-You can't enforce behavioural security controls on infrastructure you don't control. The parent framework tells you *what* to enforce. This repo tells you *how* to enforce it:
+You can't enforce behavioral security controls on infrastructure you don't control. The parent framework tells you *what* to enforce. This repo tells you *how* to enforce it:
 
 - **Who can reach the model?** → [Identity & Access Management](controls/identity-and-access.md)
 - **How do you know it's working?** → [Logging & Observability](controls/logging-and-observability.md)
@@ -65,7 +65,7 @@ Model I/O logging, guardrail decisions, Judge evaluations, agent chains, drift d
 | LOG-02 | Log guardrail decisions | All |
 | LOG-03 | Log Judge evaluations | Tier 2+ |
 | LOG-04 | Log agent decision chains | Tier 2+ (agentic) |
-| LOG-05 | Detect behavioural drift | Tier 2+ |
+| LOG-05 | Detect behavioral drift | Tier 2+ |
 | LOG-06 | Detect prompt injection attempts | All |
 | LOG-07 | Protect log integrity | Tier 2+ |
 | LOG-08 | Enforce retention policies | All |
@@ -195,7 +195,7 @@ Additional controls for systems where AI agents invoke tools, generate code, del
 
 ## Regulatory & Standards Mappings
 
-Every control maps to the three-layer behavioural model and to established standards:
+Every control maps to the three-layer behavioral model and to established standards:
 
 | Mapping | Coverage |
 |---------|----------|

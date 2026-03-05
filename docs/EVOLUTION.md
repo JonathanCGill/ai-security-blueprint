@@ -2,7 +2,7 @@
 
 **How this framework changed - and why.**
 
-> Part of [AI Runtime Behaviour Security](./)
+> Part of [AI Runtime Security](./)
 > Last updated: February 2026
 
 ## Why This Page Exists
@@ -19,7 +19,7 @@ For the mechanical changelog (version numbers, file-level changes), see [Changel
 
 **The starting point: three layers and a risk model.**
 
-The framework launched with the core thesis: AI systems are non-deterministic, you can't fully test them before deployment, so you need runtime behavioural monitoring. The three-layer model - Guardrails prevent, Judge detects, Humans decide - was the foundation.
+The framework launched with the core thesis: AI systems are non-deterministic, you can't fully test them before deployment, so you need runtime behavioral monitoring. The three-layer model - Guardrails prevent, Judge detects, Humans decide - was the foundation.
 
 This wasn't a novel invention. NVIDIA NeMo, AWS Bedrock, Azure AI, and LangChain were already implementing variants of this pattern independently. The framework's contribution was codifying it: risk tiers, control selection criteria, implementation guidance, and standards mappings - in one place, vendor-neutral.
 
@@ -62,7 +62,7 @@ Major restructure into Core + Extensions. Created a clear 5-document starting pa
 
 **Renamed from "AI Security Blueprint" to "Enterprise AI Security Framework."**
 
-"Blueprint" implied buildable artifacts - specific, ready-to-deploy implementations. The framework was strategic guidance, not a blueprint. The rename was an honesty correction. Later renamed to **AI Runtime Behaviour Security** to reflect the core thesis: AI is non-deterministic, so you secure it by observing runtime behaviour.
+"Blueprint" implied buildable artifacts - specific, ready-to-deploy implementations. The framework was strategic guidance, not a blueprint. The rename was an honesty correction. Later renamed to **AI Runtime Security** to reflect the core thesis: AI is non-deterministic, so you secure it by observing runtime behavior.
 
 Simultaneously added the Implementation Guide: ~1,500 lines of copy-paste-ready Python covering input guardrails, output guardrails, LLM-as-Judge, human-in-the-loop queue, and telemetry. If the framework was going to be called a framework and not a blueprint, it needed an actual implementation path alongside the strategic guidance.
 

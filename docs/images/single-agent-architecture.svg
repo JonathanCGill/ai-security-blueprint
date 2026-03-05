@@ -109,5 +109,5 @@
 
   <!-- Bottom summary -->
   <text x="450" y="498" text-anchor="middle" font-size="12" fill="#1e293b" font-weight="600">Guardrails prevent · Judge detects · Humans decide · Circuit breakers contain</text>
-  <text x="450" y="514" text-anchor="middle" font-size="10" fill="#64748b">AI Runtime Behaviour Security - foundations/</text>
+  <text x="450" y="514" text-anchor="middle" font-size="10" fill="#64748b">AI Runtime Security - foundations/</text>
 </svg>

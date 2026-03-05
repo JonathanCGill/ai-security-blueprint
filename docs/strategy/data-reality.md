@@ -6,7 +6,7 @@
 
 ## The Data Assumption
 
-Every AI strategy assumes data. "We'll use AI to analyse customer behaviour." "We'll build an AI-powered risk model." "We'll automate document processing with AI."
+Every AI strategy assumes data. "We'll use AI to analyse customer behavior." "We'll build an AI-powered risk model." "We'll automate document processing with AI."
 
 Each of these assumes that the required data exists, is accessible, is clean enough to use, and can legally be processed. In most organisations, at least one of these assumptions is wrong.
 

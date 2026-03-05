@@ -41,11 +41,11 @@ Over a long task, agents can drift from their stated objectives. They pursue sub
 
 The instructions are still there. The agent has wandered away from them.
 
-### Emergent behaviour
+### Emergent behavior
 
-At scale, agents exhibit behaviours that weren't anticipated. Interactions between multiple agents. Feedback loops with their environment. Patterns that emerge from thousands of executions.
+At scale, agents exhibit behaviors that weren't anticipated. Interactions between multiple agents. Feedback loops with their environment. Patterns that emerge from thousands of executions.
 
-No instruction set covers emergent behaviour because you can't instruct against what you haven't imagined.
+No instruction set covers emergent behavior because you can't instruct against what you haven't imagined.
 
 ## The Infrastructure Alternative
 

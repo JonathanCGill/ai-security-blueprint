@@ -94,7 +94,7 @@ Use this questionnaire when assessing AI vendors, foundation model providers, an
 | Is training data provenance documented? | Yes / No |
 | Has the model been tested for bias? | Yes / No |
 
-### 4.3 Model Behaviour
+### 4.3 Model Behavior
 
 | Question | Response |
 |----------|----------|
@@ -146,7 +146,7 @@ Use this questionnaire when assessing AI vendors, foundation model providers, an
 | What is the advance notice period for breaking changes? | |
 | Can customers opt out of automatic updates? | |
 | What is the deprecation policy for model versions? | |
-| How are behaviour changes documented? | |
+| How are behavior changes documented? | |
 | Is there a changelog available? | |
 
 ## 7. Business Continuity and Exit

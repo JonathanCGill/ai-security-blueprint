@@ -1,4 +1,4 @@
-# Contributing to AI Runtime Behaviour Security
+# Contributing to AI Runtime Security
 
 Thank you for your interest in contributing to this project. This document provides guidelines for contributions.
 

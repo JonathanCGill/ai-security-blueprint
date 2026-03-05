@@ -4,9 +4,9 @@
 
 ## Source: Bornet et al. (March 2025) — SPAR Framework & Five-Level Agentic AI Progression Review
 
-Reviewed against MASO and the AI Runtime Behaviour Security framework. Analysis date: March 2026.
+Reviewed against MASO and the AI Runtime Security framework. Analysis date: March 2026.
 
-Bornet et al. (572 pages, 27 co-authors) is a non-technical, business-leader-oriented playbook. Two core contributions: the SPAR Framework (Sense, Plan, Act, Reflect) as a capability model for evaluating agent behaviour, and a Five-Level Agentic AI Progression Framework (L0 manual → L5 fully autonomous) as a maturity taxonomy where higher isn't always better. Also covers memory architecture types (semantic, episodic, procedural), the "Agent Economy" concept, implementation pitfalls, and governance.
+Bornet et al. (572 pages, 27 co-authors) is a non-technical, business-leader-oriented playbook. Two core contributions: the SPAR Framework (Sense, Plan, Act, Reflect) as a capability model for evaluating agent behavior, and a Five-Level Agentic AI Progression Framework (L0 manual → L5 fully autonomous) as a maturity taxonomy where higher isn't always better. Also covers memory architecture types (semantic, episodic, procedural), the "Agent Economy" concept, implementation pitfalls, and governance.
 
 ### Item 1: SPAR-Mapped Threat View
 

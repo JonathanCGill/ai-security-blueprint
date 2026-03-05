@@ -35,7 +35,7 @@ Deep dives on controls, infrastructure, and metrics.
 |----------|-------------|
 | [soc-integration.md](soc-integration.md) | SOC architecture, alert taxonomy, and triage procedures |
 | [soc-content-pack.md](soc-content-pack.md) | Ready-to-deploy SIEM detection rules, correlation searches, and dashboards |
-| [anomaly-detection-ops.md](anomaly-detection-ops.md) | Behavioural anomaly detection operations |
+| [anomaly-detection-ops.md](anomaly-detection-ops.md) | Behavioral anomaly detection operations |
 | [nhi-lifecycle.md](nhi-lifecycle.md) | Non-human identity lifecycle management |
 | [supply-chain.md](supply-chain.md) | AI supply chain security controls |
 | [rag-security.md](rag-security.md) | RAG pipeline security |

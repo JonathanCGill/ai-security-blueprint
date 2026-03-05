@@ -35,7 +35,7 @@
   <text x="450" y="175" fill="#889999" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="10">· Full agent roster active with designated roles</text>
   <text x="450" y="192" fill="#889999" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="10">· All three security layers operational</text>
   <text x="450" y="209" fill="#889999" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="10">· Inter-agent communication validated and signed</text>
-  <text x="450" y="226" fill="#889999" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="10">· Behavioural baselines actively monitored</text>
+  <text x="450" y="226" fill="#889999" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="10">· Behavioral baselines actively monitored</text>
   <text x="450" y="243" fill="#889999" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="10">· Tool permissions at standard scoped levels</text>
 
   <!-- ALTERNATE - Right -->

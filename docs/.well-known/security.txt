@@ -1,7 +1,7 @@
 # Security contact for airuntimesecurity.co.za
 # https://securitytxt.org/ — RFC 9116
 
-Contact: https://github.com/JonathanCGill/ai-runtime-behaviour-security/security/advisories
+Contact: https://github.com/JonathanCGill/ai-runtime-behavior-security/security/advisories
 Policy: https://airuntimesecurity.co.za/SECURITY/
 Preferred-Languages: en
 Canonical: https://airuntimesecurity.co.za/.well-known/security.txt

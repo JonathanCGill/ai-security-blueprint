@@ -3,7 +3,7 @@
 > *"The world cannot be understood without numbers. And it cannot be understood with numbers alone."*
 > - Hans Rosling, Factfulness
 
-This document grounds the AI Runtime Behaviour Security in observed data rather than projected fear. The threat is real. It is also specific, measurable, and disproportionately concentrated in predictable failure modes.
+This document grounds the AI Runtime Security in observed data rather than projected fear. The threat is real. It is also specific, measurable, and disproportionately concentrated in predictable failure modes.
 
 ## The Incident Landscape
 
@@ -33,7 +33,7 @@ The AIAAIC Repository and AI Incident Database collectively track over 1,300 inc
 
 - **Deepfakes and synthetic media** - used for fraud, disinformation, non-consensual imagery. These are *misuse of AI*, not *failure of AI systems*. They are out of scope for this framework.
 - **Hallucination and misinformation** - AI systems presenting fabricated citations, non-existent case law, or incorrect medical/financial advice. This is the most common failure mode in enterprise custom AI.
-- **Data leakage via prompts** - employees pasting confidential data into public AI tools (shadow AI). This is a DLP and infrastructure problem, not a runtime behaviour problem — it sits outside this framework's scope.
+- **Data leakage via prompts** - employees pasting confidential data into public AI tools (shadow AI). This is a DLP and infrastructure problem, not a runtime behavior problem — it sits outside this framework's scope.
 - **Prompt injection** - the #1 vulnerability in OWASP's LLM Top 10 for 2025, and the only attack vector that exploits the fundamental architecture of LLMs rather than an implementation flaw.
 
 ### What Is *Not* Happening at Scale (Yet)

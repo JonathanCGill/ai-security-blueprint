@@ -316,7 +316,7 @@
   <text x="150" y="479" text-anchor="middle" class="atk-id">1</text>
   <text x="265" y="325" class="atk-label">A1: Prompt Injection</text>
   <text x="265" y="337" class="atk-desc">Crafted input bypasses guardrails</text>
-  <text x="265" y="349" class="atk-desc">manipulates LLM behaviour</text>
+  <text x="265" y="349" class="atk-desc">manipulates LLM behavior</text>
   
   <!-- A2: INDIRECT INJECTION (via RAG) -->
   <path d="M 110,570 Q 400,540 850,200" stroke="#dc2626" stroke-width="2.5" fill="none" stroke-dasharray="8,4" marker-end="url(#atk-arrow)"/>

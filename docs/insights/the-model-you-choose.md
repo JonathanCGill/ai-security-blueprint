@@ -49,7 +49,7 @@ Security evaluation requires testing the model against your specific threat scen
 
 - **Prompt injection resistance.** Run known injection techniques against the model with your system prompt. Does it hold?
 - **Instruction-following fidelity.** Give it a system prompt with constraints. Does it respect them under adversarial user input?
-- **Refusal behaviour.** Ask it to do things it shouldn't. Does it refuse consistently, or does the refusal vary with phrasing?
+- **Refusal behavior.** Ask it to do things it shouldn't. Does it refuse consistently, or does the refusal vary with phrasing?
 - **Output consistency.** Run the same input multiple times. How much does the output vary? High variance means your guardrails need to handle a wider range of outputs.
 
 If you can't test a model against your threat scenarios before deployment, you are deploying a control you haven't verified. The framework's [risk assessment methodology](../core/risk-assessment.md) requires measured effectiveness rates. You can't measure what you haven't tested.
@@ -84,7 +84,7 @@ This is why the framework's three-layer pattern exists. You cannot eliminate the
 - **The Judge** evaluates outputs against your policies - regardless of what the model intended.
 - **Human review** applies judgment - regardless of what the model claims.
 
-The layers don't trust the model. They verify its outputs. But the layers work *better* when the model is better. A model with strong instruction-following produces fewer guardrail triggers. A model with good safety training produces fewer Judge flags. A model with consistent behaviour produces fewer surprises for human reviewers.
+The layers don't trust the model. They verify its outputs. But the layers work *better* when the model is better. A model with strong instruction-following produces fewer guardrail triggers. A model with good safety training produces fewer Judge flags. A model with consistent behavior produces fewer surprises for human reviewers.
 
 Choosing a trustworthy model doesn't replace controls. It makes controls more effective and less costly to operate.
 

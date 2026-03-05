@@ -58,7 +58,7 @@
 
   <rect x="25" y="250" width="110" height="32" rx="4" fill="#f59e0b"/>
   <text x="80" y="265" text-anchor="middle" class="feeder-label">Web / Mobile</text>
-  <text x="80" y="275" text-anchor="middle" class="feeder-label-sm">Sessions, behaviour</text>
+  <text x="80" y="275" text-anchor="middle" class="feeder-label-sm">Sessions, behavior</text>
 
   <rect x="145" y="250" width="110" height="32" rx="4" fill="#f59e0b"/>
   <text x="200" y="265" text-anchor="middle" class="feeder-label">Regulatory</text>

@@ -1,7 +1,7 @@
 # Supply Chain Security Controls
 
 > Part of the [AI Security Infrastructure Controls](../README.md) framework.
-> Companion to [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security).
+> Companion to [AI Runtime Security](https://github.com/JonathanCGill/ai-runtime-behavior-security).
 
 ## Overview
 
@@ -74,7 +74,7 @@ Ensure that data ingested into retrieval-augmented generation (RAG) knowledge ba
 | Requirement | Description |
 |-------------|-------------|
 | **Source allowlisting** | Maintain an explicit allowlist of approved data sources for each RAG knowledge base. Only data from allowlisted sources may be ingested. |
-| **Content scanning** | Scan all ingested content for: prompt injection payloads, adversarial content designed to manipulate model behaviour, malware or malicious scripts, and content that violates data classification policy. |
+| **Content scanning** | Scan all ingested content for: prompt injection payloads, adversarial content designed to manipulate model behavior, malware or malicious scripts, and content that violates data classification policy. |
 | **Provenance tracking** | Record provenance metadata for every document in the knowledge base: source, ingestion timestamp, ingestion pipeline version, content hash, and approver (for manually curated content). |
 | **Integrity monitoring** | Continuously verify that knowledge base contents match their recorded hashes. Alert on any unexpected modification. |
 | **Separation from runtime** | RAG ingestion pipelines must be separated from runtime query paths (see NET-05). Ingestion processes should never have direct access to the model runtime environment. |
@@ -99,12 +99,12 @@ Protect fine-tuning processes from data poisoning, unauthorised modification, an
 
 | Requirement | Description |
 |-------------|-------------|
-| **Training data validation** | All fine-tuning datasets must undergo review for: data quality, label accuracy, adversarial examples, PII content, and alignment with intended behaviour. |
+| **Training data validation** | All fine-tuning datasets must undergo review for: data quality, label accuracy, adversarial examples, PII content, and alignment with intended behavior. |
 | **Pipeline access control** | Fine-tuning pipelines require authenticated access with role-based permissions. Training job submission is restricted to authorised personnel. |
 | **Environment isolation** | Fine-tuning environments are isolated from production inference environments. No shared compute, storage, or network paths. |
 | **Artifact versioning** | Every fine-tuned model version is stored with: base model reference, training dataset reference, hyperparameters, training logs, and output hash. |
 | **Post-training evaluation** | Fine-tuned models must pass safety and security evaluation (including adversarial testing) before deployment. Evaluation results are recorded and linked to the model version. |
-| **Rollback capability** | Maintain the ability to revert to the previous model version if post-deployment monitoring detects degraded safety or security behaviour. |
+| **Rollback capability** | Maintain the ability to revert to the previous model version if post-deployment monitoring detects degraded safety or security behavior. |
 
 ### Relationship to Three Layers
 
@@ -128,7 +128,7 @@ Ensure that tools and plugins available to AI agents are from verified sources, 
 |-------------|-------------|
 | **Tool registry** | Maintain a centralised registry of all approved tools and plugins. Each entry includes: publisher, version, hash, capabilities, required permissions, risk classification, and approval date. |
 | **Source verification** | Tools must be obtained from verified publishers or approved internal repositories. No tools from unverified sources or community repositories without security review. |
-| **Security assessment** | Every tool undergoes security assessment before approval: code review (or vendor assessment for closed-source), dependency analysis, permission requirements analysis, and adversarial testing of tool behaviour. |
+| **Security assessment** | Every tool undergoes security assessment before approval: code review (or vendor assessment for closed-source), dependency analysis, permission requirements analysis, and adversarial testing of tool behavior. |
 | **Version control** | Tool versions are pinned in production. Updates require re-assessment and re-approval. Automatic updates are prohibited. |
 | **Dependency analysis** | Analyse tool dependencies for known vulnerabilities. Transitive dependencies are included in the analysis scope. |
 | **Capability declaration** | Tools must declare their capabilities and required permissions in a machine-readable manifest. Undeclared capabilities are blocked at the gateway (see TOOL-01, TOOL-02). |

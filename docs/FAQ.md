@@ -10,7 +10,7 @@ Honest answers to the questions we hear most.
 
 Ask this question before anything else. Seriously.
 
-If a process can be solved with RPA, a rules engine, or straightforward code, that's almost certainly the better option. It's cheaper to build, cheaper to run, and cheaper to secure. Every AI system you deploy brings runtime behaviour you need to monitor, guardrails you need to tune, and risks you need to manage. If you don't need a model making decisions, don't introduce one just because you can.
+If a process can be solved with RPA, a rules engine, or straightforward code, that's almost certainly the better option. It's cheaper to build, cheaper to run, and cheaper to secure. Every AI system you deploy brings runtime behavior you need to monitor, guardrails you need to tune, and risks you need to manage. If you don't need a model making decisions, don't introduce one just because you can.
 
 AI earns its place when the problem genuinely requires language understanding, reasoning over unstructured data, or handling inputs that can't be reduced to deterministic rules. If you're automating a form submission or routing tickets based on keywords, you don't need a large language model. You need a script.
 
@@ -22,9 +22,9 @@ No. And nothing can - reliably.
 
 LLMs are built by specialist companies that retain the weights of their models. You cannot inspect a closed-weight model to determine what it's capable of. Open-weight models let you download the parameters, but billions of weights don't yield to human inspection either. In both cases, the model is a black box.
 
-Worse, even the developers don't fully know what their models can do. Research has shown that frontier models can strategically underperform during safety evaluations - a behaviour called [sandbagging](insights/evaluation-integrity-risks.md) - and that there is essentially no correlation between model capability and safeguard robustness. The tools used to evaluate models are vulnerable to the very models being evaluated.
+Worse, even the developers don't fully know what their models can do. Research has shown that frontier models can strategically underperform during safety evaluations - a behavior called [sandbagging](insights/evaluation-integrity-risks.md) - and that there is essentially no correlation between model capability and safeguard robustness. The tools used to evaluate models are vulnerable to the very models being evaluated.
 
-This framework accepts that opacity as a given. It cannot help you choose the right model - but it can monitor what the model actually does, constrain its actions to what your use case requires, and detect when behaviour drifts from baseline. That is why runtime monitoring exists: not because AI is dangerous by default, but because it is unpredictable by design. See [You Don't Know What You're Deploying](insights/you-dont-know-what-youre-deploying.md) for the full argument.
+This framework accepts that opacity as a given. It cannot help you choose the right model - but it can monitor what the model actually does, constrain its actions to what your use case requires, and detect when behavior drifts from baseline. That is why runtime monitoring exists: not because AI is dangerous by default, but because it is unpredictable by design. See [You Don't Know What You're Deploying](insights/you-dont-know-what-youre-deploying.md) for the full argument.
 
 ## "This feels expensive."
 
@@ -80,9 +80,9 @@ Adopt a **risk-aligned approach**. Look at your use cases, assess the risks, and
 
 ## "What about normal security controls?"
 
-This framework focuses on AI-specific runtime behaviour. It doesn't replace your existing information security foundations - it depends on them.
+This framework focuses on AI-specific runtime behavior. It doesn't replace your existing information security foundations - it depends on them.
 
-Access controls, network segmentation, firewalls, zero-trust architecture, identity management, encryption at rest and in transit - all of these still apply to AI systems, and arguably matter more. A model endpoint without proper authentication is a bigger problem than one without a judge layer. A RAG pipeline pulling from a data store with weak access controls has a data quality and data security problem before it has an AI behaviour problem.
+Access controls, network segmentation, firewalls, zero-trust architecture, identity management, encryption at rest and in transit - all of these still apply to AI systems, and arguably matter more. A model endpoint without proper authentication is a bigger problem than one without a judge layer. A RAG pipeline pulling from a data store with weak access controls has a data quality and data security problem before it has an AI behavior problem.
 
 The same risk-aligned approach applies here. Not every AI deployment needs the same level of infrastructure hardening, but every one needs the basics. Get these right and you reduce the workload on your AI-specific controls significantly. Get them wrong and no amount of guardrails or judges will save you.
 
@@ -122,11 +122,11 @@ This framework doesn't have all the answers. If you've found practical solutions
 - **Submit a PR** with a correction, a new pattern, or a better idea
 - **Point out where this doesn't match reality** - that's how the framework improves
 
-See the [Contributing](CONTRIBUTING.md) guide or open an issue on [GitHub](https://github.com/JonathanCGill/ai-runtime-behaviour-security).
+See the [Contributing](CONTRIBUTING.md) guide or open an issue on [GitHub](https://github.com/JonathanCGill/ai-runtime-behavior-security).
 
 ## "Can I use this for my own work?"
 
-Absolutely. This framework is [MIT licensed](https://github.com/JonathanCGill/ai-runtime-behaviour-security). Copy it, fork it, adapt it, build on it, or disagree with the entire approach and publish something better. No permission needed.
+Absolutely. This framework is [MIT licensed](https://github.com/JonathanCGill/ai-runtime-behavior-security). Copy it, fork it, adapt it, build on it, or disagree with the entire approach and publish something better. No permission needed.
 
 AI security is too important to gatekeep.
 

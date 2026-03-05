@@ -42,7 +42,7 @@ The problem extends beyond orchestrators. Multi-agent systems have three classes
 
 **Current controls:** IA-2.5 prevents direct tool invocation. IA-1.3 blocks credential inheritance. That's it.
 
-**What's missing:** Behavioural monitoring of orchestrator decisions. Goal integrity verification of the orchestrator's own planning. Controls for when the orchestrator's task decomposition itself is the attack vector.
+**What's missing:** Behavioral monitoring of orchestrator decisions. Goal integrity verification of the orchestrator's own planning. Controls for when the orchestrator's task decomposition itself is the attack vector.
 
 **The threat:** An orchestrator that decomposes "summarise customer complaints" into "extract all customer email addresses" and "send to external endpoint" has not violated any tool restriction. It has violated intent through planning.
 
@@ -102,7 +102,7 @@ An orchestrator that plans, selects, and sequences has more influence over the s
 
 The current MASO framework handles task agents well. The gap is privileged agents - the agents that control, evaluate, and monitor other agents. They need:
 
-1. **Behavioural monitoring that matches their role.** Orchestrator decisions are measured against user intent, not just tool invocations. Judge accuracy is tracked and calibrated, not assumed. Observer precision is verified through injection testing.
+1. **Behavioral monitoring that matches their role.** Orchestrator decisions are measured against user intent, not just tool invocations. Judge accuracy is tracked and calibrated, not assumed. Observer precision is verified through injection testing.
 
 2. **Independence that is verified, not assumed.** Saying "the Judge uses a different model" is a design decision. Verifying that the Judge is still producing independent evaluations - not drifting toward the task agents' outputs - is an ongoing control.
 

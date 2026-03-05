@@ -101,7 +101,7 @@ Validate every action independently. Don't trust agent reasoning.
 
 ![Action Validator Flow](../images/action-validator-flow.svg)
 
-**Dry-run / simulation mode:** For high-risk or first-time actions, execute in simulation mode before committing. The gateway routes the action to a sandbox or staging environment, captures the result, and presents it for review. Only after validation does the action execute against production systems. This is especially valuable during initial deployment when behavioural baselines have not yet been established.
+**Dry-run / simulation mode:** For high-risk or first-time actions, execute in simulation mode before committing. The gateway routes the action to a sandbox or staging environment, captures the result, and presents it for review. Only after validation does the action execute against production systems. This is especially valuable during initial deployment when behavioral baselines have not yet been established.
 
 ### 3. Tool Output Sanitisation
 
@@ -168,7 +168,7 @@ Agent interactions need deeper evaluation.
 |--------|---------|
 | Action volume spike | Runaway agent |
 | Error rate increase | Agent confused or attacking |
-| Novel action patterns | Unexpected behaviour |
+| Novel action patterns | Unexpected behavior |
 | Scope boundary probes | Attempted breakout |
 | Cost anomalies | Resource abuse |
 

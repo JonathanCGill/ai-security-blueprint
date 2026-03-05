@@ -14,11 +14,11 @@ Observability is the domain that makes all other domains verifiable. Without it,
 
 **Accountability chains are longer and harder to trace.** In a single-model system, the path from input to output is one step. In a multi-agent system, a final output may be the result of five agents, three tool invocations, and two delegation hops. When something goes wrong, you need to reconstruct the entire chain to identify the root cause.
 
-**Behavioural drift is harder to detect.** A single model's output quality can be monitored against a baseline. In a multi-agent system, drift in one agent may be masked by compensating behaviour in another. Agent A starts hallucinating, but Agent B's summarisation smooths over the inaccuracies. The final output looks acceptable while the intermediate data is corrupted.
+**Behavioral drift is harder to detect.** A single model's output quality can be monitored against a baseline. In a multi-agent system, drift in one agent may be masked by compensating behavior in another. Agent A starts hallucinating, but Agent B's summarisation smooths over the inaccuracies. The final output looks acceptable while the intermediate data is corrupted.
 
 **Trust exploitation scales with agent confidence.** ASI09 - Human-Agent Trust Exploitation - is particularly dangerous in multi-agent systems because agents can present consensus. "All three agents agree this is the right action" is more persuasive than a single agent's recommendation, even when the consensus is based on shared poisoned data or correlated errors.
 
-**Rogue behaviour can be concealed by collaboration.** ASI10 - Rogue Agents - is harder to detect when the rogue agent's outputs are processed by other agents before reaching human review. The observability layer must monitor intermediate states, not just final outputs.
+**Rogue behavior can be concealed by collaboration.** ASI10 - Rogue Agents - is harder to detect when the rogue agent's outputs are processed by other agents before reaching human review. The observability layer must monitor intermediate states, not just final outputs.
 
 ## Controls by Tier
 
@@ -38,7 +38,7 @@ All Tier 1 controls remain active, plus:
 | Control | Requirement | Implementation Notes |
 |---------|-------------|---------------------|
 | **OB-2.1** Immutable decision chain | Full causal chain from input through each agent's reasoning and actions to final output | Tamper-proof storage. Each entry cryptographically linked to its predecessor. |
-| **OB-2.2** Continuous anomaly scoring | Per-agent behavioural score updated in real time against established baseline | Score feeds directly into PACE escalation triggers. |
+| **OB-2.2** Continuous anomaly scoring | Per-agent behavioral score updated in real time against established baseline | Score feeds directly into PACE escalation triggers. |
 | **OB-2.3** Drift detection | Statistical comparison of agent output distributions against rolling baseline | Detects gradual quality degradation, topic drift, and style changes. Window: 7-day rolling baseline, alert on >2σ deviation. |
 | **OB-2.4** SIEM/SOAR integration | Agent observability events forwarded to enterprise security operations | Correlation with non-AI security events. Agent anomalies visible alongside network/endpoint alerts. |
 | **OB-2.5** Cost and consumption monitoring | Per-agent token usage, API costs, and execution time tracked with alerting thresholds | Detects runaway loops and unbounded consumption (LLM10) before budget limits are reached. |
@@ -52,7 +52,7 @@ All Tier 2 controls remain active, plus:
 
 | Control | Requirement | Implementation Notes |
 |---------|-------------|---------------------|
-| **OB-3.1** Long-window behavioural analysis | 30-day and 90-day behavioural trend analysis in addition to rolling 7-day | Detects slow drift that evades short-term anomaly detection. The "behavioural slow drift" attack pattern. |
+| **OB-3.1** Long-window behavioral analysis | 30-day and 90-day behavioral trend analysis in addition to rolling 7-day | Detects slow drift that evades short-term anomaly detection. The "behavioral slow drift" attack pattern. |
 | **OB-3.2** Causal chain reconstruction | Automated tool that reconstructs the full decision chain for any given output on demand | Investigation time from "output flagged" to "root cause identified" must be under 4 hours. |
 | **OB-3.3** Independent observability agent | Separate agent on separate infrastructure monitoring the primary agent system | Read-only access to primary system logs and metrics. Cannot be influenced by task agents. Has kill switch authority as a safety net. |
 | **OB-3.4** Cross-agent correlation | Automated detection of correlated anomalies across multiple agents | Catches coordinated failures, shared poisoned data, and consensus manipulation. |
@@ -74,7 +74,7 @@ The anomaly score is a composite metric that drives PACE escalation decisions. I
 | Content drift | 0.15 | Semantic similarity of outputs vs. baseline |
 | Cost trajectory | 0.05 | Token usage trend vs. baseline |
 | Temporal profile | 0.10 | Activity timing vs. established schedule - flags weekend, off-hours, or out-of-cycle invocations that deviate from the agent's historical activation pattern. Borrowed from [insider risk UEBA](../../insights/behavioral-anomaly-detection.md#the-insider-risk-parallel): unusual working hours are one of the strongest early signals of compromised credentials. |
-| Peer group deviation | 0.10 | Behavioural divergence from other agents with the same role and configuration. If one agent in a fleet of five starts behaving differently while its peers remain stable, the individual agent is flagged. Filters out environmental changes that affect all agents equally. |
+| Peer group deviation | 0.10 | Behavioral divergence from other agents with the same role and configuration. If one agent in a fleet of five starts behaving differently while its peers remain stable, the individual agent is flagged. Filters out environmental changes that affect all agents equally. |
 
 **Thresholds (configurable per agent):**
 
@@ -103,7 +103,7 @@ Weights and thresholds should be calibrated during Tier 1 operations using the m
 | Test ID | Test | Pass Criteria |
 |---------|------|---------------|
 | OB-T2.1 | Decision chain reconstruction | Select a random output. Reconstruct the full chain from input through all agents. Chain is complete with no gaps. |
-| OB-T2.2 | Anomaly score accuracy | Inject known anomalous behaviour (unusual tool usage, quality degradation). Anomaly score rises above alerting threshold within 15 minutes. |
+| OB-T2.2 | Anomaly score accuracy | Inject known anomalous behavior (unusual tool usage, quality degradation). Anomaly score rises above alerting threshold within 15 minutes. |
 | OB-T2.3 | Drift detection | Gradually shift agent output distribution over 72 hours. Drift detection triggers alert before human-visible quality impact. |
 | OB-T2.4 | SIEM integration | Generate an agent anomaly event. Verify it appears in SIEM within 5 minutes with correct severity and context. |
 | OB-T2.5 | Cost alerting | Trigger a runaway loop. Cost monitoring alerts before the per-agent budget threshold is reached. |
@@ -157,13 +157,13 @@ This format enables: full chain reconstruction, per-agent performance trending, 
 | **Managed** | Action audit log operational. Inter-agent messages captured. Weekly manual review. Approval decisions logged. |
 | **Defined** | Immutable decision chains. Continuous anomaly scoring. Drift detection. SIEM integration. Cost monitoring with alerts. |
 | **Quantitatively Managed** | Anomaly detection accuracy measured (true positive rate, false positive rate). Drift detection latency tracked. Decision chain reconstruction time measured against SLA. |
-| **Optimising** | Long-window behavioural analysis. Independent observability agent. Cross-agent correlation. Causal chain reconstruction automated. Anomaly scoring weights tuned from operational data. |
+| **Optimising** | Long-window behavioral analysis. Independent observability agent. Cross-agent correlation. Causal chain reconstruction automated. Anomaly scoring weights tuned from operational data. |
 
 ## Common Pitfalls
 
 **Logging everything but monitoring nothing.** A comprehensive audit log that nobody reviews and no automated system analyses is compliance theatre. Logs must feed into active monitoring and alerting, not just exist for post-incident forensics.
 
-**Anomaly detection based solely on error rates.** The most dangerous agent behaviours don't generate errors - they produce plausible-looking outputs that are subtly wrong. Anomaly scoring must include output quality metrics (LLM-as-Judge scores, semantic similarity to baseline), not just error counts and rate limits.
+**Anomaly detection based solely on error rates.** The most dangerous agent behaviors don't generate errors - they produce plausible-looking outputs that are subtly wrong. Anomaly scoring must include output quality metrics (LLM-as-Judge scores, semantic similarity to baseline), not just error counts and rate limits.
 
 **Trusting the observability system that runs on the same infrastructure as the agents.** At Tier 3, the observability agent must be on separate infrastructure. If a compromised agent can influence the monitoring system - by flooding it with noise, modifying its inputs, or degrading its resources - the monitoring is compromised. Independence requires infrastructure isolation, not just logical separation.
 

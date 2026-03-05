@@ -66,7 +66,7 @@
   <text x="670" y="358" font-family="Arial, sans-serif" font-size="9" fill="#b91c1c" text-anchor="middle">CONCEPTUAL</text>
   <line x1="605" y1="368" x2="735" y2="368" stroke="#fecaca" stroke-width="1"/>
   <text x="610" y="388" font-family="Arial, sans-serif" font-size="10" fill="#991b1b">• Multi-agent coord.</text>
-  <text x="610" y="405" font-family="Arial, sans-serif" font-size="10" fill="#991b1b">• Emergent behaviour</text>
+  <text x="610" y="405" font-family="Arial, sans-serif" font-size="10" fill="#991b1b">• Emergent behavior</text>
   <text x="610" y="422" font-family="Arial, sans-serif" font-size="10" fill="#991b1b">• Outcome attribution</text>
   <text x="610" y="439" font-family="Arial, sans-serif" font-size="10" fill="#991b1b">• Orchestrator scope</text>
   

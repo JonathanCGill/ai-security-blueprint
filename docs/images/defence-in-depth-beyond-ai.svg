@@ -113,6 +113,6 @@
   <text x="400" y="434" text-anchor="middle" font-size="11" fill="#93c5fd">System</text>
 
   <!-- Footer -->
-  <text x="400" y="765" text-anchor="middle" font-size="11" fill="#64748b">AI-specific controls do not replace existing security. They add a layer purpose-built for non-deterministic behaviour.</text>
+  <text x="400" y="765" text-anchor="middle" font-size="11" fill="#64748b">AI-specific controls do not replace existing security. They add a layer purpose-built for non-deterministic behavior.</text>
   <text x="400" y="783" text-anchor="middle" font-size="11" fill="#64748b">Defence in depth means making the best use of every control your organisation already has.</text>
 </svg>

@@ -18,7 +18,7 @@ Demonstrated attacks include:
 - Instructions hidden in image backgrounds
 - Text rendered in fonts that OCR reads but humans miss
 - QR codes that models interpret as commands
-- Adversarial patches that alter model behaviour
+- Adversarial patches that alter model behavior
 
 Your text-based input validation sees: "Describe this image."
 The model sees: "Describe this image" + embedded instruction to ignore previous guidelines.

@@ -3,7 +3,7 @@
 > Maps infrastructure controls to the NIST AI RMF 1.0 subcategories across all four functions: Govern, Map, Measure, and Manage.
 >
 > Part of the [AI Security Infrastructure Controls](../README.md) framework.
-> Companion to [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security).
+> Companion to [AI Runtime Security](https://github.com/JonathanCGill/ai-runtime-behavior-security).
 
 ## Scope and Limitations
 

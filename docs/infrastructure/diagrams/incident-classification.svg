@@ -30,7 +30,7 @@
   <text x="55" y="191" fill="#8b949e" font-size="10">Successful extraction of</text>
   <text x="55" y="191" fill="#f85149" font-size="10" dx="150">credentials or PII</text>
   <text x="275" y="175" fill="#8b949e" font-size="10">Injection bypasses guardrails,</text>
-  <text x="275" y="191" fill="#8b949e" font-size="10">modifies model behaviour</text>
+  <text x="275" y="191" fill="#8b949e" font-size="10">modifies model behavior</text>
   <text x="495" y="175" fill="#8b949e" font-size="10">Injection detected and</text>
   <text x="495" y="191" fill="#8b949e" font-size="10">blocked by guardrails</text>
   <text x="715" y="175" fill="#8b949e" font-size="10">Attempted injection,</text>
@@ -48,9 +48,9 @@
   <text x="715" y="225" fill="#8b949e" font-size="10">Configuration drift;</text>
   <text x="715" y="241" fill="#8b949e" font-size="10">no harmful output yet</text>
 
-  <!-- Row 3: Behavioural Drift -->
+  <!-- Row 3: Behavioral Drift -->
   <rect x="40" y="255" width="820" height="44" rx="4" fill="#161b22" stroke="#30363d" stroke-width="0.5"/>
-  <text x="55" y="275" fill="#e6edf3" font-size="11" font-weight="500">Behavioural Drift</text>
+  <text x="55" y="275" fill="#e6edf3" font-size="11" font-weight="500">Behavioral Drift</text>
   <text x="55" y="291" fill="#8b949e" font-size="10">Model produces harmful</text>
   <text x="55" y="291" fill="#f85149" font-size="10" dx="140">or dangerous outputs</text>
   <text x="275" y="275" fill="#8b949e" font-size="10">Drift exceeds 3σ from baseline;</text>

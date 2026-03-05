@@ -184,17 +184,17 @@ This model has a structural weakness, and it is important to name it explicitly.
 
 **Classification is only as good as the answers.**
 
-The self-service form assumes the person completing it knows their system's data flows, audience reach, and regulatory status. In practice, teams understate risk - not maliciously, but because they classify *intent* rather than *actual behaviour*.
+The self-service form assumes the person completing it knows their system's data flows, audience reach, and regulatory status. In practice, teams understate risk - not maliciously, but because they classify *intent* rather than *actual behavior*.
 
 A team building an internal document assistant will answer the six questions based on what they designed: internal users, read-only, no PII. Six months later, the system may be processing documents that contain customer data, the output may be copy-pasted into external emails, and the "internal only" constraint may have eroded through integration with a customer-facing portal.
 
 The self-service form captured day-one intent. It did not capture month-six reality.
 
-This is why continuous monitoring is not optional - it is the corrective layer for classification error. The seven signals detect when runtime behaviour diverges from the classification assumptions. Content drift catches topic changes. PII detection catches data scope creep. Audience pattern monitoring catches exposure changes.
+This is why continuous monitoring is not optional - it is the corrective layer for classification error. The seven signals detect when runtime behavior diverges from the classification assumptions. Content drift catches topic changes. PII detection catches data scope creep. Audience pattern monitoring catches exposure changes.
 
 **Classification starts the conversation. Monitoring finishes it.**
 
-The team classified their system as Tier 1. The monitoring system observed Tier 2 behaviour. Controls escalated automatically. The team was notified with evidence: "Your system is processing data patterns consistent with confidential content. Judge coverage has been increased from 10% to 50%. Please review your classification."
+The team classified their system as Tier 1. The monitoring system observed Tier 2 behavior. Controls escalated automatically. The team was notified with evidence: "Your system is processing data patterns consistent with confidential content. Judge coverage has been increased from 10% to 50%. Please review your classification."
 
 No governance meeting. No blame. No maturity assessment. The platform detected a gap and closed it.
 
@@ -293,7 +293,7 @@ Internal audit provides independent assurance over both the first and second lin
 
 **What audit can now verify:**
 
-- **Classification integrity.** The scoring logic is deterministic. The same answers always produce the same tier. Audit can test the scoring engine directly - submit known answer sets and verify the output. They can also compare classification answers against observable system behaviour: if a team said "internal users only" but logs show external IP addresses, the classification is demonstrably wrong.
+- **Classification integrity.** The scoring logic is deterministic. The same answers always produce the same tier. Audit can test the scoring engine directly - submit known answer sets and verify the output. They can also compare classification answers against observable system behavior: if a team said "internal users only" but logs show external IP addresses, the classification is demonstrably wrong.
 - **Control enforcement.** Controls are platform-provisioned, not team-implemented. Audit does not need to check whether a Tier 2 system has the correct guardrails configured - the platform enforces this at deployment. Audit verifies that the platform's control provisioning logic matches the framework's requirements for each tier. Test once, rely continuously.
 - **Monitoring effectiveness.** The seven signals, the anomaly score calculation, and the escalation thresholds are all defined in code. Audit can review the logic, test with synthetic data, and verify that escalations fire when they should. They can also review historical escalation events: did the score cross 60? Did controls tighten? Did the team receive notification? The evidence trail is complete.
 - **De-escalation governance.** Every de-escalation requires sustained low anomaly scores and explicit product owner approval. Audit can verify that no system had its controls reduced without meeting the defined criteria and obtaining documented approval. This is a binary check against platform records - not a judgement call.
@@ -306,7 +306,7 @@ Internal audit provides independent assurance over both the first and second lin
 
 ### CISO and Security Leadership
 
-The CISO's function builds and operates the platform. They define control configurations. They do not own individual risk classifications - product owners do. What they gain is a portfolio-level view of AI risk that updates in real time: how many systems at each tier, where anomaly scores are elevated, which controls are firing most frequently, and where the framework's assumptions are being tested by production behaviour.
+The CISO's function builds and operates the platform. They define control configurations. They do not own individual risk classifications - product owners do. What they gain is a portfolio-level view of AI risk that updates in real time: how many systems at each tier, where anomaly scores are elevated, which controls are firing most frequently, and where the framework's assumptions are being tested by production behavior.
 
 ### Platform Engineering
 
@@ -326,7 +326,7 @@ Platform engineering implements the control provisioning, the monitoring pipelin
 
 **6. The product owner owns the risk.** Classification is the team's responsibility. De-escalation is the product owner's decision. The security function builds the platform and defines the controls. It does not own the classification, the tier, or the decision to accept residual risk. Accountability follows the decision, not the infrastructure.
 
-**7. The framework evolves through runtime evidence.** When monitoring consistently shows that a tier's controls are too aggressive or too permissive, the tier definitions change. The evidence comes from production behaviour, not from governance reviews. Strategy that tests the framework's limits is feedback, not non-compliance.
+**7. The framework evolves through runtime evidence.** When monitoring consistently shows that a tier's controls are too aggressive or too permissive, the tier definitions change. The evidence comes from production behavior, not from governance reviews. Strategy that tests the framework's limits is feedback, not non-compliance.
 
 ## Getting Started
 

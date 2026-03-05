@@ -16,7 +16,7 @@ Use Tier 1 when any of the following conditions apply:
 - The consequence of an uncorrected agent error is material - financial loss, reputational damage, regulatory exposure, or safety impact.
 - The organisation's AI security maturity is at CMMI Level 1–2 (initial or managed) for AI-specific controls.
 
-Tier 1 is not a permanent state. It is designed to build the operational evidence base - behavioural baselines, failure mode data, and trust calibration - that justifies progression to Tier 2.
+Tier 1 is not a permanent state. It is designed to build the operational evidence base - behavioral baselines, failure mode data, and trust calibration - that justifies progression to Tier 2.
 
 ## Architecture at Tier 1
 
@@ -113,13 +113,13 @@ Key architectural constraints at Tier 1:
 
 - Action audit log captures every agent action: timestamp, agent ID, action type, tool invoked, parameters, result, and approval status (pending/approved/rejected/auto-approved-read).
 - Inter-agent message log captures all messages on the bus: sender, recipient, message content, timestamp.
-- Periodic human review of agent behaviour: at minimum, a weekly review of action logs to identify unexpected patterns, unusual tool usage, or output quality issues. This is the manual precursor to the automated drift detection required at Tier 2.
+- Periodic human review of agent behavior: at minimum, a weekly review of action logs to identify unexpected patterns, unusual tool usage, or output quality issues. This is the manual precursor to the automated drift detection required at Tier 2.
 - Error logging: all agent errors, exceptions, and guardrail blocks are captured and reviewed.
 
 **Deferred to Tier 2:**
 
 - Continuous automated anomaly detection.
-- Behavioural baseline establishment and drift scoring.
+- Behavioral baseline establishment and drift scoring.
 - SIEM/SOAR integration.
 - Immutable decision chain logs (at Tier 1, logs should be tamper-resistant but full immutability is not required).
 
@@ -171,7 +171,7 @@ The kill switch. At Tier 1, this is the critical safety net. If anything goes wr
 Emergency activation criteria at Tier 1:
 - Any agent produces output that the human operator considers harmful, dangerous, or significantly incorrect and the root cause is not immediately apparent.
 - Any agent attempts to access tools or data outside its defined scope.
-- The human operator observes behaviour they cannot explain.
+- The human operator observes behavior they cannot explain.
 
 Emergency response at Tier 1:
 1. All agents terminated.
@@ -237,7 +237,7 @@ Before declaring Tier 1 operational, validate the following:
 
 Tier 1 is the foundation. An organisation should progress to Tier 2 when the following conditions are met:
 
-1. **Operational baseline established:** The agent system has been running in Tier 1 for at least 90 days with continuous logging, providing sufficient data to establish behavioural baselines for each agent.
+1. **Operational baseline established:** The agent system has been running in Tier 1 for at least 90 days with continuous logging, providing sufficient data to establish behavioral baselines for each agent.
 
 2. **Low error rate demonstrated:** The human approval rejection rate (actions the operator rejected) has stabilised below 5% of total proposed actions, indicating the agents are operating within expectations.
 
@@ -269,5 +269,5 @@ Tier 1 is the foundation. An organisation should progress to Tier 2 when the fol
 - Either agent attempting to call tools outside their allow-list.
 - Message volume between agents exceeding expected patterns (potential loop).
 
-**Graduation trigger:** After 90 days, the operator's rejection rate is 2%, no incidents have occurred, and behavioural baselines show consistent patterns. The bank's operational risk function approves progression to Tier 2, where the Analyst's read operations and the Summariser's writes to the staging area (for pre-approved document types) will proceed without per-action human approval.
+**Graduation trigger:** After 90 days, the operator's rejection rate is 2%, no incidents have occurred, and behavioral baselines show consistent patterns. The bank's operational risk function approves progression to Tier 2, where the Analyst's read operations and the Summariser's writes to the staging area (for pre-approved document types) will proceed without per-action human approval.
 

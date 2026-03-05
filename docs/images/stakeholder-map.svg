@@ -24,7 +24,7 @@
   <!-- Center hub -->
   <ellipse cx="450" cy="280" rx="110" ry="48" fill="url(#centerGrad)" stroke="#3F51B5" stroke-width="2" filter="url(#shadow)"/>
   <text x="450" y="274" text-anchor="middle" fill="#1A237E" font-size="13" font-weight="600">AI Runtime</text>
-  <text x="450" y="292" text-anchor="middle" fill="#1A237E" font-size="13" font-weight="600">Behaviour Security</text>
+  <text x="450" y="292" text-anchor="middle" fill="#1A237E" font-size="13" font-weight="600">Behavior Security</text>
 
   <!-- Connection lines -->
   <line x1="340" y1="260" x2="200" y2="175" stroke="#9FA8DA" stroke-width="2" stroke-dasharray="6,3"/>

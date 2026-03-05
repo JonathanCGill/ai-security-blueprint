@@ -215,7 +215,7 @@ class CircuitBreaker:
 
 ### Circuit Breaker States
 
-| State | Behaviour | Trigger |
+| State | Behavior | Trigger |
 |-------|-----------|---------|
 | **CLOSED** | Normal operation, auto-send enabled | Default |
 | **OPEN** | Auto-send disabled, draft-only | Threshold breached |

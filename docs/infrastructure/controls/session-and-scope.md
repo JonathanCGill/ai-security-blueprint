@@ -76,7 +76,7 @@ The authorization gateway (IAM-04) enforces scope by:
 
 ## SESS-04: Progressive Trust
 
-For Tier 3+ systems, sessions should not start with full permissions. Instead, permissions increase as the session demonstrates expected behaviour.
+For Tier 3+ systems, sessions should not start with full permissions. Instead, permissions increase as the session demonstrates expected behavior.
 
 ### Trust Levels
 
@@ -89,7 +89,7 @@ For Tier 3+ systems, sessions should not start with full permissions. Instead, p
 ### Why Progressive Trust
 
 - Limits the damage from injection attacks early in a session (before the agent has accumulated data or context).
-- Forces attackers to maintain consistent benign behaviour before gaining access to destructive capabilities.
+- Forces attackers to maintain consistent benign behavior before gaining access to destructive capabilities.
 - Provides natural checkpoints where human oversight can intervene.
 
 ## SESS-05: Session Cleanup

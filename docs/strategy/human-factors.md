@@ -192,7 +192,7 @@ The human requirements scale with risk tier, just as technical controls do:
 **Strategic response:**
 - Redesign the AI output to highlight uncertainty ("confidence: low on medication history")
 - Reduce the review burden - instead of reviewing every summary, review only those the Judge flags
-- Measure actual review behaviour (time spent, override rate) not just claimed process compliance
+- Measure actual review behavior (time spent, override rate) not just claimed process compliance
 - Consider whether the risk tier is appropriate given realistic human capacity
 
 ### Scenario 2: The Missing Operator

@@ -32,13 +32,13 @@ When agents communicate, their messages become input. If Agent B trusts Agent A'
 
 This is prompt injection at scale - not user-to-agent, but agent-to-agent.
 
-### Emergent behaviour
+### Emergent behavior
 
-Individual agents may behave correctly in isolation. Together, they exhibit behaviour nobody designed.
+Individual agents may behave correctly in isolation. Together, they exhibit behavior nobody designed.
 
 Agent A optimises for speed. Agent B optimises for thoroughness. Together, they oscillate - A rushing, B slowing, A overriding, B resisting. The system fails not because either agent is broken but because their interaction is pathological.
 
-Emergent behaviour is hard to test for and hard to predict.
+Emergent behavior is hard to test for and hard to predict.
 
 ### Cascading failures
 
@@ -108,7 +108,7 @@ A Judge evaluating individual agent interactions misses system-level issues. You
 
 - Review the full multi-agent conversation
 - Identify coordination failures
-- Detect emergent behaviour patterns
+- Detect emergent behavior patterns
 - Assess whether the system outcome matches the user intent
 
 This is harder than single-agent evaluation. The Judge needs to understand agent roles, expected interactions, and acceptable deviations.
@@ -130,7 +130,7 @@ This is harder than single-agent evaluation. The Judge needs to understand agent
 2. Add orchestrator-level controls and accountability
 3. Define trust relationships between agents explicitly
 4. Build Judge capability for multi-turn, multi-agent evaluation
-5. Plan for emergent behaviour - monitoring, anomaly detection, kill switches
+5. Plan for emergent behavior - monitoring, anomaly detection, kill switches
 
 ## The Trajectory
 

@@ -2,7 +2,7 @@
 
 **Solution Architects, Platform Architects, Technical Leads - where controls go in your pipeline, what they cost, and how they fail.**
 
-> *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
+> *Part of [Stakeholder Views](README.md) · [AI Runtime Security](../)*
 
 ## The Problem You Have
 

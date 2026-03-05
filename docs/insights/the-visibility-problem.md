@@ -103,7 +103,7 @@ Static inventories decay. Models update, configurations change, usage patterns s
 **Continuous monitoring should track:**
 
 - **Usage patterns** - Who is using which AI systems, how frequently, and with what data?
-- **Behavioural drift** - Are AI outputs changing over time? Are error rates, hallucination rates, or refusal rates shifting?
+- **Behavioral drift** - Are AI outputs changing over time? Are error rates, hallucination rates, or refusal rates shifting?
 - **Policy adherence** - Are AI systems operating within defined boundaries? Are guardrails firing? Are escalation thresholds being respected?
 - **New AI introduction** - Are new AI tools, APIs, or embedded capabilities appearing in your environment?
 
@@ -119,7 +119,7 @@ At this level, you have:
 - **Automated compliance checks** against regulatory requirements
 - **Risk-based alerting** when AI systems drift outside acceptable parameters
 - **Board-level reporting** on AI risk posture
-- **Defined owners** for every AI system, with accountability for its behaviour
+- **Defined owners** for every AI system, with accountability for its behavior
 
 ## Governance Through Metrics: What to Measure
 
@@ -298,7 +298,7 @@ None of this requires exotic technology. Most of the monitoring patterns - asset
 | Source | What It Provides | Year |
 | --- | --- | --- |
 | [IBM Cost of a Data Breach 2025](https://newsroom.ibm.com/) | Shadow AI breach costs, access control gaps, incident rates | 2025 |
-| [Microsoft/LinkedIn Work Trend Index](https://www.microsoft.com/en-us/worklab/work-trend-index/) | BYOAI prevalence, employee behaviour data | 2024 |
+| [Microsoft/LinkedIn Work Trend Index](https://www.microsoft.com/en-us/worklab/work-trend-index/) | BYOAI prevalence, employee behavior data | 2024 |
 | [Netskope Cloud Security Report](https://www.cybersecuritydive.com/news/shadow-ai-security-risks-netskope/808860/) | Personal account AI usage, corporate visibility gaps | 2025 |
 | [McKinsey State of AI](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai) | Governance maturity, board reporting, agentic adoption | 2025 |
 | [Gartner AI TRiSM](https://www.gartner.com/en/articles/ai-trust-and-ai-risk) | Four-capability governance model, shadow AI predictions | 2024–2025 |

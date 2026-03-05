@@ -3,13 +3,13 @@
 > Maps infrastructure controls to the OWASP Top 10 for Large Language Model Applications (2025) and the OWASP Top 10 for Agentic AI.
 >
 > Part of the [AI Security Infrastructure Controls](../README.md) framework.
-> Companion to [AI Runtime Behaviour Security](https://github.com/JonathanCGill/ai-runtime-behaviour-security).
+> Companion to [AI Runtime Security](https://github.com/JonathanCGill/ai-runtime-behavior-security).
 
 ## OWASP LLM Top 10 (2025)
 
 ### LLM01 - Prompt Injection
 
-Manipulation of model behaviour through crafted inputs that override system instructions or extract sensitive information.
+Manipulation of model behavior through crafted inputs that override system instructions or extract sensitive information.
 
 | Control Type | Controls | How It Mitigates |
 |-------------|----------|-----------------|
@@ -38,11 +38,11 @@ Compromise of AI system components through malicious models, poisoned training d
 
 ### LLM04 - Data and Model Poisoning
 
-Intentional manipulation of training data or model weights to embed backdoors, biases, or degraded safety behaviour.
+Intentional manipulation of training data or model weights to embed backdoors, biases, or degraded safety behavior.
 
 | Control Type | Controls | How It Mitigates |
 |-------------|----------|-----------------|
-| **Primary** | SUP-03, SUP-04, SUP-01, LOG-05 | RAG data source integrity (SUP-03) prevents poisoning through knowledge bases. Fine-tuning pipeline security (SUP-04) protects training processes. Provenance verification (SUP-01) detects model tampering. Drift detection (LOG-05) identifies behavioural changes that may indicate poisoning effects. |
+| **Primary** | SUP-03, SUP-04, SUP-01, LOG-05 | RAG data source integrity (SUP-03) prevents poisoning through knowledge bases. Fine-tuning pipeline security (SUP-04) protects training processes. Provenance verification (SUP-01) detects model tampering. Drift detection (LOG-05) identifies behavioral changes that may indicate poisoning effects. |
 | **Secondary** | NET-05, SUP-06, IAM-03, LOG-07 | Ingestion isolation separates data pipelines from runtime. Safety model integrity verification prevents poisoning of guardrails. Control plane separation protects model configurations. Log integrity prevents evidence tampering. |
 
 ### LLM05 - Improper Output Handling
@@ -62,7 +62,7 @@ Model or agent takes actions beyond what was intended or authorised, including u
 | Control Type | Controls | How It Mitigates |
 |-------------|----------|-----------------|
 | **Primary** | TOOL-01, TOOL-02, TOOL-03, TOOL-04, IAM-04, IAM-05 | Declared tool manifests (TOOL-01) define the boundary of permitted actions. Gateway enforcement (TOOL-02) makes the boundary real. Parameter constraints (TOOL-03) limit scope within permitted tools. Action classification (TOOL-04) routes high-impact actions to human approval. Agent tool constraints (IAM-04) and human approval routing (IAM-05) provide additional governance. |
-| **Secondary** | TOOL-05, SESS-01, SESS-03, DEL-03 | Rate limiting prevents runaway behaviour. Session boundaries limit duration. Task scope constraints limit purpose. Delegation depth limits prevent recursive agency expansion. |
+| **Secondary** | TOOL-05, SESS-01, SESS-03, DEL-03 | Rate limiting prevents runaway behavior. Session boundaries limit duration. Task scope constraints limit purpose. Delegation depth limits prevent recursive agency expansion. |
 
 ### LLM07 - System Prompt Leakage
 
@@ -158,7 +158,7 @@ Agent delegates tasks to other agents without proper authorisation, permission s
 
 ### AGT-07 - Persistent Memory Poisoning
 
-Attacker injects malicious content into agent memory, conversation history, or persistent state that influences future agent behaviour across sessions.
+Attacker injects malicious content into agent memory, conversation history, or persistent state that influences future agent behavior across sessions.
 
 | Control Type | Controls | How It Mitigates |
 |-------------|----------|-----------------|

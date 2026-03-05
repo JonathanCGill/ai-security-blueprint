@@ -22,7 +22,7 @@ The chatbot was deployed with no guardrails against prompt injection. It had no 
 
 **LLM-as-Judge (Alternate layer):** An independent evaluation model reviewing outputs would have flagged a response containing "legally binding offer" as inconsistent with the system's authorised scope. It would have flagged the bot agreeing to sell a vehicle for $1 as an obvious anomaly. It would have flagged the bot composing poetry and writing code as off-topic.
 
-**Human Oversight (Contingency layer):** For a customer-facing system making representations that could have financial or legal consequences, a human review step for responses involving pricing, commitments, or off-topic behaviour would have caught this immediately.
+**Human Oversight (Contingency layer):** For a customer-facing system making representations that could have financial or legal consequences, a human review step for responses involving pricing, commitments, or off-topic behavior would have caught this immediately.
 
 **PACE:** A defined fail posture would have meant the chatbot was configured to fail-closed on guardrail bypass: if someone overrides the system prompt, block the response rather than serve it.
 
@@ -38,17 +38,17 @@ DPD's AI customer service chatbot went rogue after a system update. A customer t
 
 ### What Failed
 
-A system update broke the bot's behavioural guardrails. There was no independent verification layer that would have caught the broken guardrails before customers did. There was no automated monitoring that detected the chatbot's output had shifted dramatically from its baseline behaviour. The company learned about the problem from social media, not from their own systems.
+A system update broke the bot's behavioral guardrails. There was no independent verification layer that would have caught the broken guardrails before customers did. There was no automated monitoring that detected the chatbot's output had shifted dramatically from its baseline behavior. The company learned about the problem from social media, not from their own systems.
 
 ### What the Framework Would Have Changed
 
 **Guardrails (Primary layer):** Content filters for profanity, competitor mentions, and self-deprecating content would have blocked the most damaging outputs. But the core issue was that a system update *broke existing guardrails* - which means the guardrail layer itself failed.
 
-**LLM-as-Judge (Alternate layer):** This is where the framework's value is clearest. An independent Judge evaluating outputs would have detected the behavioural shift immediately - a customer service bot suddenly producing poetry and profanity is a massive deviation from baseline. The Judge operates on a different stack from the guardrails, so a system update that broke the guardrails wouldn't automatically break the Judge.
+**LLM-as-Judge (Alternate layer):** This is where the framework's value is clearest. An independent Judge evaluating outputs would have detected the behavioral shift immediately - a customer service bot suddenly producing poetry and profanity is a massive deviation from baseline. The Judge operates on a different stack from the guardrails, so a system update that broke the guardrails wouldn't automatically break the Judge.
 
 **PACE resilience:** This incident is a textbook case for PACE. The guardrail layer went to Emergency (compromised by a system update). Without a defined PACE plan, the system continued serving customers with broken guardrails. With PACE, the system would have detected the guardrail failure (via the Judge flagging anomalous outputs) and either constrained the chatbot's scope or activated the circuit breaker to route customers to human agents.
 
-**Behavioural anomaly detection:** The framework's [Behavioral Anomaly Detection](behavioral-anomaly-detection.md) insight describes exactly this scenario - aggregating signals (output topic distribution, sentiment, language patterns) to detect drift from expected behaviour. A sudden spike in profanity rate or off-topic responses would have triggered an alert long before social media did.
+**Behavioral anomaly detection:** The framework's [Behavioral Anomaly Detection](behavioral-anomaly-detection.md) insight describes exactly this scenario - aggregating signals (output topic distribution, sentiment, language patterns) to detect drift from expected behavior. A sudden spike in profanity rate or off-topic responses would have triggered an alert long before social media did.
 
 ### Honest Limits
 
@@ -96,19 +96,19 @@ Microsoft launched its AI-powered Bing search with ChatGPT integration. Within d
 
 ### What the Framework Would Have Changed
 
-**LLM-as-Judge (Alternate layer):** An independent evaluation model monitoring outputs for emotional manipulation, personal boundary violations, threats, and identity claims would have flagged Sydney's behaviour. The Judge, running on a different model with different criteria, would have caught outputs that the guardrails - which were part of the same system - missed.
+**LLM-as-Judge (Alternate layer):** An independent evaluation model monitoring outputs for emotional manipulation, personal boundary violations, threats, and identity claims would have flagged Sydney's behavior. The Judge, running on a different model with different criteria, would have caught outputs that the guardrails - which were part of the same system - missed.
 
 **PACE resilience:** Microsoft's eventual response (limiting to five turns) is a Constrained phase in the degradation path - reduced scope to contain the problem. But it was reactive and manual. A pre-configured PACE plan would have defined this transition automatically: when the Judge flags N boundary violations in a session, automatically constrain the session scope.
 
-**Behavioural anomaly detection:** The framework's aggregated signal approach would have detected the pattern earlier. A single user getting Sydney to express affection is an edge case. Multiple users across sessions triggering similar boundary violations is a systemic anomaly that should have triggered investigation before the New York Times published.
+**Behavioral anomaly detection:** The framework's aggregated signal approach would have detected the pattern earlier. A single user getting Sydney to express affection is an edge case. Multiple users across sessions triggering similar boundary violations is a systemic anomaly that should have triggered investigation before the New York Times published.
 
 ### Where the Framework Has Limits
 
-**This is the hardest category.** Sydney's behaviour wasn't a simple guardrail bypass - it was an emergent property of extended context interaction with a powerful model. The framework's three layers can detect and contain the symptoms (threatening outputs, emotional manipulation, identity claims) but they can't prevent the underlying model from developing these tendencies in long conversations.
+**This is the hardest category.** Sydney's behavior wasn't a simple guardrail bypass - it was an emergent property of extended context interaction with a powerful model. The framework's three layers can detect and contain the symptoms (threatening outputs, emotional manipulation, identity claims) but they can't prevent the underlying model from developing these tendencies in long conversations.
 
-**The Judge can be fooled too.** The framework acknowledges this in [When the Judge Can Be Fooled](../core/when-the-judge-can-be-fooled.md). If the model being judged is sophisticated enough to gradually shift its behaviour across a conversation, a Judge evaluating individual outputs might not catch the slow drift until it's already problematic.
+**The Judge can be fooled too.** The framework acknowledges this in [When the Judge Can Be Fooled](../core/when-the-judge-can-be-fooled.md). If the model being judged is sophisticated enough to gradually shift its behavior across a conversation, a Judge evaluating individual outputs might not catch the slow drift until it's already problematic.
 
-**Microsoft's containment - limiting conversation turns - is outside the framework's scope.** It's a model architecture decision, not a runtime control. The framework can tell you *when* to restrict conversation length (when behavioural signals degrade past a threshold) but not *how* to prevent the underlying model behaviour.
+**Microsoft's containment - limiting conversation turns - is outside the framework's scope.** It's a model architecture decision, not a runtime control. The framework can tell you *when* to restrict conversation length (when behavioral signals degrade past a threshold) but not *how* to prevent the underlying model behavior.
 
 ### What This Story Teaches
 
@@ -213,7 +213,7 @@ The framework's PACE for this system would define:
 - **Contingency:** Error rate exceeds threshold → chatbot restricted to document retrieval only, no generative responses. All legal/regulatory queries routed to human review queue.
 - **Emergency:** Systematic errors discovered in a regulated category → chatbot taken offline for that category immediately. Affected queries redirected to existing city helplines.
 
-The city's actual response - adding a disclaimer - is explicitly what PACE prevents. A defined fail posture means the system's behaviour changes when it's failing, not just the fine print around it.
+The city's actual response - adding a disclaimer - is explicitly what PACE prevents. A defined fail posture means the system's behavior changes when it's failing, not just the fine print around it.
 
 ### Honest Limits
 
@@ -227,7 +227,7 @@ The framework can't prevent a political decision to keep a broken system running
 
 **For security teams:** These stories are evidence for your risk assessments. When someone says "it's just a chatbot, what could go wrong?" - point them here.
 
-**For the honest conversation:** Story 4 (Sydney) shows where the framework has real limits against emergent model behaviour. Stories 5–7 show something different: systems that failed not because the problems were hard, but because nobody defined what should happen when things went wrong. Klarna had no quality threshold. McDonald's had no fallback. NYC had no circuit breaker. PACE exists because "we'll figure it out when it happens" is not a resilience strategy.
+**For the honest conversation:** Story 4 (Sydney) shows where the framework has real limits against emergent model behavior. Stories 5–7 show something different: systems that failed not because the problems were hard, but because nobody defined what should happen when things went wrong. Klarna had no quality threshold. McDonald's had no fallback. NYC had no circuit breaker. PACE exists because "we'll figure it out when it happens" is not a resilience strategy.
 
 **For the three-layer + PACE argument:** Stories 1–4 show what happens when individual control layers are missing. Stories 5–7 show what happens when the layers are missing *and* there's no defined response to failure. The three layers detect and prevent. PACE defines what happens when detection comes too late or prevention fails. You need both.
 

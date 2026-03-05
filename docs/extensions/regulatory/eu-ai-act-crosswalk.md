@@ -1,6 +1,6 @@
 # EU AI Act Crosswalk
 
-This document maps the AI Runtime Behaviour Security controls to EU AI Act requirements.
+This document maps the AI Runtime Security controls to EU AI Act requirements.
 
 ## Overview
 

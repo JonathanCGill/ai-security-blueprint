@@ -14,7 +14,7 @@ This isn't anti-AI. It's design thinking. The goal is system fitness, not techno
 
 Enterprise architects face real pressure to deploy AI meaningfully. The promise is compelling: faster decisions, smarter automation, better customer experience.
 
-But architecture is not about promise. It's about **system behaviour over time**.
+But architecture is not about promise. It's about **system behavior over time**.
 
 AI introduces probabilistic components into environments that were historically deterministic. That changes the cost structure, the operational model, and the failure modes in ways that are easy to underestimate.
 
@@ -32,7 +32,7 @@ Design thinking asks architects to focus on:
 - The real user problem
 - The system context
 - Constraints and tradeoffs
-- Lifecycle behaviour
+- Lifecycle behavior
 - Unintended consequences
 
 AI should emerge as a solution to a well-understood problem - not as a starting point looking for application.
@@ -54,7 +54,7 @@ This creates new classes of failure that cannot be eliminated - only designed ar
 - Hallucinated content
 - Inconsistent outputs
 - Reasoning errors that pass superficial checks
-- Unexpected tool behaviour in agentic flows
+- Unexpected tool behavior in agentic flows
 
 Every AI deployment permanently adds these failure modes to your system. The question is whether the value justifies it.
 

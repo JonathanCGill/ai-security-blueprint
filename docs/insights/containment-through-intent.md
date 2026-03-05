@@ -10,13 +10,13 @@ An AI agent with a clearly declared intent is a fundamentally different problem.
 
 That knowledge - declared, codified, and enforced - is the foundation of every control in this framework.
 
-**The thesis:** If intent is properly articulated upfront, and downstream systems enforce hard limits aligned with that intent, agent behaviour is confined to predictable parameters. Not perfectly. Not absolutely. But within limits that are monitorable, auditable, and defensible.
+**The thesis:** If intent is properly articulated upfront, and downstream systems enforce hard limits aligned with that intent, agent behavior is confined to predictable parameters. Not perfectly. Not absolutely. But within limits that are monitorable, auditable, and defensible.
 
 This is a **constrain-regardless** architecture. Permissions derive from declared business intent - what the use case requires - not from evaluation of what the model can do. If the model's hidden capabilities cannot manifest because the containment boundary prevents them, those capabilities are operationally irrelevant as a breakout vector. This is why [containment beats evaluation](why-containment-beats-evaluation.md) as the primary security control.
 
 Critically, containment operates on the **action space** (what the model may *do*) while leaving the **reasoning space** unconstrained (how the model may *think*). This is the key distinction. The entire value of deploying AI lies in its ability to handle ambiguity, generalise, and synthesise. None of that requires unrestricted action. A model summarising customer complaints needs full reasoning freedom. It does not need the ability to call external APIs or modify databases. Containment preserves the value of AI precisely because it does not attempt to control AI's reasoning - only its actions.
 
-Think of it as parental. A good parent does not script what a child says or thinks. They set boundaries - don't cross the road, don't touch the stove, come home before dark. Within those boundaries, the child has full autonomy. The boundaries are non-negotiable. The behaviour within them is free. And the parent watches - not to control every action, but to notice when something looks wrong. Containment is the boundary. The Judge is the parent watching. Human oversight is the parent stepping in when passive observation is insufficient.
+Think of it as parental. A good parent does not script what a child says or thinks. They set boundaries - don't cross the road, don't touch the stove, come home before dark. Within those boundaries, the child has full autonomy. The boundaries are non-negotiable. The behavior within them is free. And the parent watches - not to control every action, but to notice when something looks wrong. Containment is the boundary. The Judge is the parent watching. Human oversight is the parent stepping in when passive observation is insufficient.
 
 ## How Intent Flows Through the Defence Stack
 
@@ -55,11 +55,11 @@ Humans also calibrate the other layers. When a Judge flags an action that turns 
 
 ### Layer 4: Monitoring and Observability - Detecting Violations
 
-MASO's observability controls (anomaly scoring, drift detection, communication profiling) watch for agents that deviate from expected behaviour. Expected behaviour is defined by - intent.
+MASO's observability controls (anomaly scoring, drift detection, communication profiling) watch for agents that deviate from expected behavior. Expected behavior is defined by - intent.
 
 If a delivery logistics agent with intent "calculate shipping options and schedule deliveries" starts making unusually frequent calls to the customer support API, that is an anomaly. Not because API calls are forbidden (they might be within its technical permissions), but because they are inconsistent with the declared purpose. The monitoring layer knows this because it knows the intent.
 
-At scale, this becomes population-level monitoring. Ten thousand instances of the same agent type, all with the same declared intent, should exhibit similar behaviour. An instance that deviates from the population is the signal. The intent defines the population's expected behaviour profile.
+At scale, this becomes population-level monitoring. Ten thousand instances of the same agent type, all with the same declared intent, should exhibit similar behavior. An instance that deviates from the population is the signal. The intent defines the population's expected behavior profile.
 
 ### Layer 5: PACE - Resilience When Intent Cannot Be Fulfilled
 
@@ -73,7 +73,7 @@ Without intent, PACE is generic: try again, fall back, degrade, halt. With inten
 | Recommend products | Personalised recommendations | Category-level popular items | Static bestseller list | "Browse our catalogue" fallback |
 | Calculate shipping | Real-time carrier quotes | Cached rate tables | Flat-rate shipping only | "Shipping calculated at checkout" |
 
-Each degradation path is coherent because it degrades *toward* a simpler version of the same intent, not toward arbitrary fallback behaviour.
+Each degradation path is coherent because it degrades *toward* a simpler version of the same intent, not toward arbitrary fallback behavior.
 
 ## Downstream Intent Awareness
 
@@ -97,7 +97,7 @@ Put together, the defence stack creates a confinement model:
 
 **Walls (Guardrails):** Hard infrastructure limits derived from intent. The agent physically cannot access systems, data, or tools outside its declared purpose. Not "shouldn't" - *cannot*.
 
-**Surveillance (Judge + Observability):** Continuous evaluation of whether the agent's behaviour aligns with its declared purpose. The Judge evaluates semantic alignment. Observability monitors behavioural patterns. Both use intent as the reference point.
+**Surveillance (Judge + Observability):** Continuous evaluation of whether the agent's behavior aligns with its declared purpose. The Judge evaluates semantic alignment. Observability monitors behavioral patterns. Both use intent as the reference point.
 
 **Guards (Human Oversight):** Humans handle exceptions - actions the agent attempts that fall outside intent, anomalies the monitoring layer detects, edge cases the Judge flags. Humans also update the intent specification based on operational learning.
 
@@ -107,15 +107,15 @@ Put together, the defence stack creates a confinement model:
 
 ## Why This Works (Most of the Time)
 
-The confinement model works because it operates as a **closed-loop control system with a shared reference point**. The declared intent is the setpoint. The Judge and observability are the sensors. Drift detection is the comparator. Human oversight and PACE are the actuators. The system continuously measures actual behaviour against the desired state and applies corrective action - unlike open-loop evaluate-then-permit approaches that assess once and hope.
+The confinement model works because it operates as a **closed-loop control system with a shared reference point**. The declared intent is the setpoint. The Judge and observability are the sensors. Drift detection is the comparator. Human oversight and PACE are the actuators. The system continuously measures actual behavior against the desired state and applies corrective action - unlike open-loop evaluate-then-permit approaches that assess once and hope.
 
 Each layer is independent - guardrails do not depend on the Judge, the Judge does not depend on human reviewers, monitoring operates regardless of whether PACE is active. But all layers share the same reference: the declared intent. And each layer is specifically designed to catch what the previous layer misses - compound defence by design, not by coincidence.
 
 This means:
 
-- **A guardrail bypass does not defeat the system.** The agent gets past the wall, but the Judge sees the semantic misalignment. The monitoring layer detects the anomalous behaviour. The human reviewer investigates.
+- **A guardrail bypass does not defeat the system.** The agent gets past the wall, but the Judge sees the semantic misalignment. The monitoring layer detects the anomalous behavior. The human reviewer investigates.
 - **A Judge error does not defeat the system.** The Judge misses a violation, but the guardrails already prevented the most dangerous actions. Monitoring flags the anomaly. The next human review sample catches the pattern.
-- **A compromised agent does not defeat the system.** The agent's credentials limit blast radius. The monitoring layer detects the deviation from intent-aligned behaviour. PACE triggers degradation. The kill switch is available as a last resort.
+- **A compromised agent does not defeat the system.** The agent's credentials limit blast radius. The monitoring layer detects the deviation from intent-aligned behavior. PACE triggers degradation. The kill switch is available as a last resort.
 
 No single layer is sufficient. No single layer needs to be. The combination, organised around a shared understanding of what the agent is supposed to do, creates a defence that is stronger than any individual control.
 
@@ -123,21 +123,21 @@ No single layer is sufficient. No single layer needs to be. The combination, org
 
 Intellectual honesty matters more than confidence.
 
-**Intent is hard to specify completely.** For simple, well-defined tasks (process a payment, calculate shipping), intent can be precisely articulated. For complex, open-ended tasks (advise on investment strategy, resolve a customer complaint), the intent specification will always be incomplete. The agent will encounter situations the specification did not anticipate, and its behaviour in those situations is not governed by intent - it is governed by the model's training, the prompt, and luck.
+**Intent is hard to specify completely.** For simple, well-defined tasks (process a payment, calculate shipping), intent can be precisely articulated. For complex, open-ended tasks (advise on investment strategy, resolve a customer complaint), the intent specification will always be incomplete. The agent will encounter situations the specification did not anticipate, and its behavior in those situations is not governed by intent - it is governed by the model's training, the prompt, and luck.
 
-**Agents can operate within intent and still cause harm.** A sales advisor operating entirely within its declared intent - "guide customers toward suitable products" - can still be more persuasive than the deployer intended. The intent said *what* to do, not *how aggressively* to do it. Specifying behavioural style as well as functional purpose adds complexity that many organisations will not invest in upfront.
+**Agents can operate within intent and still cause harm.** A sales advisor operating entirely within its declared intent - "guide customers toward suitable products" - can still be more persuasive than the deployer intended. The intent said *what* to do, not *how aggressively* to do it. Specifying behavioral style as well as functional purpose adds complexity that many organisations will not invest in upfront.
 
 **The gap between declared intent and infrastructure enforcement is non-trivial.** Translating "this agent should only access customer service data" into the correct IAM policies, network rules, API scopes, and guardrail configurations requires engineering effort. Misconfigurations create gaps between what the intent says and what the infrastructure enforces. The intent is correct; the implementation is not.
 
 **Adaptive adversaries target the intent itself.** If an attacker can modify the intent specification - through prompt injection into the orchestration layer, through manipulation of the configuration store, through social engineering of the human who defines the intent - the entire confinement model defends the wrong thing. [Goal integrity controls](../maso/controls/prompt-goal-and-epistemic-integrity.md) (PG-1.3, PG-2.2, PG-3.2) exist precisely to protect the intent specification from tampering.
 
-**Emergent behaviour is intent-unaware.** When multiple agents interact, emergent behaviours can arise that no individual agent's intent specification anticipated. Each agent is operating within its intent. The system-level outcome is not what anyone intended. This is the [epistemic cascade problem](../maso/threat-intelligence/emerging-threats.md) and it is not fully solved by intent-based containment alone.
+**Emergent behavior is intent-unaware.** When multiple agents interact, emergent behaviors can arise that no individual agent's intent specification anticipated. Each agent is operating within its intent. The system-level outcome is not what anyone intended. This is the [epistemic cascade problem](../maso/threat-intelligence/emerging-threats.md) and it is not fully solved by intent-based containment alone.
 
 ## The Defence Equation
 
 The framework's thesis, stated plainly:
 
-**Declared intent + hard guardrails + semantic evaluation + behavioural monitoring + human oversight + structured degradation = confined, monitorable, defensible AI behaviour.**
+**Declared intent + hard guardrails + semantic evaluation + behavioral monitoring + human oversight + structured degradation = confined, monitorable, defensible AI behavior.**
 
 Each term is necessary. None is sufficient alone.
 
@@ -163,6 +163,6 @@ That is what regulators ask for. That is what auditors examine. That is what inc
 | [PACE Resilience](../PACE-RESILIENCE.md) | How structured degradation maintains intent alignment during failure |
 | [PG Controls](../maso/controls/prompt-goal-and-epistemic-integrity.md) | The specific MASO controls that protect intent specifications (PG-1.3, PG-2.2, PG-3.2) |
 | [Execution Control](../maso/controls/execution-control.md) | Infrastructure enforcement of intent-derived boundaries |
-| [Observability](../maso/controls/observability.md) | Monitoring agent behaviour against intent-derived baselines |
+| [Observability](../maso/controls/observability.md) | Monitoring agent behavior against intent-derived baselines |
 | [Why Containment Beats Evaluation](why-containment-beats-evaluation.md) | The position paper: why constrain-regardless architectures are structurally superior to evaluate-then-permit for regulated environments |
 

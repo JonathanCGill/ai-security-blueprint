@@ -57,7 +57,7 @@ The architecture for process-aware evaluation already exists within this framewo
 
 **The Judge evaluates outputs.** [Judge Assurance](../core/judge-assurance.md) measures Judge accuracy against human ground truth, tracks drift, and adversarially tests the evaluation layer.
 
-**The anomaly scoring model detects behavioural deviation.** [OB-2.2](../maso/controls/observability.md) scores agents against established baselines using seven input signals including tool usage patterns, output quality, and content drift.
+**The anomaly scoring model detects behavioral deviation.** [OB-2.2](../maso/controls/observability.md) scores agents against established baselines using seven input signals including tool usage patterns, output quality, and content drift.
 
 The gap is between these components. The observability layer captures the trace. The Judge evaluates the output. But the trace itself is not systematically evaluated for security-relevant patterns - it feeds anomaly scoring (which detects statistical deviation) and forensic investigation (which happens after something goes wrong).
 

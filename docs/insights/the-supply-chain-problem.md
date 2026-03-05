@@ -19,14 +19,14 @@ You test your application. You monitor your outputs. But you have no visibility 
 | **Model update without notice** | Provider updates weights or system prompt; your evaluated baseline is invalid |
 | **Dependency compromise** | Malicious package in your AI toolchain (LangChain had CVEs in 2023–2024) |
 | **Model poisoning** | Open-source model weights tampered with before you download them |
-| **Embedding drift** | Embedding model update changes retrieval behaviour across your RAG pipeline |
+| **Embedding drift** | Embedding model update changes retrieval behavior across your RAG pipeline |
 | **Shadow AI** | Teams deploy models you haven't evaluated, using your data |
 
 Traditional software has SBOMs. AI systems need equivalent provenance documentation - what NDAA and EU AI Act drafters are calling "AI-BOMs."
 
 ## What the Framework Misses
 
-The three-layer pattern (Guardrails → Judge → Human) monitors runtime behaviour. It doesn't address:
+The three-layer pattern (Guardrails → Judge → Human) monitors runtime behavior. It doesn't address:
 
 1. **Whether the model you're monitoring is the model you approved**
 2. **Whether the framework dependencies are trustworthy**
@@ -41,7 +41,7 @@ Runtime monitoring detects symptoms. Supply chain controls prevent the disease.
 | **Model pinning** | Lock to specific model version/checkpoint | Deployment |
 | **Dependency scanning** | Audit AI framework dependencies for vulnerabilities | CI/CD |
 | **Weight verification** | Hash-based integrity checks on downloaded models | Download + deployment |
-| **Provider change monitoring** | Detect when API-accessed models change behaviour | Continuous |
+| **Provider change monitoring** | Detect when API-accessed models change behavior | Continuous |
 | **AI-BOM generation** | Document all AI components, versions, and sources | Release |
 | **Shadow AI discovery** | Identify unsanctioned model usage across the enterprise | Periodic |
 

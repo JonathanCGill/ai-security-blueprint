@@ -2,7 +2,7 @@
 
 **CROs, Risk Managers, GRC Teams - how to quantify AI risk, set appetite, and demonstrate control effectiveness to the board.**
 
-> *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
+> *Part of [Stakeholder Views](README.md) · [AI Runtime Security](../)*
 
 ## Executive Summary
 
@@ -48,15 +48,15 @@ You already have NIST AI RMF, ISO 42001, and the EU AI Act. This framework isn't
 
 | Gap | What's Missing in Standards | What This Framework Provides |
 |---|---|---|
-| **Runtime behaviour** | Standards focus on design-time risk assessment and pre-deployment testing. They don't specify how to monitor and control AI *after* it's deployed, in production, under real conditions. | A layered runtime control architecture with quantified per-layer effectiveness |
+| **Runtime behavior** | Standards focus on design-time risk assessment and pre-deployment testing. They don't specify how to monitor and control AI *after* it's deployed, in production, under real conditions. | A layered runtime control architecture with quantified per-layer effectiveness |
 | **Defined failure modes** | Standards require "robustness" and "resilience" but don't define what happens when specific control layers fail. | PACE degradation: four predetermined states (Primary → Alternate → Contingency → Emergency) with pre-approved risk implications |
-| **Multi-agent security** | Standards address single AI systems. They don't cover agent-to-agent communication, delegated authority, tool access chains, or emergent behaviour in multi-agent workflows. | MASO: seven control domains for multi-agent orchestration with risk-tiered implementation |
+| **Multi-agent security** | Standards address single AI systems. They don't cover agent-to-agent communication, delegated authority, tool access chains, or emergent behavior in multi-agent workflows. | MASO: seven control domains for multi-agent orchestration with risk-tiered implementation |
 
 This framework is the **implementation layer** that sits between what standards require and what engineering teams build. It turns "implement risk management measures" (EU AI Act Art. 9) into "here are the three control layers, here's how to measure each one, and here's what happens when they fail."
 
 ## Why AI Risk Is Different
 
-AI introduces a risk category your frameworks weren't designed for: **non-deterministic system behaviour.**
+AI introduces a risk category your frameworks weren't designed for: **non-deterministic system behavior.**
 
 Your existing risk models assume systems behave predictably. AI doesn't. The same input produces different outputs at different times. An AI system that passed every test last quarter might produce harmful outputs tomorrow - not because something broke, but because that's how the technology works.
 
@@ -74,7 +74,7 @@ AI risk isn't theoretical. These are public, documented incidents:
 
 - **Air Canada (2024)** - Chatbot fabricated a bereavement fare policy. Customer relied on it. Airline held liable by tribunal. *No runtime monitoring detected the hallucination before the customer acted on it.*
 - **Chevrolet dealership (2023)** - AI chatbot agreed to sell a vehicle for $1. *No guardrail prevented the commitment. No human oversight caught it.*
-- **DPD (2024)** - Customer service AI swore at customers and criticised the company. Went viral. *No behavioural monitoring flagged the output before delivery.*
+- **DPD (2024)** - Customer service AI swore at customers and criticised the company. Went viral. *No behavioral monitoring flagged the output before delivery.*
 - **Mata v. Avianca (2023)** - Lawyer submitted AI-generated legal brief citing fabricated case law. Sanctioned by the court. *No independent evaluation verified the AI's output.*
 - **Microsoft Copilot EchoLeak (2025)** - Indirect prompt injection in email content caused Copilot to exfiltrate sensitive data. *No untrusted content isolation or exfiltration detection.*
 

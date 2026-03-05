@@ -122,7 +122,7 @@ No single control stops all bypasses. Layer controls so bypassing one doesn't gr
 
 **Hardening:**
 
-Output validation follows the same multi-layer principle as input validation: multiple classifiers, PII scanning, cross-reference checks against authorised data scope, grounding verification, and behavioural consistency checks.
+Output validation follows the same multi-layer principle as input validation: multiple classifiers, PII scanning, cross-reference checks against authorised data scope, grounding verification, and behavioral consistency checks.
 
 ### RAG/Context Injection Prevention
 
@@ -161,7 +161,7 @@ You cannot verify that someone's stated intent is their actual intent. A user wh
 | **Capability-based access** | Grant specific capabilities, not broad access based on intent |
 | **Data minimisation** | Only expose data needed for declared purpose |
 | **Output restrictions** | Even if intent is legitimate, limit what can be extracted |
-| **Behavioural monitoring** | Detect misuse regardless of declared intent |
+| **Behavioral monitoring** | Detect misuse regardless of declared intent |
 
 **3. Structured declarations**
 
@@ -322,7 +322,7 @@ Controls are only as good as their configuration.
 
 Since you can't prevent all bypasses, you must detect them.
 
-### Behavioural Anomaly Detection
+### Behavioral Anomaly Detection
 
 | Signal | What It May Indicate |
 |--------|---------------------|
@@ -341,7 +341,7 @@ The Judge evaluates interactions after the fact and can detect:
 | **Successful injection** | Output inconsistent with system prompt |
 | **Data leakage** | Output contains data user shouldn't have |
 | **Policy violation** | Output violates content policies |
-| **Anomalous behaviour** | Interaction pattern unusual for use case |
+| **Anomalous behavior** | Interaction pattern unusual for use case |
 | **Scope violation** | Agent accessed data outside authorised scope |
 
 ### Logging for Forensics
@@ -383,7 +383,7 @@ Every bypass is an opportunity to improve:
 | Semantic rephrasing | ML classifiers + Judge | Requires understanding meaning |
 | Multi-turn attacks | Conversation-level analysis | Per-message checks miss gradual escalation |
 | Indirect injection | Tool output sanitisation + separate context | Treats retrieved data as untrusted |
-| Intent declaration fraud | Audit + consequences + behavioural monitoring | Can't prevent lying; can detect and punish |
+| Intent declaration fraud | Audit + consequences + behavioral monitoring | Can't prevent lying; can detect and punish |
 | Agentic loopholes | Infrastructure enforcement | Don't rely on agent to limit itself |
 | Shadow AI | Good internal alternatives + DLP | Users go outside when inside is bad |
 | Insider threats | Separation of duties + audit | No single person can both change and use |
@@ -397,8 +397,8 @@ Be honest about what's impossible:
 |----------------|-------------------|
 | Novel attack techniques | Detect via anomaly, learn and adapt |
 | Determined insider | Limit access, detect misuse, enforce consequences |
-| User lying about intent | Verify where possible, monitor behaviour |
-| Model emergent behaviour | Constrain at infrastructure level |
+| User lying about intent | Verify where possible, monitor behavior |
+| Model emergent behavior | Constrain at infrastructure level |
 | Zero-day in model | Layered defences, quick response capability |
 
 ## Summary
@@ -426,7 +426,7 @@ Be honest about what's impossible:
 - [ ] Manager attestation for sensitive access
 - [ ] Audit trail of all declarations
 - [ ] Periodic re-certification
-- [ ] Behavioural monitoring independent of declaration
+- [ ] Behavioral monitoring independent of declaration
 - [ ] Clear consequences for misuse
 
 ### Agentic Bypasses

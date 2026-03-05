@@ -9,7 +9,7 @@
 
   <!-- Title bar -->
   <rect x="0" y="0" width="1100" height="52" fill="#2c3e50"/>
-  <text x="550" y="24" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">AI Runtime Behaviour Security - Decision Poster</text>
+  <text x="550" y="24" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">AI Runtime Security - Decision Poster</text>
   <text x="550" y="42" text-anchor="middle" font-size="10" fill="#bdc3c7">Find your deployment. Get your controls. Know your fail posture. One page.</text>
 
   <!-- ============================================ -->
@@ -259,7 +259,7 @@
   <line x1="568" y1="486" x2="1070" y2="486" stroke="#d2b4de" stroke-width="0.5"/>
   <text x="568" y="500" font-size="8.5" fill="#2c3e50">□ Degradation phases defined with trigger criteria</text>
   <text x="568" y="514" font-size="8.5" fill="#2c3e50">□ Transaction resolution for every tool (rollback? complete without agent? partial dangerous?)</text>
-  <text x="568" y="528" font-size="8.5" fill="#2c3e50">□ Multi-agent cascade prevention (timeouts, fallback behaviour, no blocking)</text>
+  <text x="568" y="528" font-size="8.5" fill="#2c3e50">□ Multi-agent cascade prevention (timeouts, fallback behavior, no blocking)</text>
   <text x="568" y="542" font-size="8.5" fill="#2c3e50">□ Non-AI fallback path tested and staffed</text>
 
   <!-- ============================================ -->
@@ -293,11 +293,11 @@
 
   <rect x="555" y="657" width="530" height="65" rx="6" fill="#fff" stroke="#bdc3c7" stroke-width="1" filter="url(#shadow)"/>
   <text x="565" y="675" font-size="9" font-weight="bold" fill="#5d6d7e">RESOURCES</text>
-  <text x="565" y="691" font-size="8" fill="#2c3e50">Full framework: github.com/JonathanCGill/ai-runtime-behaviour-security</text>
+  <text x="565" y="691" font-size="8" fill="#2c3e50">Full framework: github.com/JonathanCGill/ai-runtime-behavior-security</text>
   <text x="565" y="705" font-size="8" fill="#2c3e50">Fast Lane: FAST-LANE.md · PACE Methodology: PACE-RESILIENCE.md · Infrastructure: 80 controls / 11 domains</text>
   <text x="565" y="718" font-size="8" fill="#7f8c8d">MIT License - Use it, adapt it, build on it.</text>
 
   <!-- Footer -->
-  <text x="550" y="758" text-anchor="middle" font-size="8" fill="#95a5a6">AI Runtime Behaviour Security - Decision Poster v1.0 © Jonathan Gill 2025</text>
+  <text x="550" y="758" text-anchor="middle" font-size="8" fill="#95a5a6">AI Runtime Security - Decision Poster v1.0 © Jonathan Gill 2025</text>
   <text x="550" y="772" text-anchor="middle" font-size="8" fill="#bdc3c7">Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain.</text>
 </svg>

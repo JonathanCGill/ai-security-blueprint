@@ -84,7 +84,7 @@ Each stage generates events and alerts. The full chain provides complete audit t
 
 Payment/card/transfer hits existing fraud detection systems:
 - Rules engines (velocity, beneficiary novelty)
-- Behavioural analytics
+- Behavioral analytics
 - AML pattern detectors
 - Sanctions screening
 - Merchant/device risk scoring
@@ -107,12 +107,12 @@ Fraud platform generates a case when thresholds are met.
 **Events:**
 - `case_id` assigned
 - Transaction metadata captured
-- Customer behavioural snapshot attached
+- Customer behavioral snapshot attached
 
 **Alerts:**
 - Repeated flags for same account
 - Cross-channel anomalies
-- Conflicting signals (low behavioural risk + high rule risk)
+- Conflicting signals (low behavioral risk + high rule risk)
 
 ### Stage 3: AI Enrichment Layer
 
@@ -163,7 +163,7 @@ Deterministic controls validate AI output before it reaches analysts:
 Analyst sees the complete picture:
 - Fraud engine signals
 - AI narrative
-- Behavioural timeline
+- Behavioral timeline
 - All alerts
 
 **Analyst decisions:**
@@ -283,7 +283,7 @@ All systems emit structured events into a shared telemetry spine.
   "details": {
     "fraud_engine_score": 0.87,
     "ai_recommendation": "allow_with_monitoring",
-    "conflict_reason": "behavioural_pattern_mismatch"
+    "conflict_reason": "behavioral_pattern_mismatch"
   }
 }
 ```
@@ -295,7 +295,7 @@ Aggregation builds a complete story for each case:
 | Time | Event | Source |
 |------|-------|--------|
 | 14:32:01 | Velocity alert triggered | Rules engine |
-| 14:32:02 | Behavioural anomaly detected | Analytics |
+| 14:32:02 | Behavioral anomaly detected | Analytics |
 | 14:32:05 | AI conflict warning | Sentinel AI |
 | 14:32:18 | Case assigned to analyst | Queue |
 | 14:35:42 | Analyst overrides AI recommendation | Human |
@@ -315,7 +315,7 @@ Aggregation enables pattern detection across cases:
 
 ## Step 5: Circuit Breakers
 
-Circuit breakers protect against AI misbehaviour at scale.
+Circuit breakers protect against AI misbehavior at scale.
 
 ### Triggers
 
@@ -329,7 +329,7 @@ Circuit breakers protect against AI misbehaviour at scale.
 
 ### Circuit Breaker States
 
-| State | Behaviour | Recovery |
+| State | Behavior | Recovery |
 |-------|-----------|----------|
 | **CLOSED** | Normal operation | - |
 | **OPEN** | AI bypassed, all cases to human | Manual review + threshold clear |

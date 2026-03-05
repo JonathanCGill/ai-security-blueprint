@@ -2,7 +2,7 @@
 
 **Product Managers, Business Owners, Delivery Leads - what controls cost, what they prevent, and how to ship AI without getting blocked by security.**
 
-> *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
+> *Part of [Stakeholder Views](README.md) · [AI Runtime Security](../)*
 
 ## The Problem You Have
 

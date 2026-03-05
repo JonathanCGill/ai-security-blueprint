@@ -6,7 +6,7 @@ Most security evaluations test a single session. A prompt goes in. An output com
 
 This models a world where agents are stateless. That world is disappearing.
 
-Production agents run for days, weeks, months. They accumulate memory. They adapt to user patterns. They build context that spans hundreds of sessions. They interact with other agents whose behaviour evolves independently.
+Production agents run for days, weeks, months. They accumulate memory. They adapt to user patterns. They build context that spans hundreds of sessions. They interact with other agents whose behavior evolves independently.
 
 The security properties you validated on day one may not hold on day thirty.
 
@@ -18,7 +18,7 @@ The security properties you validated on day one may not hold on day thirty.
 
 No individual memory write looks malicious. The pattern is only visible across time.
 
-### Behavioural baselines drift
+### Behavioral baselines drift
 
 Agents learn from interaction. Not through fine-tuning (usually), but through accumulated context, retrieved examples, and reinforced patterns. An agent that handles customer queries will gradually shift its response patterns based on the queries it receives and the feedback it gets.
 
@@ -40,11 +40,11 @@ Time itself is an attack vector. The longer the agent runs, the more opportuniti
 
 The framework's anomaly detection ([OB-2.3](../maso/controls/observability.md)) uses a 7-day rolling baseline. This catches sudden changes - an agent that starts behaving differently this week compared to last week will trigger an alert.
 
-But consider an adversary who shifts agent behaviour by 0.5% per week. In any 7-day window, the change is within normal variance. Over six months, the agent has drifted 13% from its original baseline - and the 7-day window never saw a statistically significant deviation because it was comparing against a baseline that was itself drifting.
+But consider an adversary who shifts agent behavior by 0.5% per week. In any 7-day window, the change is within normal variance. Over six months, the agent has drifted 13% from its original baseline - and the 7-day window never saw a statistically significant deviation because it was comparing against a baseline that was itself drifting.
 
-This is why [OB-3.1](../maso/controls/observability.md) (Long-window behavioural analysis) exists at Tier 3: 30-day and 90-day trend analysis in addition to the 7-day rolling window. The "behavioural slow drift" attack pattern is the specific threat it addresses.
+This is why [OB-3.1](../maso/controls/observability.md) (Long-window behavioral analysis) exists at Tier 3: 30-day and 90-day trend analysis in addition to the 7-day rolling window. The "behavioral slow drift" attack pattern is the specific threat it addresses.
 
-But even long-window detection has limits. If the baseline itself is recalculated from drifted data, the long window inherits the drift. The detection requires an anchored reference point - a snapshot of the agent's behaviour at a known-good state - that is preserved independently of the rolling baseline.
+But even long-window detection has limits. If the baseline itself is recalculated from drifted data, the long window inherits the drift. The detection requires an anchored reference point - a snapshot of the agent's behavior at a known-good state - that is preserved independently of the rolling baseline.
 
 ## The Named Threat Patterns
 
@@ -53,11 +53,11 @@ Long-horizon security risks are not a single threat. They are a category that co
 | Pattern | Mechanism | Detection Difficulty |
 |---------|-----------|---------------------|
 | **Slow memory poisoning** | Small, benign-looking memory fragments deposited across sessions that assemble into a harmful instruction | High - no individual write is malicious |
-| **Baseline drift manipulation** | Adversary gradually shifts agent behaviour to evade rolling-window anomaly detection | High - each window shows normal variance |
+| **Baseline drift manipulation** | Adversary gradually shifts agent behavior to evade rolling-window anomaly detection | High - each window shows normal variance |
 | **Compound error chains** | Small errors accumulate across sessions, each one within tolerance, producing cumulative harm | High - each step passes individual evaluation |
 | **Dormant payload activation** | Instruction injected early, activated by a specific trigger condition that may not occur for weeks | Very high - payload is invisible until activation |
 | **Trust escalation over time** | Agent accumulates trust signals (successful interactions, positive feedback) that reduce oversight scrutiny, then exploits the reduced scrutiny | Medium - detectable if trust-level is monitored |
-| **Cross-agent temporal coordination** | Multiple agents independently shift behaviour over time, converging on a coordinated malicious action | Very high - requires cross-agent temporal correlation |
+| **Cross-agent temporal coordination** | Multiple agents independently shift behavior over time, converging on a coordinated malicious action | Very high - requires cross-agent temporal correlation |
 
 ## What the Framework Provides - and What's Missing
 
@@ -77,7 +77,7 @@ The controls assume the baseline is trustworthy. If the baseline drifts, the ano
 
 Long-horizon security requires:
 
-**Anchored reference points.** Capture a behavioural snapshot at a known-good state (post-deployment validation, post-audit). Preserve it independently. Compare not just against the rolling baseline but against the anchor. If the rolling baseline has diverged significantly from the anchor, that itself is an alert - even if week-over-week change is within tolerance.
+**Anchored reference points.** Capture a behavioral snapshot at a known-good state (post-deployment validation, post-audit). Preserve it independently. Compare not just against the rolling baseline but against the anchor. If the rolling baseline has diverged significantly from the anchor, that itself is an alert - even if week-over-week change is within tolerance.
 
 **Periodic re-validation against original acceptance criteria.** The tests that validated the agent for deployment should be re-run periodically - not just when the model changes, but on a calendar schedule. An agent that passed acceptance testing six months ago should still pass those same tests today. If it doesn't, something has changed.
 

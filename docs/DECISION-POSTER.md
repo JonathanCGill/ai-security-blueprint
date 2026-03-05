@@ -4,7 +4,7 @@
 
 *Open this file on GitHub to view full-size. Right-click the image to save or print.*
 
-[![AI Runtime Behaviour Security - Decision Poster](images/decision-poster.svg)](images/decision-poster.svg)
+[![AI Runtime Security - Decision Poster](images/decision-poster.svg)](images/decision-poster.svg)
 
 ## Print It
 

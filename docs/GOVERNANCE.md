@@ -2,7 +2,7 @@
 
 ## Overview
 
-The AI Runtime Behaviour Security is maintained as an open-source project. This document describes how the project is governed.
+The AI Runtime Security is maintained as an open-source project. This document describes how the project is governed.
 
 ## Roles
 

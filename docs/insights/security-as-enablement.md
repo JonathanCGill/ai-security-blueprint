@@ -14,7 +14,7 @@ And then the line that should be printed on the wall of every security operation
 
 > *"Give teams tools that solve real problems and they will use them. Give them a list of issues and you will be negotiated."*
 
-This framework exists because we believe that AI systems need runtime behavioural security. But if the framework is consumed as narrative - as a maturity model to diagnose teams with, as a checklist for a governance function to enforce from the sidelines, as a deck explaining why delivery teams are not good enough - then it has become exactly the heckling tool it was supposed to prevent.
+This framework exists because we believe that AI systems need runtime behavioral security. But if the framework is consumed as narrative - as a maturity model to diagnose teams with, as a checklist for a governance function to enforce from the sidelines, as a deck explaining why delivery teams are not good enough - then it has become exactly the heckling tool it was supposed to prevent.
 
 The framework must be delivered as infrastructure, not as commentary. This article maps the specific design decisions that prevent the framework from becoming the problem it was built to solve.
 
@@ -184,7 +184,7 @@ For organisations adopting this framework, the following operating principles pr
 
 This means the product owner must:
 
-- **Decide.** The request to remove or reduce a control must come from the person accountable for the product's outcomes. Not from a developer who finds the guardrail annoying. Not from a programme manager trying to hit a date. From the person who owns the product and will answer for its behaviour in production.
+- **Decide.** The request to remove or reduce a control must come from the person accountable for the product's outcomes. Not from a developer who finds the guardrail annoying. Not from a programme manager trying to hit a date. From the person who owns the product and will answer for its behavior in production.
 - **Accept the risk.** Removing a control transfers residual risk from the platform to the product. The product owner must understand what that risk is - not in abstract terms, but in concrete terms: what class of failure does this control prevent, and what happens when that failure occurs without it?
 - **Accept the consequences.** If a product owner removes a PII detection guardrail and the system subsequently leaks customer data, that is the product owner's accountability. The security function built the control. The platform provided it by default. The product owner chose to remove it. Accountability follows the decision, not the infrastructure.
 

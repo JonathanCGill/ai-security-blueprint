@@ -2,7 +2,7 @@
 
 **Compliance Officers, Legal Counsel, DPOs, Audit Teams - how this framework maps to your regulatory obligations and produces the evidence you need.**
 
-> *Part of [Stakeholder Views](README.md) · [AI Runtime Behaviour Security](../)*
+> *Part of [Stakeholder Views](README.md) · [AI Runtime Security](../)*
 
 ## The Problem You Have
 

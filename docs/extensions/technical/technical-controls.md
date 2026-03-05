@@ -11,7 +11,7 @@ Policy and process controls fail when:
 - Attackers ignore them
 - Insiders circumvent them
 
-Technical controls **enforce** security regardless of user behaviour. If the network blocks access to unauthorised AI, users can't use it - no policy required.
+Technical controls **enforce** security regardless of user behavior. If the network blocks access to unauthorised AI, users can't use it - no policy required.
 
 | Control Type | Relies On | Failure Mode |
 |--------------|-----------|--------------|
@@ -19,7 +19,7 @@ Technical controls **enforce** security regardless of user behaviour. If the net
 | Process | Consistent execution | Process bypassed under pressure |
 | Technical | Infrastructure enforcement | Misconfiguration, but otherwise reliable |
 
-**Principle:** Wherever possible, enforce security technically rather than relying on user behaviour.
+**Principle:** Wherever possible, enforce security technically rather than relying on user behavior.
 
 ## Control Architecture Overview
 

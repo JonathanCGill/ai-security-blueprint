@@ -110,5 +110,5 @@
   <text x="370" y="218" fill="#e6e6e6" font-size="10">🛡️ Tool endpoint probing is logged, rate-limited, and alertable</text>
 
   <!-- Footer -->
-  <text x="440" y="445" text-anchor="middle" fill="#484f58" font-size="9">AI Runtime Behaviour Security - Technical Controls · Agent Egress · github.com/JonathanCGill</text>
+  <text x="440" y="445" text-anchor="middle" fill="#484f58" font-size="9">AI Runtime Security - Technical Controls · Agent Egress · github.com/JonathanCGill</text>
 </svg>

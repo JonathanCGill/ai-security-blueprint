@@ -108,7 +108,7 @@ The model inference endpoint itself - whether self-hosted, managed, or third-par
 | **Network restrictions** | Apply IP allowlisting or VNet/VPC rules to restrict which networks can reach the managed endpoint. |
 | **Content filtering** | Enable the provider's built-in content filtering as a baseline. Layer framework guardrails on top - provider filters are not sufficient alone. |
 | **Data residency** | Deploy in regions aligned with data residency requirements. Verify that the provider does not route inference to other regions. |
-| **Model version pinning** | Pin to a specific model version. Do not use "latest" or auto-updating model references in production. Provider model updates can change behaviour without notice. |
+| **Model version pinning** | Pin to a specific model version. Do not use "latest" or auto-updating model references in production. Provider model updates can change behavior without notice. |
 | **Diagnostic logging** | Enable full diagnostic logging to your SIEM. Azure: Diagnostic Settings → Log Analytics. AWS: Bedrock invocation logging → CloudWatch. GCP: Cloud Logging integration. |
 | **Customer-managed keys** | For Tier 3+, use customer-managed encryption keys for data at rest on the managed service. |
 | **Quota management** | Set provider-level quotas per deployment to prevent cost runaway. Alert at 80% quota consumption. |
@@ -162,13 +162,13 @@ When deploying model updates or configuration changes:
 4. If anomaly metrics exceed thresholds, roll back automatically.
 5. Maintain the previous deployment as a hot standby for immediate rollback.
 
-Model updates are not code updates. A new model version can change behaviour in ways that bypass existing guardrails. Treat model deployment with the same caution as infrastructure changes.
+Model updates are not code updates. A new model version can change behavior in ways that bypass existing guardrails. Treat model deployment with the same caution as infrastructure changes.
 
 ## PACE Resilience for Endpoints
 
 Apply the [PACE resilience model](../../PACE-RESILIENCE.md) to endpoint availability:
 
-| State | Condition | Endpoint Behaviour |
+| State | Condition | Endpoint Behavior |
 |---|---|---|
 | **Primary** | All layers operational | Full inference with guardrails, Judge evaluation, and human oversight |
 | **Alternate** | Guardrails degraded | Switch to cached/static responses for high-risk queries. Continue serving low-risk queries with Judge-only evaluation. |

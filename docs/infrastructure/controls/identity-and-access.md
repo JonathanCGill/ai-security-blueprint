@@ -131,7 +131,7 @@ Define these per deployment, but common examples:
 
 ![Human Approval Flow](../diagrams/iam-approval-flow.svg)
 
-### Timeout Behaviour
+### Timeout Behavior
 
 If a human reviewer doesn't respond within a defined window, the action is **not** auto-approved. It fails safe. The timeout and escalation path must be defined at deployment.
 

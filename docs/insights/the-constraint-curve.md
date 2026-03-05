@@ -1,6 +1,6 @@
 ---
 description: When constraining LLM actions crosses the line from useful security into counterproductive overhead. A framework for finding the point of diminishing returns.
-og_title: The Constraint Curve - AI Runtime Behaviour Security
+og_title: The Constraint Curve - AI Runtime Security
 og_description: Analysis of when LLM constraints become counterproductive, with a proportionality framework for matching controls to actual risk.
 ---
 
@@ -38,7 +38,7 @@ LLMs produce value through contextual reasoning across ambiguous inputs. That is
 
 A deterministic system built on probabilistic infrastructure is an engineering mismatch. Traditional rules engines, decision trees, or lookup tables achieve deterministic outputs at lower cost, lower latency, and with full auditability. If your constraints have made the LLM deterministic, the [first control](the-first-control.md) applies: AI is no longer the right tool.
 
-| System Behaviour | Constraint Level | Better Alternative |
+| System Behavior | Constraint Level | Better Alternative |
 | --- | --- | --- |
 | Responses are fully templated | Over-constrained | Template engine |
 | Outputs match a fixed decision tree | Over-constrained | Rules engine |
@@ -75,9 +75,9 @@ Constraints are not just about productivity. There is a real boundary where unde
 
 **Poisonable context.** When inputs to the LLM can be manipulated through indirect prompt injection, memory attacks, or tool-result tampering, the model's decisions are being made on compromised data. EchoLeak, the Gemini memory attack, and the GitHub MCP exploit demonstrate this is not theoretical.
 
-**Operations beyond observability.** If the system cannot record what the LLM did, why it did it, and what data it accessed, the risk is unbounded. You cannot detect anomalies in behaviour you cannot see. The [visibility problem](the-visibility-problem.md) explores this gap.
+**Operations beyond observability.** If the system cannot record what the LLM did, why it did it, and what data it accessed, the risk is unbounded. You cannot detect anomalies in behavior you cannot see. The [visibility problem](the-visibility-problem.md) explores this gap.
 
-These are not problems solved by adding more constraints. They are problems solved by structural controls: sandboxing, identity, logging, and blast-radius containment. The distinction matters. Piling guardrail rules onto a system with no execution isolation is security theatre. Building proper infrastructure and then applying proportionate behavioural controls is security engineering.
+These are not problems solved by adding more constraints. They are problems solved by structural controls: sandboxing, identity, logging, and blast-radius containment. The distinction matters. Piling guardrail rules onto a system with no execution isolation is security theatre. Building proper infrastructure and then applying proportionate behavioral controls is security engineering.
 
 ## The Human Factor Inversion
 
@@ -134,7 +134,7 @@ The secure path must be the easiest path. Controls embedded in platform infrastr
 
 4. **The test is cost versus risk.** If you cannot name the specific risk a constraint mitigates, or if the constraint costs more than the risk it prevents, remove it.
 
-5. **Structural controls beat behavioural rules.** Sandboxing, identity, logging, and blast-radius containment are the foundation. Behavioural guardrails are the refinement. Do not stack behavioural rules on a system with no structural foundation.
+5. **Structural controls beat behavioral rules.** Sandboxing, identity, logging, and blast-radius containment are the foundation. Behavioral guardrails are the refinement. Do not stack behavioral rules on a system with no structural foundation.
 
 6. **If the LLM is fully deterministic, it should not be an LLM.** The value of the technology is contextual reasoning. If constraints have eliminated that, use a cheaper, more auditable tool.
 

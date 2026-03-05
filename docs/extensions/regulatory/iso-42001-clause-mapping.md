@@ -49,7 +49,7 @@ This document provides detailed mapping of the framework's technical controls an
 
 | Treatment | Guardrails | Judge | HITL |
 |-----------|------------|-------|------|
-| **Avoid** | Block prohibited patterns | Detect prohibited behaviour | Human stops system |
+| **Avoid** | Block prohibited patterns | Detect prohibited behavior | Human stops system |
 | **Mitigate** | Filter harmful content | Monitor residual risk | Review and remediate |
 | **Transfer** | N/A | N/A | Escalate to specialist |
 | **Accept** | Document accepted risk | Monitor accepted risk | Document acceptance |
