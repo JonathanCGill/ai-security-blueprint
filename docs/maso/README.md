@@ -243,6 +243,23 @@ stress-test/
 └── 100-agent-stress-test-overview.md
 ```
 
+## MASO 2.0: Anticipated Changes
+
+**[Anticipated Changes to AI and Framework: MASO 2.0](maso-2.0-anticipated-changes.md)**
+
+Six AI capability trajectories that will stress or break the current framework, with architectural responses and a phased roadmap:
+
+| Evolution Vector | Framework Impact | MASO 2.0 Response |
+|-----------------|-----------------|-------------------|
+| **Judge ceiling** | Primary models exceed Judge evaluation capability | Verifiable action constraints, evidence-based reasoning, domain-specific verification oracles, ensemble Judge |
+| **Human oversight scaling** | Transaction review becomes untenable at agent scale | Humans shift to governance over review, outcome-based oversight, automated escalation triage |
+| **Session boundary dissolution** | Persistent/ambient agents invalidate session-based analysis | Continuous behavioral streams, intent inheritance, memory integrity as core control |
+| **Multi-agent emergent behaviors** | Fleet interactions produce unanticipated states | Interaction graph analysis, fleet-level baselines, composition constraints, emergent behavior simulation |
+| **AI-vs-AI adversarial dynamics** | Offensive AI outpaces human-speed defense updates | Continuous adversarial simulation, adaptive guardrails, Judge unpredictability |
+| **Regulatory divergence** | Jurisdictions impose conflicting requirements | Jurisdiction-aware control profiles, compliance evidence automation |
+
+Three-phase roadmap: Extend (0–6 months) → Architect (6–18 months) → Paradigm shift (18–36 months).
+
 ## What's Next
 
 The framework core, implementation tiers, control domain specifications, threat intelligence, red team playbook, integration guide, and worked examples are complete. Planned extensions:

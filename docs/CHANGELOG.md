@@ -14,6 +14,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Judge accuracy benchmarks from real deployments
 - Epistemic risk detection algorithm specifications
 
+## [0.9.1] - 2026-03-09
+
+### Added
+
+- **MASO 2.0 Anticipated Changes** (`maso/maso-2.0-anticipated-changes.md`) — Forward-looking analysis of six AI capability trajectories that will stress or break the current framework, with architectural responses and a three-phase roadmap. Covers: Judge ceiling (primary models exceeding evaluation capability), human oversight scaling (transaction review becoming untenable), session boundary dissolution (persistent/ambient agents), multi-agent emergent behaviors (fleet-level unanticipated states), AI-vs-AI adversarial dynamics (machine-speed offense vs. human-speed defense), and regulatory divergence (conflicting jurisdictional requirements). Defines MASO 2.0 priority roadmap across three phases: Extend (0–6 months), Architect (6–18 months), and Paradigm Shift (18–36 months).
+
+### Changed
+
+- **MASO README** (`maso/README.md`) — Added MASO 2.0 Anticipated Changes section with evolution vector summary table and roadmap overview. Positioned between Stress Testing and What's Next sections.
+
+### Rationale
+
+The v0.9.0 threat intelligence review identified three structural gaps in the current framework. This analysis extends that work forward: given observable AI capability trajectories, where will the framework's current architecture become insufficient — and what architectural changes must be planned now? Six vectors were identified; each is assessed for timeline, confidence, impact on current controls, and specific MASO 2.0 response. The deeper finding: the framework's "constrain regardless" principle becomes more important, not less, as evaluation and oversight become harder. Infrastructure-level action-space constraints are the control layer that scales with model capability.
+
 ## [0.9.0] - 2026-03-09
 
 ### Added
