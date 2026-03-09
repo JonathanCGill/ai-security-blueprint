@@ -13,7 +13,7 @@ comments: false
 
 <div class="home-subtitle" markdown>
 
-**A discipline for controlling AI behaviour in production.**
+**A framework for controlling AI behaviour in production.**
 
 A framework for monitoring, validating, and controlling
 AI system behaviour during live operation.
