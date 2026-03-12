@@ -155,6 +155,47 @@ img[src$=".svg"] {
   }
 }
 
+/* ── Learning site callout ── */
+.learning-callout {
+  border: 2px solid var(--md-accent-fg-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  margin: 2.5rem 0 1.5rem;
+  background: var(--md-accent-fg-color--transparent);
+  text-align: center;
+}
+
+.learning-callout p {
+  margin: 0;
+}
+
+.learning-callout .learning-callout__label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--md-accent-fg-color);
+  margin-bottom: 0.5rem;
+}
+
+.learning-callout .learning-callout__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+  margin-bottom: 0.35rem;
+}
+
+.learning-callout .learning-callout__desc {
+  font-size: 0.92rem;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 1rem;
+}
+
+.learning-callout .md-button {
+  font-size: 0.85rem;
+}
+
 /* ── Architecture diagram on overview page ── */
 .arch-diagram {
   display: block;

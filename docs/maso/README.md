@@ -260,6 +260,18 @@ Six AI capability trajectories that will stress or break the current framework, 
 
 Three-phase roadmap: Extend (0–6 months) → Architect (6–18 months) → Paradigm shift (18–36 months).
 
+<div class="learning-callout" markdown>
+
+<span class="learning-callout__label">Learning</span>
+
+<p class="learning-callout__title">Learn the MASO Framework</p>
+
+<p class="learning-callout__desc">AIruntime.io provides structured learning paths for the Multi-Agent Security Operations framework — from core concepts through to implementation.</p>
+
+[Explore AIruntime.io](https://airuntime.io){ .md-button }
+
+</div>
+
 ## What's Next
 
 The framework core, implementation tiers, control domain specifications, threat intelligence, red team playbook, integration guide, and worked examples are complete. Planned extensions:
