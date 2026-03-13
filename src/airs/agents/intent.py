@@ -44,8 +44,6 @@ from pydantic import BaseModel, Field
 
 from airs.core.models import (
     IntentEvaluationFrequency,
-    IntentEvaluationLevel,
-    IntentViolationSeverity,
     ObjectiveIntentSpec,
     RiskTier,
 )

@@ -6,18 +6,14 @@ Run: airs assess
 from __future__ import annotations
 
 import json
-import sys
-from typing import Any
 
 import typer
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
-from rich.text import Text
 
-from airs.cli import app
 from airs.core.controls import ControlRegistry, MATSOTier
-from airs.core.models import PACEState, RiskTier
+from airs.core.models import RiskTier
 from airs.core.risk import DeploymentProfile, RiskClassifier
 
 console = Console()

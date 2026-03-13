@@ -11,7 +11,6 @@ from airs.runtime import (
     SecurityPipeline,
 )
 from airs.runtime.judge import RuleBasedJudge
-from airs.runtime.pipeline import PipelineConfig
 
 
 @pytest.fixture

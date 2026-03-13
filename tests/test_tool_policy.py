@@ -1,6 +1,5 @@
 """Tests for the tool invocation policy engine."""
 
-import pytest
 
 from airs.runtime.tool_policy import ToolCall, ToolPolicy, ToolPolicyEngine
 from airs.agents.identity import AgentIdentity, AgentContext

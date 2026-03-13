@@ -21,7 +21,7 @@ from __future__ import annotations
 import json
 import logging
 import time
-from typing import Any, Callable
+from typing import Any
 
 from airs.core.models import AIRequest, AIResponse, PipelineResult
 from airs.runtime.pipeline import SecurityPipeline

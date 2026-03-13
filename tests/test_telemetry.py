@@ -10,7 +10,6 @@ from airs.telemetry.events import (
     clear_sinks,
 )
 from airs.telemetry.audit import (
-    LogAuditSink,
     CallbackAuditSink,
     BufferAuditSink,
 )

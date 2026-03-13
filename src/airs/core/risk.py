@@ -6,7 +6,7 @@ then recommends the appropriate control set.
 
 from __future__ import annotations
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 from airs.core.models import RiskTier
 

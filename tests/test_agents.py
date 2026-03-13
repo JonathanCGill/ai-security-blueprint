@@ -1,6 +1,5 @@
 """Tests for agent identity propagation and delegation enforcement."""
 
-import pytest
 
 from airs.agents.identity import AgentIdentity, AgentContext
 from airs.agents.delegation import DelegationPolicy, DelegationEnforcer

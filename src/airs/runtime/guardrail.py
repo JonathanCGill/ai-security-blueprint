@@ -139,7 +139,7 @@ class ContentPolicyGuardrail(Guardrail):
                 return GuardrailResult(
                     name=self.name,
                     verdict=GuardrailVerdict.BLOCK,
-                    reason=f"Content policy violation: blocked term detected",
+                    reason="Content policy violation: blocked term detected",
                 )
         return GuardrailResult(name=self.name, verdict=GuardrailVerdict.PASS)
 

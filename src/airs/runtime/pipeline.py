@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import logging
 import time
-from typing import Any, Callable
+from typing import Callable
 
 from pydantic import BaseModel
 
@@ -22,10 +22,9 @@ from airs.core.models import (
     GuardrailVerdict,
     JudgeVerdict,
     LayerResult,
-    PACEState,
     PipelineResult,
 )
-from airs.runtime.circuit_breaker import CircuitBreaker, CircuitState
+from airs.runtime.circuit_breaker import CircuitBreaker
 from airs.runtime.guardrail import GuardrailChain
 from airs.runtime.judge import Judge, RuleBasedJudge
 from airs.runtime.pace import PACEController
