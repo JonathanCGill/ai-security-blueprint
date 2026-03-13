@@ -173,11 +173,7 @@ For high-stakes evaluations, we use an ensemble approach called "LLM-as-a-Jury".
 
 ### Implementation
 
-```
-Transaction → Judge A (Claude) ─┐
-           → Judge B (GPT-4)  ──┼─→ Aggregate → Decision
-           → Judge C (Gemini) ─┘
-```
+![Judge Ensemble Flow](../../images/judge-ensemble-flow.svg)
 
 **Aggregation rules:**
 - Unanimous PASS → PASS

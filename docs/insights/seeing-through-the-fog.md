@@ -119,22 +119,7 @@ Achieving cross-product, cross-platform agent visibility requires an architectur
 
 ### The Three Layers
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                  UNIFIED VISIBILITY LAYER                    │
-│   Cross-product dashboards, correlation engine, alerting     │
-│   Agent registry, interaction graph, blast radius maps       │
-├─────────────────────────────────────────────────────────────┤
-│                  NORMALISATION LAYER                         │
-│   Common schema mapping, identity resolution, trace          │
-│   stitching, state taxonomy mapping, time synchronisation    │
-├──────────┬──────────┬──────────┬──────────┬─────────────────┤
-│ Product  │ Product  │ Product  │ Product  │  Vendor         │
-│ A Agents │ B Agents │ C Agents │ D Agents │  Agents         │
-│ (Own     │ (Own     │ (Own     │ (Own     │  (Vendor        │
-│  logging)│  logging)│  logging)│  logging)│   telemetry)    │
-└──────────┴──────────┴──────────┴──────────┴─────────────────┘
-```
+![Unified Visibility Architecture](../images/seeing-through-fog-visibility-layers.svg)
 
 **Product Layer:** Each product continues using its own agent framework, logging system, and monitoring tools. You don't rip and replace. You instrument.
 

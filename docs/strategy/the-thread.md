@@ -221,33 +221,7 @@ Each of these is a scope change. Each one potentially changes the risk tier. Eac
 
 When monitoring surfaces a signal that suggests the system has moved beyond its original parameters:
 
-```
-MONITORING SIGNAL DETECTED
-    │
-    ▼
-TRIAGE: Is this operational or strategic?
-    │
-    ├── Operational (guardrail tuning, Judge recalibration, HITL process fix)
-    │   └── Resolve within Phase 5 - no return loop needed
-    │
-    └── Strategic (scope change, tier change, control redesign)
-        │
-        ▼
-    REASSESSMENT: Which phase needs revisiting?
-        │
-        ├── Use case scope changed → Return to Phase 2 (Definition)
-        │   Update the ten questions. The answers may have changed.
-        │
-        ├── Risk profile changed → Return to Phase 3 (Classification)
-        │   Rescore the six dimensions. The tier may move.
-        │
-        ├── Controls inadequate → Return to Phase 3 (Control Design)
-        │   Redesign controls for the current reality.
-        │
-        └── Technology mismatch → Return to Phase 1 (Filter)
-        │   The use case may no longer suit AI at all.
-            Rerun the filter with current knowledge.
-```
+![Return Loop Process](../images/strategy-return-loop.svg)
 
 ### Who Owns the Loop
 

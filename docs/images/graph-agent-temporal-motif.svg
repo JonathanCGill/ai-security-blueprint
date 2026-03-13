@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 180" role="img" aria-label="Temporal motif pattern: Agent A receives input, calls unknown API, modifies output, and responds, all within 500ms, never observed in baseline">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="780" height="180" rx="8" fill="url(#bgGrad)"/>
+
+  <text x="390" y="24" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">Temporal Motif: Suspicious Agent Behaviour Sequence</text>
+
+  <!-- Timeline bar -->
+  <rect x="40" y="60" width="700" height="4" rx="2" fill="#e2e8f0"/>
+
+  <!-- Step 1: Receives input -->
+  <circle cx="100" cy="62" r="10" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
+  <text x="100" y="66" font-family="Inter, system-ui, sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+  <text x="100" y="95" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="600" fill="#1e293b" text-anchor="middle">Agent A</text>
+  <text x="100" y="107" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">receives input</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="115" y1="62" x2="255" y2="62" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="4,2"/>
+
+  <!-- Step 2: Calls unknown API -->
+  <circle cx="270" cy="62" r="10" fill="#ef4444" stroke="#fff" stroke-width="2"/>
+  <text x="270" y="66" font-family="Inter, system-ui, sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+  <text x="270" y="95" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="600" fill="#1e293b" text-anchor="middle">Agent A</text>
+  <text x="270" y="107" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#ef4444" text-anchor="middle">calls unknown API</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="285" y1="62" x2="425" y2="62" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="4,2"/>
+
+  <!-- Step 3: Modifies output -->
+  <circle cx="440" cy="62" r="10" fill="#f59e0b" stroke="#fff" stroke-width="2"/>
+  <text x="440" y="66" font-family="Inter, system-ui, sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+  <text x="440" y="95" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="600" fill="#1e293b" text-anchor="middle">Agent A</text>
+  <text x="440" y="107" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#f59e0b" text-anchor="middle">modifies output</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="455" y1="62" x2="595" y2="62" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="4,2"/>
+
+  <!-- Step 4: Responds -->
+  <circle cx="610" cy="62" r="10" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
+  <text x="610" y="66" font-family="Inter, system-ui, sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">4</text>
+  <text x="610" y="95" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="600" fill="#1e293b" text-anchor="middle">Agent A</text>
+  <text x="610" y="107" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">responds</text>
+
+  <!-- Constraint labels -->
+  <rect x="200" y="130" width="200" height="24" rx="12" fill="#fee2e2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="300" y="146" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="600" fill="#991b1b" text-anchor="middle">All 4 events within 500ms</text>
+
+  <rect x="440" y="130" width="210" height="24" rx="12" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+  <text x="545" y="146" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="600" fill="#92400e" text-anchor="middle">Never observed in baseline</text>
+</svg>

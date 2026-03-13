@@ -155,11 +155,7 @@ Memgraph handles this through temporal edge properties. Each edge carries a time
 
 Beyond aggregate comparison, temporal graph analysis can detect specific sequences of interactions that form attack patterns:
 
-```
-Pattern: Agent A receives input → Agent A calls unknown API → Agent A modifies output → Agent A responds
-Temporal constraint: all four events within 500ms
-Frequency: never observed in baseline
-```
+![Temporal Motif Detection](../images/graph-agent-temporal-motif.svg)
 
 This is a temporal motif: a specific sequence of edges with temporal ordering constraints. Motif detection on a temporal graph is a single query. On tabular logs, it is a window function with self-joins across four tables, ordered by timestamp, filtered by session. The graph query runs in milliseconds. The SQL query might not finish before the next event arrives.
 
@@ -167,20 +163,7 @@ This is a temporal motif: a specific sequence of edges with temporal ordering co
 
 The graph database does not replace the framework's observability stack. It sits alongside it, consuming the same event stream and producing alerts that feed into the same PACE escalation logic.
 
-```
-                                                ┌──────────────┐
-                                           ┌───>│  SIEM/SOAR   │ (OB-2.4)
-                                           │    └──────────────┘
-┌──────────┐    ┌─────────┐    ┌─────────┐ │    ┌──────────────┐
-│  Agent    │───>│ Message │───>│ Stream  │─┼───>│   Memgraph   │──> Anomaly
-│  Events   │    │  Bus    │    │ (Kafka) │ │    │  (In-memory) │    Alerts
-└──────────┘    └─────────┘    └─────────┘ │    └──────────────┘      │
-  OB-1.1          MASO                     │    ┌──────────────┐      │
-  OB-1.2                                   └───>│  Log Store   │      v
-                                                │ (Immutable)  │   ┌──────┐
-                                                └──────────────┘   │ PACE │
-                                                  OB-2.1           └──────┘
-```
+![Graph Agent Architecture Pipeline](../images/graph-agent-architecture-pipeline.svg)
 
 The message bus (already mandated by MASO) is the single source of truth. The stream processor (Kafka, Pulsar, or equivalent) fans out to three consumers:
 

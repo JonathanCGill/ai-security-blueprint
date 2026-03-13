@@ -219,14 +219,7 @@ An OISpec is a structured, version-controlled document attached to every agent, 
 
 ### Level 1: Tactical, Single Agent Against Its OISpec
 
-```
-┌─────────────────────┐     ┌──────────────────┐     ┌─────────────────────┐
-│   Agent Action/      │────▶│  Tactical Judge   │────▶│  Verdict:           │
-│   Output             │     │                  │     │  - OISpec compliant? │
-│                     │     │  Evaluates against│     │  - Parameter breach? │
-│                     │     │  agent's OISpec   │     │  - Authority exceed? │
-└─────────────────────┘     └──────────────────┘     └─────────────────────┘
-```
+![Tactical Judge Evaluation](../../images/objective-intent-tactical-judge.svg)
 
 The tactical judge answers: **Did this agent do what it was supposed to do, within the parameters it was given?**
 
@@ -234,15 +227,7 @@ This is the monitoring of one: the individual agent against its declared contrac
 
 ### Level 2: Strategic, All Agents Against the Workflow OISpec
 
-```
-┌─────────────────────┐     ┌──────────────────────┐     ┌─────────────────────┐
-│  Aggregate outputs   │────▶│  Strategic Evaluator  │────▶│  Verdict:           │
-│  + audit trail       │     │                      │     │  - Workflow intent   │
-│  + all agent OISpecs │     │  Evaluates against   │     │    satisfied?        │
-│  + all judge verdicts│     │  workflow OISpec      │     │  - Emergent issues?  │
-│                     │     │  + aggregated intents │     │  - Intent gaps?      │
-└─────────────────────┘     └──────────────────────┘     └─────────────────────┘
-```
+![Strategic Evaluator](../../images/objective-intent-strategic-evaluator.svg)
 
 The strategic evaluator answers: **Did the system as a whole achieve what was intended, and did the agents collectively behave as designed?**
 
@@ -250,14 +235,7 @@ This is the monitoring of the whole: the fleet-level behavioral assessment again
 
 ### Level 3: Judge Against Its OISpec
 
-```
-┌─────────────────────┐     ┌──────────────────────┐     ┌─────────────────────┐
-│  Judge decisions     │────▶│  Judge Meta-Evaluator │────▶│  Verdict:           │
-│  + judge OISpec      │     │                      │     │  - Criteria drift?   │
-│  + calibration data  │     │  Evaluates judge     │     │  - Scope creep?      │
-│                     │     │  against its OISpec   │     │  - Accuracy decay?   │
-└─────────────────────┘     └──────────────────────┘     └─────────────────────┘
-```
+![Judge Meta-Evaluator](../../images/objective-intent-judge-meta-evaluator.svg)
 
 The meta-evaluator answers: **Is the judge still doing what it was configured to do, or has it drifted?**
 
@@ -265,44 +243,7 @@ This closes the "who watches the watchmen" loop, not through infinite recursion,
 
 ## Diagram: Intent Evaluation Hierarchy
 
-```
-                    ┌─────────────────────────────────┐
-                    │     Workflow Objective Intent     │
-                    │   (Strategic: the whole)         │
-                    │                                  │
-                    │  "Produce accurate risk          │
-                    │   assessment for portfolio X"    │
-                    └──────────────┬──────────────────┘
-                                   │
-                    ┌──────────────┴──────────────────┐
-                    │    Strategic Evaluation Agent     │
-                    │  Assesses aggregate compliance    │
-                    │  against workflow OISpec          │
-                    └──────────────┬──────────────────┘
-                                   │
-              ┌────────────────────┼────────────────────┐
-              │                    │                    │
-   ┌──────────▼─────────┐  ┌──────▼──────────┐  ┌─────▼────────────┐
-   │  Agent A OISpec     │  │ Agent B OISpec  │  │ Agent C OISpec   │
-   │  "Retrieve market   │  │ "Analyse news   │  │ "Combine into    │
-   │   data for last     │  │  sentiment for  │  │  risk score with │
-   │   30 days"          │  │  portfolio X"   │  │  full tracing"   │
-   └──────────┬──────────┘  └──────┬──────────┘  └─────┬────────────┘
-              │                    │                    │
-   ┌──────────▼─────────┐  ┌──────▼──────────┐  ┌─────▼────────────┐
-   │  Tactical Judge     │  │ Tactical Judge  │  │ Tactical Judge   │
-   │  (per-agent OISpec  │  │ (per-agent      │  │ (per-agent       │
-   │   compliance)       │  │  OISpec check)  │  │  OISpec check)   │
-   └─────────────────────┘  └─────────────────┘  └──────────────────┘
-              │                    │                    │
-              └────────────────────┼────────────────────┘
-                                   │
-                    ┌──────────────▼──────────────────┐
-                    │    Judge Meta-Evaluator          │
-                    │  "Are the tactical judges still  │
-                    │   evaluating per their OISpecs?" │
-                    └─────────────────────────────────┘
-```
+![Intent Evaluation Hierarchy](../../images/objective-intent-evaluation-hierarchy.svg)
 
 **Key insight:** Intent flows downward (decomposed from workflow to agent). Evaluation flows upward (aggregated from agent to workflow). Judge monitoring is lateral, independent of both flows.
 

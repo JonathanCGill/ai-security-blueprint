@@ -408,50 +408,7 @@ Systems should be retired when:
 
 ## The Complete Lifecycle - Summary
 
-```
-STAGE 1: STRATEGIC ALIGNMENT
-  Input:     Business problem
-  Output:    Business case
-  Guardrail: Detect - unjustified systems visible in governance reviews
-     │
-STAGE 2: USE CASE DEFINITION
-  Input:     Business case
-  Output:    Ten-question use case definition
-  Guardrail: Prevent - ten questions steer toward completeness
-     │
-STAGE 3: TOOL SELECTION
-  Input:     Use case definition
-  Output:    Technology decision (AI / RPA / traditional / hybrid)
-  Guardrail: Prevent - Use Case Filter steers to right tool
-  Exit:      If not AI → standard SDLC
-     │
-STAGE 4: RISK CLASSIFICATION
-  Input:     Use case definition + technology decision
-  Output:    Six-dimension scored risk profile + tier
-  Guardrail: Detect - unclassified systems visible in registry
-     │
-STAGE 5: CONTROL DESIGN
-  Input:     Risk profile + use case + technology
-  Output:    Control specification + PACE plan
-  Guardrail: Prevent - approved platforms inherit baseline controls
-     │
-STAGE 6: BUILD & TEST
-  Input:     Control specification
-  Output:    Working system with verified controls
-  Guardrail: Detect - checklist surfaces gaps before production
-     │
-STAGE 7: DEPLOY & OPERATE
-  Input:     Tested system
-  Output:    Production system with active monitoring
-  Guardrail: Absorb - gradual rollout contains blast radius
-     │
-STAGE 8: ONGOING GOVERNANCE
-  Input:     Production system
-  Output:    Continuous assurance
-  Guardrail: Detect - continuous monitoring surfaces drift
-  Loop:      Periodic review → reassessment → control adjustment
-  Exit:      Retirement when appropriate
-```
+![Idea to Production Pipeline](../images/idea-to-production-pipeline.svg)
 
 ## How the Framework Maps to This Flow
 

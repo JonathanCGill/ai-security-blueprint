@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 200" role="img" aria-label="Judge ensemble flow: Transaction is evaluated by three independent judges (Claude, GPT-4, Gemini) whose results are aggregated into a final decision">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="680" height="200" rx="8" fill="url(#bgGrad)"/>
+
+  <text x="340" y="24" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">LLM-as-a-Jury: Multi-Judge Ensemble</text>
+
+  <!-- Transaction -->
+  <rect x="20" y="75" width="110" height="45" rx="8" fill="#1e293b" filter="url(#shadow)"/>
+  <text x="75" y="103" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Transaction</text>
+
+  <!-- Arrows to judges -->
+  <line x1="130" y1="85" x2="195" y2="60" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="130" y1="97" x2="195" y2="97" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="130" y1="110" x2="195" y2="135" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Judge A -->
+  <rect x="200" y="40" width="140" height="38" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="270" y="58" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="#1d4ed8" text-anchor="middle">Judge A</text>
+  <text x="270" y="72" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">(Claude)</text>
+
+  <!-- Judge B -->
+  <rect x="200" y="82" width="140" height="38" rx="8" fill="#fff" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+  <text x="270" y="100" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="#059669" text-anchor="middle">Judge B</text>
+  <text x="270" y="114" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">(GPT-4)</text>
+
+  <!-- Judge C -->
+  <rect x="200" y="124" width="140" height="38" rx="8" fill="#fff" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="270" y="142" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="#7c3aed" text-anchor="middle">Judge C</text>
+  <text x="270" y="156" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">(Gemini)</text>
+
+  <!-- Arrows from judges to Aggregate -->
+  <line x1="340" y1="60" x2="415" y2="85" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="340" y1="97" x2="415" y2="97" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="340" y1="140" x2="415" y2="110" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Aggregate -->
+  <rect x="420" y="75" width="110" height="45" rx="8" fill="#f59e0b" filter="url(#shadow)"/>
+  <text x="475" y="103" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Aggregate</text>
+
+  <!-- Arrow to Decision -->
+  <line x1="530" y1="97" x2="565" y2="97" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Decision -->
+  <rect x="570" y="75" width="90" height="45" rx="8" fill="#10b981" filter="url(#shadow)"/>
+  <text x="615" y="103" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Decision</text>
+
+  <!-- Footer notes -->
+  <text x="340" y="185" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Unanimous PASS → PASS  |  Any FLAG → FLAG (conservative)  |  Or: Majority vote (balanced)</text>
+</svg>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Intent Evaluation Hierarchy: Workflow objective intent flows down through strategic evaluation agent to individual agent OISpecs, each monitored by tactical judges, with a judge meta-evaluator closing the loop">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="720" height="520" rx="8" fill="url(#bgGrad)"/>
+
+  <text x="360" y="24" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">Intent Evaluation Hierarchy</text>
+
+  <!-- Workflow Objective Intent -->
+  <rect x="210" y="40" width="300" height="70" rx="8" fill="#1e293b" filter="url(#shadow)"/>
+  <text x="360" y="62" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Workflow Objective Intent</text>
+  <text x="360" y="77" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">(Strategic: the whole)</text>
+  <text x="360" y="98" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">"Produce accurate risk assessment for portfolio X"</text>
+
+  <!-- Arrow down -->
+  <line x1="360" y1="110" x2="360" y2="130" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Strategic Evaluation Agent -->
+  <rect x="210" y="135" width="300" height="55" rx="8" fill="#fff" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="360" y="158" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="#7c3aed" text-anchor="middle">Strategic Evaluation Agent</text>
+  <text x="360" y="175" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Assesses aggregate compliance against workflow OISpec</text>
+
+  <!-- Arrow down branching to 3 -->
+  <line x1="360" y1="190" x2="360" y2="210" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="120" y1="210" x2="600" y2="210" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="120" y1="210" x2="120" y2="225" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="360" y1="210" x2="360" y2="225" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="600" y1="210" x2="600" y2="225" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Agent A OISpec -->
+  <rect x="30" y="230" width="180" height="75" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="120" y="252" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" fill="#1d4ed8" text-anchor="middle">Agent A OISpec</text>
+  <text x="120" y="270" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">"Retrieve market data</text>
+  <text x="120" y="282" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">for last 30 days"</text>
+
+  <!-- Agent B OISpec -->
+  <rect x="270" y="230" width="180" height="75" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="360" y="252" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" fill="#1d4ed8" text-anchor="middle">Agent B OISpec</text>
+  <text x="360" y="270" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">"Analyse news sentiment</text>
+  <text x="360" y="282" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">for portfolio X"</text>
+
+  <!-- Agent C OISpec -->
+  <rect x="510" y="230" width="180" height="75" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="600" y="252" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" fill="#1d4ed8" text-anchor="middle">Agent C OISpec</text>
+  <text x="600" y="270" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">"Combine into risk score</text>
+  <text x="600" y="282" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">with full tracing"</text>
+
+  <!-- Arrows down to tactical judges -->
+  <line x1="120" y1="305" x2="120" y2="325" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="360" y1="305" x2="360" y2="325" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="600" y1="305" x2="600" y2="325" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Tactical Judge A -->
+  <rect x="30" y="330" width="180" height="55" rx="8" fill="#fff" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+  <text x="120" y="352" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" fill="#059669" text-anchor="middle">Tactical Judge</text>
+  <text x="120" y="370" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">(per-agent OISpec compliance)</text>
+
+  <!-- Tactical Judge B -->
+  <rect x="270" y="330" width="180" height="55" rx="8" fill="#fff" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+  <text x="360" y="352" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" fill="#059669" text-anchor="middle">Tactical Judge</text>
+  <text x="360" y="370" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">(per-agent OISpec check)</text>
+
+  <!-- Tactical Judge C -->
+  <rect x="510" y="330" width="180" height="55" rx="8" fill="#fff" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+  <text x="600" y="352" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" fill="#059669" text-anchor="middle">Tactical Judge</text>
+  <text x="600" y="370" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">(per-agent OISpec check)</text>
+
+  <!-- Arrows converging down -->
+  <line x1="120" y1="385" x2="120" y2="410" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="360" y1="385" x2="360" y2="410" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="600" y1="385" x2="600" y2="410" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="120" y1="410" x2="600" y2="410" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="360" y1="410" x2="360" y2="430" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Judge Meta-Evaluator -->
+  <rect x="210" y="435" width="300" height="60" rx="8" fill="#fff" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+  <text x="360" y="458" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="#d97706" text-anchor="middle">Judge Meta-Evaluator</text>
+  <text x="360" y="478" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle">"Are the tactical judges still evaluating per their OISpecs?"</text>
+
+  <text x="360" y="512" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Intent flows downward (decomposed). Evaluation flows upward (aggregated). Judge monitoring is lateral.</text>
+</svg>

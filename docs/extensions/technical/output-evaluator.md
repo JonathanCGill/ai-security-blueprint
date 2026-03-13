@@ -20,31 +20,7 @@ The Output Evaluator is a solution architecture that addresses the first two bli
 
 The Output Evaluator operates at three timescales simultaneously:
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    OUTPUT EVALUATOR                       │
-│                                                          │
-│  ┌──────────────┐  ┌──────────────┐  ┌───────────────┐  │
-│  │  REAL-TIME    │  │  SESSION     │  │  CAMPAIGN     │  │
-│  │  (per-action) │  │  (per-task)  │  │  (cross-task) │  │
-│  │              │  │              │  │               │  │
-│  │  Pre-action  │  │  Intent      │  │  Cross-session│  │
-│  │  Judge gate  │  │  coherence   │  │  pattern      │  │
-│  │  for elevated│  │  tracking    │  │  correlation  │  │
-│  │  risk actions│  │              │  │               │  │
-│  │              │  │  Aggregate   │  │  Identity-    │  │
-│  │  Async post- │  │  threshold   │  │  level        │  │
-│  │  action eval │  │  monitoring  │  │  behavioral   │  │
-│  │  for low-risk│  │              │  │  baselines    │  │
-│  │              │  │  Sequence    │  │               │  │
-│  │  <5ms action │  │  anomaly     │  │  Peer group   │  │
-│  │  classifier  │  │  detection   │  │  deviation    │  │
-│  └──────────────┘  └──────────────┘  └───────────────┘  │
-│                                                          │
-│  Latency: 0-2s        Latency: async    Latency: async  │
-│  per elevated action   checkpoint        batch analysis  │
-└─────────────────────────────────────────────────────────┘
-```
+![Output Evaluator Timescales](../../images/output-evaluator-timescales.svg)
 
 ### Layer 1: Real-Time Pre-Action Evaluation
 

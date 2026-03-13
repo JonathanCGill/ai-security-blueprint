@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 160" role="img" aria-label="Judge Meta-Evaluator: Judge decisions, OISpec, and calibration data are evaluated by the Judge Meta-Evaluator to detect criteria drift, scope creep, or accuracy decay">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="720" height="160" rx="8" fill="url(#bgGrad)"/>
+
+  <text x="360" y="24" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">Level 3: Judge Meta-Evaluator</text>
+
+  <!-- Judge Inputs -->
+  <rect x="20" y="50" width="180" height="70" rx="8" fill="#1e293b" filter="url(#shadow)"/>
+  <text x="110" y="73" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="#fff" text-anchor="middle">Judge decisions</text>
+  <text x="110" y="88" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">+ judge OISpec</text>
+  <text x="110" y="101" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">+ calibration data</text>
+
+  <!-- Arrow -->
+  <line x1="200" y1="85" x2="255" y2="85" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Judge Meta-Evaluator -->
+  <rect x="260" y="50" width="200" height="70" rx="8" fill="#fff" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+  <text x="360" y="75" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="#d97706" text-anchor="middle">Judge Meta-Evaluator</text>
+  <text x="360" y="95" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Evaluates judge</text>
+  <text x="360" y="108" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">against its OISpec</text>
+
+  <!-- Arrow -->
+  <line x1="460" y1="85" x2="505" y2="85" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Verdict -->
+  <rect x="510" y="50" width="190" height="70" rx="8" fill="#fff" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+  <text x="605" y="72" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="#059669" text-anchor="middle">Verdict</text>
+  <text x="605" y="88" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Criteria drift?</text>
+  <text x="605" y="100" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Scope creep?</text>
+  <text x="605" y="112" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Accuracy decay?</text>
+
+  <text x="360" y="148" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Is the judge still doing what it was configured to do, or has it drifted?</text>
+</svg>
