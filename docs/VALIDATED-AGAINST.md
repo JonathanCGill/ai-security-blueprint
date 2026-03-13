@@ -273,5 +273,5 @@ This is a living document. As new AI security incidents are publicly disclosed:
 3. Controls that were "threat-modelled only" may be upgraded to "incident-validated"
 4. New controls may be added if incidents reveal gaps
 
-If you know of a public AI security incident not listed here, [open an issue](https://github.com/JonathanCGill/ai-runtime-behavior-security/issues). We'll map it to controls and update both pages.
+If you know of a public AI security incident not listed here, [open an issue](https://github.com/JonathanCGill/airuntimesecurity.io/issues). We'll map it to controls and update both pages.
 

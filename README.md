@@ -103,8 +103,8 @@ Each layer catches what the others miss. Remove any layer and you have a gap. Th
 The AIRS Python SDK turns this framework from documentation into running code. Install it, run the assessment CLI, and drop the three-layer pipeline into your application.
 
 ```bash
-git clone https://github.com/JonathanCGill/ai-runtime-behavior-security.git
-cd ai-runtime-behavior-security
+git clone https://github.com/JonathanCGill/airuntimesecurity.io.git
+cd airuntimesecurity.io
 pip install .
 ```
 

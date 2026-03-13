@@ -5,7 +5,7 @@ description: "Delegation chain controls for agentic AI: enforcing least privileg
 # Delegation Chain Controls
 
 > Part of the [AI Security Infrastructure Controls](../README.md) framework - Agentic AI Controls.
-> Companion to [AI Runtime Security](https://github.com/JonathanCGill/ai-runtime-behavior-security).
+> Companion to [AI Runtime Security](https://github.com/JonathanCGill/airuntimesecurity.io).
 
 ## Overview
 

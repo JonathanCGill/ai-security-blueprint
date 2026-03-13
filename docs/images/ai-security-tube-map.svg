@@ -585,7 +585,7 @@
   <!-- ============================================================ -->
   <!-- FOOTER -->
   <!-- ============================================================ -->
-  <text x="1700" y="1330" text-anchor="end" font-size="7.5" fill="#999">v3.0 - February 2026 - github.com/JonathanCGill/ai-runtime-behavior-security</text>
+  <text x="1700" y="1330" text-anchor="end" font-size="7.5" fill="#999">v3.0 - February 2026 - github.com/JonathanCGill/airuntimesecurity.io</text>
   <text x="100" y="1330" font-size="7.5" fill="#999">AI Runtime Security · MIT License · Jonathan Gill</text>
 
 </svg>

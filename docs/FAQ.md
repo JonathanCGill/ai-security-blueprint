@@ -122,11 +122,11 @@ This framework doesn't have all the answers. If you've found practical solutions
 - **Submit a PR** with a correction, a new pattern, or a better idea
 - **Point out where this doesn't match reality** - that's how the framework improves
 
-See the [Contributing](CONTRIBUTING.md) guide or open an issue on [GitHub](https://github.com/JonathanCGill/ai-runtime-behavior-security).
+See the [Contributing](CONTRIBUTING.md) guide or open an issue on [GitHub](https://github.com/JonathanCGill/airuntimesecurity.io).
 
 ## "Can I use this for my own work?"
 
-Absolutely. This framework is [MIT licensed](https://github.com/JonathanCGill/ai-runtime-behavior-security). Copy it, fork it, adapt it, build on it, or disagree with the entire approach and publish something better. No permission needed.
+Absolutely. This framework is [MIT licensed](https://github.com/JonathanCGill/airuntimesecurity.io). Copy it, fork it, adapt it, build on it, or disagree with the entire approach and publish something better. No permission needed.
 
 AI security is too important to gatekeep.
 

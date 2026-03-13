@@ -1,6 +1,6 @@
 # AI Security Infrastructure Controls - Repo Structure
 
-> Complements [AI Runtime Security](https://github.com/JonathanCGill/ai-runtime-behavior-security), which defines the *behavioral* security pattern (Guardrails → LLM-as-Judge → Human Oversight). This repo defines the *infrastructure* controls that make that pattern enforceable.
+> Complements [AI Runtime Security](https://github.com/JonathanCGill/airuntimesecurity.io), which defines the *behavioral* security pattern (Guardrails → LLM-as-Judge → Human Oversight). This repo defines the *infrastructure* controls that make that pattern enforceable.
 
 ## Repo Layout
 
@@ -97,7 +97,7 @@ Agentic controls (TOOL, SESS, DEL, SAND) are implemented in parallel with the re
 
 ## Relationship to Parent Framework
 
-The parent framework ([ai-runtime-behavior-security](https://github.com/JonathanCGill/ai-runtime-behavior-security)) defines the behavioral pattern:
+The parent framework ([airuntimesecurity.io](https://github.com/JonathanCGill/airuntimesecurity.io)) defines the behavioral pattern:
 
 - **What** to enforce (Guardrails prevent, Judge detects, Humans decide)
 - **Why** it's necessary (non-determinism, emergent behavior, adversarial inputs)

@@ -46,8 +46,8 @@ The one exception is the optional **LLM-as-Judge**, which does call an OpenAI-co
 
 ```bash
 # Clone the repository
-git clone https://github.com/JonathanCGill/ai-runtime-behavior-security.git
-cd ai-runtime-behavior-security
+git clone https://github.com/JonathanCGill/airuntimesecurity.io.git
+cd airuntimesecurity.io
 
 # Install core (guardrails, circuit breaker, PACE, CLI)
 pip install .

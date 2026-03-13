@@ -4,7 +4,7 @@ If you use, reference, or build upon this framework in academic papers, industry
 
 ## Plain Text
 
-> Gill, J. (2025). *AI Runtime Security: Runtime Behavioral Controls for Generative and Agentic AI Systems*. GitHub. https://github.com/JonathanCGill/ai-runtime-behavior-security
+> Gill, J. (2025). *AI Runtime Security: Runtime Behavioral Controls for Generative and Agentic AI Systems*. GitHub. https://github.com/JonathanCGill/airuntimesecurity.io
 
 ## BibTeX
 
@@ -14,7 +14,7 @@ If you use, reference, or build upon this framework in academic papers, industry
   title        = {{AI} Runtime Behavior Security: Runtime Behavioral Controls for Generative and Agentic {AI} Systems},
   year         = {2025},
   publisher    = {GitHub},
-  howpublished = {\url{https://github.com/JonathanCGill/ai-runtime-behavior-security}},
+  howpublished = {\url{https://github.com/JonathanCGill/airuntimesecurity.io}},
   note         = {Open-source framework. MIT License.}
 }
 ```
@@ -25,9 +25,9 @@ This repository includes a [`CITATION.cff`](../CITATION.cff) file for automated 
 
 ## APA
 
-Gill, J. (2025). *AI Runtime Security: Runtime behavioral controls for generative and agentic AI systems*. GitHub. https://github.com/JonathanCGill/ai-runtime-behavior-security
+Gill, J. (2025). *AI Runtime Security: Runtime behavioral controls for generative and agentic AI systems*. GitHub. https://github.com/JonathanCGill/airuntimesecurity.io
 
 ## IEEE
 
-J. Gill, "AI Runtime Security: Runtime Behavioral Controls for Generative and Agentic AI Systems," 2025. [Online]. Available: https://github.com/JonathanCGill/ai-runtime-behavior-security
+J. Gill, "AI Runtime Security: Runtime Behavioral Controls for Generative and Agentic AI Systems," 2025. [Online]. Available: https://github.com/JonathanCGill/airuntimesecurity.io
 

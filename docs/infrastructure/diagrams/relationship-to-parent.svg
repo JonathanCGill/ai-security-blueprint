@@ -14,7 +14,7 @@
   <!-- Outer box: Behavioral Security Pattern -->
   <rect x="30" y="20" width="660" height="300" rx="8" fill="#1a1a2e" stroke="#533483" stroke-width="2" filter="url(#shadow)"/>
   <text x="360" y="52" text-anchor="middle" fill="#c084fc" font-size="16" font-weight="700">Behavioral Security Pattern</text>
-  <text x="360" y="72" text-anchor="middle" fill="#8b949e" font-size="11">ai-runtime-behavior-security</text>
+  <text x="360" y="72" text-anchor="middle" fill="#8b949e" font-size="11">airuntimesecurity.io</text>
 
   <!-- Three layer boxes -->
   <rect x="80" y="92" width="170" height="50" rx="6" fill="#2d4a1e" stroke="#4ecca3" stroke-width="1.5"/>

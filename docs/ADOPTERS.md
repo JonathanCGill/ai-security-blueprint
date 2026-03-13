@@ -51,7 +51,7 @@ Organisations currently evaluating the framework.
 
 Individuals and organisations who have contributed improvements.
 
-*See [GitHub contributors](https://github.com/JonathanCGill/ai-runtime-behavior-security/graphs/contributors)*
+*See [GitHub contributors](https://github.com/JonathanCGill/airuntimesecurity.io/graphs/contributors)*
 
 ## Share Your Experience
 
