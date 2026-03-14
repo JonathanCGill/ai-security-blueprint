@@ -111,7 +111,64 @@ def assess_cmd(
         help="Judge provider: openai or anthropic",
     ),
 ) -> None:
-    """Assess your AI deployment and get a prioritized security implementation plan."""
+    """Assess your AI deployment and get a prioritised security implementation plan."""
+
+    # ── Upfront flag validation ───────────────────────────────────────
+    valid_providers = list(PROVIDER_ENV_VARS.keys())
+    if provider and provider.lower() not in valid_providers:
+        console.print(Panel(
+            f"[red]Unknown provider:[/red] [bold]{provider}[/bold]\n\n"
+            f"Supported providers: {', '.join(valid_providers)}\n\n"
+            f"Example: [dim]airs assess --provider anthropic --model claude-sonnet-4-20250514[/dim]",
+            title="Invalid Provider",
+            border_style="red",
+        ))
+        raise typer.Exit(1)
+
+    if judge_provider and judge_provider.lower() not in valid_providers:
+        console.print(Panel(
+            f"[red]Unknown judge provider:[/red] [bold]{judge_provider}[/bold]\n\n"
+            f"Supported providers: {', '.join(valid_providers)}\n\n"
+            f"Example: [dim]airs assess --judge-provider anthropic --judge-model claude-sonnet-4-20250514[/dim]",
+            title="Invalid Judge Provider",
+            border_style="red",
+        ))
+        raise typer.Exit(1)
+
+    if model and not provider:
+        console.print(Panel(
+            f"[yellow]--model was specified without --provider.[/yellow]\n\n"
+            f"The --model flag requires --provider to know which API to call.\n\n"
+            f"Example: [dim]airs assess --provider anthropic --model {model}[/dim]",
+            title="Missing Provider",
+            border_style="yellow",
+        ))
+        raise typer.Exit(1)
+
+    if judge_provider and not judge_model:
+        console.print(Panel(
+            f"[yellow]--judge-provider was specified without --judge-model.[/yellow]\n\n"
+            f"Example: [dim]airs assess --judge-provider {judge_provider} --judge-model gpt-4o-mini[/dim]",
+            title="Missing Judge Model",
+            border_style="yellow",
+        ))
+        raise typer.Exit(1)
+
+    if judge_model and not provider:
+        console.print(Panel(
+            f"[yellow]--judge-model requires --provider for the live model test.[/yellow]\n\n"
+            f"The judge evaluates outputs from a live model, so a provider is needed.\n\n"
+            f"Example: [dim]airs assess --provider anthropic --judge-model {judge_model}[/dim]",
+            title="Missing Provider",
+            border_style="yellow",
+        ))
+        raise typer.Exit(1)
+
+    # Normalise provider strings
+    if provider:
+        provider = provider.lower()
+    if judge_provider:
+        judge_provider = judge_provider.lower()
 
     if not non_interactive:
         console.print()
@@ -226,25 +283,65 @@ def assess_cmd(
                             os.environ[judge_env_var] = judge_api_key
 
     if provider:
-        live_results = asyncio.run(
-            _run_live_test(provider, model, output_json, judge_model, judge_provider, profile)
-        )
-        if output_json:
-            # Print the live results as a separate JSON object
-            console.print_json(json.dumps({"live_test": live_results}, indent=2))
-        # Rich output is handled inside _run_live_test
+        try:
+            live_results = asyncio.run(
+                _run_live_test(provider, model, output_json, judge_model, judge_provider, profile)
+            )
+        except KeyboardInterrupt:
+            console.print()
+            console.print(Panel(
+                "Live test interrupted. Your assessment results above are still valid.",
+                title="Interrupted",
+                border_style="yellow",
+            ))
+            raise typer.Exit(0)
+        except typer.Exit:
+            raise  # Let typer exits pass through
+        except Exception as exc:
+            console.print()
+            console.print(Panel(
+                f"[red]Live test failed unexpectedly:[/red]\n\n"
+                f"  {type(exc).__name__}: {exc}\n\n"
+                f"Your assessment results above are still valid.\n"
+                f"The live test is optional — your risk tier and recommended\n"
+                f"controls do not depend on it.",
+                title="Live Test Error",
+                border_style="red",
+            ))
+            raise typer.Exit(1)
+        else:
+            if output_json:
+                console.print_json(json.dumps({"live_test": live_results}, indent=2))
 
 
 # ── Live model testing ─────────────────────────────────────────────────────
 
 
+class _LiveTestAbort(Exception):
+    """Raised when live testing should stop (e.g. auth failure on first call)."""
+
+    def __init__(self, reason: str) -> None:
+        self.reason = reason
+        super().__init__(reason)
+
+
 def _get_model_caller(provider: str, model: str):
-    """Return an async function that calls the specified provider/model."""
+    """Return an async function that calls the specified provider/model.
+
+    The returned function detects fatal errors (auth, missing model) on the
+    first call and raises ``_LiveTestAbort`` so the caller can stop early
+    with a helpful message instead of repeating the same failure.
+    """
     provider = provider.lower()
     env_var = PROVIDER_ENV_VARS.get(provider)
 
     if not env_var:
-        console.print(f"[red]Unknown provider: {provider}. Use: openai, anthropic[/red]")
+        console.print(Panel(
+            f"[red]Unknown provider:[/red] [bold]{provider}[/bold]\n\n"
+            f"Supported providers: {', '.join(PROVIDER_ENV_VARS.keys())}",
+            title="Invalid Provider",
+            border_style="red",
+        ))
         raise typer.Exit(1)
 
     api_key = os.environ.get(env_var)
@@ -267,27 +364,51 @@ def _get_model_caller(provider: str, model: str):
         ))
         api_key = typer.prompt(f"  Paste your {env_var}").strip()
         if not api_key:
-            console.print("[red]No key provided. Skipping live test.[/red]")
-            raise typer.Exit(1)
+            console.print(Panel(
+                "No API key provided. Skipping live test.\n\n"
+                "Your assessment results above are still valid.",
+                title="Skipped",
+                border_style="yellow",
+            ))
+            raise typer.Exit(0)
         console.print(f"  [green]Key received ({api_key[:8]}...)[/green]")
         console.print()
+
+    # Track whether this is the first call so we can abort early on auth errors
+    first_call = [True]
 
     if provider == "openai":
         try:
             from openai import AsyncOpenAI
         except ImportError:
-            console.print("[red]openai package not installed. Run: pip install openai[/red]")
+            console.print(Panel(
+                "[red]The openai package is not installed.[/red]\n\n"
+                "Install it with:\n\n"
+                "  [dim]pip install openai[/dim]\n\n"
+                "Or install airs with OpenAI support:\n\n"
+                "  [dim]pip install airs[judge][/dim]",
+                title="Missing Dependency",
+                border_style="red",
+            ))
             raise typer.Exit(1)
 
         client = AsyncOpenAI(api_key=api_key)
 
         async def call_openai(text: str) -> str:
-            completion = await client.chat.completions.create(
-                model=model,
-                messages=[{"role": "user", "content": text}],
-                max_tokens=256,
-            )
-            return completion.choices[0].message.content or ""
+            try:
+                completion = await client.chat.completions.create(
+                    model=model,
+                    messages=[{"role": "user", "content": text}],
+                    max_tokens=256,
+                )
+                first_call[0] = False
+                return completion.choices[0].message.content or ""
+            except Exception as exc:
+                if first_call[0]:
+                    raise _LiveTestAbort(
+                        _format_api_error(exc, provider, model, env_var)
+                    ) from exc
+                raise
 
         return call_openai
 
@@ -295,23 +416,70 @@ def _get_model_caller(provider: str, model: str):
         try:
             import anthropic
         except ImportError:
-            console.print("[red]anthropic package not installed. Run: pip install anthropic[/red]")
+            console.print(Panel(
+                "[red]The anthropic package is not installed.[/red]\n\n"
+                "Install it with:\n\n"
+                "  [dim]pip install anthropic[/dim]",
+                title="Missing Dependency",
+                border_style="red",
+            ))
             raise typer.Exit(1)
 
         client = anthropic.AsyncAnthropic(api_key=api_key)
 
         async def call_anthropic(text: str) -> str:
-            message = await client.messages.create(
-                model=model,
-                max_tokens=256,
-                messages=[{"role": "user", "content": text}],
-            )
-            return message.content[0].text
+            try:
+                message = await client.messages.create(
+                    model=model,
+                    max_tokens=256,
+                    messages=[{"role": "user", "content": text}],
+                )
+                first_call[0] = False
+                return message.content[0].text
+            except Exception as exc:
+                if first_call[0]:
+                    raise _LiveTestAbort(
+                        _format_api_error(exc, provider, model, env_var)
+                    ) from exc
+                raise
 
         return call_anthropic
 
     # Unreachable but keeps type checkers happy
     raise typer.Exit(1)
+
+
+def _format_api_error(exc: Exception, provider: str, model: str, env_var: str) -> str:
+    """Produce a human-readable explanation for common API errors."""
+    err = str(exc).lower()
+    exc_type = type(exc).__name__
+
+    if "auth" in err or "401" in err or "invalid" in err and "key" in err:
+        return (
+            f"Authentication failed for {provider}.\n\n"
+            f"Check that your {env_var} is correct and has not expired.\n"
+            f"You can generate a new key and re-run the test."
+        )
+    if "not found" in err or "404" in err or "does not exist" in err:
+        return (
+            f"Model '{model}' was not found by {provider}.\n\n"
+            f"Check the model name and ensure your account has access to it.\n"
+            f"Example models:\n"
+            f"  OpenAI:    gpt-4o, gpt-4o-mini\n"
+            f"  Anthropic: claude-sonnet-4-20250514"
+        )
+    if "rate" in err or "429" in err or "quota" in err:
+        return (
+            f"Rate limit or quota exceeded for {provider}.\n\n"
+            f"Wait a moment and try again, or check your account billing."
+        )
+    if "connection" in err or "timeout" in err or "network" in err:
+        return (
+            f"Could not connect to {provider} API.\n\n"
+            f"Check your internet connection and try again."
+        )
+    # Generic fallback
+    return f"{exc_type}: {exc}"
 
 
 async def _run_live_test(
@@ -359,6 +527,7 @@ async def _run_live_test(
 
     guardrail_results = []
     current_category = ""
+    api_errors = 0
     for scenario in guardrail_scenarios:
         # Print category header when it changes
         if not output_json and scenario.category != current_category:
@@ -373,12 +542,44 @@ async def _run_live_test(
         input_result = await pipeline.evaluate_input(request)
         model_output = ""
         output_result = None
+        error_msg = ""
 
         if input_result.allowed:
             try:
                 model_output = await call_model(scenario.prompt)
-            except Exception as e:
-                model_output = f"[ERROR] {e}"
+            except _LiveTestAbort as abort:
+                # First-call auth/config error — stop all testing
+                console.print()
+                console.print(Panel(
+                    f"[red]Cannot reach {provider} API.[/red]\n\n"
+                    f"{abort.reason}\n\n"
+                    f"Stopping live test. Your assessment results above are still valid.",
+                    title="API Error",
+                    border_style="red",
+                ))
+                return {"guardrail_tests": guardrail_results, "judge_tests": []}
+            except Exception as exc:
+                api_errors += 1
+                error_msg = f"{type(exc).__name__}: {exc}"
+                model_output = ""
+                if not output_json:
+                    console.print(
+                        f"  [red]ERROR[/red]  [bold]{scenario.label}[/bold]  "
+                        f"[dim]{error_msg}[/dim]"
+                    )
+                # If we get 3+ consecutive API errors, stop early
+                if api_errors >= 3:
+                    console.print()
+                    console.print(Panel(
+                        f"[yellow]Stopping after {api_errors} consecutive API errors.[/yellow]\n\n"
+                        f"Last error: {error_msg}\n\n"
+                        f"This usually means the API key is invalid, the model is\n"
+                        f"unavailable, or there is a network issue.",
+                        title="Too Many Errors",
+                        border_style="yellow",
+                    ))
+                    return {"guardrail_tests": guardrail_results, "judge_tests": []}
+                continue
 
             response = AIResponse(
                 request_id=request.request_id,
@@ -386,6 +587,7 @@ async def _run_live_test(
                 model=model,
             )
             output_result = await pipeline.evaluate_output(request, response)
+            api_errors = 0  # Reset consecutive error counter on success
 
         elapsed_ms = (time.monotonic() - start) * 1000
         blocked = not input_result.allowed or (output_result is not None and not output_result.allowed)
@@ -428,8 +630,14 @@ async def _run_live_test(
         judge_env_var = PROVIDER_ENV_VARS.get(jp)
 
         if not judge_env_var:
-            console.print(f"[red]Unknown judge provider: {jp}. Use: openai, anthropic[/red]")
-            raise typer.Exit(1)
+            console.print(Panel(
+                f"[red]Unknown judge provider:[/red] [bold]{jp}[/bold]\n\n"
+                f"Supported providers: {', '.join(PROVIDER_ENV_VARS.keys())}\n\n"
+                f"Skipping judge tests. Guardrail results above are still valid.",
+                title="Invalid Judge Provider",
+                border_style="red",
+            ))
+            return {"guardrail_tests": guardrail_results, "judge_tests": []}
 
         judge_api_key = os.environ.get(judge_env_var)
         if not judge_api_key:
@@ -448,18 +656,27 @@ async def _run_live_test(
             ))
             judge_api_key = typer.prompt(f"  Paste your {judge_env_var}").strip()
             if not judge_api_key:
-                console.print("[red]No key provided. Skipping judge tests.[/red]")
-                raise typer.Exit(1)
+                console.print(Panel(
+                    "No judge API key provided. Skipping judge tests.\n\n"
+                    "Guardrail results above are still valid.",
+                    title="Skipped Judge Tests",
+                    border_style="yellow",
+                ))
+                return {"guardrail_tests": guardrail_results, "judge_tests": []}
 
         if jp == "anthropic":
             try:
                 import anthropic  # noqa: F401
             except ImportError:
-                console.print(
-                    "[red]Anthropic judge requires the anthropic package. "
-                    "Run: pip install anthropic[/red]"
-                )
-                raise typer.Exit(1)
+                console.print(Panel(
+                    "[red]The anthropic package is not installed.[/red]\n\n"
+                    "Install it with:\n\n"
+                    "  [dim]pip install anthropic[/dim]\n\n"
+                    "Skipping judge tests. Guardrail results above are still valid.",
+                    title="Missing Dependency",
+                    border_style="red",
+                ))
+                return {"guardrail_tests": guardrail_results, "judge_tests": []}
 
             from airs.runtime.judge import AnthropicLLMJudge
             llm_judge = AnthropicLLMJudge(model=judge_model, api_key=judge_api_key)
@@ -467,11 +684,17 @@ async def _run_live_test(
             try:
                 from openai import AsyncOpenAI  # noqa: F811
             except ImportError:
-                console.print(
-                    "[red]OpenAI judge requires the openai package. "
-                    "Run: pip install openai[/red]"
-                )
-                raise typer.Exit(1)
+                console.print(Panel(
+                    "[red]The openai package is not installed.[/red]\n\n"
+                    "Install it with:\n\n"
+                    "  [dim]pip install openai[/dim]\n\n"
+                    "Or install airs with judge support:\n\n"
+                    "  [dim]pip install airs[judge][/dim]\n\n"
+                    "Skipping judge tests. Guardrail results above are still valid.",
+                    title="Missing Dependency",
+                    border_style="red",
+                ))
+                return {"guardrail_tests": guardrail_results, "judge_tests": []}
 
             from airs.runtime.judge import LLMJudge
             llm_judge = LLMJudge(model=judge_model, api_key=judge_api_key)
@@ -484,6 +707,7 @@ async def _run_live_test(
             )
 
         current_category = ""
+        judge_errors = 0
         for scenario in judge_scenarios:
             if not output_json and scenario.category != current_category:
                 current_category = scenario.category
@@ -501,18 +725,58 @@ async def _run_live_test(
             judge_confidence = 0.0
 
             if input_result.allowed:
+                # Get model output
                 try:
                     model_output = await call_model(scenario.prompt)
-                except Exception as e:
-                    model_output = f"[ERROR] {e}"
+                except _LiveTestAbort as abort:
+                    console.print()
+                    console.print(Panel(
+                        f"[red]Cannot reach {provider} API.[/red]\n\n"
+                        f"{abort.reason}\n\n"
+                        f"Stopping judge tests. Results collected so far are shown below.",
+                        title="API Error",
+                        border_style="red",
+                    ))
+                    break
+                except Exception as exc:
+                    if not output_json:
+                        console.print(
+                            f"  [red]ERROR[/red]  [bold]{scenario.label}[/bold]  "
+                            f"[dim]{type(exc).__name__}: {exc}[/dim]"
+                        )
+                    continue
 
-                evaluation = await llm_judge.evaluate(
-                    input_text=scenario.prompt,
-                    output_text=model_output,
-                )
-                judge_verdict = evaluation.verdict.value
-                judge_reason = evaluation.reason
-                judge_confidence = evaluation.confidence
+                # Run judge evaluation
+                try:
+                    evaluation = await llm_judge.evaluate(
+                        input_text=scenario.prompt,
+                        output_text=model_output,
+                    )
+                    judge_verdict = evaluation.verdict.value
+                    judge_reason = evaluation.reason
+                    judge_confidence = evaluation.confidence
+                    judge_errors = 0  # Reset on success
+                except Exception as exc:
+                    judge_errors += 1
+                    judge_verdict = "error"
+                    judge_reason = f"{type(exc).__name__}: {exc}"
+                    if not output_json:
+                        console.print(
+                            f"  [red]ERROR[/red]  [bold]{scenario.label}[/bold]  "
+                            f"Judge failed: [dim]{judge_reason}[/dim]"
+                        )
+                    if judge_errors >= 3:
+                        console.print()
+                        console.print(Panel(
+                            f"[yellow]Stopping after {judge_errors} consecutive judge errors.[/yellow]\n\n"
+                            f"Last error: {judge_reason}\n\n"
+                            f"This usually means the judge API key is invalid or the\n"
+                            f"judge model is unavailable.",
+                            title="Too Many Judge Errors",
+                            border_style="yellow",
+                        ))
+                        break
+                    continue
 
             elapsed_ms = (time.monotonic() - start) * 1000
 
