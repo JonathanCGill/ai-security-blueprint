@@ -6,14 +6,14 @@
 
 The AIRS Python SDK exists to help teams *think about* AI runtime security before they ship. It implements the three-layer security architecture from the AIRS framework as a drop-in Python library, giving you a concrete starting point for understanding where your AI deployment's risks are and what controls you should consider.
 
-The SDK is not a finished product. It is a working reference implementation — a mechanism to explore risk classification, guardrail design, judge evaluation, and structured degradation in the context of *your* deployment. By answering the assessment questionnaire and running the test scenarios, you build a mental model of what threats you face and what security layers need to exist, even if the specific guardrails and patterns in this SDK are not the ones you ultimately deploy.
+The SDK is not a finished product. It is a working reference implementation, a mechanism to explore risk classification, guardrail design, judge evaluation, and structured degradation in the context of *your* deployment. By answering the assessment questionnaire and running the test scenarios, you build a mental model of what threats you face and what security layers need to exist, even if the specific guardrails and patterns in this SDK are not the ones you ultimately deploy.
 
 Like the framework itself, the SDK is designed to be risk-proportionate: use the components you need for your risk tier, leave out the ones you do not.
 
-!!! warning "Early-stage SDK — not for production assurance"
+!!! warning "Early-stage SDK, not for production assurance"
     The examples, test scenarios, and guardrail patterns included in this SDK are **limited and illustrative**. They demonstrate the *shape* of a security layer, not the depth required for a real, production AI solution. Do not rely on the current examples to assess or protect a production system.
 
-    As the SDK matures, more examples aligned to specific use cases, industries, and threat models will be added. For now, treat this as a starting point for your own implementation — not a substitute for it.
+    As the SDK matures, more examples aligned to specific use cases, industries, and threat models will be added. For now, treat this as a starting point for your own implementation, not a substitute for it.
 
 ## Bring Your Own Model
 
@@ -76,7 +76,7 @@ pip install "airs[all]"
 
 ### Model provider packages (BYOK)
 
-To run `airs assess` with `--provider`, you need the provider's Python package installed. AIRS does not bundle these — **bring your own key, bring your own package**:
+To run `airs assess` with `--provider`, you need the provider's Python package installed. AIRS does not bundle these. **Bring your own key, bring your own package**:
 
 ```bash
 # For OpenAI models (gpt-4o, gpt-4-turbo, etc.)
@@ -184,7 +184,7 @@ asyncio.run(main())
 
 ## Model Integration
 
-The SDK is model-agnostic — it wraps security controls around your existing model calls. The quick start above uses a hardcoded string in place of a real model. To test against a live model, use the CLI:
+The SDK is model-agnostic. It wraps security controls around your existing model calls. The quick start above uses a hardcoded string in place of a real model. To test against a live model, use the CLI:
 
 ```bash
 # Test guardrails against a live model
@@ -194,7 +194,7 @@ airs assess --provider openai --model gpt-4o --non-interactive
 airs assess --provider anthropic --model claude-sonnet-4-20250514 --judge-model gpt-4o-mini --non-interactive
 ```
 
-This sends test prompts through the full AIRS pipeline against a live model and shows what gets blocked. Adding `--judge-model` enables Layer 2 evaluation — an independent model that catches subtle issues like hallucinations, medical advice without disclaimers, and synthetic PII that regex guardrails won't flag. See [Live model testing](#live-model-testing-optional) below for details on API keys and costs.
+This sends test prompts through the full AIRS pipeline against a live model and shows what gets blocked. Adding `--judge-model` enables Layer 2 evaluation, an independent model that catches subtle issues like hallucinations, medical advice without disclaimers, and synthetic PII that regex guardrails won't flag. See [Live model testing](#live-model-testing-optional) below for details on API keys and costs.
 
 ## CLI Assessment
 
@@ -224,9 +224,9 @@ You can also run the assessment against a live AI model. This sends test prompts
 
 The live test has two parts:
 
-1. **Guardrail tests** (always run with `--provider`) — 4 prompts that test input filtering. Two clean prompts should pass; two injection/jailbreak prompts should be blocked by the regex guardrails.
+1. **Guardrail tests** (always run with `--provider`): 4 prompts that test input filtering. Two clean prompts should pass; two injection/jailbreak prompts should be blocked by the regex guardrails.
 
-2. **Judge tests** (opt-in with `--judge-model`) — 4 additional prompts that pass guardrails but are designed to produce outputs that need an LLM judge to evaluate: indirect medical advice, fabricated data about fictional companies, synthetic PII generation, and a clean factual baseline.
+2. **Judge tests** (opt-in with `--judge-model`): 4 additional prompts that pass guardrails but are designed to produce outputs that need an LLM judge to evaluate: indirect medical advice, fabricated data about fictional companies, synthetic PII generation, and a clean factual baseline.
 
 ```bash
 # Guardrail tests only (rule-based, no judge model needed)
@@ -242,17 +242,17 @@ airs assess --provider anthropic --model claude-sonnet-4-20250514 --judge-model 
 airs assess --provider openai --judge-model gpt-4o-mini --non-interactive --json
 ```
 
-**Why a separate judge model?** The judge must be a *different* model from the one being evaluated — using the same model to judge itself defeats the purpose. The `--judge-model` uses an OpenAI-compatible API, so you need `pip install openai` and an `OPENAI_API_KEY` regardless of which provider your production model uses.
+**Why a separate judge model?** The judge must be a *different* model from the one being evaluated. Using the same model to judge itself defeats the purpose. The `--judge-model` uses an OpenAI-compatible API, so you need `pip install openai` and an `OPENAI_API_KEY` regardless of which provider your production model uses.
 
-**No API key? No problem.** The assessment works perfectly without `--provider`. Live model testing is entirely optional — it just adds a real-world demo of the security layers in action.
+**No API key? No problem.** The assessment works perfectly without `--provider`. Live model testing is entirely optional. It just adds a real-world demo of the security layers in action.
 
 !!! info "Prerequisites for live testing"
     Live model testing requires two things:
 
-    1. **The provider's Python package** — see [Model provider packages (BYOK)](#model-provider-packages-byok) above
-    2. **An API key** — if the key isn't set as an environment variable, `airs assess` will prompt you to paste it
+    1. **The provider's Python package**: see [Model provider packages (BYOK)](#model-provider-packages-byok) above
+    2. **An API key**: if the key isn't set as an environment variable, `airs assess` will prompt you to paste it
 
-    **Quick setup — guardrails only:**
+    **Quick setup, guardrails only:**
 
     ```bash
     # OpenAI
@@ -264,7 +264,7 @@ airs assess --provider openai --judge-model gpt-4o-mini --non-interactive --json
     export ANTHROPIC_API_KEY=sk-ant-your-key-here
     ```
 
-    **Quick setup — guardrails + judge:**
+    **Quick setup, guardrails + judge:**
 
     ```bash
     # The judge always uses an OpenAI-compatible API
@@ -290,7 +290,7 @@ airs assess --provider openai --judge-model gpt-4o-mini --non-interactive --json
 | [Telemetry & Audit](telemetry.md) | Structured security events, audit sinks, SOC integration |
 | [FastAPI Integration](fastapi.md) | Drop-in middleware for FastAPI apps |
 | [Examples](examples.md) | Complete working examples |
-| [What the Tests Prove](tests.md) | 160 tests that demonstrate every claim — and document every known gap |
+| [What the Tests Prove](tests.md) | 160 tests that demonstrate every claim, and document every known gap |
 
 ## Get the Code
 
