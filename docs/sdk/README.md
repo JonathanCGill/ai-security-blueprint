@@ -59,9 +59,51 @@ pip install "airs[fastapi]"
 # With LLM-as-Judge (requires OpenAI-compatible API)
 pip install "airs[judge]"
 
-# Everything
+# Everything (includes all provider packages)
 pip install "airs[all]"
 ```
+
+### Model provider packages (BYOK)
+
+To run `airs assess` with `--provider`, you need the provider's Python package installed. AIRS does not bundle these — **bring your own key, bring your own package**:
+
+```bash
+# For OpenAI models (gpt-4o, gpt-4-turbo, etc.)
+pip install openai
+
+# For Anthropic models (Claude Sonnet, Opus, Haiku, etc.)
+pip install anthropic
+
+# Both providers
+pip install openai anthropic
+```
+
+You also need an API key from your provider:
+
+| Provider | Package | API Key Env Var | Get a Key |
+|----------|---------|-----------------|-----------|
+| OpenAI | `openai` | `OPENAI_API_KEY` | [platform.openai.com/api-keys](https://platform.openai.com/api-keys) |
+| Anthropic | `anthropic` | `ANTHROPIC_API_KEY` | [console.anthropic.com/settings/keys](https://console.anthropic.com/settings/keys) |
+
+Set your key for the session:
+
+```bash
+# OpenAI
+export OPENAI_API_KEY=sk-your-key-here
+
+# Anthropic
+export ANTHROPIC_API_KEY=sk-ant-your-key-here
+```
+
+Then run:
+
+```bash
+airs assess --provider openai --model gpt-4o
+airs assess --provider anthropic --model claude-sonnet-4-20250514
+```
+
+!!! warning "Missing provider package?"
+    If you see `openai package not installed` or `anthropic package not installed`, install the relevant package above. The core `pip install airs` intentionally keeps these optional so you only install what you use.
 
 ### Verify it works
 
@@ -182,21 +224,21 @@ airs assess --provider openai --non-interactive
 
 **No API key? No problem.** The assessment works perfectly without `--provider`. Live model testing is entirely optional — it just adds a real-world demo of the guardrails in action.
 
-!!! info "API keys and costs"
-    Live model testing requires an API key from your chosen provider. If the key isn't set as an environment variable, `airs assess` will prompt you to paste it.
+!!! info "Prerequisites for live testing"
+    Live model testing requires two things:
 
-    **Get an API key:**
+    1. **The provider's Python package** — see [Model provider packages (BYOK)](#model-provider-packages-byok) above
+    2. **An API key** — if the key isn't set as an environment variable, `airs assess` will prompt you to paste it
 
-    - **OpenAI**: [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
-    - **Anthropic**: [console.anthropic.com/settings/keys](https://console.anthropic.com/settings/keys)
-
-    **Set it for future runs:**
+    **Quick setup:**
 
     ```bash
     # OpenAI
+    pip install openai
     export OPENAI_API_KEY=sk-your-key-here
 
     # Anthropic
+    pip install anthropic
     export ANTHROPIC_API_KEY=sk-ant-your-key-here
     ```
 
