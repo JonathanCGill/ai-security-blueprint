@@ -190,7 +190,37 @@ def assess_cmd(
             provider = _ask_choice("  Provider", ["openai", "anthropic"], "openai")
             default_model = _default_model(provider)
             model = typer.prompt(f"  Model name", default=default_model)
-            if not judge_model:
+
+            # Prompt for the provider API key now
+            env_var = PROVIDER_ENV_VARS[provider]
+            api_key = os.environ.get(env_var)
+            if not api_key:
+                key_urls = {
+                    "openai": "https://platform.openai.com/api-keys",
+                    "anthropic": "https://console.anthropic.com/settings/keys",
+                }
+                console.print()
+                console.print(Panel(
+                    f"No [bold]{env_var}[/bold] found in environment.\n\n"
+                    f"Get an API key here: [link={key_urls[provider]}]{key_urls[provider]}[/link]\n\n"
+                    f"Paste it below to continue, or set it for future runs:\n\n"
+                    f"  [dim]export {env_var}=sk-...[/dim]\n\n"
+                    f"[dim]Note: Live model tests make API calls that incur costs on your\n"
+                    f"account (typically a few cents per run). The assessment works fine\n"
+                    f"without --provider — live testing is entirely optional.[/dim]",
+                    title="API Key Required",
+                    border_style="yellow",
+                ))
+                api_key = typer.prompt(f"  Paste your {env_var}").strip()
+                if not api_key:
+                    console.print("[red]No key provided. Skipping live test.[/red]")
+                    provider = ""
+                else:
+                    console.print(f"  [green]Key received ({api_key[:8]}...)[/green]")
+                    os.environ[env_var] = api_key
+
+            if provider and not judge_model:
+                console.print()
                 use_judge = _ask_bool(
                     "  Also run LLM-as-Judge tests? (requires pip install openai)"
                 )
@@ -198,6 +228,25 @@ def assess_cmd(
                     judge_model = typer.prompt(
                         "  Judge model name", default="gpt-4o-mini"
                     )
+                    # Prompt for judge API key if not already available
+                    judge_api_key = os.environ.get("OPENAI_API_KEY")
+                    if not judge_api_key:
+                        console.print()
+                        console.print(Panel(
+                            "LLM-as-Judge uses an OpenAI-compatible API.\n\n"
+                            "No [bold]OPENAI_API_KEY[/bold] found in environment.\n"
+                            "Paste your key below, or set it:\n\n"
+                            "  [dim]export OPENAI_API_KEY=sk-...[/dim]",
+                            title="Judge API Key Required",
+                            border_style="yellow",
+                        ))
+                        judge_api_key = typer.prompt("  Paste your OPENAI_API_KEY").strip()
+                        if not judge_api_key:
+                            console.print("[yellow]No key provided. Skipping judge tests.[/yellow]")
+                            judge_model = ""
+                        else:
+                            console.print(f"  [green]Key received ({judge_api_key[:8]}...)[/green]")
+                            os.environ["OPENAI_API_KEY"] = judge_api_key
 
     if provider:
         live_results = asyncio.run(
