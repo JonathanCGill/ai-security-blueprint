@@ -38,6 +38,48 @@ PROVIDER_ENV_VARS = {
 }
 
 
+PROVIDER_PACKAGES = {
+    "openai": "openai",
+    "anthropic": "anthropic",
+}
+
+PROVIDER_INSTALL_HINTS = {
+    "openai": "pip install openai",
+    "anthropic": "pip install anthropic",
+}
+
+
+def _check_provider_package(provider: str) -> bool:
+    """Check if the SDK package for *provider* is importable.
+
+    Returns True if available, False otherwise.
+    """
+    import importlib
+
+    pkg = PROVIDER_PACKAGES.get(provider.lower())
+    if not pkg:
+        return False
+    try:
+        importlib.import_module(pkg)
+        return True
+    except ImportError:
+        return False
+
+
+def _warn_missing_package(provider: str, purpose: str = "provider") -> None:
+    """Print a rich panel telling the user how to install the missing package."""
+    pkg = PROVIDER_PACKAGES.get(provider.lower(), provider)
+    install_cmd = PROVIDER_INSTALL_HINTS.get(provider.lower(), f"pip install {pkg}")
+    console.print(Panel(
+        f"[red]The [bold]{pkg}[/bold] package is required for "
+        f"{purpose} [bold]{provider}[/bold] but is not installed.[/red]\n\n"
+        f"Install it with:\n\n"
+        f"  [dim]{install_cmd}[/dim]",
+        title="Missing Dependency",
+        border_style="red",
+    ))
+
+
 def _ask_bool(question: str, default: bool = False) -> bool:
     suffix = " [Y/n]" if default else " [y/N]"
     result = typer.prompt(question + suffix, default="y" if default else "n", show_default=False)
@@ -164,6 +206,15 @@ def assess_cmd(
         ))
         raise typer.Exit(1)
 
+    # Check that required SDK packages are installed
+    if provider and not _check_provider_package(provider):
+        _warn_missing_package(provider, purpose="model provider")
+        raise typer.Exit(1)
+
+    if judge_provider and not _check_provider_package(judge_provider):
+        _warn_missing_package(judge_provider, purpose="judge provider")
+        raise typer.Exit(1)
+
     # Normalise provider strings
     if provider:
         provider = provider.lower()
@@ -213,6 +264,14 @@ def assess_cmd(
         run_live = _ask_bool("  Run a live model test against a real provider?")
         if run_live:
             provider = _ask_choice("  Provider", ["openai", "anthropic"], "openai")
+
+            # Check the SDK package is installed before going further
+            if not _check_provider_package(provider):
+                _warn_missing_package(provider, purpose="model provider")
+                console.print("  [dim]Skipping live test.[/dim]")
+                provider = ""
+
+        if run_live and provider:
             default_model = _default_model(provider)
             model = typer.prompt(f"  Model name", default=default_model)
 
@@ -253,6 +312,15 @@ def assess_cmd(
                     judge_provider = _ask_choice(
                         "  Judge provider", ["openai", "anthropic"], provider
                     )
+
+                    # Check the judge SDK package is installed
+                    if not _check_provider_package(judge_provider):
+                        _warn_missing_package(judge_provider, purpose="judge provider")
+                        console.print("  [dim]Skipping judge tests.[/dim]")
+                        use_judge = False
+                        judge_model = ""
+
+                if use_judge:
                     default_judge = _default_judge_model(judge_provider)
                     judge_model = typer.prompt(
                         "  Judge model name", default=default_judge
