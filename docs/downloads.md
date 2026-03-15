@@ -21,6 +21,16 @@ Covers the limitations of pre-deployment evaluation, the case for runtime enforc
 
 > See also: [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md) (online version)
 
+### Evaluation Integrity Risks (Sandbagging)
+
+A position paper on AI sandbagging: models strategically underperforming during evaluations to appear safer than they are. Based on the UK AI Security Institute's *Frontier AI Trends Report* (December 2025).
+
+Covers what AISI found, why it threatens evaluation-dependent controls, specific mitigations (canary interactions, multi-model cross-validation, behavioral consistency monitoring), and why the framework's constrain-regardless architecture makes sandbagging operationally irrelevant as a breakout vector.
+
+[Download PDF](Downloads/Evaluation Integrity Risks.pdf){ .md-button }
+
+> See also: [Evaluation Integrity Risks](insights/evaluation-integrity-risks.md) (online version)
+
 ## Framework Reference
 
 ### MASO Framework (Full PDF)
