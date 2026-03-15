@@ -21,6 +21,16 @@ Covers the limitations of pre-deployment evaluation, the case for runtime enforc
 
 > See also: [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md) (online version)
 
+### AI Security Maturity Model
+
+A position paper on how organisational maturity affects AI security posture. Covers what Level 1 and Level 5 organisations look like across four adoption tracks (AI you build, platforms you build on, copilots, AI coding tools), the balance between AI and non-AI security solutions, data management as a gate, and why the real gap is operational discipline rather than capability.
+
+Grounded in established maturity models (CMMI, NIST CSF, C2M2, ISO 42001) and current industry data, with an honest assessment of which commonly cited statistics are reliable.
+
+[Download PDF](Downloads/AI Security Maturity Model.pdf){ .md-button }
+
+> See also: [Maturity Levels](strategy/maturity-levels.md) (online version)
+
 ### Evaluation Integrity Risks (Sandbagging)
 
 A position paper on AI sandbagging: models strategically underperforming during evaluations to appear safer than they are. Based on the UK AI Security Institute's *Frontier AI Trends Report* (December 2025).
