@@ -29,6 +29,12 @@ AI Runtime Security covers the operational phase of AI systems. It is concerned 
 
 This does not mean pre-deployment activities are unimportant. They are necessary but insufficient. A model that passed every evaluation can still hallucinate a regulatory disclosure, leak PII through a tool call, or take an action in an agent chain that no human authorised.
 
+### AI You Build vs. AI You Consume
+
+The full framework (three-layer controls, PACE resilience, risk tiers, MASO) is designed for **AI systems your organisation develops and operates**: custom models, RAG pipelines, autonomous agents, and multi-agent systems. These are the systems where you own the runtime and bear full responsibility for behaviour in production.
+
+Most organisations also consume AI through vendor platforms (copilots, SaaS features, cloud AI services). For consumed AI, the security questions are different: data classification, access governance, platform control configuration, and understanding what the vendor does and does not secure on your behalf. The framework's [maturity levels](strategy/maturity-levels.md) address how these tracks differ and what good practice looks like for each.
+
 ## Core Controls
 
 AI Runtime Security is built on layered, independent controls that compensate for each other's weaknesses:

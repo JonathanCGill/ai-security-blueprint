@@ -21,7 +21,7 @@ A risk-proportionate framework of control patterns that you select, adapt, or co
 
 <div class="pull-quote" markdown>
 
-> **"Reduce harm by applying the right controls."**
+> **"AI moves faster than any human. Runtime controls keep you in charge."**
 
 </div>
 
