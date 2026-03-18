@@ -39,7 +39,7 @@ Critically, the framework is designed around how organisations actually work. Ev
 
 ### The concept in action
 
-A customer uses an authenticated chatbot to update personal information. The request passes through an input guardrail before a classifier determines intent and risk level. Low-risk changes, such as updating a nickname, route directly to an execution agent. High-risk changes, such as an address update, are evaluated by a judge model that recommends the action to a human analyst for approval or rejection. Only approved actions are committed to the customer database.
+A customer uses an authenticated chatbot to update personal information. The request passes through an input guardrail before a classifier determines intent and risk level. Low-risk changes, such as updating a nickname, route directly to an execution agent. High-risk changes, such as an address update, are evaluated by a judge model that recommends the action to a human analyst for approval or rejection. Only approved actions are committed to the customer database. This example shows one possible implementation. The specific models, routing logic, and escalation paths will vary by organisation and use case.
 
 ![Chatbot personal data update with runtime controls](images/chatbot-workflow-runtime-controls.svg){ .arch-diagram }
 
