@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <!-- Background -->
+  <rect width="720" height="480" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="360" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Reasoning Distillation: From Teacher to Student</text>
+
+  <!-- Phase 1: Adversarial Curriculum -->
+  <rect x="25" y="50" width="200" height="160" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="125" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#b45309">Adversarial Curriculum</text>
+  <line x1="45" y1="85" x2="205" y2="85" stroke="#fde047" stroke-width="1"/>
+  <text x="50" y="105" font-family="Arial, sans-serif" font-size="10" fill="#854d0e">Lateral privilege escalation</text>
+  <text x="50" y="122" font-family="Arial, sans-serif" font-size="10" fill="#854d0e">Compliance bypass / structuring</text>
+  <text x="50" y="139" font-family="Arial, sans-serif" font-size="10" fill="#854d0e">Inference / probing attacks</text>
+  <text x="50" y="156" font-family="Arial, sans-serif" font-size="10" fill="#854d0e">Shadow PII extraction</text>
+  <text x="50" y="173" font-family="Arial, sans-serif" font-size="10" fill="#854d0e">Payee injection</text>
+  <text x="50" y="190" font-family="Arial, sans-serif" font-size="10" fill="#854d0e">Legitimate actions (60%)</text>
+
+  <!-- Arrow to Teacher -->
+  <line x1="225" y1="130" x2="260" y2="130" stroke="#475569" stroke-width="2"/>
+  <polygon points="265,130 255,125 255,135" fill="#475569"/>
+
+  <!-- Phase 2: Teacher Model -->
+  <rect x="270" y="60" width="200" height="140" rx="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="370" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">Teacher (Frontier LLM)</text>
+  <line x1="290" y1="95" x2="450" y2="95" stroke="#93c5fd" stroke-width="1"/>
+  <text x="370" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e40af">GPT-4o / Claude Sonnet</text>
+  <text x="370" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e40af">Generates for each example:</text>
+  <text x="370" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1e40af">Verdict + Reasoning Chain</text>
+  <text x="370" y="178" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#64748b">"REJECT because it attempts to</text>
+  <text x="370" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#64748b">bridge account permissions..."</text>
+
+  <!-- Arrow to training dataset -->
+  <line x1="470" y1="130" x2="505" y2="130" stroke="#475569" stroke-width="2"/>
+  <polygon points="510,130 500,125 500,135" fill="#475569"/>
+
+  <!-- Phase 3: Training Dataset -->
+  <rect x="515" y="60" width="180" height="140" rx="8" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="605" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#4338ca">Training Dataset</text>
+  <line x1="535" y1="95" x2="675" y2="95" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="605" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4338ca">30,000+ labelled examples</text>
+  <text x="605" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#4338ca">Each record contains:</text>
+  <text x="540" y="160" font-family="Arial, sans-serif" font-size="9" fill="#6366f1">Action string</text>
+  <text x="540" y="175" font-family="Arial, sans-serif" font-size="9" fill="#6366f1">Verdict (GO / NO-GO)</text>
+  <text x="540" y="190" font-family="Arial, sans-serif" font-size="9" fill="#6366f1">Reasoning chain (why)</text>
+
+  <!-- Arrow down to Student -->
+  <line x1="605" y1="200" x2="605" y2="250" stroke="#475569" stroke-width="2"/>
+  <polygon points="605,255 600,245 610,245" fill="#475569"/>
+  <text x="615" y="240" font-family="Arial, sans-serif" font-size="9" fill="#64748b">fine-tune</text>
+
+  <!-- Phase 4: Student Model -->
+  <rect x="270" y="260" width="430" height="100" rx="8" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+  <text x="485" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#166534">Student (Distilled SLM, 1.5B to 3B parameters)</text>
+  <line x1="290" y1="295" x2="680" y2="295" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="485" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#166534">Phi-4 Mini / Gemma 2 / Qwen 1.5B</text>
+  <text x="485" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#166534">Learns to predict: verdict + reasoning + pattern tag</text>
+
+  <!-- Key difference callout -->
+  <rect x="25" y="270" width="220" height="80" rx="6" fill="#ffffff" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="135" y="292" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#166534">Why reasoning matters</text>
+  <line x1="40" y1="300" x2="230" y2="300" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="40" y="318" font-family="Arial, sans-serif" font-size="9" fill="#475569">Binary labels alone: 78% accuracy</text>
+  <text x="40" y="335" font-family="Arial, sans-serif" font-size="9" fill="#166534">With reasoning chains: 94% accuracy</text>
+
+  <!-- Arrow from callout to student -->
+  <line x1="245" y1="310" x2="265" y2="310" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Deploy arrow -->
+  <line x1="485" y1="360" x2="485" y2="395" stroke="#475569" stroke-width="2"/>
+  <polygon points="485,400 480,390 490,390" fill="#475569"/>
+  <text x="500" y="387" font-family="Arial, sans-serif" font-size="9" fill="#64748b">deploy</text>
+
+  <!-- Deployed sidecar -->
+  <rect x="310" y="405" width="350" height="50" rx="8" fill="#fefce8" stroke="#eab308" stroke-width="2"/>
+  <text x="485" y="428" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#854d0e">Production Sidecar: sub-50ms, local, auditable</text>
+  <text x="485" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#a16207">Decisions are explainable because the model learned why, not just what</text>
+
+  <!-- Feedback arrow back to curriculum -->
+  <line x1="310" y1="430" x2="125" y2="430" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="125" y1="430" x2="125" y2="215" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="125,212 120,222 130,222" fill="#94a3b8"/>
+  <text x="50" y="340" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">new patterns</text>
+  <text x="50" y="353" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">feed back</text>
+</svg>
