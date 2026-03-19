@@ -14,7 +14,7 @@ You are updating the AI Runtime Security News page at `docs/news.md`.
    - LLM supply chain and model integrity news
    - AI observability and monitoring developments
 
-2. **Select** the 3 to 8 most significant items. Prioritise items that directly relate to runtime security (not training-time or general AI ethics unless they have runtime implications).
+2. **Select** the 3 to 8 most significant items. Prioritise items that directly relate to runtime security (not training-time or general AI ethics unless they have runtime implications). Apply strict source quality filters (see below).
 
 3. **Map each item** to the relevant AIRS framework controls. Use the tags defined in the news page header. Each item should reference at least one tag. Link to the most relevant framework page where possible.
 
@@ -34,6 +34,26 @@ Brief summary of what happened or was published (2 to 4 sentences). Explain why 
 ---
 ```
 
+## Source quality
+
+Only include items from credible, verifiable sources. Prefer:
+
+- Peer-reviewed research and preprints from known institutions (e.g. arXiv, USENIX, IEEE, ACM)
+- Official advisories and announcements from platform providers
+- Reporting from established outlets (e.g. The Record, Krebs on Security, Ars Technica, Wired, MIT Technology Review)
+- Government and standards bodies (NIST, CISA, ENISA, OWASP)
+- Reputable security research blogs (e.g. Trail of Bits, Google Project Zero, company engineering blogs with technical depth)
+
+Do **not** include:
+
+- Vendor marketing or product announcements disguised as news
+- Alarmist, sensationalist, or hype-driven coverage
+- SEO content farms or AI-generated aggregator sites
+- Sources that lack named authors, citations, or technical detail
+- Social media posts or unverified claims without corroborating evidence
+
+When summarising, stick to the facts. Do not editorialize or inflate the significance of an item. If a story is only covered by low-quality sources, skip it.
+
 ## Writing guidelines
 
 - Never use em dashes or double hyphens. Use commas, colons, full stops, or rephrase instead.
@@ -41,6 +61,7 @@ Brief summary of what happened or was published (2 to 4 sentences). Explain why 
 - Bold for key terms, backticks for code and config, italics for citations.
 - Keep summaries concise. Two to four sentences per item.
 - Use the exact tag names from the table in `docs/news.md`.
+- Always credit the people behind the work. Name researchers, authors, and teams responsible. For example: "Researchers at Trail of Bits, led by *Jane Smith*, found..." or "A paper by *Doe et al.* from Stanford..."
 
 ## Framework reference
 

@@ -14,27 +14,44 @@ jobs:
   research:
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    # Skip even-numbered weeks so this runs biweekly
-    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && (github.run_number % 2 == 1))
     steps:
+      - name: Check if this is a biweekly run
+        id: biweekly
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            WEEK=$(date +%V)
+            if [ $((WEEK % 2)) -eq 1 ]; then
+              echo "should_run=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "should_run=false" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
       - uses: actions/checkout@v4
+        if: steps.biweekly.outputs.should_run == 'true'
         with:
           fetch-depth: 0
 
       - name: Set branch name
+        if: steps.biweekly.outputs.should_run == 'true'
         id: branch
         run: echo "name=news/roundup-$(date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
 
       - name: Create working branch
+        if: steps.biweekly.outputs.should_run == 'true'
         run: |
           git checkout -b "${{ steps.branch.outputs.name }}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Install Claude Code
+        if: steps.biweekly.outputs.should_run == 'true'
         run: npm install -g @anthropic-ai/claude-code
 
       - name: Run news research
+        if: steps.biweekly.outputs.should_run == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -43,6 +60,7 @@ jobs:
             --model claude-sonnet-4-6
 
       - name: Push and create PR
+        if: steps.biweekly.outputs.should_run == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
