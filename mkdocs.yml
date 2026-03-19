@@ -69,7 +69,7 @@ extra_css:
 extra:
   analytics:
     provider: google
-    property: G-LHJX43M3XE
+    property: G-MTNR4PST40
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/JonathanCGill
