@@ -90,5 +90,4 @@ Key framework pages to link to:
 
 ## After updating
 
-- Commit the changes to `docs/news.md` with message: "news: add biweekly AI runtime security roundup YYYY-MM-DD"
-- Push to the current branch
+- Do not commit or push. The CI workflow handles git operations after you finish.

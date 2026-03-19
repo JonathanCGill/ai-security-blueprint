@@ -29,7 +29,7 @@ jobs:
             fi
           fi
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         if: steps.biweekly.outputs.should_run == 'true'
         with:
           fetch-depth: 0
@@ -56,18 +56,24 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           claude -p "$(cat .claude/news-research.md)" \
-            --allowedTools "WebSearch,WebFetch,Read,Edit,Write,Bash(git commit:*),Bash(git push:*),Bash(git add:*),Bash(git status),Bash(git diff),Bash(git log:*)" \
+            --allowedTools "WebSearch" \
+            --allowedTools "WebFetch" \
+            --allowedTools "Read" \
+            --allowedTools "Edit" \
+            --allowedTools "Write" \
             --model claude-sonnet-4-6
 
-      - name: Push and create PR
+      - name: Commit, push, and create PR
         if: steps.biweekly.outputs.should_run == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if git diff --quiet HEAD origin/main; then
-            echo "No changes to push"
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "No changes to commit"
             exit 0
           fi
+          git add docs/news.md
+          git commit -m "news: add biweekly AI runtime security roundup $(date +%Y-%m-%d)"
           git push -u origin "${{ steps.branch.outputs.name }}"
           gh pr create \
             --title "News: biweekly AI runtime security roundup $(date +%Y-%m-%d)" \
