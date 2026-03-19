@@ -169,7 +169,7 @@
   <line x1="350" y1="545" x2="390" y2="545" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrowhead-blue)"/>
   
   <rect x="400" y="520" width="120" height="50" rx="6" fill="white" stroke="#3b82f6" stroke-width="2"/>
-  <text x="460" y="542" text-anchor="middle" class="component">LLM-as-Judge</text>
+  <text x="460" y="542" text-anchor="middle" class="component">Model-as-Judge</text>
   <text x="460" y="555" text-anchor="middle" class="component-detail">Quality eval</text>
   
   <line x1="520" y1="545" x2="560" y2="545" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrowhead-blue)"/>

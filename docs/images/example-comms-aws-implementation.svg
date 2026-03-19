@@ -266,7 +266,7 @@
   <circle cx="760" cy="565" r="10" fill="#3b82f6"/>
   <text x="760" y="569" text-anchor="middle" fill="white" style="font:bold 11px sans-serif">C</text>
   <text x="780" y="570" class="service">Nearline: Deep analysis</text>
-  <text x="750" y="590" class="service-detail">• LLM-as-Judge evaluates quality</text>
+  <text x="750" y="590" class="service-detail">• Model-as-Judge evaluates quality</text>
   <text x="750" y="605" class="service-detail">• Drift analysis finds patterns</text>
   <text x="750" y="620" class="service-detail">• Policy updates improve Band A</text>
 </svg>

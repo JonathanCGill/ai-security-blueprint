@@ -42,7 +42,7 @@
   <text x="540" y="196" fill="#667" font-size="9">Portion of existing governance role</text>
 
   <rect x="30" y="204" width="740" height="24" rx="0" fill="#0d1225"/>
-  <text x="50" y="220" fill="#8899aa" font-size="9">LLM-as-Judge + Cross-validation Models</text>
+  <text x="50" y="220" fill="#8899aa" font-size="9">Model-as-Judge + Cross-validation Models</text>
   <text x="380" y="220" fill="#92fe9d" font-size="9" font-weight="600">$30K–$150K</text>
   <text x="540" y="220" fill="#667" font-size="9">Two separate model costs at Tier 3</text>
 

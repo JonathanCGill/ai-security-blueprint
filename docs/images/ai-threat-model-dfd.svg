@@ -110,11 +110,11 @@
   <text x="445" y="477" text-anchor="middle" class="proc-label">Guardrails</text>
   <text x="445" y="490" text-anchor="middle" class="proc-sub">PII, hallucination</text>
   
-  <!-- LLM-as-Judge -->
+  <!-- Model-as-Judge -->
   <rect x="550" y="500" width="110" height="75" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
   <circle cx="605" cy="520" r="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
   <text x="605" y="524" text-anchor="middle" class="proc-label" font-size="9">P5</text>
-  <text x="605" y="544" text-anchor="middle" class="proc-label">LLM-as-Judge</text>
+  <text x="605" y="544" text-anchor="middle" class="proc-label">Model-as-Judge</text>
   <text x="605" y="557" text-anchor="middle" class="proc-sub">Post-hoc evaluation</text>
   <text x="605" y="569" text-anchor="middle" class="proc-sub">Async scoring</text>
   

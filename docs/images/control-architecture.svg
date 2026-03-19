@@ -27,7 +27,7 @@
   
   <!-- Judge -->
   <rect x="60" y="205" width="250" height="70" rx="6" fill="#DBEDFF" stroke="#0366D6" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="185" y="230" text-anchor="middle" font-size="13" font-weight="600" fill="#0366D6">LLM-as-Judge</text>
+  <text x="185" y="230" text-anchor="middle" font-size="13" font-weight="600" fill="#0366D6">Model-as-Judge</text>
   <text x="185" y="247" text-anchor="middle" font-size="10" fill="#0366D6">Detect unknown-bad · ~500ms–5s</text>
   <text x="185" y="263" text-anchor="middle" font-size="9" fill="#6A737D">Async evaluation · Different model family</text>
   

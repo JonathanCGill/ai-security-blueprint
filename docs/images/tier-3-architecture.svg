@@ -73,10 +73,10 @@
   <text x="730" y="328" text-anchor="middle" fill="#f5576c" font-size="9" font-weight="600">Guardrails (L1)</text>
   <text x="730" y="340" text-anchor="middle" fill="#8899aa" font-size="7">Infrastructure-enforced</text>
 
-  <!-- LLM-as-Judge + Cross-validation -->
+  <!-- Model-as-Judge + Cross-validation -->
   <rect x="290" y="305" width="320" height="50" rx="6" fill="#0d1225" stroke="#ff6b35" stroke-width="2"/>
   <rect x="290" y="305" width="320" height="4" rx="2" fill="#ff6b35"/>
-  <text x="450" y="327" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="700">LLM-as-Judge (L2) + Cross-Validation</text>
+  <text x="450" y="327" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="700">Model-as-Judge (L2) + Cross-Validation</text>
   <text x="450" y="345" text-anchor="middle" fill="#ff6b35" font-size="9">Multi-model validation for high-consequence actions</text>
 
   <!-- Judge connection -->

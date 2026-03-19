@@ -25,7 +25,7 @@
   <polygon points="288,112 298,117 288,122" fill="#8b949e"/>
 
   <rect x="300" y="92" width="170" height="50" rx="6" fill="#1e1e3f" stroke="#c084fc" stroke-width="1.5"/>
-  <text x="385" y="122" text-anchor="middle" fill="#c084fc" font-size="14" font-weight="700">⚖️ LLM-as-Judge</text>
+  <text x="385" y="122" text-anchor="middle" fill="#c084fc" font-size="14" font-weight="700">⚖️ Model-as-Judge</text>
 
   <!-- Arrow -->
   <line x1="478" y1="117" x2="508" y2="117" stroke="#8b949e" stroke-width="2"/>

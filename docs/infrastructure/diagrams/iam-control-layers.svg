@@ -162,7 +162,7 @@
 
   <!-- Judge -->
   <rect x="520" y="570" width="400" height="55" rx="5" fill="#1a3a5c" stroke="#c084fc" stroke-width="1.5"/>
-  <text x="720" y="595" text-anchor="middle" fill="#c084fc" font-size="12" font-weight="600">⚖️ LLM-as-Judge (Async Evaluation)</text>
+  <text x="720" y="595" text-anchor="middle" fill="#c084fc" font-size="12" font-weight="600">⚖️ Model-as-Judge (Async Evaluation)</text>
   <text x="720" y="613" text-anchor="middle" fill="#8b949e" font-size="10">Independent identity · Read-only access · Own credentials (IAM-02)</text>
 
   <!-- Arrows from gateway to components -->
