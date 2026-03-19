@@ -46,6 +46,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Archive old news items
+        if: steps.biweekly.outputs.should_run == 'true'
+        run: python .github/scripts/archive-news.py
+
       - name: Install Claude Code
         if: steps.biweekly.outputs.should_run == 'true'
         run: npm install -g @anthropic-ai/claude-code
@@ -72,16 +76,17 @@ jobs:
             echo "No changes to commit"
             exit 0
           fi
-          git add docs/news.md
+          git add docs/news.md docs/news-archive.md
           git commit -m "news: add biweekly AI runtime security roundup $(date +%Y-%m-%d)"
           git push -u origin "${{ steps.branch.outputs.name }}"
-          gh pr create \
+          PR_URL=$(gh pr create \
             --title "News: biweekly AI runtime security roundup $(date +%Y-%m-%d)" \
             --body "$(cat <<'EOF'
           ## Summary
 
           - Automated biweekly news research run
           - Adds recent AI runtime security news items to `docs/news.md`
+          - Older items (>2 months) archived to `docs/news-archive.md`
           - Each item is mapped to relevant AIRS framework controls
 
           ## Review checklist
@@ -92,4 +97,5 @@ jobs:
 
           EOF
           )" \
-            --base main
+            --base main)
+          gh pr merge "$PR_URL" --auto --squash
