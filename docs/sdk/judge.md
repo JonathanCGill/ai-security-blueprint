@@ -1,4 +1,4 @@
-# LLM-as-Judge: Layer 2
+# Model-as-Judge: Layer 2
 
 The Judge catches what guardrails miss. It evaluates AI outputs for subtle policy violations, hallucinations, inappropriate content, and novel attack patterns that can't be detected with pattern matching.
 
@@ -39,7 +39,7 @@ This is useful for:
 - Low-risk deployments where basic checks suffice
 - Testing and development environments
 
-## LLM-as-Judge
+## Model-as-Judge
 
 For production use. Works with any OpenAI-compatible API:
 

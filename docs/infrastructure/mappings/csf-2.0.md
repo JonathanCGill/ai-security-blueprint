@@ -13,7 +13,7 @@ The mapping below covers the CSF 2.0 "Secure" focus area as described in NIST IR
 | Framework Layer | Primary CSF Function | Role |
 | --- | --- | --- |
 | **Guardrails** | PROTECT (PR) | Preventive controls - block known-bad inputs and outputs |
-| **LLM-as-Judge** | DETECT (DE) | Detective controls - evaluate outputs against policy |
+| **Model-as-Judge** | DETECT (DE) | Detective controls - evaluate outputs against policy |
 | **Human Oversight** | GOVERN (GV) | Decision authority - humans accountable for high-risk outcomes |
 
 The infrastructure controls that enforce these layers map across all six CSF Functions.
@@ -114,8 +114,8 @@ The DETECT Function covers continuous monitoring and adverse event analysis. Thi
 | **DE.CM-02** | The physical environment is monitored to find potentially adverse events | - | Out of scope |
 | **DE.CM-03** | Personnel activity and technology usage are monitored to find potentially adverse events | Logging & Observability (LO) | LO controls track user interactions with AI systems: prompt patterns, access frequency, data retrieval behavior |
 | **DE.CM-06** | External service provider activities and services are monitored to find potentially adverse events | Supply Chain (SC), Logging & Observability (LO) | Monitor model provider APIs for: latency changes, behavior drift, unexpected response patterns that may indicate compromise |
-| **DE.CM-09** | Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events | Logging & Observability (LO), LLM-as-Judge layer | **Primary mapping for the Judge layer.** LO provides the telemetry. The Judge evaluates model outputs against policy criteria. Together they detect: harmful outputs, policy violations, behavioral anomalies, prompt injection attempts, data leakage |
-| **DE.AE-02** | Potentially adverse events are analysed to better understand associated activities | Logging & Observability (LO), LLM-as-Judge layer | Judge evaluation provides structured analysis of why an output was flagged. LO correlation identifies attack patterns across sessions |
+| **DE.CM-09** | Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events | Logging & Observability (LO), Model-as-Judge layer | **Primary mapping for the Judge layer.** LO provides the telemetry. The Judge evaluates model outputs against policy criteria. Together they detect: harmful outputs, policy violations, behavioral anomalies, prompt injection attempts, data leakage |
+| **DE.AE-02** | Potentially adverse events are analysed to better understand associated activities | Logging & Observability (LO), Model-as-Judge layer | Judge evaluation provides structured analysis of why an output was flagged. LO correlation identifies attack patterns across sessions |
 | **DE.AE-03** | Information is correlated from multiple sources | Logging & Observability (LO) | LO controls correlate: guardrail decisions + Judge evaluations + human override patterns + model telemetry to identify systemic issues |
 | **DE.AE-04** | The estimated impact and scope of adverse events are understood | Logging & Observability (LO), Risk Tiers | Impact assessment informed by risk tier: Tier 3 incident has different blast radius than Tier 1 |
 | **DE.AE-06** | Information on adverse events is provided to authorised staff and tools | Logging & Observability (LO), Incident Response (IR) | LO-05 (Alert generation) routes to appropriate responders based on severity. IR controls define escalation paths |
@@ -191,7 +191,7 @@ The RECOVER Function covers recovery plan execution and communication. This fram
 | Layer | CSF Functions | Key Subcategories |
 | --- | --- | --- |
 | **Guardrails** | PROTECT | PR.DS-10 (data-in-use), PR.AA-05 (access control), PR.PS-05 (unauthorised execution prevention) |
-| **LLM-as-Judge** | DETECT | DE.CM-09 (runtime monitoring), DE.AE-02 (event analysis), DE.AE-03 (correlation) |
+| **Model-as-Judge** | DETECT | DE.CM-09 (runtime monitoring), DE.AE-02 (event analysis), DE.AE-03 (correlation) |
 | **Human Oversight** | GOVERN, RESPOND | GV.RR-01 (accountability), GV.RR-02 (roles/authorities), RS.MA-04 (escalation) |
 
 ## Subcategories Not Mapped

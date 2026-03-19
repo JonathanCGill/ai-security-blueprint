@@ -65,7 +65,7 @@ The AI security industry has converged on a common pattern: **layered runtime co
 | **Platform Guardrails** | Cloud-native filtering integrated with AI services | AWS Bedrock Guardrails, Azure AI Content Safety |
 | **Open-Source Frameworks** | Self-hosted, customizable guardrail systems | NVIDIA NeMo Guardrails, Guardrails AI |
 | **Safety Models** | LLM-based content moderation | Llama Guard, OpenAI Moderation API |
-| **Evaluation Frameworks** | LLM-as-Judge implementation | DeepEval, Galileo |
+| **Evaluation Frameworks** | Model-as-Judge implementation | DeepEval, Galileo |
 | **Standards & Guidance** | Risk frameworks and taxonomies | OWASP LLM Top 10, NIST AI RMF |
 
 ## Platform Guardrails
@@ -288,7 +288,7 @@ The AI security industry has converged on a common pattern: **layered runtime co
 
 **Documentation:** [OpenAI Moderation](https://platform.openai.com/docs/guides/moderation)
 
-## Evaluation Frameworks (LLM-as-Judge)
+## Evaluation Frameworks (Model-as-Judge)
 
 ### DeepEval / Confident AI
 

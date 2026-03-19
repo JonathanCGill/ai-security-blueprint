@@ -11,7 +11,7 @@ This example uses the layered control model:
 | Layer | What It Does | Timing |
 |-------|--------------|--------|
 | **Guardrails** | Block known-bad inputs/outputs | Inline, real-time |
-| **LLM-as-Judge** | Evaluate quality, detect issues | Async, after delivery |
+| **Model-as-Judge** | Evaluate quality, detect issues | Async, after delivery |
 | **Human Oversight** | Review findings, decide action | As needed |
 
 **The Judge does not block transactions.** It reviews interactions after the fact and surfaces findings for human review. Guardrails handle real-time protection.
@@ -197,7 +197,7 @@ def filter_output(response: str, customer_id: str, context: dict) -> Tuple[bool,
     return True, response
 ```
 
-## Step 4: LLM-as-Judge Implementation (Async)
+## Step 4: Model-as-Judge Implementation (Async)
 
 ### Purpose
 
@@ -581,7 +581,7 @@ Aria demonstrates HIGH-tier implementation with proper control separation:
 |-------|----------|--------|
 | Input Guardrails | Block injection, threats, abuse | 2.3% block rate, <15ms latency |
 | Output Guardrails | Filter PII, advice, errors | 0.4% block rate, <10ms latency |
-| LLM-as-Judge | Quality assurance, pattern detection | 20% sampling, finds ~15 issues/day |
+| Model-as-Judge | Quality assurance, pattern detection | 20% sampling, finds ~15 issues/day |
 | HITL | Review findings, decide action | 7.5 FTE, 3.2% actionable rate |
 
 **The Judge is not a gatekeeper.** It's a quality assurance mechanism that makes human oversight scalable. Guardrails protect in real-time. The Judge finds what they miss. Humans decide what to do about it.

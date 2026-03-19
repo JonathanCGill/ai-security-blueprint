@@ -11,7 +11,7 @@ For MEDIUM-risk internal tools, the control model simplifies:
 | Layer | Approach |
 |-------|----------|
 | **Guardrails** | Rules-based validation (no LLM needed) |
-| **LLM-as-Judge** | Recommended-sampling for quality assurance |
+| **Model-as-Judge** | Recommended-sampling for quality assurance |
 | **Human Oversight** | Periodic batch review, not real-time |
 
 This example uses **guardrails only** for inline protection, with optional Judge sampling for quality monitoring. This is appropriate because:
@@ -95,7 +95,7 @@ Rationale: Internal-only tool with no access to sensitive data. Primary risks ar
 
 ### What We Skip (vs. HIGH tier)
 
-- LLM-as-Judge (rules sufficient for internal tool)
+- Model-as-Judge (rules sufficient for internal tool)
 - Real-time SIEM integration
 - Dedicated HITL queue
 

@@ -13,7 +13,7 @@ This example uses the layered control model:
 | **Guardrails** | Validate data, block malformed input | Inline |
 | **Primary AI** | Generate risk assessment | Inline |
 | **100% HITL** | Underwriter reviews and decides | Inline (human) |
-| **LLM-as-Judge** | Quality assurance, bias detection | Async, after decision |
+| **Model-as-Judge** | Quality assurance, bias detection | Async, after decision |
 
 **Critical distinction:** The underwriter (HITL) is the decision-maker. The AI provides recommendations. The Judge evaluates the entire process after the fact for quality assurance, bias monitoring, and compliance evidence.
 
@@ -276,7 +276,7 @@ _______________________________________________________________
 
 **Override rate is a key metric.** Too low suggests rubber-stamping. Too high suggests poor AI quality. Target: 10-20%.
 
-## Step 5: LLM-as-Judge Implementation (Async)
+## Step 5: Model-as-Judge Implementation (Async)
 
 ### Purpose
 
@@ -636,7 +636,7 @@ CreditAssist demonstrates CRITICAL-tier implementation with proper control separ
 | Guardrails | Data validation, format checks | Inline, fast, deterministic |
 | Primary AI | Risk assessment, recommendations | Advisory only |
 | Underwriter (HITL) | Final decision | 100%, always accountable |
-| LLM-as-Judge | Quality assurance, bias detection | Async, 100% sampling |
+| Model-as-Judge | Quality assurance, bias detection | Async, 100% sampling |
 | Bias Monitoring | Statistical analysis | Daily automated |
 | Compliance Review | Review Judge findings | Human action on findings |
 

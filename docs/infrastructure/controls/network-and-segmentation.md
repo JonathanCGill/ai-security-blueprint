@@ -17,7 +17,7 @@ Traditional application network security segments by tier: web, application, dat
 | **Model endpoints** | Receive prompts, return responses. May call external APIs for tool use. | Prompt injection payloads traverse the network as legitimate traffic |
 | **Vector stores** | Queried by models at inference time with embedding similarity searches | Data exfiltration via crafted embeddings or retrieval manipulation |
 | **Agent tool APIs** | Called dynamically by agents - destination determined at runtime by the model | Agents can be manipulated to call unintended endpoints |
-| **LLM-as-Judge** | Evaluates primary model output - must be independent | If Judge shares infrastructure with primary model, compromise of one affects both |
+| **Model-as-Judge** | Evaluates primary model output - must be independent | If Judge shares infrastructure with primary model, compromise of one affects both |
 | **Guardrail services** | Inline on the request/response path - must be un-bypassable | If guardrails can be routed around at the network level, they provide zero value |
 | **Embedding pipelines** | Ingest documents, generate embeddings, write to vector stores | Poisoned documents enter via ingestion - separate from runtime |
 
@@ -217,7 +217,7 @@ Cross-zone traffic logs feed into the enterprise SIEM alongside AI application l
 
 ## Three-Layer Mapping
 
-| Control | Guardrails | LLM-as-Judge | Human Oversight |
+| Control | Guardrails | Model-as-Judge | Human Oversight |
 |---------|-----------|--------------|-----------------|
 | NET-01 Zones | Guardrails in Zone 2, can't be bypassed | Judge in Zone 3, independent | Control plane in Zone 5, human-only |
 | NET-02 Bypass prevention | Guardrails enforced at network level | Judge receives post-guardrail data for comparison | Humans notified of bypass attempts |

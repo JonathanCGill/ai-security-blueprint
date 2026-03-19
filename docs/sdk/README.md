@@ -36,14 +36,14 @@ AIRS only sees the text going in and the text coming out. It doesn't know or car
 - **Any framework**: LangChain, LlamaIndex, Haystack, raw API calls
 - **Any architecture**: single model, RAG, agents, multi-agent orchestration
 
-The one exception is the optional **LLM-as-Judge**, which does call an OpenAI-compatible API to *evaluate* outputs. This is the judge model, a separate, independent model used for security evaluation, not your production model.
+The one exception is the optional **Model-as-Judge**, which does call an OpenAI-compatible API to *evaluate* outputs. This is the judge model, a separate, independent model used for security evaluation, not your production model.
 
 ## What It Provides
 
 | Component | What It Does |
 |-----------|-------------|
 | **Guardrails** | Regex-based prompt injection detection, PII filtering, content policy (extensible) |
-| **LLM-as-Judge** | Rule-based (no API key) or LLM-based (OpenAI-compatible) output evaluation |
+| **Model-as-Judge** | Rule-based (no API key) or LLM-based (OpenAI-compatible) output evaluation |
 | **Circuit Breaker** | Sliding-window failure tracking, auto-trip, manual emergency stop, recovery |
 | **PACE Controller** | State machine for structured degradation (Primary → Alternate → Contingency → Emergency) |
 | **Security Pipeline** | Orchestrates all layers with configurable behavior per PACE state |

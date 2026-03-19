@@ -50,7 +50,7 @@ Guardrails operate on individual transactions. They can't see patterns.
 
 If guardrails are the bouncer, you also need a detective. Someone reviewing the footage, noticing patterns, flagging concerns for investigation.
 
-This is the role of **LLM-as-Judge** - a second AI system that evaluates interactions after they occur. Not blocking. Not deciding. Detecting.
+This is the role of **Model-as-Judge** - a second AI system that evaluates interactions after they occur. Not blocking. Not deciding. Detecting.
 
 The Judge reviews transactions asynchronously. It asks:
 - Did the AI follow its policies?
@@ -83,7 +83,7 @@ Effective AI security combines three layers:
 | Layer | Function | Timing |
 |-------|----------|--------|
 | **Guardrails** | Block known-bad inputs and outputs | Real-time, inline |
-| **LLM-as-Judge** | Detect issues, surface findings | Async, after-the-fact |
+| **Model-as-Judge** | Detect issues, surface findings | Async, after-the-fact |
 | **Human Oversight** | Decide, act, remain accountable | As needed |
 
 **Guardrails** are your first line. Fast, deterministic, blocking obvious attacks and policy violations. They catch 80% of problems with minimal latency.
