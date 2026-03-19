@@ -57,7 +57,7 @@
   <text x="400" y="335" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">async (20% sample)</text>
   
   <rect x="100" y="345" width="160" height="70" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="180" y="370" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#b45309" text-anchor="middle">LLM-as-Judge</text>
+  <text x="180" y="370" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#b45309" text-anchor="middle">Model-as-Judge</text>
   <text x="180" y="385" font-family="Arial, sans-serif" font-size="9" fill="#92400e" text-anchor="middle">Quality assurance</text>
   <text x="180" y="398" font-family="Arial, sans-serif" font-size="9" fill="#92400e" text-anchor="middle">Pattern detection</text>
   

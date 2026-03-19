@@ -79,7 +79,7 @@
 
   <!-- Judge (async) -->
   <rect x="370" y="200" width="295" height="50" rx="5" fill="#1e1e3f" stroke="#c084fc" stroke-width="1.5"/>
-  <text x="517" y="222" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="600">⚖️ LLM-as-Judge (Async)</text>
+  <text x="517" y="222" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="600">⚖️ Model-as-Judge (Async)</text>
   <text x="517" y="239" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="600">📍 LOG-03 · Score, verdict, reasoning</text>
   <line x1="435" y1="185" x2="435" y2="195" stroke="#c084fc" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#arrowPurple)"/>
   <line x1="600" y1="185" x2="600" y2="195" stroke="#c084fc" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#arrowPurple)"/>

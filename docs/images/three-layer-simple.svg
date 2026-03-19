@@ -23,9 +23,9 @@
   <line x1="260" y1="108" x2="260" y2="88" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arr)"/>
   <text x="275" y="103" class="arrow-text">escalates edge cases</text>
 
-  <!-- Layer 2 — LLM-as-Judge (middle) -->
+  <!-- Layer 2 — Model-as-Judge (middle) -->
   <rect x="40" y="116" width="440" height="72" rx="10" fill="#0f3460"/>
-  <text x="260" y="144" text-anchor="middle" class="title">LLM-as-Judge</text>
+  <text x="260" y="144" text-anchor="middle" class="title">Model-as-Judge</text>
   <text x="260" y="162" text-anchor="middle" class="desc">Separate model evaluates outputs against policy and intent</text>
   <text x="260" y="176" text-anchor="middle" class="desc">Catches subtle, contextual failures</text>
 

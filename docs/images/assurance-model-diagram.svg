@@ -9,7 +9,7 @@
   <rect width="800" height="600" fill="#f8fafc"/>
   
   <!-- Title -->
-  <text x="400" y="35" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle">LLM-as-Judge: Assurance Model</text>
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle">Model-as-Judge: Assurance Model</text>
   <text x="400" y="55" font-family="Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Detection and monitoring, not prevention</text>
   
   <!-- Main Flow - Left Side -->
@@ -58,7 +58,7 @@
   
   <!-- Judge Section - Right Side -->
   <rect x="330" y="380" width="220" height="150" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-  <text x="440" y="405" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#b45309" text-anchor="middle">LLM-as-Judge</text>
+  <text x="440" y="405" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#b45309" text-anchor="middle">Model-as-Judge</text>
   <text x="440" y="425" font-family="Arial, sans-serif" font-size="10" fill="#92400e" text-anchor="middle">(async, after-the-fact)</text>
   <line x1="345" y1="435" x2="535" y2="435" stroke="#fcd34d" stroke-width="1"/>
   <text x="355" y="455" font-family="Arial, sans-serif" font-size="11" fill="#78350f">• Evaluates against policy</text>

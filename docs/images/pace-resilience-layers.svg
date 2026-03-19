@@ -67,7 +67,7 @@
 
   <!-- A detail -->
   <rect x="175" y="185" width="700" height="90" rx="6" fill="#fff" stroke="#27ae60" stroke-width="2" filter="url(#shadow)"/>
-  <text x="195" y="210" font-size="13" font-weight="bold" fill="#1e8449">LLM-as-Judge - Async Detection</text>
+  <text x="195" y="210" font-size="13" font-weight="bold" fill="#1e8449">Model-as-Judge - Async Detection</text>
   <text x="195" y="228" font-size="10" fill="#2c3e50">Independent LLM evaluates outputs for policy compliance, hallucination, tone, and safety.</text>
   <text x="195" y="245" font-size="10" fill="#2c3e50">Catches unknown-bad that guardrails miss. Different model, different failure domain.</text>
   <text x="195" y="262" font-size="10" fill="#7f8c8d">Failure mode: Model error, shared blind spots, latency under load, adversarial evasion.</text>

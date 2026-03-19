@@ -74,7 +74,7 @@
 
   <!-- Layer status boxes -->
   <rect x="100" y="400" width="340" height="55" rx="6" fill="#0d1225" stroke="#445" stroke-width="1" stroke-dasharray="4,2"/>
-  <text x="270" y="420" text-anchor="middle" fill="#667" font-size="10" font-weight="600">Layer 2 - LLM-as-Judge</text>
+  <text x="270" y="420" text-anchor="middle" fill="#667" font-size="10" font-weight="600">Layer 2 - Model-as-Judge</text>
   <text x="270" y="436" text-anchor="middle" fill="#556" font-size="9">OPTIONAL at Tier 1</text>
   <text x="270" y="448" text-anchor="middle" fill="#445" font-size="8">(Deploy if available · not a gating requirement)</text>
 

@@ -99,7 +99,7 @@
   <text x="220" y="610" font-family="Arial, sans-serif" font-size="8" fill="#166534" text-anchor="middle">Inline • Blocks • Real-time</text>
   
   <rect x="330" y="575" width="180" height="45" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="420" y="595" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#b45309" text-anchor="middle">LLM-as-Judge</text>
+  <text x="420" y="595" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#b45309" text-anchor="middle">Model-as-Judge</text>
   <text x="420" y="610" font-family="Arial, sans-serif" font-size="8" fill="#92400e" text-anchor="middle">Async • Detects • Assurance</text>
   
   <rect x="530" y="575" width="180" height="45" rx="4" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>

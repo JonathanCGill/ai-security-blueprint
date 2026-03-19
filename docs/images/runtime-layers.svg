@@ -12,7 +12,7 @@
   <rect x="36" y="32" width="448" height="104" rx="13" fill="#16213e"/>
   <text x="260" y="49" text-anchor="middle" class="label" style="font-size:9.5px; fill:rgba(255,255,255,0.6);">HUMAN OVERSIGHT - edge cases, high-risk decisions</text>
 
-  <!-- Layer 2: LLM-as-Judge -->
+  <!-- Layer 2: Model-as-Judge -->
   <rect x="70" y="56" width="380" height="72" rx="10" fill="#0f3460"/>
   <text x="260" y="73" text-anchor="middle" class="label" style="font-size:9.5px; fill:rgba(255,255,255,0.7);">LLM-AS-JUDGE - catches what rules can't</text>
 

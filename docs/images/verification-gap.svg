@@ -49,9 +49,9 @@
     <!-- Risk Rating -->
     <text x="60" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#991b1b">●○○○○</text>
     
-    <!-- LLM-as-Judge Box -->
+    <!-- Model-as-Judge Box -->
     <rect x="140" y="0" width="120" height="100" rx="8" fill="#fff" stroke="#fca5a5" stroke-width="2" filter="url(#shadow)"/>
-    <text x="200" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#1e293b">LLM-as-Judge</text>
+    <text x="200" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#1e293b">Model-as-Judge</text>
     <text x="200" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#64748b">~80% accuracy</text>
     <line x1="150" y1="52" x2="250" y2="52" stroke="#e5e7eb" stroke-width="1"/>
     <text x="200" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#dc2626">⚠ Same vulnerabilities</text>

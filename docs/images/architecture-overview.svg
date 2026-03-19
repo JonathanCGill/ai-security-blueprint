@@ -81,7 +81,7 @@
   
   <!-- LLM Judge -->
   <rect x="180" y="310" width="240" height="140" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-  <text x="300" y="340" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#b45309" text-anchor="middle">LLM-as-Judge</text>
+  <text x="300" y="340" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#b45309" text-anchor="middle">Model-as-Judge</text>
   <text x="300" y="358" font-family="Arial, sans-serif" font-size="10" fill="#92400e" text-anchor="middle">(Assurance, not control)</text>
   <line x1="195" y1="368" x2="405" y2="368" stroke="#fcd34d" stroke-width="1"/>
   <text x="210" y="390" font-family="Arial, sans-serif" font-size="10" fill="#78350f">• Policy compliance check</text>

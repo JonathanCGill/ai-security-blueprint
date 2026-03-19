@@ -52,7 +52,7 @@
 
   <!-- Layer 2: LLM Judge -->
   <rect x="80" y="384" width="240" height="64" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-  <text x="200" y="409" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="bold" fill="#b45309" text-anchor="middle">LLM-as-Judge</text>
+  <text x="200" y="409" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="bold" fill="#b45309" text-anchor="middle">Model-as-Judge</text>
   <text x="200" y="427" font-family="Inter, Arial, sans-serif" font-size="11" fill="#92400e" text-anchor="middle">Policy, hallucination, safety</text>
   <text x="340" y="408" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">Layer 2: Detect unknown-bad</text>
   <text x="340" y="424" font-family="Inter, Arial, sans-serif" font-size="11" fill="#94a3b8">~500ms  |  PACE-controlled</text>

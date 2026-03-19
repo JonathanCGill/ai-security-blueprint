@@ -32,7 +32,7 @@
   <text x="560" y="148" fill="#667" font-size="9">NHI/sandbox management</text>
 
   <rect x="30" y="156" width="740" height="24" rx="0" fill="#0d1225"/>
-  <text x="50" y="172" fill="#8899aa" font-size="9">LLM-as-Judge Model Costs</text>
+  <text x="50" y="172" fill="#8899aa" font-size="9">Model-as-Judge Model Costs</text>
   <text x="400" y="172" fill="#92fe9d" font-size="9" font-weight="600">$10K–$80K</text>
   <text x="560" y="172" fill="#667" font-size="9">Separate from task agent costs</text>
 
