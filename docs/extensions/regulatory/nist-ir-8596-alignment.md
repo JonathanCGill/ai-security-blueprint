@@ -1,3 +1,7 @@
+---
+description: "Alignment review of the AIRS Framework against the NIST Cybersecurity Framework Profile for Artificial Intelligence (IR 8596), covering all six CSF 2.0 Functions with gap analysis."
+---
+
 # NIST IR 8596 Alignment Review
 
 **How the AIRS Framework aligns with the NIST Cybersecurity Framework Profile for Artificial Intelligence (Cyber AI Profile), including gap analysis and enhancement recommendations.**
@@ -251,4 +255,11 @@ More significantly, AIRS **extends beyond** what IR 8596 currently covers in sev
 2. Add intended use documentation guidance to risk tier process (G1), **low priority**
 3. Monitor NIST's development of the initial public draft and COSAiS for alignment updates
 4. Add NIST IR 8596 to [REFERENCES.md](../../REFERENCES.md) as a primary reference
+
+!!! info "References"
+    - [NIST IR 8596: Cybersecurity Framework Profile for Artificial Intelligence](https://csrc.nist.gov/pubs/ir/8596/iprd)
+    - [NIST IR 8596 PDF](https://nvlpubs.nist.gov/nistpubs/ir/2025/NIST.IR.8596.iprd.pdf)
+    - [NCCoE Cyber AI Profile Project](https://www.nccoe.nist.gov/projects/cyber-ai-profile)
+    - [CSF 2.0 Mapping](../../infrastructure/mappings/csf-2.0.md)
+    - [ISO 42001 Alignment](iso-42001-alignment.md)
 

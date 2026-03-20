@@ -41,7 +41,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 | A.4.5 | AI system tools and utilities | SUP-05, TOOL-01, TOOL-02, TOOL-03 | Tool supply chain, declared permissions, gateway enforcement, and parameter constraints govern tool resources. |
 | A.4.6 | Data quality for AI | SUP-03, SUP-04, DAT-01 | RAG data integrity, fine-tuning pipeline security, and data classification address data quality at the infrastructure level. |
 
-## A.5 - AI System Development
+## A.5 - Assessing Impacts of AI Systems
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -53,7 +53,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 | A.5.7 | AI system operation | LOG-01 through LOG-10, NET-08, SESS-01 | Full logging suite, cross-zone monitoring, and session boundaries support operational monitoring. |
 | A.5.8 | AI system maintenance | IR-04, SUP-08, SUP-06, SEC-05 | Rollback, vulnerability monitoring, integrity verification, and credential rotation support maintenance. |
 
-## A.6 - Data for AI Systems
+## A.6 - AI System Life Cycle
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -64,7 +64,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 | A.6.6 | Data annotation/labelling | SUP-04, IAM-01, LOG-07 | Pipeline security, authentication of annotators, and log integrity support labelling integrity. Note: annotation quality controls are organisational. |
 | A.6.7 | Data for testing | SAND-01, DAT-08, DAT-05 | Sandbox isolation, evaluation data protection, and encryption protect test data. |
 
-## A.7 - AI System Performance and Monitoring
+## A.7 - Data for AI Systems
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -73,7 +73,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 | A.7.4 | AI system monitoring | LOG-04, LOG-06, LOG-10, NET-08, IR-02 | Agent chain logging, injection detection, SIEM correlation, cross-zone monitoring, and detection triggers provide operational monitoring. |
 | A.7.5 | Addressing performance issues | IR-03, IR-04, IR-07, LOG-05 | Containment procedures, rollback capability, post-incident review, and drift detection support performance issue response. |
 
-## A.8 - AI System Transparency
+## A.8 - Information for Interested Parties
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -81,7 +81,7 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 | A.8.3 | AI system explainability | LOG-01, LOG-04, DEL-02, TOOL-06 | Model I/O logs, agent chain reconstruction, delegation audit trails, and tool invocation logs provide the data needed for explainability. Explainability methods are organisational. |
 | A.8.4 | Information about AI system interaction | LOG-01, LOG-02, DAT-07 | I/O logging, guardrail decision logging, and conversation history management support interaction transparency. User-facing disclosures are organisational. |
 
-## A.9 - AI System Accountability
+## A.9 - Use of AI Systems
 
 | Annex A Control | Description | Infrastructure Controls | Notes |
 |----------------|-------------|------------------------|-------|
@@ -105,11 +105,11 @@ ISO 42001 Annex A sections A.2 through A.10 are mapped below. Each section lists
 | A.2 Policies | 8 controls | Technical enforcement of policies; policy creation is organisational |
 | A.3 Internal Organisation | 7 controls | Technical infrastructure for governance; organisational structure is out of scope |
 | A.4 Resources | 11 controls | Resource usage controls at infrastructure level |
-| A.5 Development | 16 controls | Lifecycle security from design through maintenance |
-| A.6 Data | 12 controls | Data integrity, quality, and protection at infrastructure level |
-| A.7 Performance | 10 controls | Monitoring, detection, and response infrastructure |
-| A.8 Transparency | 7 controls | Data and logging infrastructure supporting transparency |
-| A.9 Accountability | 10 controls | Record-keeping, auditing, and attribution infrastructure |
+| A.5 Assessing Impacts | 16 controls | Impact assessment and lifecycle security from design through maintenance |
+| A.6 Life Cycle | 12 controls | Data integrity, quality, and protection at infrastructure level |
+| A.7 Data | 10 controls | Monitoring, detection, and response infrastructure |
+| A.8 Interested Parties | 7 controls | Data and logging infrastructure supporting transparency |
+| A.9 Use of AI Systems | 10 controls | Record-keeping, auditing, and attribution infrastructure |
 | A.10 Third Parties | 8 controls | Supply chain and multi-tenant protection |
 
 **Note:** Full ISO 42001 compliance requires both the technical infrastructure controls in this repo and the organisational controls (policies, governance, training, roles, processes) addressed by the implementing organisation's AI management system. This mapping covers the technical layer only.

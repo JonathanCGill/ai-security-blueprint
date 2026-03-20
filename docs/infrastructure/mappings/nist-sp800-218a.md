@@ -1,3 +1,7 @@
+---
+description: "Mapping NIST SP 800-218A secure development practices to the AIRS Framework: lifecycle handoff points between development-time and deployment-time controls."
+---
+
 # NIST SP 800-218A Mapping
 
 **How this framework relates to NIST SP 800-218A: Secure Software Development Practices for Generative AI and Dual-Use Foundation Models.**
@@ -31,7 +35,7 @@ This mapping shows where SP 800-218A practices connect to controls in this frame
 | **PO.2.1** Define roles and responsibilities | High | Roles defined during development must extend to deployment operations - who monitors, who escalates, who decides. | [Controls](../../core/controls.md) - Human Oversight layer |
 | **PO.2.2** Role-based training | High | Training should cover runtime threats (prompt injection, adversarial inputs) not just development-time vulnerabilities. | No direct mapping - organisational practice |
 | **PO.3.1–3.3** Implement supporting toolchains | High | Development toolchain security feeds into deployment toolchain security. CI/CD pipeline integrity protects both phases. | SC-03 (Dependency scanning), SC-04 (Build pipeline integrity) |
-| **PO.4.1** Define criteria for security checks | Medium | SP 800-218A recommends guardrails throughout the development lifecycle. This framework enforces guardrails at runtime. Same concept, different enforcement point. | GR-01 through GR-08 (Guardrails layer), LJ-01 through LJ-08 (Judge layer) |
+| **PO.4.1** Define criteria for security checks | Medium | SP 800-218A recommends guardrails throughout the development lifecycle. This framework enforces guardrails at runtime. Same concept, different enforcement point. | AI.7 (Guardrails layer), AI.8 (Judge layer) |
 | **PO.5.1** Separate and protect development environments | High | Development environment security is out of scope for this framework. Deployment environment security is addressed by Network & Segmentation and Sandbox controls. | NS-01 through NS-08 (Network & Segmentation), SB-01 through SB-06 (Sandbox Patterns) |
 | **PO.5.3** Continuously monitor development environments | High | Development monitoring is SP 800-218A's concern. Production monitoring is this framework's concern. Same principle, different lifecycle phase. | LO-01 through LO-10 (Logging & Observability) |
 
@@ -52,11 +56,11 @@ This mapping shows where SP 800-218A practices connect to controls in this frame
 | --- | --- | --- | --- |
 | **PW.1.1** AI-specific threat modelling | High | Development-time threat models should inform deployment-time controls. Threats identified here (prompt injection, data poisoning, supply chain attacks) map directly to this framework's control domains. | [Risk Tiers](../../core/risk-tiers.md), threat model templates in [Templates](../../extensions/templates/) |
 | **PW.3.1** Analyse training data integrity *(new practice)* | High | Out of scope for this framework except for organisations fine-tuning. | No direct mapping - development concern |
-| **PW.3.3** Include adversarial samples in training | Medium | Development-time robustness testing. At deployment, adversarial resilience is enforced through guardrails and the Judge layer. | GR controls (input validation), LJ controls (adversarial detection) |
+| **PW.3.3** Include adversarial samples in training | Medium | Development-time robustness testing. At deployment, adversarial resilience is enforced through guardrails and the Judge layer. | AI.7 Guardrails (input validation), AI.8 Judge (adversarial detection) |
 | **PW.4.4** Verify acquired AI components | High | Directly relevant. Deployers acquiring models or components should verify integrity, provenance, and security before deployment. | SC-01 through SC-04 (Supply Chain) |
-| **PW.5.1** Secure coding for inputs and outputs | High | **Key overlap.** SP 800-218A wants input/output handling built into code. This framework enforces it at the infrastructure layer. Both are needed - defence-in-depth means code-level and infrastructure-level controls should coexist. | GR-01 (Input filtering), GR-02 (Output filtering), NS-03 (API gateway controls), see also [Infrastructure Beats Instructions](../../insights/infrastructure-beats-instructions.md) |
+| **PW.5.1** Secure coding for inputs and outputs | High | **Key overlap.** SP 800-218A wants input/output handling built into code. This framework enforces it at the infrastructure layer. Both are needed - defence-in-depth means code-level and infrastructure-level controls should coexist. | AI.7 Guardrails (input/output filtering), NS-03 (API gateway controls), see also [Infrastructure Beats Instructions](../../insights/infrastructure-beats-instructions.md) |
 | **PW.7.2** Scan models for malware and vulnerabilities | High | Pre-deployment scanning is SP 800-218A's concern. Runtime monitoring for anomalous behavior is this framework's concern. | LO-01 through LO-10 (Logging & Observability), see also [Behavioral Anomaly Detection](../../insights/behavioral-anomaly-detection.md) |
-| **PW.8.1–8.2** Test AI models for vulnerabilities | High | Pre-deployment testing. This framework addresses post-deployment testing through red-teaming guidance and continuous evaluation. | Testing guidance in [Templates](../../extensions/templates/), LJ controls (ongoing evaluation) |
+| **PW.8.1–8.2** Test AI models for vulnerabilities | High | Pre-deployment testing. This framework addresses post-deployment testing through red-teaming guidance and continuous evaluation. | Testing guidance in [Templates](../../extensions/templates/), AI.8 Judge (ongoing evaluation) |
 
 ### Respond to Vulnerabilities (RV)
 
@@ -96,4 +100,12 @@ The control IDs referenced above use the domain prefix scheme from this framewor
 | SS | Session & Scope |
 | DC | Delegation Chains |
 | SB | Sandbox Patterns |
+
+Some mappings above also reference **core framework control families** (AI.1 through AI.16) from the [Controls](../../core/controls.md) documentation. These cover the three-layer behavioural model (AI.7 Guardrails, AI.8 Judge, AI.9 Human Oversight) and are not part of the infrastructure control prefix scheme.
+
+!!! info "References"
+    - [NIST SP 800-218A: Secure Software Development Practices for Generative AI and Dual-Use Foundation Models](https://csrc.nist.gov/pubs/sp/800/218/a/final)
+    - [NIST Secure Software Development Framework (SSDF)](https://csrc.nist.gov/projects/ssdf)
+    - [Controls: Guardrails, Judge, and Human Oversight](../../core/controls.md)
+    - [Infrastructure Controls](../README.md)
 
