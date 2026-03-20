@@ -81,7 +81,7 @@ Minimal impact, non-sensitive context.
 | Depth | - | Basic quality | Full policy | Full + reasoning |
 | Escalation | - | Weekly | Same-day | Immediate |
 
-> **Note:** "Real-time" Judge evaluation for CRITICAL tier means near-real-time parallel assessment - the Judge evaluates alongside or immediately after delivery. It does not mean inline blocking, which is the Guardrail's role. Principle: **Guardrails block. Judge detects. Humans decide.**
+> **Note:** "Real-time" Judge evaluation for CRITICAL tier means near-real-time parallel assessment - the Judge evaluates alongside or immediately after delivery. It does not mean inline blocking, which is the Guardrail's role. Principle: **Guardrails prevent. Judge detects. Humans decide.**
 
 ### Human Oversight
 

@@ -284,3 +284,10 @@ This crosswalk provides guidance, not legal advice. Key limitations:
 3. **Context matters:** Specific implementation depends on your use case
 4. **Legal advice required:** Consult legal counsel for your situation
 
+!!! info "References"
+    - [EU AI Act (Regulation 2024/1689)](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689)
+    - [Risk Tiers and Control Selection](../../core/risk-tiers.md)
+    - [Controls: Guardrails, Judge, and Human Oversight](../../core/controls.md)
+    - [ISO 42001 Alignment](iso-42001-alignment.md)
+    - [NIST IR 8596 Alignment](nist-ir-8596-alignment.md)
+

@@ -447,9 +447,9 @@ Improvement sources:
 
 ## Annex A Control Mapping
 
-ISO 42001 Annex A provides AI-specific controls. Here's the complete mapping:
+ISO 42001 Annex A provides AI-specific controls organised into nine sections (A.2 through A.10). The mapping below shows how the framework's core control families (AI.1 through AI.16) align with Annex A requirements. For the complementary infrastructure-level mapping (IAM, LOG, NET, DAT, etc.), see the [ISO 42001 Annex A Infrastructure Mapping](../../infrastructure/mappings/iso42001-annex-a.md).
 
-### A.2 AI Governance
+### A.2 Policies Related to AI
 
 | ISO 42001 Control | Framework Mapping | Notes |
 |-------------------|-------------------|-------|
@@ -457,7 +457,7 @@ ISO 42001 Annex A provides AI-specific controls. Here's the complete mapping:
 | A.2.3 Roles and responsibilities | AI.1.2 Governance Structure, AI.1.3 Accountability | ✅ Covered |
 | A.2.4 Resources | AI.14 Security Awareness (training) | ✅ Covered |
 
-### A.3 AI System Lifecycle
+### A.3 Internal Organisation
 
 | ISO 42001 Control | Framework Mapping | Notes |
 |-------------------|-------------------|-------|
@@ -465,7 +465,7 @@ ISO 42001 Annex A provides AI-specific controls. Here's the complete mapping:
 | A.3.3 AI system requirements | AI.4 Development Security | ✅ Covered |
 | A.3.4 Third-party components | AI.13 Supplier Management, AI.6 Model Security | ✅ Covered |
 
-### A.4 Risk Management
+### A.4 Resources for AI Systems
 
 | ISO 42001 Control | Framework Mapping | Notes |
 |-------------------|-------------------|-------|
@@ -473,7 +473,7 @@ ISO 42001 Annex A provides AI-specific controls. Here's the complete mapping:
 | A.4.3 AI risk treatment | AI.2.3 + Risk tier controls | ✅ Covered |
 | A.4.4 Residual risk acceptance | Governance approval workflows | ✅ Covered |
 
-### A.5 Data Management
+### A.5 Assessing Impacts of AI Systems
 
 | ISO 42001 Control | Framework Mapping | Notes |
 |-------------------|-------------------|-------|
@@ -482,7 +482,7 @@ ISO 42001 Annex A provides AI-specific controls. Here's the complete mapping:
 | A.5.4 Data provenance | AI.13.3 Model Provenance (includes data) | ✅ Covered |
 | A.5.5 Data preparation | AI.5 Data Governance | ✅ Covered |
 
-### A.6 AI Development
+### A.6 AI System Life Cycle
 
 | ISO 42001 Control | Framework Mapping | Notes |
 |-------------------|-------------------|-------|
@@ -493,7 +493,7 @@ ISO 42001 Annex A provides AI-specific controls. Here's the complete mapping:
 | A.6.2.6 Verification | AI.4.2 Testing | ✅ Covered |
 | A.6.2.7 Deployment | AI.4.3 Deployment Security | ✅ Covered |
 
-### A.7 AI Operation
+### A.7 Data for AI Systems
 
 | ISO 42001 Control | Framework Mapping | Notes |
 |-------------------|-------------------|-------|
@@ -502,14 +502,14 @@ ISO 42001 Annex A provides AI-specific controls. Here's the complete mapping:
 | A.7.4 Explainability | AI.3.2 Documentation, Judge reasoning capture | ✅ Covered |
 | A.7.5 Bias management | AI.8 Judge (bias evaluation), AI.9 HITL | ✅ Covered |
 
-### A.8 AI System Performance
+### A.8 Information for Interested Parties
 
 | ISO 42001 Control | Framework Mapping | Notes |
 |-------------------|-------------------|-------|
 | A.8.2 Performance monitoring | AI.8 Judge, AI.11 Monitoring | ✅ Covered |
 | A.8.3 Performance evaluation | Judge metrics, calibration | ✅ Covered |
 
-### A.9 AI System Support
+### A.9 Use of AI Systems
 
 | ISO 42001 Control | Framework Mapping | Notes |
 |-------------------|-------------------|-------|
@@ -517,7 +517,7 @@ ISO 42001 Annex A provides AI-specific controls. Here's the complete mapping:
 | A.9.3 Incident management | AI.12 Incident Response | ✅ Covered |
 | A.9.4 Problem management | AI.12, Feedback loops | ✅ Covered |
 
-### A.10 Improvement
+### A.10 Third-Party and Customer Relationships
 
 | ISO 42001 Control | Framework Mapping | Notes |
 |-------------------|-------------------|-------|
@@ -571,4 +571,10 @@ ISO 42001 does not explicitly address agentic AI. The framework extends coverage
 ### The Operating Model in One Page
 
 ![AI Governance Operating Model Summary](../../images/iso-42001-operating-model-summary.svg)
+
+!!! info "References"
+    - [ISO/IEC 42001:2023 Artificial Intelligence Management System](https://www.iso.org/standard/81230.html)
+    - [ISO 42001 Annex A Infrastructure Mapping](../../infrastructure/mappings/iso42001-annex-a.md)
+    - [Controls: Guardrails, Judge, and Human Oversight](../../core/controls.md)
+    - [Risk Tiers and Control Selection](../../core/risk-tiers.md)
 
