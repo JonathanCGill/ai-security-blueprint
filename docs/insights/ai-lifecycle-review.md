@@ -93,8 +93,8 @@ The framework provides strong testing guidance for runtime controls but limited 
 - [Testing Guidance](../extensions/templates/testing-guidance.md) covers control verification
 - [From Idea to Production](../strategy/idea-to-production.md) Stage 6 includes a pre-deployment checklist
 - [Judge Assurance](../core/judge-assurance.md) addresses Judge model validation
-- [Red Team Playbook](../maso/red-team-playbook.md) provides 13 structured adversarial test scenarios
-- [MASO Stress Testing](../maso/stress-testing.md) covers multi-agent system validation
+- [Red Team Playbook](../maso/red-team/red-team-playbook.md) provides 13 structured adversarial test scenarios
+- [100-Agent Stress Test](../maso/stress-test/100-agent-stress-test-overview.md) covers multi-agent system validation
 
 **What's missing:**
 - **Conformity assessment.** EU AI Act Articles 40–49 require conformity assessment before high-risk AI can be placed on the market. The framework has no controls for this regulatory gate.

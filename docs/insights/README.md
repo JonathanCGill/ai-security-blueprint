@@ -28,7 +28,7 @@ Where the three-layer pattern meets its limits - and what to do about it.
 | # | Article | One-Line Summary | Solution |
 |---|---------|-----------------|----------|
 | 7 | [The Verification Gap](the-verification-gap.md) | Current safety approaches can't confirm ground truth | [Judge Assurance](../core/judge-assurance.md) |
-| 8 | [Behavioral Anomaly Detection](behavioral-anomaly-detection.md) | Aggregating signals to detect drift from normal | [Anomaly Detection Ops](../extensions/technical/anomaly-detection-ops.md) |
+| 8 | [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) | Aggregating signals to detect drift from normal | [Anomaly Detection Ops](../extensions/technical/anomaly-detection-ops.md) |
 | 8b | [Model Drift Impact](model-drift-impact.md) | Model drift degrades every control layer simultaneously, and closed-loop monitoring is the only viable response | [Observability Controls](../maso/controls/observability.md) |
 | 9 | [Multimodal AI Breaks Your Text-Based Guardrails](multimodal-breaks-guardrails.md) | Images, audio, and video bypass text controls | [Multimodal Controls](../core/multimodal-controls.md) |
 | 10 | [When AI Thinks Before It Answers](when-ai-thinks.md) | Reasoning models need reasoning-aware controls | [Reasoning Model Controls](../core/reasoning-model-controls.md) |
@@ -96,6 +96,5 @@ Deeper examinations of where the framework meets production reality - what works
 | [The Constraint Curve](the-constraint-curve.md) | Every constraint reduces both risk and capability - proportionate controls find the peak; over-constraining destroys the value that justified using an LLM |
 | [The Hallucination Boundary](the-hallucination-boundary.md) | The same hallucination is a nuisance in one context and a catastrophe in another - tolerance is a function of decision authority, blast radius, and reversibility |
 | [Automated Risk Tiering](automated-risk-tiering.md) | Classification should take two minutes, produce an immediate result, and auto-apply the controls that make the risk manageable |
-| [Graph-Based Agent Monitoring](graph-based-agent-monitoring.md) | Using an in-memory graph database to model agent interactions as a live graph, detect anomalous behavior through temporal graph analysis, and feed results into PACE escalation in near real-time |
-| [Beyond Security](beyond-security.md) | The framework's architecture - layered independence, tiering, PACE, quantitative compounding - transfers to drift, fairness, explainability, and reliability |
+| [Graph-Based Agent Monitoring](../extensions/technical/graph-based-agent-monitoring.md) | Using an in-memory graph database to model agent interactions as a live graph, detect anomalous behavior through temporal graph analysis, and feed results into PACE escalation in near real-time |
 

@@ -75,7 +75,7 @@ Without drift detection, the control loop is open. You evaluated the model once,
 
 ### The Behavioral Anomaly Layer
 
-The [behavioral anomaly detection](behavioral-anomaly-detection.md) architecture aggregates signals across all safety layers to detect drift that no single layer would catch:
+The [behavioral anomaly detection](../extensions/technical/behavioral-anomaly-detection.md) architecture aggregates signals across all safety layers to detect drift that no single layer would catch:
 
 - **Volume anomalies**: guardrail block rates increasing beyond baseline
 - **Pattern anomalies**: new failure signatures appearing that did not exist during calibration
@@ -161,8 +161,7 @@ The question is not whether your model will drift. It will. The question is whet
 
 !!! info "References"
     - [Why Containment Beats Evaluation](why-containment-beats-evaluation.md) - The closed-loop control architecture that makes drift detection structural
-    - [Behavioral Anomaly Detection](behavioral-anomaly-detection.md) - Aggregating safety signals to detect when behavior drifts from normal
-    - [Beyond Security](beyond-security.md) - How the framework's architecture applies to drift, fairness, and other AI risks
+    - [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) - Aggregating safety signals to detect when behavior drifts from normal
     - [MASO Observability Controls](../maso/controls/observability.md) - Per-agent drift detection and cross-agent correlation
     - [The Model You Choose Is a Security Decision](the-model-you-choose.md) - Version control and supply chain hygiene for model selection
     - [PACE Resilience](../PACE-RESILIENCE.md) - Structured degradation when drift compromises control integrity

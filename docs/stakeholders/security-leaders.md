@@ -65,7 +65,7 @@ Read these in order. Total time: ~90 minutes.
 
 **If you have multi-agent systems:** Add [MASO Overview](../maso/) and the [Red Team Playbook](../maso/red-team/red-team-playbook.md).
 
-**If you run a SOC:** Add [SOC Integration](../extensions/technical/soc-integration.md) and [Behavioral Anomaly Detection](../insights/behavioral-anomaly-detection.md).
+**If you run a SOC:** Add [SOC Integration](../extensions/technical/soc-integration.md) and [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md).
 
 ## What You Can Do Monday Morning
 

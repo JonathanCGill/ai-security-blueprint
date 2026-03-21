@@ -80,7 +80,7 @@ Insight: 28% of issues pass guardrails - judge layer is load-bearing
 
 ## Architecture
 
-![Behavioral Anomaly Detection](../images/behavioral-anomaly-detection.svg)
+![Behavioral Anomaly Detection](../../images/behavioral-anomaly-detection.svg)
 
 ### Signal Collection
 
@@ -107,7 +107,7 @@ Every safety layer emits structured events:
 
 ### Aggregation Pipeline
 
-![Aggregation Pipeline](../images/aggregation-pipeline.svg)
+![Aggregation Pipeline](../../images/aggregation-pipeline.svg)
 
 ### ML Anomaly Detection
 
@@ -306,8 +306,7 @@ The question isn't just "did we catch the bad request?" It's "is the agent behav
 
 ## Related
 
-- [The Verification Gap](./the-verification-gap.md) - Why independent verification matters
-- [Judge Detects, Not Decides](./judge-detects-not-decides.md) - Async evaluation for pattern analysis
-- [Current Solutions Reference](../extensions/technical/current-solutions.md) - Platforms implementing this
-- [Beyond Security](./beyond-security.md) - How the framework's architecture applies to drift, fairness, and other AI risks beyond security
+- [The Verification Gap](../../insights/the-verification-gap.md) - Why independent verification matters
+- [Judge Detects, Not Decides](../../insights/judge-detects-not-decides.md) - Async evaluation for pattern analysis
+- [Current Solutions Reference](./current-solutions.md) - Platforms implementing this
 

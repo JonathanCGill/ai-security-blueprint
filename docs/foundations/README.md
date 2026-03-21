@@ -177,7 +177,7 @@ When AI agents collaborate, delegate tasks, and take autonomous actions across t
 | Article | Key Argument |
 | --- | --- |
 | [The Verification Gap](../insights/the-verification-gap.md) | Current safety approaches can't confirm ground truth |
-| [Behavioral Anomaly Detection](../insights/behavioral-anomaly-detection.md) | Aggregating signals to detect drift from expected behavior |
+| [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) | Aggregating signals to detect drift from expected behavior |
 | [Multimodal AI Breaks Your Text-Based Guardrails](../insights/multimodal-breaks-guardrails.md) | Images, audio, and video create new attack surfaces |
 | [When AI Thinks Before It Answers](../insights/when-ai-thinks.md) | Reasoning models need reasoning-aware controls |
 | [When Agents Talk to Agents](../insights/when-agents-talk-to-agents.md) | Multi-agent accountability gaps → see [MASO](../maso/) |

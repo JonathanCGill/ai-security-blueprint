@@ -10,7 +10,7 @@ og_description: How graph databases transform multi-agent observability from log
 
 ## The Problem With Logs
 
-The framework's [observability controls](../maso/controls/observability.md) specify comprehensive logging: action audit logs (OB-1.1), inter-agent message logs (OB-1.2), immutable decision chains (OB-2.1), and anomaly scoring (OB-2.2). These are well-designed. They are also, in their default form, tabular.
+The framework's [observability controls](../../maso/controls/observability.md) specify comprehensive logging: action audit logs (OB-1.1), inter-agent message logs (OB-1.2), immutable decision chains (OB-2.1), and anomaly scoring (OB-2.2). These are well-designed. They are also, in their default form, tabular.
 
 Tabular logs capture events as rows. Each row records one thing that happened: Agent X called Tool Y at time T with parameters P. For a single agent, that is sufficient. You can query it, trend it, alert on it.
 
@@ -35,7 +35,7 @@ Every observable event in a multi-agent system is a relationship:
 
 These are not just log entries. They are a live, queryable model of how the system is behaving right now. The graph *is* the system's interaction topology, updated in real time, and every graph algorithm in the literature becomes a monitoring tool.
 
-![Agent Interaction Graph with Anomaly Detection](../images/insight-graph-agent-monitoring.svg)
+![Agent Interaction Graph with Anomaly Detection](../../images/insight-graph-agent-monitoring.svg)
 
 ## Near Real-Time: Is It Possible?
 
@@ -155,7 +155,7 @@ Memgraph handles this through temporal edge properties. Each edge carries a time
 
 Beyond aggregate comparison, temporal graph analysis can detect specific sequences of interactions that form attack patterns:
 
-![Temporal Motif Detection](../images/graph-agent-temporal-motif.svg)
+![Temporal Motif Detection](../../images/graph-agent-temporal-motif.svg)
 
 This is a temporal motif: a specific sequence of edges with temporal ordering constraints. Motif detection on a temporal graph is a single query. On tabular logs, it is a window function with self-joins across four tables, ordered by timestamp, filtered by session. The graph query runs in milliseconds. The SQL query might not finish before the next event arrives.
 
@@ -163,7 +163,7 @@ This is a temporal motif: a specific sequence of edges with temporal ordering co
 
 The graph database does not replace the framework's observability stack. It sits alongside it, consuming the same event stream and producing alerts that feed into the same PACE escalation logic.
 
-![Graph Agent Architecture Pipeline](../images/graph-agent-architecture-pipeline.svg)
+![Graph Agent Architecture Pipeline](../../images/graph-agent-architecture-pipeline.svg)
 
 The message bus (already mandated by MASO) is the single source of truth. The stream processor (Kafka, Pulsar, or equivalent) fans out to three consumers:
 
@@ -185,7 +185,7 @@ The graph database is a hot-path analytics layer. It holds the recent interactio
 
 ## The UEBA Parallel
 
-The framework already draws the parallel between [User and Entity Behavior Analytics (UEBA)](../maso/controls/observability.md) for human insiders and agent behavioral monitoring. The graph database makes this parallel concrete.
+The framework already draws the parallel between [User and Entity Behavior Analytics (UEBA)](../../maso/controls/observability.md) for human insiders and agent behavioral monitoring. The graph database makes this parallel concrete.
 
 UEBA systems in enterprise security have used graph databases for years. The pattern is established: model entities (users, devices, applications) as nodes, model interactions as edges, compute behavioral baselines as graph properties, and detect anomalies as deviations from the baseline graph.
 
@@ -287,10 +287,10 @@ One query. Milliseconds. The entire blast radius is visible.
 
 ## Related
 
-- [Observability Controls](../maso/controls/observability.md) - the full OB-1.x through OB-3.x control set
-- [PACE Resilience](../PACE-RESILIENCE.md) - structured degradation when controls detect anomalies
-- [The Hallucination Boundary](the-hallucination-boundary.md) - when the outputs the graph is monitoring cross from tolerable to catastrophic
-- [The Verification Gap](the-verification-gap.md) - why monitoring outputs alone is insufficient
-- [Prompt, Goal and Epistemic Integrity](../maso/controls/prompt-goal-and-epistemic-integrity.md) - the epistemic controls that generate the events the graph monitors
-- [Infrastructure Beats Instructions](infrastructure-beats-instructions.md) - why structural monitoring outperforms behavioral guidelines
+- [Observability Controls](../../maso/controls/observability.md) - the full OB-1.x through OB-3.x control set
+- [PACE Resilience](../../PACE-RESILIENCE.md) - structured degradation when controls detect anomalies
+- [The Hallucination Boundary](../../insights/the-hallucination-boundary.md) - when the outputs the graph is monitoring cross from tolerable to catastrophic
+- [The Verification Gap](../../insights/the-verification-gap.md) - why monitoring outputs alone is insufficient
+- [Prompt, Goal and Epistemic Integrity](../../maso/controls/prompt-goal-and-epistemic-integrity.md) - the epistemic controls that generate the events the graph monitors
+- [Infrastructure Beats Instructions](../../insights/infrastructure-beats-instructions.md) - why structural monitoring outperforms behavioral guidelines
 

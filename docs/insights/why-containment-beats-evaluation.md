@@ -52,7 +52,7 @@ The three-layer architecture is explicitly a closed-loop control system:
 |---|---|
 | **Setpoint** (desired state) | [Declared intent specification](containment-through-intent.md) |
 | **Sensor** (measurement) | [Model-as-Judge](../core/judge-assurance.md) + [Observability](../maso/controls/observability.md) |
-| **Comparator** (error detection) | [Behavioral drift detection](behavioral-anomaly-detection.md) |
+| **Comparator** (error detection) | [Behavioral drift detection](../extensions/technical/behavioral-anomaly-detection.md) |
 | **Actuator** (correction) | [Human oversight escalation](humans-remain-accountable.md) + [PACE degradation](../PACE-RESILIENCE.md) |
 
 Closed-loop systems can still fail - through sensor error (judge blind spots), actuator failure (escalation processes that do not respond effectively), or feedback delay (drift that accumulates faster than detection). But closed-loop systems degrade gracefully and are self-correcting by design. Open-loop systems fail silently and without recovery.

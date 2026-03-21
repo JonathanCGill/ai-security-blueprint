@@ -97,7 +97,7 @@ In multi-product environments, the most dangerous visibility gap is the connecti
 - **Transitive connections:** Agent A triggers Agent B triggers Agent C. Agent A has no visibility into Agent C's existence or behaviour, but is causally responsible for its activation
 - **Vendor connections:** Your agent sends data to a vendor API. The vendor's agent processes it. You have no visibility into what happens on the vendor side, but you're accountable for the data you sent
 
-The [graph-based monitoring](graph-based-agent-monitoring.md) approach becomes essential here. Flat log analysis cannot surface connection patterns across product boundaries. Graph structures, where agents are nodes and interactions are edges, make hidden relationships visible.
+The [graph-based monitoring](../extensions/technical/graph-based-agent-monitoring.md) approach becomes essential here. Flat log analysis cannot surface connection patterns across product boundaries. Graph structures, where agents are nodes and interactions are edges, make hidden relationships visible.
 
 **The minimum viable answer:** A cross-product interaction graph, updated in real time, that shows every agent-to-agent connection (direct, indirect, and transitive). When a new edge appears that hasn't been seen before, it's flagged for review. When an edge's data volume spikes, it's flagged for investigation.
 
@@ -251,9 +251,9 @@ You can't control what you can't see. And in complex environments, what you can'
 
 - [The Visibility Problem](the-visibility-problem.md): Discovery, knowing what AI exists in your organisation
 - [MASO Observability Controls](../maso/controls/observability.md): Control specifications for agent logging, anomaly scoring, and drift detection
-- [Graph-Based Agent Monitoring](graph-based-agent-monitoring.md): Using graph structures to detect agent interaction patterns
+- [Graph-Based Agent Monitoring](../extensions/technical/graph-based-agent-monitoring.md): Using graph structures to detect agent interaction patterns
 - [The Orchestrator Problem](the-orchestrator-problem.md): Governance of privileged agents that control other agents
 - [When Agents Talk to Agents](when-agents-talk-to-agents.md): Accountability gaps in multi-agent communication
-- [Behavioral Anomaly Detection](behavioral-anomaly-detection.md): UEBA-style monitoring adapted for AI agents
+- [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md): UEBA-style monitoring adapted for AI agents
 - [Infrastructure Beats Instructions](infrastructure-beats-instructions.md): Why controls must be enforced at infrastructure level
 - [The Supply Chain Problem](the-supply-chain-problem.md): Visibility into AI components you don't control

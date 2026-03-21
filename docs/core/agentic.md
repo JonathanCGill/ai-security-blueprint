@@ -187,7 +187,7 @@ Standard circuit breakers use per-action thresholds that decomposition attacks d
 | **Scope surface area** | Session's aggregate data access footprint exceeds role baseline → pause |
 | **Intent coherence** | Session actions don't form a coherent path toward declared goal → flag |
 
-> For the full behavioral anomaly detection architecture (signal collection, aggregation pipeline, ML detection, and UEBA parallels), see [Behavioral Anomaly Detection](../insights/behavioral-anomaly-detection.md). For trace-level evaluation methodology, see [Process-Aware Evaluation](../insights/process-aware-evaluation.md).
+> For the full behavioral anomaly detection architecture (signal collection, aggregation pipeline, ML detection, and UEBA parallels), see [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md). For trace-level evaluation methodology, see [Process-Aware Evaluation](../insights/process-aware-evaluation.md).
 
 ## 7. Synchronous Pre-Action Evaluation
 

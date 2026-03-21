@@ -78,7 +78,7 @@ The anomaly score is a composite metric that drives PACE escalation decisions. I
 | Error rate | 0.10 | Guardrail blocks, tool failures, timeouts |
 | Content drift | 0.15 | Semantic similarity of outputs vs. baseline |
 | Cost trajectory | 0.05 | Token usage trend vs. baseline |
-| Temporal profile | 0.10 | Activity timing vs. established schedule - flags weekend, off-hours, or out-of-cycle invocations that deviate from the agent's historical activation pattern. Borrowed from [insider risk UEBA](../../insights/behavioral-anomaly-detection.md#the-insider-risk-parallel): unusual working hours are one of the strongest early signals of compromised credentials. |
+| Temporal profile | 0.10 | Activity timing vs. established schedule - flags weekend, off-hours, or out-of-cycle invocations that deviate from the agent's historical activation pattern. Borrowed from [insider risk UEBA](../../extensions/technical/behavioral-anomaly-detection.md#the-insider-risk-parallel): unusual working hours are one of the strongest early signals of compromised credentials. |
 | Peer group deviation | 0.10 | Behavioral divergence from other agents with the same role and configuration. If one agent in a fleet of five starts behaving differently while its peers remain stable, the individual agent is flagged. Filters out environmental changes that affect all agents equally. |
 | Context utilisation | 0.10 | Current context window consumption relative to capacity. High utilisation correlates with attention dilution, weakened guardrail adherence, and increased hallucination rate. Context above 85% is itself an anomaly signal regardless of other metrics. When combined with declining output quality scores, indicates active degradation (OP-04). |
 

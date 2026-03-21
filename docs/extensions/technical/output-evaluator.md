@@ -137,7 +137,7 @@ This layer maps directly to existing User and Entity Behavior Analytics. The age
 | Access profile | Normal data sources, tool usage, API call patterns |
 | Anomaly scoring | Composite risk score updated per action |
 
-> See [Behavioral Anomaly Detection](../../insights/behavioral-anomaly-detection.md) for the full UEBA-to-agent mapping.
+> See [Behavioral Anomaly Detection](behavioral-anomaly-detection.md) for the full UEBA-to-agent mapping.
 
 ## Implementation Tiers
 
@@ -200,7 +200,7 @@ This layer maps directly to existing User and Entity Behavior Analytics. The age
 | [Controls: Guardrails](../../core/controls.md) | Output Evaluator does not replace guardrails. Guardrails remain Layer 1 for known-bad patterns. |
 | [Controls: Judge](../../core/controls.md) | Output Evaluator extends the Judge with synchronous pre-action mode and session-level trajectory evaluation. The async Judge continues to operate for post-action review. |
 | [Agentic Controls](../../core/agentic.md) | §6 (Session-Level Intent Analysis), §7 (Synchronous Pre-Action Evaluation), and §8 (Tool Supply Chain) are the core control specifications. This document provides the solution architecture. |
-| [Behavioral Anomaly Detection](../../insights/behavioral-anomaly-detection.md) | Output Evaluator's campaign-level layer uses the UEBA framework described there. |
+| [Behavioral Anomaly Detection](behavioral-anomaly-detection.md) | Output Evaluator's campaign-level layer uses the UEBA framework described there. |
 | [Process-Aware Evaluation](../../insights/process-aware-evaluation.md) | Output Evaluator operationalises process-aware evaluation for the pre-action and session-level layers. |
 | [Cost & Latency](cost-and-latency.md) | Pre-action evaluation adds to the latency budget. Budget accordingly. |
 

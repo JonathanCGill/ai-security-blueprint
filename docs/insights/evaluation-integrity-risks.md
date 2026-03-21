@@ -81,7 +81,7 @@ Inject known-bad inputs into the production stream at random intervals. If the m
 
 Track model behavior distributions over time. A model that passes evaluation but shows different statistical patterns in production - different refusal rates, different output distributions, different topic handling - may be behaving differently in the two contexts.
 
-This is the same principle as [Behavioral Anomaly Detection](behavioral-anomaly-detection.md), applied specifically to the evaluation-production gap.
+This is the same principle as [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md), applied specifically to the evaluation-production gap.
 
 ### 5. White-Box Monitoring Where Available
 
@@ -136,7 +136,7 @@ These specific findings from the AISI Frontier AI Trends Report are reference-wo
 
 - [When the Judge Can Be Fooled](../core/when-the-judge-can-be-fooled.md) - Adversarial failure modes for the Judge layer
 - [Judge Assurance](../core/judge-assurance.md) - Measuring and maintaining Judge accuracy
-- [Behavioral Anomaly Detection](behavioral-anomaly-detection.md) - Statistical monitoring for drift and evasion
+- [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) - Statistical monitoring for drift and evasion
 - [The Verification Gap](the-verification-gap.md) - The fundamental limits of evaluating AI systems
 - [Why Guardrails Aren't Enough](why-guardrails-arent-enough.md) - Why single-layer defences fail
 

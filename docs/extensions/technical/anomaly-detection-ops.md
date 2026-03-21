@@ -4,7 +4,7 @@
 
 ## The Gap
 
-The framework describes [Behavioral Anomaly Detection](../../insights/behavioral-anomaly-detection.md) as a concept: aggregate signals to detect drift from normal. The [Operational Metrics](operational-metrics.md) extension describes what to measure.
+The framework describes [Behavioral Anomaly Detection](behavioral-anomaly-detection.md) as a concept: aggregate signals to detect drift from normal. The [Operational Metrics](operational-metrics.md) extension describes what to measure.
 
 This document bridges the gap: how to turn collected metrics into anomaly detection that feeds your SOC.
 

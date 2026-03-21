@@ -165,7 +165,6 @@ nav:
       - Enterprise Day in the Life: strategy/enterprise-day-in-the-life.md
       - Framework Tensions: strategy/framework-tensions.md
 
-
   - SDK:
     - sdk/README.md
     - Guardrails: sdk/guardrails.md
@@ -178,39 +177,115 @@ nav:
     - Examples: sdk/examples.md
     - What the Tests Prove: sdk/tests.md
 
-  - Resources:
-    - Insights:
-      - insights/README.md
+  - Insights:
+    - insights/README.md
+    - Foundations:
       - Why Guardrails Aren't Enough: insights/why-guardrails-arent-enough.md
       - Why AI Security Is a Runtime Problem: insights/why-ai-security-is-a-runtime-problem.md
       - Why Containment Beats Evaluation: insights/why-containment-beats-evaluation.md
+      - Infrastructure Beats Instructions: insights/infrastructure-beats-instructions.md
+      - The First Control: insights/the-first-control.md
+      - Security as Enablement: insights/security-as-enablement.md
+      - Humans Remain Accountable: insights/humans-remain-accountable.md
+    - Architecture:
       - The Verification Gap: insights/the-verification-gap.md
-      - When Agents Talk to Agents: insights/when-agents-talk-to-agents.md
+      - The Judge Detects, Not Decides: insights/judge-detects-not-decides.md
+      - Practical Guardrails: insights/practical-guardrails.md
+      - Containment Through Declared Intent: insights/containment-through-intent.md
+      - The Intent Layer: insights/the-intent-layer.md
+      - Process-Aware Evaluation: insights/process-aware-evaluation.md
+      - The Constraint Curve: insights/the-constraint-curve.md
+    - Threats & Attack Surfaces:
       - RAG Is Your Biggest Attack Surface: insights/rag-is-your-biggest-attack-surface.md
       - The MCP Problem: insights/the-mcp-problem.md
-      - State of Reality: insights/state-of-reality.md
-      - Where Agentic AI Meets Human Behaviour: insights/where-agentic-ai-meets-human-behaviour.md
+      - The Supply Chain Problem: insights/the-supply-chain-problem.md
+      - The Memory Problem: insights/the-memory-problem.md
+      - Multimodal Breaks Guardrails: insights/multimodal-breaks-guardrails.md
+      - The Hallucination Boundary: insights/the-hallucination-boundary.md
       - Evaluation Integrity Risks: insights/evaluation-integrity-risks.md
+      - You Don't Know What You're Deploying: insights/you-dont-know-what-youre-deploying.md
+    - Agentic AI:
+      - When Agents Talk to Agents: insights/when-agents-talk-to-agents.md
+      - The Orchestrator Problem: insights/the-orchestrator-problem.md
+      - The Long-Horizon Problem: insights/the-long-horizon-problem.md
+      - Seeing Through the Fog: insights/seeing-through-the-fog.md
+      - The Visibility Problem: insights/the-visibility-problem.md
+      - When the Pattern Breaks: insights/when-the-pattern-breaks.md
+      - What Scales: insights/what-scales.md
+    - Models & Technology:
+      - When AI Thinks: insights/when-ai-thinks.md
+      - The Model You Choose: insights/the-model-you-choose.md
+      - Open-Weight Models Shift the Burden: insights/open-weight-models-shift-the-burden.md
       - Model Drift Impact: insights/model-drift-impact.md
-      - The Flight Recorder Problem: insights/the-flight-recorder-problem.md
-      - Securing the Connective Tissue: insights/securing-the-connective-tissue.md
+      - You Can't Validate Unfinished: insights/you-cant-validate-unfinished.md
+      - Risk Tier Is Use Case: insights/risk-tier-is-use-case.md
+    - Evidence & Analysis:
+      - State of Reality: insights/state-of-reality.md
       - What Works: insights/what-works.md
-    - Reference:
+      - The Evidence Gap: insights/the-evidence-gap.md
+      - Risk Stories: insights/risk-stories.md
+      - The Flight Recorder Problem: insights/the-flight-recorder-problem.md
+      - Where Agentic AI Meets Human Behaviour: insights/where-agentic-ai-meets-human-behaviour.md
+      - AI Lifecycle Review: insights/ai-lifecycle-review.md
+      - Securing the Connective Tissue: insights/securing-the-connective-tissue.md
+      - Automated Risk Tiering: insights/automated-risk-tiering.md
+
+  - Resources:
+    - Regulatory:
       - EU AI Act Crosswalk: extensions/regulatory/eu-ai-act-crosswalk.md
       - ISO 42001 Clause Mapping: extensions/regulatory/iso-42001-clause-mapping.md
       - ISO 42001 Alignment: extensions/regulatory/iso-42001-alignment.md
+      - ISO 27001 Alignment: extensions/regulatory/iso-27001-alignment.md
+      - NIST IR 8596 Alignment: extensions/regulatory/nist-ir-8596-alignment.md
+      - AI Governance Operating Model: extensions/regulatory/ai-governance-operating-model.md
+      - High-Risk Financial Services: extensions/regulatory/high-risk-financial-services.md
+      - Platform Integration Guide: extensions/regulatory/platform-integration-guide.md
+    - Technical Reference:
       - Model-as-Judge Implementation: extensions/technical/model-as-judge-implementation.md
       - Judge Model Selection: extensions/technical/judge-model-selection.md
       - Distilling the Judge into an SLM: extensions/technical/distill-judge-slm.md
       - Agentic Controls Catalogue: extensions/technical/agentic-controls-catalogue.md
+      - Agentic Controls Extended: extensions/technical/agentic-controls-extended.md
       - RAG Security: extensions/technical/rag-security.md
       - Cost & Latency: extensions/technical/cost-and-latency.md
       - SOC Integration: extensions/technical/soc-integration.md
+      - SOC Content Pack: extensions/technical/soc-content-pack.md
       - Runtime Telemetry Reference: extensions/technical/runtime-telemetry-reference.md
+      - Bypass Prevention: extensions/technical/bypass-prevention.md
+      - Control Selection Guide: extensions/technical/control-selection-guide.md
+      - Control Families: extensions/technical/control-families.md
+      - Technical Controls: extensions/technical/technical-controls.md
+      - Current Solutions: extensions/technical/current-solutions.md
+      - AI Endpoint Hardening: extensions/technical/ai-endpoint-hardening.md
+      - Anomaly Detection Ops: extensions/technical/anomaly-detection-ops.md
+      - Behavioral Anomaly Detection: extensions/technical/behavioral-anomaly-detection.md
+      - Graph-Based Agent Monitoring: extensions/technical/graph-based-agent-monitoring.md
+      - Multi-Agent Failure Analysis: extensions/technical/multi-agent-failure-analysis.md
+      - Emerging Trends Impact: extensions/technical/emerging-trends-impact.md
+      - Operational Metrics: extensions/technical/operational-metrics.md
+      - Output Evaluator: extensions/technical/output-evaluator.md
+      - Humans in the Business Process: extensions/technical/humans-in-the-business-process.md
+      - Novel AI Risks: extensions/technical/novel-ai-risks.md
+      - Economic Governance: extensions/technical/economic-governance.md
+      - NHI Lifecycle: extensions/technical/nhi-lifecycle.md
+      - Supply Chain Controls: extensions/technical/supply-chain.md
+      - Support Systems Risk: extensions/technical/support-systems-risk.md
+    - Templates:
+      - extensions/templates/README.md
       - AI Incident Playbook: extensions/templates/ai-incident-playbook.md
       - Threat Model Template: extensions/templates/threat-model-template.md
       - Judge Prompt Examples: extensions/templates/judge-prompt-examples.md
-      - Worked Examples: extensions/examples/README.md
+      - Data Retention Guidance: extensions/templates/data-retention-guidance.md
+      - Testing Guidance: extensions/templates/testing-guidance.md
+      - Vendor Assessment Questionnaire: extensions/templates/vendor-assessment-questionnaire.md
+      - Model Card Template: extensions/templates/model-card-template.md
+    - Examples:
+      - extensions/examples/README.md
+      - Customer Service AI: extensions/examples/01-customer-service-ai.md
+      - Internal Doc Assistant: extensions/examples/02-internal-doc-assistant.md
+      - Credit Decision Support: extensions/examples/03-credit-decision-support.md
+      - High-Volume Customer Comms: extensions/examples/04-high-volume-customer-communications.md
+      - Fraud Analytics: extensions/examples/05-fraud-analytics.md
       - Multi-Agent Risk Demo: extensions/examples/multi-agent-risk-demo.md
     - Downloads: downloads.md
     - News: news.md

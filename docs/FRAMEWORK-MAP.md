@@ -76,7 +76,7 @@ For infrastructure enforcement: [Infrastructure Controls](infrastructure/) - 80 
 
 ### "I run a SOC and need to operationalise AI monitoring"
 
-1. [Behavioral Anomaly Detection](insights/behavioral-anomaly-detection.md) - what you're looking for and why traditional detection doesn't apply
+1. [Behavioral Anomaly Detection](extensions/technical/behavioral-anomaly-detection.md) - what you're looking for and why traditional detection doesn't apply
 2. [SOC Integration](extensions/technical/soc-integration.md) - alert taxonomy, SIEM rules, triage
 3. [Anomaly Detection Ops](extensions/technical/anomaly-detection-ops.md) - baselining and detection engineering
 4. [Cost & Latency](extensions/technical/cost-and-latency.md) - budget the evaluation layer
@@ -159,7 +159,7 @@ For multi-agent monitoring, the [MASO Observability domain](maso/controls/observ
 | [Risk Tier Is Use Case](insights/risk-tier-is-use-case.md) | Classification reflects deployment context |
 | [Humans Remain Accountable](insights/humans-remain-accountable.md) | Humans own outcomes |
 | [The Verification Gap](insights/the-verification-gap.md) | Can't confirm ground truth |
-| [Behavioral Anomaly Detection](insights/behavioral-anomaly-detection.md) | Drift detection signals |
+| [Behavioral Anomaly Detection](extensions/technical/behavioral-anomaly-detection.md) | Drift detection signals |
 | [Multimodal Breaks Guardrails](insights/multimodal-breaks-guardrails.md) | New attack surfaces |
 | [When AI Thinks](insights/when-ai-thinks.md) | Reasoning-aware controls |
 | [When Agents Talk to Agents](insights/when-agents-talk-to-agents.md) | Multi-agent accountability gaps |

@@ -48,7 +48,7 @@ A system update broke the bot's behavioral guardrails. There was no independent 
 
 **PACE resilience:** This incident is a textbook case for PACE. The guardrail layer went to Emergency (compromised by a system update). Without a defined PACE plan, the system continued serving customers with broken guardrails. With PACE, the system would have detected the guardrail failure (via the Judge flagging anomalous outputs) and either constrained the chatbot's scope or activated the circuit breaker to route customers to human agents.
 
-**Behavioral anomaly detection:** The framework's [Behavioral Anomaly Detection](behavioral-anomaly-detection.md) insight describes exactly this scenario - aggregating signals (output topic distribution, sentiment, language patterns) to detect drift from expected behavior. A sudden spike in profanity rate or off-topic responses would have triggered an alert long before social media did.
+**Behavioral anomaly detection:** The framework's [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) insight describes exactly this scenario - aggregating signals (output topic distribution, sentiment, language patterns) to detect drift from expected behavior. A sudden spike in profanity rate or off-topic responses would have triggered an alert long before social media did.
 
 ### Honest Limits
 

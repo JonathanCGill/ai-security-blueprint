@@ -129,6 +129,6 @@ This aligns with the broader trajectory in AI evaluation: moving from "did it ge
 - [Observability Controls](../maso/controls/observability.md) - The immutable decision chain that provides the trace data
 - [Judge Assurance](../core/judge-assurance.md) - Measuring evaluation accuracy
 - [The Judge Detects. It Doesn't Decide.](judge-detects-not-decides.md) - Why async evaluation matters
-- [Behavioral Anomaly Detection](behavioral-anomaly-detection.md) - Statistical deviation from baselines
+- [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) - Statistical deviation from baselines
 - [The Verification Gap](the-verification-gap.md) - The limits of confirming ground truth
 

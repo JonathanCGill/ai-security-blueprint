@@ -73,7 +73,7 @@ The framework addresses long-horizon risk across several controls:
 
 ### The gap: anchored baselines and insider risk monitoring
 
-The controls assume the baseline is trustworthy. If the baseline drifts, the anomaly detection drifts with it. And the current signals - while comprehensive for short-window detection - miss temporal and peer-group patterns that insider risk programs have been catching for over a decade. An agent that starts operating at weekends when it has no weekend triggers, or one agent in a fleet that diverges while its peers remain stable, should generate alerts through the same UEBA (User and Entity Behavior Analytics) mechanisms that flag compromised human accounts. See [The Insider Risk Parallel](behavioral-anomaly-detection.md#the-insider-risk-parallel) for the full mapping.
+The controls assume the baseline is trustworthy. If the baseline drifts, the anomaly detection drifts with it. And the current signals - while comprehensive for short-window detection - miss temporal and peer-group patterns that insider risk programs have been catching for over a decade. An agent that starts operating at weekends when it has no weekend triggers, or one agent in a fleet that diverges while its peers remain stable, should generate alerts through the same UEBA (User and Entity Behavior Analytics) mechanisms that flag compromised human accounts. See [The Insider Risk Parallel](../extensions/technical/behavioral-anomaly-detection.md#the-insider-risk-parallel) for the full mapping.
 
 Long-horizon security requires:
 
@@ -106,7 +106,7 @@ It should be.
 ## Related
 
 - [The Memory Problem](the-memory-problem.md) - Long context and persistent memory as attack surfaces
-- [Behavioral Anomaly Detection](behavioral-anomaly-detection.md) - Aggregating signals to detect drift
+- [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) - Aggregating signals to detect drift
 - [Observability Controls](../maso/controls/observability.md) - Drift detection, long-window analysis, cross-agent correlation
 - [Memory and Context Controls](../core/memory-and-context.md) - Session isolation, context hygiene, memory governance
 - [Process-Aware Evaluation](process-aware-evaluation.md) - Evaluating the trace, not just the output

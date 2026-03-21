@@ -235,7 +235,7 @@ The question isn't "which verification method should we use?" It's "which verifi
 
 ## Related
 
-- [Behavioral Anomaly Detection](./behavioral-anomaly-detection.md) - Aggregating signals to detect drift
+- [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) - Aggregating signals to detect drift
 - [Why Guardrails Aren't Enough](./why-guardrails-arent-enough.md)
 - [Judge Detects, Not Decides](./judge-detects-not-decides.md)
 - [Current Solutions Reference](../extensions/technical/current-solutions.md)

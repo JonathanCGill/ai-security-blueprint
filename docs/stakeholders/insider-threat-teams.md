@@ -28,7 +28,7 @@ The question isn't whether to monitor agents for insider risk. It's whether you'
 
 ### A direct mapping from UEBA indicators to agent monitoring
 
-The framework's [Insider Risk Parallel](../insights/behavioral-anomaly-detection.md#the-insider-risk-parallel) maps your existing indicators directly to agent equivalents:
+The framework's [Insider Risk Parallel](../extensions/technical/behavioral-anomaly-detection.md#the-insider-risk-parallel) maps your existing indicators directly to agent equivalents:
 
 | Your Indicator (Humans) | Agent Equivalent | What It Catches |
 |---|---|---|
@@ -81,7 +81,7 @@ Read these in order. Total time: ~60 minutes.
 
 | # | Document | Why You Need It |
 |---|---|---|
-| 1 | [Behavioral Anomaly Detection](../insights/behavioral-anomaly-detection.md) | The full insider risk parallel - your indicators mapped to agents, peer group comparison, three threat categories |
+| 1 | [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) | The full insider risk parallel - your indicators mapped to agents, peer group comparison, three threat categories |
 | 2 | [Observability Controls](../maso/controls/observability.md) | The anomaly scoring model, nine signals, SIEM integration, decision chain format |
 | 3 | [The Long-Horizon Problem](../insights/the-long-horizon-problem.md) | Why short-window detection misses slow attacks - and how anchored baselines and temporal analysis close the gap |
 | 4 | [Process-Aware Evaluation](../insights/process-aware-evaluation.md) | Evaluating the agent's reasoning trace, not just its output - the equivalent of reviewing an insider's full activity timeline |
