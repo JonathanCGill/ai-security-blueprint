@@ -4,6 +4,9 @@ description: A visual demonstrator showing how a user prompt flows through risk 
 
 # Multi-Agent Risk Evaluation Demonstrator
 
+!!! tip "Interactive demo"
+    [Launch the interactive pipeline demo](../../demo/multi-agent-risk.html){ target="_blank" } to watch pre-recorded scenarios play through the full evaluation pipeline with animated step-by-step playback.
+
 This demonstrator walks through the end-to-end flow of a prompt as it moves through a multi-agent system with layered risk evaluation. Every model in the pipeline has a declared **intent statement** stored in a central intent store (database), and every step is observable.
 
 ![Multi-Agent Risk Demo](../../images/multi-agent-risk-demo.svg){ .arch-diagram }
