@@ -1,0 +1,208 @@
+---
+description: "Stakeholder review of MASO's judge architecture: does the framework create 'judge hell' where multiple evaluation agents proliferate uncontrollably, and how does it cope?"
+---
+
+# Stakeholder Review: Judge Proliferation
+
+**The "judge hell" problem, examined from five business perspectives.**
+
+> *Review of [MASO Framework](../README.md) · [Objective Intent](../controls/objective-intent.md) · [Privileged Agent Governance](../controls/privileged-agent-governance.md) · [Judge Assurance](../../core/judge-assurance.md)*
+
+## The Question
+
+A fraud detection workflow using MASO requires agents to detect fraud. Those agents need judges to decide whether the detected fraud is real. The judges need monitoring to confirm they are judging correctly. That monitoring needs its own validation. At what point does this become **judge hell**: an uncontrollable proliferation of evaluation agents that costs more than the fraud it prevents?
+
+This review examines the problem from five stakeholder perspectives, assesses how MASO addresses it today, and identifies where gaps remain.
+
+## What MASO Actually Requires
+
+Before examining stakeholder concerns, here is what MASO specifies for a fraud detection workflow at Tier 2 (Managed):
+
+| Component | Role | Required? |
+|-----------|------|-----------|
+| **Task agents** (e.g. 3 fraud analysts) | Detect fraud patterns, score transactions, gather evidence | Yes |
+| **Tactical judge** | Evaluates each agent's actions against its OISpec | Yes (OI-2.1) |
+| **Strategic evaluator** | Assesses whether combined agent outputs satisfy the workflow objective | Yes (OI-2.2) |
+| **Judge meta-evaluator** | Monitors judge drift against the judge's own OISpec | Yes (OI-2.4) |
+| **Observer** | Anomaly scoring, PACE escalation triggers | Yes (OB-2.2) |
+| **Orchestrator** | Plans, routes, aggregates | Likely |
+
+For 3 task agents, MASO requires up to 4 additional privileged agents. That is a ratio of roughly 1.3 evaluation agents per task agent. At 10 task agents the ratio improves (judges can be shared across agents), but the concern is real: MASO's evaluation architecture is not lightweight.
+
+## Stakeholder Perspectives
+
+### 1. CISO: "Does this actually reduce risk, or just move it?"
+
+**The concern:** Every judge is itself a model. It hallucinates, drifts, and can be manipulated. Adding judges adds attack surface. If the judge is wrong about a fraud case, you have a false sense of security that is worse than having no judge at all.
+
+**What MASO gets right:**
+
+- The framework explicitly acknowledges this. Judge Assurance states: "If you deploy a Judge without evaluating its accuracy, you have added cost and latency without knowing whether you have added safety."
+- Model diversity (different provider for judge vs. task agent) reduces correlated failure.
+- Continuous calibration with known test cases (PA-2.2, PA-3.5) catches judge drift before it becomes dangerous.
+- The recursion explicitly terminates at sampled human review, not at more agents. The Objective Intent document is clear: "The recursion stops at humans, not at more agents."
+
+**Where the gap is:**
+
+The framework does not quantify the **net security value** of each evaluation layer. A CISO needs to answer: "Does adding this judge reduce my residual risk enough to justify the new attack surface it introduces?" MASO provides the architecture but not a method for calculating whether a specific judge layer is net-positive for security posture.
+
+**Recommendation:** MASO should include a judge ROI assessment, a structured method for measuring whether each evaluation layer reduces more risk than it creates. Inputs: false negative rate of the judge, cost of undetected fraud, cost of the judge (including its own failure modes). If the judge's false negative rate exceeds a threshold relative to the base rate of fraud, the judge is security theatre.
+
+### 2. CFO: "What does this cost at scale?"
+
+**The concern:** Every judge is an LLM call. At Tier 2 with 25-50% sampling, the judge cost is already 15-40% of generator cost. At Tier 3 with 100% evaluation plus a meta-evaluator, the overhead could exceed the cost of the task agents themselves. For fraud detection processing millions of transactions, judge costs compound fast.
+
+**What MASO gets right:**
+
+- The Cost and Latency document provides concrete budgeting: $10K-50K/month for judge evaluation at 1M requests.
+- Tiered evaluation (rule-based first, then small model, then large model, then human) reduces cost by 60-80%.
+- Distilled SLMs eliminate per-token API costs for routine screening, with near-flat cost scaling: ~$350-700/month at 1M evaluations vs. $10K-50K for cloud judges.
+- Sampling strategies mean not every transaction needs full evaluation. Low-risk transactions get 5-10% judge sampling.
+
+**Where the gap is:**
+
+The cost analysis covers a single judge layer. It does not model the **compound cost of the full evaluation stack**: tactical judge + strategic evaluator + meta-evaluator + observer. For a fraud detection workflow at Tier 3:
+
+| Component | Evaluation rate | Estimated monthly cost (1M transactions) |
+|-----------|----------------|------------------------------------------|
+| Task agents (3) | 100% | Base cost |
+| Tactical judge | 100% of agent actions | $10K-50K (or ~$500 with SLM) |
+| Strategic evaluator | Per-phase + post-execution | $1K-5K |
+| Meta-evaluator | Daily calibration samples | $500-2K |
+| Observer | Continuous (lightweight) | $500-1K |
+| **Total evaluation overhead** | | **$12K-58K** (or **$2.5K-8.5K** with SLM) |
+
+The SLM approach dramatically changes the economics. But the framework does not present this compound cost model clearly enough for financial decision-making.
+
+**Recommendation:** Add a "Total Cost of Evaluation" section to the Cost and Latency document that models the full stack cost, not just per-layer cost. Include the SLM scenario explicitly. A CFO reviewing MASO should see one table that answers: "What does the complete evaluation architecture cost me at my transaction volume?"
+
+### 3. Head of Engineering: "How do I build and operate this?"
+
+**The concern:** Operating 4 evaluation agents per workflow is a significant engineering burden. Each needs deployment, monitoring, versioning, calibration, and incident response. The OISpec for each must be authored at design time, version-controlled, and updated as requirements change. This is not a one-time build; it is ongoing operational overhead.
+
+**What MASO gets right:**
+
+- Implementation tiers allow incremental adoption. Tier 1 requires only manual review against OISpecs, no automated judges.
+- Judges can be shared across agents. A single tactical judge can evaluate multiple task agents if they share an evaluation model.
+- The distilled SLM sidecar pattern (one model, deployed alongside task agents) consolidates the tactical judge into infrastructure rather than a separate service.
+- OISpecs are structured JSON, not free-form prose, making them automatable.
+
+**Where the gap is:**
+
+MASO does not address **judge consolidation patterns**. In practice, a fraud detection workflow does not need a separate judge instance per task agent. It needs:
+
+- One tactical evaluation model (possibly an SLM sidecar) that evaluates all task agents against their respective OISpecs.
+- One strategic evaluation pass (could be a single LLM call post-workflow, not a persistent agent).
+- One meta-evaluation process (a scheduled calibration job, not a persistent agent).
+
+The framework describes these as conceptually distinct roles, which is correct for the security model. But it does not clarify that they can be **operationally consolidated** into far fewer running services than the architecture diagrams suggest.
+
+**Recommendation:** Add a "Deployment Topology" section to the integration guide showing how the conceptual evaluation architecture maps to actual services. Distinguish between "evaluation role" (which must be logically separate) and "evaluation service" (which can be consolidated). A single evaluation service can fulfil multiple roles as long as context isolation is maintained between evaluations.
+
+### 4. Head of Compliance: "Can I audit this?"
+
+**The concern:** Regulators expect explainable decisions. If a fraud detection system flags a transaction, the compliance team needs to trace: which agent flagged it, what evidence it used, whether the judge agreed, and what criteria the judge applied. With multiple evaluation layers, the audit trail becomes complex.
+
+**What MASO gets right:**
+
+- Immutable decision chain logs (OB-1.1) capture the full reasoning and action history.
+- Judge decision logging (PA-1.3) records criteria and reasoning for every approve/escalate/block decision.
+- OISpecs provide the reference standard: the auditor can compare what the agent *did* against what it was *supposed to do*, with both documented in structured, versioned artifacts.
+- The three-level evaluation (tactical, strategic, meta) creates a layered audit trail, not a black box.
+
+**Where the gap is:**
+
+The framework does not specify a **consolidated audit view**. An auditor reviewing a flagged fraud case should not need to correlate logs across 6 different agents manually. They need a single decision trace: "Transaction X was flagged by Agent A (evidence: Y), confirmed by Judge B (criteria: Z), consistent with workflow intent (strategic evaluation: pass), judge was operating within calibration (meta-evaluation: no drift detected)."
+
+**Recommendation:** Define a standard "Decision Trace" output format that collapses the multi-layer evaluation into a single, auditable document per decision. This is an observability integration, not a new control. Map it to the regulatory requirements (EU AI Act Art. 14, DORA Art. 11) that require explainability for automated decisions.
+
+### 5. Head of Fraud Operations: "Does this slow down detection?"
+
+**The concern:** Fraud detection is time-sensitive. A synchronous judge adding 500ms-5s per evaluation can mean the difference between blocking a fraudulent transaction in real-time and blocking it after the money has moved. Multiple evaluation layers compound this latency.
+
+**What MASO gets right:**
+
+- The SLM sidecar adds only 10-50ms per evaluation, making inline evaluation feasible without breaking latency budgets.
+- Async evaluation is the default for non-critical assessments. The large judge runs post-action for most cases.
+- Strategic evaluation runs per-phase and post-execution, not per-transaction.
+- The meta-evaluator runs on a scheduled basis (daily calibration), adding zero latency to the transaction path.
+
+**Where the gap is:**
+
+The latency analysis does not model the **critical path** through the full evaluation stack for a fraud detection use case. In practice:
+
+| On the critical path (synchronous) | Off the critical path (async) |
+|-------------------------------------|-------------------------------|
+| Guardrails (5-20ms) | Strategic evaluator (post-phase) |
+| SLM tactical evaluation (10-50ms) | Large judge (1% sample, async) |
+| | Meta-evaluator (daily calibration) |
+| | Observer (continuous, non-blocking) |
+
+**Total synchronous overhead: 15-70ms.** That is well within fraud detection latency requirements. But MASO does not make this clear in the context of time-sensitive use cases.
+
+**Recommendation:** Add a latency architecture diagram for time-critical use cases showing what is synchronous vs. asynchronous in the evaluation stack. The fraud operations team needs to see that "judge hell" adds 15-70ms to the critical path, not 5+ seconds.
+
+## How MASO Addresses Judge Hell
+
+MASO has five mechanisms that prevent evaluation from becoming an unbounded recursion:
+
+### 1. The chain terminates at humans
+
+The Objective Intent document is explicit: "The recursion of 'who evaluates the evaluator' must stop somewhere. In this framework, it stops at sampled human review." There is no meta-meta-evaluator. The meta-evaluator is validated through periodic human calibration, not through more agents.
+
+### 2. Calibration replaces recursion
+
+The Privileged Agent Governance common pitfalls section states: "The recursion problem is real but the solution is not more layers. It's calibration: periodic injection of known test cases to verify that each privileged agent is still performing as expected." Known-good and known-bad test cases injected into the evaluation pipeline confirm accuracy without requiring additional judges.
+
+### 3. Evaluation frequency scales with risk
+
+Not every transaction gets full evaluation. The risk classification table in Objective Intent specifies:
+
+- **LOW risk:** Post-execution evaluation only, monthly judge calibration
+- **MEDIUM risk:** Per-phase evaluation, monthly calibration
+- **HIGH risk:** Every-action evaluation, weekly calibration
+- **CRITICAL risk:** Synchronous every-action evaluation, daily calibration
+
+Most fraud transactions are LOW or MEDIUM risk (known patterns, small amounts). Only HIGH/CRITICAL transactions (unusual patterns, large amounts) trigger the full evaluation stack.
+
+### 4. SLM distillation collapses the tactical judge into infrastructure
+
+A distilled SLM running as a sidecar is not an "agent" in the operational sense. It is a model loaded into the same process or pod as the task agent, adding 10-50ms per evaluation. This eliminates the most expensive and highest-volume evaluation layer (tactical) from the "judge proliferation" concern.
+
+### 5. Conceptual roles do not require separate services
+
+The strategic evaluator can be a single LLM call at phase boundaries. The meta-evaluator can be a scheduled calibration job. The observer can be a metrics pipeline. These are evaluation *functions*, not necessarily evaluation *agents* requiring their own infrastructure.
+
+## What MASO Should Add
+
+| Gap | Recommendation | Benefits |
+|-----|---------------|----------|
+| No judge ROI assessment | Structured method for calculating net security value per evaluation layer | CISOs can justify (or reject) each layer with data |
+| No compound cost model | Total Cost of Evaluation table covering the full stack | CFOs get one number, not five |
+| No deployment topology guidance | Distinguish evaluation roles from evaluation services | Engineers build fewer services than the diagrams suggest |
+| No consolidated audit view | Standard Decision Trace format per decision | Compliance teams trace decisions without correlating 6 log streams |
+| No critical-path latency model | Sync vs. async architecture for time-sensitive use cases | Fraud ops teams see 15-70ms, not "500ms-5s" |
+| No judge necessity criteria | Decision framework for when a judge layer is needed vs. when guardrails suffice | Prevents unnecessary judges being deployed for low-risk workflows |
+
+## The Honest Answer
+
+Judge hell is a real risk if you implement MASO mechanically: deploying every evaluation layer at maximum intensity for every workflow regardless of risk. The framework provides the tools to avoid this (tiered evaluation, risk-based frequency, SLM consolidation, human-terminated recursion), but it does not make the "right-sizing" guidance prominent enough.
+
+For a fraud detection workflow at Tier 2 with SLM sidecars:
+
+- **Synchronous overhead:** 15-70ms per transaction (SLM tactical evaluation)
+- **Async overhead:** Strategic evaluation per batch, meta-evaluation daily
+- **Cost overhead:** $2.5K-8.5K/month at 1M transactions (with SLM), vs. $12K-58K without
+- **Agents to operate:** 1 SLM sidecar (infrastructure, not a service), 1 strategic evaluation job (batch), 1 calibration pipeline (scheduled)
+- **Recursion depth:** 3 levels max, terminating at human calibration samples
+
+That is not judge hell. That is a manageable evaluation architecture. But MASO needs to make this operational reality clearer, because the conceptual architecture diagrams suggest a complexity that the actual deployment does not require.
+
+!!! info "References"
+    - [MASO Framework](../README.md)
+    - [Objective Intent Controls](../controls/objective-intent.md)
+    - [Privileged Agent Governance](../controls/privileged-agent-governance.md)
+    - [Judge Assurance](../../core/judge-assurance.md)
+    - [Cost and Latency](../../extensions/technical/cost-and-latency.md)
+    - [Distilling the Judge into an SLM](../../extensions/technical/distill-judge-slm.md)
+    - [MASO 2.0 Anticipated Changes](../maso-2.0-anticipated-changes.md)
