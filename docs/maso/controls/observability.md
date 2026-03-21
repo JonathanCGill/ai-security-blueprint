@@ -156,6 +156,118 @@ Every entry in the decision chain should include:
 
 This format enables: full chain reconstruction, per-agent performance trending, PACE phase tracking, and forensic investigation. At Tier 2+, the `previous_entry_hash` creates a hash chain that makes tampering detectable.
 
+## Decision Trace (Consolidated Audit View)
+
+The decision chain log (OB-2.1) captures every event in a multi-agent workflow. For investigation and audit, that granularity is essential. For a compliance officer reviewing a flagged fraud case, or an operations lead triaging an escalation, it is too much. They need a single document that answers: what happened, who evaluated it, and why did it resolve the way it did.
+
+The Decision Trace collapses the multi-layer evaluation chain into one structured output per decision.
+
+### Decision Trace Format
+
+```json
+{
+  "trace_id": "uuid",
+  "workflow_id": "uuid",
+  "workflow_name": "Fraud Detection Pipeline",
+  "timestamp": "ISO-8601",
+  "accountable_human": "operator-id",
+
+  "subject": {
+    "description": "Transaction #TXN-29481 flagged for review",
+    "input_hash": "sha256",
+    "risk_classification": "HIGH"
+  },
+
+  "agent_chain": [
+    {
+      "agent_id": "agent-fraud-scorer-01",
+      "action": "Scored transaction risk at 0.87 based on velocity pattern and geo-mismatch",
+      "evidence": ["3 transactions in 2 minutes", "IP geolocation: Lagos, card billing: London"],
+      "confidence": 0.87,
+      "chain_entry_ref": "chain-id:seq:4"
+    },
+    {
+      "agent_id": "agent-evidence-gatherer-02",
+      "action": "Retrieved customer history: 0 prior fraud flags, account age 4 years",
+      "evidence": ["Customer history API response"],
+      "confidence": 0.72,
+      "chain_entry_ref": "chain-id:seq:7"
+    }
+  ],
+
+  "evaluation": {
+    "tactical_judge": {
+      "agent_id": "judge-tactical-01",
+      "verdict": "flag",
+      "criteria_applied": "Agent output satisfies OISpec: risk score traceable to data points, uncertainty preserved",
+      "oisspec_version": 3
+    },
+    "domain_judges": [
+      {
+        "domain": "fraud",
+        "agent_id": "judge-fraud-01",
+        "verdict": "flag",
+        "reasoning": "Velocity pattern exceeds threshold. Geo-mismatch confirmed."
+      },
+      {
+        "domain": "compliance",
+        "agent_id": "judge-compliance-01",
+        "verdict": "approve",
+        "reasoning": "Transaction documentation sufficient for regulatory requirements."
+      }
+    ],
+    "inter_judge_conflict": {
+      "detected": true,
+      "resolution": "Most restrictive wins: fraud flag overrides compliance approve",
+      "precedence_rule": "default:most_restrictive",
+      "escalated_to_human": true
+    },
+    "strategic_evaluator": {
+      "verdict": "pass",
+      "reasoning": "Agent chain outputs internally consistent. Uncertainty preserved through chain."
+    },
+    "meta_evaluation": {
+      "judge_calibration_status": "within_threshold",
+      "last_calibration": "ISO-8601",
+      "drift_detected": false
+    }
+  },
+
+  "resolution": {
+    "outcome": "escalated_to_human",
+    "human_decision": "confirmed_fraud",
+    "human_reasoning": "Velocity pattern consistent with known card-testing behaviour",
+    "human_decision_timestamp": "ISO-8601"
+  },
+
+  "regulatory_mapping": {
+    "explainability_standard": "EU AI Act Art. 14",
+    "decision_traceable": true,
+    "human_oversight_documented": true
+  }
+}
+```
+
+### When to Generate a Decision Trace
+
+| Trigger | Detail |
+|---------|--------|
+| Any action escalated to human review | The human needs the trace to make their decision |
+| Any inter-judge conflict | The conflict and its resolution must be auditable |
+| Any PACE transition | Root cause traceability for incident response |
+| Regulatory decision | Any output that constitutes a regulated decision (credit, insurance, medical, employment) |
+| Post-hoc audit request | Generated on demand from the decision chain log |
+
+The Decision Trace is not a replacement for the decision chain log. It is a **view** over it, generated on demand or at trigger points, collapsing the full event stream into a single auditable document.
+
+### Relationship to Regulatory Requirements
+
+| Regulation | Requirement | How Decision Trace Satisfies It |
+|-----------|------------|-------------------------------|
+| **EU AI Act Art. 14** | Human oversight with sufficient information to understand AI system behaviour | Trace provides agent chain, evidence, evaluation verdicts, and human decision in one document |
+| **DORA Art. 11** | ICT incident root cause analysis and decision traceability | Trace links to decision chain entries for full reconstruction |
+| **APRA CPS 234** | Information security incident response with accountability | `accountable_human` field, human decision with reasoning |
+
 ## Maturity Indicators
 
 | Level | Indicator |

@@ -171,6 +171,108 @@ Judge evaluations on identical or near-identical inputs can be cached:
 
 **Only cache for Tier 1.** For Tier 2–3, the risk of cache-based bypass outweighs the cost saving.
 
+## Total Cost of Evaluation (Multi-Agent Workflows)
+
+The per-layer costs above model a single judge. In a multi-agent workflow, the full evaluation stack includes multiple evaluation roles. This section models the compound cost so you can budget for the complete architecture, not just one layer.
+
+### Evaluation Stack Components
+
+| Component | What It Does | Evaluation Rate | Cost Driver |
+|-----------|-------------|----------------|------------|
+| **Tactical judge** | Evaluates each agent action against its OISpec | Per-action (100% at Tier 3) | Highest volume. Dominates cost unless using SLM. |
+| **Domain judges** (fraud, security, compliance) | Evaluates actions from specific policy perspectives | Per-action or per-phase | Can be consolidated into a single multi-criteria evaluation call, or run as separate SLM sidecars. |
+| **Strategic evaluator** | Assesses combined outputs against workflow intent | Per-phase + post-execution | Low volume. Single LLM call per evaluation. |
+| **Meta-evaluator** | Monitors judge drift via calibration test cases | Scheduled (daily/weekly) | Negligible at scale. Fixed cost regardless of transaction volume. |
+| **Observer** | Anomaly scoring, PACE triggers | Continuous (metrics pipeline) | Infrastructure cost. No per-evaluation LLM calls. |
+
+### Compound Cost Model: Fraud Detection Example
+
+A fraud detection workflow processing 1M transactions/month with 3 task agents:
+
+**Scenario A: Cloud Judge (all evaluation via API)**
+
+| Component | Volume | Cost per eval | Monthly cost |
+|-----------|--------|--------------|-------------|
+| Tactical judge (3 agents × 1M actions) | 3M | $0.01-0.05 | $30,000-150,000 |
+| Domain judges (fraud + compliance, sampled 25%) | 750K | $0.01-0.03 | $7,500-22,500 |
+| Strategic evaluator (per-phase, ~100K phases) | 100K | $0.01-0.05 | $1,000-5,000 |
+| Meta-evaluator (daily calibration, 100 test cases) | 3K | $0.05 | $150 |
+| Observer | Continuous | Infrastructure | $500-1,000 |
+| **Total** | | | **$39,150-178,650** |
+
+**Scenario B: SLM Sidecar + Sampled Cloud Judge**
+
+| Component | Volume | Cost per eval | Monthly cost |
+|-----------|--------|--------------|-------------|
+| SLM tactical judge (3 agents × 1M actions) | 3M | ~$0 (compute) | $150-600 (infrastructure) |
+| SLM domain evaluation (multi-criteria, 100%) | 3M | ~$0 (compute) | Included in SLM infra |
+| Cloud Judge teacher verification (1% sample) | 30K | $0.05 | $1,500 |
+| Strategic evaluator (per-phase, ~100K phases) | 100K | $0.01 | $1,000 |
+| Meta-evaluator (daily calibration) | 3K | $0.05 | $150 |
+| Observer | Continuous | Infrastructure | $500-1,000 |
+| **Total** | | | **$3,300-4,250** |
+
+The SLM approach reduces compound evaluation cost by **95-97%** at this volume. The break-even is even lower for multi-agent workflows than for single-agent systems because the evaluation volume multiplies with agent count.
+
+!!! tip "Budget the full stack, not one layer"
+    When presenting evaluation costs to finance, model the complete stack (tactical + domain + strategic + meta + observer), not just the tactical judge. Then show both cloud and SLM scenarios. The SLM scenario is almost always the right answer for high-volume multi-agent workflows.
+
+## Critical-Path Latency for Time-Sensitive Workflows
+
+The per-layer latency budgets above show each component in isolation. For time-sensitive workflows (fraud detection, trading, real-time safety), what matters is the **critical path**: the synchronous components that must complete before the action executes.
+
+### Synchronous vs. Asynchronous Evaluation
+
+Not every evaluation component sits on the critical path. Most run asynchronously, adding zero latency to the transaction.
+
+| Component | On Critical Path? | Latency Added | Notes |
+|-----------|-------------------|---------------|-------|
+| **Input guardrails** | Yes (synchronous) | 5-20ms | Always inline. Rule-based is fastest. |
+| **SLM tactical judge** | Yes (synchronous) | 10-50ms | Sidecar evaluation. Sub-50ms is achievable. |
+| **Cloud tactical judge** | Usually no (async) | 500ms-5s | Only synchronous for CRITICAL risk at Tier 3. |
+| **Domain judges (SLM)** | Yes if SLM (sync) | 10-50ms | Can be batched into the tactical SLM call. |
+| **Domain judges (cloud)** | No (async) | 500ms-5s | Async with "most restrictive wins" default. |
+| **Strategic evaluator** | No (async) | 1-5s | Runs at phase boundaries, not per-action. |
+| **Meta-evaluator** | No (scheduled) | 0ms | Runs on a schedule. Not per-transaction. |
+| **Observer** | No (background) | 0ms | Metrics pipeline. Non-blocking. |
+
+### Example: Fraud Detection (Tier 2, SLM Sidecar)
+
+```
+Transaction arrives
+  → Input guardrails                     5-20ms  [sync]
+  → Agent processes transaction          50-200ms [sync]
+  → SLM tactical + domain evaluation     10-50ms  [sync]
+  → Action executes (flag/approve/block) 5-10ms   [sync]
+                                         ─────────
+  Total critical path:                   70-280ms
+
+  → Cloud Judge (1% sample)              2-5s     [async, non-blocking]
+  → Strategic evaluator (end of batch)   1-5s     [async, non-blocking]
+```
+
+**Critical-path overhead from evaluation: 10-50ms.** That is the SLM sidecar. Everything else is asynchronous.
+
+### Example: Trading Compliance (Tier 3, CRITICAL Risk)
+
+```
+Trade request arrives
+  → Input guardrails                     5-20ms   [sync]
+  → Agent generates trade recommendation 100-500ms [sync]
+  → SLM tactical evaluation              10-50ms  [sync]
+  → Cloud Judge (synchronous, CRITICAL)  500ms-2s [sync, CRITICAL only]
+  → Compliance domain judge (sync)       500ms-2s [sync, CRITICAL only]
+                                         ──────────
+  Total critical path:                   1.1-4.6s
+
+  → Strategic evaluator (post-trade)     1-5s     [async]
+```
+
+For CRITICAL risk, the cloud judge runs synchronously. This is the cost of assured evaluation for irreversible, high-consequence actions.
+
+!!! warning "Do not put the full stack on the critical path"
+    The most common latency mistake is making every evaluation component synchronous. Only the tactical judge (SLM sidecar) and guardrails belong on the critical path for most workflows. Strategic evaluation, meta-evaluation, and observer scoring are asynchronous by design. If your workflow has a latency budget under 500ms, use the SLM approach and keep the cloud judge async.
+
 ## Budgeting Template
 
 | Line Item | Monthly Estimate |

@@ -115,6 +115,49 @@ The action classification engine is the core mechanism that replaces per-action 
 - Actions targeting systems not in the agent's scope
 - Actions during a PACE Alternate or Contingency phase that exceed the phase-specific restrictions
 
+## Deployment Topology: Evaluation Roles vs. Services
+
+The MASO architecture describes evaluation roles as logically distinct components: tactical judge, strategic evaluator, meta-evaluator, observer, domain judges. This is correct for the security model: each role has a different threat profile, different OISpec, and different failure modes. They must be logically independent.
+
+They do not need to be operationally independent. Logical separation and operational consolidation are compatible, as long as context isolation is maintained between evaluations.
+
+### How Roles Map to Services
+
+| Evaluation Role | Logical Requirement | Operational Reality |
+|----------------|--------------------|--------------------|
+| **Tactical judge** | Must evaluate every agent action against its OISpec. Must use a different model from the task agent. | A single distilled SLM sidecar process, co-located with the task agents. One process serves all tactical evaluations with per-agent OISpec routing. |
+| **Domain judges** (fraud, security, compliance) | Must evaluate from distinct policy perspectives. Verdicts must be independent. | Can be a single SLM with multi-criteria evaluation prompts, producing structured verdicts per domain. Or: consolidated into the tactical SLM call with domain-specific criteria sections. Separate SLMs only if domain-specific fine-tuning requires different models. |
+| **Strategic evaluator** | Must assess combined outputs against workflow intent. Must have visibility across all agent outputs. | A single LLM API call at phase boundaries. Not a persistent service. Invoked as a function, not deployed as an agent. |
+| **Meta-evaluator** | Must monitor judge drift independently from the judge and the task agents. | A scheduled job (cron, Airflow, Step Functions) that injects known test cases into the tactical judge and measures accuracy. Runs daily or weekly. Not a persistent service. |
+| **Observer** | Must score anomalies continuously. Must be independent of task agent infrastructure at Tier 3. | A metrics pipeline (Prometheus, CloudWatch, Datadog) consuming the decision chain log and computing anomaly scores. At Tier 3, runs on separate infrastructure. Not an LLM agent. |
+
+### Example: Fraud Detection Deployment
+
+**Architecture diagrams suggest:** 3 task agents + 1 tactical judge + 1 fraud judge + 1 compliance judge + 1 strategic evaluator + 1 meta-evaluator + 1 observer = **9 components**
+
+**Actual deployment:**
+
+| Service | What It Runs | Infrastructure |
+|---------|-------------|---------------|
+| Task agent pod (×3) | Fraud analysis agents, each with SLM sidecar | 3 pods, each with task agent + SLM process |
+| SLM sidecar (in each pod) | Tactical evaluation + fraud domain + compliance domain (multi-criteria) | Co-located with task agent. ~1GB RAM for INT4 model. |
+| Strategic evaluation function | Single LLM call at batch/phase boundaries | Serverless function (Lambda, Cloud Functions). Invoked, not persistent. |
+| Calibration pipeline | Daily injection of test cases into SLM. Accuracy measured against known labels. | Scheduled job. Runs once per day. |
+| Monitoring | Anomaly scoring from decision chain log. PACE trigger logic. | Existing observability stack. |
+
+**Actual services to operate: 3 pods + 1 serverless function + 1 scheduled job + existing monitoring.** That is the operational footprint of the "9 component" architecture.
+
+### Context Isolation Requirements
+
+Consolidating evaluation roles into fewer services is acceptable only if context isolation is maintained:
+
+| Requirement | Why It Matters |
+|-------------|---------------|
+| Each evaluation call gets a fresh context | A tactical evaluation of Agent A must not carry residual context from evaluating Agent B. |
+| Domain evaluations are independent | The fraud evaluation prompt must not include the compliance evaluation result, and vice versa. Verdicts must be produced independently before conflict resolution applies. |
+| SLM sidecar does not share memory with the task agent | The SLM runs in a separate process or container. It reads the task agent's output; it does not share the task agent's context window. |
+| Meta-evaluation does not run on the same model instance as tactical evaluation | The calibration pipeline calls the SLM from outside, as a client. It does not have access to the SLM's internal state. |
+
 ## Testing Criteria
 
 ### Tier 1 Tests

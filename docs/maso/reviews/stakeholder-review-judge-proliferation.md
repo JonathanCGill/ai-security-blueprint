@@ -42,11 +42,7 @@ For 3 task agents, MASO requires up to 4 additional privileged agents. That is a
 - Continuous calibration with known test cases (PA-2.2, PA-3.5) catches judge drift before it becomes dangerous.
 - The recursion explicitly terminates at sampled human review, not at more agents. The Objective Intent document is clear: "The recursion stops at humans, not at more agents."
 
-**Where the gap is:**
-
-The framework does not quantify the **net security value** of each evaluation layer. A CISO needs to answer: "Does adding this judge reduce my residual risk enough to justify the new attack surface it introduces?" MASO provides the architecture but not a method for calculating whether a specific judge layer is net-positive for security posture.
-
-**Recommendation:** MASO should include a judge ROI assessment, a structured method for measuring whether each evaluation layer reduces more risk than it creates. Inputs: false negative rate of the judge, cost of undetected fraud, cost of the judge (including its own failure modes). If the judge's false negative rate exceeds a threshold relative to the base rate of fraud, the judge is security theatre.
+**Addressed:** [Judge Assurance](../../core/judge-assurance.md#when-you-need-a-judge-and-when-you-do-not) now includes a **Judge Necessity Test** (five questions to determine whether a judge is warranted) and a **Judge ROI Assessment** formula that calculates net security value per evaluation layer. If the judge's false negative rate exceeds the base rate of the threat, the formula returns a negative value, making the case for removal or retraining explicit.
 
 ### 2. CFO: "What does this cost at scale?"
 
@@ -72,9 +68,9 @@ The cost analysis covers a single judge layer. It does not model the **compound 
 | Observer | Continuous (lightweight) | $500-1K |
 | **Total evaluation overhead** | | **$12K-58K** (or **$2.5K-8.5K** with SLM) |
 
-The SLM approach dramatically changes the economics. But the framework does not present this compound cost model clearly enough for financial decision-making.
+The SLM approach dramatically changes the economics.
 
-**Recommendation:** Add a "Total Cost of Evaluation" section to the Cost and Latency document that models the full stack cost, not just per-layer cost. Include the SLM scenario explicitly. A CFO reviewing MASO should see one table that answers: "What does the complete evaluation architecture cost me at my transaction volume?"
+**Addressed:** [Cost and Latency](../../extensions/technical/cost-and-latency.md#total-cost-of-evaluation-multi-agent-workflows) now includes a **Total Cost of Evaluation** section modelling the full stack: tactical judge + domain judges + strategic evaluator + meta-evaluator + observer. Two scenarios (cloud judge vs. SLM sidecar) are worked through for a fraud detection workflow at 1M transactions/month. The SLM scenario shows 95-97% cost reduction at that volume.
 
 ### 3. Head of Engineering: "How do I build and operate this?"
 
@@ -95,9 +91,9 @@ MASO does not address **judge consolidation patterns**. In practice, a fraud det
 - One strategic evaluation pass (could be a single LLM call post-workflow, not a persistent agent).
 - One meta-evaluation process (a scheduled calibration job, not a persistent agent).
 
-The framework describes these as conceptually distinct roles, which is correct for the security model. But it does not clarify that they can be **operationally consolidated** into far fewer running services than the architecture diagrams suggest.
+The framework describes these as conceptually distinct roles, which is correct for the security model. But they can be **operationally consolidated** into far fewer running services than the architecture diagrams suggest.
 
-**Recommendation:** Add a "Deployment Topology" section to the integration guide showing how the conceptual evaluation architecture maps to actual services. Distinguish between "evaluation role" (which must be logically separate) and "evaluation service" (which can be consolidated). A single evaluation service can fulfil multiple roles as long as context isolation is maintained between evaluations.
+**Addressed:** [Execution Control](../controls/execution-control.md#deployment-topology-evaluation-roles-vs-services) now includes a **Deployment Topology** section distinguishing evaluation roles from evaluation services. It maps the conceptual architecture to actual infrastructure: a fraud detection workflow's "9 components" deploys as 3 pods + 1 serverless function + 1 scheduled job + existing monitoring. Context isolation requirements are specified to ensure consolidation does not compromise security.
 
 ### 4. Head of Compliance: "Can I audit this?"
 
@@ -112,9 +108,7 @@ The framework describes these as conceptually distinct roles, which is correct f
 
 **Where the gap is:**
 
-The framework does not specify a **consolidated audit view**. An auditor reviewing a flagged fraud case should not need to correlate logs across 6 different agents manually. They need a single decision trace: "Transaction X was flagged by Agent A (evidence: Y), confirmed by Judge B (criteria: Z), consistent with workflow intent (strategic evaluation: pass), judge was operating within calibration (meta-evaluation: no drift detected)."
-
-**Recommendation:** Define a standard "Decision Trace" output format that collapses the multi-layer evaluation into a single, auditable document per decision. This is an observability integration, not a new control. Map it to the regulatory requirements (EU AI Act Art. 14, DORA Art. 11) that require explainability for automated decisions.
+**Addressed:** [Observability](../controls/observability.md#decision-trace-consolidated-audit-view) now defines a **Decision Trace** format that collapses the multi-layer evaluation chain into a single auditable JSON document per decision. It includes the agent chain, all judge verdicts with reasoning, inter-judge conflict resolution (if any), strategic evaluation, meta-evaluation status, human decision (if escalated), and regulatory mapping. Generated on demand or at trigger points (escalation, PACE transition, inter-judge conflict, regulated decision).
 
 ### 5. Head of Fraud Operations: "Does this slow down detection?"
 
@@ -138,9 +132,47 @@ The latency analysis does not model the **critical path** through the full evalu
 | | Meta-evaluator (daily calibration) |
 | | Observer (continuous, non-blocking) |
 
-**Total synchronous overhead: 15-70ms.** That is well within fraud detection latency requirements. But MASO does not make this clear in the context of time-sensitive use cases.
+**Total synchronous overhead: 15-70ms.** That is well within fraud detection latency requirements.
 
-**Recommendation:** Add a latency architecture diagram for time-critical use cases showing what is synchronous vs. asynchronous in the evaluation stack. The fraud operations team needs to see that "judge hell" adds 15-70ms to the critical path, not 5+ seconds.
+**Addressed:** [Cost and Latency](../../extensions/technical/cost-and-latency.md#critical-path-latency-for-time-sensitive-workflows) now includes a **Critical-Path Latency** section showing which evaluation components are synchronous vs. asynchronous. Fraud detection example: 10-50ms on the critical path (SLM sidecar), everything else async. Trading compliance example at CRITICAL risk: 1.1-4.6s when the cloud judge runs synchronously.
+
+## The Inter-Judge Conflict Problem
+
+Judge proliferation is not just about cost and latency. It creates a coordination problem: when multiple judges evaluate the same action from different perspectives, they will disagree.
+
+### A Concrete Example
+
+A fraud detection workflow flags a $12,000 wire transfer. Three domain judges evaluate it:
+
+| Judge | Verdict | Reasoning |
+|-------|---------|-----------|
+| **Fraud judge** | Flag | Velocity pattern matches known card-testing behaviour. Geo-mismatch between IP and billing address. |
+| **Security judge** | Approve | Transaction originates from an authenticated session. No credential anomalies. MFA completed. |
+| **Compliance judge** | Block | Transaction exceeds the documentation threshold for this customer tier. Missing source-of-funds declaration. |
+
+Which verdict wins? Without a defined protocol, the system either deadlocks, escalates everything to a human (defeating automation), or applies whichever judge responded first (non-deterministic and unauditable).
+
+### How MASO Now Handles This
+
+[Privileged Agent Governance](../controls/privileged-agent-governance.md#inter-judge-conflict-resolution) now includes a full inter-judge conflict resolution protocol:
+
+**1. Precedence order declared at design time.** Every workflow OISpec includes a `judge_precedence` field specifying which evaluation domain takes priority. This is a business and regulatory decision, not a technical one. In financial services, compliance typically outranks fraud, which outranks security.
+
+**2. "Most restrictive wins" as the default.** If any judge says block, the action is blocked. If any judge says flag while others approve, the action is escalated. This is conservative by design: false positives from multi-domain disagreement are preferable to false negatives where a legitimate concern is overridden.
+
+**3. Conflicts are logged with full context.** Every inter-judge disagreement records all verdicts with reasoning, the resolution rule applied, whether it was resolved automatically or escalated to a human, and the human's decision if escalated. This creates the data set needed to tune precedence rules over time.
+
+**4. Conflict rate is a judge health metric.** Persistent disagreement above 15% between two judges indicates misaligned evaluation criteria, not healthy diversity. The framework specifies three root cause patterns (threshold mismatch, scope overlap, ambiguous criteria) with specific remediation for each.
+
+### What This Means for Stakeholders
+
+For the **CISO**: inter-judge conflicts are signal, not noise. Two judges disagreeing on the same transaction surfaces a risk that a single judge would miss entirely. The conflict itself has security value.
+
+For the **CFO**: conflicts that consistently resolve the same way should be automated. If the fraud judge and security judge disagree on velocity-pattern transactions and humans always side with the fraud judge, that resolution becomes a rule. Fewer escalations, lower cost.
+
+For **Compliance**: the Decision Trace format now includes an `inter_judge_conflict` section documenting the disagreement and its resolution. This is the audit trail regulators need for explainability requirements.
+
+For **Fraud Operations**: the "most restrictive wins" default means fraud flags are never overridden by another domain's approval without human intervention. This protects the fraud team's detection capability while giving compliance and security their own voice.
 
 ## How MASO Addresses Judge Hell
 
@@ -173,16 +205,18 @@ A distilled SLM running as a sidecar is not an "agent" in the operational sense.
 
 The strategic evaluator can be a single LLM call at phase boundaries. The meta-evaluator can be a scheduled calibration job. The observer can be a metrics pipeline. These are evaluation *functions*, not necessarily evaluation *agents* requiring their own infrastructure.
 
-## What MASO Should Add
+## Gaps Identified and Addressed
 
-| Gap | Recommendation | Benefits |
-|-----|---------------|----------|
-| No judge ROI assessment | Structured method for calculating net security value per evaluation layer | CISOs can justify (or reject) each layer with data |
-| No compound cost model | Total Cost of Evaluation table covering the full stack | CFOs get one number, not five |
-| No deployment topology guidance | Distinguish evaluation roles from evaluation services | Engineers build fewer services than the diagrams suggest |
-| No consolidated audit view | Standard Decision Trace format per decision | Compliance teams trace decisions without correlating 6 log streams |
-| No critical-path latency model | Sync vs. async architecture for time-sensitive use cases | Fraud ops teams see 15-70ms, not "500ms-5s" |
-| No judge necessity criteria | Decision framework for when a judge layer is needed vs. when guardrails suffice | Prevents unnecessary judges being deployed for low-risk workflows |
+| Gap | Where It Is Now | Benefits |
+|-----|----------------|----------|
+| No judge ROI assessment | [Judge Assurance: When You Need a Judge](../../core/judge-assurance.md#when-you-need-a-judge-and-when-you-do-not) | CISOs can justify (or reject) each layer with data |
+| No compound cost model | [Cost and Latency: Total Cost of Evaluation](../../extensions/technical/cost-and-latency.md#total-cost-of-evaluation-multi-agent-workflows) | CFOs get one number for the full stack, not per-layer fragments |
+| No deployment topology guidance | [Execution Control: Deployment Topology](../controls/execution-control.md#deployment-topology-evaluation-roles-vs-services) | Engineers build 3 services, not 9 |
+| No consolidated audit view | [Observability: Decision Trace](../controls/observability.md#decision-trace-consolidated-audit-view) | Compliance teams trace decisions in one document |
+| No critical-path latency model | [Cost and Latency: Critical-Path Latency](../../extensions/technical/cost-and-latency.md#critical-path-latency-for-time-sensitive-workflows) | Fraud ops teams see 10-50ms, not "500ms-5s" |
+| No judge necessity criteria | [Judge Assurance: Judge Necessity Test](../../core/judge-assurance.md#when-you-need-a-judge-and-when-you-do-not) | Prevents unnecessary judges on low-risk workflows |
+| No inter-judge conflict resolution | [Privileged Agent Governance: Inter-Judge Conflict Resolution](../controls/privileged-agent-governance.md#inter-judge-conflict-resolution) | Defined precedence, most-restrictive-wins default, conflict logging |
+| No judge proliferation recognition | [Privileged Agent Governance: Recognising Judge Proliferation](../controls/privileged-agent-governance.md#recognising-judge-proliferation) | Teams distinguish evaluation roles from services before panicking |
 
 ## The Honest Answer
 

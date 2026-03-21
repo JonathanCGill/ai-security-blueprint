@@ -109,6 +109,54 @@ When the Judge is unavailable, degraded, or untrusted:
 | **Human Oversight** | Humans now serve dual purpose - deciding edge cases AND calibrating the Judge |
 | **Metrics** | Add Judge-specific metrics to your monitoring dashboard |
 
+## When You Need a Judge (and When You Do Not)
+
+Not every workflow needs a Model-as-Judge. A judge adds cost, latency, and a new failure mode. It is only worth deploying if it catches more risk than it creates.
+
+### The Judge Necessity Test
+
+Answer these five questions before deploying a judge:
+
+| Question | If Yes | If No |
+|----------|--------|-------|
+| **1. Do your guardrails miss failure modes you care about?** | A judge adds semantic evaluation that guardrails cannot provide. Proceed. | Guardrails are sufficient. No judge needed for those modes. |
+| **2. Are the consequences of an undetected failure material?** (Financial loss, regulatory violation, reputational harm, patient safety) | The cost of the judge is justified by the cost of the failure. | The failure is tolerable. Sample-based or post-hoc review is enough. |
+| **3. Can a judge realistically catch the failure?** (Is the evaluation task within current model capability?) | Deploy the judge and calibrate it. | A judge that cannot detect the threat is security theatre. Invest in guardrails, infrastructure constraints, or human review instead. |
+| **4. Is the judge's false negative rate lower than the base rate of the threat?** | The judge is net-positive for security. | The judge misses more than it catches. Retrain, replace, or remove it. |
+| **5. Does the workflow have multiple policy domains that could conflict?** (Fraud, security, compliance, data protection) | Multi-domain evaluation with [conflict resolution](../maso/controls/privileged-agent-governance.md#inter-judge-conflict-resolution). | Single-domain evaluation or guardrails only. |
+
+### Judge ROI Assessment
+
+For each judge layer, calculate the net security value:
+
+```
+Net security value = (Threats caught × Cost per undetected threat)
+                   - (Judge operating cost + False positive cost + Judge failure risk)
+```
+
+Where:
+
+- **Threats caught** = Judge true positive rate × threat volume
+- **Cost per undetected threat** = financial, regulatory, or reputational impact of the threat the judge is designed to catch
+- **Judge operating cost** = infrastructure + API costs + calibration + maintenance (see [Cost and Latency](../extensions/technical/cost-and-latency.md))
+- **False positive cost** = false positive rate × cost per false positive (human review time, delayed transactions, user friction)
+- **Judge failure risk** = probability of judge failure × impact of false assurance (operating with a broken judge is worse than operating with no judge, because the team believes it is protected)
+
+If the net security value is negative, the judge is not worth deploying. This does not mean the threat is unimportant. It means a different control (tighter guardrails, infrastructure constraints, human review) is a better investment for that threat.
+
+### The Minimum Viable Evaluation Stack
+
+For most workflows, the minimum viable evaluation stack is:
+
+| Risk Level | Evaluation Stack |
+|-----------|-----------------|
+| **Low** | Guardrails only. Sampled post-hoc review (1-5%). |
+| **Medium** | Guardrails + sampled judge evaluation (25-50%). |
+| **High** | Guardrails + 100% tactical judge (SLM sidecar for latency). Strategic evaluator at phase boundaries. |
+| **Critical** | Full stack: guardrails + synchronous tactical judge + strategic evaluator + multi-domain evaluation + meta-evaluation calibration. |
+
+The full evaluation stack is reserved for critical-risk workflows where the cost of an undetected failure justifies the overhead. Deploying it everywhere is over-engineering. Deploying nothing on a critical workflow is negligence.
+
 ## The Honest Assessment
 
 Even with all these controls, you cannot prove the Judge is correct. You can only measure its accuracy against human judgment, track its consistency over time, and react when it drifts.
