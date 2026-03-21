@@ -144,6 +144,68 @@ Unless the precedence order specifies otherwise, the default resolution is: **th
 
 This is conservative by design. False positives from multi-domain disagreement are preferable to false negatives where a legitimate concern is overridden by another domain's approval.
 
+#### Step 2a: Time-constrained conflicts with competing actions
+
+The "most restrictive wins" default handles simple approve/flag/block disagreements. Real operational conflicts are harder. When fraud is in progress, judges may agree that action is needed but disagree on *which* action:
+
+| Judge | Verdict | Prescribed Action |
+|-------|---------|-------------------|
+| **Fraud judge** | Flag: active fraud detected | Pursue the money. Reverse the transaction. Notify the fraud team. |
+| **Security judge** | Block: security violation in progress | Freeze the account. Revoke session credentials. Isolate the compromised endpoint. |
+| **Compliance judge** | Block: regulatory hold required | Place transaction on hold for the maximum permissible period. Gather documentation. |
+
+These are not contradictory verdicts. They are competing priorities with a shared urgency. The fraud judge wants to chase the money. The security judge wants to contain the breach. The compliance judge wants to preserve the audit trail. All three are legitimate, and delay harms all of them.
+
+**Resolution for time-constrained conflicts:**
+
+**1. Security containment takes precedence over fraud pursuit.** If a security violation is active (compromised credentials, unauthorized access, active breach), the security action executes first. You cannot pursue stolen funds through a compromised channel. Containment is the prerequisite for everything else.
+
+**2. Parallel degraded actions where possible.** Once the security action has executed (account frozen, session revoked), the fraud and compliance actions can proceed in a degraded mode that respects the security boundary:
+
+| After Security Containment | Degraded Fraud Action | Degraded Compliance Action |
+|---------------------------|----------------------|---------------------------|
+| Account frozen | Initiate recovery through the fraud team (not through the compromised agent). Compensate the customer directly if the transaction is confirmed fraudulent. | Regulatory hold is satisfied by the freeze. Documentation gathered from the immutable audit trail. |
+| Session revoked | Chase the destination account through inter-bank channels. | File the required regulatory notification within the statutory window. |
+| Endpoint isolated | Monitor for further exfiltration attempts from the isolated endpoint. | Preserve forensic evidence for regulatory inquiry. |
+
+**3. Time-bounded resolution window.** When judges prescribe competing actions, the orchestrator applies a resolution window:
+
+| Risk Level | Resolution Window | If No Resolution |
+|-----------|------------------|-----------------|
+| **CRITICAL** (active fraud + active breach) | Security action executes immediately. Other actions degraded within 60 seconds. | Human escalation. Transactions held at maximum permissible duration. |
+| **HIGH** (suspected fraud, no active breach) | Transactions held for review. Human arbitration within 15 minutes. | Most restrictive action (hold) persists. Risk of loss accepted if no human responds. |
+| **MEDIUM** | Standard escalation. Human arbitration within 1 hour. | Automated resolution per precedence order. |
+
+**4. Accept residual risk explicitly.** If the resolution window expires without human arbitration, the system must either:
+
+- Apply the most restrictive action and accept the operational impact (frozen accounts, delayed transactions, customer friction), or
+- Release the hold and accept the risk of loss, with the decision logged and attributed to the workflow owner.
+
+There is no silent default. The system either acts conservatively or accepts risk explicitly. It does not quietly let a hold expire.
+
+The workflow OISpec must declare which of these two defaults applies for each risk level. This is a business decision: "We would rather freeze an innocent customer's account for 24 hours than lose $50,000 to fraud" vs. "We would rather accept a $500 loss than freeze a customer's account for more than 2 hours." Both are legitimate. Neither should be left to the orchestrator to decide at runtime.
+
+```json
+{
+  "conflict_resolution": {
+    "time_constrained": {
+      "security_breach_active": {
+        "primary_action": "security_containment",
+        "parallel_degraded": true,
+        "resolution_window_seconds": 60,
+        "expiry_default": "most_restrictive"
+      },
+      "fraud_suspected_no_breach": {
+        "primary_action": "hold_transaction",
+        "human_arbitration_window_minutes": 15,
+        "expiry_default": "accept_risk_with_logging",
+        "max_hold_duration": "regulatory_maximum"
+      }
+    }
+  }
+}
+```
+
 #### Step 3: Log the conflict, not just the resolution
 
 Every inter-judge conflict is logged with:
@@ -232,6 +294,8 @@ Not every workflow needs every evaluation layer. Use this decision framework:
 | PA-T2.4 | Inter-judge conflict: most restrictive wins | Two domain judges evaluate the same action: one approves, one flags. Verify the action is escalated (most restrictive wins). |
 | PA-T2.4a | Inter-judge conflict: precedence order | Configure a precedence order where compliance outranks fraud. Trigger a conflict where the fraud judge blocks but the compliance judge approves. Verify the precedence order resolves correctly (compliance verdict takes priority per configuration). |
 | PA-T2.4b | Inter-judge conflict logging | Trigger a conflict between two judges. Verify the conflict log includes both verdicts with reasoning, the resolution rule applied, and the final outcome. |
+| PA-T2.4c | Time-constrained conflict: security wins | Simulate active fraud AND active security breach. Verify security containment executes first, then fraud and compliance actions degrade to operate within the security boundary. |
+| PA-T2.4d | Time-constrained conflict: resolution window expiry | Trigger a HIGH-risk conflict requiring human arbitration. Let the arbitration window expire without human response. Verify the system applies the configured expiry default (most restrictive or accept risk) and logs the decision with attribution. |
 | PA-T2.5 | Observer false positive | Review observer escalation history. False positive rate is below threshold (< 5%). |
 | PA-T2.5 | Kill switch dual auth | Trigger a kill switch from the observer. Verify secondary confirmation is required before system shutdown. |
 | PA-T2.6 | Kill switch fail-safe | Trigger a kill switch when the secondary confirmation mechanism is unavailable. Kill switch fires after the defined window. |

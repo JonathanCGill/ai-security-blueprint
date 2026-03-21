@@ -160,9 +160,16 @@ Which verdict wins? Without a defined protocol, the system either deadlocks, esc
 
 **2. "Most restrictive wins" as the default.** If any judge says block, the action is blocked. If any judge says flag while others approve, the action is escalated. This is conservative by design: false positives from multi-domain disagreement are preferable to false negatives where a legitimate concern is overridden.
 
-**3. Conflicts are logged with full context.** Every inter-judge disagreement records all verdicts with reasoning, the resolution rule applied, whether it was resolved automatically or escalated to a human, and the human's decision if escalated. This creates the data set needed to tune precedence rules over time.
+**3. Time-constrained conflicts with competing actions.** The harder problem is not approve vs. block, it is when judges agree that action is needed but prescribe *different* actions. Active fraud with an active security breach: the fraud judge wants to chase the money, the security judge wants to contain the breach, the compliance judge wants to hold the transaction. The protocol handles this:
 
-**4. Conflict rate is a judge health metric.** Persistent disagreement above 15% between two judges indicates misaligned evaluation criteria, not healthy diversity. The framework specifies three root cause patterns (threshold mismatch, scope overlap, ambiguous criteria) with specific remediation for each.
+- **Security containment executes first.** You cannot pursue stolen funds through a compromised channel. Containment is the prerequisite.
+- **Parallel degraded actions follow.** Once contained, fraud and compliance actions proceed in a degraded mode within the security boundary: compensate the customer directly for confirmed loss, chase the destination through inter-bank channels, file regulatory notifications.
+- **Time-bounded resolution windows.** CRITICAL conflicts resolve in 60 seconds (security acts, others degrade). HIGH conflicts hold transactions for up to 15 minutes pending human arbitration.
+- **Explicit residual risk acceptance.** If the resolution window expires with no human, the workflow OISpec declares the default: either apply the most restrictive action (frozen accounts, customer friction) or accept the risk of loss with full logging and attribution. There is no silent expiry.
+
+**4. Conflicts are logged with full context.** Every inter-judge disagreement records all verdicts with reasoning, the resolution rule applied, whether it was resolved automatically or escalated to a human, and the human's decision if escalated. This creates the data set needed to tune precedence rules over time.
+
+**5. Conflict rate is a judge health metric.** Persistent disagreement above 15% between two judges indicates misaligned evaluation criteria, not healthy diversity. The framework specifies three root cause patterns (threshold mismatch, scope overlap, ambiguous criteria) with specific remediation for each.
 
 ### What This Means for Stakeholders
 
