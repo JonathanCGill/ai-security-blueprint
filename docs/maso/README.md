@@ -213,7 +213,7 @@ Every control in MASO is grounded in observed or demonstrated attack patterns:
 
 | Document | Purpose |
 |----------|---------|
-| [Red Team Playbook](red-team/red-team-playbook.md) | 13 structured test scenarios across three tiers - from inter-agent injection propagation to PACE transition under attack. Includes test results template and reporting metrics |
+| [Red Team Playbook](red-team/red-team-playbook.md) | 16 structured test scenarios: 13 individual control tests across three tiers, plus 3 compound attack chains (injection-to-exfiltration, privilege escalation via Judge manipulation, slow drift to rogue behavior). Includes test results template and reporting metrics |
 
 ## Integration & Examples
 
@@ -240,6 +240,44 @@ MASO inherits the parent framework's regulatory mappings and extends them to mul
 | **MITRE ATLAS** | Agent-focused techniques (Oct 2025) | Threat intelligence aligned with ATLAS agent-specific attack techniques. |
 | **DORA** | Art. 11 | Digital operational resilience for AI agents in financial services. PACE provides the resilience model. |
 | **APRA CPS 234** | Information Security | Australian prudential requirements for AI agent deployments in financial services. |
+
+## Known Architectural Trade-offs
+
+MASO is honest about what it cannot guarantee. These are structural tensions in the framework, not bugs to be fixed. Understanding them is essential before deployment.
+
+### The Judge is the high-value target
+
+MASO concentrates trust in the Model-as-Judge layer. At Tier 2, where humans only review escalated actions, a compromised or bypassed Judge is effectively invisible. The [Red Team Playbook](red-team/red-team-playbook.md) scenario RT-06 confirms that Judges can be fooled by adversarial suffixes, context overloading, and distributed harm spread across individually-acceptable outputs.
+
+**Mitigations exist but none eliminate the risk.** Model independence (different provider for the Judge), structured evaluation criteria, rotating evaluation strategies, and multi-model cross-validation at Tier 3 all reduce the attack surface. A [distilled SLM](../extensions/technical/distill-judge-slm.md) sidecar adds a second evaluation perspective at negligible latency. None of these make the Judge infallible. The full analysis is in [When the Judge Can Be Fooled](../core/when-the-judge-can-be-fooled.md) and [Judge Assurance](../core/judge-assurance.md).
+
+**The design rationale:** a Judge that catches 90% of what guardrails miss, combined with human oversight that catches what the Judge misses, is strictly better than either alone. The alternative to an imperfect Judge is no Judge, which is worse.
+
+### Slow drift beats fast attack
+
+MASO's anomaly detection uses behavioural baselines. An adversary who shifts agent behaviour gradually, staying within scoring thresholds at each step, can accumulate significant drift without triggering alerts. The framework's long-window behavioural analysis (Tier 3) and trend-based alerting (OB-2.4) are the counters, but they require careful calibration of what "long window" means for your workload. Organisations that deploy anomaly scoring without tuning it to their operational patterns will have a false sense of security.
+
+### Compound attacks exploit gaps between controls
+
+The individual red team scenarios (RT-01 through RT-13) test controls in isolation. Real attackers chain techniques: injection to gain a foothold, delegation exploitation to escalate privilege, then data exfiltration through the elevated access. The [Red Team Playbook](red-team/red-team-playbook.md) includes compound attack scenarios (RT-14 through RT-16) that test these chains. If your individual control tests pass but compound tests fail, the gap is in control integration, not in individual control strength.
+
+### Tier 3 is unproven at scale
+
+The [100-agent stress test](stress-test/100-agent-stress-test-overview.md) identifies eight breakpoints that emerge above roughly 20 agents: epistemic cascade depth, cross-cluster PACE coordination, observability volume, and compound attack surface. These are acknowledged gaps, not solved problems. Organisations scaling beyond pilot deployments will need to extend the framework. This is by design: MASO provides the foundation and is transparent about where the edges are, rather than pretending completeness.
+
+## Security Overhead at a Glance
+
+Security controls are not free. The full analysis with worked examples is in [Cost & Latency](../extensions/technical/cost-and-latency.md). Here are the headline numbers.
+
+| Approach | Evaluation cost at 1M actions/month | Critical-path latency added |
+|----------|--------------------------------------|----------------------------|
+| Cloud Judge on every action | $10K-50K per agent | 500ms-5s (if synchronous) |
+| SLM sidecar + 1% cloud sampling | $350-700 (mostly fixed infrastructure) | 10-50ms |
+| Rule-based guardrails only | Negligible | 5-20ms |
+
+**Multi-agent multiplier:** In a 3-agent workflow, evaluation volume triples. A cloud-Judge-only approach at $30K-150K/month becomes $3K-4K/month with an SLM sidecar. The break-even for SLM distillation is roughly 50,000 evaluations per month.
+
+**Rule of thumb:** Security overhead runs 15-40% of generator cost at Tier 2, and 40-100% at Tier 3 using cloud Judges. SLM distillation brings Tier 3 costs into the Tier 2 range. Budget for the full evaluation stack (tactical + domain + strategic + meta + observer), not just one Judge layer.
 
 ## Operational Concerns
 
