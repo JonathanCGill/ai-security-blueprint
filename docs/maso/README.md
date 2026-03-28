@@ -6,7 +6,9 @@ description: "The Multi-Agent Security Operations (MASO) framework: risk-proport
 
 **Risk-proportionate controls for securing multi-model agent orchestration.**
 
-MASO extends the parent framework's principles into multi-agent territory. The same philosophy applies: controls should be proportionate to risk, applied at the right time for the right purposes. AI product owners can quickly identify the controls relevant to their deployment and consciously deselect those that do not apply. Every organisation has its own way of working, and the framework is designed to fit that context rather than override it.
+Agentic AI systems are powerful and fragile at the same time. They [reason in natural language, act through tools, and collaborate through delegation](../agentic-agent-anatomy.md). Every one of those capabilities is also an attack surface. MASO exists because agents cannot be trusted to police themselves: something outside the agent must [declare what it should do, constrain what it can do, and evaluate whether it did the right thing](../constraining-agents.md) before irreversible actions are committed.
+
+That evaluation must be proportionate to risk. An agent reading internal documents does not need the same scrutiny as one executing financial transactions. MASO provides the controls, tiers, and resilience model to scale security to consequence. AI product owners can quickly identify the controls relevant to their deployment and consciously deselect those that do not apply. Every organisation has its own way of working, and the framework is designed to fit that context rather than override it.
 
 ## MASO Is One Layer, Not the Whole Stack
 
@@ -27,6 +29,45 @@ MASO is designed for **AI agent systems your organisation operates**, whether yo
 The seven control domains, three implementation tiers, and PACE resilience model describe **what needs to be true** for multi-agent AI to be safe. The technical implementation varies by platform and approach. The security model does not.
 
 For AI you consume as a service (copilots, productivity tools, SaaS with embedded AI), MASO's control domains are not directly applicable. Those systems are covered by vendor-side controls and your organisation's data governance. See [Maturity Levels](../strategy/maturity-levels.md) for how the framework addresses consumed AI differently from AI you operate.
+
+## Why Agents Need External Evaluation
+
+Agents are fragile. They reason in natural language, which means they can be misdirected by crafted inputs, drift from their objectives over long task horizons, hallucinate facts with high confidence, and compound each other's errors when they collaborate. These are not bugs. They are properties of how language models work. You cannot patch them out. For a full breakdown of the components and connections that produce this fragility, see [Anatomy of an Agentic Agent](../agentic-agent-anatomy.md).
+
+This fragility means agents cannot be trusted to evaluate their own work. A model that has been manipulated by prompt injection will not detect the manipulation in its own reasoning. An agent that has hallucinated a fact will cite it with the same confidence as a grounded one. Something outside the agent's own ecosystem must assess its actions against what it was supposed to do. That is the role of the judge: an independent model, in a separate trust zone, that observes and rules without participating in the agent's reasoning.
+
+### Evaluation Must Be Proportionate to Risk
+
+Not every agent action needs the same scrutiny. An agent reading a public knowledge base does not warrant the same evaluation rigour as one approving a financial transaction or modifying access controls. Evaluation that is disproportionate to risk wastes money, adds latency, and creates alert fatigue that degrades human oversight.
+
+MASO scales evaluation to consequence:
+
+| Action Risk | Evaluation Approach | Example |
+|------------|-------------------|---------|
+| **Low** | Guardrails only, async judge sampling | Reading documents, logging notes, internal lookups |
+| **Medium** | Pre-action judge evaluation | Sending emails, updating records, calling external APIs |
+| **High** | Pre-action judge plus human approval | Issuing payments, modifying permissions, bulk operations |
+| **Critical** | Pre-action judge, dual human approval, dry-run | Deploying code, regulatory submissions, irreversible decisions |
+
+An agent processing low-risk read operations can run with guardrails and periodic sampling. An agent making irreversible financial decisions needs pre-action judge evaluation, human approval, and blast radius caps. The [implementation tiers](implementation/tier-1-supervised.md) formalise this progression, and the action classification rules in [Execution Control](controls/execution-control.md) define how each action is routed.
+
+### Declared Intent Is the Judge's Statute Book
+
+A judge is only as good as the law it applies. A human judge ruling on a vague statute produces inconsistent, unpredictable verdicts. The same is true for a judge model. If the agent's purpose is described as "handle customer requests" or "be helpful," the judge has nothing precise to evaluate against. It falls back on generic safety criteria that catch obvious failures but miss subtle deviations from purpose.
+
+The clearer the declaration, the more sound the ruling. When intent is specific ("process refund requests for orders under 90 days, maximum $500, scoped to the returns database"), the judge can verify each element. When outcomes are measurable ("refund issued within policy limits, customer notified, audit trail complete"), the judge can assess success or failure, not just safety. When constraints are explicit ("no access to payment instruments, no external API calls, maximum 50 records per query"), the judge can flag violations precisely.
+
+This is why the [Objective Intent](controls/objective-intent.md) control domain exists. Every agent, judge, and workflow in a MASO deployment operates against a declared Objective Intent Specification (OISpec): a versioned, machine-readable contract defining purpose, outcomes, constraints, and evaluation criteria. These are the reference standard that the entire evaluation architecture depends on.
+
+Three things follow:
+
+**Tactical evaluation** checks individual agents. The judge evaluates each action against the agent's OISpec: does this action match the declared intent, will it satisfy the success criteria, are constraints respected?
+
+**Strategic evaluation** checks combined outcomes. Individual agents may each pass their tactical evaluation while the aggregate workflow fails. A research agent retrieves accurate data, a drafting agent produces well-structured output, but the report contradicts the research because context was lost in the handoff. A strategic evaluator assesses the workflow-level OISpec to catch what per-agent evaluation cannot.
+
+**Asynchronous evaluation** covers what cannot wait. When time constraints or low risk make pre-action evaluation impractical, the judge evaluates after the fact and reports deviations to a human. The action proceeds, but deviations trigger alerts and escalations. The human remains accountable even when the judge cannot rule in advance.
+
+The quality of this entire system depends on the quality of the declarations it evaluates against. Invest in clear, specific, measurable OISpecs and the judge can make sound rulings. Deploy vague specifications and the judge becomes an expensive safety net that catches only the most obvious failures. The foundation is not the model. The foundation is the [declared intent](../constraining-agents.md).
 
 ## Architecture
 
@@ -60,9 +101,25 @@ The **Flight Recorder** captures every agent action, judge verdict, tool invocat
 
 Seven coloured lines represent seven control domains. Stations are key controls. Zones are implementation tiers. Interchanges mark where domains share control points (Judge Gate, PACE Bridge, Agent Registry). River PACE flows through the centre, mapping resilience phases to tier progression.
 
+## How the Pieces Fit Together
+
+MASO has many moving parts. Before diving into control domains, OWASP mappings, and implementation tiers, it helps to see how they connect.
+
+The logic runs in a chain. **Agents are fragile** because they reason in natural language, which makes them vulnerable to manipulation, hallucination, and drift ([Anatomy of an Agentic Agent](../agentic-agent-anatomy.md)). That fragility means they need **external evaluation**: something outside the agent that checks its work against declared expectations ([Why Agents Need External Evaluation](#why-agents-need-external-evaluation)). For that evaluation to work, you need **clear declarations** of intent, outcomes, and constraints ([Constraining Agents](../constraining-agents.md), [Objective Intent](controls/objective-intent.md)). Those declarations give the judge a reference standard, and the quality of the declarations directly determines the quality of the judge's rulings.
+
+From there, MASO provides the operational framework:
+
+- **Seven control domains** address specific risk categories: protecting the agent's goals, identity, data, execution, observability, supply chain, and privileged agents. Each domain contains controls that enforce the declarations you made and give the judge the signals it needs.
+- **Three implementation tiers** scale controls to autonomy level. Tier 1 (supervised) requires human approval for every write. Tier 2 (managed) uses judge evaluation to auto-approve low-risk actions and escalate high-risk ones. Tier 3 (autonomous) operates with minimal human intervention for pre-approved task categories. You choose the tier that matches your risk tolerance.
+- **PACE resilience** defines what happens when controls fail. Every layer has a defined failure mode and a predetermined safe state to transition to, from normal operations through to full shutdown.
+- **OWASP coverage** maps every control to specific, documented threats from both the LLM Top 10 and the Agentic Top 10, so you can trace from a known risk to the controls that address it.
+- **Threat intelligence and red teaming** ground the controls in real incidents and provide structured testing to verify they work.
+
+None of these pieces stand alone. The control domains implement the declarations. The judge evaluates against them. The tiers scale the evaluation. PACE handles failure. The threat intelligence validates the whole stack. If you skip the declarations, the judge has nothing to evaluate against. If you skip the judge, the declarations are unenforceable. If you skip PACE, you have no plan for when controls fail. The framework is a system, not a menu.
+
 ## Control Domains
 
-The framework organises controls into eight domains. The first five map to specific OWASP risks. The sixth - Prompt, Goal & Epistemic Integrity - addresses both the three OWASP risks that require cross-cutting controls and the nine epistemic risks identified in the [Emergent Risk Register](controls/risk-register.md) that have no OWASP equivalent. The seventh - Privileged Agent Governance - addresses the unique risks of orchestrators, planners, and other agents with elevated authority.
+The framework organises controls into eight domains. The first five map to specific OWASP risks. The sixth, Prompt, Goal & Epistemic Integrity, addresses both the three OWASP risks that require cross-cutting controls and the nine epistemic risks identified in the [Emergent Risk Register](controls/risk-register.md) that have no OWASP equivalent. The seventh, Privileged Agent Governance, addresses the unique risks of orchestrators, planners, and other agents with elevated authority.
 
 ### 0. [Prompt, Goal & Epistemic Integrity](controls/prompt-goal-and-epistemic-integrity.md)
 
