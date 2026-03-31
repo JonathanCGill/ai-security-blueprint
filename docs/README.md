@@ -19,6 +19,10 @@ A risk-proportionate framework of control patterns that you select, adapt, or co
 
 </div>
 
+## The AIRS Philosophy
+
+![AIRS Runtime Control Plane](images/airs-runtime-control-plane.svg){ .arch-diagram }
+
 <div class="pull-quote" markdown>
 
 > **"AI moves faster than any human. Runtime controls keep you in charge."**
