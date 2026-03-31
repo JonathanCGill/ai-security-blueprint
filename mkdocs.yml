@@ -205,6 +205,7 @@ nav:
       - The Sandbox Escape Problem: insights/the-sandbox-escape-problem.md
     - Agentic AI:
       - When Agents Talk to Agents: insights/when-agents-talk-to-agents.md
+      - Agentic Drift: insights/agentic-drift.md
       - The Orchestrator Problem: insights/the-orchestrator-problem.md
       - The Long-Horizon Problem: insights/the-long-horizon-problem.md
       - Seeing Through the Fog: insights/seeing-through-the-fog.md
