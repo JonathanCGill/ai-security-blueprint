@@ -13,9 +13,19 @@ comments: false
 
 <div class="home-subtitle" markdown>
 
-**Reduce harm caused by your <span style="white-space: nowrap;">organisation's</span> use of AI.**
+**Your AI passed every test. It still hallucinated in production.**
 
-A risk-proportionate framework of control patterns that you select, adapt, or consciously deselect based on your own risk appetite and the way your organisation works.
+Runtime is where AI risk lives. AIRS gives you the controls to catch it.
+
+</div>
+
+<div class="home-tldr" markdown>
+
+**You deployed a model. It works. Now what?**
+
+Most organisations have no controls between the model and the damage it can do. AIRS fixes that with four layers of runtime defence: guardrails that enforce hard limits, a judge model that catches what guardrails miss, human oversight for high-stakes calls, and circuit breakers that shut things down when controls fail.
+
+Pick the layers you need. Skip the ones you do not. Match controls to your actual risk, not a compliance checklist.
 
 </div>
 

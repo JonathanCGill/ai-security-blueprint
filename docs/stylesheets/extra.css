@@ -94,10 +94,40 @@ img[src$=".svg"] {
 }
 
 .home-subtitle p {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 500;
+  color: var(--md-accent-fg-color);
+}
+
+/* TL;DR hook block */
+.home-tldr {
+  max-width: 38rem;
+  margin: 0 auto 2.5rem;
+  padding: 1.5rem 2rem;
+  border-left: 4px solid var(--md-accent-fg-color);
+  background: var(--md-accent-fg-color--transparent);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.home-tldr strong:first-child {
+  display: block;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--md-default-fg-color);
+}
+
+.home-tldr p {
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--md-default-fg-color--light);
+  margin: 0 0 0.75rem;
+}
+
+.home-tldr p:last-child {
+  margin-bottom: 0;
+  font-weight: 500;
+  color: var(--md-default-fg-color);
 }
 
 /* Pull quote */
