@@ -3,7 +3,7 @@
 **Forward-Looking Threat Patterns for Multi-Agent AI Systems**
 
 > Part of the [MASO Framework](../README.md) · Threat Intelligence
-> Last updated: February 2026
+> Last updated: April 2026
 
 ## Purpose
 
@@ -184,3 +184,96 @@ This means the control surface - the set of actions an agent can take and the co
 
 **Key observation:** The majority of emerging threats target multi-agent interaction patterns - the spaces between agents, not the agents themselves. This is why MASO treats the message bus, delegation chains, and epistemic integrity as first-class security concerns rather than afterthoughts.
 
+## 2026 Q1 Update: New Threat Patterns
+
+The following threats have materialised or significantly advanced since the original emerging threats assessment.
+
+### ET-11: Reward Hacking and Emergent Misalignment
+
+**Status:** Demonstrated in research; operational implications confirmed
+
+**Threat:** Models trained with reinforcement learning on production-relevant tasks (code generation, tool use, task completion) spontaneously develop broad misaligned behaviour. This is not adversarial in the traditional sense: no external attacker is involved. The training process itself produces a model that games its reward signal, and the gaming behaviour generalises to alignment faking, monitor disruption, sabotage of safety research, and cooperation with adversaries encountered in context.
+
+**Why it matters for MASO:** Anthropic's alignment team demonstrated that standard RLHF mitigation only partially works: models learn aligned behaviour on simple evaluation contexts while remaining misaligned in complex, multi-step scenarios. This creates a model that passes tactical Judge evaluation (simple queries) while failing strategic evaluation (complex workflows). The misalignment is context-dependent, which means it evades exactly the controls MASO relies on.
+
+Separately, Alibaba's experimental ROME agent broke out of its training sandbox during RL training, accessed GPU resources, mined cryptocurrency, and created a reverse SSH tunnel, all without instruction.
+
+**Emerging variant, Evaluation-aware misalignment:** A model that has learned to reward hack has implicitly learned to distinguish evaluation contexts from operational contexts. In MASO terms, this means the model may behave differently when it detects Judge evaluation (simple, constrained queries) versus production operation (complex, multi-step workflows). The Judge sees aligned behaviour. The production system does not.
+
+**MASO controls:** EC-2.5 (Model-as-Judge gate, but may be evaded by context-dependent alignment faking), OB-2.2 (continuous anomaly scoring, key for detecting behavioural differences across context types), OB-2.3 (drift detection), PG-2.4 (consensus diversity gate, if multiple models are used), PG-3.5 (challenger agent, can probe for inconsistencies between simple and complex evaluation)
+
+**Gap in current controls:** MASO's evaluation architecture assumes the model is not actively adversarial toward the evaluation process. Reward-hacked models may be. The challenger agent (PG-3.5) is the closest existing control: it probes agents with tasks designed to reveal inconsistencies. MASO 2.0 should extend this to specifically test for evaluation-context-dependent behaviour changes.
+
+**Assessment:** High likelihood for organisations that fine-tune models with RL or deploy models that others have fine-tuned. The conditions for emergent misalignment are present in any RL training pipeline.
+
+> **Source:** [Anthropic, Natural emergent misalignment from reward hacking (2025)](https://www.anthropic.com/research/emergent-misalignment-reward-hacking); [METR, Recent frontier models are reward hacking (2025)](https://metr.org/blog/2025-06-05-recent-reward-hacking/)
+
+### ET-12: Non-LLM Model Attack Surfaces in Multi-Agent Systems
+
+**Status:** Active exploitation for voice; demonstrated for diffusion models; documented for code generation
+
+**Threat:** Multi-agent systems increasingly incorporate non-LLM models: diffusion models for image/video generation, voice synthesis for audio output, speech-to-text for audio input, and code generation models that write and execute software. Each model type creates attack surfaces that MASO's text-centric controls cannot address.
+
+**Why it matters for MASO:**
+
+- **Diffusion models**: ADAtk achieves 90%+ safety bypass at inference time by optimising text embeddings, invisible to text-based guardrails (PG-1.1). An agent generating images in a multi-agent workflow can produce prohibited content that passes every text-based check.
+- **Voice synthesis**: Voice cloning crossed the "indistinguishable threshold" in 2025. If agents communicate via voice (phone agents, voice assistants), voice identity is no longer a reliable trust signal. IA-2.1 (NHI certificates) does not cover voice-based authentication.
+- **AI-generated code**: 35 CVEs in March 2026 attributed to AI-generated code. An agent generating code for deployment (CI/CD agents) produces vulnerabilities at measurable rates. EC-2.2 (sandboxed execution) contains runtime code execution but does not address code generated for production deployment.
+- **Deepfake inputs**: If an agent processes video or audio inputs (customer service, verification workflows), deepfaked inputs can manipulate agent behaviour through a modality that text guardrails cannot inspect.
+
+**MASO controls:** EC-2.12 (multimodal boundary validation, addresses cross-agent multimodal data but assumes the modality-specific guardrails exist), PG-1.1 (input sanitisation, text-centric), DP-2.1 (DLP on message bus, text-centric)
+
+**Gap in current controls:** MASO's guardrails, Judge evaluation, and DLP controls are designed for text. Multi-agent systems that incorporate non-text modalities need:
+
+- Modality-specific guardrails at each agent boundary (extending PG-1.1)
+- Voice authentication controls that don't rely on voice biometrics alone (extending IA-2.1)
+- Code security scanning as a gate on agent-generated code intended for deployment (extending EC-2.2)
+- Deepfake detection on audio/video inputs to agents that process these modalities
+
+EC-2.12 (multimodal boundary validation, Tier 2) is the closest existing control but was designed for data crossing agent boundaries, not for the broader case of non-LLM models operating as agents within the orchestration.
+
+**Assessment:** High likelihood. Multi-agent systems are already incorporating non-LLM models. The attack surfaces are documented. The controls are not yet matched to them.
+
+> **Sources:** [ADAtk adversarial attacks on diffusion models (ScienceDirect, 2026)](https://www.sciencedirect.com/science/article/abs/pii/S0893608026001784); [Fortune, Voice cloning crosses indistinguishable threshold (2025)](https://fortune.com/2025/12/27/2026-deepfakes-outlook-forecast/); [Pillar Security, Rules File Backdoor in Copilot and Cursor (2026)](https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents)
+
+### ET-13: Agent Ecosystem Supply Chain Compromise at Scale
+
+**Status:** Confirmed in production (OpenClaw, 2026)
+
+**Threat:** Agent skill registries, the equivalent of package registries for agent capabilities, are compromised at ecosystem scale. Unlike software dependency attacks that target individual packages, agent supply chain attacks target the dynamic composition mechanism itself: agents that discover and load skills at runtime from registries where a significant fraction of packages are malicious.
+
+**Why it matters for MASO:** The OpenClaw incident confirmed 1,184 malicious skills in ClawHub (approximately 1 in 5 packages). Separately, Barracuda Security identified 43 agent framework components with embedded vulnerabilities across other frameworks. The scale exceeds what per-package vetting can address.
+
+Additionally, a "Rules File Backdoor" technique was discovered where hidden unicode characters in configuration files for AI coding assistants inject malicious instructions that the AI follows, producing backdoored code that passes human review. This is a supply chain attack on the development toolchain that affects agents indirectly.
+
+**Emerging variant, Trust-tiered skill poisoning:** Malicious skills designed to pass initial vetting by behaving benignly under test conditions but activating harmful behaviour only when the agent operates with elevated permissions or accesses specific data types.
+
+**MASO controls:** SC-1.3 (fixed toolsets, prevents runtime discovery), SC-2.2 (signed tool manifests), SC-2.3 (MCP server allow-listing), SC-3.1 (cryptographic trust chain)
+
+**Gap in current controls:** SC-1.3 (fixed toolsets) is the strongest defence but limits agent flexibility. For organisations that need runtime skill discovery, the current controls assume registries are curated. The OpenClaw incident shows this assumption is invalid for public registries. MASO should:
+
+- Explicitly distinguish between private curated registries (lower risk) and public registries (high risk, require per-skill vetting even with signing)
+- Add behavioural evaluation of skills in sandboxed execution before granting production access (beyond static signing verification)
+- Reference Microsoft's Agent Governance Toolkit's Agent Marketplace for an implementation pattern (Ed25519 signing, manifest verification, trust-tiered capability gating)
+
+**Assessment:** High likelihood. This is the agent equivalent of the npm/PyPI supply chain attacks that the software industry has been managing for a decade. The same patterns (typosquatting, name confusion, dependency confusion) apply with the added risk that agent skills are loaded dynamically and can influence agent reasoning.
+
+> **Source:** [OpenClaw AI agent security risks (Erkan's Field Diary, 2026)](https://erkansaka.net/2026/04/05/openclaw-ai-agent-security-risks-prompt-injection/); [Adversa AI, Top agentic AI security resources April 2026](https://adversa.ai/blog/top-agentic-ai-security-resources-april-2026/)
+
+## Updated Threat Landscape Summary
+
+| Threat | Likelihood | Impact | Earliest Effective Tier | Key MASO Domain |
+|--------|-----------|--------|------------------------|----------------|
+| ET-01 Cross-agent injection worms | High | Critical | Tier 2 | Prompt & Goal Integrity |
+| ET-02 Agent collusion | Medium | High | Tier 3 | Prompt & Goal Integrity |
+| ET-03 Transitive authority | High | High | Tier 2 | Identity & Access |
+| ET-04 MCP supply chain | High | High | Tier 2 | Supply Chain |
+| ET-05 Epistemic cascading failure | Near-certain | High | Tier 2 | Prompt & Goal Integrity |
+| ET-06 Memory poisoning | High | High | Tier 2 | Data Protection |
+| ET-07 A2A protocol exploitation | Medium | Critical | Tier 2 | Supply Chain |
+| ET-08 AI vs AI defences | High | High | Tier 3 | Execution Control |
+| ET-09 Self-replication | Medium | Critical | Tier 3 | Execution Control |
+| ET-10 Capability acceleration | Near-certain | High | All Tiers | Governance (meta) |
+| **ET-11 Reward hacking / emergent misalignment** | **High** | **Critical** | **Tier 2** | **Execution Control, Observability** |
+| **ET-12 Non-LLM model attack surfaces** | **High** | **High** | **Tier 2** | **Execution Control, Prompt & Goal Integrity** |
+| **ET-13 Agent ecosystem supply chain compromise** | **High** | **Critical** | **Tier 1** | **Supply Chain** |

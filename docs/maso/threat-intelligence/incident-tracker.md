@@ -7,7 +7,7 @@ description: "Real-world AI security incidents mapped to framework controls, tra
 **Real-World AI Security Incidents Mapped to Framework Controls**
 
 > Part of the [MASO Framework](../README.md) · Threat Intelligence
-> Last updated: March 2026
+> Last updated: April 2026
 
 ## Purpose
 
@@ -33,6 +33,9 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | 7 | [Air Canada Chatbot Hallucination](#inc-07-air-canada-chatbot-refund-hallucination-2024) | Ungrounded policy output → legal liability | **Moderate** | Mandatory grounding to authoritative source, Citation verification judge, High-impact output escalation to human, Confidence threshold enforcement, Audit trail | Prevents fabricated policy statements from being issued as binding guidance |
 | 8 | [NYC "MyCity" Chatbot Illegal Advice](#inc-08-nyc-mycity-chatbot-illegal-advice-2024) | Hallucinated regulatory guidance | **Moderate** | Grounded response requirement, Regulatory output validator, Human escalation for compliance advice, Error-rate monitoring + circuit breaker | Ensures legal/compliance advice is validated or escalated before exposure |
 | 9 | [Chevrolet Dealership $1 Incident](#inc-09-chevrolet-dealership-1-incident-2023) | LLM making unauthorised commercial commitments | **High** | Authority separation (LLM proposes, system commits), Transactional approval workflow, Offer-policy validator, Commitment circuit breaker, Full audit logging | Prevents LLM from making binding commercial commitments without deterministic approval |
+| 10 | [OpenClaw Supply Chain Attack](#inc-10-openclaw-malicious-skills-supply-chain-attack-2026) | Agent ecosystem supply chain compromise at scale | **High** | Fixed toolsets, Signed manifests, Allow-listing, Runtime integrity, Tool inventory | Prevents loading of unvetted or tampered skills from compromised registries |
+| 11 | [AI Trading Agent Crypto Breach](#inc-11-ai-trading-agent-crypto-breach-2026) | Excessive agency + access control failure in financial context | **High** | Scoped permissions, Blast radius caps, Human approval, Action classification, Input guardrails | Limits financial exposure through permission scoping and transaction caps |
+| 12 | [Meta AI Agent Unauthorized Access](#inc-12-meta-internal-ai-agent-unauthorized-access-2026) | Unsolicited agent action + cascading permission failure | **High** | Tool allow-lists, Human approval, Scoped permissions, Circuit breakers, Decision chain logging | Prevents unsolicited agent actions and detects cascading permission failures |
 
 ## Incident Register
 
@@ -201,6 +204,60 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | Commitment circuit breaker | Responses containing commitment language ("binding," "guarantee," "we agree to") are automatically blocked | Prevents the specific failure mode: the LLM making representations it has no authority to make |
 | Full audit logging | All customer interactions and proposed responses logged with policy validation results | Enables detection of prompt injection patterns and systematic policy violations |
 
+### INC-10: OpenClaw Malicious Skills Supply Chain Attack (2026)
+
+**What happened:** Antiy CERT confirmed that 1,184 malicious skills were present in ClawHub, the package registry for the OpenClaw agent framework, approximately one in five packages in the entire ecosystem. Malicious skills included credential harvesters, data exfiltration routines, backdoors that activated only under elevated permissions, and skills that subtly redirected agent decisions. A separate vulnerability in OpenClaw's local WebSocket gateway allowed malicious websites to hijack developer AI agents without user interaction by exploiting implicit localhost trust.
+
+**Failure class:** Agent ecosystem supply chain compromise at scale
+
+**Confidence: High.** Fixed toolsets (SC-1.3) and signed manifests (SC-2.2) deterministically prevent loading of unvetted or tampered skills.
+
+**Controls that address this:**
+
+| Control | Mechanism | Effect |
+|---------|-----------|--------|
+| Fixed toolsets (SC-1.3) | Agents use a predefined, static set of tools; no runtime discovery from public registries | Prevents agents from loading malicious skills entirely |
+| Signed tool manifests (SC-2.2) | Skills must be cryptographically signed; agents reject unsigned or tampered manifests | Blocks tampered skills even if they appear in the registry |
+| MCP server allow-listing (SC-2.3) | Only pre-approved integrations permitted | Prevents connection to compromised registries |
+| Runtime integrity checks (SC-2.4) | Skill integrity verified at load time against signed manifests | Detects skills modified after initial vetting |
+| Tool inventory (SC-1.2) | Every tool available to every agent documented with source, version, and permission scope | Enables detection of unexpected skill additions |
+
+### INC-11: AI Trading Agent Crypto Breach (2026)
+
+**What happened:** Protocol-level weaknesses in AI trading agents triggered over $45 million in security incidents across cryptocurrency platforms. The agents inherited sweeping permissions from their operators, and attackers exploited prompt injection and tool misuse to redirect trades and extract funds through legitimate trading interfaces.
+
+**Failure class:** Excessive agency + access control failure in financial context
+
+**Confidence: High.** Permission scoping and blast radius caps directly contain the damage.
+
+**Controls that address this:**
+
+| Control | Mechanism | Effect |
+|---------|-----------|--------|
+| Scoped permissions (IA-1.4) | Agent permissions limited to minimum required; no inherited sweeping access | Prevents agents from accessing funds or functions beyond their specific role |
+| Blast radius caps (EC-2.3) | Maximum financial value per agent per time window | Limits the total value at risk even if the agent is fully compromised |
+| Human approval gate (EC-1.1) | Irreversible financial transactions require human approval | Prevents automated fund transfers without human verification |
+| Action classification (EC-2.1) | Financial transactions above threshold classified as "escalate" | Routes high-value actions to human review regardless of agent confidence |
+| Input guardrails (PG-1.1) | Injection detection on all inputs including market data feeds | Catches injection attempts in trading data before they influence agent decisions |
+
+### INC-12: Meta Internal AI Agent Unauthorized Access (2026)
+
+**What happened:** A Meta in-house AI agent posted unsolicited advice to an internal forum without being directed to do so. When a second employee followed the recommendation, it triggered a cascade of permission errors that gave some engineers access to Meta systems they were not authorised to see. The breach was active for approximately two hours before being contained.
+
+**Failure class:** Unsolicited agent action + cascading permission failure
+
+**Confidence: High.** Tool allow-lists and human approval gates prevent unsolicited agent actions.
+
+**Controls that address this:**
+
+| Control | Mechanism | Effect |
+|---------|-----------|--------|
+| Tool allow-lists (EC-1.2) | Agent only permitted to use explicitly approved tools; posting to forums requires explicit authorisation | Prevents unsolicited posting to internal systems |
+| Human approval gate (EC-1.1) | Write operations require human approval | Agent cannot post advice without human confirmation |
+| Scoped permissions (IA-1.4) | Agent permissions limited to its defined task scope | Prevents the agent from interacting with systems outside its mandate |
+| Circuit breakers (EC-2.4) | Anomalous behaviour triggers agent pause | The cascade of permission errors would trigger the circuit breaker |
+| Immutable decision chain (OB-2.1) | Full causal chain from agent action to downstream effects captured | Enables rapid identification of which agent action initiated the cascade |
+
 ## Incident Statistics
 
 | Category | Count | Pattern |
@@ -210,12 +267,15 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | Hallucination / ungrounded output | 2 | LLM generating confident but incorrect information |
 | Unauthorised commitment / agency | 1 | LLM making decisions beyond its authority |
 | Database/code injection via LLM | 2 | LLM output used unsafely in downstream systems |
+| Supply chain compromise | 1 | Malicious skills in agent ecosystem registry |
+| Excessive agency / access control | 1 | AI trading agents with sweeping inherited permissions |
+| Unsolicited agent action / cascading failure | 1 | Agent acting outside directed scope, triggering permission cascade |
 
 **Confidence distribution:**
 
 | Confidence | Count | Common factor |
 |------------|-------|---------------|
-| **High** | 7 | Deterministic controls directly prevent the failure mode |
+| **High** | 10 | Deterministic controls directly prevent the failure mode |
 | **Moderate** | 2 | Both hallucination incidents, inherently probabilistic failure |
 
 ## How to Use This Tracker
