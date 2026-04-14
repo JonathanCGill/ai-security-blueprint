@@ -183,6 +183,12 @@ Every agent, judge, and workflow operates against a developer-declared Objective
 
 *Covers: Intent alignment at all levels: individual agent compliance (tactical), aggregate workflow compliance (strategic), and judge behavioral monitoring (lateral). Most critical at HIGH and CRITICAL risk tiers.*
 
+### [Document Extraction Integrity](controls/extraction-integrity.md)
+
+Companion control set for pipelines that perform OCR, PDF parsing, or form extraction and feed the results into downstream decisions. Per-field confidence scoring, field-level risk classification, authoritative source cross-referencing, side-by-side human validation, extraction provenance, adversarial document detection, and cumulative uncertainty enforcement across agent handoffs. The core principle: agents must not act on uncertain extracted data as though it were verified fact. Positioned alongside Data Protection because it governs the integrity of data as it enters the orchestration from documents.
+
+*Covers: Misextraction risk in regulated pipelines (KYC/FICA, sanctions screening, POPIA), adversarial document input, uncertainty stripping across handoffs (EP-06), extraction-derived hallucination amplification (EP-03).*
+
 ### [Environment Containment](environment-containment.md)
 
 Cross-cutting strategy that complements all ten control domains. Instead of relying on the agent to behave correctly, harden every system the agent connects to: strict API input validation, opaque error responses, stored procedures, no-retry enforcement, and infrastructure-level kill switches. Existing enterprise security systems (DLP, fraud detection, WAF, SIEM) apply unchanged to agent traffic. The agent proposes; the infrastructure disposes.
