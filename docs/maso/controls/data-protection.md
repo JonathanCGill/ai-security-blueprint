@@ -156,3 +156,7 @@ These external controls are outside the scope of this framework, but they should
 
 **Dropping classification metadata between agents.** If classification tags don't travel with data through the message bus, downstream agents and DLP controls have no basis for enforcement. A message arriving without a classification tag should be treated as an error, not as unclassified.
 
+## Related: Document Extraction Integrity
+
+Where agents ingest data by reading documents (OCR, PDF parsing, form extraction), a second integrity problem arises alongside data protection: the extracted values are probabilistic readings, not observed facts. Confidence scoring, field-level risk classification, authoritative source cross-referencing, and cumulative uncertainty enforcement are covered in the companion control domain, [Document Extraction Integrity](extraction-integrity.md). DP-1.6 and DP-2.5 pair directly with EI-2.5 (confidence propagation on the bus) and EI-2.6 (cumulative uncertainty) where extracted fields enter inter-agent flows.
+

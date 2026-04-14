@@ -120,6 +120,7 @@ nav:
     - Prompt, Goal & Epistemic Integrity: maso/controls/prompt-goal-and-epistemic-integrity.md
     - Identity & Access: maso/controls/identity-and-access.md
     - Data Protection: maso/controls/data-protection.md
+    - Document Extraction Integrity: maso/controls/extraction-integrity.md
     - Execution Control: maso/controls/execution-control.md
     - Observability: maso/controls/observability.md
     - Supply Chain: maso/controls/supply-chain.md
