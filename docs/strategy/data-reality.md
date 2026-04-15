@@ -133,10 +133,10 @@ The framework's [risk tiers](../core/risk-tiers.md) classify systems by their po
 
 | Risk Tier | Good Data | Poor Data |
 |-----------|-----------|-----------|
-| **LOW** | Standard controls sufficient | Standard controls sufficient (errors are low-impact) |
-| **MEDIUM** | Standard controls sufficient | Consider upgrading to HIGH - poor data increases error probability |
-| **HIGH** | HIGH controls appropriate | Consider upgrading to CRITICAL - poor data on high-impact decisions |
-| **CRITICAL** | Maximum controls | **Question the deployment.** CRITICAL decisions on poor data may not be appropriate. |
+| <span class="tier-low">LOW</span> | Standard controls sufficient | Standard controls sufficient (errors are low-impact) |
+| <span class="tier-medium">MEDIUM</span> | Standard controls sufficient | Consider upgrading to HIGH - poor data increases error probability |
+| <span class="tier-high">HIGH</span> | HIGH controls appropriate | Consider upgrading to CRITICAL - poor data on high-impact decisions |
+| <span class="tier-critical">CRITICAL</span> | Maximum controls | **Question the deployment.** CRITICAL decisions on poor data may not be appropriate. |
 
 The framework doesn't currently incorporate data quality into risk classification. This is a gap. A CRITICAL-tier system built on well-curated, representative data is a different risk profile from a CRITICAL-tier system built on incomplete, biased data. The controls are the same; the residual risk is not.
 

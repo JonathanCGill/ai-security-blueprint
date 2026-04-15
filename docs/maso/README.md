@@ -46,10 +46,10 @@ MASO scales evaluation to consequence:
 
 | Action Risk | Evaluation Approach | Example |
 |------------|-------------------|---------|
-| **Low** | Guardrails only, async judge sampling | Reading documents, logging notes, internal lookups |
-| **Medium** | Pre-action judge evaluation | Sending emails, updating records, calling external APIs |
-| **High** | Pre-action judge plus human approval | Issuing payments, modifying permissions, bulk operations |
-| **Critical** | Pre-action judge, dual human approval, dry-run | Deploying code, regulatory submissions, irreversible decisions |
+| <span class="tier-low">Low</span> | Guardrails only, async judge sampling | Reading documents, logging notes, internal lookups |
+| <span class="tier-medium">Medium</span> | Pre-action judge evaluation | Sending emails, updating records, calling external APIs |
+| <span class="tier-high">High</span> | Pre-action judge plus human approval | Issuing payments, modifying permissions, bulk operations |
+| <span class="tier-critical">Critical</span> | Pre-action judge, dual human approval, dry-run | Deploying code, regulatory submissions, irreversible decisions |
 
 An agent processing low-risk read operations can run with guardrails and periodic sampling. An agent making irreversible financial decisions needs pre-action judge evaluation, human approval, and blast radius caps. The [implementation tiers](implementation/tier-1-supervised.md) formalise this progression, and the action classification rules in [Execution Control](controls/execution-control.md) define how each action is routed.
 

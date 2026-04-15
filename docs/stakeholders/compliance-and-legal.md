@@ -58,10 +58,10 @@ The framework's four-tier system maps to regulatory risk categories:
 
 | Framework Tier | EU AI Act Category | NIST AI RMF Profile | Compliance Implication |
 |---|---|---|---|
-| **LOW** | Minimal risk | Light-touch | Standard reporting |
-| **MEDIUM** | Limited risk | Moderate | Transparency obligations |
-| **HIGH** | High risk | Substantial | Full risk management system, conformity assessment |
-| **CRITICAL** | High risk (upper end) | Maximum | All HIGH requirements + enhanced human oversight |
+| <span class="tier-low">LOW</span> | Minimal risk | Light-touch | Standard reporting |
+| <span class="tier-medium">MEDIUM</span> | Limited risk | Moderate | Transparency obligations |
+| <span class="tier-high">HIGH</span> | High risk | Substantial | Full risk management system, conformity assessment |
+| <span class="tier-critical">CRITICAL</span> | High risk (upper end) | Maximum | All HIGH requirements + enhanced human oversight |
 
 The classification dimensions (decision authority, reversibility, data sensitivity, audience, scale, regulatory) **directly support** the risk assessment your regulator expects. Completing the [Risk Tiers](../core/risk-tiers.md) classification for each AI system produces artefacts that satisfy regulatory risk assessment requirements.
 

@@ -97,10 +97,10 @@ This maps directly to the framework's [risk tiers](../core/risk-tiers.md):
 
 | Tier | Hallucination Tolerance | Required Detection |
 | --- | --- | --- |
-| **LOW** | Highest - human always in path, internal only, read-only | Basic content filtering |
-| **MEDIUM** | Moderate - customer-facing but human-reviewed | Basic grounding check, 5-10% judge sampling |
-| **HIGH** | Low - significant decision influence | Grounding check required, 20-50% judge evaluation |
-| **CRITICAL** | Near zero - autonomous or regulated decisions | Grounding + citation validation, 100% judge evaluation |
+| <span class="tier-low">LOW</span> | Highest - human always in path, internal only, read-only | Basic content filtering |
+| <span class="tier-medium">MEDIUM</span> | Moderate - customer-facing but human-reviewed | Basic grounding check, 5-10% judge sampling |
+| <span class="tier-high">HIGH</span> | Low - significant decision influence | Grounding check required, 20-50% judge evaluation |
+| <span class="tier-critical">CRITICAL</span> | Near zero - autonomous or regulated decisions | Grounding + citation validation, 100% judge evaluation |
 
 ## The Verification Problem
 

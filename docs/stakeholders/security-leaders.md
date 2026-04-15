@@ -34,10 +34,10 @@ Not every AI system needs the same controls. The four-tier model (LOW / MEDIUM /
 
 | Tier | What It Means | Security Posture |
 |---|---|---|
-| **LOW** | Internal, read-only, no sensitive data | Guardrails only, self-certification |
-| **MEDIUM** | Internal with write access, or human-reviewed external | Guardrails + sampled Judge |
-| **HIGH** | Customer-facing, sensitive data, financial actions | Full three layers + PACE resilience |
-| **CRITICAL** | Regulated decisions, autonomous actions, safety impact | Full three layers, 100% Judge coverage, tested fail postures |
+| <span class="tier-low">LOW</span> | Internal, read-only, no sensitive data | Guardrails only, self-certification |
+| <span class="tier-medium">MEDIUM</span> | Internal with write access, or human-reviewed external | Guardrails + sampled Judge |
+| <span class="tier-high">HIGH</span> | Customer-facing, sensitive data, financial actions | Full three layers + PACE resilience |
+| <span class="tier-critical">CRITICAL</span> | Regulated decisions, autonomous actions, safety impact | Full three layers, 100% Judge coverage, tested fail postures |
 
 ### Quantified residual risk for board reporting
 

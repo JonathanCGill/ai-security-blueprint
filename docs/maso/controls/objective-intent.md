@@ -298,10 +298,10 @@ Objective Intent evaluation intensity scales with risk classification:
 
 | Risk Tier | Tactical Evaluation | Strategic Evaluation | Judge Monitoring | OISpec Review |
 |-----------|--------------------|--------------------|-----------------|---------------|
-| **LOW** | Post-execution | Post-execution | Monthly calibration | Quarterly |
-| **MEDIUM** | Per phase | Post-execution | Monthly calibration | Monthly |
-| **HIGH** | Every action | Per phase + post-execution | Weekly calibration | Monthly |
-| **CRITICAL** | Every action (synchronous) | Per phase + post-execution (output quarantined) | Daily calibration | On every OISpec change |
+| <span class="tier-low">LOW</span> | Post-execution | Post-execution | Monthly calibration | Quarterly |
+| <span class="tier-medium">MEDIUM</span> | Per phase | Post-execution | Monthly calibration | Monthly |
+| <span class="tier-high">HIGH</span> | Every action | Per phase + post-execution | Weekly calibration | Monthly |
+| <span class="tier-critical">CRITICAL</span> | Every action (synchronous) | Per phase + post-execution (output quarantined) | Daily calibration | On every OISpec change |
 
 **HIGH and CRITICAL risk classifications are where Objective Intent matters most.** At these tiers, the cost of non-compliance with declared intent is material: financial loss, regulatory violation, patient harm, or irreversible action. The OISpec is the reference standard that makes compliance measurable.
 

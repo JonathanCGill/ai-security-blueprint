@@ -24,11 +24,11 @@ ETSI SAI has produced Group Reports (GRs) from its ISG era, plus Technical Speci
 
 | Standard | Title | Published | MASO Relevance |
 |----------|-------|-----------|----------------|
-| **EN 304 223** | Baseline Cyber Security Requirements for AI | Dec 2025 | **Critical** |
-| **TS 104 223** | Baseline Cyber Security Requirements for AI | Apr 2025 | **Critical** |
-| TS 104 008 | Continuous Auditing-Based Conformity Assessment (CABCA) | 2026 | **Critical** |
+| **EN 304 223** | Baseline Cyber Security Requirements for AI | Dec 2025 | <span class="tier-critical">Critical</span> |
+| **TS 104 223** | Baseline Cyber Security Requirements for AI | Apr 2025 | <span class="tier-critical">Critical</span> |
+| TS 104 008 | Continuous Auditing-Based Conformity Assessment (CABCA) | 2026 | <span class="tier-critical">Critical</span> |
 | TS 104 158 | AI Common Incident Expression (AICIE) Framework | Mar 2026 | High |
-| TR 104 159 | Securing AI from Generative AI Harm | Jan 2026 | **Critical** |
+| TR 104 159 | Securing AI from Generative AI Harm | Jan 2026 | <span class="tier-critical">Critical</span> |
 | TR 104 128 | Implementation Guide for EN 304 223 | May 2025 | High |
 | TR 104 048 | Data Supply Chain Security (updated) | Jan 2025 | High |
 

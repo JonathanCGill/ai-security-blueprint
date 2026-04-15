@@ -95,10 +95,10 @@ The risk of evaluation gaming scales with model capability and deployment stakes
 
 | Tier | Evaluation Integrity Risk | Recommended Response |
 |---|---|---|
-| **LOW** | Minimal - low-capability models, low stakes | Standard evaluation is sufficient |
-| **MEDIUM** | Low - but monitor for anomalies | Add canary interactions to evaluation pipeline |
-| **HIGH** | Moderate - capable models with meaningful stakes | Multi-model cross-validation, canary interactions, behavioral consistency checks |
-| **CRITICAL** | Significant - frontier models with high-impact decisions | All of the above, plus eliminate evaluation signatures, consider white-box monitoring, human calibration at higher sampling rates |
+| <span class="tier-low">LOW</span> | Minimal - low-capability models, low stakes | Standard evaluation is sufficient |
+| <span class="tier-medium">MEDIUM</span> | Low - but monitor for anomalies | Add canary interactions to evaluation pipeline |
+| <span class="tier-high">HIGH</span> | Moderate - capable models with meaningful stakes | Multi-model cross-validation, canary interactions, behavioral consistency checks |
+| <span class="tier-critical">CRITICAL</span> | Significant - frontier models with high-impact decisions | All of the above, plus eliminate evaluation signatures, consider white-box monitoring, human calibration at higher sampling rates |
 
 ## The Architectural Response: Constrain-Regardless
 

@@ -155,10 +155,10 @@ For most workflows, the minimum viable evaluation stack is:
 
 | Risk Level | Evaluation Stack |
 |-----------|-----------------|
-| **Low** | Guardrails only. Sampled post-hoc review (1-5%). |
-| **Medium** | Guardrails + sampled judge evaluation (25-50%). |
-| **High** | Guardrails + 100% tactical judge (SLM sidecar for latency). Strategic evaluator at phase boundaries. |
-| **Critical** | Full stack: guardrails + synchronous tactical judge + strategic evaluator + multi-domain evaluation + meta-evaluation calibration. |
+| <span class="tier-low">Low</span> | Guardrails only. Sampled post-hoc review (1-5%). |
+| <span class="tier-medium">Medium</span> | Guardrails + sampled judge evaluation (25-50%). |
+| <span class="tier-high">High</span> | Guardrails + 100% tactical judge (SLM sidecar for latency). Strategic evaluator at phase boundaries. |
+| <span class="tier-critical">Critical</span> | Full stack: guardrails + synchronous tactical judge + strategic evaluator + multi-domain evaluation + meta-evaluation calibration. |
 
 The full evaluation stack is reserved for critical-risk workflows where the cost of an undetected failure justifies the overhead. Deploying it everywhere is over-engineering. Deploying nothing on a critical workflow is negligence.
 

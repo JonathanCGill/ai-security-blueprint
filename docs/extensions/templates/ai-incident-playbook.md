@@ -25,10 +25,10 @@ Incident response procedures specific to AI systems. These playbooks supplement,
 
 | Severity | Definition | Response Time |
 |----------|------------|---------------|
-| **Critical** | Active exploitation, data breach, regulatory breach, or significant customer harm | Immediate (< 1 hour) |
-| **High** | Potential for significant harm, control bypass, or integrity compromise | < 4 hours |
-| **Medium** | Quality issues, limited scope impact, potential for escalation | < 24 hours |
-| **Low** | Minor issues, no customer impact, easily contained | < 72 hours |
+| <span class="tier-critical">Critical</span> | Active exploitation, data breach, regulatory breach, or significant customer harm | Immediate (< 1 hour) |
+| <span class="tier-high">High</span> | Potential for significant harm, control bypass, or integrity compromise | < 4 hours |
+| <span class="tier-medium">Medium</span> | Quality issues, limited scope impact, potential for escalation | < 24 hours |
+| <span class="tier-low">Low</span> | Minor issues, no customer impact, easily contained | < 72 hours |
 
 ## 1. Prompt Injection Attack
 

@@ -191,7 +191,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 | Audience | e.g., MEDIUM | Internal fraud analysts |
 | Scale | e.g., HIGH | 80,000 transactions/day |
 | Regulatory | e.g., HIGH | PCI-DSS, banking regulations |
-| **Overall Tier** | **CRITICAL** | Data sensitivity drives the tier |
+| **Overall Tier** | <span class="tier-critical">CRITICAL</span> | Data sensitivity drives the tier |
 
 **Guardrail:** Unclassified systems are visible in the use case registry - they stand out because they have no tier, no controls, and no monitoring baseline. For Fast Lane, teams self-certify. For MEDIUM, a risk analyst reviews. For HIGH/CRITICAL, the governance committee reviews. The classification process is lightweight enough that skipping it costs more than doing it.
 

@@ -104,6 +104,7 @@ Nine role-specific entry points. Each one frames AI runtime security through the
 
 Each layer operates independently. No single failure compromises the system.
 
+<div class="control-layers" markdown>
 <div class="grid cards" markdown>
 
 -   **Guardrails**
@@ -122,6 +123,7 @@ Each layer operates independently. No single failure compromises the system.
 
     Emergency failsafes that halt AI operations and activate safe fallbacks when controls fail or compromise is confirmed.
 
+</div>
 </div>
 
 [How the layers work together](what-is-ai-runtime-security.md)

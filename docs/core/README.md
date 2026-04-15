@@ -90,10 +90,10 @@ What has been missing: clear guidance on *why* this pattern is necessary and *ho
 
 | Tier | Profile | Examples |
 |------|---------|----------|
-| **CRITICAL** | Direct decisions, customer/financial/safety impact | Credit decisions, fraud blocking |
-| **HIGH** | Significant influence, sensitive data | Customer service with account access |
-| **MEDIUM** | Moderate impact, human review expected | Internal Q&A, document drafting |
-| **LOW** | Minimal impact, non-sensitive | Public FAQ, suggestions |
+| <span class="tier-critical">CRITICAL</span> | Direct decisions, customer/financial/safety impact | Credit decisions, fraud blocking |
+| <span class="tier-high">HIGH</span> | Significant influence, sensitive data | Customer service with account access |
+| <span class="tier-medium">MEDIUM</span> | Moderate impact, human review expected | Internal Q&A, document drafting |
+| <span class="tier-low">LOW</span> | Minimal impact, non-sensitive | Public FAQ, suggestions |
 
 ### 2. Select Controls
 

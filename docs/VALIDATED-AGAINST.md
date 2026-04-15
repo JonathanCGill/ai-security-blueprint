@@ -17,7 +17,7 @@ Each control is mapped to the incidents it would have prevented or detected, wit
 
 | Rating | Meaning |
 |--------|---------|
-| **High** | Controls directly and deterministically prevent the failure. The mechanism is concrete and testable. |
+| <span class="tier-high">High</span> | Controls directly and deterministically prevent the failure. The mechanism is concrete and testable. |
 | **Moderate** | Controls significantly reduce the risk but cannot fully eliminate it. The failure class has inherent uncertainty. |
 
 ## Validation Summary
@@ -249,7 +249,7 @@ The second most broadly validated control category. Deployed as specialised judg
 
 | Confidence | Incident Count | Pattern |
 |------------|---------------|---------|
-| **High** | 7 of 9 | Injection, exfiltration, unauthorised agency. Deterministic controls directly prevent |
+| <span class="tier-high">High</span> | 7 of 9 | Injection, exfiltration, unauthorised agency. Deterministic controls directly prevent |
 | **Moderate** | 2 of 9 | Both hallucination incidents. Inherently probabilistic failure class |
 
 ### What's Not Yet Validated

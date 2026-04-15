@@ -39,10 +39,10 @@ The control overhead is real and varies dramatically by tier. The [Cost & Latenc
 
 | Risk Tier | Security Overhead (% of Generator Cost) | Per 1M Requests/Month | What's Included |
 |---|---|---|---|
-| **LOW** | ~5-10% | Negligible | Rule-based guardrails |
-| **MEDIUM** | ~15-40% | $1K-7K | Guardrails + sampled Judge (10-50%) |
-| **HIGH** | ~40-80% | $5K-20K | Guardrails + full async Judge + human review |
-| **CRITICAL** | ~80-100%+ | $10K-50K+ | Full sync Judge + 100% coverage + dedicated human reviewers |
+| <span class="tier-low">LOW</span> | ~5-10% | Negligible | Rule-based guardrails |
+| <span class="tier-medium">MEDIUM</span> | ~15-40% | $1K-7K | Guardrails + sampled Judge (10-50%) |
+| <span class="tier-high">HIGH</span> | ~40-80% | $5K-20K | Guardrails + full async Judge + human review |
+| <span class="tier-critical">CRITICAL</span> | ~80-100%+ | $10K-50K+ | Full sync Judge + 100% coverage + dedicated human reviewers |
 
 **When multiple products run different agent sets**, total AI security cost is the sum across the portfolio - not an average. A portfolio of 5 LOW-tier and 1 CRITICAL-tier system is dominated by the CRITICAL-tier cost. Budget accordingly.
 

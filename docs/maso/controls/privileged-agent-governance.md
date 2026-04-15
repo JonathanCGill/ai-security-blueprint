@@ -177,7 +177,7 @@ These are competing priorities with shared urgency, not contradictory verdicts. 
 |-----------|------------------|-----------------|
 | **CRITICAL** (active fraud + active breach) | Security action executes immediately. Other actions degraded within 60 seconds. | Human escalation. Transactions held at maximum permissible duration. |
 | **HIGH** (suspected fraud, no active breach) | Transactions held for review. Human arbitration within 15 minutes. | Most restrictive action (hold) persists. Risk of loss accepted if no human responds. |
-| **MEDIUM** | Standard escalation. Human arbitration within 1 hour. | Automated resolution per precedence order. |
+| <span class="tier-medium">MEDIUM</span> | Standard escalation. Human arbitration within 1 hour. | Automated resolution per precedence order. |
 
 **4. Accept residual risk explicitly.** If the resolution window expires without human arbitration, the system must either:
 

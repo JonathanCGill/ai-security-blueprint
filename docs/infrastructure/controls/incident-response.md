@@ -60,10 +60,10 @@ Standard incident categories (malware, unauthorised access, data breach) don't a
 
 | Severity | Criteria |
 |----------|----------|
-| **Critical** | Active data breach via AI system, successful agent autonomy violation with impact, credential compromise with confirmed exploitation |
-| **High** | Successful prompt injection with policy violation, guardrail failure on Tier 3+ system, data poisoning confirmed |
-| **Medium** | Novel injection technique detected (even if blocked), guardrail/Judge disagreement exceeding threshold, model drift beyond baseline |
-| **Low** | Known injection technique blocked, single-instance guardrail false negative, minor drift within recovery parameters |
+| <span class="tier-critical">Critical</span> | Active data breach via AI system, successful agent autonomy violation with impact, credential compromise with confirmed exploitation |
+| <span class="tier-high">High</span> | Successful prompt injection with policy violation, guardrail failure on Tier 3+ system, data poisoning confirmed |
+| <span class="tier-medium">Medium</span> | Novel injection technique detected (even if blocked), guardrail/Judge disagreement exceeding threshold, model drift beyond baseline |
+| <span class="tier-low">Low</span> | Known injection technique blocked, single-instance guardrail false negative, minor drift within recovery parameters |
 
 ## IR-02: Detection Triggers
 
@@ -98,10 +98,10 @@ AI containment differs from traditional containment. You can't "quarantine" a st
 
 | Severity | Containment Action |
 |----------|-------------------|
-| **Critical** | Disable the AI system endpoint. Route traffic to a static fallback. Revoke all agent credentials. Preserve logs. |
-| **High** | Increase guardrail strictness (lower thresholds). Disable agent tool access. Enable synchronous Judge evaluation (block on flag). Increase logging verbosity. |
-| **Medium** | Add targeted guardrail rules for the detected technique. Increase monitoring for the affected category. Alert human reviewers. |
-| **Low** | Log for analysis. Update guardrail rules in next scheduled release. No immediate containment required. |
+| <span class="tier-critical">Critical</span> | Disable the AI system endpoint. Route traffic to a static fallback. Revoke all agent credentials. Preserve logs. |
+| <span class="tier-high">High</span> | Increase guardrail strictness (lower thresholds). Disable agent tool access. Enable synchronous Judge evaluation (block on flag). Increase logging verbosity. |
+| <span class="tier-medium">Medium</span> | Add targeted guardrail rules for the detected technique. Increase monitoring for the affected category. Alert human reviewers. |
+| <span class="tier-low">Low</span> | Log for analysis. Update guardrail rules in next scheduled release. No immediate containment required. |
 
 ### AI-Specific Containment Principles
 

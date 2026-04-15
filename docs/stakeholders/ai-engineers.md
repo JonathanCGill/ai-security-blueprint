@@ -61,10 +61,10 @@ This is infrastructure code, not AI code. Treat it like any service reliability 
 
 | Tier | What You Build | Judge Configuration | Human Oversight |
 |---|---|---|---|
-| **LOW** | Basic input/output guardrails | Optional - 1-5% sampling for monitoring | None (exception-based) |
-| **MEDIUM** | Standard guardrails + Judge integration | 5-10% sampling, batch evaluation | Review flagged items only |
-| **HIGH** | Full guardrail suite + Judge + routing | 20-50% coverage, near real-time | Flagged items + random sampling |
-| **CRITICAL** | Hardened guardrails + Judge + human gate | 100% coverage, synchronous (blocks delivery) | All high-impact decisions reviewed |
+| <span class="tier-low">LOW</span> | Basic input/output guardrails | Optional - 1-5% sampling for monitoring | None (exception-based) |
+| <span class="tier-medium">MEDIUM</span> | Standard guardrails + Judge integration | 5-10% sampling, batch evaluation | Review flagged items only |
+| <span class="tier-high">HIGH</span> | Full guardrail suite + Judge + routing | 20-50% coverage, near real-time | Flagged items + random sampling |
+| <span class="tier-critical">CRITICAL</span> | Hardened guardrails + Judge + human gate | 100% coverage, synchronous (blocks delivery) | All high-impact decisions reviewed |
 
 ### Platform-specific patterns
 

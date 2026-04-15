@@ -17,10 +17,10 @@ The EU AI Act classifies AI systems into four regulatory categories based on the
 | EU AI Act Category | Framework Tier | Regulatory Obligation | What You Can Build |
 |---|---|---|---|
 | Minimal Risk | **NONE** | No specific requirements | Public info bots, content suggestions |
-| Minimal Risk | **LOW** | Voluntary codes of practice | Internal assistants, summarisation tools |
-| Limited Risk | **MEDIUM** | Transparency obligations (Art. 50) | Document drafting, content generation |
-| High Risk (Annex III) | **HIGH** | Conformity assessment (Arts. 9-15) | Customer service, HR screening, legal review |
-| High Risk (highest impact) | **CRITICAL** | Full conformity + ongoing audit | Credit decisions, fraud blocking, medical triage |
+| Minimal Risk | <span class="tier-low">LOW</span> | Voluntary codes of practice | Internal assistants, summarisation tools |
+| Limited Risk | <span class="tier-medium">MEDIUM</span> | Transparency obligations (Art. 50) | Document drafting, content generation |
+| High Risk (Annex III) | <span class="tier-high">HIGH</span> | Conformity assessment (Arts. 9-15) | Customer service, HR screening, legal review |
+| High Risk (highest impact) | <span class="tier-critical">CRITICAL</span> | Full conformity + ongoing audit | Credit decisions, fraud blocking, medical triage |
 
 !!! warning "Unacceptable Risk"
     The EU AI Act prohibits certain AI practices entirely (Art. 5): social scoring, real-time remote biometric identification in public spaces (with narrow exceptions), exploitation of vulnerabilities, and subliminal manipulation. No amount of controls makes these deployable. They are out of scope for this framework because they should not be built.

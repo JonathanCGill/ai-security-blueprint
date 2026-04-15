@@ -308,10 +308,10 @@ AI issues often surface through human feedback before technical monitoring catch
 
 | Tier | Testing Requirements |
 |------|---------------------|
-| **LOW** | Basic guardrail testing, alert pipeline check, annual playbook review |
-| **MEDIUM** | Above + adversarial testing, Judge calibration, quarterly playbook exercise |
-| **HIGH** | Above + continuous adversarial testing, regular Judge recalibration, downstream validation |
-| **CRITICAL** | Above + red team exercises, full chain validation, chaos engineering, frequent tabletops |
+| <span class="tier-low">LOW</span> | Basic guardrail testing, alert pipeline check, annual playbook review |
+| <span class="tier-medium">MEDIUM</span> | Above + adversarial testing, Judge calibration, quarterly playbook exercise |
+| <span class="tier-high">HIGH</span> | Above + continuous adversarial testing, regular Judge recalibration, downstream validation |
+| <span class="tier-critical">CRITICAL</span> | Above + red team exercises, full chain validation, chaos engineering, frequent tabletops |
 
 ## External Testing Frameworks
 

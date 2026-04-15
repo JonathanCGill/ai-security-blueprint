@@ -32,10 +32,10 @@ Every proposed agent action is classified into a risk category before execution:
 
 | Category | Examples | Evaluation Mode |
 |----------|----------|-----------------|
-| **Low** | Read-only queries, internal lookups | Execute → async Judge |
-| **Medium** | Data writes, internal API calls | Execute → async Judge (first occurrence: sync) |
+| <span class="tier-low">Low</span> | Read-only queries, internal lookups | Execute → async Judge |
+| <span class="tier-medium">Medium</span> | Data writes, internal API calls | Execute → async Judge (first occurrence: sync) |
 | **Elevated** | External API calls, multi-record operations | Sync pre-action Judge → execute on pass |
-| **High** | Financial transactions, destructive operations | Sync pre-action Judge + human approval → execute |
+| <span class="tier-high">High</span> | Financial transactions, destructive operations | Sync pre-action Judge + human approval → execute |
 | **Flagged** | Any action when session-level flag is active | Sync pre-action Judge regardless of action type |
 
 **Pre-action Judge prompt structure:**

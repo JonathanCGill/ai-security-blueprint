@@ -235,10 +235,10 @@ Use for CRITICAL tier where cost is justified by risk reduction.
 
 | Tier | Judge Approach | Rationale |
 |------|----------------|-----------|
-| **LOW** | Single small model, sampled | Low stakes, cost-sensitive |
-| **MEDIUM** | Single capable model, higher sampling | Balance of speed and nuance |
-| **HIGH** | Capable model, 100% evaluation | Full coverage required |
-| **CRITICAL** | Ensemble (jury), 100% evaluation | Maximum coverage, blind spot reduction |
+| <span class="tier-low">LOW</span> | Single small model, sampled | Low stakes, cost-sensitive |
+| <span class="tier-medium">MEDIUM</span> | Single capable model, higher sampling | Balance of speed and nuance |
+| <span class="tier-high">HIGH</span> | Capable model, 100% evaluation | Full coverage required |
+| <span class="tier-critical">CRITICAL</span> | Ensemble (jury), 100% evaluation | Maximum coverage, blind spot reduction |
 
 ## Practical Recommendations
 

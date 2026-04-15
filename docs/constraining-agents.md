@@ -134,10 +134,10 @@ The timing of evaluation depends on risk.
 
 | Risk Level | Evaluation Timing | Example |
 |-----------|-------------------|---------|
-| **Low** | Post-action (async) | Logging a note, reading a document |
-| **Medium** | Pre-action (sync) | Sending an email, updating a record |
-| **High** | Pre-action with human review | Issuing a payment, modifying access controls |
-| **Critical** | Pre-action, dual approval | Deploying code, bulk data operations |
+| <span class="tier-low">Low</span> | Post-action (async) | Logging a note, reading a document |
+| <span class="tier-medium">Medium</span> | Pre-action (sync) | Sending an email, updating a record |
+| <span class="tier-high">High</span> | Pre-action with human review | Issuing a payment, modifying access controls |
+| <span class="tier-critical">Critical</span> | Pre-action, dual approval | Deploying code, bulk data operations |
 
 For elevated-risk actions, the judge evaluates *before* the action executes. The agent proposes an action, the judge assesses it, and only approved actions proceed. This is the pattern that ensures no money is spent and no irreversible change is made without verification against declared outcomes.
 

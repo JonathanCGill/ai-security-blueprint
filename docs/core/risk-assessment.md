@@ -351,10 +351,10 @@ See the [detailed worked example above](#worked-example-customer-product-chatbot
 
 | Tier | Example | Layers Active | Judge Coverage | Inherent Risk (per 1K) | Residual Risk (per 1K) | Reduction Factor |
 |---|---|---|---|---|---|---|
-| **LOW** | Public FAQ | Guardrails | Optional 1-5% | ~45 | ~4.5 | 10× |
-| **MEDIUM** | Internal docs | Guardrails + Judge (sampled) | 5-10% | ~53 | ~5.0 | 10× |
-| **HIGH** | Product chatbot | All three | 20-50% | ~100 | ~0.01 | 10,000× |
-| **CRITICAL** | Credit decisions | All three (full) | 100% | ~80 | ~0.008 | 10,000× |
+| <span class="tier-low">LOW</span> | Public FAQ | Guardrails | Optional 1-5% | ~45 | ~4.5 | 10× |
+| <span class="tier-medium">MEDIUM</span> | Internal docs | Guardrails + Judge (sampled) | 5-10% | ~53 | ~5.0 | 10× |
+| <span class="tier-high">HIGH</span> | Product chatbot | All three | 20-50% | ~100 | ~0.01 | 10,000× |
+| <span class="tier-critical">CRITICAL</span> | Credit decisions | All three (full) | 100% | ~80 | ~0.008 | 10,000× |
 
 **Key insight:** The jump from 10× to 10,000× risk reduction happens when the Judge moves from sampling to substantial coverage and Human Oversight moves from exception-only to systematic review. This is why the framework requires full three-layer deployment for HIGH and CRITICAL tiers.
 

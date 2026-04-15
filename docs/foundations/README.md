@@ -32,10 +32,10 @@ Controls scale to risk so that low-risk AI moves fast and high-risk AI stays saf
 
 | Risk Tier | Controls Required | PACE Posture |
 | --- | --- | --- |
-| **Low** | Fast Lane: minimal guardrails, self-certification | P only (fail-open with logging) |
-| **Medium** | Guardrails + Judge, periodic human review | P + A configured |
-| **High** | All three layers, human-in-the-loop for writes | P + A + C configured and tested |
-| **Critical** | Full architecture, mandatory human approval | Full PACE cycle with tested E→P recovery |
+| <span class="tier-low">Low</span> | Fast Lane: minimal guardrails, self-certification | P only (fail-open with logging) |
+| <span class="tier-medium">Medium</span> | Guardrails + Judge, periodic human review | P + A configured |
+| <span class="tier-high">High</span> | All three layers, human-in-the-loop for writes | P + A + C configured and tested |
+| <span class="tier-critical">Critical</span> | Full architecture, mandatory human approval | Full PACE cycle with tested E→P recovery |
 
 Classify your system: [Risk Tiers](../core/risk-tiers.md). Understand the failure modes: [PACE Resilience](../PACE-RESILIENCE.md).
 

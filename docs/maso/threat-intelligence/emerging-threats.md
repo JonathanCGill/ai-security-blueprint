@@ -274,6 +274,6 @@ Additionally, a "Rules File Backdoor" technique was discovered where hidden unic
 | ET-08 AI vs AI defences | High | High | Tier 3 | Execution Control |
 | ET-09 Self-replication | Medium | Critical | Tier 3 | Execution Control |
 | ET-10 Capability acceleration | Near-certain | High | All Tiers | Governance (meta) |
-| **ET-11 Reward hacking / emergent misalignment** | **High** | **Critical** | **Tier 2** | **Execution Control, Observability** |
-| **ET-12 Non-LLM model attack surfaces** | **High** | **High** | **Tier 2** | **Execution Control, Prompt & Goal Integrity** |
-| **ET-13 Agent ecosystem supply chain compromise** | **High** | **Critical** | **Tier 1** | **Supply Chain** |
+| **ET-11 Reward hacking / emergent misalignment** | <span class="tier-high">High</span> | **Critical** | **Tier 2** | **Execution Control, Observability** |
+| **ET-12 Non-LLM model attack surfaces** | <span class="tier-high">High</span> | **High** | **Tier 2** | **Execution Control, Prompt & Goal Integrity** |
+| **ET-13 Agent ecosystem supply chain compromise** | <span class="tier-high">High</span> | **Critical** | **Tier 1** | **Supply Chain** |

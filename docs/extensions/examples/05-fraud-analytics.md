@@ -343,7 +343,7 @@ The most valuable signal: when AI and fraud engines disagree.
 
 | Fraud Engine | AI Recommendation | Severity | Action |
 |--------------|-------------------|----------|--------|
-| HIGH (>0.8) | Allow | **CRITICAL** | Mandatory human review |
+| HIGH (>0.8) | Allow | <span class="tier-critical">CRITICAL</span> | Mandatory human review |
 | HIGH (>0.8) | Monitor | HIGH | Priority human review |
 | LOW (<0.3) | Block | MEDIUM | Analyst attention |
 | LOW (<0.3) | Escalate | MEDIUM | Analyst attention |
