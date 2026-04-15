@@ -22,61 +22,79 @@ This page is that list. It is deliberately opinionated and deliberately short. S
 
 Each control answers a specific failure mode. None of them requires exotic tooling. Most can be implemented in an afternoon.
 
-### 1. Input guardrails
+<div class="grid cards" markdown>
 
-**What:** A filter on user input before it reaches the model. At minimum: basic prompt injection patterns, obvious attempts to override system instructions, and content that is clearly out of scope for your feature.
+-   **1. Input guardrails**
 
-**Why:** Most production incidents start with an input the model was never meant to handle. Catching the obvious ones at the edge is cheap and eliminates a long tail of noise from your logs.
+    ---
 
-**Minimum viable:** Your LLM provider's built-in content filter, plus a short regex list for the patterns that matter to your use case. Do not try to build a perfect detector. Assume things will get through and let the next layers catch them.
+    **What:** A filter on user input before it reaches the model. At minimum: basic prompt injection patterns, obvious attempts to override system instructions, and content that is clearly out of scope for your feature.
 
-### 2. Output guardrails
+    **Why:** Most production incidents start with an input the model was never meant to handle. Catching the obvious ones at the edge is cheap and eliminates a long tail of noise from your logs.
 
-**What:** A filter on model output before it reaches the user or a downstream system. At minimum: PII detection if your users might paste sensitive data, secrets detection if your context includes any credentials, and length and format checks so the model cannot return something your application cannot handle.
+    **Minimum viable:** Your LLM provider's built-in content filter, plus a short regex list for the patterns that matter to your use case. Do not try to build a perfect detector. Assume things will get through and let the next layers catch them.
 
-**Why:** The model will occasionally echo input it should not, fabricate content it should not, or produce something that breaks the downstream contract. The output filter is the last line of defence before damage is visible.
+-   **2. Output guardrails**
 
-**Minimum viable:** A small set of regex or library-based checks on the response, applied synchronously, with a safe default message when a check fails.
+    ---
 
-### 3. Structured logging
+    **What:** A filter on model output before it reaches the user or a downstream system. At minimum: PII detection if your users might paste sensitive data, secrets detection if your context includes any credentials, and length and format checks so the model cannot return something your application cannot handle.
 
-**What:** Every request and response recorded with: user identity, timestamp, model and version, input, output, latency, and the outcome of any guardrail check. Stored somewhere you can query.
+    **Why:** The model will occasionally echo input it should not, fabricate content it should not, or produce something that breaks the downstream contract. The output filter is the last line of defence before damage is visible.
 
-**Why:** When something goes wrong, and it will, you need to reconstruct what happened. Without structured logs you are guessing. With them you can answer questions from regulators, users, and your own engineering team.
+    **Minimum viable:** A small set of regex or library-based checks on the response, applied synchronously, with a safe default message when a check fails.
 
-**Minimum viable:** JSON lines to your existing log platform, with a correlation ID per request. Retention set by whatever your organisation already does for application logs.
+-   **3. Structured logging**
 
-### 4. Rate limiting and cost caps
+    ---
 
-**What:** Per-user request limits, global request limits, and a hard daily or monthly spend cap on the model API. Alerts when any of them are approached.
+    **What:** Every request and response recorded with: user identity, timestamp, model and version, input, output, latency, and the outcome of any guardrail check. Stored somewhere you can query.
 
-**Why:** Runaway loops, scraping, and abuse all look the same on the first day: a cost spike. A cap turns a potential finance incident into a feature outage, which is easier to explain and easier to fix.
+    **Why:** When something goes wrong, and it will, you need to reconstruct what happened. Without structured logs you are guessing. With them you can answer questions from regulators, users, and your own engineering team.
 
-**Minimum viable:** A token bucket per user in your application layer, a daily spend limit configured in your provider console, and a single alert wired to somewhere a human will see it.
+    **Minimum viable:** JSON lines to your existing log platform, with a correlation ID per request. Retention set by whatever your organisation already does for application logs.
 
-### 5. Kill switch
+-   **4. Rate limiting and cost caps**
 
-**What:** A feature flag, environment variable, or config entry that one person can flip to disable the AI feature within minutes, without a code deployment.
+    ---
 
-**Why:** When you discover a serious problem in production, the first question is "how do we stop the bleeding?" The kill switch is the answer. Without it, the answer is "wait for a deploy," which is rarely acceptable.
+    **What:** Per-user request limits, global request limits, and a hard daily or monthly spend cap on the model API. Alerts when any of them are approached.
 
-**Minimum viable:** A boolean flag checked on every request. When off, the feature returns the documented fallback response. Test that it works before you need it.
+    **Why:** Runaway loops, scraping, and abuse all look the same on the first day: a cost spike. A cap turns a potential finance incident into a feature outage, which is easier to explain and easier to fix.
 
-### 6. Human-reviewable path for high-stakes output
+    **Minimum viable:** A token bucket per user in your application layer, a daily spend limit configured in your provider console, and a single alert wired to somewhere a human will see it.
 
-**What:** An explicit definition of which outputs are high-stakes for your feature, and a path for a human to review or approve those outputs before they have irreversible effects.
+-   **5. Kill switch**
 
-**Why:** The model will be wrong sometimes. For low-stakes outputs (a draft email, a summary) that is fine. For high-stakes outputs (an action taken against a customer account, an external communication, a code change merged into main) you want a human in the loop until you have enough evidence that the model is reliable in that specific context.
+    ---
 
-**Minimum viable:** For your first deployment, route anything you are unsure about to a human queue or leave the AI in an advisory role only. Autonomy is something you earn with evidence, not something you assume on day one.
+    **What:** A feature flag, environment variable, or config entry that one person can flip to disable the AI feature within minutes, without a code deployment.
 
-### 7. Documented fallback
+    **Why:** When you discover a serious problem in production, the first question is "how do we stop the bleeding?" The kill switch is the answer. Without it, the answer is "wait for a deploy," which is rarely acceptable.
 
-**What:** A one-paragraph description of what users, operators, and downstream systems do when the feature is disabled or failing. Written down somewhere your team can find it.
+    **Minimum viable:** A boolean flag checked on every request. When off, the feature returns the documented fallback response. Test that it works before you need it.
 
-**Why:** Features get turned off. Providers have outages. Models get deprecated. If nobody can remember how the work got done before the AI arrived, the kill switch becomes a work-stoppage event, not a safety mechanism.
+-   **6. Human-reviewable path for high-stakes output**
 
-**Minimum viable:** One paragraph in your runbook. "When `ai_feature_enabled = false`, users see *[message]*. Operators follow *[manual process]*. Contact *[owner]* to restore."
+    ---
+
+    **What:** An explicit definition of which outputs are high-stakes for your feature, and a path for a human to review or approve those outputs before they have irreversible effects.
+
+    **Why:** The model will be wrong sometimes. For low-stakes outputs (a draft email, a summary) that is fine. For high-stakes outputs (an action taken against a customer account, an external communication, a code change merged into main) you want a human in the loop until you have enough evidence that the model is reliable in that specific context.
+
+    **Minimum viable:** For your first deployment, route anything you are unsure about to a human queue or leave the AI in an advisory role only. Autonomy is something you earn with evidence, not something you assume on day one.
+
+-   **7. Documented fallback**
+
+    ---
+
+    **What:** A one-paragraph description of what users, operators, and downstream systems do when the feature is disabled or failing. Written down somewhere your team can find it.
+
+    **Why:** Features get turned off. Providers have outages. Models get deprecated. If nobody can remember how the work got done before the AI arrived, the kill switch becomes a work-stoppage event, not a safety mechanism.
+
+    **Minimum viable:** One paragraph in your runbook. "When `ai_feature_enabled = false`, users see *[message]*. Operators follow *[manual process]*. Contact *[owner]* to restore."
+
+</div>
 
 ## One-Page Checklist
 
