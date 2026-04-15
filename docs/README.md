@@ -1,173 +1,147 @@
 ---
 title: AI Runtime Security (AIRS)
-description: "AI Runtime Security (AIRS) is a risk-proportionate framework for reducing harm caused by organisations' use of AI. It provides risk-oriented paths and control patterns that AI product owners can quickly adopt, adapt, or consciously deselect based on their own risk appetite and organisational context."
-template: home.html
 hide:
+  - navigation
   - toc
-  - path
-  - feedback
-comments: false
 ---
 
-# AI Runtime Security (AIRS)
-
-<div class="home-subtitle" markdown>
+# AI Runtime Security
 
 **Your AI passed every test. It still hallucinated in production.**
 
-Runtime is where AI risk lives. AIRS gives you the controls to catch it.
+Most organisations have no controls between the model and the damage it can do. AIRS gives you four layers of runtime defence -- guardrails, a judge model, human oversight, and circuit breakers -- so you can match controls to your actual risk, not a compliance checklist.
+
+Vendor-neutral. Risk-proportionate. Built for regulated industries.
+
+---
+
+## Four Control Layers
+
+Each layer operates independently. No single failure compromises the system.
+
+<div class="grid cards" markdown>
+
+-   **Guardrails**
+
+    Fast, deterministic boundaries: content policies, scope constraints, tool-use permissions. Catches the obvious failures at machine speed.
+
+-   **Model-as-Judge**
+
+    A separate model evaluates outputs against policy, context, and intent before they reach users. Catches the subtle failures guardrails miss.
+
+-   **Human Oversight**
+
+    Escalation paths, audit trails, and intervention capability for high-stakes decisions. Scope scales with consequence.
+
+-   **Circuit Breakers**
+
+    Emergency failsafes that halt AI operations and activate safe fallbacks when controls fail or compromise is confirmed.
 
 </div>
 
-<div class="home-tldr" markdown>
+[:octicons-arrow-right-24: How the layers work together](what-is-ai-runtime-security.md)
 
-**You deployed a model. It works. Now what?**
+---
 
-Most organisations have no controls between the model and the damage it can do. AIRS fixes that with three layers of runtime defence, guardrails that enforce hard limits, a judge model that catches what guardrails miss, and human oversight for high-stakes calls, plus a circuit-breaker fallback that shuts things down when every layer fails.
+## The Problem
 
-Pick the layers you need. Skip the ones you do not. Match controls to your actual risk, not a compliance checklist.
+AI security focuses almost entirely on the model layer: training data, prompt injection, pre-deployment red-teaming. This misses the point. The risk that matters is what the model *does* at runtime, in production, with real data and real users. Guardrails alone are a single point of failure. Process gates slow delivery without reducing harm. In every other security domain we layer controls and assume any single one will fail. AI security has not caught up.
 
-</div>
+[:octicons-arrow-right-24: Why AI security is a runtime problem](insights/why-ai-security-is-a-runtime-problem.md)
 
-<div class="home-primary-cta" markdown>
+---
 
-**New to AIRS? Read this first.**
+## Start Here
 
-[What is AI Runtime Security? →](what-is-ai-runtime-security.md){ .md-button .md-button--primary }
+<div class="grid cards" markdown>
 
-Shipping your first AI feature? Start with [Minimum Viable AIRS](minimum-viable-airs.md).
+-   **New to AIRS?**
 
-</div>
+    Seven controls you can implement in an afternoon. Enough runtime safety to go live, enough observability to learn, enough structure to decide where to invest next.
 
-## The AIRS Philosophy
+    [:octicons-arrow-right-24: Minimum Viable AIRS](minimum-viable-airs.md)
 
-![AIRS Runtime Control Plane](images/airs-runtime-control-plane.svg){ .arch-diagram }
+-   **Know Your Role?**
 
-<div class="pull-quote" markdown>
+    Entry points for CISOs, architects, risk teams, CIOs, product owners, AI engineers, compliance, and insider threat teams. Each page tells you what matters for your role, why, and where to start.
 
-> **"AI moves faster than any human. Runtime controls keep you in charge."**
+    [:octicons-arrow-right-24: Stakeholder views](stakeholders/index.md)
 
-</div>
+-   **Want the Full Framework?**
 
-## The Framework
+    Reading paths organised by depth and interest. Pick a track and follow it.
 
-[AI Runtime Security](what-is-ai-runtime-security.md) helps organisations protect themselves from the risks AI systems create during live operation. It applies defence-in-depth at the point of execution, treating deployment as the beginning of the risk lifecycle rather than the end.
-
-!!! abstract "Vendor-neutral by design"
-    This framework does not advocate any specific vendor, product, or platform. It helps you structure a response to AI runtime risks. Tooling decisions are yours.
-
-**Controls should be proportionate to risk.** A summarisation tool for internal meeting notes does not need the same controls as a customer-facing agent handling regulated financial data. The framework gives you risk-oriented paths so you can apply the right level of control to each situation.
-
-Rather than imposing a single way of working, the framework provides a menu of controls that AI product owners can quickly navigate, apply, or consciously deselect. The goal is to make it easy to do the right thing for your context.
-
-**[What is AI Runtime Security? →](what-is-ai-runtime-security.md)**
-
-### The concept in action
-
-A customer uses a chatbot to update personal information. Low-risk changes route directly to an execution agent. High-risk changes are evaluated by a judge model and escalated to a human analyst for approval. Only approved actions reach the customer database.
-
-![Chatbot personal data update with runtime controls](images/chatbot-workflow-runtime-controls.svg){ .arch-diagram }
-
-## Why This Matters
-
-### The problem
-
-Enterprises are deploying large language models into production at pace. The security conversation focuses almost entirely on the model layer: training data, prompt injection, pre-deployment red-teaming.
-
-This misses the point. The risk that matters in a regulated enterprise is what the model *does* do, at runtime, in production, when interacting with real data, real users, and real business processes. A model that passed every benchmark can still hallucinate a regulatory disclosure, leak PII through a poorly scoped tool call, or take an action no human authorised.
-
-Most enterprises have no runtime behavioural controls. They deploy. They monitor logs. They hope.
-
-### Why existing approaches fall short
-
-Adding process (review boards, sign-off stages, documentation requirements) creates gates that slow delivery without meaningfully reducing harm. Teams treat compliance as paperwork and controls become performative rather than protective.
-
-On the technical side, prompt engineering is fragile, input and output filters miss novel failures, and model evaluations are point-in-time snapshots of controlled environments. Guardrails on their own are a single point of failure.
-
-In every other security domain we layer controls and assume any single control will fail. AI security has not caught up.
-
-### The AIRS approach
-
-Four core control patterns, each independent, each compensating for the others:
-
-**Guardrails** enforce hard boundaries: content policies, scope constraints, tool-use permissions. Fast, deterministic, and limited to catching obvious failures.
-
-**Model-as-Judge evaluation** uses a separate model to assess outputs against policy, context, and intent before they reach users or downstream systems. It catches the subtle failures that guardrails miss.
-
-**Human oversight** provides escalation paths, audit trails, and intervention capability for high-risk decisions and anomaly-triggered review.
-
-**Circuit breakers** halt AI operations and activate safe fallbacks when controls fail or confirmed compromise is detected.
-
-Each layer operates independently. No single failure compromises the system. Defence-in-depth is not new. Applying it systematically to AI runtime behaviour is.
-
-### Why it matters for regulated industries
-
-Banking supervisors, data protection authorities, and AI regulators are converging on the same expectation: demonstrate that your AI systems behave within defined boundaries, and that you can detect and respond when they do not.
-
-The AIRS Framework maps to EU AI Act requirements, NIST AI RMF, ISO 42001, and sector-specific banking regulations. Effective controls generate compliance evidence as a by-product of normal operation.
-
-### Where to go from here
-
-<div class="home-paths" markdown>
-
-<div class="home-path" markdown>
-
-#### Stakeholder Views
-
-What this framework means for CISOs, architects, risk teams, and operators.
-
-[Stakeholder Views](stakeholders/){ .md-button }
-
-</div>
-
-<div class="home-path" markdown>
-
-#### Architecture Overview
-
-The technical control model and how it integrates with existing cloud and platform security.
-
-[Architecture Overview](ARCHITECTURE.md){ .md-button }
-
-</div>
-
-<div class="home-path" markdown>
-
-#### MASO Framework
-
-Securing autonomous agent coordination in multi-agent systems.
-
-[MASO Framework](maso/){ .md-button }
-
-</div>
-
-</div>
-
-<div class="learning-callout" markdown>
-
-<span class="learning-callout__label">Learning</span>
-
-<p class="learning-callout__title">New to the MASO Framework?</p>
-
-<p class="learning-callout__desc">AIruntimesecurity.co.za is a dedicated learning site for the Multi-Agent Security Operations framework. Structured guides, walkthroughs, and practical examples to help you get started.</p>
-
-[Explore AIruntimesecurity.co.za](https://airuntimesecurity.co.za){ .md-button }
-
-</div>
-
-<div class="learning-callout" markdown>
-
-<span class="learning-callout__label">Related</span>
-
-<p class="learning-callout__title">Interested in Secure by Design for AI?</p>
-
-<p class="learning-callout__desc">Secure by Design shifts security left, embedding it into AI systems from the start rather than bolting it on after deployment. Learn how design-time decisions and runtime controls work together to reduce risk across the full AI lifecycle.</p>
-
-[Explore AI Secured by Design](https://aisecuredbydesign.io/){ .md-button }
+    [:octicons-arrow-right-24: Start here](reading-paths.md)
 
 </div>
 
 ---
 
-<p style="text-align: center; font-size: 0.85rem; color: var(--md-default-fg-color--light);">
-Created by <a href="https://www.linkedin.com/in/jonathancgill/">Jonathan Gill</a>
-</p>
+## Multi-Agent Security (MASO)
+
+When agents coordinate autonomously, every single-agent risk compounds. An injection in one agent propagates through inter-agent messages. Hallucinations become another agent's facts. Delegation creates transitive authority chains nobody authorised.
+
+MASO adds ten control domains, three implementation tiers, and PACE resilience to handle what single-agent controls cannot: inter-agent communication integrity, non-human identity management, execution containment, and kill switch architecture.
+
+[:octicons-arrow-right-24: MASO Framework](maso/index.md) · [:octicons-arrow-right-24: Interactive Demo](maso/demo.md)
+
+---
+
+## Framework at a Glance
+
+| Layer | What It Covers | Entry Point |
+|---|---|---|
+| **Foundation** | Three-layer behavioural controls for single-agent deployments. 80 infrastructure controls across 11 domains. | [Architecture](ARCHITECTURE.md) |
+| **MASO** | Ten control domains for multi-agent orchestration. PACE resilience. OWASP Agentic Top 10 coverage. | [MASO](maso/index.md) |
+| **Implementation** | Platform patterns for AWS, Azure, Databricks. Tool access controls. Agentic infrastructure. | [Infrastructure](infrastructure/index.md) |
+| **SDK** | Python reference implementation. Guardrails, judge evaluation, circuit breakers in code. | [SDK](sdk/index.md) |
+
+---
+
+## Insights
+
+The *why* before the *how*. Each article identifies a specific problem that the controls then solve.
+
+**Foundations:** [Why guardrails aren't enough](insights/why-guardrails-arent-enough.md) · [Infrastructure beats instructions](insights/infrastructure-beats-instructions.md) · [Humans remain accountable](insights/humans-remain-accountable.md)
+
+**Emerging challenges:** [The MCP problem](insights/the-mcp-problem.md) · [The orchestrator problem](insights/the-orchestrator-problem.md) · [When agents talk to agents](insights/when-agents-talk-to-agents.md) · [The long-horizon problem](insights/the-long-horizon-problem.md)
+
+**Analysis:** [What works](insights/what-works.md) · [What scales](insights/what-scales.md) · [State of reality](insights/state-of-reality.md) · [The constraint curve](insights/the-constraint-curve.md)
+
+[:octicons-arrow-right-24: All insights](insights/index.md)
+
+---
+
+## Regulatory Alignment
+
+The framework maps to EU AI Act (Articles 9, 14, 15), NIST AI RMF, ISO 42001, OWASP LLM Top 10 (2025), OWASP Agentic Top 10 (2026), DORA, and APRA CPS 234. Effective controls generate compliance evidence as a by-product of normal operation.
+
+[:octicons-arrow-right-24: EU AI Act crosswalk](extensions/regulatory/eu-ai-act-crosswalk.md)
+
+---
+
+## Related
+
+<div class="grid cards" markdown>
+
+-   **AI Secured by Design**
+
+    Shifts security left, embedding it into AI systems from the start rather than bolting it on after deployment.
+
+    [:octicons-arrow-right-24: aisecuredbydesign.io](https://aisecuredbydesign.io/)
+
+-   **MASO Learning Site**
+
+    Structured guides, walkthroughs, and practical examples for the Multi-Agent Security Operations framework.
+
+    [:octicons-arrow-right-24: airuntimesecurity.co.za](https://airuntimesecurity.co.za)
+
+</div>
+
+---
+
+<div style="text-align: center; padding: 1rem 0;" markdown>
+
+Created by [Jonathan C. Gill](https://www.linkedin.com/in/jonathancgill/) · [feedback@airuntimesecurity.io](mailto:feedback@airuntimesecurity.io)
+
+</div>
