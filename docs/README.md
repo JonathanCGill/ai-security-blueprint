@@ -11,7 +11,7 @@ hide:
 
 Most organisations have no controls between the model and the damage it can do. AIRS is a vendor-neutral, risk-proportionate framework for running AI safely in production: layered runtime controls you can match to your actual risk, not a compliance checklist.
 
-[What AI Runtime Security is](what-is-ai-runtime-security.md)
+New here? Start with [what AI Runtime Security is](what-is-ai-runtime-security.md).
 
 ---
 
