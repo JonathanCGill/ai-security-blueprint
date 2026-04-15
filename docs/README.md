@@ -23,7 +23,7 @@ Most organisations have no controls between the model and the damage it can do. 
 
     Ship your first LLM feature with the controls that matter most. Seven controls, one checklist, one decision tree for whether you need to go deeper.
 
-    [Start Here](reading-paths.md) · [AIRSLite](minimum-viable-airs.md) · [Quick Start](QUICK_START.md)
+    [Start](start.md) · [AIRSLite](minimum-viable-airs.md) · [Quick Start](QUICK_START.md)
 
 -   **How do I secure AI while it is running?**
 

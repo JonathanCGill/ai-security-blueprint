@@ -89,6 +89,7 @@ nav:
   - Home: README.md
 
   - Start:
+    - start.md
     - Start Here: reading-paths.md
     - AIRSLite: minimum-viable-airs.md
     - Quick Start: QUICK_START.md
@@ -167,6 +168,7 @@ nav:
     - Insider Threat Teams: stakeholders/insider-threat-teams.md
 
   - Library:
+    - library.md
     - Insights:
       - insights/README.md
       - Foundations:
