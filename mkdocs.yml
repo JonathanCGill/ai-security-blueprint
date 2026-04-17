@@ -134,18 +134,17 @@ nav:
       - Single-Agent Overview: foundations/README.md
       - Risk Tiers: core/risk-tiers.md
       - Risk Assessment: core/risk-assessment.md
-      - Controls: core/controls.md
+      - "Three-Layer Model: Guardrails, Judge, Oversight": core/controls.md
       - Implementation Checklist: core/checklist.md
       - Judge Assurance: core/judge-assurance.md
       - When the Judge Can Be Fooled: core/when-the-judge-can-be-fooled.md
       - Agentic AI Controls: core/agentic.md
       - IAM Governance: core/iam-governance.md
       - Memory & Context: core/memory-and-context.md
-      - Multi-Agent Controls: core/multi-agent-controls.md
+      - Multi-Agent Primer: core/multi-agent-controls.md
       - Multimodal Controls: core/multimodal-controls.md
       - Reasoning Model Controls: core/reasoning-model-controls.md
       - Streaming Controls: core/streaming-controls.md
-      - Open-Weight Models: core/open-weight-models-shift-the-burden.md
       - Oversight Readiness: core/oversight-readiness-problem.md
       - Emerging Controls: core/emerging-controls.md
       - Future Considerations: core/future-considerations.md
@@ -283,7 +282,7 @@ nav:
 
     - Strategy:
       - strategy/README.md
-      - The Thread: strategy/the-thread.md
+      - "Lifecycle: How Strategy Connects to Production": strategy/the-thread.md
       - Business Alignment: strategy/business-alignment.md
       - Use Case Definition: strategy/use-case-definition.md
       - Use Case Filter: strategy/use-case-filter.md
@@ -378,7 +377,7 @@ nav:
 
     - Changes & Evidence:
       - Changelog: changelog.md
-      - Maturity & Validation: maturity.md
+      - Framework Validation Status: maturity.md
       - Validated Against Real Incidents: validated-against.md
       - Implementation Guide: implementation-guide.md
       - References & Sources: references.md
