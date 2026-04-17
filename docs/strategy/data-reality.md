@@ -148,7 +148,7 @@ Don't wait for perfect data. Identify what's available now, assess its quality h
 
 **Example:** A bank wants AI-powered customer insights. The ideal dataset would integrate all customer touchpoints. The available data is transactional data from core banking - complete, accurate, but limited in scope. Strategy: start with transaction-based insights (spending patterns, anomaly detection) where the data is strong. Add other data sources over time.
 
-**Framework alignment:** This naturally produces a [Fast Lane](../FAST-LANE.md) or Tier 1 deployment. Internal users, read-only, leveraging data you already control.
+**Framework alignment:** This naturally produces a [Fast Lane](../fast-lane.md) or Tier 1 deployment. Internal users, read-only, leveraging data you already control.
 
 ### Strategy 2: Build Data Capability Alongside AI Capability
 

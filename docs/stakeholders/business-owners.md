@@ -35,7 +35,7 @@ Not every AI system needs the same investment in controls. The framework gives y
 | Customer-facing chatbot | HIGH | Full three layers + PACE fail postures | 3-6 weeks added; meaningful but proportionate cost |
 | Autonomous agent making financial decisions | CRITICAL | Full three layers, 100% Judge, tested PACE, dedicated reviewers | 6-12 weeks; substantial control infrastructure |
 
-The [Fast Lane](../FAST-LANE.md) pre-approves low-risk deployments. If your AI meets four criteria (internal users, read-only, no regulated data, human reviews output), deploy with basic guardrails and move on. Don't put an internal FAQ bot through the same process as a payment agent.
+The [Fast Lane](../fast-lane.md) pre-approves low-risk deployments. If your AI meets four criteria (internal users, read-only, no regulated data, human reviews output), deploy with basic guardrails and move on. Don't put an internal FAQ bot through the same process as a payment agent.
 
 ### The real cost of controls - and the cost of not having them
 
@@ -115,7 +115,7 @@ Each phase requires demonstrated operational maturity before progressing. You do
 | # | Document | Why You Need It |
 |---|---|---|
 | 1 | [Risk Tiers](../core/risk-tiers.md) | Classify your AI system, know your tier in 2 minutes |
-| 2 | [Fast Lane](../FAST-LANE.md) | Check if any of your products qualify for accelerated low-risk deployment |
+| 2 | [Fast Lane](../fast-lane.md) | Check if any of your products qualify for accelerated low-risk deployment |
 | 3 | [Business Alignment](../strategy/business-alignment.md) | Four questions every AI initiative must answer - including cost and skills feasibility |
 | 4 | [Risk Assessment](../core/risk-assessment.md) | Quantified methodology for understanding your actual risk exposure |
 | 5 | [Cost & Latency](../extensions/technical/cost-and-latency.md) | The real numbers for control costs at each tier |
@@ -136,14 +136,14 @@ Each phase requires demonstrated operational maturity before progressing. You do
 
 3. **Identify shared infrastructure opportunities.** If multiple products need guardrails and Judge evaluation, build shared services. The alternative - each product team building independently - costs more and creates inconsistent security posture across your portfolio.
 
-4. **Ask every product team two questions.** First: *"What happens when your AI gets it wrong?"* If they don't have a tested answer, they need [PACE Resilience](../PACE-RESILIENCE.md). Second: *"What's your human fallback?"* If the answer is "we'd figure it out," that's not a plan.
+4. **Ask every product team two questions.** First: *"What happens when your AI gets it wrong?"* If they don't have a tested answer, they need [PACE Resilience](../pace-resilience.md). Second: *"What's your human fallback?"* If the answer is "we'd figure it out," that's not a plan.
 
 5. **Model the staffing requirement.** Use the FTE formula above for each product at its classified tier. Sum across the portfolio. If the total exceeds available capacity, either fund the gap or adjust the tier (by reducing autonomy, adding human review, or limiting scope). Operating a CRITICAL-tier system with MEDIUM-tier staffing is operating a CRITICAL-tier system without adequate controls.
 
 ## Common Objections - With Answers
 
 **"Controls will slow down our time to market."**
-The [Fast Lane](../FAST-LANE.md) exists specifically for this concern. Low-risk deployments (internal, read-only, no sensitive data, human-reviewed) deploy with basic guardrails in days. Only HIGH and CRITICAL tier systems need full controls - and those are the systems where moving fast without controls creates the incidents that slow you down for months (legal review, regulatory response, customer remediation).
+The [Fast Lane](../fast-lane.md) exists specifically for this concern. Low-risk deployments (internal, read-only, no sensitive data, human-reviewed) deploy with basic guardrails in days. Only HIGH and CRITICAL tier systems need full controls - and those are the systems where moving fast without controls creates the incidents that slow you down for months (legal review, regulatory response, customer remediation).
 
 **"We can't afford this level of security on every product."**
 You don't need to. LOW-tier products need negligible investment. The cost concentrates at HIGH and CRITICAL tiers - which is where the risk concentrates. If a product's AI risk doesn't justify the control investment, reduce the tier by limiting autonomy or scope. The framework scales proportionately.

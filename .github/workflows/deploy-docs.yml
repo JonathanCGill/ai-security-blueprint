@@ -37,6 +37,7 @@ jobs:
           pip install "mkdocs-material[imaging]"
           pip install mkdocs-with-pdf
           pip install mkdocs-git-revision-date-localized-plugin
+          pip install mkdocs-redirects
 
       - name: Generate MASO PDF
         run: mkdocs build -f mkdocs-pdf.yml

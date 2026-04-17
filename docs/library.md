@@ -69,7 +69,7 @@ description: "Index to the AI Runtime Security reference library: insights, impl
 
 <div class="grid cards" markdown>
 
--   **[Changes & Evidence](CHANGELOG.md)**
+-   **[Changes & Evidence](changelog.md)**
 
     Changelog, maturity and validation, incidents the framework has been validated against, implementation guide, and the full references list.
 
@@ -80,10 +80,10 @@ description: "Index to the AI Runtime Security reference library: insights, impl
 </div>
 
 !!! tip "Looking for the framework itself?"
-    The framework lives under [Framework](ARCHITECTURE.md) in the top nav, split into [Core Controls](core/README.md) for single-agent deployments and [MASO](maso/README.md) for multi-agent orchestration. This library sits alongside it as supporting material.
+    The framework lives under [Framework](architecture.md) in the top nav, split into [Core Controls](core/README.md) for single-agent deployments and [MASO](maso/README.md) for multi-agent orchestration. This library sits alongside it as supporting material.
 
 !!! info "References"
     - [Home](README.md)
     - [Start](start.md)
     - [For Your Role](stakeholders/README.md)
-    - [Framework: Architecture Overview](ARCHITECTURE.md)
+    - [Framework: Architecture Overview](architecture.md)

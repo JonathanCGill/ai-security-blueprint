@@ -122,6 +122,6 @@ These are entry points, not destinations. Follow the links deeper when you need 
 !!! info "References"
     - [Home](../README.md)
     - [Start](../start.md)
-    - [Architecture Overview](../ARCHITECTURE.md)
+    - [Architecture Overview](../architecture.md)
     - [Core Controls](../core/README.md)
     - [MASO (Multi-Agent)](../maso/README.md)

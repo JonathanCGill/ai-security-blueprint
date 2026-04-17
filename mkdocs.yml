@@ -56,6 +56,21 @@ plugins:
       enable_creation_date: false
       fallback_to_build_date: true
       type: date
+  - redirects:
+      redirect_maps:
+        ABOUT.md: about.md
+        ARCHITECTURE.md: architecture.md
+        CHANGELOG.md: changelog.md
+        CODE_OF_CONDUCT.md: code-of-conduct.md
+        CONTRIBUTING.md: contributing.md
+        FAQ.md: faq.md
+        FAST-LANE.md: fast-lane.md
+        IMPLEMENTATION_GUIDE.md: implementation-guide.md
+        MATURITY.md: maturity.md
+        PACE-RESILIENCE.md: pace-resilience.md
+        QUICK_START.md: quick-start.md
+        REFERENCES.md: references.md
+        VALIDATED-AGAINST.md: validated-against.md
   - social:
       cards_layout_options:
         background_color: "#1a1a2e"
@@ -104,16 +119,16 @@ nav:
     - "Walkthrough: Chevrolet $1 Chatbot": walkthrough-chevrolet-1-dollar.md
     - Reading Paths: reading-paths.md
     - AIRSLite: minimum-viable-airs.md
-    - Quick Start: QUICK_START.md
-    - Fast Lane: FAST-LANE.md
-    - FAQ: FAQ.md
+    - Quick Start: quick-start.md
+    - Fast Lane: fast-lane.md
+    - FAQ: faq.md
 
   - Framework:
-    - Overview: ARCHITECTURE.md
+    - Overview: architecture.md
     - Concepts:
       - Anatomy of an Agent: agentic-agent-anatomy.md
       - Constraining Agents: constraining-agents.md
-      - PACE Resilience: PACE-RESILIENCE.md
+      - PACE Resilience: pace-resilience.md
     - Core Controls:
       - core/README.md
       - Single-Agent Overview: foundations/README.md
@@ -362,15 +377,15 @@ nav:
       - Multi-Agent Risk Demo: extensions/examples/multi-agent-risk-demo.md
 
     - Changes & Evidence:
-      - Changelog: CHANGELOG.md
-      - Maturity & Validation: MATURITY.md
-      - Validated Against Real Incidents: VALIDATED-AGAINST.md
-      - Implementation Guide: IMPLEMENTATION_GUIDE.md
-      - References & Sources: REFERENCES.md
+      - Changelog: changelog.md
+      - Maturity & Validation: maturity.md
+      - Validated Against Real Incidents: validated-against.md
+      - Implementation Guide: implementation-guide.md
+      - References & Sources: references.md
 
     - Downloads: downloads.md
     - News: news.md
 
     - About:
       - About the Discipline: what-is-ai-runtime-security.md
-      - About the Author: ABOUT.md
+      - About the Author: about.md

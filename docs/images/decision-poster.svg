@@ -294,7 +294,7 @@
   <rect x="555" y="657" width="530" height="65" rx="6" fill="#fff" stroke="#bdc3c7" stroke-width="1" filter="url(#shadow)"/>
   <text x="565" y="675" font-size="9" font-weight="bold" fill="#5d6d7e">RESOURCES</text>
   <text x="565" y="691" font-size="8" fill="#2c3e50">Full framework: github.com/JonathanCGill/airuntimesecurity.io</text>
-  <text x="565" y="705" font-size="8" fill="#2c3e50">Fast Lane: FAST-LANE.md · PACE Methodology: PACE-RESILIENCE.md · Infrastructure: 80 controls / 11 domains</text>
+  <text x="565" y="705" font-size="8" fill="#2c3e50">Fast Lane: fast-lane.md · PACE Methodology: pace-resilience.md · Infrastructure: 80 controls / 11 domains</text>
   <text x="565" y="718" font-size="8" fill="#7f8c8d">MIT License - Use it, adapt it, build on it.</text>
 
   <!-- Footer -->

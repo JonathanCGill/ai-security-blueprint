@@ -81,7 +81,7 @@ Two articles provide reality checks before anyone starts building:
 
 ## Phase 3: Classification and Control Design - Knowing What Security Looks Like
 
-**Framework references:** [Risk Tiers](../core/risk-tiers.md) → [Controls](../core/controls.md) → [PACE Resilience](../PACE-RESILIENCE.md)
+**Framework references:** [Risk Tiers](../core/risk-tiers.md) → [Controls](../core/controls.md) → [PACE Resilience](../pace-resilience.md)
 
 The use case is defined. Now classify the risk and design the controls.
 
@@ -118,7 +118,7 @@ Each tier mandates specific controls. The specification isn't a checklist - it's
 
 ## Phase 4: Build, Test, and Deploy - Making It Real
 
-**Framework references:** [Implementation Guide](../IMPLEMENTATION_GUIDE.md) → [Testing Guidance](../extensions/templates/testing-guidance.md) → [SOC Integration](../extensions/technical/soc-integration.md)
+**Framework references:** [Implementation Guide](../implementation-guide.md) → [Testing Guidance](../extensions/templates/testing-guidance.md) → [SOC Integration](../extensions/technical/soc-integration.md)
 
 Design is done. Now build the system and its controls together - not the system first and controls later.
 
@@ -364,8 +364,8 @@ The forward path gets most of the attention. The return loop is where governance
 |-------------|------------------|-------------------|
 | 1. Strategy | [Business Alignment](business-alignment.md), [Use Case Filter](use-case-filter.md) | [The First Control](../insights/the-first-control.md) |
 | 2. Definition | [Use Case Definition](use-case-definition.md), [Data Reality](data-reality.md), [Human Factors](human-factors.md) | [Risk Tier Is Use Case](../insights/risk-tier-is-use-case.md) |
-| 3. Classification | [Progression](progression.md), [Framework Tensions](framework-tensions.md) | [Risk Tiers](../core/risk-tiers.md), [Controls](../core/controls.md), [PACE](../PACE-RESILIENCE.md) |
-| 4. Implementation | [From Idea to Production](idea-to-production.md) (Stages 5–7) | [Implementation Guide](../IMPLEMENTATION_GUIDE.md), [Testing Guidance](../extensions/templates/testing-guidance.md) |
+| 3. Classification | [Progression](progression.md), [Framework Tensions](framework-tensions.md) | [Risk Tiers](../core/risk-tiers.md), [Controls](../core/controls.md), [PACE](../pace-resilience.md) |
+| 4. Implementation | [From Idea to Production](idea-to-production.md) (Stages 5–7) | [Implementation Guide](../implementation-guide.md), [Testing Guidance](../extensions/templates/testing-guidance.md) |
 | 5. Monitoring | [From Idea to Production](idea-to-production.md) (Stage 8) | [Operational Metrics](../extensions/technical/operational-metrics.md), [Anomaly Detection](../extensions/technical/anomaly-detection-ops.md), [SOC Integration](../extensions/technical/soc-integration.md), [Governance Operating Model](../extensions/regulatory/ai-governance-operating-model.md) |
 | Return Loop | All of the above - the loop can land anywhere | All of the above - the response depends on where |
 

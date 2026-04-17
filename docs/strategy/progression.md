@@ -21,7 +21,7 @@ The framework supports five positions on a progression from no AI to autonomous 
 | Position | Framework Equivalent | What the AI Does | Who Decides |
 |----------|---------------------|------------------|-------------|
 | **No AI** | Pre-framework | Nothing - manual processes | Humans |
-| **Assisted** | [Fast Lane](../FAST-LANE.md) | AI drafts, suggests, summarises | Human decides everything; AI is a tool |
+| **Assisted** | [Fast Lane](../fast-lane.md) | AI drafts, suggests, summarises | Human decides everything; AI is a tool |
 | **Supported** | Tier 1 (LOW/MEDIUM) | AI recommends; human acts | Human decides, informed by AI |
 | **Supervised** | Tier 2 (HIGH) | AI acts on routine cases; human handles exceptions | AI decides routine; human decides complex |
 | **Autonomous** | Tier 3 (CRITICAL) | AI acts independently; human monitors | AI decides; human oversees |

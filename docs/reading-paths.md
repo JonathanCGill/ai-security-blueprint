@@ -7,7 +7,7 @@ description: "Curated reading paths through the AI Runtime Security framework, o
 This site covers a lot of ground. These curated paths help you find what matters most based on what you are trying to achieve. Each path is a suggested sequence, not a strict order. Skip what you already know, dive deeper where you need to.
 
 !!! tip "Shipping your first LLM feature?"
-    If you need a short, opinionated list of controls to put in place before going live, start with [Minimum Viable AIRS](minimum-viable-airs.md). Seven controls, one checklist, one decision tree for whether you need to go deeper.
+    If you need a short, opinionated list of controls to put in place before going live, start with [AIRSLite](minimum-viable-airs.md). Seven controls, one checklist, one decision tree for whether you need to go deeper.
 
 !!! tip "Looking for role-based guidance?"
     The [Stakeholder Views](stakeholders/README.md) pages provide tailored entry points for security leaders, risk teams, architects, engineers, product owners, and more. Each one includes a starting path, concrete first actions, and answers to common objections.
@@ -52,8 +52,8 @@ Controls degrade. Attackers adapt. Models drift. The system only stays effective
 | # | Article | What it argues | What it sets up |
 |---|---------|---------------|-----------------|
 | 12 | [The Feedback Loops That Make It Work](insights/feedback-loops.md) | Four feedback loops at different speeds (judge signals tighten guardrails, human labels calibrate the judge, human insight updates policy, downstream outcomes validate decisions) create a self-improving system. Without them, every layer degrades independently. | How does this all fit together as architecture? |
-| 13 | [Architecture Overview](ARCHITECTURE.md) | Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain. Single-agent and multi-agent variants with PACE resilience for graceful degradation. | Does it actually work in practice? |
-| 14 | [What Works](insights/what-works.md) | Organisations using runtime controls detect breaches 108 days faster. Guardrails block millions of attacks daily. Judges catch hallucination in production. The evidence is clear, but adoption is low. | *You are now ready to implement. Start with the [Quick Start](QUICK_START.md) or [Implementation Checklist](core/checklist.md).* |
+| 13 | [Architecture Overview](architecture.md) | Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain. Single-agent and multi-agent variants with PACE resilience for graceful degradation. | Does it actually work in practice? |
+| 14 | [What Works](insights/what-works.md) | Organisations using runtime controls detect breaches 108 days faster. Guardrails block millions of attacks daily. Judges catch hallucination in production. The evidence is clear, but adoption is low. | *You are now ready to implement. Start with the [Quick Start](quick-start.md) or [Implementation Checklist](core/checklist.md).* |
 
 !!! tip "Reading time"
     The full path is roughly two hours. **Act I** (articles 1 through 4) sets the foundation in about 25 minutes. **Act II** (articles 5 through 11) covers the control layers in about 50 minutes. You can stop after article 12 and have the complete picture of how the system works and self-corrects.
@@ -100,10 +100,10 @@ Controls degrade. Attackers adapt. Models drift. The system only stays effective
 6. [Red Team Playbook](maso/red-team/red-team-playbook.md)
 
 !!! tip "Still not sure where to start?"
-    The [Quick Start](QUICK_START.md) guide gives you a condensed overview you can read in a few minutes. The [FAQ](FAQ.md) answers common questions about scope, applicability, and how the framework relates to existing standards.
+    The [Quick Start](quick-start.md) guide gives you a condensed overview you can read in a few minutes. The [FAQ](faq.md) answers common questions about scope, applicability, and how the framework relates to existing standards.
 
 !!! info "References"
     - [What is AI Runtime Security?](what-is-ai-runtime-security.md)
-    - [Minimum Viable AIRS](minimum-viable-airs.md)
-    - [Quick Start](QUICK_START.md)
-    - [FAQ](FAQ.md)
+    - [AIRSLite](minimum-viable-airs.md)
+    - [Quick Start](quick-start.md)
+    - [FAQ](faq.md)

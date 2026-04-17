@@ -6,7 +6,7 @@ description: "How feedback loops between guardrails, judges, humans, and downstr
 
 <!-- golden-thread-nav -->
 !!! tip "Part of the Golden Thread (12 of 14)"
-    Previous: [Infrastructure Beats Instructions](infrastructure-beats-instructions.md) · Next: [Architecture Overview](../ARCHITECTURE.md) · [See the full sequence](../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
+    Previous: [Infrastructure Beats Instructions](infrastructure-beats-instructions.md) · Next: [Architecture Overview](../architecture.md) · [See the full sequence](../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
 <!-- golden-thread-nav -->
 
 *Guardrails prevent. Judges detect. Humans decide. But none of them improve on their own.*
@@ -128,5 +128,5 @@ Each layer's weakness is another layer's feedback signal. The feedback loops are
     - [Judge Assurance](../core/judge-assurance.md)
     - [Temporal Decay](../insights/temporal-decay.md)
     - [The Flight Recorder Problem](../insights/the-flight-recorder-problem.md)
-    - [PACE Resilience](../PACE-RESILIENCE.md)
+    - [PACE Resilience](../pace-resilience.md)
     - [Humans Remain Accountable](../insights/humans-remain-accountable.md)

@@ -1,9 +1,9 @@
 ---
-title: Minimum Viable AIRS
+title: AIRSLite
 description: "The seven controls every team should put in place before shipping an LLM-powered feature to production. If you do nothing else, do these."
 ---
 
-# Minimum Viable AIRS
+# AIRSLite
 
 *If you do nothing else, do these seven things before your first LLM feature goes live.*
 
@@ -13,7 +13,7 @@ You are shipping an LLM-powered feature into production for the first time. Mayb
 
 You need a short, practical list of things to put in place so that when the feature goes live, the obvious failure modes are already covered and you can see the less obvious ones coming.
 
-This page is that list. It is deliberately opinionated and deliberately short. Seven controls, one checklist, one decision tree. Once you have these in place, you have a Minimum Viable AIRS deployment: enough runtime safety to go live, enough observability to learn, and enough structure to decide where to invest next.
+This page is that list. It is deliberately opinionated and deliberately short. Seven controls, one checklist, one decision tree. Once you have these in place, you have an AIRSLite deployment: enough runtime safety to go live, enough observability to learn, and enough structure to decide where to invest next.
 
 !!! abstract "What this page is not"
     This is not the full framework. It is not a substitute for a proper risk assessment on high-stakes systems. If your feature handles regulated data, takes autonomous actions, or is customer-facing in a sensitive domain, treat this as the floor, not the ceiling. The [decision tree](#do-you-need-to-go-deeper) at the end tells you when to go further.
@@ -133,14 +133,14 @@ Once the seven controls are in place and the feature is stable in production, th
 
 - **Add a judge layer** to catch the semantic failures your guardrails miss. See [The Judge Detects, Not Decides](insights/judge-detects-not-decides.md).
 - **Tighten the feedback loop** between runtime signals and control updates. See [The Feedback Loops That Make It Work](insights/feedback-loops.md).
-- **Formalise your resilience posture** beyond the kill switch. See [PACE Resilience](PACE-RESILIENCE.md).
+- **Formalise your resilience posture** beyond the kill switch. See [PACE Resilience](pace-resilience.md).
 - **Turn the controls into code** using the reference implementation. See the [AIRS Python SDK](sdk/README.md).
 
 None of these are required to ship. All of them become relevant as your AI footprint grows.
 
 !!! info "References"
     - [What is AI Runtime Security?](what-is-ai-runtime-security.md)
-    - [Secure AI Fast Lane](FAST-LANE.md)
-    - [Quick Start](QUICK_START.md)
+    - [Secure AI Fast Lane](fast-lane.md)
+    - [Quick Start](quick-start.md)
     - [Implementation Checklist](core/checklist.md)
     - [Risk Tiers](core/risk-tiers.md)

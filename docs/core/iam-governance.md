@@ -317,7 +317,7 @@ The three layers must operate independently for IAM:
 - A Judge model failure does not impair the guardrails' enforcement of identity validation
 - A compromised HITL reviewer's session does not affect the guardrail or Judge layer
 
-This is PACE resilience applied to IAM. If one layer fails, the others continue. If all three fail, the [circuit breaker](../PACE-RESILIENCE.md) routes traffic to a non-AI fallback.
+This is PACE resilience applied to IAM. If one layer fails, the others continue. If all three fail, the [circuit breaker](../pace-resilience.md) routes traffic to a non-AI fallback.
 
 ## Standards and Frameworks
 
@@ -385,5 +385,5 @@ This governance model draws from internationally recognised standards and emergi
 | **Financial services IAM** | [High-Risk Financial Services](../extensions/regulatory/high-risk-financial-services.md) | Four access control layers, financial services requirements, access control anti-patterns |
 | **IAM architecture diagram** | [IAM Control Layers](../infrastructure/diagrams/iam-control-layers.svg) | Visual: control plane / data plane separation with agent authorisation gateway |
 | **Three-layer pattern** | [Core Controls](controls.md) | How guardrails, Judge, and Human Oversight work together |
-| **PACE resilience** | [PACE Resilience](../PACE-RESILIENCE.md) | Failover methodology applied to all controls including IAM |
+| **PACE resilience** | [PACE Resilience](../pace-resilience.md) | Failover methodology applied to all controls including IAM |
 

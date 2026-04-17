@@ -163,11 +163,11 @@ The UK AI Security Institute's Frontier AI Trends Report (December 2025) is the 
 ## [0.7.0] - 2026-02-15
 
 ### Added
-- **MATURITY.md** - Honest assessment of framework validation status
+- **maturity.md** - Honest assessment of framework validation status
   - Four-level validation model (production, incident, standards, pattern consistency)
   - Explicit documentation of known gaps
   - Call for pilot partners and peer review
-- **VALIDATED-AGAINST.md** - Control-by-control incident validation
+- **validated-against.md** - Control-by-control incident validation
   - Controls mapped to known real-world incidents with confidence ratings
   - Evidence strength ratings (Strong: 3+ incidents, Moderate: 1–2, Threat-modelled: 0)
   - Validation coverage map by MASO domain
@@ -193,7 +193,7 @@ The framework is comprehensive but has no production deployments. Rather than ig
   - Later renamed to **AI Runtime Security** (February 2026)
   
 ### Added
-- **IMPLEMENTATION_GUIDE.md** - New practical guide with working code
+- **implementation-guide.md** - New practical guide with working code
   - Input guardrails (regex + Bedrock + NeMo examples)
   - Output guardrails (PII, forbidden phrases, structured validation)
   - Model-as-Judge (prompts, sampling strategies, async processing)
@@ -205,7 +205,7 @@ The framework is comprehensive but has no production deployments. Rather than ig
 
 ### Rationale
 Reality check revealed the framework was thought leadership, not a buildable blueprint. Now there are two clear paths:
-- **Implementors**: Start with IMPLEMENTATION_GUIDE.md (code)
+- **Implementors**: Start with implementation-guide.md (code)
 - **Architects/Governance**: Use the full Framework (strategy)
 
 ## [0.5.0] - 2026-02-07
@@ -262,7 +262,7 @@ Framework had grown to 48 files. Core + Extensions model provides clear "start h
 - Operational Metrics document - KPIs, dashboards, alerting thresholds
 - Data Retention Guidance - requirements by tier and jurisdiction
 - Templates README - index of all templates
-- Standard repo files: CODE_OF_CONDUCT.md, GOVERNANCE.md, LICENSE (MIT), SECURITY.md
+- Standard repo files: code-of-conduct.md, GOVERNANCE.md, LICENSE (MIT), SECURITY.md
 
 ### Changed
 - Updated README with Templates section and new document links

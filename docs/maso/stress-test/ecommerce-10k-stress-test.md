@@ -570,5 +570,5 @@ The economic governance stress test passes when the team can:
 | [Execution Control](../controls/execution-control.md) | Defines EC controls. This document proposes risk-tiered Judge sampling |
 | [Cost & Latency](../../extensions/technical/cost-and-latency.md) | Provides single-model cost analysis. This document extends it to 60,000-instance cost projections |
 | [Economic Governance](../../extensions/technical/economic-governance.md) | Defines the Meter → Attribute → Enforce → Optimise model. Stress Dimension 9 applies it under peak trading pressure with escalating cost-to-revenue divergence |
-| [PACE Resilience](../../PACE-RESILIENCE.md) | Defines the three-axis PACE model. This document proposes instance-level and type-level PACE as a scaling adaptation |
+| [PACE Resilience](../../pace-resilience.md) | Defines the three-axis PACE model. This document proposes instance-level and type-level PACE as a scaling adaptation |
 

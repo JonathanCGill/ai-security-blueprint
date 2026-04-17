@@ -37,7 +37,7 @@ Controls scale to risk so that low-risk AI moves fast and high-risk AI stays saf
 | <span class="tier-high">High</span> | All three layers, human-in-the-loop for writes | P + A + C configured and tested |
 | <span class="tier-critical">Critical</span> | Full architecture, mandatory human approval | Full PACE cycle with tested E→P recovery |
 
-Classify your system: [Risk Tiers](../core/risk-tiers.md). Understand the failure modes: [PACE Resilience](../PACE-RESILIENCE.md).
+Classify your system: [Risk Tiers](../core/risk-tiers.md). Understand the failure modes: [PACE Resilience](../pace-resilience.md).
 
 ## Defence in Depth Beyond the AI Layer
 
@@ -56,8 +56,8 @@ For multi-agent systems, the [MASO Environment Containment](../maso/environment-
 | If you want to... | Go here |
 | --- | --- |
 | Ship your first LLM feature | [AIRSLite](../minimum-viable-airs.md) |
-| Deploy low-risk AI fast | [Fast Lane](../FAST-LANE.md) |
-| Get working code in 30 minutes | [Quick Start](../QUICK_START.md) |
+| Deploy low-risk AI fast | [Fast Lane](../fast-lane.md) |
+| Get working code in 30 minutes | [Quick Start](../quick-start.md) |
 | See every single-agent control | [Core Controls](../core/README.md) |
 | Classify a system by risk | [Risk Tiers](../core/risk-tiers.md) |
 | Enforce controls at the infrastructure layer | [Infrastructure](../infrastructure/README.md) |
@@ -65,7 +65,7 @@ For multi-agent systems, the [MASO Environment Containment](../maso/environment-
 
 !!! info "References"
     - [Core Controls](../core/README.md)
-    - [Architecture Overview](../ARCHITECTURE.md)
+    - [Architecture Overview](../architecture.md)
     - [Why Containment Beats Evaluation](../insights/why-containment-beats-evaluation.md)
-    - [PACE Resilience](../PACE-RESILIENCE.md)
+    - [PACE Resilience](../pace-resilience.md)
     - [MASO Framework](../maso/README.md)

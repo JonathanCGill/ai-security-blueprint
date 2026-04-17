@@ -321,7 +321,7 @@ Regulatory requirements are not negotiable within the organisation. If the EU AI
 | **Ignoring control costs in business case** | Business case looks attractive until operational costs are included | Model full lifecycle cost including controls by tier |
 | **Assuming data exists and is ready** | Project stalls at data preparation | Assess data reality *before* committing to approach |
 | **Pilot that can't scale** | Successful pilot in controlled conditions; fails at scale because controls weren't designed for volume | Design controls for target scale from the start |
-| **Building before governance exists** | System deployed without risk classification or controls | Establish minimum governance before first deployment ([Quick Start](../QUICK_START.md)) |
+| **Building before governance exists** | System deployed without risk classification or controls | Establish minimum governance before first deployment ([Quick Start](../quick-start.md)) |
 | **Copying competitor strategy** | Different data, different skills, different risk appetite - different outcome | Assess your own constraints honestly |
 | **"We'll add security later"** | Security retrofit is always more expensive and less effective | Include security controls in initial design |
 
@@ -338,7 +338,7 @@ For each proposed AI initiative, answer honestly:
 | What controls does that tier require? | | [Control Matrix](../core/risk-tiers.md#control-matrix) |
 | What's the operational cost of those controls? | | Staffing model, infrastructure |
 | Do we have the skills to build and operate this? | | [Human Factors](human-factors.md) assessment |
-| What's the fallback if it fails? | | [PACE](../PACE-RESILIENCE.md) |
+| What's the fallback if it fails? | | [PACE](../pace-resilience.md) |
 | Who will operate this day-to-day? | | Named team, not "TBD" |
 | What does success look like, measurably? | | KPIs with baselines |
 

@@ -28,7 +28,7 @@ A workable use case definition answers ten questions. Each directly determines a
 | 2 | **What decisions does it make or influence?** | Decision authority dimension → risk tier | [Risk Tiers](../core/risk-tiers.md) - authority scoring |
 | 3 | **What data does it access?** | Data sensitivity dimension → risk tier, DLP rules | [Data Protection](../infrastructure/controls/data-protection.md) |
 | 4 | **Who are the users?** | Audience dimension → risk tier, access controls | [Identity & Access](../infrastructure/controls/identity-and-access.md) |
-| 5 | **What happens when it's wrong?** | Reversibility dimension → risk tier, PACE plan | [PACE Resilience](../PACE-RESILIENCE.md) |
+| 5 | **What happens when it's wrong?** | Reversibility dimension → risk tier, PACE plan | [PACE Resilience](../pace-resilience.md) |
 | 6 | **What's the expected volume?** | Operational sizing - HITL staffing, Judge compute, logging storage | [Governance Model](../extensions/regulatory/ai-governance-operating-model.md) |
 | 7 | **What regulatory context applies?** | Regulatory dimension → risk tier, compliance controls | [Regulatory Extensions](../extensions/regulatory/README.md) |
 | 8 | **What tools or actions can it take?** | Agentic scope → agentic controls, execution boundaries | [Agentic Controls](../core/agentic.md) |

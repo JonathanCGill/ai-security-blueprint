@@ -105,7 +105,7 @@ Alert fatigue, deskilling, and reviewer burnout are not edge cases. They are the
 
 ## Proportionality in Practice
 
-The framework resolves this through the [risk tier](../core/risk-tiers.md) system and the [Fast Lane](../FAST-LANE.md) for low-risk deployments. The principle is simple: match controls to actual risk, not to technology or to fear.
+The framework resolves this through the [risk tier](../core/risk-tiers.md) system and the [Fast Lane](../fast-lane.md) for low-risk deployments. The principle is simple: match controls to actual risk, not to technology or to fear.
 
 | Factor | Under-constrained | Proportionate | Over-constrained |
 | --- | --- | --- | --- |
@@ -150,6 +150,6 @@ The secure path must be the easiest path. Controls embedded in platform infrastr
 - [Framework Tensions](../strategy/framework-tensions.md) - where the framework constrains strategy
 - [Business Alignment](../strategy/business-alignment.md) - the cost reality of control tiers
 - [Human Factors](../strategy/human-factors.md) - sustainability of human-dependent controls
-- [Fast Lane](../FAST-LANE.md) - minimal controls for low-risk systems
+- [Fast Lane](../fast-lane.md) - minimal controls for low-risk systems
 - [Risk Tiers](../core/risk-tiers.md) - classifying systems by use case, not technology
 

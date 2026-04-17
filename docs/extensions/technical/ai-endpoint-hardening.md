@@ -166,7 +166,7 @@ Model updates are not code updates. A new model version can change behavior in w
 
 ## PACE Resilience for Endpoints
 
-Apply the [PACE resilience model](../../PACE-RESILIENCE.md) to endpoint availability:
+Apply the [PACE resilience model](../../pace-resilience.md) to endpoint availability:
 
 | State | Condition | Endpoint Behavior |
 |---|---|---|

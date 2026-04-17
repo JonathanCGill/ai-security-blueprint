@@ -44,7 +44,7 @@ Can your team build the AI system the strategy requires?
 | Multi-agent orchestration | Very rare | Hire specialists or partner with vendor |
 | AI security architecture | Very rare | This framework is a starting point; experience takes time |
 
-**Strategic implication:** The skills required to build a [Fast Lane](../FAST-LANE.md) deployment (basic guardrails, logging, feature flag) can be acquired in weeks. The skills required for a Tier 3 autonomous agent system take months to years. Strategy must align ambition with available (or realistically acquirable) skills.
+**Strategic implication:** The skills required to build a [Fast Lane](../fast-lane.md) deployment (basic guardrails, logging, feature flag) can be acquired in weeks. The skills required for a Tier 3 autonomous agent system take months to years. Strategy must align ambition with available (or realistically acquirable) skills.
 
 #### The Operate Skills Gap
 

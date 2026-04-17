@@ -81,19 +81,7 @@ The principle is not new. Defence-in-depth has always been how we secure complex
 
 ## Why a Discipline, Not Just a Framework
 
-Frameworks get copied. Categories get cited.
-
-AI Runtime Security is not a single product, vendor capability, or proprietary methodology. It is a field of practice that any organisation deploying AI systems in production needs to address. Every organisation has its own structures, risk tolerances, and ways of getting things done. The discipline respects this by providing risk-oriented paths and control patterns that can be adopted, adapted, or consciously deselected based on organisational context.
-
-The [AIRS Framework](ARCHITECTURE.md) is a reference architecture for this discipline: one implementation model that provides controls, patterns, and operational guidance. It is designed so that AI product owners can quickly identify the controls they need and apply them, without being forced into a one-size-fits-all mandate. But the discipline itself is broader than any single framework. It encompasses:
-
-- The [Foundation Framework](foundations/README.md) for single-agent deployments: the three-layer behavioural pattern (Guardrails, Judge, Human Oversight), backed by 80 [infrastructure controls](infrastructure/README.md) across 11 domains.
-- [Multi-Agent Security Operations (MASO)](maso/README.md) for autonomous agent coordination, with controls organised into 10 domains
-- [Regulatory alignment](extensions/regulatory/eu-ai-act-crosswalk.md) with EU AI Act, ISO 42001, and NIST AI RMF
-- [Platform-specific patterns](infrastructure/reference/platform-patterns/aws-bedrock.md) for AWS, Azure, and Databricks
-
-
-As AI systems grow more autonomous, the need for structured runtime security will only increase. The question is not whether organisations need AI Runtime Security. It is whether they implement it before or after the first production incident forces them to.
+AI Runtime Security is a field of practice, not a product, vendor capability, or proprietary methodology. The [AIRS Framework](architecture.md) is one reference architecture for the discipline, spanning [Foundation](foundations/README.md) for single agents, [MASO](maso/README.md) for multi-agent coordination, [infrastructure controls](infrastructure/README.md), and [regulatory alignment](extensions/regulatory/eu-ai-act-crosswalk.md). Every organisation adopts, adapts, or deselects patterns based on its own risk appetite. The question is not whether organisations need AI Runtime Security, but whether they implement it before or after the first production incident forces them to.
 
 ## Standards Alignment
 

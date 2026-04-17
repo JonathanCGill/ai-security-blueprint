@@ -136,7 +136,7 @@ This section references framework components throughout but does not repeat them
 
 - [Risk Tiers](../core/risk-tiers.md) - how the framework classifies risk
 - [Controls](../core/controls.md) - what controls exist per tier
-- [Fast Lane](../FAST-LANE.md) - the pre-approved low-risk path
-- [PACE Resilience](../PACE-RESILIENCE.md) - the degradation model
+- [Fast Lane](../fast-lane.md) - the pre-approved low-risk path
+- [PACE Resilience](../pace-resilience.md) - the degradation model
 - [Governance Operating Model](../extensions/regulatory/ai-governance-operating-model.md) - the organisational structure
 

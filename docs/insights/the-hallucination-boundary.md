@@ -132,7 +132,7 @@ The framework's [epistemic integrity controls](../maso/controls/prompt-goal-and-
 
 ## The PACE Response to Hallucination Failure
 
-When hallucination detection itself fails, the [PACE resilience model](../PACE-RESILIENCE.md) provides structured degradation:
+When hallucination detection itself fails, the [PACE resilience model](../pace-resilience.md) provides structured degradation:
 
 | PACE Phase | Hallucination Response |
 | --- | --- |
@@ -164,6 +164,6 @@ The progression is deliberate. Each phase removes a degree of freedom from the m
 - [Prompt, Goal and Epistemic Integrity](../maso/controls/prompt-goal-and-epistemic-integrity.md) - the full epistemic control set for multi-agent systems
 - [Judge Assurance](../core/judge-assurance.md) - measuring whether the judge is actually detecting what it should
 - [Risk Tiers](../core/risk-tiers.md) - how classification drives control selection
-- [PACE Resilience](../PACE-RESILIENCE.md) - structured degradation when controls fail
+- [PACE Resilience](../pace-resilience.md) - structured degradation when controls fail
 - [The First Control](the-first-control.md) - when AI is not the right tool for the problem
 

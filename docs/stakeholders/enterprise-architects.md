@@ -82,7 +82,7 @@ Each control layer needs a defined failure mode. These aren't operational proced
 | Judge + Guardrails down | Circuit breaker activates → serve static fallback / disable AI path |
 | Human review queue overflows | Auto-hold new requests → expand queue capacity → degrade to narrower scope |
 
-Wire these as **health checks and circuit breakers** in your service mesh or orchestration layer. Not as runbooks. See [PACE Resilience](../PACE-RESILIENCE.md).
+Wire these as **health checks and circuit breakers** in your service mesh or orchestration layer. Not as runbooks. See [PACE Resilience](../pace-resilience.md).
 
 ## Your Starting Path
 
@@ -92,7 +92,7 @@ Wire these as **health checks and circuit breakers** in your service mesh or orc
 | 2 | [Risk Tiers](../core/risk-tiers.md) | Determines your control requirements - different tiers, different architectures |
 | 3 | [Infrastructure Controls](../infrastructure/README.md) | 80 controls across 11 domains - what to enforce at infrastructure level |
 | 4 | [Cost & Latency](../extensions/technical/cost-and-latency.md) | Budget the evaluation layer - latency vs. coverage trade-offs |
-| 5 | [PACE Resilience](../PACE-RESILIENCE.md) | Fail postures as architecture decisions |
+| 5 | [PACE Resilience](../pace-resilience.md) | Fail postures as architecture decisions |
 
 **If you're building with a specific platform:** [AWS Bedrock](../infrastructure/reference/platform-patterns/aws-bedrock.md) · [Microsoft Foundry](../infrastructure/reference/platform-patterns/microsoft-foundry.md) · [Databricks](../infrastructure/reference/platform-patterns/databricks.md)
 

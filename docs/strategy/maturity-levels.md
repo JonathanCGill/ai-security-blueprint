@@ -21,7 +21,7 @@ Most organisations also consume AI through other channels. The maturity question
 | **Copilots and productivity AI** | Microsoft 365 Copilot, GitHub Copilot, Salesforce Einstein | Vendor operates the AI; you govern access and data. | Data classification, access governance, RAG exposure management, output review processes. |
 | **AI coding tools** | GitHub Copilot, Cursor, Claude Code | Vendor operates the AI; you own what ships to production. | Code review discipline. Understanding AI-generated output before it reaches production. |
 
-The rest of this article addresses maturity across all four tracks. The full [control architecture](../ARCHITECTURE.md), [risk tiers](../core/risk-tiers.md), and [MASO framework](../maso/README.md) apply in depth to the first track. For the other three, the framework provides the mental model; the implementation details differ.
+The rest of this article addresses maturity across all four tracks. The full [control architecture](../architecture.md), [risk tiers](../core/risk-tiers.md), and [MASO framework](../maso/README.md) apply in depth to the first track. For the other three, the framework provides the mental model; the implementation details differ.
 
 ## Why Maturity Models Matter
 
@@ -198,7 +198,7 @@ The maturity question for most organisations is not "do we have the tools?" It i
 3. **Are you reading the logs?**
 4. **Do you act on what you find?**
 
-For AI you build and operate: have you implemented the [three-layer defence](../ARCHITECTURE.md), scaled controls to [risk tiers](../core/risk-tiers.md), and tested [PACE resilience](../PACE-RESILIENCE.md)?
+For AI you build and operate: have you implemented the [three-layer defence](../architecture.md), scaled controls to [risk tiers](../core/risk-tiers.md), and tested [PACE resilience](../pace-resilience.md)?
 
 ## The Balance Between AI and Non-AI Solutions
 

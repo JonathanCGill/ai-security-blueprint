@@ -97,7 +97,7 @@ Read these in order. Total time: ~90 minutes.
 
 | # | Document | Why You Need It |
 |---|---|---|
-| 1 | [Quick Start](../QUICK_START.md) | The framework essentials: classification, controls, fail postures |
+| 1 | [Quick Start](../quick-start.md) | The framework essentials: classification, controls, fail postures |
 | 2 | [Risk Tiers](../core/risk-tiers.md) | The classification scheme you'll mandate as the portfolio standard |
 | 3 | [Business Alignment](../strategy/business-alignment.md) | Four strategic questions every AI initiative must answer before investment |
 | 4 | [Cost & Latency](../extensions/technical/cost-and-latency.md) | Budget the control layers - the numbers behind the portfolio cost model |
@@ -132,7 +132,7 @@ Product teams should own their risk classification and business-specific control
 The alternative is every product team funding their own AI security capability - which costs more in aggregate. A shared guardrail service, a shared Judge infrastructure, and a shared SIEM integration cost less than five teams building five separate versions. The [Cost & Latency](../extensions/technical/cost-and-latency.md) analysis provides the numbers for the business case.
 
 **"Our AI maturity is too low for this level of governance."**
-Start with classification. Even just categorising your AI systems into four tiers - without implementing any new controls - gives you a portfolio view you didn't have before. The [Quick Start](../QUICK_START.md) is designed for exactly this situation. Gartner's AI Maturity Model and MITRE's AI Maturity Model both emphasise that governance maturity must grow alongside technical maturity, not lag behind it.
+Start with classification. Even just categorising your AI systems into four tiers - without implementing any new controls - gives you a portfolio view you didn't have before. The [Quick Start](../quick-start.md) is designed for exactly this situation. Gartner's AI Maturity Model and MITRE's AI Maturity Model both emphasise that governance maturity must grow alongside technical maturity, not lag behind it.
 
 **"The skills market is too competitive - we can't hire AI security people."**
 You don't need to hire all of them. The [Human Factors](../strategy/human-factors.md) assessment shows that most operational roles can be filled by retraining existing security and operations staff. Guardrail maintenance is an extension of existing security operations. Judge calibration is an extension of QA. Dedicated hiring is needed for architecture and leadership roles, not every operational position.

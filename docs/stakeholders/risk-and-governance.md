@@ -70,7 +70,7 @@ Three questions your board is already asking:
 |---|---|---|
 | **How much AI risk do we have?** | Inventory and classification | [Risk Tiers](../core/risk-tiers.md) - six dimensions, four tiers |
 | **Are our controls actually working?** | Measurement, not assertion | [Risk Assessment](../core/risk-assessment.md) - quantified per layer |
-| **What happens when controls fail?** | Defined resilience posture | [PACE Resilience](../PACE-RESILIENCE.md) - predetermined degradation |
+| **What happens when controls fail?** | Defined resilience posture | [PACE Resilience](../pace-resilience.md) - predetermined degradation |
 
 ## The Cost of Doing Nothing
 
@@ -170,7 +170,7 @@ Pre-built crosswalks to the standards your GRC team already tracks:
 | 1 | [Risk Tiers](../core/risk-tiers.md) | The classification scheme - six dimensions, four tiers, governance approval gates | 15 min |
 | 2 | [Risk Assessment](../core/risk-assessment.md) | Quantitative methodology - worked examples at every tier, NIST AI RMF aligned | 20 min |
 | 3 | [Controls](../core/controls.md) | What each control layer does, so you can evaluate whether they're implemented correctly | 15 min |
-| 4 | [PACE Resilience](../PACE-RESILIENCE.md) | Operational resilience - defined fail postures and degradation paths | 15 min |
+| 4 | [PACE Resilience](../pace-resilience.md) | Operational resilience - defined fail postures and degradation paths | 15 min |
 | 5 | [AI Governance Operating Model](../extensions/regulatory/ai-governance-operating-model.md) | Organisational structure for AI risk governance | 20 min |
 
 **For regulated industries:** Add [High-Risk Financial Services](../extensions/regulatory/high-risk-financial-services.md) and [EU AI Act Crosswalk](../extensions/regulatory/eu-ai-act-crosswalk.md).

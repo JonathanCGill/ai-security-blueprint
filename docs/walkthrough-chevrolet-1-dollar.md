@@ -63,7 +63,7 @@ If you run a customer-facing LLM, the controls that would have prevented this in
 1. **Output-side commitment-language guardrail.** One regex list of binding phrases. Ten lines of code. Blocks the specific failure mode even when everything else misses.
 2. **Authority separation.** The LLM composes; a deterministic approval system commits. See [Infrastructure Beats Instructions](insights/infrastructure-beats-instructions.md) for the pattern.
 3. **Offer-policy validator.** A small Judge call or rule set that checks price, product, and commitment level against current policy. See [Model-as-Judge Implementation](extensions/technical/model-as-judge-implementation.md).
-4. **Circuit breaker on repeated policy violations.** Defined in PACE terms: what triggers a fallback, what the fallback looks like, how the system recovers. See [PACE Resilience](PACE-RESILIENCE.md).
+4. **Circuit breaker on repeated policy violations.** Defined in PACE terms: what triggers a fallback, what the fallback looks like, how the system recovers. See [PACE Resilience](pace-resilience.md).
 
 The full control list for this class of system is in the [Customer Service AI worked example](extensions/examples/01-customer-service-ai.md).
 

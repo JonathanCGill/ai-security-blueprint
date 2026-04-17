@@ -288,7 +288,7 @@ One query. Milliseconds. The entire blast radius is visible.
 ## Related
 
 - [Observability Controls](../../maso/controls/observability.md) - the full OB-1.x through OB-3.x control set
-- [PACE Resilience](../../PACE-RESILIENCE.md) - structured degradation when controls detect anomalies
+- [PACE Resilience](../../pace-resilience.md) - structured degradation when controls detect anomalies
 - [The Hallucination Boundary](../../insights/the-hallucination-boundary.md) - when the outputs the graph is monitoring cross from tolerable to catastrophic
 - [The Verification Gap](../../insights/the-verification-gap.md) - why monitoring outputs alone is insufficient
 - [Prompt, Goal and Epistemic Integrity](../../maso/controls/prompt-goal-and-epistemic-integrity.md) - the epistemic controls that generate the events the graph monitors

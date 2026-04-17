@@ -20,7 +20,7 @@ What typically happens:
 
 The framework was designed to be proportionate. The implementation process is not. A system that takes six weeks to classify and then requires manual control implementation is a system that incentivises teams to avoid classification entirely - or to understate risk so they fall into a lighter tier.
 
-The [Fast Lane](../FAST-LANE.md) was designed to solve this for low-risk deployments. This article extends the same principle to all tiers: **classification should be self-service, instant, and directly connected to automated control deployment.**
+The [Fast Lane](../fast-lane.md) was designed to solve this for low-risk deployments. This article extends the same principle to all tiers: **classification should be self-service, instant, and directly connected to automated control deployment.**
 
 ## The Automated Path
 

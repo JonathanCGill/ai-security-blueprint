@@ -141,7 +141,7 @@ This project follows a standard code of conduct. In summary:
 - **Be patient** - Maintainers are volunteers
 - **Be inclusive** - Welcome diverse perspectives
 
-See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details.
+See [code-of-conduct.md](code-of-conduct.md) for details.
 
 ## Recognition
 

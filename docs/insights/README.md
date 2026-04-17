@@ -106,13 +106,13 @@ The rest of the library, grouped by theme. Expand the section you need. If you a
     | [The Evidence Gap](the-evidence-gap.md) | What research actually supports, and where the science hasn't caught up to the architecture. |
     | [Risk Stories](risk-stories.md) | Real production incidents show where missing controls caused or worsened failures. |
     | [The Flight Recorder Problem](the-flight-recorder-problem.md) | You log what happened but not why, or how to replay it. AI systems need provenance chains, not just event logs. |
-    | [PACE Resilience](../PACE-RESILIENCE.md) | How the three-layer architecture achieves operational resilience through layered, independent control redundancy. |
+    | [PACE Resilience](../pace-resilience.md) | How the three-layer architecture achieves operational resilience through layered, independent control redundancy. |
     | [Graph-Based Agent Monitoring](../extensions/technical/graph-based-agent-monitoring.md) | Modelling agent interactions as a live graph to detect anomalous behaviour in near real-time. |
 
 !!! info "References"
     - [Reading Paths](../reading-paths.md)
-    - [Minimum Viable AIRS](../minimum-viable-airs.md)
-    - [Architecture Overview](../ARCHITECTURE.md)
+    - [AIRSLite](../minimum-viable-airs.md)
+    - [Architecture Overview](../architecture.md)
     - [Core Controls](../core/README.md)
     - [Worked Examples](../extensions/examples/README.md)
     - [Templates](../extensions/templates/README.md)

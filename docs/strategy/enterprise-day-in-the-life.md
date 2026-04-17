@@ -39,7 +39,7 @@ The shared Judge infrastructure runs overnight batch evaluations on the previous
 |---|---|---|
 | **Judge** (Layer 2) | Batch evaluation flags 23 outputs with grounding score below 0.7 | [Judge Evaluation](../core/controls.md#2-model-as-judge) - MEDIUM tier: batch daily, basic quality |
 | **Alerting** | Alert sent to Compliance AI operator and the shared AI operations team | [Observability](../infrastructure/controls/logging-and-observability.md) |
-| **PACE** | System remains in **Primary** state - the Judge is detecting, not blocking | [PACE Resilience](../PACE-RESILIENCE.md) - Tier 1 systems fail-open |
+| **PACE** | System remains in **Primary** state - the Judge is detecting, not blocking | [PACE Resilience](../pace-resilience.md) - Tier 1 systems fail-open |
 
 **Who acts:** The Compliance team's designated AI operator reviews the flagged outputs. They weren't sent externally - this is an internal summarisation tool - so the blast radius is limited. The operator adds a correction note to affected summaries and escalates to the AI engineering team to investigate prompt drift.
 
@@ -168,7 +168,7 @@ The Privacy team's DSAR (Data Subject Access Request) response assistant (HIGH t
 
 Product Line B wants to deploy an update to their internal knowledge assistant (LOW tier). They've added a new data source - the internal engineering wiki. The system remains read-only, internal-only, no regulated data, with human review of outputs.
 
-**Framework response:** [Fast Lane](../FAST-LANE.md) applies.
+**Framework response:** [Fast Lane](../fast-lane.md) applies.
 
 | Check | Result |
 |---|---|
@@ -199,7 +199,7 @@ The Claims processing orchestrator (Product Line C, CRITICAL tier) experiences a
 | 13:08 | Root cause identified: upstream data provider (medical records API) is throttling responses | Alternate | Not an AI system issue - external dependency |
 | 13:15 | Medical records API recovers | **Alternate → Primary** | System restores full assessment model |
 
-**What didn't happen:** The system didn't stop processing claims. It didn't fail-open and process claims without assessment. It degraded to a pre-tested, pre-approved alternate configuration that trades depth for speed while maintaining safety boundaries. This is [PACE Resilience](../PACE-RESILIENCE.md) working as designed.
+**What didn't happen:** The system didn't stop processing claims. It didn't fail-open and process claims without assessment. It degraded to a pre-tested, pre-approved alternate configuration that trades depth for speed while maintaining safety boundaries. This is [PACE Resilience](../pace-resilience.md) working as designed.
 
 **MASO controls during degradation:** The [Execution Control](../maso/controls/execution-control.md) circuit breaker triggered the state change. The inter-agent message bus continued operating normally - the degradation was contained to the assessment agent. The orchestrator agent's delegation to the assessment agent was automatically adjusted to match the Alternate model's reduced scope. The [Observability](../maso/controls/observability.md) layer logged the complete state transition for post-incident review.
 
@@ -272,7 +272,7 @@ The Business Owner for Product Line C (Claims processing, CRITICAL tier) holds a
 | **Volume increase (40%)** | Human review queue increases proportionally | Staffing: 2 additional HITL reviewers needed (see [09:00 CIO review](#0900-cios-weekly-ai-portfolio-review)) |
 | **New claim type (motor)** | Different domain, different regulations, different fraud patterns | [Use Case Definition](../strategy/use-case-definition.md): re-evaluate - may require separate risk classification |
 | **New claim type (motor)** | Assessment agent needs new training data and evaluation criteria | Judge prompt update + recalibration period |
-| **New claim type (motor)** | PACE fail postures may differ for motor vs. existing claim types | [PACE design](../PACE-RESILIENCE.md) review for the new claim type |
+| **New claim type (motor)** | PACE fail postures may differ for motor vs. existing claim types | [PACE design](../pace-resilience.md) review for the new claim type |
 
 **The Business Owner's decision framework:**
 
@@ -332,7 +332,7 @@ One guardrail service, one Judge infrastructure, one logging pipeline, one ident
 
 ### 3. PACE resilience keeps the business running
 
-When the Claims assessment agent degraded at 13:00, the system didn't stop. It transitioned to a pre-tested alternate configuration, maintained safety boundaries, and recovered in 15 minutes. This was designed at deployment time, not improvised during an incident. [PACE Resilience](../PACE-RESILIENCE.md) is the methodology.
+When the Claims assessment agent degraded at 13:00, the system didn't stop. It transitioned to a pre-tested alternate configuration, maintained safety boundaries, and recovered in 15 minutes. This was designed at deployment time, not improvised during an incident. [PACE Resilience](../pace-resilience.md) is the methodology.
 
 ### 4. The Judge catches what guardrails miss
 

@@ -325,5 +325,5 @@ These findings feed directly into MASO implementation planning and risk owner si
 | [Red Team Playbook](../red-team/red-team-playbook.md) | Tests individual controls. Stress Dimension 8 asks what happens when those attacks are combined |
 | [Tier 3 - Autonomous](../implementation/tier-3-autonomous.md) | Defines the controls required for high autonomy. This document asks which of those controls need adaptation at scale |
 | [Cost & Latency](../../extensions/technical/cost-and-latency.md) | Provides single-model cost analysis. Stress Dimension 4 extends that to multi-agent observability cost |
-| [PACE Resilience](../../PACE-RESILIENCE.md) | Defines the three-axis PACE model. Stress Dimension 3 identifies the need for a potential fourth axis |
+| [PACE Resilience](../../pace-resilience.md) | Defines the three-axis PACE model. Stress Dimension 3 identifies the need for a potential fourth axis |
 

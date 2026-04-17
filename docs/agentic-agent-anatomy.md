@@ -135,11 +135,11 @@ Traditional software security assumes deterministic behaviour, inspectable logic
 
 **Credential aggregation.** An agent accumulates the permissions of every tool it can access. Compromise of the agent compromises everything it can reach.
 
-This is why agents require runtime security, not just pre-deployment testing. The [AIRS Architecture](ARCHITECTURE.md) provides the layered control model. [MASO](maso/README.md) extends it for multi-agent systems. Both start from the same premise: you must control what agents can do, not just what they are told to do.
+This is why agents require runtime security, not just pre-deployment testing. The [AIRS Architecture](architecture.md) provides the layered control model. [MASO](maso/README.md) extends it for multi-agent systems. Both start from the same premise: you must control what agents can do, not just what they are told to do.
 
 !!! info "References"
     - [Agentic AI Controls](core/agentic.md)
-    - [AIRS Architecture Overview](ARCHITECTURE.md)
+    - [AIRS Architecture Overview](architecture.md)
     - [MASO Framework](maso/README.md)
     - [The MCP Problem](insights/the-mcp-problem.md)
     - [The Memory Problem](insights/the-memory-problem.md)

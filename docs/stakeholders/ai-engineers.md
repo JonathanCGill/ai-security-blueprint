@@ -91,7 +91,7 @@ Controls that aren't tested don't work. The framework provides:
 | # | Document | Why You Need It |
 |---|---|---|
 | 1 | [Controls](../core/controls.md) | Three-layer implementation reference - what to build |
-| 2 | [Quick Start](../QUICK_START.md) | Zero to working controls in 30 minutes |
+| 2 | [Quick Start](../quick-start.md) | Zero to working controls in 30 minutes |
 | 3 | [Model-as-Judge Implementation](../extensions/technical/model-as-judge-implementation.md) | Judge layer patterns, prompts, routing logic |
 | 4 | [Judge Assurance](../core/judge-assurance.md) | How to measure and calibrate Judge accuracy |
 | 5 | [Checklist](../core/checklist.md) | Track what you've implemented |

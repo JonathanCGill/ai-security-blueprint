@@ -38,7 +38,7 @@ The framework's [risk tiers](../core/risk-tiers.md) solve this by creating **pro
 
 ### 2. PACE Enables Confidence to Launch
 
-The [PACE resilience model](../PACE-RESILIENCE.md) is strategically valuable because it answers the question that blocks most launches: **"What happens if it goes wrong?"**
+The [PACE resilience model](../pace-resilience.md) is strategically valuable because it answers the question that blocks most launches: **"What happens if it goes wrong?"**
 
 Without PACE, the answer is "we don't know" - which is why risk-averse organisations never launch. With PACE, the answer is specific:
 
@@ -50,7 +50,7 @@ Without PACE, the answer is "we don't know" - which is why risk-averse organisat
 
 ### 3. Fast Lane Removes the Starting Friction
 
-The single biggest strategic benefit of the framework is the [Fast Lane](../FAST-LANE.md). By defining criteria under which AI can be deployed *without security review*, the framework removes the most common blocker to AI adoption: the approval queue.
+The single biggest strategic benefit of the framework is the [Fast Lane](../fast-lane.md). By defining criteria under which AI can be deployed *without security review*, the framework removes the most common blocker to AI adoption: the approval queue.
 
 **Strategic impact:**
 - First AI deployments can happen in weeks, not months
@@ -279,7 +279,7 @@ If multiple strategic initiatives hit the same framework limitation, the framewo
 | Organisations can't staff CRITICAL-tier human review requirements | Revisit whether 100% Judge evaluation can reduce human review volume |
 | Multi-agent deployment stalls because MASO Tier 1 is too restrictive | Define a progression path from single-agent maturity to multi-agent |
 
-The framework explicitly invites this. The [Maturity & Validation](../MATURITY.md) section acknowledges gaps and encourages feedback. Strategy that tests the framework's limits is exactly the kind of feedback that improves it.
+The framework explicitly invites this. The [Maturity & Validation](../maturity.md) section acknowledges gaps and encourages feedback. Strategy that tests the framework's limits is exactly the kind of feedback that improves it.
 
 ## Summary
 

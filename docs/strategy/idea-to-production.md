@@ -177,7 +177,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 - Score each dimension (Decision Authority, Reversibility, Data Sensitivity, Audience, Scale, Regulatory)
 - Apply scoring rules (highest dimension wins; adjacent HIGHs compound)
 - Apply use case modifiers (agentic, customer-facing, regulated, batch)
-- Check [Fast Lane](../FAST-LANE.md) qualification (all four criteria met → Fast Lane)
+- Check [Fast Lane](../fast-lane.md) qualification (all four criteria met → Fast Lane)
 - Document the classification with justification per dimension
 - For AI-assisted classification, review the AI's proposed scores (see [Use Case Definition](use-case-definition.md))
 
@@ -417,9 +417,9 @@ Systems should be retired when:
 | 1. Strategic Alignment | [Business Alignment](business-alignment.md), [The First Control](../insights/the-first-control.md) |
 | 2. Use Case Definition | [Use Case Definition](use-case-definition.md), [Model Card Template](../extensions/templates/model-card-template.md) |
 | 3. Tool Selection | [The First Control](../insights/the-first-control.md), [Risk Tier Is Use Case](../insights/risk-tier-is-use-case.md) |
-| 4. Risk Classification | [Risk Tiers](../core/risk-tiers.md), [Control Selection Guide](../extensions/technical/control-selection-guide.md), [Fast Lane](../FAST-LANE.md) |
-| 5. Control Design | [Controls](../core/controls.md), [PACE Resilience](../PACE-RESILIENCE.md), [Threat Model Template](../extensions/templates/threat-model-template.md) |
-| 6. Build & Test | [Quick Start](../QUICK_START.md), [Implementation Guide](../IMPLEMENTATION_GUIDE.md), [Testing Guidance](../extensions/templates/testing-guidance.md) |
+| 4. Risk Classification | [Risk Tiers](../core/risk-tiers.md), [Control Selection Guide](../extensions/technical/control-selection-guide.md), [Fast Lane](../fast-lane.md) |
+| 5. Control Design | [Controls](../core/controls.md), [PACE Resilience](../pace-resilience.md), [Threat Model Template](../extensions/templates/threat-model-template.md) |
+| 6. Build & Test | [Quick Start](../quick-start.md), [Implementation Guide](../implementation-guide.md), [Testing Guidance](../extensions/templates/testing-guidance.md) |
 | 7. Deploy & Operate | [Governance Operating Model](../extensions/regulatory/ai-governance-operating-model.md), [SOC Integration](../extensions/technical/soc-integration.md) |
 | 8. Ongoing Governance | [Governance Operating Model](../extensions/regulatory/ai-governance-operating-model.md), [Anomaly Detection](../extensions/technical/anomaly-detection-ops.md) |
 

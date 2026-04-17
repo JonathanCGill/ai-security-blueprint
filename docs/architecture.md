@@ -42,7 +42,7 @@ For a single AI model, a chatbot, a document processor, an assistant, the four l
 
 - **Circuit breakers are not a degradation.** When detection confirms compromise or the layers themselves fail, AI traffic stops and a non-AI fallback takes over. No half-measures, no partial service. The Emergency state is a predetermined safe state, not a guess.
 
-Controls scale to risk tier. A low-risk internal tool needs minimal guardrails and self-certification ([Fast Lane](FAST-LANE.md)). A customer-facing agent handling regulated data needs the full architecture with mandatory human approval. The framework respects that every organisation has its own way of working, and lets you match controls to context rather than imposing a single mandate.
+Controls scale to risk tier. A low-risk internal tool needs minimal guardrails and self-certification ([Fast Lane](fast-lane.md)). A customer-facing agent handling regulated data needs the full architecture with mandatory human approval. The framework respects that every organisation has its own way of working, and lets you match controls to context rather than imposing a single mandate.
 
 **→ [Foundation Framework](foundations/README.md)** · the three-layer behavioural pattern with risk tiers and implementation checklists, backed by 80 [infrastructure controls](infrastructure/README.md) across 11 domains.
 
@@ -61,7 +61,7 @@ Multi-agent security requires per-agent identity, per-agent permissions, and per
 
 ## When Layers Fail: PACE Resilience
 
-Every control has a defined failure mode. Detection catches most of them, but not all. The [PACE methodology](PACE-RESILIENCE.md) ensures that when a layer degrades, and it will, the system transitions to a predetermined safe state rather than failing silently.
+Every control has a defined failure mode. Detection catches most of them, but not all. The [PACE methodology](pace-resilience.md) ensures that when a layer degrades, and it will, the system transitions to a predetermined safe state rather than failing silently.
 
 | State | What's happening |
 | --- | --- |
@@ -75,6 +75,6 @@ Even at the lowest risk tier, there is a fallback plan. At the highest, there is
 !!! info "References"
     - [Foundation Framework](foundations/README.md)
     - [MASO Framework](maso/README.md)
-    - [PACE Resilience](PACE-RESILIENCE.md)
+    - [PACE Resilience](pace-resilience.md)
     - [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md)
     - [The Feedback Loops That Make It Work](insights/feedback-loops.md)

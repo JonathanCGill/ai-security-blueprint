@@ -42,7 +42,7 @@ Turn on platform guardrails. That's configuration, not engineering. Enable loggi
 
 That's a starting point, not the finish line. Over time, introduce sampled judge evaluations and human edge-case reviews as your adoption and risk appetite grow. You don't need full maturity on day one - you need a direction of travel.
 
-The [Quick Start](QUICK_START.md) guide is designed to get you from zero to working controls in 30 minutes with what you already have.
+The [Quick Start](quick-start.md) guide is designed to get you from zero to working controls in 30 minutes with what you already have.
 
 ## "Does this work in practice?"
 
@@ -122,7 +122,7 @@ This framework doesn't have all the answers. If you've found practical solutions
 - **Submit a PR** with a correction, a new pattern, or a better idea
 - **Point out where this doesn't match reality** - that's how the framework improves
 
-See the [Contributing](CONTRIBUTING.md) guide or open an issue on [GitHub](https://github.com/JonathanCGill/airuntimesecurity.io).
+See the [Contributing](contributing.md) guide or open an issue on [GitHub](https://github.com/JonathanCGill/airuntimesecurity.io).
 
 ## "Can I use this for my own work?"
 
@@ -134,7 +134,7 @@ AI security is too important to gatekeep.
 
 | Question | Start Here |
 |----------|-----------|
-| How do I get started quickly? | [Quick Start](QUICK_START.md) |
+| How do I get started quickly? | [Quick Start](quick-start.md) |
 | What controls do I actually need? | [Risk Tiers](core/risk-tiers.md) |
 | What does implementation look like? | [Worked Examples](extensions/examples/README.md) |
 | How do guardrails work in practice? | [Practical Guardrails](insights/practical-guardrails.md) |

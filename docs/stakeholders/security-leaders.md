@@ -57,11 +57,11 @@ Read these in order. Total time: ~90 minutes.
 
 | # | Document | Why You Need It |
 |---|---|---|
-| 1 | [Quick Start](../QUICK_START.md) | The framework essentials: classify, control, fail posture, test |
+| 1 | [Quick Start](../quick-start.md) | The framework essentials: classify, control, fail posture, test |
 | 2 | [Risk Tiers](../core/risk-tiers.md) | The classification scheme you'll mandate across the organisation |
 | 3 | [Controls](../core/controls.md) | What each layer does, how to verify it works, when each is required |
 | 4 | [Risk Assessment](../core/risk-assessment.md) | Quantitative methodology for board-level risk reporting |
-| 5 | [PACE Resilience](../PACE-RESILIENCE.md) | Fail postures - what happens when each control layer degrades |
+| 5 | [PACE Resilience](../pace-resilience.md) | Fail postures - what happens when each control layer degrades |
 
 **If you have multi-agent systems:** Add [MASO Overview](../maso/README.md) and the [Red Team Playbook](../maso/red-team/red-team-playbook.md).
 
@@ -73,7 +73,7 @@ Read these in order. Total time: ~90 minutes.
 
 2. **Require the three-layer pattern** for any HIGH or CRITICAL tier system. Don't specify products - specify the pattern. "Every customer-facing AI system requires guardrails, an independent evaluation layer, and defined human oversight."
 
-3. **Ask every AI team one question:** *"What happens when your guardrails fail?"* If they don't have an answer, they need [PACE Resilience](../PACE-RESILIENCE.md).
+3. **Ask every AI team one question:** *"What happens when your guardrails fail?"* If they don't have an answer, they need [PACE Resilience](../pace-resilience.md).
 
 4. **Add AI-specific scenarios to your next red team exercise.** The [Red Team Playbook](../maso/red-team/red-team-playbook.md) has 13 structured scenarios you can adapt.
 
@@ -85,7 +85,7 @@ Read these in order. Total time: ~90 minutes.
 Guardrails alone catch ~90% of known-pattern issues. They miss semantic violations, novel attacks, and subtle policy breaches. The Judge layer catches 95% of what guardrails miss. [Why Guardrails Aren't Enough](../insights/why-guardrails-arent-enough.md) has the full argument.
 
 **"This will slow down our AI delivery."**
-The [Fast Lane](../FAST-LANE.md) pre-approves low-risk deployments with minimal controls. Only HIGH and CRITICAL tier systems need the full three layers. The framework doesn't slow delivery - it prevents teams from deploying CRITICAL-tier systems with LOW-tier controls.
+The [Fast Lane](../fast-lane.md) pre-approves low-risk deployments with minimal controls. Only HIGH and CRITICAL tier systems need the full three layers. The framework doesn't slow delivery - it prevents teams from deploying CRITICAL-tier systems with LOW-tier controls.
 
 **"We use [vendor X] - they handle security."**
 Your vendor provides guardrails. They don't provide the Judge layer, human oversight processes, PACE fail postures, or risk-tier classification. The framework sits above vendor tooling. See [Infrastructure Beats Instructions](../insights/infrastructure-beats-instructions.md).

@@ -331,6 +331,6 @@ This is the operational resilience evidence auditors look for: not just "we have
 | Complete detection rule library (8 rules, 3 SIEM platforms) | [SOC Content Pack](soc-content-pack.md) |
 | Baseline establishment and z-score methodology | [Anomaly Detection Operations](anomaly-detection-ops.md) |
 | Full worked example with Python code | [Customer Service AI Example](../examples/01-customer-service-ai.md) |
-| PACE degradation methodology | [PACE Resilience](../../PACE-RESILIENCE.md) |
+| PACE degradation methodology | [PACE Resilience](../../pace-resilience.md) |
 | Risk tier classification | [Risk Tiers](../../core/risk-tiers.md) |
 

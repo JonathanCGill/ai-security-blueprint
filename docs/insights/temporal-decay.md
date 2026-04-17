@@ -36,7 +36,7 @@ MASO architectures have three independently decaying components, and each decays
 
 ### The Correlated Failure Problem
 
-This is the critical insight. In the standard [defence-in-depth architecture](../ARCHITECTURE.md), safety depends on independent failure across layers. If the Guardrail misses something, the Judge catches it. If the Judge misses it, the human reviewer catches it.
+This is the critical insight. In the standard [defence-in-depth architecture](../architecture.md), safety depends on independent failure across layers. If the Guardrail misses something, the Judge catches it. If the Judge misses it, the human reviewer catches it.
 
 Temporal decay breaks that independence.
 
@@ -70,7 +70,7 @@ The Judge's accuracy is more consequential than the Agent's, because the Judge i
 
 ### Add a Staleness Threshold to Kill Switch Triggers
 
-The [PACE resilience model](../PACE-RESILIENCE.md) defines escalation triggers based on observed anomalies. Temporal decay should be an explicit trigger.
+The [PACE resilience model](../pace-resilience.md) defines escalation triggers based on observed anomalies. Temporal decay should be an explicit trigger.
 
 If model age (time since training cutoff) exceeds a defined threshold for the domain's rate of change, the system should escalate to human review by default, regardless of whether anomaly detection has flagged anything. This is a preventive control, not a reactive one.
 
@@ -103,7 +103,7 @@ Model currency tracks training cutoff age against real-world drift indicators fo
 | **Stale** | Model age exceeds threshold. Escalate all decisions to human review. Restrict autonomous actions. Initiate model refresh. |
 | **Expired** | Model age significantly exceeds threshold for a high-change domain. Circuit breaker fires. System operates in degraded mode until refresh completes. |
 
-This maps directly onto [PACE states](../PACE-RESILIENCE.md), with model currency acting as one of the inputs that drives state transitions.
+This maps directly onto [PACE states](../pace-resilience.md), with model currency acting as one of the inputs that drives state transitions.
 
 ## The Bottom Line
 
@@ -114,7 +114,7 @@ The specific danger for MASO is correlated decay: the Agent and Judge aging toge
 !!! info "References"
     - [Observability Controls](../maso/controls/observability.md) - Continuous monitoring to detect drift across the control hierarchy
     - [Judge Model Selection](../extensions/technical/judge-model-selection.md) - Why the Judge must be architecturally independent from the system it evaluates
-    - [PACE Resilience](../PACE-RESILIENCE.md) - Structured degradation when control integrity is compromised
+    - [PACE Resilience](../pace-resilience.md) - Structured degradation when control integrity is compromised
     - [MASO Observability Controls](../maso/controls/observability.md) - Per-agent drift detection and cross-agent correlation
     - [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) - Aggregating safety signals to detect when behavior drifts from normal
     - Chen, L., Zaharia, M. & Zou, J. (2023) *How Is ChatGPT's Behavior Changing over Time?* Stanford University, arXiv:2307.09009

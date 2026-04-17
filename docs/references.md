@@ -103,7 +103,7 @@ This framework's three-layer pattern (guardrails, Judge, human oversight), PACE 
 | Meaningful control | [Humans Remain Accountable](insights/humans-remain-accountable.md), Judge-as-assurance pattern, HITL queue design |
 | Risk-based controls | [Risk Tiers](core/risk-tiers.md) (CRITICAL/HIGH/MEDIUM/LOW with tier-specific control requirements) |
 | Purpose-specific entitlements | MASO IA-2.3 (no transitive permissions), tool scoping, execution control boundaries |
-| Predefined failure modes | [PACE Resilience](PACE-RESILIENCE.md) (Primary, Alternate, Contingency, Emergency) |
+| Predefined failure modes | [PACE Resilience](pace-resilience.md) (Primary, Alternate, Contingency, Emergency) |
 | Comprehensive telemetry | MASO [Observability Controls](maso/controls/observability.md) OB-1.1 through OB-3.5 |
 | Supply chain provenance | MASO SC-1.2 (signed tool manifests), SC-3.1 (cryptographic trust chain), [ET-04](maso/threat-intelligence/emerging-threats.md) |
 | Threat models and playbooks | MASO [Red Team Playbook](maso/red-team/red-team-playbook.md) RT-01 through RT-13 |

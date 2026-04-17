@@ -24,7 +24,7 @@ Here's what's actually happening:
 
 ### A fast path for low-risk AI
 
-If your AI system meets **all four** of these criteria, it qualifies for the [Fast Lane](../FAST-LANE.md):
+If your AI system meets **all four** of these criteria, it qualifies for the [Fast Lane](../fast-lane.md):
 
 - Internal users only
 - Read-only (no write access to external systems)
@@ -68,7 +68,7 @@ The [Use Case Definition](../strategy/use-case-definition.md) provides ten quest
 | # | Document | Why You Need It |
 |---|---|---|
 | 1 | [Risk Tiers](../core/risk-tiers.md) | Classify your AI system, decide your tier in 2 minutes |
-| 2 | [Fast Lane](../FAST-LANE.md) | Check if your system qualifies for accelerated deployment |
+| 2 | [Fast Lane](../fast-lane.md) | Check if your system qualifies for accelerated deployment |
 | 3 | [Risk Tiers](../core/risk-tiers.md) | If not Fast Lane, classify your system using the six dimensions |
 | 4 | [Use Case Definition](../strategy/use-case-definition.md) | Ten questions that feed directly into security requirements |
 | 5 | [Checklist](../core/checklist.md) | Track your implementation - know what's done and what's left |

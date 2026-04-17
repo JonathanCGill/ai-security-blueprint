@@ -46,7 +46,7 @@ Framework tags use these categories:
 
 Anthropic announced Claude Mythos Preview and Project Glasswing, a consortium (AWS, Apple, Broadcom, Cisco, CrowdStrike, Google, JPMorgan Chase, the Linux Foundation, Microsoft, NVIDIA, Palo Alto Networks, Anthropic) using a new access-restricted model to find and patch vulnerabilities in critical software. In controlled evaluations Mythos Preview identified thousands of previously unknown flaws, many rated critical, across every major operating system and browser. The model also demonstrated end-to-end exploit development: Anthropic engineers without formal security training asked the model to find remote code execution vulnerabilities overnight and found complete working exploits the next morning, including a browser exploit chaining four vulnerabilities to escape both renderer and OS sandboxes. Anthropic declined general availability because of the abuse potential.
 
-**Framework relevance**: Mythos Preview directly reinforces the [Temporal Decay](insights/temporal-decay.md) and speed-asymmetry arguments: the gap between offensive capability and human-speed defence is closing, which tightens the latency budget for the [Judge](core/controls.md) layer and raises the bar for [Circuit Breaker](PACE-RESILIENCE.md) automation. The consortium's access model is a live example of [Privileged Agent Governance](maso/controls/privileged-agent-governance.md) at the provider layer: a capability too dangerous for open distribution is gated by identity, audit, and scope. The announcement also sharpens the case for [Supply Chain](maso/controls/supply-chain.md) vulnerability monitoring, since the same capability in the wrong hands will find zero-days faster than patch cycles can close them.
+**Framework relevance**: Mythos Preview directly reinforces the [Temporal Decay](insights/temporal-decay.md) and speed-asymmetry arguments: the gap between offensive capability and human-speed defence is closing, which tightens the latency budget for the [Judge](core/controls.md) layer and raises the bar for [Circuit Breaker](pace-resilience.md) automation. The consortium's access model is a live example of [Privileged Agent Governance](maso/controls/privileged-agent-governance.md) at the provider layer: a capability too dangerous for open distribution is gated by identity, audit, and scope. The announcement also sharpens the case for [Supply Chain](maso/controls/supply-chain.md) vulnerability monitoring, since the same capability in the wrong hands will find zero-days faster than patch cycles can close them.
 
 **Source**: [Claude Mythos Preview](https://red.anthropic.com/2026/mythos-preview/) · [Help Net Security analysis](https://www.helpnetsecurity.com/2026/04/15/anthropic-claude-mythos-ai-vulnerability-discovery/)
 
@@ -319,7 +319,7 @@ A preprint (arXiv:2602.16729) introduces a technique called **intent laundering*
 <!-- NEWS_END -->
 
 !!! info "References"
-    - [AIRS Framework Architecture](ARCHITECTURE.md)
+    - [AIRS Framework Architecture](architecture.md)
     - [Controls Overview](core/controls.md)
     - [MASO Framework](maso/README.md)
     - [Risk Tiers](core/risk-tiers.md)

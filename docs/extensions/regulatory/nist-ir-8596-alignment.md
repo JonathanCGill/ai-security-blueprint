@@ -60,7 +60,7 @@ IR 8596 emphasises AI governance, risk strategy, roles/responsibilities, policy,
 | AI risk appetite and tolerance statements | Risk tier boundaries define tolerance per deployment category | **Strong** |
 | Roles and responsibilities for AI cybersecurity | [Human Oversight](../../foundations/README.md) layer, escalation paths, [AI Governance Operating Model](ai-governance-operating-model.md) (three lines) | **Strong** |
 | AI-specific policy establishment and enforcement | Controls registry enforces policy at infrastructure layer | **Strong** |
-| Oversight and continuous improvement | [PACE Resilience](../../PACE-RESILIENCE.md), post-incident review (IR-07, IR-08) | **Strong** |
+| Oversight and continuous improvement | [PACE Resilience](../../pace-resilience.md), post-incident review (IR-07, IR-08) | **Strong** |
 | AI supply chain risk management | [Supply Chain controls](../../maso/controls/supply-chain.md) (SC-1.1 through SC-3.4), AIBOM, signed manifests, model provenance | **Strong** |
 | Communicating intended use and limitations of AI | Not explicitly addressed as a control | **Gap**: see [Recommendation G1](#g1-intended-use-and-limitation-documentation) |
 | AI definition flexibility | Framework uses operational definitions (single-model, multi-agent) rather than categorical AI definitions | **Aligned** |
@@ -215,7 +215,7 @@ IR 8596 does not specifically address multi-agent system risks. AIRS's [MASO fra
 
 ### 3. Operational Resilience Patterns
 
-IR 8596 references resilience in general terms. AIRS provides the [PACE resilience model](../../PACE-RESILIENCE.md) with concrete state machine definitions, transition criteria, and per-state control requirements, a production-ready implementation pattern rather than aspirational guidance.
+IR 8596 references resilience in general terms. AIRS provides the [PACE resilience model](../../pace-resilience.md) with concrete state machine definitions, transition criteria, and per-state control requirements, a production-ready implementation pattern rather than aspirational guidance.
 
 ### 4. Defence-in-Depth Architecture
 
@@ -254,7 +254,7 @@ More significantly, AIRS **extends beyond** what IR 8596 currently covers in sev
 1. Add IR 8596 priority ratings to the existing CSF 2.0 mapping (G5), **medium priority**
 2. Add intended use documentation guidance to risk tier process (G1), **low priority**
 3. Monitor NIST's development of the initial public draft and COSAiS for alignment updates
-4. Add NIST IR 8596 to [REFERENCES.md](../../REFERENCES.md) as a primary reference
+4. Add NIST IR 8596 to [references.md](../../references.md) as a primary reference
 
 !!! info "References"
     - [NIST IR 8596: Cybersecurity Framework Profile for Artificial Intelligence](https://csrc.nist.gov/pubs/ir/8596/iprd)

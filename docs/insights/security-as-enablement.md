@@ -58,7 +58,7 @@ Judge findings must go to the owning team, in their existing workflow tools, wit
 
 ### 4. PACE Plans as Governance Documents
 
-[PACE resilience](../PACE-RESILIENCE.md) defines what happens when controls degrade: Primary, Alternate, Contingency, Emergency. If the PACE plan is a document that a delivery team writes to satisfy a governance requirement, it will be accurate on the day it was written and fictional within six months.
+[PACE resilience](../pace-resilience.md) defines what happens when controls degrade: Primary, Alternate, Contingency, Emergency. If the PACE plan is a document that a delivery team writes to satisfy a governance requirement, it will be accurate on the day it was written and fictional within six months.
 
 If the PACE plan is implemented as platform infrastructure - circuit breakers that activate automatically, fallback routes that are pre-configured, kill switches that are tested monthly - then it is a resilience system. Documents describe intent. Infrastructure enforces it.
 
@@ -93,7 +93,7 @@ The pattern is consistent: the framework's value is realised when its controls a
 
 ### Principle 2: Fast Lane Must Be the Default Experience
 
-The [Fast Lane](../FAST-LANE.md) is the framework's most important feature. It defines criteria under which AI can be deployed without security review. Internal, read-only, no regulated data, human-reviewed. Self-certification. No waiting.
+The [Fast Lane](../fast-lane.md) is the framework's most important feature. It defines criteria under which AI can be deployed without security review. Internal, read-only, no regulated data, human-reviewed. Self-certification. No waiting.
 
 Most AI deployments in most organisations will qualify for the Fast Lane. If the majority of teams experience the framework as a heavyweight process, the framework has failed - not because the controls are wrong, but because the entry point is wrong.
 
@@ -134,7 +134,7 @@ This is the framework's existing principle of [infrastructure beats instructions
 
 Maturity is not declared in a deck. It is built in code, in platforms, in patterns that actually make delivery easier, and it is built by people who carry outcomes rather than narratives.
 
-The framework contains a [Maturity & Validation](../MATURITY.md) document. It is honest about what is validated, what is emerging, and what remains unproven. This is the right kind of maturity assessment - it evaluates the framework's own evidence base.
+The framework contains a [Maturity & Validation](../maturity.md) document. It is honest about what is validated, what is emerging, and what remains unproven. This is the right kind of maturity assessment - it evaluates the framework's own evidence base.
 
 What the framework must never become is a tool for assessing delivery team maturity. "Team X is at Level 2 maturity against the AI security framework" is a statement that carries no delivery accountability. It describes another team's position from a safe distance. It is the definition of heckling.
 

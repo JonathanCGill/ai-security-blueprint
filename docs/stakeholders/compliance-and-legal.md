@@ -106,5 +106,5 @@ Your vendor handles their compliance - model safety, platform security, API avai
 The core requirements are already clear across all major frameworks: risk assessment, layered controls, human oversight, resilience planning, audit trails. The details may change; these principles won't. Implementing the framework now gives you a structured approach that adapts as regulations finalise - rather than a scramble when enforcement begins.
 
 **"Compliance requirements will slow down AI adoption."**
-Compliance requirements scale with risk. LOW-tier systems (internal, read-only, no regulated data) go through the [Fast Lane](../FAST-LANE.md) - self-certification, minimal controls, days not months. Compliance only adds significant overhead for HIGH and CRITICAL tier systems - where the regulatory obligations actually apply.
+Compliance requirements scale with risk. LOW-tier systems (internal, read-only, no regulated data) go through the [Fast Lane](../fast-lane.md) - self-certification, minimal controls, days not months. Compliance only adds significant overhead for HIGH and CRITICAL tier systems - where the regulatory obligations actually apply.
 

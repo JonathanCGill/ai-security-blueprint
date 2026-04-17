@@ -14,7 +14,7 @@ That's an important fact and we're stating it clearly rather than hoping no one 
 What this reference *is*:
 
 - **A practitioner's synthesis.** 30+ years in IT, 20+ in enterprise security, applied to the specific problem of runtime AI security. The architecture draws on real operational experience in financial services, government, and critical infrastructure - applied to AI, not invented from theory.
-- **Aligned to real incidents.** Every major control addresses a documented, public security failure - retroactively analysed, not empirically tested. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps known real-world incidents to specific controls, with [risk stories](insights/risk-stories.md) documenting production failures across industries. The [Validated Against Real Incidents](VALIDATED-AGAINST.md) page inverts this - showing which controls align to the most documented incidents.
+- **Aligned to real incidents.** Every major control addresses a documented, public security failure - retroactively analysed, not empirically tested. The [Incident Tracker](maso/threat-intelligence/incident-tracker.md) maps known real-world incidents to specific controls, with [risk stories](insights/risk-stories.md) documenting production failures across industries. The [Validated Against Real Incidents](validated-against.md) page inverts this - showing which controls align to the most documented incidents.
 - **Aligned to established standards.** Full crosswalks to OWASP LLM Top 10 (2025), OWASP Agentic Top 10 (2026), NIST AI RMF, ISO 42001, EU AI Act, NIST SP 800-218A, and MITRE ATLAS. These aren't surface-level mappings - they're control-by-control alignments.
 - **Consistent with production patterns.** The three-layer model (Guardrails, Judge, Human Oversight) exists in production at NVIDIA NeMo, AWS Bedrock, Azure AI Content Safety, LangChain, and Guardrails AI. This reference didn't invent the pattern - it codified it.
 
@@ -42,7 +42,7 @@ Controls retroactively mapped to real-world security incidents, showing they wou
 
 **Current status: Known incidents mapped in the tracker, with additional coverage across the framework.** Each tracked incident includes the specific attack vector, the controls that address it, and a confidence rating for the mapping. The [risk stories](insights/risk-stories.md) provide additional production failure evidence mapped to framework controls.
 
-See: [Validated Against Real Incidents](VALIDATED-AGAINST.md)
+See: [Validated Against Real Incidents](validated-against.md)
 
 This is the strongest current basis for credibility - but it is retroactive analysis, not empirical evidence from running systems. It demonstrates the controls address real attack patterns, not theoretical ones. It does not prove the controls *will* work in your environment.
 
@@ -103,7 +103,7 @@ The single most valuable thing for this reference's credibility is a real deploy
 What a pilot looks like:
 
 1. **Pick a scope.** One AI system, one risk tier. You don't need the whole framework.
-2. **Implement the controls.** Use the [Quick Start](QUICK_START.md) or [Implementation Guide](IMPLEMENTATION_GUIDE.md).
+2. **Implement the controls.** Use the [Quick Start](quick-start.md) or [Implementation Guide](implementation-guide.md).
 3. **Measure.** Track false positive rates, Judge accuracy, latency impact, operational overhead.
 4. **Share.** Open an issue or contact the maintainer directly.
 
