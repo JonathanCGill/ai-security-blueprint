@@ -211,7 +211,7 @@ IR 8596, as a CSF profile, is outcome-oriented: it describes *what* to achieve. 
 
 ### 2. Multi-Agent Security
 
-IR 8596 does not specifically address multi-agent system risks. AIRS's [MASO framework](../../maso/README.md) provides controls across 10 domains specifically for multi-agent orchestration, covering epistemic integrity, cross-agent data fencing, delegation tracking, privileged agent governance, model cognition assurance, agentic task contracts, and objective intent. As agentic AI adoption accelerates, this is a significant area where AIRS provides guidance that IR 8596 does not yet cover.
+IR 8596 does not specifically address multi-agent system risks. AIRS's [MASO framework](../../maso/README.md) provides controls across 10 domains specifically for multi-agent orchestration, covering epistemic integrity, cross-agent data fencing, delegation tracking, privileged agent governance, model cognition assurance, agentic task mandates, and objective intent. As agentic AI adoption accelerates, this is a significant area where AIRS provides guidance that IR 8596 does not yet cover.
 
 ### 3. Operational Resilience Patterns
 

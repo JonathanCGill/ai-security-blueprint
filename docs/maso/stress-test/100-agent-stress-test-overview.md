@@ -93,7 +93,7 @@ MASO's identity and access controls (IA-2.3 no transitive permissions, IA-2.1 ze
 At 100 agents, the potential delegation graph has up to ~10,000 edges. Even if most are unused, the *policy surface* - the set of rules defining who can delegate what to whom - grows with the number of agent pairs. Consider:
 
 - **Policy complexity.** Each delegation rule specifies: source agent, target agent, permitted scope, maximum permissions, time limit. At 100 agents, the policy set may contain thousands of rules. Auditing this manually is not feasible.
-- **Delegation contracts at speed.** At Tier 3, every delegation creates a cryptographically signed contract (source, scope, permissions, time limit, expected output). If agents delegate tasks hundreds of times per minute, the signing and validation overhead may become a latency bottleneck.
+- **Delegation mandates at speed.** At Tier 3, every delegation creates a cryptographically signed mandate (source, scope, permissions, time limit, expected output). If agents delegate tasks hundreds of times per minute, the signing and validation overhead may become a latency bottleneck.
 - **Transitive path detection.** IA-2.3 prohibits transitive permissions, but detecting a transitive path through 4–5 intermediate agents requires graph analysis on every delegation request. The computational cost of this analysis grows with graph size.
 
 ### What to Assess
@@ -109,7 +109,7 @@ At 100 agents, the potential delegation graph has up to ~10,000 edges. Even if m
 |---------|-------------|-------------|
 | IA-2.3 No transitive permissions | Preventing privilege laundering | Graph analysis cost grows with delegation depth |
 | IA-2.1 Zero-trust credentials | Per-agent authentication | Credential management overhead at 100+ agents |
-| Tier 3 delegation contracts | Scoped, time-limited delegation | Signing and validation latency at high delegation frequency |
+| Tier 3 delegation mandates | Scoped, time-limited delegation | Signing and validation latency at high delegation frequency |
 | EC-2.6 Decision commit protocol | Validating action authority | Must trace authority chain through potentially deep delegation graph |
 
 ## Stress Dimension 3: Cross-Cluster PACE Cascades

@@ -37,7 +37,7 @@
   <text x="170" y="232" text-anchor="middle" fill="#00c9ff" font-size="7">Cert · Behavioral binding</text>
   <text x="170" y="254" text-anchor="middle" fill="#667" font-size="8">15-min rotation (high priv)</text>
   <text x="170" y="268" text-anchor="middle" fill="#667" font-size="8">Auto-revoke on anomaly (30s)</text>
-  <text x="170" y="282" text-anchor="middle" fill="#667" font-size="8">Delegation contracts</text>
+  <text x="170" y="282" text-anchor="middle" fill="#667" font-size="8">Delegation mandates</text>
 
   <!-- Agent B -->
   <rect x="630" y="185" width="200" height="105" rx="8" fill="#0d1225" stroke="#00c9ff" stroke-width="1.5"/>
@@ -47,7 +47,7 @@
   <text x="730" y="232" text-anchor="middle" fill="#00c9ff" font-size="7">Cert · Behavioral binding</text>
   <text x="730" y="254" text-anchor="middle" fill="#667" font-size="8">15-min rotation (high priv)</text>
   <text x="730" y="268" text-anchor="middle" fill="#667" font-size="8">Auto-revoke on anomaly (30s)</text>
-  <text x="730" y="282" text-anchor="middle" fill="#667" font-size="8">Delegation contracts</text>
+  <text x="730" y="282" text-anchor="middle" fill="#667" font-size="8">Delegation mandates</text>
 
   <!-- Encrypted Signed Message Bus -->
   <rect x="310" y="195" width="280" height="70" rx="8" fill="#0d1225" stroke="#ffd700" stroke-width="2"/>

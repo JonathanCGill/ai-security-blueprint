@@ -4,7 +4,7 @@
 
 [![Multi-Agent Security Architecture](../images/multi-agent-security-architecture.svg)](../images/multi-agent-security-architecture.svg)
 
-**See also:** [MASO Objective Intent](../maso/controls/objective-intent.md), which extends the intent concept from workflow-level post-execution evaluation to per-agent, per-judge, and per-workflow behavioral contracts with tactical, strategic, and judge-monitoring evaluation levels.
+**See also:** [MASO Objective Intent](../maso/controls/objective-intent.md), which extends the intent concept from workflow-level post-execution evaluation to per-agent, per-judge, and per-workflow behavioral mandates with tactical, strategic, and judge-monitoring evaluation levels.
 
 ## The Gap
 

@@ -10,7 +10,7 @@ description: "MASO Objective Intent: developer-declared intent specifications th
 
 ## Principle
 
-Every agent in a multi-agent system must operate against a **declared Objective Intent**, a structured specification of what the developer expects that agent to accomplish and within what parameters. These intents are not internal documentation. They are **machine-readable contracts** consumed by judges, evaluation agents, and the observability layer to assess whether actual agent behavior aligns with declared purpose.
+Every agent in a multi-agent system must operate against a **declared Objective Intent**, a structured specification of what the developer expects that agent to accomplish and within what parameters. These intents are not internal documentation. They are **machine-readable mandates** consumed by judges, evaluation agents, and the observability layer to assess whether actual agent behavior aligns with declared purpose.
 
 Without declared intent, the framework catches faults where it can (injection, tool misuse, data leakage) but cannot evaluate whether the system is doing what it was designed to do. Objective Intent is the bridge from **fault detection** to **behavioral assurance**: from catching things that go wrong to verifying that things go right.
 
@@ -223,7 +223,7 @@ An OISpec is a structured, version-controlled document attached to every agent, 
 
 The tactical judge answers: **Did this agent do what it was supposed to do, within the parameters it was given?**
 
-This is the monitoring of one: the individual agent against its declared contract.
+This is the monitoring of one: the individual agent against its declared mandate.
 
 ### Level 2: Strategic, All Agents Against the Workflow OISpec
 
@@ -239,7 +239,7 @@ This is the monitoring of the whole: the fleet-level behavioral assessment again
 
 The meta-evaluator answers: **Is the judge still doing what it was configured to do, or has it drifted?**
 
-This closes the "who watches the watchmen" loop, not through infinite recursion, but through explicit intent contracts at every level.
+This closes the "who watches the watchmen" loop, not through infinite recursion, but through explicit intent mandates at every level.
 
 ## Diagram: Intent Evaluation Hierarchy
 
@@ -384,7 +384,7 @@ As agents evolve, tools change, and requirements shift, OISpecs must be updated.
 
 ## Common Pitfalls
 
-**Writing OISpecs after deployment, not before.** If the OISpec is written to match existing agent behavior rather than to declare intended behavior, it becomes a description, not a contract. OISpecs must be authored at design time and agents must be built to satisfy them.
+**Writing OISpecs after deployment, not before.** If the OISpec is written to match existing agent behavior rather than to declare intended behavior, it becomes a description, not a mandate. OISpecs must be authored at design time and agents must be built to satisfy them.
 
 **Declaring intent for task agents but not for judges.** A judge without a declared OISpec is a black box with authority. Its evaluation criteria are implicit, its scope is undefined, and its drift is undetectable. Judges need OISpecs as much as task agents do.
 

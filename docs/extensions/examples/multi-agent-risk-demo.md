@@ -37,7 +37,7 @@ The orchestrator receives the classified prompt and breaks it into sub-tasks. Ea
 The orchestrator:
 
 - Maintains a **task graph** tracking dependencies, completion status, and failures.
-- Enforces **delegation contracts** that specify what each agent is allowed to do.
+- Enforces **delegation mandates** that specify what each agent is allowed to do.
 - Reads each agent's **intent statement** from the intent store before dispatch, confirming the task matches the agent's declared scope.
 - Manages **retries and escalation** when per-task judges flag problems.
 

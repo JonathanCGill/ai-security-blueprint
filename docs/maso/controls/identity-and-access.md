@@ -62,10 +62,10 @@ All Tier 2 controls remain active, plus:
 |---------|-------------|---------------------|
 | **IA-3.1** Sub-hour rotation (all) | No agent holds credentials longer than 60 minutes | High-privilege agents rotate every 15 minutes. |
 | **IA-3.2** Behavioral binding | NHI includes a behavioral profile; deviations flagged independently of drift detection | Second detection layer if behavior doesn't match identity profile. |
-| **IA-3.3** Delegation contracts | Signed contracts define scope, max permissions, time limit, and expected output for each delegation | Agent B cannot exceed the contract scope. |
+| **IA-3.3** Delegation mandates | Signed mandates define scope, max permissions, time limit, and expected output for each delegation | Agent B cannot exceed the mandate scope. |
 | **IA-3.4** Automated credential revocation | Anomaly detection triggers credential revocation within 30 seconds | Faster than full PACE transition; immediate containment. |
 
-**What you're building at Tier 3:** Behavioral identity - the NHI is not just a certificate, it's a contract that includes expected behavior patterns. The identity system becomes a detection layer.
+**What you're building at Tier 3:** Behavioral identity - the NHI is not just a certificate, it's a mandate that includes expected behavior patterns. The identity system becomes a detection layer.
 
 ## Testing Criteria
 
@@ -96,7 +96,7 @@ All Tier 2 controls remain active, plus:
 |---------|------|---------------|
 | IA-T3.1 | Rotation enforcement | Monitor credential age across all agents for 24 hours. No credential exceeds 60 minutes (15 minutes for high-privilege). |
 | IA-T3.2 | Behavioral mismatch | Agent with a "read-heavy" NHI profile starts making high-volume writes. NHI system flags the mismatch independently of drift detection. |
-| IA-T3.3 | Delegation contract breach | Agent B attempts an action outside the delegation contract scope. Action is blocked and event is logged. |
+| IA-T3.3 | Delegation mandate breach | Agent B attempts an action outside the delegation mandate scope. Action is blocked and event is logged. |
 | IA-T3.4 | Automated revocation latency | Inject anomalous behavior. Measure time from detection to credential revocation. Must be under 30 seconds. |
 
 ## Maturity Indicators
@@ -107,7 +107,7 @@ All Tier 2 controls remain active, plus:
 | **Managed** | Each agent has unique credentials. Credential inventory documented. Permissions scoped but not enforced at infrastructure level. |
 | **Defined** | NHI per agent. Short-lived credentials with automated rotation. Mutual authentication on the message bus. Transitive permissions explicitly blocked. |
 | **Quantitatively Managed** | Credential rotation compliance measured and reported. Authentication failure rates tracked. NHI revocation SLA measured and met. |
-| **Optimising** | Behavioral binding on NHI. Delegation contracts enforced. Automated revocation on anomaly. Credential lifecycle fully automated with no manual intervention. |
+| **Optimising** | Behavioral binding on NHI. Delegation mandates enforced. Automated revocation on anomaly. Credential lifecycle fully automated with no manual intervention. |
 
 ## Common Pitfalls
 

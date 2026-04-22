@@ -136,7 +136,7 @@ class PipelineResult(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# Objective Intent — developer-declared behavioral contracts
+# Objective Intent — developer-declared behavioral mandates
 # ---------------------------------------------------------------------------
 
 class IntentEvaluationLevel(str, Enum):
@@ -166,7 +166,7 @@ class IntentViolationSeverity(str, Enum):
 
 class ObjectiveIntentSpec(BaseModel):
     """Objective Intent Specification (OISpec) — a developer-declared
-    behavioral contract for an agent, judge, or workflow.
+    behavioral mandate for an agent, judge, or workflow.
 
     Consumed by tactical judges, strategic evaluators, and the
     judge meta-evaluator to assess whether actual behavior aligns

@@ -182,7 +182,7 @@ The agent receives permissions scoped to the current task, evaluated dynamically
 | **Context-aware evaluation** | Policy engine considers: who initiated this request, what is the delegation chain, what is the risk tier, what environment is this |
 | **Gateway enforcement** | Authorisation decisions enforced at the API gateway, not within the agent |
 | **Tool allowlists** | Explicit declaration of which tools the agent can invoke, with parameter constraints |
-| **Delegation contracts** | When sub-delegating, scope narrows - signed, scoped, time-limited delegation tokens |
+| **Delegation mandates** | When sub-delegating, scope narrows - signed, scoped, time-limited delegation tokens |
 
 **Standards:** NIST SP 800-207 (Policy Engine), IAM-02 (Least Privilege), IAM-04 (Tool Constraints), TOOL-01-06
 
@@ -380,7 +380,7 @@ This governance model draws from internationally recognised standards and emergi
 | **Secrets and credentials** | [Infrastructure - Secrets & Credentials](../infrastructure/controls/secrets-and-credentials.md) | SEC-01 through SEC-08: context window isolation, short-lived tokens, vault management, credential scanning, rotation, agent isolation |
 | **Tool access controls** | [Infrastructure - Tool Access Controls](../infrastructure/agentic/tool-access-controls.md) | TOOL-01 through TOOL-06: allowlisting, gateway enforcement, parameter constraints, reversibility classification, rate limits, logging |
 | **Delegation chains** | [Infrastructure - Delegation Chains](../infrastructure/agentic/delegation-chains.md) | DEL-01 through DEL-05: least delegation, audit trails, depth limits, explicit authorisation, identity propagation |
-| **Multi-agent IAM** | [MASO - Identity & Access](../maso/controls/identity-and-access.md) | Tiered controls for multi-agent systems: NHI lifecycle, mutual authentication, behavioral binding, delegation contracts |
+| **Multi-agent IAM** | [MASO - Identity & Access](../maso/controls/identity-and-access.md) | Tiered controls for multi-agent systems: NHI lifecycle, mutual authentication, behavioral binding, delegation mandates |
 | **NHI lifecycle** | [Extensions - NHI Lifecycle](../extensions/technical/nhi-lifecycle.md) | Six-phase lifecycle: provisioning, authentication, authorisation, monitoring, review, deprovisioning |
 | **Financial services IAM** | [High-Risk Financial Services](../extensions/regulatory/high-risk-financial-services.md) | Four access control layers, financial services requirements, access control anti-patterns |
 | **IAM architecture diagram** | [IAM Control Layers](../infrastructure/diagrams/iam-control-layers.svg) | Visual: control plane / data plane separation with agent authorisation gateway |

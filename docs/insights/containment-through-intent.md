@@ -92,7 +92,7 @@ When Agent A (intent: "retrieve current market data for portfolio analysis") pas
 
 This is the epistemic integrity problem that MASO's PG controls address: [claim provenance](../maso/controls/prompt-goal-and-epistemic-integrity.md) (PG-2.5), [uncertainty preservation](../maso/controls/prompt-goal-and-epistemic-integrity.md) (PG-2.7), and [goal integrity monitoring](../maso/controls/prompt-goal-and-epistemic-integrity.md) (PG-2.2).
 
-The intent specification is the contract between agents. Agent A declares what it intended to produce. Agent B validates that what it received matches that declaration. If there is a mismatch - the data does not look like what Agent A's intent said it would produce - Agent B escalates rather than processing potentially compromised input.
+The intent specification is the mandate between agents. Agent A declares what it intended to produce. Agent B validates that what it received matches that declaration. If there is a mismatch - the data does not look like what Agent A's intent said it would produce - Agent B escalates rather than processing potentially compromised input.
 
 This is how you stop epistemic cascades. Not by hoping each agent checks its own work, but by having each agent verify that what it received is consistent with the upstream agent's declared purpose.
 

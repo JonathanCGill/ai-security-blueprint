@@ -164,7 +164,7 @@ A smaller Judge with a precise, structured rubric often outperforms a larger Jud
 | Schema validation, allow-list check, threshold check | Pattern matching | Small/fast, or rules engine (no LLM) |
 | PII, policy, safety classification on single outputs | Single-criterion classification | Small model, or [distilled SLM](distill-judge-slm.md) |
 | Inline evaluation on measurable criteria (security, privacy, compliance) | Rule application with context | Small to mid-tier |
-| Tool-call sequence evaluation against declared contract | Multi-step comparison | Mid-tier |
+| Tool-call sequence evaluation against declared mandate | Multi-step comparison | Mid-tier |
 | Logic-level means compliance, creative substitution, cross-session drift | Reasoning about reasoning | Reasoning-capable mid-tier or frontier, where warranted |
 | Strategic workflow-level evaluation across multiple agents | Cross-agent aggregation | Reasoning-capable mid-tier or frontier |
 
@@ -173,8 +173,8 @@ A smaller Judge with a precise, structured rubric often outperforms a larger Jud
 - **Start at the lower tier.** Deploy the smallest model that plausibly handles the task, calibrate it against your golden dataset, and measure. Escalate only when the smaller model demonstrably fails, not on the suspicion that it might.
 - **Split composite evaluations.** If one Judge is struggling with a multi-criterion prompt, the problem is usually the prompt, not the model. Break the evaluation into separate, single-criterion Judges running in parallel. Small models handle single-criterion tasks reliably.
 - **Distil where volume is high.** For inline evaluation on well-defined criteria, a [distilled SLM sidecar](distill-judge-slm.md) trained on the larger Judge's verdicts gives you the rubric of the large model at the cost and latency of the small one.
-- **Re-evaluate on model refresh.** Smaller models improve faster than frontier models. A Judge that required a frontier model twelve months ago may now run correctly on a mid-tier model. Review on the same cadence as the Judge's own contract.
-- **Document the choice.** Record the Judge model, why it was selected, and the calibration evidence that supports the selection. This belongs in the Judge contract, not in a config file.
+- **Re-evaluate on model refresh.** Smaller models improve faster than frontier models. A Judge that required a frontier model twelve months ago may now run correctly on a mid-tier model. Review on the same cadence as the Judge's own mandate.
+- **Document the choice.** Record the Judge model, why it was selected, and the calibration evidence that supports the selection. This belongs in the Judge mandate, not in a config file.
 
 ### Where This Interacts With Principle 1 (Different)
 

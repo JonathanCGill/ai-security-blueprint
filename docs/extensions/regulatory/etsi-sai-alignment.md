@@ -75,7 +75,7 @@ ETSI SAI has produced Group Reports (GRs) from its ISG era, plus Technical Speci
 | CABCA Concept | MASO Equivalent | Notes |
 |---------------|-----------------|-------|
 | Event-triggered assessment cycles | PACE escalation model | Both respond dynamically to system state changes |
-| Machine-readable compliance metrics | OISpec contracts (Domain 7) | Both translate high-level requirements into measurable criteria |
+| Machine-readable compliance metrics | OISpec mandates (Domain 7) | Both translate high-level requirements into measurable criteria |
 | Continuous monitoring | Observability (Domain 4) | Flight Recorder, behavioural drift detection |
 | Post-market surveillance | Tier progression model | MASO tiers define ongoing monitoring requirements that increase with autonomy |
 
@@ -99,7 +99,7 @@ ETSI SAI has produced Group Reports (GRs) from its ISG era, plus Technical Speci
 
 **Scope:** Defines explicability ("property of an action to be accounted for or understood") and transparency ("property of an action to be open to inspection with no hidden properties"). Identifies steps for designers and implementers to ensure both static and dynamic forms of explicability.
 
-**MASO alignment:** Directly supports Observability (Domain 4) and Objective Intent (Domain 7). In multi-agent systems, the ability to explain and inspect each agent's decision-making process is critical for audit, debugging, and governance. The OISpec contract makes agent intent explicit and verifiable, satisfying SAI 007's transparency requirements. The Flight Recorder provides the dynamic explicability layer by capturing full reasoning chains.
+**MASO alignment:** Directly supports Observability (Domain 4) and Objective Intent (Domain 7). In multi-agent systems, the ability to explain and inspect each agent's decision-making process is critical for audit, debugging, and governance. The OISpec mandate makes agent intent explicit and verifiable, satisfying SAI 007's transparency requirements. The Flight Recorder provides the dynamic explicability layer by capturing full reasoning chains.
 
 ### GR SAI 001: AI Threat Ontology
 
@@ -219,7 +219,7 @@ This is the most directly relevant ETSI standard for MASO.
 | Agent-to-agent communication | Secure Inter-Agent Message Bus | **MASO extends**: ENI 056 describes communication models; MASO requires signed, rate-limited, validated messaging |
 | Workflow orchestration | Execution Control (Domain 3), Privileged Agent Governance (Domain 6) | **MASO extends**: MASO adds security governance for orchestrators with elevated authority |
 | Closed-loop optimisation | PACE resilience model | **Complementary**: ENI 056 optimises for performance; MASO optimises for safe degradation |
-| Agent collaboration mechanisms | Objective Intent (Domain 7), OISpec contracts | **MASO extends**: ENI 056 describes how agents collaborate; MASO ensures they collaborate within declared intent boundaries |
+| Agent collaboration mechanisms | Objective Intent (Domain 7), OISpec mandates | **MASO extends**: ENI 056 describes how agents collaborate; MASO ensures they collaborate within declared intent boundaries |
 
 **Assessment:** ENI 056 provides the architectural vocabulary. MASO provides the security controls. Organisations should use ENI 056 to inform their multi-agent architecture design and MASO to secure it. The two standards do not conflict, and ENI 056 explicitly acknowledges that security and trust mechanisms are needed but outside its scope.
 
@@ -230,7 +230,7 @@ This is the most directly relevant ETSI standard for MASO.
 | ENI 051 Concept | MASO Parallel | Notes |
 |-----------------|---------------|-------|
 | Autonomous resource allocation | Tier 3 (Autonomous) controls | Both address agents with authority to allocate resources without human approval |
-| SLA enforcement by agents | OISpec as intent contract | Both define structured specifications that constrain agent behaviour |
+| SLA enforcement by agents | OISpec as intent mandate | Both define structured specifications that constrain agent behaviour |
 | Agent delegation patterns | Privileged Agent Governance (Domain 6) | MASO applies mandatory approval gates and delegation limits |
 
 **Assessment:** Domain-specific to telecoms, but the patterns are transferable. Any organisation deploying autonomous agents that allocate resources (cloud compute, API quotas, budget) faces the same governance challenges ENI 051 identifies for network slicing.
@@ -252,7 +252,7 @@ This is the most directly relevant ETSI standard for MASO.
 | Orchestrator compromise | Domain 6: mandatory human approval gates, independent monitoring |
 | Cascading failure across agent chains | PACE resilience model: Primary, Alternate, Contingency, Emergency |
 | Agent identity and authentication | Domain 1: per-agent NHI, zero-trust mutual authentication |
-| Runtime behavioural assurance | Domain 7: OISpec contracts, tactical and strategic evaluation |
+| Runtime behavioural assurance | Domain 7: OISpec mandates, tactical and strategic evaluation |
 
 ## Gap Analysis: What ETSI Covers That MASO Does Not
 
@@ -312,7 +312,7 @@ Full ETSI alignment becomes essential. Autonomous agents operating without human
 - CABCA continuous assessment at runtime, event-triggered on model updates and drift
 - ENI 056 architecture validation for all agent topologies
 - TR 104 159 mitigations enforced at every agent boundary, including inter-agent
-- SAI 007 explicability requirements met through OISpec contracts and Flight Recorder
+- SAI 007 explicability requirements met through OISpec mandates and Flight Recorder
 - AICIE-format incident reporting integrated with SIEM/SOAR
 
 !!! info "References"

@@ -75,8 +75,8 @@
   <text x="760" y="350" fill="#e6e6e6" font-size="11">Identity loss mid-chain</text>
   <text x="760" y="370" fill="#e6e6e6" font-size="11">Silent scope expansion at hop</text>
   <text x="760" y="390" fill="#e6e6e6" font-size="11">Cascading compromise (87% in 4hrs)</text>
-  <text x="760" y="410" fill="#e6e6e6" font-size="11">Forged delegation contracts</text>
-  <text x="760" y="435" fill="#4ecca3" font-size="10" font-weight="600">Defence: Signed contracts, depth limits, audit</text>
+  <text x="760" y="410" fill="#e6e6e6" font-size="11">Forged delegation mandates</text>
+  <text x="760" y="435" fill="#4ecca3" font-size="10" font-weight="600">Defence: Signed mandates, depth limits, audit</text>
 
   <!-- Three-layer response -->
   <rect x="40" y="480" width="1030" height="135" rx="6" fill="#0f3460" stroke="#1a6f9a" stroke-width="1.5" filter="url(#shadow)"/>

@@ -51,7 +51,7 @@ Key architectural changes from Tier 2:
 
 - **Credential rotation under 1 hour for all agents.** No agent holds credentials for longer than 60 minutes, regardless of privilege level. High-privilege agents (those with write access to production systems) rotate credentials every 15 minutes.
 - **Behavioral binding on NHI.** The NHI is not just a static certificate - it includes a behavioral profile. If an agent's behavior deviates significantly from its NHI-bound profile (e.g., an agent defined as "read-heavy, low-latency" starts making high-volume write calls), the NHI system flags the mismatch independently of the drift detection system, providing a second detection layer.
-- **Delegation contracts.** When Agent A delegates a task to Agent B, a signed delegation contract is created that explicitly defines: the scope of the delegated task, the maximum permissions Agent B can use for this task, the time limit for completion, and the expected output format. Agent B cannot exceed the contract scope.
+- **Delegation mandates.** When Agent A delegates a task to Agent B, a signed delegation mandate is created that explicitly defines: the scope of the delegated task, the maximum permissions Agent B can use for this task, the time limit for completion, and the expected output format. Agent B cannot exceed the mandate scope.
 - **Automated credential revocation on anomaly.** If the monitoring system detects anomalous behavior, the NHI system can revoke the agent's credentials within 30 seconds without human intervention - faster than the full PACE transition sequence.
 
 **Implementation checklist:**
@@ -60,8 +60,8 @@ Key architectural changes from Tier 2:
 - [ ] Sub-15-minute rotation verified for high-privilege agents.
 - [ ] Behavioral binding configured on NHI profiles.
 - [ ] NHI behavioral mismatch detection tested independently of drift detection.
-- [ ] Delegation contracts implemented for all inter-agent task assignments.
-- [ ] Delegation contract enforcement tested (exceed scope → block + alert).
+- [ ] Delegation mandates implemented for all inter-agent task assignments.
+- [ ] Delegation mandate enforcement tested (exceed scope → block + alert).
 - [ ] Automated credential revocation tested (anomaly → revoke within 30 seconds).
 
 ### 2. Data Protection - Tier 3 Requirements
@@ -125,7 +125,7 @@ Key architectural changes from Tier 2:
 
 - **Continuous dependency scanning.** The agent toolchain (models, tools, MCP servers, libraries, orchestration framework) is continuously scanned for known vulnerabilities. New CVEs affecting any component trigger automated assessment and, if severity warrants, automatic PACE escalation.
 - **Model version pinning with automated rollback.** Each agent is pinned to a specific model version. If the model provider pushes an update, the system does not automatically adopt it. Updates go through a testing pipeline that validates the new version against the agent's behavioral baselines before deployment. If a deployed version shows regression, automated rollback to the previous version is triggered.
-- **A2A trust chain validation.** For agent systems that interact with external agent systems (via A2A protocols or similar), the trust chain is validated end-to-end. External agents must present verifiable identities and operate within agreed-upon interaction contracts. Unverified external agents are blocked.
+- **A2A trust chain validation.** For agent systems that interact with external agent systems (via A2A protocols or similar), the trust chain is validated end-to-end. External agents must present verifiable identities and operate within agreed-upon interaction mandates. Unverified external agents are blocked.
 - **Supply chain incident response.** A specific incident response procedure exists for supply chain compromises (e.g., a model provider is breached, an MCP server is compromised). The procedure includes: immediate isolation of the affected component, assessment of exposure scope, activation of alternative components, and notification chain.
 
 **Implementation checklist:**
@@ -283,7 +283,7 @@ Tier 3 systems can regress to lower tiers. This is by design: regression is a sa
 **Tier 3 configuration:**
 
 - All four agents have NHIs with 15-minute credential rotation (high-privilege due to access to customer financial data and the ability to block transactions).
-- Delegation contracts: The Monitoring Agent can delegate enrichment requests to the Investigation Agent (read-only scope, maximum 10,000 lookups/hour). The Investigation Agent can delegate classification requests to the Decision Agent (read-only scope). The Decision Agent can delegate responses to the Action Agent (write scope limited to: block card, hold funds < $50,000, or flag for human review).
+- Delegation mandates: The Monitoring Agent can delegate enrichment requests to the Investigation Agent (read-only scope, maximum 10,000 lookups/hour). The Investigation Agent can delegate classification requests to the Decision Agent (read-only scope). The Decision Agent can delegate responses to the Action Agent (write scope limited to: block card, hold funds < $50,000, or flag for human review).
 - Actions above $50,000 require multi-model cross-validation. The Model-as-Judge and a second independent model must both approve. Disagreement routes to the human fraud team.
 - Blast radius caps: The Action Agent can block a maximum of 50 cards per hour and hold funds on a maximum of 100 accounts per hour. Exceeding these caps triggers automatic PACE escalation regardless of decision quality.
 - The independent observability agent monitors all four agents from separate infrastructure. It has its own kill switch authority.

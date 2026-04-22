@@ -59,7 +59,7 @@ A judge is only as good as the law it applies. A human judge ruling on a vague s
 
 The clearer the declaration, the more sound the ruling. When intent is specific ("process refund requests for orders under 90 days, maximum $500, scoped to the returns database"), the judge can verify each element. When outcomes are measurable ("refund issued within policy limits, customer notified, audit trail complete"), the judge can assess success or failure, not just safety. When constraints are explicit ("no access to payment instruments, no external API calls, maximum 50 records per query"), the judge can flag violations precisely.
 
-This is why the [Objective Intent](controls/objective-intent.md) control domain exists. Every agent, judge, and workflow in a MASO deployment operates against a declared Objective Intent Specification (OISpec): a versioned, machine-readable contract defining purpose, outcomes, constraints, and evaluation criteria. These are the reference standard that the entire evaluation architecture depends on.
+This is why the [Objective Intent](controls/objective-intent.md) control domain exists. Every agent, judge, and workflow in a MASO deployment operates against a declared Objective Intent Specification (OISpec): a versioned, machine-readable mandate defining purpose, outcomes, constraints, and evaluation criteria. These are the reference standard that the entire evaluation architecture depends on.
 
 Three things follow:
 
@@ -71,17 +71,17 @@ Three things follow:
 
 The quality of this entire system depends on the quality of the declarations it evaluates against. Invest in clear, specific, measurable OISpecs and the judge can make sound rulings. Deploy vague specifications and the judge becomes an expensive safety net that catches only the most obvious failures. The foundation is not the model. The foundation is the [declared intent](../constraining-agents.md).
 
-### Contracts: Where Intent Becomes Enforceable
+### Mandates: Where Intent Becomes Enforceable
 
-Declared intent is only useful once it is encoded in a contract the runtime and the judge can both read. MASO uses a three-tier hierarchy, with each tier inheriting from the one above it.
+Declared intent is only useful once it is encoded in a mandate the runtime and the judge can both read. MASO uses a three-tier hierarchy, with each tier inheriting from the one above it.
 
 **Objective Intent Specification (OISpec).** Declares what each agent, judge, and workflow should accomplish: purpose, authorised outcomes, constraints, and evaluation criteria. This is the reference standard the judge rules against. See [Objective Intent](controls/objective-intent.md).
 
-**Solution contract.** Governs an entire agentic workflow end to end. Specifies the authorised agents and their sequence, authorised data sources, prohibited actions, hard limits (financial, volume, time), escalation paths, and the plan attempt thresholds that trigger a halt. No workflow may be deployed without an approved solution contract. See [Agentic Task Contract](controls/agentic-task-contract.md).
+**Solution mandate.** Governs an entire agentic workflow end to end. Specifies the authorised agents and their sequence, authorised data sources, prohibited actions, hard limits (financial, volume, time), escalation paths, and the plan attempt thresholds that trigger a halt. No workflow may be deployed without an approved solution mandate. See [Agentic Task Mandate](controls/agentic-task-mandate.md).
 
-**Agent contract.** Binds each individual agent within the workflow to a specific tool set, logic specification, and escalation path. Agent contracts inherit from their parent solution contract and may not exceed its permissions. Tool provisioning is structural, not policy-based: if a tool is not in the contract, the agent cannot invoke it regardless of how it reasons about the task.
+**Agent mandate.** Binds each individual agent within the workflow to a specific tool set, logic specification, and escalation path. Agent mandates inherit from their parent solution mandate and may not exceed its permissions. Tool provisioning is structural, not policy-based: if a tool is not in the mandate, the agent cannot invoke it regardless of how it reasons about the task.
 
-Contracts turn abstract intent into artefacts that can be validated at deployment and enforced at runtime. They are also the basis for the four-state deviation model (normal operation, execution failure, visible failure, creative substitution) and the Anti-Mythos judge, which rules on means compliance rather than output quality. Without contracts, the judge has nothing precise to evaluate against and means-level failures become invisible.
+Mandates turn abstract intent into artefacts that can be validated at deployment and enforced at runtime. They are also the basis for the four-state deviation model (normal operation, execution failure, visible failure, creative substitution) and the Anti-Mythos judge, which rules on means compliance rather than output quality. Without mandates, the judge has nothing precise to evaluate against and means-level failures become invisible.
 
 ## Architecture
 
@@ -113,7 +113,7 @@ The **Flight Recorder** captures every agent action, judge verdict, tool invocat
 
 ![MASO Tube Map](../images/maso-tube-map.svg)
 
-Seven coloured lines represent the original seven control domains. Stations are key controls. Zones are implementation tiers. Interchanges mark where domains share control points (Judge Gate, PACE Bridge, Agent Registry). River PACE flows through the centre, mapping resilience phases to tier progression. Model Cognition Assurance, Agentic Task Contract, and Objective Intent were added after the tube map was created and are not yet represented visually.
+Seven coloured lines represent the original seven control domains. Stations are key controls. Zones are implementation tiers. Interchanges mark where domains share control points (Judge Gate, PACE Bridge, Agent Registry). River PACE flows through the centre, mapping resilience phases to tier progression. Model Cognition Assurance, Agentic Task Mandate, and Objective Intent were added after the tube map was created and are not yet represented visually.
 
 ## How the Pieces Fit Together
 
@@ -123,7 +123,7 @@ The logic runs in a chain. **Agents are fragile** because they reason in natural
 
 From there, MASO provides the operational framework:
 
-- **Ten control domains** address specific risk categories: protecting the agent's goals, identity, data, execution, observability, supply chain, privileged agents, model cognition, agentic task contracts, and objective intent. Each domain contains controls that enforce the declarations you made and give the judge the signals it needs.
+- **Ten control domains** address specific risk categories: protecting the agent's goals, identity, data, execution, observability, supply chain, privileged agents, model cognition, agentic task mandates, and objective intent. Each domain contains controls that enforce the declarations you made and give the judge the signals it needs.
 - **Three implementation tiers** scale controls to autonomy level. Tier 1 (supervised) requires human approval for every write. Tier 2 (managed) uses judge evaluation to auto-approve low-risk actions and escalate high-risk ones. Tier 3 (autonomous) operates with minimal human intervention for pre-approved task categories. You choose the tier that matches your risk tolerance.
 - **PACE resilience** defines what happens when controls fail. Every layer has a defined failure mode and a predetermined safe state to transition to, from normal operations through to full shutdown.
 - **OWASP coverage** maps every control to specific, documented threats from both the LLM Top 10 and the Agentic Top 10, so you can trace from a known risk to the controls that address it.
@@ -133,7 +133,7 @@ None of these pieces stand alone. The control domains implement the declarations
 
 ## Control Domains
 
-The framework organises controls into ten domains. The first five map to specific OWASP risks. The sixth, Prompt, Goal & Epistemic Integrity, addresses both the three OWASP risks that require cross-cutting controls and the nine epistemic risks identified in the [Emergent Risk Register](controls/risk-register.md) that have no OWASP equivalent. The seventh, Privileged Agent Governance, addresses the unique risks of orchestrators, planners, and other agents with elevated authority. The eighth, Model Cognition Assurance, addresses the gap between a model's expressed reasoning and its internal computational state. The ninth, Agentic Task Contract and Behavioural Governance, enforces means compliance and detects behavioural deviation in agentic workflows. The tenth, Objective Intent, provides the declared intent specifications that the evaluation architecture and contract governance depend on.
+The framework organises controls into ten domains. The first five map to specific OWASP risks. The sixth, Prompt, Goal & Epistemic Integrity, addresses both the three OWASP risks that require cross-cutting controls and the nine epistemic risks identified in the [Emergent Risk Register](controls/risk-register.md) that have no OWASP equivalent. The seventh, Privileged Agent Governance, addresses the unique risks of orchestrators, planners, and other agents with elevated authority. The eighth, Model Cognition Assurance, addresses the gap between a model's expressed reasoning and its internal computational state. The ninth, Agentic Task Mandate and Behavioural Governance, enforces means compliance and detects behavioural deviation in agentic workflows. The tenth, Objective Intent, provides the declared intent specifications that the evaluation architecture and mandate governance depend on.
 
 ### 0. [Prompt, Goal & Epistemic Integrity](controls/prompt-goal-and-epistemic-integrity.md)
 
@@ -183,15 +183,15 @@ Controls for assessing whether a model's internal reasoning state aligns with it
 
 *Covers: Deceptive reasoning alignment, reward hacking, CoT faithfulness, activation-layer transparency, vendor interpretability attestation*
 
-### 8. [Agentic Task Contract and Behavioural Governance](controls/agentic-task-contract.md)
+### 8. [Agentic Task Mandate and Behavioural Governance](controls/agentic-task-mandate.md)
 
-Formal contract governance for agentic workflows. Solution contracts declare intent, authorised means, outcomes, and escalation paths for entire workflows. Agent contracts bind individual agents to specific tool sets and logic specifications. The four-state deviation model classifies execution outcomes by means compliance and outcome compliance independently, making creative substitution (correct outcome, incorrect means) a named detection category. Plan attempt logging treats blocked tool invocations as behavioural indicators. The Anti-Mythos judge evaluates contract compliance at the tool call, sequence, logic, and cross-session pattern levels.
+Formal mandate governance for agentic workflows. Solution mandates declare intent, authorised means, outcomes, and escalation paths for entire workflows. Agent mandates bind individual agents to specific tool sets and logic specifications. The four-state deviation model classifies execution outcomes by means compliance and outcome compliance independently, making creative substitution (correct outcome, incorrect means) a named detection category. Plan attempt logging treats blocked tool invocations as behavioural indicators. The Anti-Mythos judge evaluates mandate compliance at the tool call, sequence, logic, and cross-session pattern levels.
 
-*Covers: Agentic task contract governance, means compliance, creative substitution detection, plan attempt detection, Anti-Mythos judge architecture*
+*Covers: Agentic task mandate governance, means compliance, creative substitution detection, plan attempt detection, Anti-Mythos judge architecture*
 
 ### 9. [Objective Intent](controls/objective-intent.md)
 
-Every agent, judge, and workflow operates against a developer-declared Objective Intent Specification (OISpec), a structured, version-controlled contract defining what the agent should accomplish and within what parameters. Tactical judges evaluate individual agents against their OISpecs. A strategic evaluation agent assesses whether combined agent actions satisfy the workflow's aggregated intent. Judges are themselves monitored against their own OISpecs. This is the bridge from fault detection to behavioral assurance: from catching things that go wrong to verifying that things go right.
+Every agent, judge, and workflow operates against a developer-declared Objective Intent Specification (OISpec), a structured, version-controlled mandate defining what the agent should accomplish and within what parameters. Tactical judges evaluate individual agents against their OISpecs. A strategic evaluation agent assesses whether combined agent actions satisfy the workflow's aggregated intent. Judges are themselves monitored against their own OISpecs. This is the bridge from fault detection to behavioral assurance: from catching things that go wrong to verifying that things go right.
 
 *Covers: Intent alignment at all levels: individual agent compliance (tactical), aggregate workflow compliance (strategic), and judge behavioral monitoring (lateral). Most critical at HIGH and CRITICAL risk tiers.*
 
@@ -224,7 +224,7 @@ These risks apply to each individual agent. In a multi-agent context, each risk 
 | **LLM03: Supply Chain Vulnerabilities** | Multiple model providers, MCP servers, tool integrations multiply the attack surface. | AIBOM per agent · Signed tool manifests · MCP server vetting · Runtime component audit |
 | **LLM04: Data and Model Poisoning** | Poisoned RAG data consumed by one agent contaminates reasoning of downstream agents. | RAG integrity validation · Source attribution · Cross-agent output verification |
 | **LLM05: Improper Output Handling** | Agent outputs become inputs to other agents. Unsanitised output from Agent A becomes executable input for Agent B. | Output validation at every agent boundary · Model-as-Judge review · Schema enforcement |
-| **LLM06: Excessive Agency** | The defining risk. Delegation creates transitive authority chains. If Agent A delegates to Agent B, and B has tool X, then A effectively has access to tool X. | Least privilege per agent · No transitive permissions · Scoped delegation contracts · PACE containment |
+| **LLM06: Excessive Agency** | The defining risk. Delegation creates transitive authority chains. If Agent A delegates to Agent B, and B has tool X, then A effectively has access to tool X. | Least privilege per agent · No transitive permissions · Scoped delegation mandates · PACE containment |
 | **LLM07: System Prompt Leakage** | An agent's system prompt may be extractable by other agents in the same orchestration. | Prompt isolation per agent · Separate system prompt boundaries · Obfuscation |
 | **LLM08: Vector and Embedding Weaknesses** | Shared vector databases across agents create a single point of compromise for RAG poisoning. | Per-agent RAG access controls · Embedding integrity verification · Source validation |
 | **LLM09: Misinformation** | Hallucinations compound. One agent's hallucination becomes another's "fact". In self-reinforcing loops, misinformation amplifies. | Cross-agent validation · Dedicated fact-checking agent · Confidence scoring with source attribution |
@@ -420,7 +420,7 @@ controls/
 ├── supply-chain.md
 ├── privileged-agent-governance.md
 ├── model-cognition-assurance.md
-├── agentic-task-contract.md
+├── agentic-task-mandate.md
 ├── objective-intent.md
 └── risk-register.md
 threat-intelligence/
