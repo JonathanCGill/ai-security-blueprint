@@ -209,6 +209,71 @@ Standard cost dashboards track spend. Token economics requires tracking ratios, 
 
 **Security token efficiency:** The cost of security controls divided by the number of confirmed policy violations detected. A security layer that catches no violations at high token cost should be reviewed. A security layer that catches frequent violations at low token cost is earning its keep.
 
+## Token Exhaustion and MASO Performance Degradation
+
+Token exhaustion is not just an economic problem. It is a quality problem, and for MASO specifically, it is a security problem. When a model approaches or hits token limits, its outputs degrade in ways that are predictable, measurable, and often invisible to the system around it.
+
+There are two distinct failure modes: **context window exhaustion**, where the model's context is full and it can no longer attend to all relevant information, and **budget exhaustion**, where a hard token cap terminates inference mid-task. Both matter. They cause different failures.
+
+### Context Window Exhaustion
+
+Language models do not process context uniformly. Attention degrades as context grows: content near the beginning and end of a context window receives more reliable attention than content in the middle. This is the "lost in the middle" effect, documented in research by Liu et al. (2023) and replicated across model families. For short contexts it is negligible. For long agentic sessions, it becomes a primary driver of quality degradation.
+
+The practical consequences for agentic workflows:
+
+**OISpec displacement.** The OISpec is typically injected at the start of an agent's context. In a long session, it moves progressively further from the active attention window. An agent that reliably followed its mandate at step 5 may begin to drift from it at step 50, not because the agent was compromised but because the mandate has been displaced from effective attention. The agent still "knows" the OISpec in the sense that the tokens are present, but the model no longer weighs them heavily when generating the next action.
+
+**Hallucination rate increase.** As context fills, models increasingly generate content from training knowledge rather than from the grounded context. Early tool call results, earlier agent reasoning, and prior conversation history fade from effective attention. The model fills the gaps with plausible-sounding content. In agentic workflows where downstream agents treat prior agent output as ground truth, hallucinations compounding across a long session are one of the most dangerous failure modes MASO must detect.
+
+**Instruction following degradation.** Instructions embedded mid-context, including constraint updates, PACE state transitions, and mid-session mandate revisions, lose reliability as the context grows. A constraint injected at position 80K in a 128K context window is less reliably followed than the same constraint injected at position 5K.
+
+### Budget Exhaustion
+
+Budget exhaustion is different. The model does not degrade gradually: inference stops when the token cap is reached. The output is truncated at a semantically arbitrary point, producing incomplete reasoning chains, partial tool call parameters, or cut-off responses.
+
+For a generator agent, a truncated response is a bad user experience. For a judge, it is a security failure. A judge that reaches its token limit mid-verdict may have produced a partial approval where a full evaluation would have flagged the action. The fact that the verdict was cut off rather than deliberately permissive does not change the outcome: the action proceeds without complete evaluation.
+
+Budget exhaustion in judges is particularly hazardous because the truncation is often invisible. The judge produces output up to the limit. If the verdict fields are populated before the reasoning chain completes, the system may read the verdict as valid. The reasoning that would have supported a different conclusion never materialises.
+
+### How Token Exhaustion Specifically Degrades MASO
+
+| MASO Component | Effect of Context Exhaustion | Effect of Budget Exhaustion |
+|---------------|-----------------------------|-----------------------------|
+| **Judge evaluation** | OISpec displaced from active attention; evaluation quality degrades as context grows; verdicts drift from declared criteria | Verdict truncated mid-reasoning; partial approvals recorded as valid; complete evaluation never produced |
+| **Guardrails (ML-based)** | Attention-based classifiers degrade on long inputs; patterns near the start of long inputs may be missed | Hard token limits prevent evaluation of long inputs entirely; long inputs may bypass checks |
+| **Goal integrity monitoring** | Early goal state displaced from attention; drift from original objective becomes harder to detect | Monitoring output incomplete; partial results misread as full assessments |
+| **OISpec adherence** | Constraint compliance degrades as OISpec moves out of active attention range | If OISpec is injected near the token cap, it may be truncated before reaching the model |
+| **Strategic evaluator** | Long workflow histories exceed evaluator context; early phase outcomes missed | Multi-phase summary cut off before all phases assessed |
+| **Inter-agent communication** | Agent A's output degraded by context pressure before being passed to Agent B; degraded content propagates downstream | Truncated inter-agent messages arrive at Agent B malformed or incomplete |
+
+### The PACE Implication
+
+Context window pressure and budget exhaustion are both failure modes that should trigger PACE escalation. An agent that is approaching context limits is not operating normally: its instruction-following reliability is degraded, its hallucination rate is elevated, and its judge is evaluating against increasingly displaced criteria.
+
+MASO treats this as a Contingency trigger, not a routine condition. The indicators:
+
+- **Context fill rate above 70%:** Increase evaluation sampling rate. Begin context summarisation.
+- **Context fill rate above 85%:** Halt new task intake for this agent. Complete current task, then reset context with summarised history.
+- **Context fill rate above 95%:** Trigger PACE Alternate. Route new requests to a fresh agent instance. Preserve full context snapshot for forensic review.
+- **Judge budget exhaustion detected:** Flag the evaluation as incomplete. Do not record the partial verdict as a valid approval. Escalate the action to human review.
+
+The monitoring requirement is specific: the framework needs visibility into context utilisation as a runtime metric, not just token spend. Context fill percentage should be a first-class observable alongside cost and latency.
+
+### Mitigations
+
+**Context summarisation at boundaries.** At natural phase boundaries, summarise accumulated context into a compact representation and replace the full history with the summary. The summary preserves facts and outcomes while freeing context space. The risk: summarisation itself can lose nuance, particularly for constraint details and prior judge verdicts. Summarise conservatively, and always retain the full OISpec and current mandate rather than summarising them.
+
+**Judge context isolation.** The judge should not inherit the full agent context window. It should receive a structured, minimal evaluation prompt: the action being assessed, the relevant OISpec constraints for this action type, and any directly relevant prior context. Passing the full 80K-token agent session to a judge is wasteful and counterproductive. The judge needs focused context, not complete history.
+
+**Sliding window evaluation.** For long-running agents, maintain a sliding evaluation window that always contains the most recent N actions plus the OISpec, rather than accumulating the full session history. The trade-off is loss of long-range pattern detection, which is why the strategic evaluator running against full session summaries at phase boundaries is a complement rather than a replacement.
+
+**Generous judge token budgets.** Judge token budgets should be set significantly above the expected evaluation length, not at the expected length. A judge budget set exactly at the average evaluation length will regularly be hit for above-average cases. Set judge budgets at the 99th percentile of expected evaluation length. The marginal cost of unused budget capacity is zero; the cost of a truncated verdict is a security failure.
+
+**Explicit context budget monitoring.** Treat context utilisation as a monitored metric. Set PACE thresholds on context fill rate the same way you set them on error rates and cost rates. An agent silently drifting toward context exhaustion without a PACE trigger is an unmonitored failure mode.
+
+!!! warning "A degraded judge is worse than no judge"
+    A judge that is producing unreliable verdicts due to context pressure may provide false assurance. An action that a fresh-context judge would have flagged may pass through a context-exhausted judge with an approval. The system records a positive evaluation. The action proceeds. The failure is invisible. Monitoring context fill rate and treating high fill rate as a quality degradation signal, not just a cost signal, is essential at Tier 2 and above.
+
 ## Practical Recommendations
 
 **Distill the judge before you scale.** The token economics of cloud judge evaluation are manageable at low volumes and unsustainable at high volumes. If you are evaluating more than 5% of requests synchronously and processing more than 100K requests per month, model the SLM sidecar. The break-even is typically around 50,000 evaluations per month. Above that, local inference is almost always cheaper. See [Cost & Latency](cost-and-latency.md) for the detailed cost model.
@@ -228,6 +293,7 @@ Standard cost dashboards track spend. Token economics requires tracking ratios, 
 
 !!! info "References"
     - Google Cloud AI Research et al., "Budget Aware Test-time Scaling" (BATS), arXiv: 2511.17006 (2025): [arxiv.org](https://arxiv.org/abs/2511.17006)
+    - Liu et al., "Lost in the Middle: How Language Models Use Long Contexts", arXiv: 2307.03172 (2023): [arxiv.org](https://arxiv.org/abs/2307.03172)
     - FinOps Foundation, "FinOps for AI Overview" (2025): [finops.org/wg/finops-for-ai-overview](https://www.finops.org/wg/finops-for-ai-overview/)
     - Mavvrik, "2025 State of AI Cost Governance Report": [mavvrik.ai](https://www.mavvrik.ai/state-of-ai-cost-governance-report/)
     - Galileo AI, "The Hidden Costs of Agentic AI": [galileo.ai](https://galileo.ai/blog/hidden-cost-of-agentic-ai)
