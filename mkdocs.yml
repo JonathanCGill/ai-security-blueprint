@@ -350,6 +350,7 @@ nav:
         - AI Endpoint Hardening: extensions/technical/ai-endpoint-hardening.md
         - RAG Security: extensions/technical/rag-security.md
       - Economics & Identity:
+        - Token Economics and MASO: extensions/technical/token-economics.md
         - Cost & Latency: extensions/technical/cost-and-latency.md
         - Economic Governance: extensions/technical/economic-governance.md
         - NHI Lifecycle: extensions/technical/nhi-lifecycle.md
