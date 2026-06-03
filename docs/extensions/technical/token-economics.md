@@ -78,6 +78,82 @@ Adversarial token consumption is a real threat class. An attacker who can craft 
 
 MASO's input guardrails screen for characteristics associated with verbose-injection patterns before requests reach the model. The token cost of a blocked request is the guardrail evaluation. The token cost of an unblocked verbose injection is orders of magnitude higher. The economics of prevention are strongly favourable.
 
+## Risk as the Evaluation Gate
+
+Token spend on evaluation should track risk, not request volume. This is the structural principle that separates disciplined MASO from naive MASO, and it has direct consequences for token economics.
+
+Every agent action carries a risk classification at runtime. That classification is a function of three things: the consequence if the action is wrong, whether the action is reversible, and the authority level the agent is exercising at this step. A read operation against a public knowledge base is low risk regardless of which agent performs it. A write operation that modifies access controls is high risk regardless of how confident the agent appears.
+
+The risk classification is not a property of the agent. It is a property of the action. The same agent can perform low-risk and high-risk actions within a single session, and each should be evaluated accordingly.
+
+### The Routing Decision
+
+Risk classification routes each action to an evaluation path. The paths differ in token cost by orders of magnitude.
+
+| Action Risk | Evaluation Path | Evaluation Token Cost | Notes |
+|-------------|----------------|----------------------|-------|
+| **Low:** read-only, no external state change, reversible | Guardrails only, async SLM sample | Near zero | Guardrails are rule-based. Async SLM sample adds no latency or API tokens. |
+| **Medium:** writes to internal state, reversible, limited scope | SLM inline evaluation | Near zero (local inference) | SLM runs as a sidecar. No API token consumption. Adds 10-50ms latency. |
+| **High:** external writes, difficult to reverse, broader scope | SLM inline + cloud judge | API tokens for cloud judge call | Cloud judge is synchronous. Adds 500ms-2s latency. Use a small model unless the action demands it. |
+| **Critical:** irreversible, high blast radius, regulatory consequence | Synchronous cloud judge + human approval gate | Highest API token cost | Reserve this path. Every action routed here is expensive and slow by design. |
+
+The economic logic: most actions in a well-designed agentic workflow are low-to-medium risk. They should consume no cloud judge tokens at all. The cloud judge is reserved for the minority of actions where the consequence of a wrong call justifies the cost.
+
+### Why Naive MASO Violates This
+
+Naive MASO applies the same evaluation intensity to every action. A read operation and an irreversible payment are evaluated by the same cloud judge, at the same cost. The result is that low-risk actions, which represent the bulk of volume in most workflows, consume the bulk of the evaluation budget.
+
+The problem is not using a cloud judge. The problem is using it indiscriminately. A cloud judge on a read-only lookup is not more secure than guardrails plus an SLM sample. It is just more expensive.
+
+### Why Action Risk Classification Is Not Optional
+
+If risk classification is absent, the system has two choices: evaluate everything at the highest tier (expensive, slow) or evaluate everything at the lowest tier (cheap, inadequate). Neither is correct. Risk classification is what makes proportionate evaluation possible, and proportionate evaluation is what makes MASO economically viable.
+
+This is also why the [Objective Intent](../../maso/controls/objective-intent.md) and [Execution Control](../../maso/controls/execution-control.md) domains exist. OISpecs declare not just what an agent should do but the risk profile of each action type it may take. Execution controls encode that risk profile into the routing logic. Without declared intent, there is no basis for classification. Without classification, there is no basis for routing. Without routing, every action costs as much as the worst action.
+
+### What the Routing Logic Looks Like
+
+```python
+# Risk-gated evaluation routing
+def route_evaluation(action, oispec):
+    risk = classify_action_risk(action, oispec)
+
+    # Guardrails run on everything, always
+    guardrail_result = guardrails.evaluate(action)
+    if guardrail_result.blocked:
+        return block(action, guardrail_result)
+
+    if risk == RiskLevel.LOW:
+        # Async SLM sample only: no synchronous judge tokens
+        async_slm_sample(action, sample_rate=0.05)
+        return allow(action)
+
+    if risk == RiskLevel.MEDIUM:
+        # SLM inline: local inference, no API tokens
+        slm_result = slm_sidecar.evaluate(action, oispec)
+        if slm_result.flagged:
+            return escalate(action, slm_result)
+        return allow(action)
+
+    if risk == RiskLevel.HIGH:
+        # SLM inline first; cloud judge if SLM flags or action warrants it
+        slm_result = slm_sidecar.evaluate(action, oispec)
+        judge_result = cloud_judge.evaluate(action, oispec)
+        if slm_result.flagged or judge_result.flagged:
+            return escalate(action, judge_result)
+        return allow(action)
+
+    if risk == RiskLevel.CRITICAL:
+        # Cloud judge synchronous + human gate
+        judge_result = cloud_judge.evaluate(action, oispec)
+        return human_approval_gate(action, judge_result)
+```
+
+The cloud judge is called for HIGH and CRITICAL risk actions only. For a typical workflow where 70% of actions are LOW or MEDIUM risk, this immediately eliminates cloud judge token consumption for the majority of the volume.
+
+!!! tip "Classify at the action type level, not the session level"
+    Risk classification should apply to each action individually, not to a session or agent as a whole. A session that starts with low-risk reads and escalates to high-risk writes should escalate its evaluation intensity at the point the writes begin, not retroactively from the start of the session. This keeps low-risk phases cheap and reserves evaluation cost for the actions that warrant it.
+
 ## The Compounding Factor
 
 The relationship between MASO implementation quality and token economics is not linear. Naive MASO makes token costs significantly worse. Disciplined MASO keeps costs manageable while providing genuine security.
