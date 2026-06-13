@@ -1,10 +1,47 @@
 ---
-description: "How token consumption compounds across multi-agent systems, where MASO adds overhead and where it prevents waste, risk-gated evaluation routing, reasoning token costs, prompt caching, and the performance effects of token exhaustion on MASO controls."
+description: "How token consumption compounds across multi-agent systems, where MASO adds overhead and where it prevents waste, risk-gated evaluation routing, reasoning token costs, prompt caching, the performance effects of token exhaustion on MASO controls, and why token management is itself a runtime security control."
 ---
 
 # AI Token Economics and MASO
 
 > Tokens are not just a pricing unit. They are the resource budget every agent operates within. In multi-agent systems, how that budget is consumed, protected, and wasted determines whether your AI deployment is economically viable.
+
+## Token Management as a Runtime Security Control
+
+Token management is usually treated as a FinOps problem: track spend, set budgets, alert on overruns. That framing is incomplete. Token consumption is a leading indicator of whether the model, and every control wrapped around it, is still operating correctly.
+
+The tokenomics problem has two distinct sides, and both have direct security consequences.
+
+### The Demand Side: One Conversation, When AI Turns Useless
+
+![Demand side: one conversation, when AI turns useless](../../images/insight-token-demand-curve.svg){ .arch-diagram }
+
+Within a single conversation or agent session, **cost rises linearly** with tokens consumed. Every input and output token has a price, and spend tracks token count in a straight line.
+
+**Value does not behave the same way.** It climbs as useful context accumulates (more grounding, more relevant history, a clearer picture of the task), peaks once the context holds everything that matters, then declines. Past that point, additional tokens add noise rather than signal: earlier content is pushed out of effective attention, and responses become less grounded in what actually matters for the task.
+
+**Net value**, value delivered minus cost incurred, peaks earlier than accuracy, at the **optimal stop** point. Push past it and every additional token costs more than it returns. Push further and the conversation crosses **break-even**: net value reaches zero, then turns negative. The model is not just less useful, it is actively making the interaction worse while still consuming budget. The conversation has moved from the *useful* zone, through *diminishing returns*, into the *useless* zone, bounded on the right by the **technical wall**: the context window limit, where no further tokens can be spent regardless of budget.
+
+!!! warning "Cost is measurable. Value is not."
+    You can plot the cost line precisely from billing data. You cannot plot the value curve with the same precision. You can know this shape exists, rise, peak, decline, without knowing where any given session currently sits on it. That blind spot is exactly what [Token Exhaustion and MASO Performance Degradation](#token-exhaustion-and-maso-performance-degradation) describes later in this page: judges and agents degrade gradually and invisibly as context fills, with no native signal announcing the crossing of optimal stop or break-even.
+
+### The Supply Side: Many Users, One Shared GPU
+
+![Supply side: throughput vs latency under shared hardware](../../images/insight-token-supply-curve.svg){ .arch-diagram }
+
+The second side of the problem is not about any single conversation. It is about what happens when many conversations share the same hardware.
+
+As concurrent users on a model replica increase, throughput rises, more tokens per second served across all users, but not forever. The replica's KV-cache and memory bandwidth are finite. Once concurrency passes a threshold, throughput flattens while per-user latency, which had been flat, starts to climb steeply as requests queue behind the same fixed resource. The **goodput zone** is where requests still meet their latency SLO. The **goodput limit** is the point where they stop.
+
+This matters for security controls specifically. Every inline SLM sidecar and synchronous judge call described in this document shares that hardware and that wall. A judge meant to add 10-50ms of inline latency can add seconds once the shared replica passes its goodput limit, not because the judge changed, but because the infrastructure underneath it did. **Horizontal scale**, adding another GPU or replica and running another full curve in parallel, moves the wall. Capacity and cost both scale roughly linearly with replica count. It is the one part of this picture that money can move. Token budgets and prompt discipline cannot.
+
+### Why This Is a Security Problem, Not Just a Cost Problem
+
+Both curves describe the same mechanism from different angles: as token consumption grows, whether within one conversation or across many concurrent users, model behaviour degrades in ways that are gradual, measurable in principle, and usually invisible to the systems built around the model.
+
+For a generator agent, that degradation produces worse answers. For a judge, it produces worse evaluations: verdicts based on displaced context, partial reasoning chains, or evaluations queued behind a latency wall until they time out or get skipped. A security control that silently degrades as token pressure rises is not a security control running at reduced accuracy. Past a certain point, it is barely running at all, while the system continues to record its output as a valid pass.
+
+This is why token management belongs in the same monitoring stack as cost. Context fill rate, judge latency against SLO, and proximity to the technical wall are runtime security signals, not just budget signals. What specifically breaks in judges, guardrails, and goal integrity monitoring as token pressure rises, and the PACE escalation thresholds that respond to it, is covered in [Token Exhaustion and MASO Performance Degradation](#token-exhaustion-and-maso-performance-degradation) later in this page.
 
 ## The Unit of Cost
 

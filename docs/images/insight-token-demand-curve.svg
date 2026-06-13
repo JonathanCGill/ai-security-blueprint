@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 480" role="img" aria-label="Graph of a single conversation showing cost rising linearly, accuracy and value rising then declining, and net value peaking at an optimal stop point before crossing a break-even line into negative territory near a technical context-window wall">
+  <defs>
+    <linearGradient id="usefulZone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#009688" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#009688" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="diminishingZone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.13"/>
+    </linearGradient>
+    <linearGradient id="uselessZone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/>
+    </linearGradient>
+    <marker id="arrowXd" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#334155"/>
+    </marker>
+    <marker id="arrowYd" markerWidth="6" markerHeight="8" refX="3" refY="0" orient="auto">
+      <polygon points="0 8, 3 0, 6 8" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="780" height="480" rx="8" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="390" y="28" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle">Demand Side: One Conversation, When AI Turns Useless</text>
+
+  <!-- Chart area: x=70..715, y=52..415, zero line at y=300 -->
+
+  <!-- Zone backgrounds -->
+  <rect x="70" y="52" width="230" height="363" fill="url(#usefulZone)"/>
+  <rect x="300" y="52" width="190" height="363" fill="url(#diminishingZone)"/>
+  <rect x="490" y="52" width="225" height="363" fill="url(#uselessZone)"/>
+
+  <!-- Zone dividers -->
+  <line x1="300" y1="52" x2="300" y2="415" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,4"/>
+  <line x1="490" y1="52" x2="490" y2="415" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,4"/>
+
+  <!-- Zone labels -->
+  <text x="185" y="66" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f766e" text-anchor="middle" letter-spacing="0.5">USEFUL</text>
+  <text x="395" y="66" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle" letter-spacing="0.5">DIMINISHING</text>
+  <text x="602" y="66" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" fill="#b91c1c" text-anchor="middle" letter-spacing="0.5">USELESS</text>
+
+  <!-- Zero line -->
+  <line x1="70" y1="300" x2="715" y2="300" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="60" y="304" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#94a3b8" text-anchor="end">0</text>
+
+  <!-- Axes -->
+  <line x1="70" y1="415" x2="725" y2="415" stroke="#334155" stroke-width="1.5" marker-end="url(#arrowXd)"/>
+  <line x1="70" y1="415" x2="70" y2="45" stroke="#334155" stroke-width="1.5" marker-end="url(#arrowYd)"/>
+
+  <!-- Axis labels -->
+  <text x="395" y="446" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#334155" text-anchor="middle">Tokens / context / spend (one conversation) →</text>
+  <text x="28" y="233" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#334155" text-anchor="middle" transform="rotate(-90, 28, 233)">Value delivered / cost incurred (relative)</text>
+
+  <!-- Cost curve (linear) -->
+  <path d="M 70,300 L 715,72" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="8,4" stroke-linecap="round"/>
+  <text x="480" y="148" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="#ef4444" text-anchor="middle">Cost (money, linear)</text>
+
+  <!-- Accuracy / value curve -->
+  <path d="M 70,300 C 160,188 260,90 385,68 C 480,52 610,98 715,168" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="172" y="118" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="start">Accuracy / value</text>
+
+  <!-- Net value curve -->
+  <path d="M 70,298 C 160,232 230,192 295,186 C 365,180 432,238 480,300 C 545,378 628,406 715,418" fill="none" stroke="#009688" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="100" y="255" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="#009688" text-anchor="start">Net value</text>
+
+  <!-- Optimal stop marker -->
+  <circle cx="295" cy="186" r="5" fill="#009688" stroke="#fff" stroke-width="2"/>
+  <text x="295" y="168" font-family="Inter, system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#0f766e" text-anchor="middle">optimal stop</text>
+
+  <!-- Accuracy peak marker -->
+  <circle cx="385" cy="68" r="4" fill="#2563eb" stroke="#fff" stroke-width="2"/>
+  <text x="385" y="86" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="700" fill="#1d4ed8" text-anchor="middle">accuracy peak</text>
+
+  <!-- Break-even marker -->
+  <g stroke="#dc2626" stroke-width="2">
+    <line x1="475" y1="295" x2="485" y2="305"/>
+    <line x1="475" y1="305" x2="485" y2="295"/>
+  </g>
+  <text x="480" y="327" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="700" fill="#b91c1c" text-anchor="middle">break-even:</text>
+  <text x="480" y="339" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="700" fill="#b91c1c" text-anchor="middle">useful → useless</text>
+
+  <!-- Technical wall -->
+  <line x1="715" y1="52" x2="715" y2="415" stroke="#1e293b" stroke-width="2"/>
+  <text x="734" y="233" font-family="Inter, system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#1e293b" text-anchor="middle" transform="rotate(-90, 734, 233)">TECHNICAL WALL</text>
+  <text x="748" y="233" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#64748b" text-anchor="middle" transform="rotate(-90, 748, 233)">fixed: money cannot cross</text>
+
+  <!-- Caveat box -->
+  <rect x="520" y="190" width="180" height="85" rx="4" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="530" y="206" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="700" fill="#1e3a8a">CAVEAT</text>
+  <text x="530" y="222" font-family="Inter, system-ui, sans-serif" font-size="8.5" fill="#1e3a8a">Cost is real and measurable.</text>
+  <text x="530" y="234" font-family="Inter, system-ui, sans-serif" font-size="8.5" fill="#1e3a8a">Value usually is not. This shape</text>
+  <text x="530" y="246" font-family="Inter, system-ui, sans-serif" font-size="8.5" fill="#1e3a8a">exists in every conversation,</text>
+  <text x="530" y="258" font-family="Inter, system-ui, sans-serif" font-size="8.5" fill="#1e3a8a">you rarely know where you sit on it.</text>
+
+  <!-- Footer -->
+  <text x="390" y="468" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">AI Runtime Security, 2026 - Jonathan Gill</text>
+</svg>

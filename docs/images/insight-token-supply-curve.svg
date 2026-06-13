@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 480" role="img" aria-label="Graph of many users sharing one model replica, showing throughput rising then flattening while per-user latency stays flat then explodes once concurrency passes the goodput limit and hits the KV-cache and bandwidth wall">
+  <defs>
+    <linearGradient id="goodputZone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#009688" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#009688" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="wallZone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/>
+    </linearGradient>
+    <marker id="arrowXs" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#334155"/>
+    </marker>
+    <marker id="arrowYs" markerWidth="6" markerHeight="8" refX="3" refY="0" orient="auto">
+      <polygon points="0 8, 3 0, 6 8" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="780" height="480" rx="8" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="390" y="28" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle">Supply Side: Throughput vs Latency Under Shared Hardware</text>
+
+  <!-- Chart area: x=70..715, y=52..415 -->
+
+  <!-- Zone backgrounds -->
+  <rect x="70" y="52" width="410" height="363" fill="url(#goodputZone)"/>
+  <rect x="480" y="52" width="235" height="363" fill="url(#wallZone)"/>
+
+  <!-- Zone divider -->
+  <line x1="480" y1="52" x2="480" y2="415" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,4"/>
+
+  <!-- Zone labels -->
+  <text x="275" y="66" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f766e" text-anchor="middle" letter-spacing="0.5">GOODPUT ZONE</text>
+  <text x="597" y="66" font-family="Inter, system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#b91c1c" text-anchor="middle" letter-spacing="0.5">KV-CACHE / BANDWIDTH WALL (PER GPU)</text>
+
+  <!-- Latency SLO target line -->
+  <line x1="70" y1="330" x2="715" y2="330" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="78" y="325" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="600" fill="#b45309" text-anchor="start">latency SLO target</text>
+
+  <!-- Axes -->
+  <line x1="70" y1="415" x2="725" y2="415" stroke="#334155" stroke-width="1.5" marker-end="url(#arrowXs)"/>
+  <line x1="70" y1="415" x2="70" y2="45" stroke="#334155" stroke-width="1.5" marker-end="url(#arrowYs)"/>
+
+  <!-- Axis labels -->
+  <text x="395" y="446" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#334155" text-anchor="middle">Concurrent users on one model replica →</text>
+  <text x="28" y="233" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#2563eb" text-anchor="middle" transform="rotate(-90, 28, 233)">Throughput (tokens/sec, all users) →</text>
+  <text x="752" y="233" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#ea580c" text-anchor="middle" transform="rotate(-90, 752, 233)">Per-user latency →</text>
+
+  <!-- Throughput curve -->
+  <path d="M 70,400 C 170,290 270,175 390,128 C 490,100 610,84 715,76" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="430" y="112" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="start">Throughput</text>
+
+  <!-- Per-user latency curve -->
+  <path d="M 70,402 C 220,400 360,394 440,378 C 470,371 478,345 485,322 C 510,250 570,140 640,75 C 670,55 695,48 715,45" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="120" y="392" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="#ea580c" text-anchor="start">Per-user latency</text>
+
+  <!-- Goodput limit marker -->
+  <circle cx="485" cy="322" r="5" fill="#0f766e" stroke="#fff" stroke-width="2"/>
+  <text x="470" y="290" font-family="Inter, system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#0f766e" text-anchor="end">goodput limit</text>
+  <text x="470" y="301" font-family="Inter, system-ui, sans-serif" font-size="8.5" font-weight="600" fill="#0f766e" text-anchor="end">(requests still meet SLO)</text>
+
+  <!-- Latency explosion annotation -->
+  <text x="610" y="158" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="700" fill="#c2410c" text-anchor="start">latency explodes:</text>
+  <text x="610" y="170" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="700" fill="#c2410c" text-anchor="start">queueing past the wall</text>
+
+  <!-- Horizontal scale box -->
+  <rect x="500" y="358" width="205" height="50" rx="4" fill="#ffffff" stroke="#99f6e4" stroke-width="1"/>
+  <text x="510" y="372" font-family="Inter, system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#0f766e">HORIZONTAL SCALE</text>
+  <text x="510" y="384" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#1e293b">Add a GPU/replica: capacity and cost</text>
+  <text x="510" y="395" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#1e293b">scale near-linearly with N. The wall</text>
+  <text x="510" y="406" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#1e293b">money CAN move.</text>
+
+  <!-- Footer -->
+  <text x="390" y="468" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">AI Runtime Security, 2026 - Jonathan Gill</text>
+</svg>
