@@ -7,7 +7,7 @@ description: "Real-world AI security incidents mapped to framework controls, tra
 **Real-World AI Security Incidents Mapped to Framework Controls**
 
 > Part of the [MASO Framework](../README.md) · Threat Intelligence
-> Last updated: April 2026
+> Last updated: June 2026
 
 ## Purpose
 
@@ -36,6 +36,8 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | 10 | [OpenClaw Supply Chain Attack](#inc-10-openclaw-malicious-skills-supply-chain-attack-2026) | Agent ecosystem supply chain compromise at scale | <span class="tier-high">High</span> | Fixed toolsets, Signed manifests, Allow-listing, Runtime integrity, Tool inventory | Prevents loading of unvetted or tampered skills from compromised registries |
 | 11 | [AI Trading Agent Crypto Breach](#inc-11-ai-trading-agent-crypto-breach-2026) | Excessive agency + access control failure in financial context | <span class="tier-high">High</span> | Scoped permissions, Blast radius caps, Human approval, Action classification, Input guardrails | Limits financial exposure through permission scoping and transaction caps |
 | 12 | [Meta AI Agent Unauthorized Access](#inc-12-meta-internal-ai-agent-unauthorized-access-2026) | Unsolicited agent action + cascading permission failure | <span class="tier-high">High</span> | Tool allow-lists, Human approval, Scoped permissions, Circuit breakers, Decision chain logging | Prevents unsolicited agent actions and detects cascading permission failures |
+| 13 | [GitHub MCP Exploited](#inc-13-github-mcp-exploited-cross-repository-data-exfiltration-via-prompt-injection-2025) | Indirect prompt injection via MCP-connected tool → cross-repository data exfiltration | <span class="tier-high">High</span> | Message source tagging, Input guardrails, Scoped permissions, No transitive permissions | Confines the MCP credential's reach to the repository in scope, preventing exfiltration across the trust boundary |
+| 14 | [MCP Server Supply Chain CVEs](#inc-14-mcp-server-supply-chain-cves-gemini-mcp-tool-and-nginx-ui-2026) | MCP server supply chain compromise → critical RCE / authentication bypass | <span class="tier-high">High</span> | MCP server vetting, Runtime component audit, Cryptographic trust chain, Hardened MCP gateway | Continuous vetting and a hardened gateway catch vulnerable or unauthenticated MCP servers before and after deployment |
 
 ## Incident Register
 
@@ -258,16 +260,52 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | Circuit breakers (EC-2.4) | Anomalous behaviour triggers agent pause | The cascade of permission errors would trigger the circuit breaker |
 | Immutable decision chain (OB-2.1) | Full causal chain from agent action to downstream effects captured | Enables rapid identification of which agent action initiated the cascade |
 
+### INC-13: GitHub MCP Exploited - Cross-Repository Data Exfiltration via Prompt Injection (2025)
+
+**What happened:** Invariant Labs demonstrated that an AI coding agent connected to the official GitHub MCP server could be redirected by a prompt injection planted in a public GitHub issue. When the agent processed the issue as part of routine work, the injected instructions caused it to read the user's private repositories and expose their contents through a pull request on the public repository. The vulnerability was not a flaw in any individual repository's permissions: MCP gave the agent a single credential spanning every repository the user could access, with no boundary between "the repository the agent is working on" and "every other repository the underlying token can reach."
+
+**Failure class:** Indirect prompt injection via MCP-connected tool → cross-repository data exfiltration across a trust boundary
+
+**Confidence: High.** Per-repository credential scoping and message source tagging directly prevent this pattern.
+
+**Controls that address this:**
+
+| Control | Mechanism | Effect |
+|---------|-----------|--------|
+| Message source tagging (PG-1.4) | Issue and pull request content tagged as `data`, not `instruction` | Agent treats the issue body as content to summarise, not as commands to act on |
+| Input guardrails (PG-1.1) | Injection patterns in issue and PR content detected before the agent acts | Catches the injected instruction before it reaches the agent's decision loop |
+| Scoped permissions (IA-1.4) | MCP credential scoped to the single repository the agent is working in, not the user's full account | Removes the cross-repository reach that made exfiltration possible |
+| No transitive permissions (IA-2.4) | A credential issued for one repository cannot be used to read or write a different repository | Confines the blast radius of a compromised session to a single repository |
+
+### INC-14: MCP Server Supply Chain CVEs - "gemini-mcp-tool" and "nginx-ui" (2026)
+
+**What happened:** Two unrelated critical vulnerabilities in independent MCP server implementations surfaced within weeks of each other. CVE-2026-0755 is a command injection vulnerability in `gemini-mcp-tool`, an npm package exposing Gemini CLI functionality as MCP tools, caused by unsanitised input passed to `execAsync` and reported with a CVSS of 9.8; it was fixed in version 1.1.6. CVE-2026-33032, nicknamed "MCPwn" by the researchers who found it, is a missing-authentication vulnerability in nginx-ui's `/mcp_message` endpoint that lets an unauthenticated remote attacker invoke MCP tools directly, also reported at CVSS 9.8 by vendor advisories ahead of full NVD scoring; it was fixed in version 2.3.6. Separately, Vercel disclosed in April 2026 that a compromised OAuth integration with Context.ai, a third-party AI tool, exposed non-sensitive environment variables for a subset of customers.
+
+**Failure class:** MCP server supply chain compromise → critical remote code execution / authentication bypass
+
+**Confidence: High.** Server vetting, ongoing vulnerability monitoring, and a hardened gateway directly address this class.
+
+**Controls that address this:**
+
+| Control | Mechanism | Effect |
+|---------|-----------|--------|
+| MCP server vetting (SC-2.2) | MCP servers and their dependencies reviewed and signed before deployment | Catches command-injection patterns such as the `gemini-mcp-tool` flaw before the server is deployed |
+| Runtime component audit (SC-2.3) | Deployed MCP servers checked against known-vulnerability feeds on an ongoing basis, not just at install | Detects vulnerable versions (e.g. nginx-ui ≤2.3.5) after deployment |
+| Cryptographic trust chain (SC-3.1) | Continuous vulnerability scanning extended to MCP servers and their OAuth-connected third-party integrations | Surfaces compromises like the Vercel/Context.ai OAuth integration before they reach production |
+| Hardened MCP gateway (Environment Containment) | All MCP tool calls pass through a gateway enforcing authentication and argument sanitisation, independent of whether the server itself does either | Closes unauthenticated endpoints such as `/mcp_message` even when the server ships without authentication |
+
+**Why this matters:** This is the same pattern as the OX Security disclosure covered in [ET-04](emerging-threats.md#et-04-model-context-protocol-mcp-as-attack-surface), recurring in unrelated, independently developed MCP server implementations within the same quarter. Each individual CVE is a vendor bug; the recurrence across the ecosystem is the finding. MCP server vetting needs to be an ongoing process, not a one-time gate: every MCP server in a deployment needs the same continuous vulnerability monitoring as any other internet-facing dependency.
+
 ## Incident Statistics
 
 | Category | Count | Pattern |
 |----------|-------|---------|
-| Prompt injection (direct + indirect) | 6 | Most common attack primitive across all incidents |
-| Data exfiltration / confused deputy | 4 | Injection leading to unauthorised data access and transmission |
+| Prompt injection (direct + indirect) | 7 | Most common attack primitive across all incidents |
+| Data exfiltration / confused deputy | 5 | Injection leading to unauthorised data access and transmission |
 | Hallucination / ungrounded output | 2 | LLM generating confident but incorrect information |
 | Unauthorised commitment / agency | 1 | LLM making decisions beyond its authority |
 | Database/code injection via LLM | 2 | LLM output used unsafely in downstream systems |
-| Supply chain compromise | 1 | Malicious skills in agent ecosystem registry |
+| Supply chain compromise | 2 | Malicious skills and vulnerable or unauthenticated MCP servers in the agent ecosystem |
 | Excessive agency / access control | 1 | AI trading agents with sweeping inherited permissions |
 | Unsolicited agent action / cascading failure | 1 | Agent acting outside directed scope, triggering permission cascade |
 
@@ -275,7 +313,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 
 | Confidence | Count | Common factor |
 |------------|-------|---------------|
-| <span class="tier-high">High</span> | 10 | Deterministic controls directly prevent the failure mode |
+| <span class="tier-high">High</span> | 12 | Deterministic controls directly prevent the failure mode |
 | **Moderate** | 2 | Both hallucination incidents, inherently probabilistic failure |
 
 ## How to Use This Tracker

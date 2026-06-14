@@ -150,6 +150,7 @@ Three constraints strategies routinely underestimate: **[Data Reality](docs/stra
 | [EU AI Act](https://artificialintelligenceact.eu/) | Art. 9, 14, 15, risk management, oversight, robustness |
 | [DORA](https://www.digital-operational-resilience-act.com/) | Digital operational resilience for financial services |
 | [Five Eyes: Careful Adoption of Agentic AI Services](https://media.defense.gov/2026/Apr/30/2003922823/-1/-1/0/CAREFUL%20ADOPTION%20OF%20AGENTIC%20AI%20SERVICES_FINAL.PDF) | Privilege, design, behavioural, structural, and accountability pillars (May 2026) |
+| [NSA: MCP Security Design Considerations for AI-Driven Automation](https://media.defense.gov/2026/Jun/02/2003943289/-1/-1/0/CSI_MCP_SECURITY.PDF) | Agentic protocol risk: unverified inter-agent task propagation, MCP session token weaknesses (May 2026) |
 
 ## About This Framework
 

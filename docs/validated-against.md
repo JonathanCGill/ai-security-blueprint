@@ -3,7 +3,7 @@
 **Every major control in this framework addresses a documented, public AI security failure. This page shows how.**
 
 > Part of [AI Runtime Security](README.md)
-> Last updated: May 2026
+> Last updated: June 2026
 
 ## How to Read This Page
 
@@ -266,11 +266,12 @@ Controls in these categories are based on threat modelling and architectural rea
 
 ## External Standards Backing the Controls
 
-Validation by incident is the strongest form of evidence, but external standards bodies are increasingly codifying the same patterns the framework recommends. The May 2026 Five Eyes guidance is the most relevant recent addition.
+Validation by incident is the strongest form of evidence, but external standards bodies are increasingly codifying the same patterns the framework recommends. The May 2026 Five Eyes guidance is the most relevant recent addition, alongside a new NSA Cybersecurity Information Sheet focused specifically on MCP.
 
 | Standard | Date | Pillars / Coverage Relevant to AIRS |
 |----------|------|-------------------------------------|
 | [Five Eyes: Careful Adoption of Agentic AI Services](https://media.defense.gov/2026/Apr/30/2003922823/-1/-1/0/CAREFUL%20ADOPTION%20OF%20AGENTIC%20AI%20SERVICES_FINAL.PDF) | May 2026 | Privilege (maps to IAM), Design and Configuration (maps to Supply Chain and Agentic), Behavioural (maps to Observability and Judge), **Structural** (named pillar for cascading inter-agent failure, see [ET-28](maso/threat-intelligence/emerging-threats.md#et-28-structural-risk-in-agent-ensembles)), Accountability (maps to Human Oversight) |
+| [NSA: Model Context Protocol (MCP) Security Design Considerations for AI-Driven Automation](https://media.defense.gov/2026/Jun/02/2003943289/-1/-1/0/CSI_MCP_SECURITY.PDF) | May 2026 | Cybersecurity Information Sheet from NSA's AI Security Center, focused on the MCP layer specifically. Flags unverified inter-agent task propagation (maps to [PG-2.1, PG-2.5](maso/controls/prompt-goal-and-epistemic-integrity.md)) and MCP session token weaknesses that enable session hijacking (maps to [IA-2.1, IA-2.3](maso/controls/identity-and-access.md)). Reinforces [ET-04](maso/threat-intelligence/emerging-threats.md#et-04-model-context-protocol-mcp-as-attack-surface). |
 | [MITRE ATLAS Secure AI v2](https://ctid.mitre.org/blog/2026/05/06/secure-ai-v2-release) | May 2026 | New techniques: Publish Poisoned AI Agent Tool, Escape to Host. Maps to [Supply Chain](maso/controls/supply-chain.md) and [Agentic Controls](core/agentic.md). |
 | [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/) | May 2026 | Full coverage in MASO. The 2026 edition adds Insecure Agent Communication (ASI03), Cascading Hallucination (ASI10), and skill-registry compromise. |
 | [OWASP Secure MCP Server Development Guide](https://genai.owasp.org/) | May 2026 | External reference for SC-2.2 (signed manifests) and SC-2.3 (server vetting). |

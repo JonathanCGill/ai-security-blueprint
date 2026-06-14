@@ -40,6 +40,42 @@ Framework tags use these categories:
 
 <!-- NEWS_START -->
 
+### 2026-06-14: Real World AI Security Conference at Stanford (June 23-25) Flagged for Future Coverage
+
+**Tags**: Agentic, MASO
+
+Stanford's Security Lab is hosting the Real World AI Security Conference at the Arrillaga Alumni Center, June 23-25, 2026, bringing together researchers and practitioners focused on production AI security failures rather than theoretical risk. No findings to report yet.
+
+**Framework relevance**: Flagged here as a likely source for upcoming roundups. Sessions on production incidents and agentic system failures are the kind of primary material this page draws on.
+
+**Source**: [Real World AI Security Conference 2026](https://seclab.stanford.edu/RealWorldAIsec)
+
+---
+
+### 2026-06-02: US Executive Order Establishes Voluntary AI Cybersecurity Benchmarking and Vulnerability Clearinghouse
+
+**Tags**: Risk Tiers, Supply Chain, MASO
+
+On June 2, 2026, the US President signed *Promoting Advanced Artificial Intelligence Innovation and Security*, directing the development of a voluntary framework for benchmarking and reviewing frontier AI models against cybersecurity risk criteria. The order explicitly states it does not create mandatory licensing, pre-clearance, or permitting requirements for AI development or deployment. It also directs Treasury, NSA, and CISA to stand up an AI cybersecurity clearinghouse for identifying and coordinating fixes for vulnerabilities found in AI systems, and directs the Department of Justice to prioritise enforcement against AI-enabled cybercrime.
+
+**Framework relevance**: The clearinghouse, if implemented as described, would function as a patch-coordination channel specific to AI systems, comparable in concept to CISA's Known Exploited Vulnerabilities catalogue but for AI model and tooling CVEs. For [Supply Chain](maso/controls/supply-chain.md), this is a potential future external feed for SC-3.1 (continuous vulnerability scanning), though the order is voluntary and creates no enforcement mechanism on its own. The benchmarking framework being voluntary means it does not change [Risk Tier](core/risk-tiers.md) classification requirements directly, but a government-recognised benchmark would give Tier 2/3 deployments an external reference point for model selection. Worth tracking as the clearinghouse stands up: this is the kind of coordination mechanism [ET-17 (Regulatory Fragmentation)](maso/threat-intelligence/emerging-threats.md#et-17-regulatory-fragmentation-and-compliance-velocity) anticipated as a partial counterweight.
+
+**Source**: [The White House: Promoting Advanced Artificial Intelligence Innovation and Security](https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/)
+
+---
+
+### 2026-06-02: Microsoft Build 2026 - Agent 365 SDK Reaches General Availability, Execution Containers SDK in Early Preview
+
+**Tags**: Agentic, IAM, Supply Chain
+
+At Build 2026, Microsoft announced that the Agent 365 SDK has reached general availability, providing per-agent identity, registration, and lifecycle management for agents built on Microsoft's stack. The Microsoft Execution Containers (MXC) SDK, which provides sandboxed execution environments for agent-initiated code, was also announced but remains in early preview, not general availability. Both are part of a broader push to secure agentic workflows across the development lifecycle, alongside updates to Defender and Entra for agent identity.
+
+**Framework relevance**: Agent 365 SDK reaching GA is further vendor confirmation that per-agent [Non-Human Identity](maso/controls/identity-and-access.md) (IA-2.1) is a shipping product category, not just a framework recommendation organisations have to build themselves. MXC's sandboxed execution model maps to [Execution Control](maso/controls/execution-control.md) and [Environment Containment](maso/environment-containment.md), but its early-preview status means it shouldn't yet be relied on as a sole containment control in Tier 2/3 deployments. Organisations adopting either SDK should still apply the same vetting (SC-2.2, SC-2.3) they'd apply to any other agent framework dependency: the framework-level RCE vulnerabilities disclosed in LangChain, LangGraph, and Microsoft's own Semantic Kernel earlier in 2026 (see [Agent Supply Chain Crisis](insights/the-agent-supply-chain-crisis.md)) all involved the orchestration SDK itself, the same category Agent 365 and MXC sit in.
+
+**Source**: [Microsoft: Build 2026 - Securing code, agents, and models across the development lifecycle](https://www.microsoft.com/en-us/security/blog/2026/06/02/microsoft-build-2026-securing-code-agents-and-models-across-the-development-lifecycle/)
+
+---
+
 ### 2026-05-22: TrapDoor Supply Chain Campaign Weaponizes CLAUDE.md and .cursorrules Files Against AI Developer Ecosystems
 
 **Tags**: Supply Chain, Agentic, Memory & Context
@@ -181,6 +217,18 @@ The first publicly attributed mass breach driven primarily by frontier coding ag
 **Framework relevance**: This is the catalyst for [ET-26 (AI-augmented OT/ICS intrusion)](maso/threat-intelligence/emerging-threats.md#et-26-ai-augmented-ot-ics-intrusion). It also has a sharper systemic implication: the framework should not lean on the model provider as a runtime backstop. [Supply Chain](maso/controls/supply-chain.md) and [Agentic Controls](core/agentic.md) have been updated to make this explicit. The case is a textbook example of why [PACE](pace-resilience.md) Emergency states must be triggered by the operator's own observability, not by the provider's terms of service.
 
 **Source**: [SecurityWeek: Hackers Weaponize Claude Code](https://www.securityweek.com/hackers-weaponize-claude-code-in-mexican-government-cyberattack/) · [Dragos: AI-assisted ICS attack on water utility](https://www.dragos.com/blog/ai-assisted-ics-attack-water-utility)
+
+---
+
+### 2026-04-22: Google Cloud Next 26 Brings Agent Identity to GA; Wiz and Miggo Extend Posture Management to Agentic Workloads
+
+**Tags**: IAM, Agentic, Supply Chain, Observability
+
+At Google Cloud Next (April 22, 2026), Google announced Agent Identity as a general-availability component of the Gemini Enterprise Agent Platform, providing per-agent identity and access management. Wiz, now part of Google Cloud, extended its posture management to cover AI applications (AI-APP) and an AI bill of materials (AI-BOM) for tracking models, agents, and their dependencies. The announcement also cited Mandiant's *M-Trends 2026* finding that the median time for an initial-access threat actor to hand off a compromise to a second threat actor has fallen from roughly eight hours to 22 seconds, a measure of attacker coordination speed, not of agent action latency. Separately, in March 2026, Miggo Security extended its runtime defence platform with its own AI-BOM, runtime guardrails for agentic workloads, and an Agentic Detection and Response (AIDR) capability aimed at the same gap: knowing what agents and models are running, and detecting when their behaviour changes at runtime.
+
+**Framework relevance**: Agent Identity reaching GA is further vendor validation that per-agent [Non-Human Identity](maso/controls/identity-and-access.md) (IA-2.1) is now a shipping capability across major cloud platforms, following Microsoft's Agent 365 SDK. The AI-BOM concept from both Wiz and Miggo operationalises [Supply Chain](maso/controls/supply-chain.md) SC-1.2 (tool and model inventory) and the model diversity policy in [PG-2.9](maso/controls/prompt-goal-and-epistemic-integrity.md): an AI-BOM is the artefact that makes those controls auditable. The M-Trends handoff-speed statistic, read correctly as attacker coordination speed rather than agent latency, still reinforces the [Temporal Decay](insights/temporal-decay.md) argument for automated [PACE](pace-resilience.md) transitions: defenders working at human speed are responding to a threat-actor ecosystem that now hands off compromises in seconds. Miggo's AIDR capability is the same idea as this framework's [Circuit Breaker](core/controls.md) plus [Observability](maso/controls/observability.md) layers, packaged as a product, the containment-and-detection layer this framework has argued for, now appearing as a distinct vendor product category.
+
+**Source**: [Google Cloud: Next '26 - Redefining security for the AI era with Google Cloud and Wiz](https://cloud.google.com/blog/products/identity-security/next26-redefining-security-for-the-ai-era-with-google-cloud-and-wiz) · [GlobeNewswire: Miggo Security extends runtime defense for AI and agentic observability, detection and response](https://www.globenewswire.com/news-release/2026/03/24/3261285/0/en/Miggo-Security-Extends-Runtime-Defense-for-AI-and-Agentic-Observability-Detection-and-Response.html)
 
 ---
 

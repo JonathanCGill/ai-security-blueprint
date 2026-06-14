@@ -38,6 +38,18 @@ Agents are fragile. They reason in natural language, which means they can be mis
 
 This fragility means agents cannot be trusted to evaluate their own work. A model that has been manipulated by prompt injection will not detect the manipulation in its own reasoning. An agent that has hallucinated a fact will cite it with the same confidence as a grounded one. Something outside the agent's own ecosystem must assess its actions against what it was supposed to do. That is the role of the judge: an independent model, in a separate trust zone, that observes and rules without participating in the agent's reasoning.
 
+### The Gap, in Numbers
+
+Surveys published in May 2026 give a sense of how far current practice is from the controls in this domain. Kiteworks' *2026 Data Security and Compliance Risk Forecast Report* (225 respondents) found that most organisations deploying AI agents have not put basic governance artefacts in place. A separate figure on shared credentials, attributed to OWASP's *Top 10 for Agentic Applications 2026*, points at the same gap from the identity side, though that specific figure could not be independently confirmed against OWASP's own published materials at the time of writing and should be treated with more caution than the Kiteworks figures.
+
+| Finding | Figure | Source | What's Missing | Relevant Controls |
+|---------|--------|--------|-----------------|-------------------|
+| Organisations have not defined purpose limitations for their AI agents | 63% | Kiteworks, *2026 Data Security and Compliance Risk Forecast Report* | A declared Objective Intent Specification for the judge to evaluate actions against | [Objective Intent](controls/objective-intent.md), [Agentic Task Mandate](controls/agentic-task-mandate.md) |
+| Organisations lack adequate containment for agent actions | 60% | Kiteworks, *2026 Data Security and Compliance Risk Forecast Report* | Blast radius caps and environment-level containment, independent of the agent's own behaviour | [Execution Control](controls/execution-control.md), [Environment Containment](environment-containment.md) |
+| Organisations rely on shared credentials for agent-to-agent authentication | 45.6% | OWASP, *Top 10 for Agentic Applications 2026* (figure not independently verified) | Per-agent Non-Human Identity, so a compromised agent's credentials can be scoped and revoked individually | [Identity & Access](controls/identity-and-access.md) IA-1.2, IA-2.1 |
+
+These numbers describe the starting point for most organisations, not the endpoint. None of the gaps above require new technology to close: they require the OISpecs, blast radius limits, and per-agent credentials that Tier 1 and Tier 2 of this framework already specify.
+
 ### Evaluation Must Be Proportionate to Risk
 
 Not every agent action needs the same scrutiny. An agent reading a public knowledge base does not warrant the same evaluation rigour as one approving a financial transaction or modifying access controls. Evaluation that is disproportionate to risk wastes money, adds latency, and creates alert fatigue that degrades human oversight.
