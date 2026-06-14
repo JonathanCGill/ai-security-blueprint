@@ -67,6 +67,7 @@ plugins:
         FAST-LANE.md: fast-lane.md
         IMPLEMENTATION_GUIDE.md: implementation-guide.md
         MATURITY.md: maturity.md
+        maso/maso-2.0-distributed-architecture.md: maso/distributed-architecture.md
         PACE-RESILIENCE.md: pace-resilience.md
         QUICK_START.md: quick-start.md
         REFERENCES.md: references.md
