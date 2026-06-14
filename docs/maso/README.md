@@ -101,7 +101,7 @@ MASO operates on a **three-layer defence model** adapted for multi-agent dynamic
 
 **Layer 1 - Guardrails** enforce hard boundaries: input validation, output sanitisation, tool permission scoping, and rate limiting. Deterministic, non-negotiable, machine-speed.
 
-**Layer 2 - Model-as-Judge Evaluation** uses a dedicated evaluation model (distinct from task agents) to assess quality, safety, and policy compliance of agent actions and outputs before they are committed. In multi-agent systems, this layer also evaluates inter-agent communications for goal integrity and instruction injection.
+**Layer 2 - Reviewing Controls** combine deterministic scanners, a semantic firewall (purpose-built classifiers tuned to recognise injection and jailbreak patterns), policy compliance checks against each agent's [OISpec](controls/objective-intent.md), and Model-as-Judge evaluation. Together they assess the quality, safety, and policy compliance of agent actions and outputs before they are committed. In multi-agent systems, this combination also evaluates inter-agent communications for goal integrity and instruction injection, with each control enforced at the point in the agent-to-agent handoff where it is cheapest to run. See [Distributed Security Architecture](distributed-architecture.md).
 
 **Layer 3 - Human Oversight** provides the governance backstop. Scope scales inversely with demonstrated trustworthiness and directly with consequence severity. Write operations, external API calls, and irreversible actions escalate based on risk classification.
 

@@ -31,17 +31,17 @@
   <!-- Sidecar row -->
   <rect x="20" y="132" width="220" height="50" rx="8" fill="#fefce8" stroke="#eab308" stroke-width="2"/>
   <text x="130" y="151" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#854d0e">Security Sidecar</text>
-  <text x="130" y="167" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#a16207">Scanners + Classifiers</text>
+  <text x="130" y="167" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#a16207">Scanners + Semantic Firewall</text>
   <text x="130" y="178" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#a16207">&lt;50ms</text>
 
   <rect x="310" y="132" width="220" height="50" rx="8" fill="#fefce8" stroke="#eab308" stroke-width="2"/>
   <text x="420" y="151" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#854d0e">Security Sidecar</text>
-  <text x="420" y="167" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#a16207">Scanners + Classifiers</text>
+  <text x="420" y="167" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#a16207">Scanners + Semantic Firewall</text>
   <text x="420" y="178" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#a16207">&lt;50ms</text>
 
   <rect x="600" y="132" width="220" height="50" rx="8" fill="#fefce8" stroke="#eab308" stroke-width="2"/>
   <text x="710" y="151" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#854d0e">Security Sidecar</text>
-  <text x="710" y="167" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#a16207">Scanners + Classifiers</text>
+  <text x="710" y="167" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#a16207">Scanners + Semantic Firewall</text>
   <text x="710" y="178" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#a16207">&lt;50ms</text>
 
   <!-- Arrows: sidecar -> bus -->
@@ -74,7 +74,7 @@
   <rect x="310" y="300" width="220" height="70" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4"/>
   <text x="420" y="326" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#475569">Model-as-Judge</text>
   <text x="420" y="344" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Full LLM evaluation</text>
-  <text x="420" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Third reviewing control, for escalations</text>
+  <text x="420" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#64748b">One of Layer 2's reviewing controls</text>
 
   <!-- Action gating path: bus -> Action Gate (solid) -->
   <line x1="710" y1="260" x2="710" y2="298" stroke="#475569" stroke-width="2"/>
@@ -83,7 +83,7 @@
   <!-- Action Gate box -->
   <rect x="600" y="300" width="220" height="70" rx="8" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
   <text x="710" y="326" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#166534">Agent-to-Agent IAM</text>
-  <text x="710" y="344" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#15803d">Action Gate validates request</text>
+  <text x="710" y="344" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#15803d">Policy compliance check</text>
   <text x="710" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#15803d">schema + NHI scope (IA-2.4, EC tiers)</text>
 
   <!-- Arrow: Action Gate -> Execute Agent -->
@@ -97,11 +97,11 @@
 
   <!-- Legend -->
   <rect x="30" y="476" width="16" height="16" fill="#fefce8" stroke="#eab308" stroke-width="2"/>
-  <text x="56" y="488" font-family="Arial, sans-serif" font-size="11" fill="#1e293b">1. Security Sidecar: deterministic scanners + purpose-built classifiers run locally, on every hop, in under 50ms</text>
+  <text x="56" y="488" font-family="Arial, sans-serif" font-size="11" fill="#1e293b">1. Security Sidecar: deterministic scanners + semantic firewall run locally, on every hop, in under 50ms</text>
 
   <rect x="30" y="508" width="16" height="16" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2"/>
   <text x="56" y="520" font-family="Arial, sans-serif" font-size="11" fill="#1e293b">2. Secured Inter-Agent Bus: schema enforcement and jailbreak-contagion classifiers; non-conforming traffic is dropped</text>
 
   <rect x="30" y="540" width="16" height="16" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
-  <text x="56" y="552" font-family="Arial, sans-serif" font-size="11" fill="#1e293b">3. Agent-to-Agent IAM: least privilege, separation of duties, and action gating before any privileged execution</text>
+  <text x="56" y="552" font-family="Arial, sans-serif" font-size="11" fill="#1e293b">3. Agent-to-Agent IAM: least privilege, separation of duties, and a policy compliance check before any privileged execution</text>
 </svg>
