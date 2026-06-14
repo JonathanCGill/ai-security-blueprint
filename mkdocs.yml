@@ -180,6 +180,7 @@ nav:
       - E-commerce Stress Test: maso/stress-test/ecommerce-10k-stress-test.md
       - Judge Proliferation Review: maso/reviews/stakeholder-review-judge-proliferation.md
       - MASO 2.0 Roadmap: maso/maso-2.0-anticipated-changes.md
+      - MASO 2.0 Distributed Architecture: maso/maso-2.0-distributed-architecture.md
 
   - For Your Role:
     - stakeholders/README.md

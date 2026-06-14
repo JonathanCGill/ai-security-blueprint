@@ -202,6 +202,8 @@ Several Q2 threats reinforce vectors already in this document rather than introd
 - **ET-17** sharpens *Regulatory Divergence* (vector 6): the compliance overlay is the specific deliverable.
 - **ET-14, ET-19, ET-20, ET-23, ET-24, ET-25** are not adequately covered by the original six vectors. They justify a seventh vector: **the action and trust surface is expanding faster than the controls that scope it.**
 
+ET-18, ET-19, and ET-20, together with vectors 1 (Judge Ceiling) and 4 (Multi-Agent Emergent Behaviours), point to the same architectural fix: stop routing every agent-to-agent hop through a central Model-as-Judge. [MASO 2.0: The Distributed Security Architecture](maso-2.0-distributed-architecture.md) describes the result: a per-agent security sidecar (deterministic scanners and purpose-built classifiers, <50ms, Judge invoked only on escalation), a hardened inter-agent bus (schema enforcement and jailbreak-contagion detection), and Agent-to-Agent IAM with action gating (separation of duties between Read and Execute agents).
+
 ## MASO 2.0 Priority Roadmap
 
 ### Phase 1: Extend Current Architecture (0–6 months)
