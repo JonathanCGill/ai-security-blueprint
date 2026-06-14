@@ -325,7 +325,7 @@ Every control in MASO is grounded in observed or demonstrated attack patterns:
 |----------|---------|
 | [Judge Proliferation Review](reviews/stakeholder-review-judge-proliferation.md) | Stakeholder review of whether the framework risks "judge hell", and the governance mechanisms that prevent it |
 | [MASO 2.0 Roadmap](maso-2.0-anticipated-changes.md) | Anticipated changes to AI and the framework: where MASO breaks, what MASO 2.0 must address |
-| [MASO 2.0: Distributed Security Architecture](maso-2.0-distributed-architecture.md) | How MASO moves from a central Model-as-Judge chokepoint to security sidecars, a hardened inter-agent bus, and Agent-to-Agent IAM with action gating |
+| [Distributed Security Architecture](distributed-architecture.md) | How Layer 2 becomes a combination of reviewing controls, security sidecars, a hardened inter-agent bus, and Agent-to-Agent IAM with action gating, instead of a central Model-as-Judge chokepoint |
 
 ## Regulatory Alignment
 
@@ -443,7 +443,7 @@ stress-test/
 └── ecommerce-10k-stress-test.md
 reviews/
 └── stakeholder-review-judge-proliferation.md
-maso-2.0-distributed-architecture.md   # Distributed, zero-trust architecture for MASO 2.0
+distributed-architecture.md            # Layer 2 as a combination of reviewing controls, not a single Judge
 ```
 
 ## MASO 2.0: Anticipated Changes
@@ -463,7 +463,7 @@ Six AI capability trajectories that will stress or break the current framework, 
 
 Three-phase roadmap: Extend (0–6 months) → Architect (6–18 months) → Paradigm shift (18–36 months).
 
-The architectural response to the Judge ceiling and multi-agent emergent behaviors vectors is detailed in [MASO 2.0: The Distributed Security Architecture](maso-2.0-distributed-architecture.md): security sidecars, a hardened inter-agent bus, and Agent-to-Agent IAM with action gating, so the Model-as-Judge stops being a chokepoint on every agent-to-agent hop.
+The architectural response to the Judge ceiling and multi-agent emergent behaviors vectors is detailed in [Distributed Security Architecture](distributed-architecture.md): Layer 2 becomes a combination of reviewing controls, security sidecars, a hardened inter-agent bus, and Agent-to-Agent IAM with action gating, so no single Model-as-Judge is a chokepoint on every agent-to-agent hop.
 
 <div class="learning-callout" markdown>
 

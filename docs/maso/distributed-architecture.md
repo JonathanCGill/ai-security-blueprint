@@ -1,10 +1,20 @@
 ---
-description: "How MASO adapts from a monolithic Model-as-Judge chokepoint to a distributed, zero-trust architecture: security sidecars at each agent, a hardened inter-agent bus, and Agent-to-Agent IAM with action gating."
+description: "How MASO's Layer 2 evaluation adapts for multi-agent systems: a combination of reviewing controls, deterministic scanners, purpose-built classifiers, and Model-as-Judge, enforced at every agent-to-agent handoff instead of routed through one central Judge."
 ---
 
-# MASO 2.0: The Distributed Security Architecture
+# Distributed Security Architecture
 
-> Single-agent MASO can route every action through one evaluation chokepoint. Multi-agent MASO cannot. This page describes the architectural shift from a centralised Model-as-Judge to a distributed, zero-trust mesh: the same controls, enforced at the edge.
+> Part of the [MASO Framework](README.md) · Architecture Pattern
+
+## Principle
+
+**At multi-agent scale, Layer 2 evaluation is not a single Model-as-Judge call. It is a combination of reviewing controls.**
+
+[MASO's three-layer defence](README.md#three-layer-defence) specifies Layer 2 as a dedicated evaluation model that checks actions and inter-agent communications before they are committed. For a single agent, that model can sit on every action without becoming the bottleneck. For a mesh of agents handing tasks to each other, the number of evaluation points grows with every agent-to-agent hop, and one Judge cannot keep up.
+
+The answer is not a faster Judge, and it is not skipping evaluation on the hops that need it. It is recognising that Layer 2 was always going to need more than one kind of control. Deterministic scanners, purpose-built classifiers, and Model-as-Judge each catch a different class of violation, at a different cost, and a distributed architecture lets each one run where it is the right tool: at the edge, on every hop, working together rather than queued behind each other.
+
+![Distributed Security Architecture](../images/maso-distributed-architecture.svg){ .arch-diagram }
 
 ## The Token Death Spiral
 
@@ -23,15 +33,13 @@ One user request now costs 4 Judge calls: 5-12 seconds of added latency and $0.0
 
 This sharpens two evolution vectors from [MASO 2.0 Anticipated Changes](maso-2.0-anticipated-changes.md): the **Judge Ceiling** (vector 1, where Judge cost and latency stop scaling with primary model capability) and **Multi-Agent Emergent Behaviours** (vector 4, where per-hop evaluation cannot keep pace with fleet-level interaction). It is also the architectural answer the [Judge Proliferation Review](reviews/stakeholder-review-judge-proliferation.md) calls for when it says the tactical judge should be "infrastructure, not a service."
 
-The fix is not a faster Judge. It is removing the Judge from the critical path entirely, and pushing the controls it was performing down to where the hop actually happens.
+The fix is the one described above: stop treating Layer 2 as a single model's job, and push the combination of reviewing controls down to where each hop actually happens.
 
-![MASO 2.0 Distributed Security Architecture](../images/maso-distributed-architecture.svg){ .arch-diagram }
-
-## 1. The Security Sidecar Pattern
+## 1. Reviewing Controls at the Edge: The Security Sidecar
 
 Before Agent A's output is allowed to reach Agent B, it passes through Agent A's local **security sidecar**: the same [distilled SLM sidecar](../extensions/technical/distill-judge-slm.md) pattern already specified for tool-call evaluation, applied to every agent-to-agent handoff.
 
-The sidecar is not one model doing one job. It runs two cheaper checks first, and only calls a model if those checks are inconclusive:
+The sidecar is not one model doing one job, and it is not a pre-filter sitting in front of a Judge. It runs the combination of reviewing controls described above, each suited to a different failure mode:
 
 ### Deterministic Scanners
 
@@ -41,21 +49,21 @@ Schema validation, regex pattern blocking, secret-pattern detection (cross-refer
 
 A narrow model, the same family as the [distilled SLM](../extensions/technical/distill-judge-slm.md), trained specifically to recognise prompt-injection and jailbreak patterns in the payload. This is the "domain-specific" half of the sidecar trilemma table: a generalist cloud Judge misses the patterns this classifier was built to catch, and catches them in 10-50ms rather than 1-3s.
 
-### When the Sidecar Escalates
+### Three Reviewing Controls, Working Together
 
-Both checks return **GO**, **NO-GO**, or **ESCALATE**. GO and NO-GO are resolved locally, in under 50ms, with no Judge involved. ESCALATE is the only path that invokes the full Model-as-Judge, and even then asynchronously wherever the [risk classification](controls/objective-intent.md) for the action permits it. Only HIGH and CRITICAL actions hold the pipeline for a synchronous Judge call, exactly as the [Critical-Path Latency](../extensions/technical/cost-and-latency.md#critical-path-latency-for-time-sensitive-workflows) model already specifies.
+Each check returns **GO**, **NO-GO**, or **ESCALATE**. GO and NO-GO are resolved locally, in under 50ms, by the scanner or classifier alone, each acting as a reviewing control in its own right rather than a gatekeeper for the next. ESCALATE is how the third control, Model-as-Judge, joins the combination: for the cases the scanners and classifiers cannot resolve, and even then asynchronously wherever the [risk classification](controls/objective-intent.md) for the action permits it. Only HIGH and CRITICAL actions hold the pipeline for a synchronous Judge call, exactly as the [Critical-Path Latency](../extensions/technical/cost-and-latency.md#critical-path-latency-for-time-sensitive-workflows) model already specifies.
 
-| Stage | Latency | Runs on | Handles |
-|-------|---------|---------|---------|
+| Reviewing control | Latency | Runs on | Handles |
+|--------------------|---------|---------|---------|
 | Deterministic scanners | <5ms | Every hop | Schema violations, secrets, malformed payloads |
 | Purpose-built classifiers | 10-50ms | Every hop | Prompt injection, jailbreak patterns |
 | Model-as-Judge | 1.2-3s (async) / held (sync, HIGH+) | Escalations only | Novel or ambiguous violations |
 
-The Judge's job does not shrink. Its *position* changes: from "in line on every hop" to "on call for the cases the sidecar cannot resolve."
+None of these three controls is a pre-filter for the others. Each resolves the class of violation it is best suited to, at the cost appropriate to that class, and together they are what Layer 2 evaluation means for a multi-agent mesh.
 
 ## 2. Securing the Inter-Agent Bus
 
-The [Secure Inter-Agent Message Bus](README.md#three-layer-defence) is already MASO's mandatory channel for agent-to-agent traffic, with mutual authentication via NHI certificates ([IA-2.3](controls/identity-and-access.md)). MASO 2.0 gives the bus two additional, mesh-level jobs that sit alongside the per-agent sidecars rather than replacing them.
+The [Secure Inter-Agent Message Bus](README.md#three-layer-defence) is already MASO's mandatory channel for agent-to-agent traffic, with mutual authentication via NHI certificates ([IA-2.3](controls/identity-and-access.md)). The bus carries two additional, mesh-level jobs that sit alongside the per-agent sidecars rather than replacing them.
 
 ### Schema Enforcement
 
@@ -73,7 +81,7 @@ An attacker rarely targets the privileged Execution Agent directly. They comprom
 
 ## 3. Agent-to-Agent IAM: Action Gating
 
-[Identity & Access](controls/identity-and-access.md) already requires that delegated tasks do not inherit the delegating agent's permissions ([IA-2.4](controls/identity-and-access.md)) and that delegation carries a signed mandate at Tier 3 ([IA-3.3](controls/identity-and-access.md)). MASO 2.0 names the pattern that ties these together: **action gating**.
+[Identity & Access](controls/identity-and-access.md) already requires that delegated tasks do not inherit the delegating agent's permissions ([IA-2.4](controls/identity-and-access.md)) and that delegation carries a signed mandate at Tier 3 ([IA-3.3](controls/identity-and-access.md)). The pattern that ties these together is **action gating**.
 
 ### Separation of Duties
 
@@ -99,13 +107,13 @@ If the Read Agent determines a transaction is needed, it cannot call the privile
 
 Put together, the three patterns change where MASO's enforcement effort sits, not how much of it exists:
 
-| Pattern | What moves to the edge | What stays central |
-|---------|--------------------------|---------------------|
-| Security Sidecar | Schema checks, secret detection, injection classification (every hop, <50ms) | Model-as-Judge, invoked only on escalation |
+| Pattern | What runs at the edge, on every hop | What remains a shared, central service |
+|---------|--------------------------------------|-------------------------------------------|
+| Security Sidecar | Deterministic scanners, purpose-built classifiers | Model-as-Judge, the third reviewing control, for escalations |
 | Secured Inter-Agent Bus | Per-message authentication and schema enforcement | Aggregate jailbreak-contagion monitoring |
-| Agent-to-Agent IAM | Per-agent scoped credentials, per-request structural validation | Mandate issuance, revocation, and audit |
+| Agent-to-Agent IAM | Per-request structural validation against scoped credentials | Mandate issuance, revocation, and audit |
 
-A Model-as-Judge between every agent-to-agent hop is a theoretical control: it is correct in principle and unworkable at the latency and cost a multi-agent fleet actually runs at. Pushed to the edge as sidecars, a hardened bus, and Agent-to-Agent IAM, the same three checks (does this conform to schema, has it been tampered with, is the requester allowed to ask for this) run at machine speed and at the point where they are cheapest to enforce. The Judge is not removed. It is reserved for what it is actually good at: the cases the deterministic and narrow-model layers cannot resolve on their own.
+A Model-as-Judge between every agent-to-agent hop is a theoretical control: correct in principle, unworkable at the latency and cost a multi-agent fleet actually runs at. The fix is not to remove the Judge, it is to stop treating it as Layer 2's only control. Pushed to the edge as sidecars, a hardened bus, and Agent-to-Agent IAM, the combination of reviewing controls, deterministic scanners, purpose-built classifiers, and Model-as-Judge, run at machine speed and at the point where they are cheapest to enforce. Each does the part of the evaluation it is best at: scanners catch what is mechanically wrong, classifiers catch what is adversarially shaped, and the Judge catches what is genuinely novel.
 
 This is the same "constrain regardless" principle from [MASO 2.0 Anticipated Changes](maso-2.0-anticipated-changes.md#the-deeper-architectural-question), applied one layer down: constrain the **handoff**, not just the **action**.
 
