@@ -13,20 +13,22 @@ The goal of this architecture is to reduce harm caused by AI systems in producti
 
 ## The Pattern
 
-![Three-layer runtime security: Guardrails, Model-as-Judge, Human Oversight](images/three-layer-simple.svg){ .arch-diagram }
+![Three-layer runtime security: Guardrails, Reviewing Controls, Human Oversight](images/three-layer-simple.svg){ .arch-diagram }
 
 The industry is converging on the same answer independently. NVIDIA NeMo, AWS Bedrock, Azure AI, LangChain, Guardrails AI: all implement variants of four independent layers.
 
 | Layer | What It Does | Speed |
 | --- | --- | --- |
 | **Guardrails** | Block known-bad inputs and outputs: PII, injection patterns, policy violations | Real-time (~10ms) |
-| **Model-as-Judge** | Detect unknown-bad: an independent model (SLM or LLM, optionally [distilled](extensions/technical/distill-judge-slm.md)) evaluating whether responses are appropriate | Async (500ms–5s) or inline (10–50ms for SLM) |
+| **Reviewing Controls** | Detect unknown-bad through a combination of controls: deterministic scanners, a semantic firewall (purpose-built classifier tuned to injection and jailbreak patterns), policy compliance checks against declared intent, and Model-as-Judge (SLM or LLM, optionally [distilled](extensions/technical/distill-judge-slm.md)) for the cases the others cannot resolve | <5ms (scanners) to 10-50ms (semantic firewall, SLM Judge) inline; 500ms-5s (LLM Judge) async, or held for high-risk actions |
 | **Human Oversight** | Decide genuinely ambiguous cases that automated layers cannot resolve | As needed |
 | **Circuit Breaker** | Stop all AI traffic and activate a safe fallback when controls themselves fail | Immediate |
 
 **Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain.**
 
-Each layer catches what the others miss. Remove any layer and you have a gap. Together they form a **closed-loop control system**: containment boundaries define the desired state, the Judge continuously measures actual behaviour, drift detection computes the error, and human oversight applies corrective action. Unlike open-loop approaches that evaluate once and deploy, this architecture self-corrects continuously. See [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md) and [The Feedback Loops That Make It Work](insights/feedback-loops.md).
+"Judge detects" is shorthand for the whole reviewing-controls layer, not just the Model-as-Judge component. Each control inside it catches a different class of failure: deterministic scanners catch what is mechanically wrong, the semantic firewall catches what is adversarially shaped, policy compliance checks catch requests outside declared intent, and Model-as-Judge catches what is genuinely novel, each at the cost and latency appropriate to what it catches. None is a pre-filter for the others.
+
+Each layer catches what the others miss. Remove any layer and you have a gap. Together they form a **closed-loop control system**: containment boundaries define the desired state, the reviewing controls continuously measure actual behaviour, drift detection computes the error, and human oversight applies corrective action. Unlike open-loop approaches that evaluate once and deploy, this architecture self-corrects continuously. See [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md) and [The Feedback Loops That Make It Work](insights/feedback-loops.md). For how this combination operates across a multi-agent mesh, see [Distributed Security Architecture](maso/distributed-architecture.md).
 
 ## Single-Agent Architecture
 
@@ -36,7 +38,7 @@ For a single AI model, a chatbot, a document processor, an assistant, the four l
 
 - **Guardrails are a [constrain-regardless](insights/why-containment-beats-evaluation.md) architecture.** Action-space constraints that leave the model's reasoning unconstrained. Permissions derive from **business intent**, what the use case requires, not from evaluation of the model's capabilities. Necessary but insufficient alone: you cannot write a regex for every possible failure of a system that generates natural language.
 
-- **The Judge must be independent.** A [distilled SLM](extensions/technical/distill-judge-slm.md) sidecar for real-time screening, or a large LLM running asynchronously. Either way, different model, different provider if possible, **enterprise-owned and configured**, not vendor-side safeguards. If the primary model is compromised, the Judge must not be compromised with it. This is where within-bounds adversarial behaviour is caught, which containment alone cannot address.
+- **Reviewing controls must be independent.** Deterministic scanners, a semantic firewall, policy compliance checks, and Model-as-Judge, whether a [distilled SLM](extensions/technical/distill-judge-slm.md) sidecar for real-time screening or a large LLM running asynchronously, run on a different model and, where possible, a different provider, **enterprise-owned and configured**, not vendor-side safeguards. If the primary model is compromised, the reviewing controls must not be compromised with it. This is where within-bounds adversarial behaviour is caught, which containment alone cannot address.
 
 - **Human oversight scales with risk, not with volume.** Only genuinely ambiguous cases reach reviewers. Low-risk systems get spot checks, high-risk systems get human approval before execution. If every output goes to a reviewer, the reviewers stop reading, and oversight degrades to theatre.
 
