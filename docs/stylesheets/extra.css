@@ -76,6 +76,14 @@ img[src$=".svg"] {
   display: none;
 }
 
+/* Home page footer: last updated date */
+.home-meta {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
+  margin-top: 0.5rem;
+}
+
 /* ── Learning site callout ── */
 .learning-callout {
   border: 2px solid var(--md-accent-fg-color);

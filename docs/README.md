@@ -198,4 +198,6 @@ The *why* before the *how*. Each article identifies a specific problem that the 
 
 Created by [Jonathan Gill](https://www.linkedin.com/in/jonathancgill/) · [feedback@airuntimesecurity.io](mailto:feedback@airuntimesecurity.io)
 
+<span class="home-meta">Last updated: June 2026</span>
+
 </div>
