@@ -76,20 +76,12 @@ img[src$=".svg"] {
   display: none;
 }
 
-/* Home page signals: version, last updated, maintainer, contribute */
+/* Home page footer: last updated date */
 .home-meta {
   display: block;
   font-size: 0.78rem;
   color: var(--md-default-fg-color--light);
-  margin: 0.5rem 0 1rem;
-}
-.home-meta a {
-  color: var(--md-default-fg-color--light);
-  text-decoration: underline;
-  text-decoration-color: var(--md-default-fg-color--lightest);
-}
-.home-meta a:hover {
-  color: var(--md-accent-fg-color);
+  margin-top: 0.5rem;
 }
 
 /* ── Learning site callout ── */
