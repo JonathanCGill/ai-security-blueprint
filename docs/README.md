@@ -18,8 +18,6 @@ AIRS is a vendor-neutral, risk-proportionate framework for the enforcement side:
 
 **Three domains, one framework.** [Foundation](foundations/README.md) secures single-agent systems, [MASO](maso/README.md) secures multi-agent orchestration, and [Infrastructure](infrastructure/README.md) secures the platforms underneath. The [SDK](sdk/README.md) turns all three into code.
 
-<span class="home-meta">Version 0.10.1 · Last updated May 2026 · Maintained by [Jonathan Gill](https://www.linkedin.com/in/jonathancgill/) · [Contribute on GitHub](contributing.md)</span>
-
 New here? Start with [what AI Runtime Security is](what-is-ai-runtime-security.md).
 
 ![AIRS Architecture Overview: layered runtime controls across Guardrails, Model-as-Judge, Human Oversight, and Circuit Breakers](images/architecture-overview.svg){ .arch-diagram }
