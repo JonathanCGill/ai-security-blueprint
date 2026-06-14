@@ -187,6 +187,18 @@ The AISI data showed the financial services MCP ecosystem shifting rapidly towar
 
 > **Source:** UK AI Security Institute, *Frontier AI Trends Report*, December 2025.
 
+## MCP Tool Poisoning: A Structured Threat Model
+
+Academic threat modelling published in May 2026 (Huang et al., New York Institute of Technology) applied STRIDE and DREAD analysis to the MCP architecture, decomposing it into five components: the MCP host and client, the LLM, the MCP server, external data stores, and the authorization server. Across these five components, the analysis identified 57 distinct threats and tested four tool-poisoning attack types against seven popular MCP clients.
+
+This reinforces Risk 1 above (tool descriptions are untrusted input), but extends it. Tool poisoning isn't limited to the description shown at connection time. A server can present a benign description during onboarding and review, then alter the description or the tool's behaviour on later calls, a class of attack that static, install-time manifest checks cannot catch.
+
+**Why install-time checks aren't enough:** A signed tool manifest proves the manifest hasn't been tampered with since signing. It doesn't prove the server will behave consistently with that manifest on every call. A tool that behaves correctly during vetting and deviates only under specific trigger conditions produces what the [Agentic Task Mandate](../maso/controls/agentic-task-mandate.md) domain calls a "creative substitution": output that looks valid, for a task nobody authorised. The four-state deviation model (normal operation, execution failure, visible failure, creative substitution) and the Anti-Mythos judge that evaluates against it exist precisely for this gap. [Behavioural anomaly detection](../extensions/technical/behavioral-anomaly-detection.md) is the runtime mechanism: baseline tool-call patterns per server, and alert on deviation regardless of whether the tool's manifest has changed.
+
+**Proposed defences** in the paper, description sanitisation, capability attestation, and runtime behavioural monitoring, map to controls already in this framework: [SC-1.2 (signed tool manifests)](../maso/controls/supply-chain.md) and [SC-2.3 (server vetting)](../maso/controls/supply-chain.md) for attestation, [PG-1.1 (input guardrails per agent)](../maso/controls/prompt-goal-and-epistemic-integrity.md) for description sanitisation. The gap the paper identifies, behaviour that changes after vetting, is closed by runtime judge evaluation and behavioural anomaly detection, not by tightening the manifest signature alone.
+
+> **Source:** Huang, Huang, Tran, and Milani Fard, *Model Context Protocol Threat Modeling and Analyzing Vulnerabilities to Prompt Injection with Tool Poisoning*, MDPI (May 2026).
+
 ## Key Takeaways
 
 1. **MCP is an agent-to-tool protocol, not a security protocol.** It solves interoperability. It does not solve authentication, authorisation, or monitoring. Those are your responsibility.
@@ -207,6 +219,8 @@ The AISI data showed the financial services MCP ecosystem shifting rapidly towar
 - [Delegation Chain Controls](../infrastructure/agentic/delegation-chains.md) - Prevents privilege escalation through agent-to-agent delegation
 - [Supply Chain Security](../infrastructure/agentic/supply-chain.md) - Verification and provenance for all components in the AI pipeline
 - [The Orchestrator Problem](the-orchestrator-problem.md) - Privileged agents with the broadest authority and the least controls
+- [Agentic Task Mandate](../maso/controls/agentic-task-mandate.md) - The four-state deviation model for detecting tool behaviour that diverges from its mandate
+- [Behavioural Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) - Runtime detection of tool-call patterns that deviate from baseline
 - [Infrastructure Beats Instructions](infrastructure-beats-instructions.md) - Why prompt-based security fails and deterministic enforcement works
 - [RAG Is Your Biggest Attack Surface](rag-is-your-biggest-attack-surface.md) - Another data path that bypasses traditional access controls
 
