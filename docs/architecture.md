@@ -28,6 +28,17 @@ The industry is converging on the same answer independently. NVIDIA NeMo, AWS Be
 
 "Judge detects" is shorthand for the whole reviewing-controls layer, not just the Model-as-Judge component. Each control inside it catches a different class of failure: deterministic scanners catch what is mechanically wrong, the semantic firewall catches what is adversarially shaped, policy compliance checks catch requests outside declared intent, and Model-as-Judge catches what is genuinely novel, each at the cost and latency appropriate to what it catches. None is a pre-filter for the others.
 
+### When Is Which Reviewing Control Appropriate?
+
+| Reviewing control | What it catches | Latency | When it's appropriate |
+| --- | --- | --- | --- |
+| **Deterministic scanners** | Schema violations, malformed payloads, known secrets and PII patterns | <5ms | Always on. The cheapest check, runs on every output before anything else does. |
+| **Semantic firewall** | Prompt injection and jailbreak patterns, including paraphrased or disguised attempts | 10-50ms | Always on for any system that processes untrusted input: user prompts, retrieved documents, tool results. |
+| **Policy compliance check** | Actions outside the declared intent ([OISpec](maso/controls/objective-intent.md)), even when individually well-formed | <50ms | Privileged actions: a tool call, a data write, a delegation to another agent or system. |
+| **Model-as-Judge** | Genuinely novel or ambiguous cases the other three cannot resolve | 10-50ms (distilled SLM, inline) or 500ms-5s (LLM, async) | Escalations from the other controls, or held synchronously for HIGH/CRITICAL risk-tier actions. |
+
+The first three run on every output at near-zero marginal cost. Model-as-Judge is the expensive one, so the other three exist to keep it off the critical path for everything except the cases that genuinely need it. For how this breakdown adapts when each control runs at a different point in a multi-agent mesh, see [Distributed Security Architecture](maso/distributed-architecture.md).
+
 Each layer catches what the others miss. Remove any layer and you have a gap. Together they form a **closed-loop control system**: containment boundaries define the desired state, the reviewing controls continuously measure actual behaviour, drift detection computes the error, and human oversight applies corrective action. Unlike open-loop approaches that evaluate once and deploy, this architecture self-corrects continuously. See [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md) and [The Feedback Loops That Make It Work](insights/feedback-loops.md). For how this combination operates across a multi-agent mesh, see [Distributed Security Architecture](maso/distributed-architecture.md).
 
 ## Single-Agent Architecture
