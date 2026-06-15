@@ -20,7 +20,7 @@ AIRS is a vendor-neutral, risk-proportionate framework for the enforcement side:
 
 New here? Start with [what AI Runtime Security is](what-is-ai-runtime-security.md).
 
-![AIRS Architecture Overview: layered runtime controls across Guardrails, Model-as-Judge, Human Oversight, and Circuit Breakers](images/architecture-overview.svg){ .arch-diagram }
+![AIRS Architecture Overview: layered runtime controls across Guardrails, Reviewing Controls, Human Oversight, and Circuit Breakers](images/architecture-overview.svg){ .arch-diagram }
 
 ---
 
@@ -147,9 +147,9 @@ A runtime control plane for AI behaviour. Each layer operates independently, and
 
     Fast, deterministic boundaries: content policies, scope constraints, tool-use permissions. Catches the obvious failures at machine speed. *~10ms per check.*
 
--   **Model-as-Judge**
+-   **Reviewing Controls**
 
-    A separate model evaluates outputs against policy, context, and intent before they reach users. Catches the subtle failures guardrails miss. *~500ms to 5s, sync or async by risk tier.*
+    A combination of deterministic scanners, a semantic firewall, policy compliance checks, and Model-as-Judge evaluates outputs against policy, context, and intent before they reach users. Catches the subtle failures guardrails miss. *~5ms to 50ms inline, 500ms to 5s async by risk tier.*
 
 -   **Human Oversight**
 
