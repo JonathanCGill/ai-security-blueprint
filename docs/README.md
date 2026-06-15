@@ -162,7 +162,7 @@ A runtime control plane for AI behaviour. Each layer operates independently, and
 </div>
 </div>
 
-[How the layers work together](what-is-ai-runtime-security.md) · [End-to-end walkthrough: the Chevrolet $1 chatbot](walkthrough-chevrolet-1-dollar.md) · [Cost & latency by tier](extensions/technical/cost-and-latency.md)
+[How the layers work together](what-is-ai-runtime-security.md) · [When is which reviewing control appropriate](architecture.md#when-is-which-reviewing-control-appropriate) · [End-to-end walkthrough: the Chevrolet $1 chatbot](walkthrough-chevrolet-1-dollar.md) · [Cost & latency by tier](extensions/technical/cost-and-latency.md)
 
 ---
 
