@@ -103,7 +103,7 @@ description: "Databricks implementation patterns for AI security controls: zone-
 
 ### NET-03: Judge Isolation
 
-- Judge model served on a **separate Model Serving endpoint** with separate compute.
+- Model-as-Judge served on a **separate Model Serving endpoint** with separate compute.
 - Evaluation data pushed to Judge via **Delta table** - Judge reads from table, writes evaluations back.
 - No direct network path from Judge to runtime model endpoint.
 

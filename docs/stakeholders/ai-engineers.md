@@ -44,7 +44,7 @@ Key constraint: **the Judge must use a different model than your task agent**. S
 
 - Implementation guide: [Model-as-Judge Implementation](../extensions/technical/model-as-judge-implementation.md)
 - Prompt examples: [Judge Prompt Examples](../extensions/templates/judge-prompt-examples.md)
-- Model selection: [Judge Model Selection](../extensions/technical/judge-model-selection.md)
+- Model selection: [Model-as-Judge Selection](../extensions/technical/judge-model-selection.md)
 - Calibration: [Judge Assurance](../core/judge-assurance.md)
 
 **3. Circuit breaker / PACE fail postures** - what your system does when control layers fail.
@@ -123,7 +123,7 @@ Only for CRITICAL tier. For HIGH tier, run it asynchronously - it doesn't block 
 Model alignment is necessary but insufficient. Alignment reduces the base rate of harmful outputs but doesn't eliminate it. Prompt injection bypasses alignment. RAG poisoning bypasses alignment. Edge cases that weren't in the training data bypass alignment. Runtime controls catch what alignment misses.
 
 **"We don't have budget for a second model (the Judge)."**
-The Judge doesn't have to be expensive. A smaller, faster model (Haiku-class) running a focused evaluation prompt often outperforms a larger model for specific policy checks. Sample at 10% to start. The [Judge Model Selection](../extensions/technical/judge-model-selection.md) guide covers cost-effective configurations.
+The Judge doesn't have to be expensive. A smaller, faster model (Haiku-class) running a focused evaluation prompt often outperforms a larger model for specific policy checks. Sample at 10% to start. The [Model-as-Judge Selection](../extensions/technical/judge-model-selection.md) guide covers cost-effective configurations.
 
 **"Human oversight doesn't scale."**
 Correct - which is why the framework doesn't require human review of every transaction (except at CRITICAL tier). The Judge handles scale. Humans handle the edge cases the Judge flags and the random samples that keep the system honest. See [Humans Remain Accountable](../insights/humans-remain-accountable.md).

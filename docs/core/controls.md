@@ -48,7 +48,7 @@ This is why the Judge provides the second layer.
 
 Evaluation of interactions for quality and policy compliance. The Judge can be a large LLM (for async assurance and complex reasoning) or a [distilled SLM](../extensions/technical/distill-judge-slm.md) (for inline, real-time action screening). Both approaches can be combined: an SLM screens every action in under 50ms, while a large LLM audits a sample asynchronously.
 
-→ For model selection guidance, see [Judge Model Selection](../extensions/technical/judge-model-selection.md)
+→ For model selection guidance, see [Model-as-Judge Selection](../extensions/technical/judge-model-selection.md)
 
 ### What the Judge Does
 

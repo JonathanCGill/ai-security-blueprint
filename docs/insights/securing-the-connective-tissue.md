@@ -92,7 +92,7 @@ This is also the regulatory "right to explanation" made technically enforceable.
 | SUP-01 Model provenance | Hash-based identity at deploy time | Cryptographic proof per inference |
 | The verification gap | LLM-based checks (correlated failures) | Fully independent mathematical proof |
 | LOG-07 Log integrity | Append-only, tamper-evident storage | Proof of computation integrity, not just log integrity |
-| Judge assurance | Cross-validation, human sampling | Proof that the judge model ran the claimed evaluation |
+| Judge assurance | Cross-validation, human sampling | Proof that the Model-as-Judge ran the claimed evaluation |
 
 ### Limitations
 

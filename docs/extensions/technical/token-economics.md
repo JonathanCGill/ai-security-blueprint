@@ -97,7 +97,7 @@ Blast radius caps bound the damage. The token waste is still there, but it is bo
 
 The most significant token economics decision in a MASO deployment is whether to run judge evaluation through a cloud LLM API or through a locally-deployed distilled SLM.
 
-Cloud judges consume API tokens for every evaluation. At 1M agent actions per month, even a small judge model running at 500 tokens per evaluation consumes 500M tokens, paid at per-token API rates. That cost scales linearly with volume.
+Cloud judges consume API tokens for every evaluation. At 1M agent actions per month, even a small Model-as-Judge running at 500 tokens per evaluation consumes 500M tokens, paid at per-token API rates. That cost scales linearly with volume.
 
 A distilled SLM sidecar runs locally. It does not consume API tokens. The evaluation cost is infrastructure rather than consumption: fixed compute for the model, scaling only with concurrency rather than volume. At 1M evaluations per month, the economics flip entirely: the cloud judge approach costs tens of thousands of dollars; the SLM approach costs hundreds.
 

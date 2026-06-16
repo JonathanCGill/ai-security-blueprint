@@ -137,7 +137,7 @@ Not all verification is equal. Approaches vary in their independence from the LL
 
 **What it does**: Uses a second (often larger) model to evaluate outputs.
 
-**Claimed accuracy**: 70-90% depending on task and judge model.
+**Claimed accuracy**: 70-90% depending on task and Model-as-Judge.
 
 **Limitations**:
 - Same fundamental vulnerabilities as primary LLM

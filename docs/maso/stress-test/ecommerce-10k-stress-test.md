@@ -130,7 +130,7 @@ MASO's Model-as-Judge evaluates agent actions before they are committed. At 5 ag
 
 ### The 10,000-Customer Reality
 
-At 60,000 agent instances, evaluating every action with a Judge model is economically and operationally impossible. If each agent performs 10 actions per session and sessions last 15 minutes, the system generates **40,000 actions per minute**. A Judge evaluation adding 500ms of latency and $0.002 per call means:
+At 60,000 agent instances, evaluating every action with a Model-as-Judge is economically and operationally impossible. If each agent performs 10 actions per session and sessions last 15 minutes, the system generates **40,000 actions per minute**. A Judge evaluation adding 500ms of latency and $0.002 per call means:
 
 - **Latency:** 500ms added to every agent action. For the Payment Agent processing a card, this is unacceptable.
 - **Cost:** 40,000 x $0.002 = $80/minute = $4,800/hour = $115,200/day. This exceeds the agents' own compute cost by an order of magnitude.
@@ -172,7 +172,7 @@ MASO's human oversight layer reviews agent outputs based on risk classification.
 If even 1% of the 40,000 actions per minute escalate to human review, that is **400 escalations per minute**. No human team can process this. The oversight model must shift from routine review to exception handling:
 
 - **Guardrails handle routine enforcement.** Input validation, output format, PCI data masking, rate limiting - all deterministic, all machine-speed. No human involved.
-- **Judge handles policy evaluation.** For the sampled or high-risk actions, the Judge model evaluates compliance. Most pass. Only Judge-flagged actions escalate.
+- **Judge handles policy evaluation.** For the sampled or high-risk actions, the Model-as-Judge evaluates compliance. Most pass. Only Judge-flagged actions escalate.
 - **Humans handle genuine exceptions.** A human reviewer sees only the actions that the guardrails permitted and the Judge flagged. At well-calibrated thresholds, this should be 10-50 escalations per hour, not 400 per minute.
 
 The risk is **false negatives at the guardrail and Judge layers**. If the guardrails miss a policy violation and the Judge sampling does not catch it, the human layer never sees it. This is acceptable for MEDIUM-risk agent types (product presentation, delivery). It requires careful calibration for CRITICAL-risk types (payment).

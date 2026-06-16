@@ -6,7 +6,7 @@ description: "How to constrain agentic agents through specialisation, declared i
 
 An [agentic agent](agentic-agent-anatomy.md) is a system that autonomously plans and acts. Left unconstrained, it will use whatever tools it can reach, access whatever data it can find, and pursue its goal in whatever way its reasoning suggests. That flexibility is the point of agents. It is also the source of most security failures.
 
-The solution is not to remove autonomy. It is to bound it. Declare what the agent is for, what outcomes it must deliver, and what constraints it operates under. Then use a judge model to verify that every action aligns with those declarations before anything is committed.
+The solution is not to remove autonomy. It is to bound it. Declare what the agent is for, what outcomes it must deliver, and what constraints it operates under. Then use a Model-as-Judge to verify that every action aligns with those declarations before anything is committed.
 
 ![Constraining Agents: Declare, Constrain, Evaluate](images/constraining-agents.svg){ .arch-diagram }
 
@@ -20,7 +20,7 @@ Before writing any code, define three things about the agent.
 
 ### Intent
 
-What is this agent for? Not a vague mission statement. A specific, typed declaration of purpose that a judge model can evaluate against.
+What is this agent for? Not a vague mission statement. A specific, typed declaration of purpose that a Model-as-Judge can evaluate against.
 
 | Element | Bad Example | Good Example |
 |---------|-------------|--------------|
@@ -112,7 +112,7 @@ This classification is not static. As the agent builds trust through consistent 
 
 ## Phase 3: Evaluate
 
-Declarations and infrastructure constraints handle most risks. But agents reason in natural language, and natural language is inherently ambiguous. An agent can stay within its tool allowlist and credential scope while still pursuing a manipulated goal, hallucinating facts, or drifting from the user's actual intent. This is where the judge model comes in.
+Declarations and infrastructure constraints handle most risks. But agents reason in natural language, and natural language is inherently ambiguous. An agent can stay within its tool allowlist and credential scope while still pursuing a manipulated goal, hallucinating facts, or drifting from the user's actual intent. This is where the Model-as-Judge comes in.
 
 ### What the Judge Evaluates
 

@@ -19,7 +19,7 @@ description: "Triage page for new readers. Pick the entry point that matches you
 
 -   **I need working code in thirty minutes**
 
-    End-to-end: classify risk, deploy guardrails, configure a Judge model, set up human oversight. Opinionated setup, runnable examples, zero multi-quarter runway required.
+    End-to-end: classify risk, deploy guardrails, configure a Model-as-Judge, set up human oversight. Opinionated setup, runnable examples, zero multi-quarter runway required.
 
     [Quick Start](quick-start.md)
 

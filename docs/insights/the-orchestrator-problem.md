@@ -54,7 +54,7 @@ The problem extends beyond orchestrators. Multi-agent systems have three classes
 
 **What's missing:** Governance of the Judge's own criteria. Drift detection on Judge performance. Disagreement resolution procedures beyond "escalate to human." Monitoring of whether the Judge is itself being influenced through adversarial inputs.
 
-**The threat:** If the Judge's evaluation criteria drift - through prompt injection in criteria templates, training data poisoning of the judge model, or gradual calibration decay - Layer 2 collapses silently. Every task agent output passes because the standard has shifted. The system reports green while the controls have effectively been disabled.
+**The threat:** If the Judge's evaluation criteria drift - through prompt injection in criteria templates, training data poisoning of the Model-as-Judge, or gradual calibration decay - Layer 2 collapses silently. Every task agent output passes because the standard has shifted. The system reports green while the controls have effectively been disabled.
 
 ### 3. The Observer
 

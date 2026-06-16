@@ -10,7 +10,7 @@ The Model-as-Judge is a **continuous assurance tool**. In its traditional form, 
 
 This page covers the async LLM Judge pattern. It reviews AI system outputs to identify red flags, quality issues, policy violations, and emerging patterns. It surfaces findings for humans to act on. Think of it as an auditor. For the inline SLM pattern that acts as a real-time gate, see [Distilling the Judge into an SLM](distill-judge-slm.md).
 
-> For model selection guidance, see [Judge Model Selection](judge-model-selection.md)
+> For model selection guidance, see [Model-as-Judge Selection](judge-model-selection.md)
 
 ![Assurance Model](../../images/assurance-model-diagram.svg)
 
@@ -160,7 +160,7 @@ The Judge is itself an AI system. It requires:
 
 ### Choosing a Judge Approach
 
-![Judge Model Decision Tree](../../images/judge-model-decision-tree.svg)
+![Model-as-Judge Decision Tree](../../images/judge-model-decision-tree.svg)
 
 ## Summary
 

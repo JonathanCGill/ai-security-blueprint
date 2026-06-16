@@ -68,7 +68,7 @@ The AI Bill of Materials is the supply chain equivalent of an SBOM (Software Bil
 | NHI Reference | Link to agent's NHI record | `NHI-A-2026-0142` |
 | Primary Model | Provider, model name, version, API endpoint | `Anthropic / claude-sonnet-4-5-20250929 / messages/v1` |
 | Fallback Model | Backup model for PACE Alternate phase | `Google / gemini-2.0-flash / v1` |
-| Judge Model | Model-as-Judge model (must differ from task model) | `OpenAI / gpt-4o / chat/completions` |
+| Model-as-Judge | Model-as-Model-as-Judge (must differ from task model) | `OpenAI / gpt-4o / chat/completions` |
 | Tools | List of tools with versions and manifest hashes | `[{name: "document-reader", version: "2.1.3", hash: "sha256:abc..."}]` |
 | MCP Servers | Connected MCP servers with endpoint and manifest hash | `[{name: "internal-search", endpoint: "https://...", hash: "sha256:def..."}]` |
 | RAG Sources | Knowledge bases with integrity checksums | `[{name: "policy-docs", checksum: "sha256:ghi...", last_verified: "2026-02-14"}]` |

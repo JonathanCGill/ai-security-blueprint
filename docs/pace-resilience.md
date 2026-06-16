@@ -35,7 +35,7 @@ The critical rule that makes PACE effective: **each layer must depend on a diffe
 | Human Oversight | Cognitive judgment | Trained personnel, review interface | Not affected by model or engine failures |
 | Circuit Breaker | Infrastructure control | Network routing, feature flags | Operates at infrastructure layer, independent of AI stack |
 
-A prompt injection that bypasses guardrails won't automatically fool the Judge. A Judge model failure doesn't impair guardrails or human review. A staffing gap in human oversight doesn't affect automated controls. This independence is the foundation of resilience.
+A prompt injection that bypasses guardrails won't automatically fool the Judge. A Model-as-Judge failure doesn't impair guardrails or human review. A staffing gap in human oversight doesn't affect automated controls. This independence is the foundation of resilience.
 
 ## The Core Architect Decision: Fail Posture
 

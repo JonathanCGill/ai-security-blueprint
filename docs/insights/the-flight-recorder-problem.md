@@ -66,7 +66,7 @@ This is largely new ground. Most AI logging captures the final prompt sent to th
 
 ### 4. Control State
 
-A snapshot of the control environment at decision time: guardrail rule versions, judge model and criteria versions, system prompt hash, PACE state, circuit breaker state, active policy configurations.
+A snapshot of the control environment at decision time: guardrail rule versions, Model-as-Judge and criteria versions, system prompt hash, PACE state, circuit breaker state, active policy configurations.
 
 This matters for forensics. If an incident occurred because a guardrail rule was temporarily disabled, the control state record proves it. Without it, you are guessing.
 

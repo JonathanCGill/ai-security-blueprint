@@ -197,7 +197,7 @@ AISecurity_CL
 |---|---|
 | **Severity** | Medium |
 | **Framework Control** | Judge Assurance, operational-metrics |
-| **Response** | Investigate whether the model provider updated the Judge model. Trigger human calibration review per [Judge Assurance](../../core/judge-assurance.md). |
+| **Response** | Investigate whether the model provider updated the Model-as-Judge. Trigger human calibration review per [Judge Assurance](../../core/judge-assurance.md). |
 
 ### 7. Credential Exposure - Secrets in Model I/O
 
@@ -405,7 +405,7 @@ AI Security Alert Received
 **Maintenance:** Review and update detection rules when:
 - New guardrail categories are added
 - New AI endpoints are deployed
-- The Judge model is updated
+- The Model-as-Judge is updated
 - New agent tools are onboarded
 - Threat intelligence identifies new attack patterns
 

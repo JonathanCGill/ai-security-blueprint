@@ -152,7 +152,7 @@ By definition, post-execution evaluation is detective, not preventive. The harm 
 
 The judge is itself an LLM. It can hallucinate. It can miss subtle misalignment. It can be manipulated through adversarial content in the audit log. Research confirms this: "simple, universal triggers can inflate judge scores, highlighting the fragility of naive evaluation" (Raina et al., 2024).
 
-**Mitigation:** Multiple judge models with consensus requirements. If two independent judges (different models, different providers) both flag the same output, confidence is high. If they disagree, the output goes to human review. This is more expensive but substantially more robust.
+**Mitigation:** Multiple Model-as-Judge instances with consensus requirements. If two independent judges (different models, different providers) both flag the same output, confidence is high. If they disagree, the output goes to human review. This is more expensive but substantially more robust.
 
 **3. Intent is hard to specify for complex workflows.**
 
@@ -195,7 +195,7 @@ This is a layered assurance model. Each layer catches what the layers below miss
 | Audit log storage | O(N) - per agent message, cheap | Scales |
 | Log summarisation | O(W) - per workflow, automatable | Scales |
 | Judge evaluation | O(W) or O(P) - per workflow or phase | Scales |
-| Multi-model consensus | O(W) × number of judge models (2-3) | Scales (small constant multiplier) |
+| Multi-model consensus | O(W) × number of Model-as-Judge instances (2-3) | Scales (small constant multiplier) |
 | Sampled human review | O(sample rate × W) - tunable | Scales if sample rate is managed |
 | Feedback to invariants | O(patterns detected) - improves over time | Scales and compounds |
 
@@ -223,7 +223,7 @@ For organisations adopting this pattern:
 
 **2. Define intent specifications for your highest-risk workflows first.** Don't try to specify intent for every workflow. Start with the ones where a wrong answer causes material harm - financial recommendations, medical analysis, legal document generation, customer-facing decisions.
 
-**3. Deploy a single judge model evaluating completed workflows.** Don't over-engineer the first iteration. One judge model, evaluating against the intent specification, producing a pass/flag/fail verdict with reasoning. Measure false positive and false negative rates against human review of a sample.
+**3. Deploy a single Model-as-Judge evaluating completed workflows.** Don't over-engineer the first iteration. One Model-as-Judge, evaluating against the intent specification, producing a pass/flag/fail verdict with reasoning. Measure false positive and false negative rates against human review of a sample.
 
 **4. Add multi-model consensus for high-risk workflows.** Once the single-judge baseline is established, add a second model for workflows where the cost of a false negative is high.
 
