@@ -1,3 +1,7 @@
+---
+description: Sets out the expected behaviour, community standards, and enforcement process for contributors and users of this framework.
+---
+
 # Code of Conduct
 
 ## Our Commitment

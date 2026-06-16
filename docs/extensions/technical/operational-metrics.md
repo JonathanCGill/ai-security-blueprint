@@ -1,3 +1,7 @@
+---
+description: Defines the metrics organisations should track to measure whether their AI security framework is working.
+---
+
 # AI Security Operational Metrics
 
 How do you know if the framework is working? This document defines the metrics to track.

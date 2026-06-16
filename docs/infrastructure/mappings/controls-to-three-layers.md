@@ -1,3 +1,7 @@
+---
+description: Maps all 80 infrastructure controls to the three-layer behavioral security pattern of Guardrails, Model-as-Judge, and Human Oversight.
+---
+
 # Controls to Three-Layer Mapping
 
 > Maps all 80 infrastructure controls to the three-layer behavioral security pattern: **Guardrails → Model-as-Judge → Human Oversight**.

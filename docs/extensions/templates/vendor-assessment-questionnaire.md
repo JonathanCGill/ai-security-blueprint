@@ -1,3 +1,7 @@
+---
+description: A structured questionnaire for assessing the security and risk posture of AI vendors, foundation model providers, and AI SaaS platforms.
+---
+
 # AI Vendor Assessment Questionnaire
 
 Use this questionnaire when assessing AI vendors, foundation model providers, and AI SaaS platforms. Adapt based on the risk tier of your intended use case.

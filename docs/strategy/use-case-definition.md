@@ -1,3 +1,7 @@
+---
+description: Guidance on defining AI use cases precisely enough to derive a risk profile, control set, and operating model from them.
+---
+
 # Use Case Definition
 
 *What makes a good AI use case definition from a security and governance perspective - and how to translate one into a risk profile, control set, and operating model.*

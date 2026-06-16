@@ -1,3 +1,7 @@
+---
+description: Ready-to-deploy detection rules, correlation searches, and dashboard definitions for monitoring AI systems in a Security Operations Centre.
+---
+
 # SOC Content Pack for AI Security
 
 > Ready-to-deploy detection rules, correlation searches, and dashboard definitions for AI system monitoring.

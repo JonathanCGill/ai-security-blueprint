@@ -1,3 +1,7 @@
+---
+description: Covers how to aggregate safety signals across AI system layers to detect when agent behavior drifts from established baselines.
+---
+
 # Behavioral Anomaly Detection
 
 **Aggregating safety signals to detect when agent behavior drifts from normal.**

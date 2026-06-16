@@ -1,3 +1,7 @@
+---
+description: Explains the PACE (Primary, Alternate, Contingency, Emergency) resilience methodology as applied to AI security controls, ensuring no single failure is catastrophic.
+---
+
 # PACE Resilience Methodology
 
 **Primary. Alternate. Contingency. Emergency.**

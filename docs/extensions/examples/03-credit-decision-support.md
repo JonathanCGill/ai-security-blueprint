@@ -1,3 +1,7 @@
+---
+description: Demonstrates full CRITICAL-tier control implementation for an AI system that supports credit decisions, with 100% human-in-the-loop review and async Judge evaluation for bias and compliance assurance.
+---
+
 # Worked Example: Credit Decision Support at Summit Lending
 
 > Maximum controls for a CRITICAL-tier AI system in financial services.

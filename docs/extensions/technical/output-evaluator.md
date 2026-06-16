@@ -1,3 +1,7 @@
+---
+description: Describes a session-aware, pre-action evaluation architecture that extends per-interaction controls to detect campaign-level threats across AI agent sessions.
+---
+
 # Output Evaluator: Session-Aware, Pre-Action Evaluation Architecture
 
 > Closing the gap between per-interaction controls and campaign-level threats.

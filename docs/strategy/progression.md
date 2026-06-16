@@ -1,3 +1,7 @@
+---
+description: Covers the five-stage progression from no AI to autonomous AI, and explains why skipping stages is the most common and costly strategic failure.
+---
+
 # Progression
 
 *Moving from low-risk to high-risk AI - and why skipping steps is the most common strategic failure.*

@@ -1,3 +1,7 @@
+---
+description: Explains why standardising on approved platforms, trusted models, proven patterns, and consistent data access is the single biggest force multiplier for AI governance.
+---
+
 # Platform and Patterns
 
 *Why standardising on approved platforms, trusted models, proven patterns, and consistent data access is the single biggest force multiplier for AI governance.*

@@ -1,3 +1,7 @@
+---
+description: Explains how to operationalise centralised AI governance across multiple enterprise AI platforms including AWS Bedrock, Databricks, and Palantir Foundry.
+---
+
 # Platform Integration Guide
 
 ## Centralised AI Governance Across Bedrock, Databricks, and Foundry

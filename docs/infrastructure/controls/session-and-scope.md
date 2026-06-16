@@ -1,3 +1,7 @@
+---
+description: Explains controls for isolating agent sessions, limiting blast radius, and preventing scope creep in autonomous AI operations.
+---
+
 # Session & Scope for Agentic AI
 
 > **Control Domain:** Agentic - Containment Controls  

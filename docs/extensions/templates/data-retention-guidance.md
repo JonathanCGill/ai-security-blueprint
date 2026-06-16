@@ -1,3 +1,7 @@
+---
+description: Covers data retention requirements for AI systems across ten distinct data states, from source ingestion through vector stores, interaction logs, and Judge evaluations, with jurisdictional guidance.
+---
+
 # AI Data Retention Guidance
 
 Data retention requirements for AI systems, covering the 10 data states specific to AI and jurisdictional requirements.

@@ -1,3 +1,7 @@
+---
+description: Stress tests the MASO framework against an e-commerce scenario with 10,000 concurrent customers and up to 60,000 simultaneous agent instances across nine stress dimensions.
+---
+
 # Stress Testing MASO at E-Commerce Scale
 
 **10,000 Concurrent Customers, 60,000 Agent Instances, Nine Stress Dimensions**

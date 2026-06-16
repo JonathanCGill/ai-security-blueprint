@@ -1,3 +1,7 @@
+---
+description: A systems thinking analysis of failure nodes and feedback loops in multi-agent AI runtimes, covering detectable and silent failure modes.
+---
+
 # Multi-Agent Runtime Operations: Failure Node and Feedback Loop Analysis
 
 ## Systems Thinking Approach

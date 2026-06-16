@@ -1,3 +1,7 @@
+---
+description: Extended security controls for agentic AI systems that take autonomous multi-step actions, use tools, and interact with external systems.
+---
+
 # Agentic AI Controls
 
 This document extends the control framework for **agentic AI systems** - AI that takes autonomous multi-step actions, uses tools, and interacts with external systems.

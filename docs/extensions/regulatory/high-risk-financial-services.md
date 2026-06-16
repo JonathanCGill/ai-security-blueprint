@@ -1,3 +1,7 @@
+---
+description: Examines the top ten risks of deploying AI in financial services and maps each to the three-layer runtime defence pattern of Guardrails, Judge, and Human Oversight.
+---
+
 # High-Risk Financial Services
 
 The top 10 risks of deploying AI in financial services - and how AI runtime behavioral security addresses each one.

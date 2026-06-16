@@ -1,3 +1,7 @@
+---
+description: An honest assessment of the framework's current maturity, validation status, and known gaps.
+---
+
 # Maturity & Validation
 
 **An honest assessment of what this reference is, what it's validated against, and where the gaps are.**

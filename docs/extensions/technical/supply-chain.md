@@ -1,3 +1,7 @@
+---
+description: Controls for verifying AI supply chain integrity, covering model provenance, framework dependencies, and provider trust.
+---
+
 # Supply Chain Controls
 
 > Verifying what you deploy and what you depend on.

@@ -1,3 +1,7 @@
+---
+description: A consolidated implementation reference for securing model inference endpoints and API gateways against adversarial and operational threats.
+---
+
 # AI Endpoint Hardening
 
 > Securing model inference endpoints, API gateways, and tool servers against adversarial and operational threats.

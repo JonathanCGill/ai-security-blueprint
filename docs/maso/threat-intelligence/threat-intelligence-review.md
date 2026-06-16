@@ -1,3 +1,7 @@
+---
+description: A cross-reference of current threat intelligence against the AI Runtime Security framework's proposals, identifying where the threat landscape has evolved and what needs strengthening.
+---
+
 # Threat Intelligence Review
 
 **Does Current Threat Intelligence Affect the Framework's Proposals?**

@@ -1,3 +1,7 @@
+---
+description: A pre-deployment and ongoing verification checklist for PACE resilience, organised by risk tier.
+---
+
 # PACE Resilience Checklist
 
 *Verification items for PACE resilience, organised by risk tier. Complete these before go-live and revalidate at the cadence specified for your tier.*

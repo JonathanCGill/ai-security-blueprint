@@ -1,3 +1,7 @@
+---
+description: Shows how to design AI governance controls for high-throughput outbound customer communications where message delivery timing determines whether oversight is meaningful or merely retrospective.
+---
+
 # Worked Example: High-Volume Customer Communications
 
 > When time-to-detect equals time-to-harm, control timing becomes a design decision.

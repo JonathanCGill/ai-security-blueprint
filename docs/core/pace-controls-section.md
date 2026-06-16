@@ -1,3 +1,7 @@
+---
+description: Defines the internal PACE degradation plans for each AI control layer, specifying fail postures and fallback behaviours across risk tiers.
+---
+
 # Control Layer Resilience: Internal PACE
 
 *This section defines what happens when each control layer degrades. Every control has its own PACE plan (vertical axis) in addition to the architecture-level PACE across layers (horizontal axis). See the [PACE Resilience Methodology](../pace-resilience.md) for the full model.*

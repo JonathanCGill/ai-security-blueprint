@@ -1,3 +1,7 @@
+---
+description: Shows how strategy, use case definition, security design, and continuous monitoring connect into a single unbroken lifecycle rather than isolated stages.
+---
+
 # The Thread
 
 *How strategy, use case definition, solution filtering, security design, and continuous monitoring connect into a single, unbroken lifecycle.*

@@ -1,3 +1,7 @@
+---
+description: An analysis of the AI capability trajectories that will stress or break the current framework, and the architectural changes required for MASO 2.0.
+---
+
 # Anticipated Changes to AI and Framework: MASO 2.0
 
 > Where AI is heading, where the framework breaks, and what MASO 2.0 must address.

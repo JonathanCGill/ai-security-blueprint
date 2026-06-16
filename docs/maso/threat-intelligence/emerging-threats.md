@@ -1,3 +1,7 @@
+---
+description: A forward-looking catalogue of threat patterns for multi-agent AI systems, assessed for likelihood, impact, and the MASO controls that address each.
+---
+
 # Emerging Threats
 
 **Forward-Looking Threat Patterns for Multi-Agent AI Systems**
@@ -507,7 +511,7 @@ The following threats reflect trends visible in production deployments and resea
 
 The May 2026 review surfaced three patterns that warrant their own entries rather than being absorbed into ET-01 to ET-25.
 
-### ET-26: AI-augmented OT/ICS intrusion
+### ET-26: AI-augmented OT-ICS intrusion
 
 **Status:** Confirmed in production. Dragos disclosed an attacker using Claude Code to autonomously identify the IT/OT boundary in a municipal water utility during the same campaign that breached nine Mexican federal agencies (April 2026).
 

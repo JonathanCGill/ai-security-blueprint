@@ -1,3 +1,7 @@
+---
+description: Complete working examples that demonstrate the AIRS SDK's three-layer security pipeline in action.
+---
+
 # Examples
 
 Complete working examples that demonstrate the AIRS SDK in action.

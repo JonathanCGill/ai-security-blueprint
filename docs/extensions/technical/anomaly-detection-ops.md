@@ -1,3 +1,7 @@
+---
+description: An operational guide for turning collected AI metrics into behavioral anomaly detection that feeds security operations center alerting.
+---
+
 # Behavioral Anomaly Detection - Operational Guide
 
 > From metrics collection to actionable alerts.
