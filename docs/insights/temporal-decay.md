@@ -60,7 +60,7 @@ The system's confidence remains high while its accuracy degrades. That is the fa
 
 Judge and Agent should not run on the same model version. Using different models, or at minimum different model versions with different training cutoffs, introduces independent decay timelines. When the Agent's knowledge becomes stale in one domain, the Judge may still have coverage if its training data was more recent or drawn from different sources.
 
-This is the same principle as [judge model selection](../extensions/technical/judge-model-selection.md): the Judge must be architecturally independent from the system it evaluates. Temporal independence is one dimension of that separation.
+This is the same principle as [Model-as-Judge selection](../extensions/technical/judge-model-selection.md): the Judge must be architecturally independent from the system it evaluates. Temporal independence is one dimension of that separation.
 
 ### Schedule Model Refresh for the Judge, Not Just the Agent
 
@@ -113,7 +113,7 @@ The specific danger for MASO is correlated decay: the Agent and Judge aging toge
 
 !!! info "References"
     - [Observability Controls](../maso/controls/observability.md) - Continuous monitoring to detect drift across the control hierarchy
-    - [Judge Model Selection](../extensions/technical/judge-model-selection.md) - Why the Judge must be architecturally independent from the system it evaluates
+    - [Model-as-Judge Selection](../extensions/technical/judge-model-selection.md) - Why the Judge must be architecturally independent from the system it evaluates
     - [PACE Resilience](../pace-resilience.md) - Structured degradation when control integrity is compromised
     - [MASO Observability Controls](../maso/controls/observability.md) - Per-agent drift detection and cross-agent correlation
     - [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md) - Aggregating safety signals to detect when behavior drifts from normal

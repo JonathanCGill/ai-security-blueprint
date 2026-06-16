@@ -1,3 +1,7 @@
+---
+description: An analysis of the AI capability trajectories that will stress or break the current framework, and the architectural changes required for MASO 2.0.
+---
+
 # Anticipated Changes to AI and Framework: MASO 2.0
 
 > Where AI is heading, where the framework breaks, and what MASO 2.0 must address.
@@ -12,7 +16,7 @@ Six capability trajectories will reshape the framework's operating environment. 
 
 ### 1. The Judge Ceiling
 
-**Trajectory:** Primary models are getting more capable faster than Judge models can keep up. The AISI data already shows R² = 0.097 between capability and safeguard robustness, and that black-box monitors lose accuracy on harder tasks, exactly where accurate evaluation matters most.
+**Trajectory:** Primary models are getting more capable faster than Model-as-Judge instances can keep up. The AISI data already shows R² = 0.097 between capability and safeguard robustness, and that black-box monitors lose accuracy on harder tasks, exactly where accurate evaluation matters most.
 
 **Where the framework breaks:**
 
@@ -31,7 +35,7 @@ The framework's second layer depends on Model-as-Judge providing independent eva
 | **Verifiable action constraints** | Shift from "evaluate whether the output is safe" to "prove the action was within declared bounds." Formal verification of action-space compliance rather than LLM evaluation of output quality. | Critical |
 | **Evidence-based reasoning** | Require agents to provide verifiable evidence chains for consequential claims. Judge evaluates the evidence, not the conclusion, a narrower, more tractable evaluation task. | High |
 | **Domain-specific verification oracles** | For high-risk domains (medical, legal, financial), integrate deterministic verification systems (drug interaction databases, regulatory rule engines, financial limit checks) that don't depend on LLM evaluation. | High |
-| **Ensemble Judge with disagreement detection** | Multiple Judge models from different families; flag when they disagree rather than relying on any single evaluation. Disagreement itself is the signal. | Medium |
+| **Ensemble Judge with disagreement detection** | Multiple Model-as-Judge instances from different families; flag when they disagree rather than relying on any single evaluation. Disagreement itself is the signal. | Medium |
 
 ### 2. Human Oversight Becomes Untenable
 

@@ -1,3 +1,7 @@
+---
+description: Explains the model-as-judge layer of the AIRS SDK, covering verdict types, rule-based and LLM-backed judge implementations, and configuration options.
+---
+
 # Model-as-Judge: Layer 2
 
 The Judge catches what guardrails miss. It evaluates AI outputs for subtle policy violations, hallucinations, inappropriate content, and novel attack patterns that can't be detected with pattern matching.

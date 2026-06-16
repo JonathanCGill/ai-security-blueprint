@@ -305,7 +305,7 @@ Precedents written for one model version, one data environment, or one regulator
 
 As the library grows, selecting the right precedents becomes harder, and including too many consumes context window space needed for the actual evaluation.
 
-**Mitigation:** Precedent selection uses retrieval-based filtering (domain, criteria, recency). Cap the number of precedents per evaluation at a level appropriate for the judge model's context window. Start with 3 to 6 and adjust based on evaluation quality metrics.
+**Mitigation:** Precedent selection uses retrieval-based filtering (domain, criteria, recency). Cap the number of precedents per evaluation at a level appropriate for the Model-as-Judge's context window. Start with 3 to 6 and adjust based on evaluation quality metrics.
 
 **4. Gaming the precedent library.**
 
@@ -337,7 +337,7 @@ If agents (or their developers) can see the precedents the judge uses, they can 
 
 !!! info "References"
     - [MASO Objective Intent](../../maso/controls/objective-intent.md) : OISpec structure and evaluation hierarchy
-    - [Judge Assurance](../../core/judge-assurance.md) : calibration and accuracy validation for judge models
+    - [Judge Assurance](../../core/judge-assurance.md) : calibration and accuracy validation for Model-as-Judge instances
     - [Judge Prompt Examples](../templates/judge-prompt-examples.md) : base prompt templates that precedents extend
     - [The Intent Layer](../../insights/the-intent-layer.md) : post-execution semantic evaluation pattern
     - [Model-as-Judge Implementation](model-as-judge-implementation.md) : technical implementation guidance

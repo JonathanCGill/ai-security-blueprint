@@ -121,7 +121,7 @@ Each stage lights up as the system processes the prompt, making the decision pip
 | Orchestrator | [Multi-Agent Controls](../../core/multi-agent-controls.md), [Delegation Chains](../../infrastructure/agentic/delegation-chains.md) |
 | Specialist Agents | [Agentic AI Controls](../../core/agentic.md), [Tool Access Controls](../../infrastructure/agentic/tool-access-controls.md) |
 | Per-Task Judges | [Judge Assurance](../../core/judge-assurance.md), [Model-as-Judge Implementation](../technical/model-as-judge-implementation.md) |
-| Final Judge | [Judge Model Selection](../technical/judge-model-selection.md), [Distilling the Judge into an SLM](../technical/distill-judge-slm.md) |
+| Final Judge | [Model-as-Judge Selection](../technical/judge-model-selection.md), [Distilling the Judge into an SLM](../technical/distill-judge-slm.md) |
 | Intent Store | [Identity & Access](../../infrastructure/controls/identity-and-access.md) |
 
 !!! info "References"

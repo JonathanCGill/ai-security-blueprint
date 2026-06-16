@@ -1,3 +1,7 @@
+---
+description: Illustrates how AI security controls scale down for a MEDIUM-risk internal document assistant, using rules-based guardrails and optional Judge sampling rather than full runtime evaluation.
+---
+
 # Worked Example: Internal Document Assistant at TechCorp
 
 > A lighter implementation for an internal-only AI tool.

@@ -1,3 +1,7 @@
+---
+description: Defines the operating model for a centralised AI governance function, mapping technical controls and platform capabilities to ISO/IEC 42001:2023 governance requirements.
+---
+
 # AI Governance Operating Model
 
 ## Aligned with ISO/IEC 42001:2023

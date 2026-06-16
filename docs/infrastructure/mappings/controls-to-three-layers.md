@@ -1,3 +1,7 @@
+---
+description: Maps all 80 infrastructure controls to the three-layer behavioral security pattern of Guardrails, Model-as-Judge, and Human Oversight.
+---
+
 # Controls to Three-Layer Mapping
 
 > Maps all 80 infrastructure controls to the three-layer behavioral security pattern: **Guardrails → Model-as-Judge → Human Oversight**.
@@ -93,8 +97,8 @@ Infrastructure controls make these layers enforceable. Without the infrastructur
 | **SUP-03** Verify RAG data source integrity | Source allowlisting and content scanning are guardrails on the RAG ingestion path | Judge can evaluate whether retrieved content appears anomalous relative to known sources | Humans maintain source allowlists and review ingestion logs |
 | **SUP-04** Secure fine-tuning pipeline | Pipeline security prevents training-time attacks - a guardrail on model creation | Post-training evaluation provides Judge with validated safety baselines | Humans approve training data, review evaluation results, and authorise deployment |
 | **SUP-05** Audit tool and plugin supply chain | Tool registry and security assessment are guardrails on agent capability expansion | Judge can evaluate tool usage against declared capabilities, detecting anomalous patterns | Humans assess, approve, and monitor tools in the registry |
-| **SUP-06** Verify guardrail and safety model integrity | Integrity verification protects the guardrails themselves - the most critical supply chain control | Judge model integrity is directly protected; compromise would defeat the evaluation layer | Humans approve guardrail/Judge changes and review tamper detection alerts |
-| **SUP-07** Maintain AI-BOM | AI-BOM enables systematic guardrail coverage verification | AI-BOM tracks Judge model associations, ensuring consistent evaluation configuration | AI-BOM gives humans a single source of truth for what is deployed |
+| **SUP-06** Verify guardrail and safety model integrity | Integrity verification protects the guardrails themselves - the most critical supply chain control | Model-as-Judge integrity is directly protected; compromise would defeat the evaluation layer | Humans approve guardrail/Judge changes and review tamper detection alerts |
+| **SUP-07** Maintain AI-BOM | AI-BOM enables systematic guardrail coverage verification | AI-BOM tracks Model-as-Judge associations, ensuring consistent evaluation configuration | AI-BOM gives humans a single source of truth for what is deployed |
 | **SUP-08** Monitor for vulnerabilities | Vulnerability monitoring triggers guardrail rule updates for new attack patterns | New vulnerabilities may require Judge evaluation criteria updates | Humans assess vulnerability impact and prioritise remediation |
 
 ## Incident Response

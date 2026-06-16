@@ -1,3 +1,7 @@
+---
+description: Documents the guardrails layer of the AIRS SDK, including built-in detectors for prompt injection and PII, chaining, and custom guardrail authoring.
+---
+
 # Guardrails: Layer 1
 
 Guardrails are fast, deterministic checks that block known-bad patterns. They run on both input (before the model) and output (after the model). They're cheap (~1ms), predictable, and catch the obvious stuff.

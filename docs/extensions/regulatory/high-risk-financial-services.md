@@ -1,3 +1,7 @@
+---
+description: Examines the top ten risks of deploying AI in financial services and maps each to the three-layer runtime defence pattern of Guardrails, Judge, and Human Oversight.
+---
+
 # High-Risk Financial Services
 
 The top 10 risks of deploying AI in financial services - and how AI runtime behavioral security addresses each one.
@@ -483,7 +487,7 @@ Data in an AI system moves through more stages than traditional banking applicat
 | **In model memory** | Model may retain information within session | Cross-session information leakage |
 | **In model response** | Generated output containing data | PII leakage, data exfiltration via response |
 | **In logs** | Full interaction logs for Judge evaluation | Log breach exposes all interactions |
-| **In Judge evaluation** | Judge processes interaction data | Judge model sees all data the primary model saw |
+| **In Judge evaluation** | Judge processes interaction data | Model-as-Judge sees all data the primary model saw |
 | **In HITL queue** | Human reviewers see flagged interactions | Over-exposure of sensitive data to reviewers |
 | **In backups** | Copies of all the above | Backup breach exposes everything |
 

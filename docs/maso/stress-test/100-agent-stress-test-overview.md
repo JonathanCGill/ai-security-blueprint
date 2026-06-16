@@ -1,3 +1,7 @@
+---
+description: A tabletop stress-test methodology for identifying where MASO's controls break down as agent counts scale from single digits to triple digits.
+---
+
 # Stress Testing MASO at Scale
 
 **A Tabletop Methodology for Finding Framework Breakpoints**
@@ -163,7 +167,7 @@ At 100 agents, the message volume changes the problem:
 - **Message throughput.** If each agent sends an average of 10 messages per minute to other agents, the system generates ~1,000 messages per minute. At peak (e.g., market open, incident response), this may spike to 10,000+ per minute. Every message needs anomaly scoring, drift comparison, and potentially DLP scanning.
 - **Anomaly baseline complexity.** Behavioral baselines at 5 agents are 5 profiles. At 100 agents, it is 100 profiles - plus the interaction patterns between agents, which is combinatorial. What constitutes "anomalous" for Agent 47's communication pattern with Agent 83?
 - **Alert fatigue.** More agents means more anomaly signals. If each agent generates a false positive alert once per day, 100 agents generate 100 false positives per day. The human review capacity for PACE escalation decisions becomes the bottleneck.
-- **Cost.** If every message is evaluated by a Judge model, the observability compute cost may exceed the task compute cost. The framework's [cost and latency guidance](../../extensions/technical/cost-and-latency.md) discusses sampling rates for single-model systems - the same logic applies at scale, but the trade-offs are sharper.
+- **Cost.** If every message is evaluated by a Model-as-Judge, the observability compute cost may exceed the task compute cost. The framework's [cost and latency guidance](../../extensions/technical/cost-and-latency.md) discusses sampling rates for single-model systems - the same logic applies at scale, but the trade-offs are sharper.
 
 ### What to Assess
 

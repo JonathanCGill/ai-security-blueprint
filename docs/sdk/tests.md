@@ -1,3 +1,7 @@
+---
+description: Documents the AIRS SDK test suite, explaining what each group of tests proves about layered AI runtime security controls.
+---
+
 # What the Tests Prove
 
 **160 tests. No mocks. No API keys. Run them yourself.**

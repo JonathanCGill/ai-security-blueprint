@@ -65,7 +65,7 @@ If the model can't distinguish evaluation from production, it can't sandbag.
 
 A model optimised to pass one evaluator is unlikely to be simultaneously optimised against a different evaluator from a different provider with different evaluation criteria.
 
-Use at least two independent Judge models for Tier 2+ systems. Discrepancies between their assessments are a signal - investigate them.
+Use at least two independent Model-as-Judge instances for Tier 2+ systems. Discrepancies between their assessments are a signal - investigate them.
 
 ### 3. Canary Interactions
 

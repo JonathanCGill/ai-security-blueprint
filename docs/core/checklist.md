@@ -62,7 +62,7 @@ description: "Phase-by-phase implementation checklist for AI security controls c
 - [ ] Judge prompt developed
 - [ ] Evaluation criteria defined
 - [ ] Scoring rubric documented
-- [ ] Judge model selected
+- [ ] Model-as-Judge selected
 
 ### Shadow Mode
 - [ ] Judge running on all/sampled interactions

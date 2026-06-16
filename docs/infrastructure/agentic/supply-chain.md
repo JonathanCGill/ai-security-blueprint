@@ -1,3 +1,7 @@
+---
+description: Security controls establishing verification, provenance, and integrity requirements across the full AI supply chain, from foundation models to third-party tools.
+---
+
 # Supply Chain Security Controls
 
 > Part of the [AI Security Infrastructure Controls](../README.md) framework.
@@ -9,7 +13,7 @@ AI supply chains extend far beyond traditional software dependencies. They inclu
 
 These eight controls establish verification, provenance, and integrity requirements across the full AI supply chain.
 
-## SUP-01 - Verify Model Provenance and Integrity
+## SUP-01: Verify Model Provenance and Integrity
 
 **Risk Tiers:** All
 
@@ -35,7 +39,7 @@ Ensure that every model deployed in production can be traced to a verified sourc
 | **Judge** | Judge evaluation baselines are model-specific. A different model invalidates calibration data and threshold settings. |
 | **Human Oversight** | Provenance records give human reviewers confidence that the model in production matches what was assessed and approved. |
 
-## SUP-02 - Assess Model Risk Before Adoption
+## SUP-02: Assess Model Risk Before Adoption
 
 **Risk Tiers:** All
 
@@ -61,7 +65,7 @@ Evaluate every model against security, safety, and operational risk criteria bef
 | **Judge** | Assessment results inform Judge evaluation criteria and threshold calibration for the specific model. |
 | **Human Oversight** | Risk classification determines the level of human oversight required - higher-risk models require more frequent and more granular human review. |
 
-## SUP-03 - Verify RAG Data Source Integrity
+## SUP-03: Verify RAG Data Source Integrity
 
 **Risk Tiers:** Tier 2+
 
@@ -87,7 +91,7 @@ Ensure that data ingested into retrieval-augmented generation (RAG) knowledge ba
 | **Judge** | Judge can evaluate whether retrieved content appears anomalous relative to the knowledge base's expected domain, but only if the baseline is trustworthy. |
 | **Human Oversight** | Provenance records enable human reviewers to trace any problematic output back to the specific RAG source that contributed to it. |
 
-## SUP-04 - Secure Fine-Tuning Pipeline
+## SUP-04: Secure Fine-Tuning Pipeline
 
 **Risk Tiers:** Tier 2+
 
@@ -114,7 +118,7 @@ Protect fine-tuning processes from data poisoning, unauthorised modification, an
 | **Judge** | Post-training evaluation provides the Judge with a validated baseline. Changes in Judge scores after fine-tuning indicate potential problems. |
 | **Human Oversight** | Artifact versioning and training logs give human reviewers a complete audit trail of what changed and why. |
 
-## SUP-05 - Audit Tool and Plugin Supply Chain
+## SUP-05: Audit Tool and Plugin Supply Chain
 
 **Risk Tiers:** Tier 2+ (agentic)
 
@@ -141,33 +145,33 @@ Ensure that tools and plugins available to AI agents are from verified sources, 
 | **Judge** | Judge can evaluate whether tool invocation patterns match the declared capability profile, detecting anomalous usage that may indicate compromise. |
 | **Human Oversight** | The tool registry provides human reviewers with a complete inventory of what agents can do, enabling informed approval decisions. |
 
-## SUP-06 - Verify Guardrail and Safety Model Integrity
+## SUP-06: Verify Guardrail and Safety Model Integrity
 
 **Risk Tiers:** All
 
 ### Objective
 
-Guardrails and Judge models are themselves machine learning systems (or rule engines). Their integrity must be verified with the same rigour applied to the primary model, because compromise of safety systems is the highest-impact supply chain attack.
+Guardrails and Model-as-Judge instances are themselves machine learning systems (or rule engines). Their integrity must be verified with the same rigour applied to the primary model, because compromise of safety systems is the highest-impact supply chain attack.
 
 ### Requirements
 
 | Requirement | Description |
 |-------------|-------------|
 | **Integrity verification** | Guardrail models and rule configurations are subject to the same hash verification and signature validation as primary models (SUP-01). |
-| **Independent sourcing** | Where possible, guardrail and Judge models should come from different providers or model families than the primary model. This reduces the risk of correlated failure. |
+| **Independent sourcing** | Where possible, guardrail and Model-as-Judge instances should come from different providers or model families than the primary model. This reduces the risk of correlated failure. |
 | **Configuration version control** | Guardrail rule sets and Judge prompts/configurations are stored in version-controlled repositories with audit trails. Changes require approval. |
-| **Tamper detection** | Monitor guardrail and Judge model artifacts for unauthorised modification. Alert on any change that bypasses the approved change process. |
-| **Update validation** | Updates to guardrail or Judge models/configurations must pass regression testing against known attack patterns and edge cases before deployment. |
+| **Tamper detection** | Monitor guardrail and Model-as-Judge artifacts for unauthorised modification. Alert on any change that bypasses the approved change process. |
+| **Update validation** | Updates to guardrail or Model-as-Judge instances/configurations must pass regression testing against known attack patterns and edge cases before deployment. |
 
 ### Relationship to Three Layers
 
 | Layer | How SUP-06 Supports It |
 |-------|----------------------|
 | **Guardrails** | This control directly protects guardrail integrity. A compromised guardrail that silently passes malicious content is worse than no guardrail at all. |
-| **Judge** | Judge model integrity is equally critical. A compromised Judge that approves harmful outputs defeats the evaluation layer entirely. |
+| **Judge** | Model-as-Judge integrity is equally critical. A compromised Judge that approves harmful outputs defeats the evaluation layer entirely. |
 | **Human Oversight** | Version-controlled configurations and tamper detection ensure that human-approved safety settings remain in effect. |
 
-## SUP-07 - Maintain AI Component Inventory (AI-BOM)
+## SUP-07: Maintain AI Component Inventory (AI-BOM)
 
 **Risk Tiers:** All
 
@@ -179,7 +183,7 @@ Maintain a comprehensive, machine-readable inventory of all AI components in pro
 
 | Requirement | Description |
 |-------------|-------------|
-| **Component coverage** | The AI-BOM must include: foundation models, fine-tuned models, guardrail models/rules, Judge models/configurations, embedding models, RAG knowledge bases, tools and plugins, orchestration frameworks, and vector databases. |
+| **Component coverage** | The AI-BOM must include: foundation models, fine-tuned models, guardrail models/rules, Model-as-Judge instances/configurations, embedding models, RAG knowledge bases, tools and plugins, orchestration frameworks, and vector databases. |
 | **Metadata per component** | Each entry includes: component type, name, version, publisher/source, hash, deployment location, risk tier, dependencies, approval status, and last assessment date. |
 | **Machine-readable format** | The AI-BOM is maintained in a structured, machine-readable format (e.g., JSON, YAML) that can be consumed by automated tooling. |
 | **Continuous update** | The AI-BOM is updated automatically when components are deployed, updated, or decommissioned. Manual-only maintenance is insufficient for production systems. |
@@ -190,10 +194,10 @@ Maintain a comprehensive, machine-readable inventory of all AI components in pro
 | Layer | How SUP-07 Supports It |
 |-------|----------------------|
 | **Guardrails** | The AI-BOM identifies which guardrails are deployed for each model, enabling gap analysis and coverage verification. |
-| **Judge** | The AI-BOM tracks Judge model versions and their associations with primary models, ensuring evaluation consistency. |
+| **Judge** | The AI-BOM tracks Model-as-Judge versions and their associations with primary models, ensuring evaluation consistency. |
 | **Human Oversight** | The AI-BOM gives human reviewers a single source of truth for what is deployed, enabling informed risk decisions and incident response. |
 
-## SUP-08 - Monitor for Model and Dependency Vulnerabilities
+## SUP-08: Monitor for Model and Dependency Vulnerabilities
 
 **Risk Tiers:** All
 

@@ -1,3 +1,7 @@
+---
+description: Guidelines for reporting issues, submitting changes, and following the style conventions used across the AI Runtime Security project.
+---
+
 # Contributing to AI Runtime Security
 
 Thank you for your interest in contributing to this project. This document provides guidelines for contributions.

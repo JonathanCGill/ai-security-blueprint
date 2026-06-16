@@ -1,3 +1,7 @@
+---
+description: A lifecycle management guide for AI agent identities covering provisioning, access control, and accountability as non-human principals.
+---
+
 # Non-Human Identity Lifecycle
 
 > Managing AI agents as identities, not just applications.

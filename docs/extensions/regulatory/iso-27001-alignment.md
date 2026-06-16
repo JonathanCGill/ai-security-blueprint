@@ -1,3 +1,7 @@
+---
+description: Maps AI Runtime Security controls to ISO 27001:2022 information security requirements, identifying where existing controls apply and where AI introduces novel gaps.
+---
+
 # ISO 27001:2022 Alignment
 
 This document maps the AI Runtime Security to ISO 27001:2022 information security requirements.

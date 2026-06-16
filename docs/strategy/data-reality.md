@@ -1,3 +1,7 @@
+---
+description: A framework for assessing whether an organisation's data is ready to support an AI initiative, covering availability, quality, accessibility, and legal constraints.
+---
+
 # Data Reality
 
 *Your data determines your strategy more than your ambition does.*

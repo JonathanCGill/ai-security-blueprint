@@ -1,14 +1,14 @@
 ---
-description: "Principles for selecting the right Judge model (LLM or distilled SLM): prioritising model diversity, conservative bias, and throughput to match transaction volume."
+description: "Principles for selecting the right Model-as-Judge (LLM or distilled SLM): prioritising model diversity, conservative bias, and throughput to match transaction volume."
 ---
 
-# Judge Model Selection
+# Model-as-Judge Selection
 
 Principles for choosing the right model to evaluate your AI system. These principles apply whether the Judge is a large LLM for async assurance or a [distilled SLM](distill-judge-slm.md) for inline evaluation.
 
 ## The Core Principles
 
-![Judge Model Selection](../../images/judge-model-selection.svg)
+![Model-as-Judge Selection](../../images/judge-model-selection.svg)
 
 Four principles, in order of priority:
 
@@ -174,7 +174,7 @@ A smaller Judge with a precise, structured rubric often outperforms a larger Jud
 - **Split composite evaluations.** If one Judge is struggling with a multi-criterion prompt, the problem is usually the prompt, not the model. Break the evaluation into separate, single-criterion Judges running in parallel. Small models handle single-criterion tasks reliably.
 - **Distil where volume is high.** For inline evaluation on well-defined criteria, a [distilled SLM sidecar](distill-judge-slm.md) trained on the larger Judge's verdicts gives you the rubric of the large model at the cost and latency of the small one.
 - **Re-evaluate on model refresh.** Smaller models improve faster than frontier models. A Judge that required a frontier model twelve months ago may now run correctly on a mid-tier model. Review on the same cadence as the Judge's own mandate.
-- **Document the choice.** Record the Judge model, why it was selected, and the calibration evidence that supports the selection. This belongs in the Judge mandate, not in a config file.
+- **Document the choice.** Record the Model-as-Judge, why it was selected, and the calibration evidence that supports the selection. This belongs in the Judge mandate, not in a config file.
 
 ### Where This Interacts With Principle 1 (Different)
 

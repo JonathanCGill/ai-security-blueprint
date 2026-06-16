@@ -1,3 +1,7 @@
+---
+description: Guidance on managing the unpredictable cost risks of agentic AI systems through metering, budget controls, and economic governance practices.
+---
+
 # Economic Governance
 
 > You can't govern what you don't meter. AI costs are non-deterministic: treat them like risk, not like infrastructure.

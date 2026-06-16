@@ -1,3 +1,7 @@
+---
+description: A complete walkthrough of implementing AI security controls for a customer service assistant at a fictional bank, covering risk classification, control selection, monitoring, and incident response.
+---
+
 # Worked Example: Customer Service AI at Meridian Bank
 
 > A complete walkthrough of implementing AI security controls for a real-world use case.

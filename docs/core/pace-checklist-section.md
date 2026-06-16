@@ -1,3 +1,7 @@
+---
+description: A pre-deployment and ongoing verification checklist for PACE resilience, organised by risk tier.
+---
+
 # PACE Resilience Checklist
 
 *Verification items for PACE resilience, organised by risk tier. Complete these before go-live and revalidate at the cadence specified for your tier.*
@@ -150,7 +154,7 @@ These items apply to every AI system, regardless of risk tier.
 
 These items prevent PACE plan decay over time:
 
-- [ ] PACE plan reviewed when any control layer is modified (guardrail rules updated, Judge model changed, reviewer pool changed)
+- [ ] PACE plan reviewed when any control layer is modified (guardrail rules updated, Model-as-Judge changed, reviewer pool changed)
 - [ ] PACE plan reviewed when agent tool permissions change (agentic systems)
 - [ ] Fallback path validated after any infrastructure change that could affect it
 - [ ] New team members briefed on PACE plan and their role in it

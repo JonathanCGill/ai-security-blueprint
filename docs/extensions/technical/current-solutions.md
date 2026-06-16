@@ -1,3 +1,7 @@
+---
+description: A reference guide to production-ready guardrail, evaluation, and safety solutions implementing the three-layer pattern for AI runtime security.
+---
+
 # Current AI Safety Solutions
 
 A reference guide to production-ready guardrail, evaluation, and safety solutions implementing the three-layer pattern.

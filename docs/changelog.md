@@ -316,7 +316,7 @@ Framework had grown to 48 files. Core + Extensions model provides clear "start h
 ### Changed
 - Expanded risk tier definitions
 - Enhanced HITL model documentation
-- Improved Judge model selection guidance
+- Improved Model-as-Judge selection guidance
 
 ## [0.1.0] - 2025-12-01
 

@@ -1,3 +1,7 @@
+---
+description: Points practitioners to the resources and patterns needed to implement AI security controls without providing untested code.
+---
+
 # AI Security Controls - Implementation Guide
 
 This guide points you to resources for implementing AI security controls. We don't provide code-the APIs change frequently and untested code causes more problems than it solves.

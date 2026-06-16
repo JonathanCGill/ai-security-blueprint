@@ -1,3 +1,7 @@
+---
+description: Covers network, infrastructure, and platform controls that enforce AI security at the technical layer.
+---
+
 # Technical Controls for AI Security
 
 Network, infrastructure, and platform controls that enforce AI security at the technical layer.

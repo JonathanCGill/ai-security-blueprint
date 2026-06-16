@@ -67,7 +67,7 @@ An agent processing low-risk read operations can run with guardrails and periodi
 
 ### Declared Intent Is the Judge's Statute Book
 
-A judge is only as good as the law it applies. A human judge ruling on a vague statute produces inconsistent, unpredictable verdicts. The same is true for a judge model. If the agent's purpose is described as "handle customer requests" or "be helpful," the judge has nothing precise to evaluate against. It falls back on generic safety criteria that catch obvious failures but miss subtle deviations from purpose.
+A judge is only as good as the law it applies. A human judge ruling on a vague statute produces inconsistent, unpredictable verdicts. The same is true for a Model-as-Judge. If the agent's purpose is described as "handle customer requests" or "be helpful," the judge has nothing precise to evaluate against. It falls back on generic safety criteria that catch obvious failures but miss subtle deviations from purpose.
 
 The clearer the declaration, the more sound the ruling. When intent is specific ("process refund requests for orders under 90 days, maximum $500, scoped to the returns database"), the judge can verify each element. When outcomes are measurable ("refund issued within policy limits, customer notified, audit trail complete"), the judge can assess success or failure, not just safety. When constraints are explicit ("no access to payment instruments, no external API calls, maximum 50 records per query"), the judge can flag violations precisely.
 

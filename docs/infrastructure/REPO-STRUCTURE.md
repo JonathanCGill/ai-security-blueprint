@@ -1,3 +1,7 @@
+---
+description: Describes the layout and organisation of the AI Security Infrastructure Controls repository and how it complements the AI Runtime Security behavioral pattern.
+---
+
 # AI Security Infrastructure Controls - Repo Structure
 
 > Complements [AI Runtime Security](https://github.com/JonathanCGill/airuntimesecurity.io), which defines the *behavioral* security pattern (Guardrails → Model-as-Judge → Human Oversight). This repo defines the *infrastructure* controls that make that pattern enforceable.

@@ -1,3 +1,7 @@
+---
+description: A template for documenting AI systems in your inventory, covering identification, risk classification, and governance requirements.
+---
+
 # AI System Model Card Template
 
 Use this template to document AI systems in your inventory (AI.3.1, AI.3.2).

@@ -1,3 +1,7 @@
+---
+description: Demonstrates how to deploy AI as an analyst amplifier within an existing fraud control chain, keeping enforcement authority with fraud systems rather than the AI.
+---
+
 # Worked Example: AI-Assisted Fraud Analytics
 
 > AI doesn't decide fraud. AI helps analysts interpret signals while fraud systems remain the enforcement authority.

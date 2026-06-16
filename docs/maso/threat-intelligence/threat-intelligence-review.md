@@ -1,3 +1,7 @@
+---
+description: A cross-reference of current threat intelligence against the AI Runtime Security framework's proposals, identifying where the threat landscape has evolved and what needs strengthening.
+---
+
 # Threat Intelligence Review
 
 **Does Current Threat Intelligence Affect the Framework's Proposals?**
@@ -259,7 +263,7 @@ These framework proposals are directionally correct but need updates based on ne
 1. **Elevate ET-08 from "emerging" to "active"** in the threat register
 2. **Add guidance on defensive refresh cadence** - guardrail models, Judge prompts, and detection rules need regular rotation to counter adversarial optimisation
 3. **Add task decomposition detection** as a control concern - adversaries splitting malicious goals across multiple benign-looking requests to individual agents
-4. **Address model confidentiality** - if attackers can identify which guardrail/Judge models are deployed, they can optimise against them; consider model identification as a security-relevant information leak
+4. **Address model confidentiality** - if attackers can identify which guardrail/Model-as-Judge instances are deployed, they can optimise against them; consider model identification as a security-relevant information leak
 
 ## Part 3: New Threats Not Currently Covered
 

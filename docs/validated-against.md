@@ -1,3 +1,7 @@
+---
+description: Shows how each major framework control maps to documented, real-world AI security failures and incidents.
+---
+
 # Validated Against Real Incidents
 
 **Every major control in this framework addresses a documented, public AI security failure. This page shows how.**

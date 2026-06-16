@@ -1,3 +1,7 @@
+---
+description: Covers the circuit breaker and PACE controller mechanisms in the AIRS SDK that enable safe, structured degradation of AI systems under failure conditions.
+---
+
 # Circuit Breaker & PACE: Resilience
 
 Two mechanisms ensure your AI system degrades safely when things go wrong:

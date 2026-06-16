@@ -1,3 +1,7 @@
+---
+description: Credits the researchers, practitioners, standards bodies, and organisations whose work informs this framework, with links to primary sources.
+---
+
 # References & Sources
 
 **This framework builds on the work of researchers, practitioners, standards bodies, and organisations who are defining the field of AI security. This page credits their contributions and provides links to the primary sources.**

@@ -1,3 +1,7 @@
+---
+description: A guide for selecting proportionate AI security controls based on risk tier, use case type, and deployment context.
+---
+
 # Control Selection Guide
 
 How to quickly identify the controls your AI system needs and consciously deselect the ones it does not.

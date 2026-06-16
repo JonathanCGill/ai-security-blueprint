@@ -1,3 +1,7 @@
+---
+description: Defines the structured degradation path for autonomous AI systems, explaining why agents require a staged response between full autonomy and a complete shutdown.
+---
+
 # Agentic AI: Graceful Degradation and PACE Resilience
 
 *This section defines the structured degradation path for autonomous AI systems. For stateless generative AI (chatbots, content tools), the Emergency response is simple: stop the service, route to fallback, fix, restart. For agentic AI, it's not.*

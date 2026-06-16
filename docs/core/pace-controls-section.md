@@ -1,3 +1,7 @@
+---
+description: Defines the internal PACE degradation plans for each AI control layer, specifying fail postures and fallback behaviours across risk tiers.
+---
+
 # Control Layer Resilience: Internal PACE
 
 *This section defines what happens when each control layer degrades. Every control has its own PACE plan (vertical axis) in addition to the architecture-level PACE across layers (horizontal axis). See the [PACE Resilience Methodology](../pace-resilience.md) for the full model.*
@@ -39,7 +43,7 @@ The Judge is the Alternate layer: probabilistic, asynchronous, catches what guar
 | **P** - Normal | Judge evaluating outputs, scores within calibration range | Sample 10–20% of outputs. Log scores. | Evaluate 100% of outputs async. Auto-hold outputs below confidence threshold. | Evaluate 100% of outputs AND actions. Dual-model evaluation. Pre- and post-action verification for agents. |
 | **A** - Degraded | Judge latency >3x baseline, or partial model errors, or score distribution drifting | Reduce sampling rate. Log coverage gap. Review gap at next business day. | Switch to priority-only evaluation: flag high-risk outputs first (customer-facing, financial, PII-containing). Accept evaluation gap on low-risk outputs. Alert on-call. | Queue all outputs. Accept increased latency rather than skipping evaluation. Alert on-call. If agent, constrain to read-only until Judge performance restored. |
 | **C** - Down | Judge returning errors, nonsensical scores, or completely unresponsive | Suspend Judge. Guardrails-only operation. Increase human sampling of outputs if practical. | All outputs held for human review until Judge restored. If human review queue exceeds capacity, throttle AI throughput to match. | All AI traffic paused. Human-only operation for any in-flight work. No new AI requests accepted. |
-| **E** - Compromised | Evidence of Judge model poisoning, adversarial manipulation of evaluation criteria, or score manipulation | Disable Judge. Guardrails only. Alert team. Investigate before restoring. | Activate circuit breaker. Route to non-AI fallback. Incident response. Do not trust any recent Judge scores - review outputs that passed since potential compromise. | Full stop. Forensic analysis of Judge model, evaluation prompts, and score history. All outputs evaluated by compromised Judge must be re-reviewed by humans. Regulators notified. |
+| **E** - Compromised | Evidence of Model-as-Judge poisoning, adversarial manipulation of evaluation criteria, or score manipulation | Disable Judge. Guardrails only. Alert team. Investigate before restoring. | Activate circuit breaker. Route to non-AI fallback. Incident response. Do not trust any recent Judge scores - review outputs that passed since potential compromise. | Full stop. Forensic analysis of Model-as-Judge, evaluation prompts, and score history. All outputs evaluated by compromised Judge must be re-reviewed by humans. Regulators notified. |
 
 ### Judge Transition Triggers
 
@@ -47,8 +51,8 @@ The Judge is the Alternate layer: probabilistic, asynchronous, catches what guar
 |---|---|
 | P → A | Judge latency >3x baseline for 5 min; error rate >5% of evaluations; score distribution shifts >2 standard deviations from calibration baseline |
 | A → C | Judge health check failing; >50% of evaluation requests returning errors; complete unresponsiveness for >60s |
-| C → E | Anomalous score patterns (e.g., all outputs scoring identically); evidence of prompt injection in evaluation chain; Judge model integrity check fails |
-| Recovery: C/E → P | Judge model reloaded from known-good checkpoint, validated against test suite, calibration confirmed against baseline, monitoring confirms normal operation for >1 hour |
+| C → E | Anomalous score patterns (e.g., all outputs scoring identically); evidence of prompt injection in evaluation chain; Model-as-Judge integrity check fails |
+| Recovery: C/E → P | Model-as-Judge reloaded from known-good checkpoint, validated against test suite, calibration confirmed against baseline, monitoring confirms normal operation for >1 hour |
 
 ## Human Oversight - Internal PACE
 

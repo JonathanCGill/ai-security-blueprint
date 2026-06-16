@@ -13,7 +13,7 @@ When AI agents invoke external tools - APIs, databases, file systems, code inter
 
 These six controls establish the principle that tool access is declared, mediated, constrained, classified, rate-limited, and fully logged.
 
-## TOOL-01 - Declare Tool Permissions Explicitly Before Deployment
+## TOOL-01: Declare Tool Permissions Explicitly Before Deployment
 
 **Risk Tiers:** Tier 2+ (agentic)
 
@@ -39,7 +39,7 @@ Every tool available to an agent must be declared in a machine-readable manifest
 | **Judge** | Judge can evaluate whether the agent's tool invocation patterns align with the manifest's intended scope, detecting misuse within technically permitted bounds. |
 | **Human Oversight** | The manifest is a human-readable, auditable declaration of agent capability. Reviewers can assess whether declared permissions are appropriate for the task. |
 
-## TOOL-02 - Enforce Permissions at the Gateway, Not at the Agent
+## TOOL-02: Enforce Permissions at the Gateway, Not at the Agent
 
 **Risk Tiers:** Tier 2+ (agentic)
 
@@ -65,7 +65,7 @@ Tool invocation permissions are enforced by a gateway that sits between the agen
 | **Judge** | Gateway logs provide the Judge with a ground-truth record of what the agent actually did (attempted and succeeded), independent of the agent's self-reported reasoning. |
 | **Human Oversight** | Gateway enforcement means humans can trust that the permissions they approved are actually being enforced, not merely suggested to the agent. |
 
-## TOOL-03 - Constrain Tool Parameters to Declared Bounds
+## TOOL-03: Constrain Tool Parameters to Declared Bounds
 
 **Risk Tiers:** Tier 2+ (agentic)
 
@@ -91,7 +91,7 @@ Even when a tool invocation is permitted, the parameters passed to the tool must
 | **Judge** | Judge can evaluate whether parameter values, while technically within bounds, represent unusual or suspicious patterns (e.g., reading an unusually large number of files from a permitted directory). |
 | **Human Oversight** | Parameter schemas give human reviewers visibility into the granular scope of agent actions, not just which tools are available but exactly how they can be used. |
 
-## TOOL-04 - Classify Tool Actions by Reversibility and Impact
+## TOOL-04: Classify Tool Actions by Reversibility and Impact
 
 **Risk Tiers:** Tier 2+ (agentic)
 
@@ -117,7 +117,7 @@ Not all tool actions carry the same risk. Reading a file is different from delet
 | **Judge** | Judge evaluation can be calibrated by action class - irreversible-write and privileged actions warrant more thorough post-hoc evaluation than read-only actions. |
 | **Human Oversight** | Classification directly drives when humans are brought into the loop. It ensures human attention is directed at the highest-impact decisions. |
 
-## TOOL-05 - Rate-Limit Tool Invocations per Agent and per Tool
+## TOOL-05: Rate-Limit Tool Invocations per Agent and per Tool
 
 **Risk Tiers:** Tier 2+ (agentic)
 
@@ -144,7 +144,7 @@ Prevent runaway agent behavior, resource exhaustion, and data exfiltration by en
 | **Judge** | Rate limit proximity and burst patterns feed Judge evaluation as signals of potential anomalous behavior. |
 | **Human Oversight** | Rate limit alerts surface agent sessions that may require human review, directing attention to potentially problematic behavior. |
 
-## TOOL-06 - Log Every Tool Invocation with Full Context
+## TOOL-06: Log Every Tool Invocation with Full Context
 
 **Risk Tiers:** Tier 2+ (agentic)
 

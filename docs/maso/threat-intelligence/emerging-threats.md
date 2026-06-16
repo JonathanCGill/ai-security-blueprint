@@ -1,3 +1,7 @@
+---
+description: A forward-looking catalogue of threat patterns for multi-agent AI systems, assessed for likelihood, impact, and the MASO controls that address each.
+---
+
 # Emerging Threats
 
 **Forward-Looking Threat Patterns for Multi-Agent AI Systems**
@@ -141,7 +145,7 @@ These are not speculative - they are extrapolations from demonstrated attack pri
 
 **Why it's getting worse:** The same AI capabilities that enable defence (pattern recognition, semantic understanding, anomaly detection) are available to attackers. The attacker-defender asymmetry is amplified by AI - automated attack generation scales faster than manual defence development.
 
-**Emerging variant - Adaptive evasion:** Attackers test their payloads against replicas of known guardrail and Judge models, iteratively refining until they achieve bypass. If the defender's model is known (or can be inferred), the attacker can optimise specifically against it.
+**Emerging variant - Adaptive evasion:** Attackers test their payloads against replicas of known guardrail and Model-as-Judge instances, iteratively refining until they achieve bypass. If the defender's model is known (or can be inferred), the attacker can optimise specifically against it.
 
 **MASO controls:** PG-2.9 (model diversity policy - attacker can't optimise against unknown models), EC-3.1 (multi-judge consensus - attacker must bypass multiple independent judges), PG-3.5 (challenger agent - active adversarial testing of defences), OB-3.1 (independent observability agent - separate detection layer)
 
@@ -507,7 +511,7 @@ The following threats reflect trends visible in production deployments and resea
 
 The May 2026 review surfaced three patterns that warrant their own entries rather than being absorbed into ET-01 to ET-25.
 
-### ET-26: AI-augmented OT/ICS intrusion
+### ET-26: AI-augmented OT-ICS intrusion
 
 **Status:** Confirmed in production. Dragos disclosed an attacker using Claude Code to autonomously identify the IT/OT boundary in a municipal water utility during the same campaign that breached nine Mexican federal agencies (April 2026).
 

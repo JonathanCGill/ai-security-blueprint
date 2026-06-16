@@ -1,3 +1,7 @@
+---
+description: Explains why standardising on approved platforms, trusted models, proven patterns, and consistent data access is the single biggest force multiplier for AI governance.
+---
+
 # Platform and Patterns
 
 *Why standardising on approved platforms, trusted models, proven patterns, and consistent data access is the single biggest force multiplier for AI governance.*
@@ -60,7 +64,7 @@ A trusted model is one the organisation has evaluated for capability, security c
 | Capability benchmarked for relevant tasks | You know what it's good at and where it struggles |
 | Security characteristics documented | You know how it responds to adversarial inputs |
 | Licensing and data handling terms reviewed | Legal has confirmed the terms are acceptable |
-| Judge pairing defined | You know which Judge model evaluates this model's output |
+| Judge pairing defined | You know which Model-as-Judge evaluates this model's output |
 | Guardrail baseline configured | You have a starting-point guardrail configuration |
 | Cost profile understood | You can forecast operating costs |
 | Fallback model identified | You know what to switch to if this model is unavailable |
@@ -287,6 +291,6 @@ How to know if standardisation is working:
 - **[The Thread](the-thread.md)** Phase 4 (Build) and Phase 5 (Monitor) are where standardisation pays off - consistent builds, consistent operations
 - **[Platform Integration Guide](../extensions/regulatory/platform-integration-guide.md)** implements the multi-platform governance this article calls for
 - **[RAG Security Controls](../extensions/technical/rag-security.md)** defines the controls for the RAG pattern
-- **[Judge Model Selection](../extensions/technical/judge-model-selection.md)** defines the principles for the Judge entries in the model catalogue
+- **[Model-as-Judge Selection](../extensions/technical/judge-model-selection.md)** defines the principles for the Judge entries in the model catalogue
 - **[Logging & Observability](../infrastructure/controls/logging-and-observability.md)** defines the logging standard that consistent operations relies on
 

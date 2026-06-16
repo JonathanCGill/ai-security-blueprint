@@ -1,3 +1,7 @@
+---
+description: Explains how to embed human oversight into business processes when direct supervision of AI is not practical at scale.
+---
+
 # Humans in the Business Process
 
 *When humans can't supervise AI directly, catch problems before they're committed to in the process.*
