@@ -180,7 +180,7 @@ Vector embeddings require special consideration:
 Judge evaluations contain:
 - Copy of interaction being evaluated
 - Judge's analysis and findings
-- Metadata (Judge model version, evaluation time)
+- Metadata (Model-as-Judge version, evaluation time)
 
 **Retain Judge evaluations for the same period as the underlying interaction** - they're part of the audit trail.
 

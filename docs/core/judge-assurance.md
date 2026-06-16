@@ -26,7 +26,7 @@ If you deploy a Judge without evaluating its accuracy, you have added cost and l
 |-------------|--------|
 | **False negatives** | Judge approves harmful outputs - the whole point of the Judge is defeated |
 | **False positives** | Judge flags benign outputs - users lose trust, teams disable the Judge |
-| **Judge drift** | Judge model is updated by provider, changing evaluation behavior without notice |
+| **Judge drift** | Model-as-Judge is updated by provider, changing evaluation behavior without notice |
 | **Judge manipulation** | Adversarial inputs crafted to pass the Judge while failing for humans |
 | **Evaluation collapse** | Judge uses same reasoning patterns as the generator - shared blind spots |
 
@@ -103,7 +103,7 @@ When the Judge is unavailable, degraded, or untrusted:
 |----------|----------|
 | Judge API timeout | Apply guardrails only + increase human review sample |
 | Judge accuracy below threshold | Increase human review to 100% for affected risk tier |
-| Judge model deprecated by provider | Switch to backup judge model (you should have one) |
+| Model-as-Judge deprecated by provider | Switch to backup Model-as-Judge (you should have one) |
 | Judge cost exceeds budget | Sample-based evaluation (see [Cost and Latency](../extensions/technical/cost-and-latency.md)) |
 
 **Never fail open.** If the Judge can't evaluate, tighten other controls. Don't skip evaluation.

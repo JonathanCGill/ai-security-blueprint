@@ -18,7 +18,7 @@ The controls in other MASO domains secure task agents against each other and aga
 
 **Orchestrators influence outcomes through decisions, not tools.** A compromised orchestrator causes harm through task decomposition, agent selection, and result interpretation. Existing controls (IA-2.5, tool scoping) don't address this because the orchestrator's power is in planning, not execution.
 
-**Evaluators are single points of trust.** If Judge criteria drift or the Judge model is compromised, Layer 2 collapses silently: every output passes because the standard has shifted. The system reports healthy while controls are effectively disabled.
+**Evaluators are single points of trust.** If Judge criteria drift or the Model-as-Judge is compromised, Layer 2 collapses silently: every output passes because the standard has shifted. The system reports healthy while controls are effectively disabled.
 
 **Observers with kill switch authority can be weaponised.** An over-sensitive observer repeatedly triggers shutdowns. Operators disable it to restore service. The system now runs without its safety net, and nobody formally accepted that risk.
 
@@ -76,7 +76,7 @@ All Tier 2 controls remain active, plus:
 | **PA-3.1** Orchestrator output evaluation | Orchestrator's aggregated output - not just task agent outputs - is evaluated by the Judge | Catches failures smoothed over during aggregation: intermediate hallucinations, dropped caveats, selective emphasis. |
 | **PA-3.2** Nested orchestration scoping | Each orchestration level has explicit permission boundaries; sub-orchestrators cannot exceed the scope delegated to them | Extends IA-2.4 (no transitive permissions) and IA-3.3 (delegation mandates) to orchestrator-to-sub-orchestrator boundaries. |
 | **PA-3.3** Sub-tree blast radius | Blast radius caps apply per orchestration sub-tree, not just per individual agent | A sub-orchestrator managing 5 agents with individual caps of 100 records each does not implicitly have a 500-record aggregate cap. Sub-tree cap is defined independently. |
-| **PA-3.4** Judge model rotation | Judge model is periodically rotated or supplemented with an alternative to prevent long-term adversarial adaptation | Rotation schedule based on risk tier. Prevents attackers from optimising against a static evaluator. |
+| **PA-3.4** Model-as-Judge rotation | Model-as-Judge is periodically rotated or supplemented with an alternative to prevent long-term adversarial adaptation | Rotation schedule based on risk tier. Prevents attackers from optimising against a static evaluator. |
 | **PA-3.5** Continuous calibration | Judge calibration runs continuously (daily injection of known test cases) rather than monthly | Automated. Results feed into anomaly scoring. Calibration failure triggers PACE escalation. |
 | **PA-3.6** Observer self-test | Observer runs a self-diagnostic cycle at defined intervals, injecting synthetic anomalies into its own detection pipeline | Confirms the observer's detection capability is operational. Failure to detect the synthetic anomaly triggers an alert to a human, not to the observer itself. |
 | **PA-3.7** Cross-level evaluation | In nested topologies, evaluation occurs at each orchestration level, not just at the leaf (task agent) level | Each sub-orchestrator's aggregation decisions are evaluated before results flow up to the parent orchestrator. |
@@ -333,7 +333,7 @@ The statistical monitoring component combined with external signals is the most 
 
 **Precedence order is a policy decision, not a technical one.** The framework defines the mechanism. The organisation decides the policy. There is no universal answer.
 
-**Judges can agree and still be wrong.** If all judges share a common assumption (e.g. the same training data bias), they can unanimously approve something they should all flag. Judge model diversity and adversarial testing (PA-2.8) remain necessary even with multi-domain evaluation.
+**Judges can agree and still be wrong.** If all judges share a common assumption (e.g. the same training data bias), they can unanimously approve something they should all flag. Model-as-Judge diversity and adversarial testing (PA-2.8) remain necessary even with multi-domain evaluation.
 
 ## Recognising Judge Proliferation
 
@@ -412,7 +412,7 @@ Not every workflow needs every evaluation layer. Use this decision framework:
 | **Managed** | Privileged agents identified and registered. Orchestrator plans logged. Judge decisions logged. Basic calibration testing. Human reviews orchestrator and judge decisions periodically. |
 | **Defined** | Independent intent verification for orchestrator. Version-controlled Judge criteria. Observer precision tracked. Kill switch dual authorisation. Red team testing of privileged agents. |
 | **Quantitatively Managed** | Orchestrator drift measured. Judge calibration trended monthly. Observer false positive/negative rates published. Nested topology controls specified per orchestration level. |
-| **Optimising** | Continuous calibration. Judge model rotation. Observer self-test. Cross-level evaluation in nested topologies. Privileged agent controls tuned based on operational data. |
+| **Optimising** | Continuous calibration. Model-as-Judge rotation. Observer self-test. Cross-level evaluation in nested topologies. Privileged agent controls tuned based on operational data. |
 
 ## Common Pitfalls
 

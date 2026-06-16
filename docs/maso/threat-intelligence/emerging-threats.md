@@ -141,7 +141,7 @@ These are not speculative - they are extrapolations from demonstrated attack pri
 
 **Why it's getting worse:** The same AI capabilities that enable defence (pattern recognition, semantic understanding, anomaly detection) are available to attackers. The attacker-defender asymmetry is amplified by AI - automated attack generation scales faster than manual defence development.
 
-**Emerging variant - Adaptive evasion:** Attackers test their payloads against replicas of known guardrail and Judge models, iteratively refining until they achieve bypass. If the defender's model is known (or can be inferred), the attacker can optimise specifically against it.
+**Emerging variant - Adaptive evasion:** Attackers test their payloads against replicas of known guardrail and Model-as-Judge instances, iteratively refining until they achieve bypass. If the defender's model is known (or can be inferred), the attacker can optimise specifically against it.
 
 **MASO controls:** PG-2.9 (model diversity policy - attacker can't optimise against unknown models), EC-3.1 (multi-judge consensus - attacker must bypass multiple independent judges), PG-3.5 (challenger agent - active adversarial testing of defences), OB-3.1 (independent observability agent - separate detection layer)
 

@@ -36,7 +36,7 @@ AIRS only sees the text going in and the text coming out. It doesn't know or car
 - **Any framework**: LangChain, LlamaIndex, Haystack, raw API calls
 - **Any architecture**: single model, RAG, agents, multi-agent orchestration
 
-The one exception is the optional **Model-as-Judge**, which does call an OpenAI-compatible API to *evaluate* outputs. This is the judge model, a separate, independent model used for security evaluation, not your production model.
+The one exception is the optional **Model-as-Judge**, which does call an OpenAI-compatible API to *evaluate* outputs. This is the Model-as-Judge, a separate, independent model used for security evaluation, not your production model.
 
 ## What It Provides
 
@@ -242,7 +242,7 @@ airs assess --provider anthropic --model claude-sonnet-4-20250514 --judge-model 
 airs assess --provider openai --judge-model gpt-4o-mini --non-interactive --json
 ```
 
-**Why a separate judge model?** The judge must be a *different* model from the one being evaluated. Using the same model to judge itself defeats the purpose. The `--judge-model` uses an OpenAI-compatible API, so you need `pip install openai` and an `OPENAI_API_KEY` regardless of which provider your production model uses.
+**Why a separate Model-as-Judge?** The judge must be a *different* model from the one being evaluated. Using the same model to judge itself defeats the purpose. The `--judge-model` uses an OpenAI-compatible API, so you need `pip install openai` and an `OPENAI_API_KEY` regardless of which provider your production model uses.
 
 **No API key? No problem.** The assessment works perfectly without `--provider`. Live model testing is entirely optional. It just adds a real-world demo of the security layers in action.
 

@@ -229,7 +229,7 @@ The framework applies to the AI components. The risk tier is determined by what 
 |--------------|---------------|
 | **Guardrails - Input** | Topic rules, injection detection, PII detection, rate limiting (specific config) |
 | **Guardrails - Output** | Content filtering, PII handling, confidence thresholds (specific config) |
-| **Judge** | Evaluation criteria, sampling rate, escalation rules, Judge model selection |
+| **Judge** | Evaluation criteria, sampling rate, escalation rules, Model-as-Judge selection |
 | **HITL** | Reviewer role, SLA, escalation path, review criteria |
 | **PACE** | P/A/C/E states with transition triggers, fallback process, kill switch |
 | **Logging** | Content scope, retention period, access controls |

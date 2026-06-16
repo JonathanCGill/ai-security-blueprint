@@ -76,7 +76,7 @@ In a peer-to-peer multi-agent system, communication is continuous and bidirectio
 
 **2. Emergent behavior is not detectable at the individual agent level.**
 
-Even if every individual agent operates within its guardrails, the *collective* behavior of the system can produce outcomes that no individual guardrail was designed to catch. This is a systems property, not an agent property. A judge evaluating individual agent outputs will miss it. You need system-level behavioral monitoring - a fundamentally different architecture than the per-agent judge model.
+Even if every individual agent operates within its guardrails, the *collective* behavior of the system can produce outcomes that no individual guardrail was designed to catch. This is a systems property, not an agent property. A judge evaluating individual agent outputs will miss it. You need system-level behavioral monitoring - a fundamentally different architecture than the per-agent Model-as-Judge.
 
 The OWASP Agentic Top 10 documents this in multiple categories:
 - **ASI01: Agent Goal Hijack** - an agent's objectives are redirected through manipulated instructions that cascade through the multi-agent graph.

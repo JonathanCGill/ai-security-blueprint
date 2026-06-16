@@ -97,7 +97,7 @@ The practical rule: match model capability to action risk and reasoning depth, n
 
 Start at the lower tier. Escalate only when the smaller model demonstrably fails the task under representative load, not on the suspicion that it might struggle. Document the chosen model for each agent and judge in the agent or judge mandate, with the evidence that supported the selection, and review the choice on the same cadence as the mandate. Models get cheaper and smaller models get better. A choice that was right six months ago may now be over-specified.
 
-For the matching principle applied specifically to Judges, see [Judge Model Selection](../extensions/technical/judge-model-selection.md).
+For the matching principle applied specifically to Judges, see [Model-as-Judge Selection](../extensions/technical/judge-model-selection.md).
 
 ## The Asymmetry You Cannot Eliminate
 

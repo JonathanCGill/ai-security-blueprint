@@ -69,7 +69,7 @@ The three layers are not just defence-in-depth by coincidence. Each layer is spe
 
 **Layer 2 - Enterprise-Owned Model-as-Judge:** A separate model, configured with an enterprise-defined behavioral constitution, continuously evaluates outputs against expected patterns. Behavioral degradation manifests as a change in the statistical distribution of outputs over time. The Judge detects this drift **regardless of its cause**. The agent does not need to be "caught sandbagging"; it needs to be caught behaving differently from baseline.
 
-The Judge must be **owned, configured, and governed by the deploying organisation** - not vendor-side safeguards. Vendor safeguards prevent the model from producing harmful outputs. Enterprise-owned judges verify the model is producing the **correct outputs for a specific business context**. These are different objectives with different threat models. See [Judge Model Selection](../extensions/technical/judge-model-selection.md).
+The Judge must be **owned, configured, and governed by the deploying organisation** - not vendor-side safeguards. Vendor safeguards prevent the model from producing harmful outputs. Enterprise-owned judges verify the model is producing the **correct outputs for a specific business context**. These are different objectives with different threat models. See [Model-as-Judge Selection](../extensions/technical/judge-model-selection.md).
 
 **What Layer 2 does not catch:** Correlated failures (judge shares blind spots with base model), ambiguous cases where the Judge's confidence is insufficient, and novel behavior patterns outside baseline.
 

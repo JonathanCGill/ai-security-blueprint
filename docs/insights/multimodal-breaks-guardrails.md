@@ -64,7 +64,7 @@ The Judge needs multimodal capability to evaluate multimodal interactions.
 A text-only Judge reviewing a conversation where the user uploaded an image is reviewing half the interaction. It can't assess whether the image contained an injection attempt. It can't evaluate whether the generated image was appropriate.
 
 Options:
-- Multimodal Judge model (evaluates all modalities natively)
+- Multimodal Model-as-Judge (evaluates all modalities natively)
 - Modality-specific Judges (image Judge, audio Judge, orchestrated)
 - Hybrid approach (multimodal for flagging, specialist for deep evaluation)
 

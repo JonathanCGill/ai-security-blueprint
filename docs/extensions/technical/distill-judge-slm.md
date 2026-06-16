@@ -211,7 +211,7 @@ Distillation is powerful, but it is not a silver bullet. Be honest about what th
 | **Training data bias.** If the Teacher was wrong, the Student inherits those errors. | Human review of disagreements. Regular gold-standard recalibration. |
 | **Model drift.** Production traffic shifts over time. | Automated drift detection via the 100/1 loop. |
 | **Adversarial robustness.** Small models are easier to fool with targeted attacks. | Red-team the SLM specifically. Treat it as a first line, not the only line. |
-| **Recursive failure.** The Teacher may share blind spots with the primary AI. | Use a Teacher from a different model family than the primary agent. See [Judge Model Selection](judge-model-selection.md). |
+| **Recursive failure.** The Teacher may share blind spots with the primary AI. | Use a Teacher from a different model family than the primary agent. See [Model-as-Judge Selection](judge-model-selection.md). |
 
 !!! warning "The SLM is a first line of defence, not the last"
     The distilled model replaces the large Judge for routine, high-volume screening. It does not replace the large Judge entirely. The large model remains the backstop for sampled verification, escalated cases, and novel threat patterns.
@@ -259,6 +259,6 @@ For agentic systems that take real-world actions at machine speed, this is often
     - [U.S. Treasury: Financial Services AI Risk Management Framework](https://home.treasury.gov/), 2026
     - [DORA: Digital Operational Resilience Act](https://www.digital-operational-resilience-act.com/)
     - [NIST AI RMF 1.0](https://www.nist.gov/artificial-intelligence/risk-management-framework)
-    - [Judge Model Selection](judge-model-selection.md), AI Runtime Security
+    - [Model-as-Judge Selection](judge-model-selection.md), AI Runtime Security
     - [Model-as-Judge Implementation](model-as-judge-implementation.md), AI Runtime Security
     - [Cost and Latency](cost-and-latency.md), AI Runtime Security

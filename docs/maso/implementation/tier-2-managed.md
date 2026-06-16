@@ -34,7 +34,7 @@ Key architectural changes from Tier 1:
 
 **Non-Human Identity (NHI) per agent:** Each agent has a certificate-based identity with short-lived credentials (recommended rotation: 1–24 hours depending on risk). The NHI is bound to the agent's permission scope and is used for mutual authentication on the message bus and tool access.
 
-**Model-as-Judge (Layer 2) is mandatory:** A dedicated evaluation model (distinct from the task agents, ideally from a different model provider) reviews agent outputs and proposed actions against policy, quality, and safety criteria before they are committed. The judge model does not execute actions - it evaluates and either approves, flags for human review, or blocks.
+**Model-as-Judge (Layer 2) is mandatory:** A dedicated evaluation model (distinct from the task agents, ideally from a different model provider) reviews agent outputs and proposed actions against policy, quality, and safety criteria before they are committed. The Model-as-Judge does not execute actions - it evaluates and either approves, flags for human review, or blocks.
 
 **Continuous monitoring layer:** Automated anomaly detection replaces periodic manual log review. Behavioral baselines established during Tier 1 are used as reference. Deviations trigger alerts and, if thresholds are exceeded, automatic PACE phase transitions.
 
@@ -99,7 +99,7 @@ Key architectural changes from Tier 1:
 - [ ] Blast radius caps defined per agent (documented with rationale).
 - [ ] Circuit breaker thresholds configured and tested.
 - [ ] Model-as-Judge operational with evaluation criteria documented.
-- [ ] Judge model is from a different provider than the task agents (recommended, not mandatory).
+- [ ] Model-as-Judge is from a different provider than the task agents (recommended, not mandatory).
 
 ### 4. Observability - Tier 2 Requirements
 
@@ -226,7 +226,7 @@ Tier 2 shifts the human role from gatekeeper to supervisor, reducing per-action 
 - **Agent Supervisor** (1 per active agent system during operating hours, but can oversee higher volume than a Tier 1 operator): Handles escalated actions, monitors dashboards, responds to alerts. Requires domain expertise plus understanding of the Model-as-Judge evaluation criteria and PACE procedures.
 - **AI Security Engineer** (0.5–1 FTE): Manages drift detection baselines, tunes anomaly scoring, conducts security reviews of new MCP servers and tools, owns the PACE configuration, and leads incident response for agent-related events.
 - **Platform Engineer** (0.5 FTE): Manages NHI lifecycle, credential rotation, sandbox environments, message bus infrastructure, and runtime integrity monitoring.
-- **Model-as-Judge Administrator** (0.25 FTE): Maintains the judge model's evaluation criteria, reviews judge performance (false positive/negative rates), and updates judge policies as the agent system evolves. This can be combined with the AI Security Engineer role.
+- **Model-as-Judge Administrator** (0.25 FTE): Maintains the Model-as-Judge's evaluation criteria, reviews judge performance (false positive/negative rates), and updates judge policies as the agent system evolves. This can be combined with the AI Security Engineer role.
 
 **For a financial services context:** Add a dedicated compliance reviewer (0.25 FTE) who audits the immutable decision chain logs against regulatory requirements on a defined schedule. The SIEM/SOAR integration should generate automated compliance evidence reports.
 
@@ -272,7 +272,7 @@ Tier 3 (Autonomous Multi-Agent) requires a high bar of demonstrated maturity. Mo
 
 1. **Extended stable operations:** The agent system has been running at Tier 2 for at least 180 days with continuous monitoring and no security-triggered PACE escalations (operational escalations for testing or maintenance do not count).
 
-2. **Demonstrated Model-as-Judge reliability:** The judge model's false negative rate (policy violations it missed) is below 2% on the most recent 90-day evaluation. The false positive rate (correct actions it flagged) is below 10%.
+2. **Demonstrated Model-as-Judge reliability:** The Model-as-Judge's false negative rate (policy violations it missed) is below 2% on the most recent 90-day evaluation. The false positive rate (correct actions it flagged) is below 10%.
 
 3. **Drift detection validated:** The anomaly detection system has been tested against adversarial scenarios (deliberately injected anomalous behavior) and demonstrated detection of all HIGH and CRITICAL severity test cases.
 

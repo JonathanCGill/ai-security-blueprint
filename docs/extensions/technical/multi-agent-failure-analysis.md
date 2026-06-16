@@ -154,7 +154,7 @@ Each runtime event is a potential failure node. Failures are classified by **det
 | Failure | Detection | Propagation | Description |
 |---------|-----------|-------------|-------------|
 | Guardrail evasion | Silent | Propagating | Output crafted (intentionally or emergently) to pass guardrails while carrying harmful or incorrect content. The guardrail reports "pass" on a bad output. |
-| Judge model confabulation | Silent | Propagating | The Model-as-Judge itself confabulates, approving output based on false reasoning. Second-order confabulation. |
+| Model-as-Judge confabulation | Silent | Propagating | The Model-as-Judge itself confabulates, approving output based on false reasoning. Second-order confabulation. |
 | False positive block | Loud | Contained | Guardrail rejects valid output. Detectable but causes delay, retry, or escalation. |
 | Threshold miscalibration | Silent | Propagating | Guardrail thresholds too loose; marginal violations pass consistently. No individual failure is dramatic enough to trigger alerts, but aggregate effect is significant. |
 | Checkpoint blind spot | Silent | Propagating | Epistemic checkpoint verifies claims the agent made but doesn't detect claims the agent should have made but omitted. Omission is harder to catch than commission. |
@@ -422,7 +422,7 @@ Real-world failures combine multiple failure nodes and feedback loops simultaneo
 
 ### Scenario 1: The Confident Wrong Answer
 
-**Failure nodes activated:** Confabulation (2.2) + Semantic loss in handoff (2.3) + Judge model confabulation (2.5)
+**Failure nodes activated:** Confabulation (2.2) + Semantic loss in handoff (2.3) + Model-as-Judge confabulation (2.5)
 **Feedback loops activated:** Confabulation Cascade (Loop 1) + Sycophantic Reinforcement (Loop 2)
 
 Agent A retrieves data but confabulates one regulatory threshold. Agent B receives this, and the handoff summary loses the qualifier "approximately" that Agent A included. Agent C now has a precise-looking but fabricated number. The Model-as-Judge evaluates the chain and assesses it as "well-sourced and internally consistent." The human reviewer sees a confident, high-rated output and approves it.

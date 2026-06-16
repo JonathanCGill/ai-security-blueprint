@@ -314,7 +314,7 @@ IAM is not a standalone domain. It integrates with every layer of the runtime be
 The three layers must operate independently for IAM:
 
 - A compromised guardrail (e.g., an attacker bypasses token validation) does not affect the Judge's ability to detect anomalous access patterns
-- A Judge model failure does not impair the guardrails' enforcement of identity validation
+- A Model-as-Judge failure does not impair the guardrails' enforcement of identity validation
 - A compromised HITL reviewer's session does not affect the guardrail or Judge layer
 
 This is PACE resilience applied to IAM. If one layer fails, the others continue. If all three fail, the [circuit breaker](../pace-resilience.md) routes traffic to a non-AI fallback.

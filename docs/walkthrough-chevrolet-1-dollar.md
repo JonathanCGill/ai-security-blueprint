@@ -42,7 +42,7 @@ Each layer operates independently. The Judge does not rely on Guardrails. Human 
 The interesting question is not *"which layer catches it?"* but *"what if the one that should catch it doesn't?"*.
 
 - **Guardrails miss the injection.** Novel phrasing that the pattern library has never seen. The prompt reaches the model. The Judge is now the first catch: it evaluates the output, sees a $1 offer against a $50K MSRP, and blocks it.
-- **The Judge fails too.** Maybe the Judge model is degraded, or the offer-policy prompt is poorly scoped, or the Judge runs async and this is a CRITICAL tier response that should have been sync. The output now reaches the output-side guardrail. Commitment language (*"legally binding"*) is a deterministic block. The response is rewritten or suppressed.
+- **The Judge fails too.** Maybe the Model-as-Judge is degraded, or the offer-policy prompt is poorly scoped, or the Judge runs async and this is a CRITICAL tier response that should have been sync. The output now reaches the output-side guardrail. Commitment language (*"legally binding"*) is a deterministic block. The response is rewritten or suppressed.
 - **Both guardrail layers and the Judge fail.** Architecturally unlikely, but assume it. The response is composed but still has to pass through authority separation. No deterministic workflow will confirm a $1 sale of a vehicle. The bot can say whatever it wants. The commitment cannot execute.
 - **Human Oversight is bypassed.** This is a governance failure, not a control failure. The Circuit Breaker is the last line: repeated policy violations trip the chatbot into PACE fallback automatically. The attack surface is withdrawn until the team responds.
 

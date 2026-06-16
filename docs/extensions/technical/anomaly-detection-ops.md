@@ -78,9 +78,9 @@ z = (observed_value - baseline_mean) / baseline_stddev
 
 | Rule | Detection | Likely Cause |
 |------|-----------|-------------|
-| Judge agreement rate drop | Agreement < baseline - 2σ | Judge model update, generator model update, or calibration drift |
+| Judge agreement rate drop | Agreement < baseline - 2σ | Model-as-Judge update, generator model update, or calibration drift |
 | Judge false positive spike | FP rate > UCL | Judge prompt degradation or input distribution shift |
-| Judge latency increase | P95 > 2x baseline | Provider issues affecting judge model |
+| Judge latency increase | P95 > 2x baseline | Provider issues affecting Model-as-Judge |
 
 ## Step 3: Alert and Respond
 

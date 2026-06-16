@@ -1,5 +1,5 @@
 ---
-description: Deep technical references on AI control implementation, judge model selection, anomaly detection, RAG security, and SOC integration.
+description: Deep technical references on AI control implementation, Model-as-Judge selection, anomaly detection, RAG security, and SOC integration.
 ---
 
 # Technical Reference
@@ -8,12 +8,12 @@ Deep dives on controls, infrastructure, operations, and metrics. Grouped by purp
 
 ## Judge Internals
 
-Building, selecting, validating, and operating the judge model.
+Building, selecting, validating, and operating the Model-as-Judge.
 
 | Document | Description |
 |----------|-------------|
 | [Model-as-Judge Implementation](model-as-judge-implementation.md) | Detailed judge implementation, including prompt structure and scoring. |
-| [Judge Model Selection](judge-model-selection.md) | Selection principles: family diversity, cost, latency, safety posture. |
+| [Model-as-Judge Selection](judge-model-selection.md) | Selection principles: family diversity, cost, latency, safety posture. |
 | [Judge Precedents](judge-precedents.md) | Building a precedent library so judge decisions stay consistent. |
 | [Distilling the Judge into an SLM](distill-judge-slm.md) | Moving from a large-model async judge to an inline sidecar SLM. |
 | [Output Evaluator](output-evaluator.md) | Output-side evaluation patterns that complement judge rulings. |

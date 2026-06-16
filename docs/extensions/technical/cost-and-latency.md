@@ -107,9 +107,9 @@ The SLM adds negligible latency compared to a cloud Judge call, making 100% inli
 
 ## Cost Optimisation
 
-### Judge Model Selection
+### Model-as-Judge Selection
 
-| Judge Model Tier | Cost (per 1K eval tokens) | Accuracy | When to Use |
+| Model-as-Judge Tier | Cost (per 1K eval tokens) | Accuracy | When to Use |
 |-----------------|--------------------------|----------|-------------|
 | **Small** (Haiku, GPT-4o-mini) | ~$0.001 | 80–85% | Tier 1, high-volume screening |
 | **Medium** (Sonnet, GPT-4o) | ~$0.01 | 88–93% | Tier 2, balanced cost/accuracy |
@@ -146,7 +146,7 @@ A [distilled SLM](distill-judge-slm.md) deployed as a sidecar fundamentally chan
 | **Initial distillation** | N/A | One-time: $500–2,000 (Teacher labelling + training compute) |
 | **Retraining (monthly)** | N/A | $200–500 per cycle |
 
-**Break-even point:** At roughly 50,000 evaluations per month, the SLM approach becomes cheaper than even the smallest cloud Judge model. Above 500,000 evaluations per month, the savings are substantial.
+**Break-even point:** At roughly 50,000 evaluations per month, the SLM approach becomes cheaper than even the smallest cloud Model-as-Judge. Above 500,000 evaluations per month, the savings are substantial.
 
 | Monthly Evaluations | Cloud Judge (Small Model) | SLM + 1% Teacher Verification |
 |---------------------|--------------------------|-------------------------------|
