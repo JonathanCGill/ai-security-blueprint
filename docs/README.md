@@ -63,7 +63,7 @@ Governance without runtime security is intent without enforcement. Your policy s
 
 -   **How do I secure AI while it is running?**
 
-    The framework itself: four independent control layers for single-agent systems, ten control domains for multi-agent orchestration, PACE resilience for graceful degradation.
+    The framework itself: four independent control layers for single-agent systems, eleven control domains for multi-agent orchestration, PACE resilience for graceful degradation.
 
     [Core Controls](core/README.md) · [MASO](maso/README.md) · [Architecture](architecture.md)
 

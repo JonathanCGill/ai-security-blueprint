@@ -70,7 +70,7 @@ The four-layer pattern holds for single models. When multiple LLMs collaborate, 
 
 Multi-agent security requires per-agent identity, per-agent permissions, and per-agent evaluation, plus controls for the interactions between agents: message bus security, epistemic integrity, kill switch architecture. Same principles as the single-agent pattern, extended to the space between models.
 
-**→ [MASO Framework](maso/README.md)** · controls across 10 domains, 3 implementation tiers, full OWASP dual coverage.
+**→ [MASO Framework](maso/README.md)** · controls across 11 domains, 3 implementation tiers, full OWASP dual coverage.
 
 ## When Layers Fail: PACE Resilience
 

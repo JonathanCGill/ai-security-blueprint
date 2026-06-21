@@ -28,7 +28,7 @@ MASO secures the agent. You secure everything the agent touches. Both are necess
 
 MASO is designed for **AI agent systems your organisation operates**, whether you build them from scratch or deploy them on a managed platform. If you are building custom multi-agent systems (using LangGraph, AutoGen, CrewAI, or your own orchestration), MASO provides both the security requirements and the architectural patterns. If you are using a cloud platform's agent orchestration (AWS Bedrock Agents, Azure AI Agent Service), MASO provides the mental model for what security controls should be in place; the platform provides the implementation mechanisms.
 
-The ten control domains, three implementation tiers, and PACE resilience model describe **what needs to be true** for multi-agent AI to be safe. The technical implementation varies by platform and approach. The security model does not.
+The eleven control domains, three implementation tiers, and PACE resilience model describe **what needs to be true** for multi-agent AI to be safe. The technical implementation varies by platform and approach. The security model does not.
 
 For AI you consume as a service (copilots, productivity tools, SaaS with embedded AI), MASO's control domains are not directly applicable. Those systems are covered by vendor-side controls and your organisation's data governance. See [Maturity Levels](../strategy/maturity-levels.md) for how the framework addresses consumed AI differently from AI you operate.
 
@@ -125,7 +125,7 @@ The **Flight Recorder** captures every agent action, judge verdict, tool invocat
 
 ![MASO Tube Map](../images/maso-tube-map.svg)
 
-Seven coloured lines represent the original seven control domains. Stations are key controls. Zones are implementation tiers. Interchanges mark where domains share control points (Judge Gate, PACE Bridge, Agent Registry). River PACE flows through the centre, mapping resilience phases to tier progression. Model Cognition Assurance, Agentic Task Mandate, and Objective Intent were added after the tube map was created and are not yet represented visually.
+Seven coloured lines represent the original seven control domains. Stations are key controls. Zones are implementation tiers. Interchanges mark where domains share control points (Judge Gate, PACE Bridge, Agent Registry). River PACE flows through the centre, mapping resilience phases to tier progression. Privileged Agent Governance, Model Cognition Assurance, Agentic Task Mandate, and Objective Intent were added after the tube map was created and are not yet represented visually.
 
 ## How the Pieces Fit Together
 
@@ -135,7 +135,7 @@ The logic runs in a chain. **Agents are fragile** because they reason in natural
 
 From there, MASO provides the operational framework:
 
-- **Ten control domains** address specific risk categories: protecting the agent's goals, identity, data, execution, observability, supply chain, privileged agents, model cognition, agentic task mandates, and objective intent. Each domain contains controls that enforce the declarations you made and give the judge the signals it needs.
+- **Eleven control domains** address specific risk categories: identity, data, extraction integrity, execution, observability, supply chain, prompt/goal/epistemic integrity, privileged agents, model cognition, agentic task mandates, and objective intent. Together they define up to 212 controls, scaled by tier: a Tier 1 deployment uses roughly 61, not all 212. Each domain contains controls that enforce the declarations you made and give the judge the signals it needs.
 - **Three implementation tiers** scale controls to autonomy level. Tier 1 (supervised) requires human approval for every write. Tier 2 (managed) uses judge evaluation to auto-approve low-risk actions and escalate high-risk ones. Tier 3 (autonomous) operates with minimal human intervention for pre-approved task categories. You choose the tier that matches your risk tolerance.
 - **PACE resilience** defines what happens when controls fail. Every layer has a defined failure mode and a predetermined safe state to transition to, from normal operations through to full shutdown.
 - **OWASP coverage** maps every control to specific, documented threats from both the LLM Top 10 and the Agentic Top 10, so you can trace from a known risk to the controls that address it.
@@ -145,7 +145,7 @@ None of these pieces stand alone. The control domains implement the declarations
 
 ## Control Domains
 
-The framework organises controls into ten domains. The first five map to specific OWASP risks. The sixth, Prompt, Goal & Epistemic Integrity, addresses both the three OWASP risks that require cross-cutting controls and the nine epistemic risks identified in the [Emergent Risk Register](controls/risk-register.md) that have no OWASP equivalent. The seventh, Privileged Agent Governance, addresses the unique risks of orchestrators, planners, and other agents with elevated authority. The eighth, Model Cognition Assurance, addresses the gap between a model's expressed reasoning and its internal computational state. The ninth, Agentic Task Mandate and Behavioural Governance, enforces means compliance and detects behavioural deviation in agentic workflows. The tenth, Objective Intent, provides the declared intent specifications that the evaluation architecture and mandate governance depend on.
+The framework organises controls into eleven domains. The first six map primarily to specific OWASP risks: identity and access, data protection, extraction integrity, execution control, observability, and supply chain. The seventh, Prompt, Goal & Epistemic Integrity, addresses both the OWASP risks that require cross-cutting controls and the nine epistemic risks identified in the [Emergent Risk Register](controls/risk-register.md) that have no OWASP equivalent. The eighth, Privileged Agent Governance, addresses the unique risks of orchestrators, planners, and other agents with elevated authority. The ninth, Model Cognition Assurance, addresses the gap between a model's expressed reasoning and its internal computational state. The tenth, Agentic Task Mandate and Behavioural Governance, enforces means compliance and detects behavioural deviation in agentic workflows. The eleventh, Objective Intent, provides the declared intent specifications that the evaluation architecture and mandate governance depend on.
 
 ### 0. [Prompt, Goal & Epistemic Integrity](controls/prompt-goal-and-epistemic-integrity.md)
 
@@ -215,7 +215,7 @@ Companion control set for pipelines that perform OCR, PDF parsing, or form extra
 
 ### [Environment Containment](environment-containment.md)
 
-Cross-cutting strategy that complements all ten control domains. Instead of relying on the agent to behave correctly, harden every system the agent connects to: strict API input validation, opaque error responses, stored procedures, no-retry enforcement, and infrastructure-level kill switches. Existing enterprise security systems (DLP, fraud detection, WAF, SIEM) apply unchanged to agent traffic. The agent proposes; the infrastructure disposes.
+Cross-cutting strategy that complements all eleven control domains. Instead of relying on the agent to behave correctly, harden every system the agent connects to: strict API input validation, opaque error responses, stored procedures, no-retry enforcement, and infrastructure-level kill switches. Existing enterprise security systems (DLP, fraud detection, WAF, SIEM) apply unchanged to agent traffic. The agent proposes; the infrastructure disposes.
 
 *Cross-cuts: All Control Domains · All Implementation Tiers*
 
@@ -291,7 +291,7 @@ Agents execute read operations and low-consequence writes autonomously. High-con
 
 ### [Tier 3 - Autonomous](implementation/tier-3-autonomous.md) (High Autonomy)
 
-Agents operate with minimal human intervention for pre-approved task categories. Human oversight focuses on exception handling and strategic review. Full PACE cycle operational and tested through regular red-team exercises. All ten control domains fully implemented.
+Agents operate with minimal human intervention for pre-approved task categories. Human oversight focuses on exception handling and strategic review. Full PACE cycle operational and tested through regular red-team exercises. All eleven control domains fully implemented.
 
 **Required controls:** Everything in Tier 2, plus kill switch tested and auditable, drift detection with baseline comparison, blast radius caps enforced, circuit breakers active, full OWASP coverage validated, regular adversarial testing.
 
