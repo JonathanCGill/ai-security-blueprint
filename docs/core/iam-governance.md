@@ -45,6 +45,8 @@ No agent should hold permissions it is not actively using. Standing privileges a
 
 **Implication:** If an agent's token lasts longer than its task, the token is too long-lived. Minutes, not days.
 
+**Least agency is a separate axis from least privilege.** Least privilege scopes *what an agent can touch*. Least agency scopes *how much autonomy it has in deciding how to touch it* - whether it executes a fixed plan or is free to choose its own approach, tools, and sequence to reach a goal. An agent can hold minimal permissions and still be dangerous if it has unconstrained latitude to decide how to use them; autonomy is a capability to be earned per task, not a default setting that scales with model capability.
+
 ### 4. Delegation Can Only Narrow Scope
 
 When an orchestrator agent delegates work to a sub-agent, the sub-agent's permissions must be a strict subset of the orchestrator's - which is itself a strict subset of the originating user's. Scope narrows at every hop. It never expands.
