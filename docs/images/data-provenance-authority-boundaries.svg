@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" role="img" aria-label="Data provenance and authority boundaries: untrusted content is tagged as data at the boundary, then each flow is routed to the cheapest sufficient checker. Commands take a deterministic protocol and port check; natural-language content takes the semantic firewall.">
+  <defs>
+    <marker id="arrp" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <style>
+    text { font-family: Inter, system-ui, sans-serif; }
+    .h { font-size: 13px; font-weight: 700; fill: #fff; }
+    .d { font-size: 10px; fill: rgba(255,255,255,0.82); }
+    .src { font-size: 10.5px; fill: rgba(255,255,255,0.92); }
+    .lbl { font-size: 9.5px; fill: #64748b; font-weight: 600; }
+    .arrow-text { font-size: 9px; fill: #64748b; font-style: italic; }
+    .bound { font-size: 11px; fill: #b91c1c; font-weight: 700; }
+    .tag { font-size: 9px; fill: #fff; font-weight: 700; }
+    .note { font-size: 9px; fill: rgba(255,255,255,0.78); font-style: italic; }
+  </style>
+
+  <!-- Stage A: untrusted sources -->
+  <rect x="16" y="120" width="156" height="220" rx="10" fill="#1a1a2e"/>
+  <text x="94" y="146" text-anchor="middle" class="h">Untrusted ingress</text>
+  <text x="94" y="176" text-anchor="middle" class="src">Fetched document</text>
+  <text x="94" y="198" text-anchor="middle" class="src">User message</text>
+  <text x="94" y="220" text-anchor="middle" class="src">Tool / API response</text>
+  <text x="94" y="242" text-anchor="middle" class="src">Inter-agent message</text>
+  <text x="94" y="264" text-anchor="middle" class="src">Skill / workflow file</text>
+  <rect x="48" y="288" width="92" height="22" rx="5" fill="#b91c1c"/>
+  <text x="94" y="303" text-anchor="middle" class="tag">tag = DATA</text>
+  <text x="94" y="328" text-anchor="middle" class="d">applied at the boundary</text>
+
+  <!-- Trust boundary -->
+  <line x1="200" y1="40" x2="200" y2="430" stroke="#b91c1c" stroke-width="1.6" stroke-dasharray="6 5"/>
+  <text x="200" y="30" text-anchor="middle" class="bound">TRUST BOUNDARY</text>
+  <text x="200" y="448" text-anchor="middle" class="lbl">provenance tag persists across every hop</text>
+
+  <!-- arrow A -> classify -->
+  <line x1="172" y1="230" x2="234" y2="230" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrp)"/>
+
+  <!-- Stage B: classify -->
+  <rect x="236" y="186" width="120" height="88" rx="10" fill="#0f3460"/>
+  <text x="296" y="222" text-anchor="middle" class="h">Classify</text>
+  <text x="296" y="240" text-anchor="middle" class="d">command or</text>
+  <text x="296" y="254" text-anchor="middle" class="d">content?</text>
+
+  <!-- split arrows -->
+  <line x1="356" y1="205" x2="430" y2="120" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrp)"/>
+  <text x="372" y="150" class="arrow-text">command</text>
+  <line x1="356" y1="255" x2="430" y2="338" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrp)"/>
+  <text x="372" y="318" class="arrow-text">content</text>
+
+  <!-- Lane 1: deterministic command check -->
+  <rect x="432" y="64" width="268" height="98" rx="10" fill="#166534"/>
+  <text x="566" y="90" text-anchor="middle" class="h">Deterministic check</text>
+  <text x="566" y="110" text-anchor="middle" class="d">destination allowlist + port / protocol + schema</text>
+  <text x="566" y="126" text-anchor="middle" class="d">NET-04 egress · NET-07 gateway</text>
+  <text x="566" y="148" text-anchor="middle" class="note">structural — immune to novel phrasing</text>
+
+  <!-- Lane 2: semantic content check -->
+  <rect x="432" y="296" width="268" height="110" rx="10" fill="#4051b5"/>
+  <text x="566" y="322" text-anchor="middle" class="h">Semantic firewall</text>
+  <text x="566" y="342" text-anchor="middle" class="d">intent classification vs declared taxonomy</text>
+  <text x="566" y="360" text-anchor="middle" class="d">escalate to Model-as-Judge on ambiguity</text>
+  <text x="566" y="384" text-anchor="middle" class="note">probabilistic — confine to where meaning is the risk</text>
+
+  <!-- converge arrows -->
+  <line x1="700" y1="113" x2="752" y2="180" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrp)"/>
+  <line x1="700" y1="351" x2="752" y2="250" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrp)"/>
+
+  <!-- Stage D: authority + HITL + action -->
+  <rect x="754" y="168" width="132" height="96" rx="10" fill="#1a1a2e"/>
+  <text x="820" y="190" text-anchor="middle" class="h">Conformance</text>
+  <text x="820" y="206" text-anchor="middle" class="h">check</text>
+  <text x="820" y="224" text-anchor="middle" class="d">vs declared expectation</text>
+  <text x="820" y="240" text-anchor="middle" class="d">right command?</text>
+  <text x="820" y="254" text-anchor="middle" class="d">output matches?</text>
+
+  <line x1="820" y1="264" x2="820" y2="290" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrp)"/>
+  <rect x="754" y="292" width="132" height="56" rx="10" fill="#92400e"/>
+  <text x="820" y="316" text-anchor="middle" class="h">HITL gate</text>
+  <text x="820" y="334" text-anchor="middle" class="d">if consequential / regulated</text>
+
+  <line x1="820" y1="348" x2="820" y2="384" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrp)"/>
+  <rect x="754" y="386" width="132" height="34" rx="8" fill="#0f3460"/>
+  <text x="820" y="408" text-anchor="middle" class="h">Action</text>
+</svg>
