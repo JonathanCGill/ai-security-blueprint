@@ -136,6 +136,7 @@ nav:
       - Risk Tiers: core/risk-tiers.md
       - Risk Assessment: core/risk-assessment.md
       - "Three-Layer Model: Guardrails, Judge, Oversight": core/controls.md
+      - Semantic Firewall: core/controls/semantic-firewall.md
       - Implementation Checklist: core/checklist.md
       - Judge Assurance: core/judge-assurance.md
       - When the Judge Can Be Fooled: core/when-the-judge-can-be-fooled.md

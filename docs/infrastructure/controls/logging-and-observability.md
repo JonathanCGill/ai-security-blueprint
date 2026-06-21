@@ -200,6 +200,8 @@ Prompt injection is the primary adversarial threat to LLM systems. Logging must 
 | **Cross-request correlation** | Sequential inputs that individually pass guardrails but collectively form an attack | Requires session-aware analysis |
 | **Judge evaluation patterns** | Content flagged by Judge but not caught by guardrails | Async - detection is delayed |
 
+See also: the [semantic firewall](../../core/controls/semantic-firewall.md) catches paraphrased and reworded injection attempts inline, ahead of guardrail or Judge logging.
+
 ### Logging for Injection Forensics
 
 Critical: log the **raw input before guardrail processing**. If you only log the sanitised input, you lose the ability to analyse the injection technique.
