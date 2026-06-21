@@ -107,6 +107,8 @@ description: "Databricks implementation patterns for AI security controls: zone-
 - Evaluation data pushed to Judge via **Delta table** - Judge reads from table, writes evaluations back.
 - No direct network path from Judge to runtime model endpoint.
 
+See also: a [semantic firewall](../../../core/controls/semantic-firewall.md) typically shares this isolated path, since it runs the same independent-evaluation role at lower cost and latency.
+
 ### NET-04: Agent Egress Controls
 
 - Agent code runs in **serverless compute** or **cluster compute** - network egress controlled by workspace network configuration.

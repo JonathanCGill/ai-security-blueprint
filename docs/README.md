@@ -149,7 +149,7 @@ A runtime control plane for AI behaviour. Each layer operates independently, and
 
 -   **Reviewing Controls**
 
-    A combination of deterministic scanners, a semantic firewall, policy compliance checks, and Model-as-Judge evaluates outputs against policy, context, and intent before they reach users. Catches the subtle failures guardrails miss. *~5ms to 50ms inline, 500ms to 5s async by risk tier.*
+    A combination of deterministic scanners, [a semantic firewall](core/controls/semantic-firewall.md), policy compliance checks, and Model-as-Judge evaluates outputs against policy, context, and intent before they reach users. Catches the subtle failures guardrails miss. *~5ms to 50ms inline, 500ms to 5s async by risk tier.*
 
 -   **Human Oversight**
 

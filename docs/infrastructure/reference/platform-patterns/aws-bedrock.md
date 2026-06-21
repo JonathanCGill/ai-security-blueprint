@@ -102,6 +102,8 @@ description: "AWS Bedrock implementation patterns for AI security controls: zone
 - **Cross-account IAM role** for Judge invocation with minimal permissions.
 - Judge VPC has no inbound routes from runtime VPC - data pushed via **SQS** or **EventBridge**.
 
+See also: a [semantic firewall](../../../core/controls/semantic-firewall.md) typically shares this isolated path, since it runs the same independent-evaluation role at lower cost and latency.
+
 ### NET-04: Agent Egress Controls
 
 - Agent Lambda functions run in **VPCs with no internet gateway**.

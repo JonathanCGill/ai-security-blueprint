@@ -44,7 +44,23 @@ This is why the Judge provides the second layer.
 
 > For practical implementation guidance - international PII detection, RAG ingestion filtering, secrets scanning, alerting design, and guardrail exception governance - see **[Practical Guardrails](../insights/practical-guardrails.md)**.
 
-## 2. Model-as-Judge
+## 2. Semantic Firewall
+
+Intent-level enforcement between Guardrails and the Judge. Where Guardrails block known-bad *patterns* and the Judge evaluates unknown-bad *content*, the semantic firewall catches known-bad *intent* expressed in wording neither has seen before - a request reworded, translated, or indirected to mean the same prohibited thing.
+
+| Layer | Catches | Speed |
+| --- | --- | --- |
+| Guardrails | Known patterns | ~10ms |
+| Semantic Firewall | Known intent, novel wording | ~15-30ms |
+| Model-as-Judge | Unknown-bad, context-dependent | 10ms-5s by tier |
+
+It classifies inbound requests against a declared taxonomy of authorised and prohibited topics/intents using an embedding classifier or distilled intent model - not a general-purpose LLM call. This makes it cheap enough to run on every request, narrowing what actually needs to reach the Judge.
+
+**It does not replace the Judge.** It routes: pass straight through, escalate to Judge evaluation, or reject outright for high-confidence matches against the prohibited taxonomy.
+
+→ Full detail, build options, and limitations: [Semantic Firewall](controls/semantic-firewall.md)
+
+## 3. Model-as-Judge
 
 Evaluation of interactions for quality and policy compliance. The Judge can be a large LLM (for async assurance and complex reasoning) or a [distilled SLM](../extensions/technical/distill-judge-slm.md) (for inline, real-time action screening). Both approaches can be combined: an SLM screens every action in under 50ms, while a large LLM audits a sample asynchronously.
 
@@ -103,7 +119,7 @@ The Judge will make mistakes.
 
 **Target:** >90% agreement with human reviewers.
 
-## 3. Human Oversight (HITL)
+## 4. Human Oversight (HITL)
 
 Humans review findings, make decisions, remain accountable.
 
@@ -153,6 +169,7 @@ Humans review findings, make decisions, remain accountable.
 |-------|----------|
 | What these controls cost in production | [Cost & Latency](../extensions/technical/cost-and-latency.md) - latency budgets, sampling strategies, tiered evaluation cascade |
 | Judge accuracy, drift, and adversarial failure | [Judge Assurance](judge-assurance.md) · [When the Judge Can Be Fooled](when-the-judge-can-be-fooled.md) |
+| Semantic firewall detail, build options, and limitations | [Semantic Firewall](controls/semantic-firewall.md) - intent-level boundary enforcement between Guardrails and the Judge |
 | Practical guardrail configurations | [Practical Guardrails](../insights/practical-guardrails.md) - what to turn on first, encoding detection, international PII |
 | When HITL doesn't scale | [Humans in the Business Process](../extensions/technical/humans-in-the-business-process.md) - using existing business process checkpoints as a detection layer |
 | Controls for multi-agent systems | [MASO Framework](../maso/README.md) - controls across 10 domains for agent orchestration |
