@@ -41,8 +41,10 @@ Honesty about the edges keeps the claim credible.
 - The **conformance test is only as good as the declared expectation.** A vague objective intent degrades the test to generic plausibility checking, the same failure mode the [semantic firewall](semantic-firewall.md) has with a vague taxonomy. The model moves the work to writing a precise expectation, it does not remove it.
 - **Structural floors need a constrained channel.** Where commands ride inside free-form content (some MCP and tool patterns), the deterministic floor cannot see them, and you fall back to the more costly semantic-plus-HITL path until the channel is constrained.
 - **Slow drift below the conformance threshold** (ASI10) still needs baselining over time, not a single-hop check. The conformance test catches the step that crosses the line; it does not by itself set where the line is.
+- **Opaque memory and inter-agent channels weaken inspection.** The conformance test and provenance tagging assume you can read what is in memory and what agents say to each other. If systems move to non-text vector memory or inter-agent communication via internal representations, that legibility erodes ([UK AISI, *Loss of Oversight*, 2026](https://www.aisi.gov.uk/research)). The structural floor survives this; the conformance test does not, unless text-based affordances are preserved by design. See [Safety Cases and Oversight Durability](safety-cases-and-oversight-durability.md).
 
 !!! info "References"
     - [OWASP Top 10 for Agentic Applications (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
     - [MASO: Multi-Agent System Orchestration](../../maso/README.md)
     - [MASO: Objective Intent](../../maso/controls/objective-intent.md)
+    - [UK AI Security Institute: *Loss of Oversight* (2026)](https://www.aisi.gov.uk/research)

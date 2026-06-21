@@ -139,6 +139,7 @@ nav:
       - Semantic Firewall: core/controls/semantic-firewall.md
       - Data Provenance & Authority Boundaries: core/controls/data-provenance-and-authority-boundaries.md
       - "ASI Top 10: Provenance Mapping": core/controls/asi-top10-provenance-mapping.md
+      - Safety Cases & Oversight Durability: core/controls/safety-cases-and-oversight-durability.md
       - Implementation Checklist: core/checklist.md
       - Judge Assurance: core/judge-assurance.md
       - When the Judge Can Be Fooled: core/when-the-judge-can-be-fooled.md
@@ -352,6 +353,7 @@ nav:
         - Technical Controls: extensions/technical/technical-controls.md
         - Current Solutions: extensions/technical/current-solutions.md
         - Control Selection Guide: extensions/technical/control-selection-guide.md
+        - Log Analysis Pipeline: extensions/technical/log-analysis-pipeline.md
         - AI Endpoint Hardening: extensions/technical/ai-endpoint-hardening.md
         - RAG Security: extensions/technical/rag-security.md
       - Economics & Identity:
