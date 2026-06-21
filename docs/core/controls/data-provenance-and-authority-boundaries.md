@@ -24,6 +24,8 @@ The invariant says what must hold. It says nothing about *how* to check it at a 
 
 But commands do not arrive on a clean, separate wire. They are **embedded in data**. The agent reads data, forms an intent, selects a command, and produces an output. Data, command, intent and output are one unit, and a structural check sees only one corner of it. A command can be perfectly valid structurally (allowlisted destination, correct port, valid schema) and still be the wrong command for the task, or one triggered by poisoned data, or one whose output does not match what was expected. So the deterministic check is a **necessary floor, not the verdict**.
 
+Third-party evidence supports the split. A study of 177,436 MCP tools categorises them by direct impact into **perception** tools (read data), **reasoning** tools (analyse data or concepts), and **action** tools that modify external environments such as editing files or sending email ([*How are AI agents used?*, arXiv:2603.23802](https://arxiv.org/abs/2603.23802)). Perception tools are data ingress, where provenance tagging applies; action tools are commands with real-world effect, where the structural floor and the conformance test apply.
+
 ![Data provenance and authority boundaries](../../images/data-provenance-authority-boundaries.svg){ .arch-diagram }
 
 ### The structural floor

@@ -243,6 +243,49 @@ This paper has profound implications for model supply chain security: if you fin
 - [Anthropic Research Page](https://www.anthropic.com/research/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training)
 - [Simple probes can catch sleeper agents](https://www.anthropic.com/research/probes-catch-sleeper-agents)
 
+## Research - AI Oversight, Assurance & Evaluation
+
+This cluster of recent UK AISI and collaborator work informs the framework's assurance and oversight material: how to argue safeguards are sufficient, how to keep the oversight those arguments depend on from eroding, and how to analyse the logs that produce the evidence.
+
+### "Loss of Oversight" - UK AI Security Institute (2026)
+
+Taylor et al. Maps the landscape of AI oversight (auditing before deployment, monitoring during, investigating after) across five signal surfaces: chain-of-thought, action-only behaviour, state/memory/inter-agent communication (SMIA), white-box internals, and training-based methods. Its central finding is that current oversight rests on contingent properties of today's models that are likely to erode, so safety claims resting on them can silently expire. Identifies 20+ degradation pathways and levers to preserve each.
+
+Informs [Safety Cases and Oversight Durability](core/controls/safety-cases-and-oversight-durability.md), the SMIA caveat in the [ASI mapping](core/controls/asi-top10-provenance-mapping.md), and the decorrelated-monitoring-surfaces point in [Judge Assurance](core/judge-assurance.md).
+
+- [UK AI Security Institute - Research](https://www.aisi.gov.uk/research)
+
+### "An Example Safety Case for Safeguards Against Misuse" (2025) and reusable template (2026)
+
+Lays out how to structure an end-to-end argument (a safety case) that misuse safeguards reduce deployment risk to acceptable levels, using Claims-Arguments-Evidence and Goal Structuring Notation. Introduces the inability-versus-mitigation distinction and an "uplift model" that red-teams a safeguard to estimate the effort required to evade it. A companion paper provides a reusable template framework. Informs [Safety Cases and Oversight Durability](core/controls/safety-cases-and-oversight-durability.md).
+
+- [An Example Safety Case for Safeguards Against Misuse (arXiv:2505.18003)](https://arxiv.org/abs/2505.18003)
+- [Constructing Safety Cases for AI Systems: A Reusable Template Framework (arXiv:2601.22773)](https://arxiv.org/abs/2601.22773)
+
+### "Seven Simple Steps for Log Analysis in AI Systems" - Dubois et al., UK AISI (2026)
+
+A standardised, reproducible pipeline for turning AI system logs (responses, tool calls, reasoning traces, metadata) into structured signal, with detailed guidance on validating the scanners (Judges/autograders) that detect patterns: stratified sampling, human ground truth, and metrics including precision/recall, ROC-AUC, calibration, and inter-rater agreement. Illustrated with the Inspect Scout library. Informs the [Log Analysis Pipeline](extensions/technical/log-analysis-pipeline.md).
+
+- [Seven Simple Steps for Log Analysis in AI Systems (techRxiv)](https://doi.org/10.36227/techrxiv.177223089.95759468/v1)
+
+### "Propensity Inference" - Järviniemi et al. (2026)
+
+Develops methods to measure a model's propensity for unsanctioned behaviour, distinct from its capability, by varying environmental factors and quantifying effect sizes with Bayesian generalised linear models while guarding against circular analysis. Across 23 models and 11 environments, finds roughly equal contributions from strategic and non-strategic factors and some evidence of increasing sensitivity to goal conflicts. Informs the environment-dependent propensity point in [Risk Tiers](core/risk-tiers.md).
+
+- [Propensity Inference: Environmental Contributors to Unsanctioned LLM Behaviour (arXiv:2604.21098)](https://arxiv.org/abs/2604.21098)
+
+### "How are AI agents used? Evidence from 177,000 MCP tools" - Stein (2026)
+
+Monitors public MCP server repositories and analyses 177,436 agent tools created between November 2024 and February 2026, categorising them by direct impact into perception (read data), reasoning (analyse), and action (modify external environments) tools. Provides empirical grounding for the scale of the MCP surface and for the data-versus-command distinction in the [provenance core](core/controls/data-provenance-and-authority-boundaries.md). Informs [The MCP Problem](insights/the-mcp-problem.md).
+
+- [How are AI agents used? Evidence from 177,000 MCP tools (arXiv:2603.23802)](https://arxiv.org/abs/2603.23802)
+
+### "Improving Methodologies for Agentic Evaluations Across Domains" - International AISI Network (2026)
+
+The third joint testing exercise of the international AISI network, focused on methodology for evaluating agents on sensitive-information leakage, fraud, and cybersecurity in realistic environments, including measuring the cost and user friction a safeguard imposes, not just its catch rate.
+
+- [Improving Methodologies for Agentic Evaluations (arXiv:2601.15679)](https://arxiv.org/abs/2601.15679)
+
 ## Research - Prompt Injection & Runtime Security
 
 ### Simon Willison - Prompt Injection Research
@@ -471,6 +514,7 @@ These numbers provide context for why this framework exists and help calibrate t
 | Agent task complexity doubling every ~8 months | UK AISI Frontier AI Trends Report, December 2025 |
 | Scaffolding provides ~40% performance boost on SWE-bench | UK AISI Frontier AI Trends Report, December 2025 |
 | Open-to-closed source capability gap: 4-8 months | UK AISI Frontier AI Trends Report, December 2025 |
+| 177,436 public MCP agent tools tracked (Nov 2024 - Feb 2026) | How are AI agents used? (arXiv:2603.23802, 2026) |
 
 ## Further Reading
 

@@ -64,7 +64,7 @@ Avoid shared blind spots. If your generator uses one model family, your judge sh
 | Claude | GPT-4, Gemini, Llama-based |
 | Open-source (Llama, Mistral) | Any commercial model, or a different open-source family |
 
-This doesn't eliminate shared failures (all LLMs share some biases), but it reduces correlated failure significantly.
+This doesn't eliminate shared failures (all LLMs share some biases), but it reduces correlated failure significantly. The UK AISI *Loss of Oversight* report (2026) generalises this as keeping **decorrelated monitoring surfaces**: action-only, reasoning-trace, and white-box probes only provide independent evidence if they are not all defeated by the same failure, so their correlation should be measured rather than assumed. See [Safety Cases and Oversight Durability](controls/safety-cases-and-oversight-durability.md), and [Log Analysis Pipeline](../extensions/technical/log-analysis-pipeline.md) for validating each scanner against human ground truth.
 
 ### 3. Calibrate Continuously
 

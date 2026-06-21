@@ -121,6 +121,14 @@ This finding reinforces a critical principle: **one-size-fits-all guardrails are
 
 > **Source:** UK AI Security Institute, *Frontier AI Trends Report*, December 2025.
 
+## Propensity Is Environment-Dependent
+
+Capability is not the only thing that determines how a model behaves. Research on **propensity** (a model's tendency toward unsanctioned behaviour, as distinct from its capability for it) finds that the **environment a model is placed in measurably changes that propensity**, with roughly equal contributions from strategic and non-strategic factors across 23 models and 11 environments, and some evidence of increasing sensitivity to goal conflicts ([*Propensity Inference*, Järviniemi et al., arXiv:2604.21098](https://arxiv.org/abs/2604.21098)).
+
+The practical implication reinforces tiering by **deployment context**, not model choice alone. The same model placed in a higher-conflict, higher-autonomy environment is a different risk, which is why the tier is a property of the use case and its surroundings, not just the model. It also means a model swap is not the only trigger for reassessment: a change to the agent's environment (new tools, new data sources, more autonomy) can shift propensity even with the model held constant.
+
+> **Source:** *Propensity Inference: Environmental Contributors to Unsanctioned LLM Behaviour* (2026).
+
 ## Classification Process
 
 ### Step 1: Score Impact Dimensions

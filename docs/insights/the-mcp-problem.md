@@ -187,6 +187,12 @@ The AISI data showed the financial services MCP ecosystem shifting rapidly towar
 
 > **Source:** UK AI Security Institute, *Frontier AI Trends Report*, December 2025.
 
+## The Scale of the MCP Tool Surface
+
+The autonomy classification above describes *what* MCP servers can do. A separate study measures *how many* there are and what they do. Monitoring public MCP repositories, it analysed **177,436 agent tools** created between November 2024 and February 2026, and categorised them by direct impact into **perception** tools (access and read data), **reasoning** tools (analyse data or concepts), and **action** tools that directly modify external environments, such as editing files, sending email, or controlling physical devices ([*How are AI agents used? Evidence from 177,000 MCP tools*, Stein, 2026](https://arxiv.org/abs/2603.23802)).
+
+Two things matter for control selection. First, the surface is large and growing fast, so server-by-server manual review does not scale: classification and allow-listing have to be systematic. Second, the perception/reasoning/action split is the same data-versus-command distinction that the [provenance and conformance core](../core/controls/data-provenance-and-authority-boundaries.md) is built on. Perception tools are data ingress, where provenance tagging and input controls apply. Action tools are commands with real-world effect, where the structural floor (destination, port, schema) and the conformance test apply, and where consequential actions need a human gate.
+
 ## MCP Tool Poisoning: A Structured Threat Model
 
 Academic threat modelling published in May 2026 (Huang et al., New York Institute of Technology) applied STRIDE and DREAD analysis to the MCP architecture, decomposing it into five components: the MCP host and client, the LLM, the MCP server, external data stores, and the authorization server. Across these five components, the analysis identified 57 distinct threats and tested four tool-poisoning attack types against seven popular MCP clients.
