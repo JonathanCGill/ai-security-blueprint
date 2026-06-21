@@ -166,6 +166,22 @@ A runtime control plane for AI behaviour. Each layer operates independently, and
 
 ---
 
+## One idea underneath the layers
+
+The four layers are *how* AIRS enforces. Underneath them is a single claim about *what* must hold, and it is the part we think keeps the framework from going stale every quarter.
+
+**Most named agentic threats are one event wearing different labels:** untrusted content crossing a trust boundary and being treated as an instruction instead of as data. Goal hijack, memory poisoning, inter-agent compromise, poisoned skills, all structurally the same thing. Commit to one invariant and they collapse into a single enforcement problem rather than a growing list of separate ones.
+
+- **Provenance is tagged at ingestion.** Untrusted content is marked as *data*, the tag persists across every hop, and data never self-promotes to instruction no matter what it says inside itself.
+- **Match the checker to the flow.** A command on a constrained channel gets a cheap, deterministic **structural floor** (allowlist, port, protocol, schema) that no rephrased attack can fool. Content whose meaning is the risk gets the semantic firewall. You spend the expensive checks only where they earn their place.
+- **Then test conformance.** Did the agent use the right commands for its task, and did the result match what was expected? Judged over the whole `(data, command, intent, output)` together, against the agent's declared intent, not against a denylist of this quarter's attacks.
+
+Why it matters: when the next named attack arrives, the question stops being "which new control do we bolt on" and becomes "which part of this small core already covers it." A positive declaration of expected behaviour catches the novel attack by exclusion, because anything outside the declaration is suspect even before anyone has named the technique.
+
+[The idea in full](core/controls/data-provenance-and-authority-boundaries.md) · [The OWASP Agentic Top 10 mapped to this core](core/controls/asi-top10-provenance-mapping.md)
+
+---
+
 ## Insights
 
 The *why* before the *how*. Each article identifies a specific problem that the controls then solve.
