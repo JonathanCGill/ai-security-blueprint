@@ -20,7 +20,7 @@ The industry is converging on the same answer independently. NVIDIA NeMo, AWS Be
 | Layer | What It Does | Speed |
 | --- | --- | --- |
 | **Guardrails** | Block known-bad inputs and outputs: PII, injection patterns, policy violations | Real-time (~10ms) |
-| **Reviewing Controls** | Detect unknown-bad through a combination of controls: deterministic scanners, a [semantic firewall](core/controls/semantic-firewall.md) (an intent classifier that flags requests whose *meaning* matches a prohibited topic, even when the wording is novel), policy compliance checks against declared intent, and Model-as-Judge (SLM or LLM, optionally [distilled](extensions/technical/distill-judge-slm.md)) for the cases the others cannot resolve | <5ms (scanners) to 10-50ms (semantic firewall, SLM Judge) inline; 500ms-5s (LLM Judge) async, or held for high-risk actions |
+| **Reviewing Controls** | Detect unknown-bad through a combination of controls: deterministic scanners, a [semantic firewall](core/controls/semantic-firewall.md) (an intent classifier that flags requests whose *meaning* matches a prohibited topic, even when the wording is novel), policy compliance checks against declared intent, and Model-as-Judge (SLM or LLM, optionally [distilled](extensions/technical/distill-judge-slm.md)) for the cases the others cannot resolve | <5ms (scanners), 15-30ms (semantic firewall), 10-50ms (SLM Judge) inline; 500ms-5s (LLM Judge) async, or held for high-risk actions |
 | **Human Oversight** | Decide genuinely ambiguous cases that automated layers cannot resolve | As needed |
 | **Circuit Breaker** | Stop all AI traffic and activate a safe fallback when controls themselves fail | Immediate |
 
@@ -42,7 +42,7 @@ Before the table of when each applies, here is what each control *is* in one lin
 | Reviewing control | What it catches | Latency | When it's appropriate |
 | --- | --- | --- | --- |
 | **Deterministic scanners** | Schema violations, malformed payloads, known secrets and PII patterns | <5ms | Always on. The cheapest check, runs on every output before anything else does. |
-| **Semantic firewall** | A prohibited or out-of-scope intent expressed in novel wording: reworded, translated, or disguised to evade the scanners | 10-50ms | Always on for any system that processes untrusted input: user prompts, retrieved documents, tool results. |
+| **Semantic firewall** | A prohibited or out-of-scope intent expressed in novel wording: reworded, translated, or disguised to evade the scanners | 15-30ms | Always on for any system that processes untrusted input: user prompts, retrieved documents, tool results. |
 | **Policy compliance check** | Actions outside the declared intent ([OISpec](maso/controls/objective-intent.md)), even when individually well-formed | <50ms | Privileged actions: a tool call, a data write, a delegation to another agent or system. |
 | **Model-as-Judge** | Genuinely novel or ambiguous cases the other three cannot resolve | 10-50ms (distilled SLM, inline) or 500ms-5s (LLM, async) | Escalations from the other controls, or held synchronously for HIGH/CRITICAL risk-tier actions. |
 

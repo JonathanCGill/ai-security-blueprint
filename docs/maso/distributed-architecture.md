@@ -47,7 +47,7 @@ Schema validation, regex pattern blocking, secret-pattern detection (cross-refer
 
 ### Semantic Firewall
 
-A narrow model, the same family as the [distilled SLM](../extensions/technical/distill-judge-slm.md), trained specifically to recognise prompt-injection and jailbreak patterns in the payload by their meaning rather than their surface form. This is the "domain-specific" half of the sidecar trilemma table: a generalist cloud Judge misses the patterns this semantic firewall was built to catch, and catches them in 10-50ms rather than 1-3s.
+A narrow model, the same family as the [distilled SLM](../extensions/technical/distill-judge-slm.md), trained specifically to recognise prompt-injection and jailbreak patterns in the payload by their meaning rather than their surface form. This is the "domain-specific" half of the sidecar trilemma table: a generalist cloud Judge misses the patterns this semantic firewall was built to catch, and catches them in 15-30ms rather than 1-3s.
 
 ### Three Reviewing Controls, Working Together
 
@@ -56,7 +56,7 @@ Each check returns **GO**, **NO-GO**, or **ESCALATE**. GO and NO-GO are resolved
 | Reviewing control | Latency | Runs on | Handles |
 |--------------------|---------|---------|---------|
 | Deterministic scanners | <5ms | Every hop | Schema violations, secrets, malformed payloads |
-| Semantic firewall | 10-50ms | Every hop | Prompt injection, jailbreak patterns |
+| Semantic firewall | 15-30ms | Every hop | Prompt injection, jailbreak patterns |
 | Model-as-Judge | 1.2-3s (async) / held (sync, HIGH+) | Escalations only | Novel or ambiguous violations |
 
 None of these controls is a pre-filter for the others. Each resolves the class of violation it is best suited to, at the cost appropriate to that class. Section 3 adds the fourth: a **policy compliance check** for the privileged handoffs that need one.
