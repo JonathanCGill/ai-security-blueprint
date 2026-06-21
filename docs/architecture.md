@@ -20,20 +20,29 @@ The industry is converging on the same answer independently. NVIDIA NeMo, AWS Be
 | Layer | What It Does | Speed |
 | --- | --- | --- |
 | **Guardrails** | Block known-bad inputs and outputs: PII, injection patterns, policy violations | Real-time (~10ms) |
-| **Reviewing Controls** | Detect unknown-bad through a combination of controls: deterministic scanners, a semantic firewall (purpose-built classifier tuned to injection and jailbreak patterns), policy compliance checks against declared intent, and Model-as-Judge (SLM or LLM, optionally [distilled](extensions/technical/distill-judge-slm.md)) for the cases the others cannot resolve | <5ms (scanners) to 10-50ms (semantic firewall, SLM Judge) inline; 500ms-5s (LLM Judge) async, or held for high-risk actions |
+| **Reviewing Controls** | Detect unknown-bad through a combination of controls: deterministic scanners, a [semantic firewall](core/controls/semantic-firewall.md) (an intent classifier that flags requests whose *meaning* matches a prohibited topic, even when the wording is novel), policy compliance checks against declared intent, and Model-as-Judge (SLM or LLM, optionally [distilled](extensions/technical/distill-judge-slm.md)) for the cases the others cannot resolve | <5ms (scanners), 15-30ms (semantic firewall), 10-50ms (SLM Judge) inline; 500ms-5s (LLM Judge) async, or held for high-risk actions |
 | **Human Oversight** | Decide genuinely ambiguous cases that automated layers cannot resolve | As needed |
 | **Circuit Breaker** | Stop all AI traffic and activate a safe fallback when controls themselves fail | Immediate |
 
 **Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain.**
 
-"Judge detects" is shorthand for the whole reviewing-controls layer, not just the Model-as-Judge component. Each control inside it catches a different class of failure: deterministic scanners catch what is mechanically wrong, the semantic firewall catches what is adversarially shaped, policy compliance checks catch requests outside declared intent, and Model-as-Judge catches what is genuinely novel, each at the cost and latency appropriate to what it catches. None is a pre-filter for the others.
+"Judge detects" is shorthand for the whole reviewing-controls layer, not just the Model-as-Judge component. Each control inside it catches a different class of failure: deterministic scanners catch what is mechanically wrong, the semantic firewall catches a prohibited intent reworded to slip past the scanners, policy compliance checks catch requests outside declared intent, and Model-as-Judge catches what is genuinely novel, each at the cost and latency appropriate to what it catches. None is a pre-filter for the others.
+
+### The Four Reviewing Controls
+
+Before the table of when each applies, here is what each control *is* in one line:
+
+- **Deterministic scanners** are fixed-rule checks: schema validation, secrets and PII pattern matching, encoding detection. No model involved.
+- **[Semantic firewall](core/controls/semantic-firewall.md)** is an intent classifier. It scores a request's *meaning* against a declared taxonomy of allowed and prohibited topics, so a prohibited intent reworded, translated, or disguised is caught even though no scanner pattern matches. It is not a Judge: it routes (pass, escalate, or reject), it does not deliver a final verdict on ambiguous cases.
+- **Policy compliance check** verifies a privileged action stays inside the declared intent for the deployment ([OISpec](maso/controls/objective-intent.md)), even when the action is individually well-formed.
+- **[Model-as-Judge](core/controls.md#2-model-as-judge)** is an independent model, a [distilled SLM](extensions/technical/distill-judge-slm.md) inline or a large LLM async, that reasons about the genuinely novel or ambiguous cases the other three escalate to it.
 
 ### When Is Which Reviewing Control Appropriate?
 
 | Reviewing control | What it catches | Latency | When it's appropriate |
 | --- | --- | --- | --- |
 | **Deterministic scanners** | Schema violations, malformed payloads, known secrets and PII patterns | <5ms | Always on. The cheapest check, runs on every output before anything else does. |
-| **Semantic firewall** | Prompt injection and jailbreak patterns, including paraphrased or disguised attempts | 10-50ms | Always on for any system that processes untrusted input: user prompts, retrieved documents, tool results. |
+| **Semantic firewall** | A prohibited or out-of-scope intent expressed in novel wording: reworded, translated, or disguised to evade the scanners | 15-30ms | Always on for any system that processes untrusted input: user prompts, retrieved documents, tool results. |
 | **Policy compliance check** | Actions outside the declared intent ([OISpec](maso/controls/objective-intent.md)), even when individually well-formed | <50ms | Privileged actions: a tool call, a data write, a delegation to another agent or system. |
 | **Model-as-Judge** | Genuinely novel or ambiguous cases the other three cannot resolve | 10-50ms (distilled SLM, inline) or 500ms-5s (LLM, async) | Escalations from the other controls, or held synchronously for HIGH/CRITICAL risk-tier actions. |
 
@@ -49,7 +58,7 @@ For a single AI model, a chatbot, a document processor, an assistant, the four l
 
 - **Guardrails are a [constrain-regardless](insights/why-containment-beats-evaluation.md) architecture.** Action-space constraints that leave the model's reasoning unconstrained. Permissions derive from **business intent**, what the use case requires, not from evaluation of the model's capabilities. Necessary but insufficient alone: you cannot write a regex for every possible failure of a system that generates natural language.
 
-- **Reviewing controls must be independent.** Deterministic scanners, a semantic firewall, policy compliance checks, and Model-as-Judge, whether a [distilled SLM](extensions/technical/distill-judge-slm.md) sidecar for real-time screening or a large LLM running asynchronously, run on a different model and, where possible, a different provider, **enterprise-owned and configured**, not vendor-side safeguards. If the primary model is compromised, the reviewing controls must not be compromised with it. This is where within-bounds adversarial behaviour is caught, which containment alone cannot address.
+- **Reviewing controls must be independent.** Deterministic scanners, a [semantic firewall](core/controls/semantic-firewall.md), policy compliance checks, and Model-as-Judge, whether a [distilled SLM](extensions/technical/distill-judge-slm.md) sidecar for real-time screening or a large LLM running asynchronously, run on a different model and, where possible, a different provider, **enterprise-owned and configured**, not vendor-side safeguards. If the primary model is compromised, the reviewing controls must not be compromised with it. This is where within-bounds adversarial behaviour is caught, which containment alone cannot address.
 
 - **Human oversight scales with risk, not with volume.** Only genuinely ambiguous cases reach reviewers. Low-risk systems get spot checks, high-risk systems get human approval before execution. If every output goes to a reviewer, the reviewers stop reading, and oversight degrades to theatre.
 
@@ -86,6 +95,8 @@ Every control has a defined failure mode. Detection catches most of them, but no
 Even at the lowest risk tier, there is a fallback plan. At the highest, there is a structured degradation path from full autonomy to full stop. The architecture does not assume the layers are perfect; it assumes they will each fail at some point, and designs for that.
 
 !!! info "References"
+    - [Controls: Guardrails, Judge, and Human Oversight](core/controls.md)
+    - [Semantic Firewall](core/controls/semantic-firewall.md)
     - [Foundation Framework](foundations/README.md)
     - [MASO Framework](maso/README.md)
     - [PACE Resilience](pace-resilience.md)
