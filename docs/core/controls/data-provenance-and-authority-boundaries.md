@@ -6,6 +6,10 @@ description: "The invariant underneath the control layers: untrusted content is 
 
 Most of the named threats in agentic AI are one event wearing different labels: untrusted content crossing a trust boundary and being treated as an instruction rather than as data. A poisoned skill file, an injected email, a manipulated tool response, a corrupted inter-agent message: structurally identical. Something that should have stayed inert payload was interpreted as a command.
 
+Traditional input validation looks for malformed hay in the haystack: a SQL injection or XSS payload has to break out of a data context into a code context to work, which gives it a detectable shape distinct from legitimate input. A parser or a WAF rule can catch it because the exploit looks different from the data around it.
+
+Prompt injection has no such shape. An instruction smuggled into a fetched document or a tool result is syntactically identical to legitimate content: both are well-formed natural language, both are plausible things to find in that channel. There is no malformed-hay signature to filter on, only a needle made of the same material as the hay. This is why content filtering has a structurally lower ceiling here than it did against SQLi or XSS, and why the fix has to be architectural rather than lexical: tag where content came from, and never let what it says change what it's allowed to do.
+
 This page states the invariant that collapses those separate detection problems into one enforcement principle, and then the rule for choosing the **right checker** at each boundary. The layered controls (Guardrails, [Semantic Firewall](semantic-firewall.md), [Model-as-Judge](../controls.md), Human Oversight) are *how* you enforce this. The invariant is *what* must hold, regardless of what this quarter's attack is called.
 
 ## The invariant
