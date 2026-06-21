@@ -16,7 +16,7 @@ Most organisations have governance. Few have runtime security. That gap is where
 
 AIRS is a vendor-neutral, risk-proportionate framework for the enforcement side: layered runtime controls you can match to your actual risk, not a compliance checklist.
 
-**Three domains, one framework.** [Foundation](foundations/README.md) secures single-agent systems, [MASO](maso/README.md) secures multi-agent orchestration, and [Infrastructure](infrastructure/README.md) secures the platforms underneath. The [SDK](sdk/README.md) turns all three into code.
+**Three domains, one framework.** [Foundation](foundations/README.md) secures single-agent systems, [MASO](maso/README.md) secures multi-agent orchestration, and [Infrastructure](infrastructure/README.md) secures the platforms underneath.
 
 New here? Start with [what AI Runtime Security is](what-is-ai-runtime-security.md).
 
@@ -132,7 +132,6 @@ Nine role-specific entry points. Each one frames AI runtime security through the
 | **Foundation** | Three-layer behavioural controls for single-agent deployments. 80 infrastructure controls across 11 domains. | [Architecture](architecture.md) |
 | **MASO** | Ten control domains for multi-agent orchestration. PACE resilience. OWASP Agentic Top 10 coverage. | [MASO](maso/README.md) |
 | **Implementation** | Platform patterns for AWS, Azure, Databricks. Tool access controls. Agentic infrastructure. | [Infrastructure](infrastructure/README.md) |
-| **SDK** | Python reference implementation. Guardrails, judge evaluation, circuit breakers in code. | [SDK](sdk/README.md) |
 
 ---
 
