@@ -44,9 +44,9 @@ This is why the Judge provides the second layer.
 
 > For practical implementation guidance - international PII detection, RAG ingestion filtering, secrets scanning, alerting design, and guardrail exception governance - see **[Practical Guardrails](../insights/practical-guardrails.md)**.
 
-## 2. Semantic Firewall
+## Semantic Firewall
 
-Intent-level enforcement between Guardrails and the Judge. Where Guardrails block known-bad *patterns* and the Judge evaluates unknown-bad *content*, the semantic firewall catches known-bad *intent* expressed in wording neither has seen before - a request reworded, translated, or indirected to mean the same prohibited thing.
+Part of the Reviewing Controls layer, alongside the Judge: intent-level enforcement that sits between Guardrails and Model-as-Judge in the request path. Where Guardrails block known-bad *patterns* and the Judge evaluates unknown-bad *content*, the semantic firewall catches known-bad *intent* expressed in wording neither has seen before - a request reworded, translated, or indirected to mean the same prohibited thing.
 
 | Layer | Catches | Speed |
 | --- | --- | --- |
@@ -60,7 +60,7 @@ It classifies inbound requests against a declared taxonomy of authorised and pro
 
 → Full detail, build options, and limitations: [Semantic Firewall](controls/semantic-firewall.md)
 
-## 3. Model-as-Judge
+## 2. Model-as-Judge
 
 Evaluation of interactions for quality and policy compliance. The Judge can be a large LLM (for async assurance and complex reasoning) or a [distilled SLM](../extensions/technical/distill-judge-slm.md) (for inline, real-time action screening). Both approaches can be combined: an SLM screens every action in under 50ms, while a large LLM audits a sample asynchronously.
 
@@ -119,7 +119,7 @@ The Judge will make mistakes.
 
 **Target:** >90% agreement with human reviewers.
 
-## 4. Human Oversight (HITL)
+## 3. Human Oversight (HITL)
 
 Humans review findings, make decisions, remain accountable.
 
