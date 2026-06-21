@@ -270,6 +270,8 @@ Additionally, the **TrapDoor** supply chain campaign (May 2026) confirmed this c
 
 **MASO controls:** SC-1.3 (fixed toolsets, prevents runtime discovery), SC-2.2 (signed tool manifests), SC-2.3 (MCP server allow-listing), SC-3.1 (cryptographic trust chain)
 
+OWASP tracks this class separately from ASI04 (Agentic Supply Chain) via the **[Agentic Skills Top 10](https://owasp.org/www-project-agentic-skills-top-10/)** (AST01-AST10), scoped specifically to the SKILL.md / marketplace pattern. Use the **Lethal Trifecta** (private-data access + untrusted-content exposure + external-communication ability) as the per-skill triage heuristic - see [The Agent Supply Chain Crisis](../../insights/the-agent-supply-chain-crisis.md#the-lethal-trifecta).
+
 **Gap in current controls:** SC-1.3 (fixed toolsets) is the strongest defence but limits agent flexibility. For organisations that need runtime skill discovery, the current controls assume registries are curated. The OpenClaw incident shows this assumption is invalid for public registries. MASO should:
 
 - Explicitly distinguish between private curated registries (lower risk) and public registries (high risk, require per-skill vetting even with signing)

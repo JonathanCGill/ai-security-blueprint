@@ -37,7 +37,7 @@ The shared Judge infrastructure runs overnight batch evaluations on the previous
 
 | Layer | Action | Reference |
 |---|---|---|
-| **Judge** (Layer 2) | Batch evaluation flags 23 outputs with grounding score below 0.7 | [Judge Evaluation](../core/controls.md#3-model-as-judge) - MEDIUM tier: batch daily, basic quality |
+| **Judge** (Layer 2) | Batch evaluation flags 23 outputs with grounding score below 0.7 | [Judge Evaluation](../core/controls.md#2-model-as-judge) - MEDIUM tier: batch daily, basic quality |
 | **Alerting** | Alert sent to Compliance AI operator and the shared AI operations team | [Observability](../infrastructure/controls/logging-and-observability.md) |
 | **PACE** | System remains in **Primary** state - the Judge is detecting, not blocking | [PACE Resilience](../pace-resilience.md) - Tier 1 systems fail-open |
 
@@ -224,7 +224,7 @@ The HR candidate screening assistant (HIGH tier) undergoes its fortnightly bias 
 
 **Today's findings:** The adverse impact ratio is 0.83 (above the 0.8 four-fifths threshold, but trending down from 0.91 two weeks ago). The HR legal advisor flags this as a watch item. If it drops below 0.8, the system needs intervention.
 
-**Framework connection:** This is [Human Oversight](../core/controls.md#4-human-oversight-hitl) at HIGH tier - structured review with domain expertise. The [Risk Assessment](../core/risk-assessment.md) methodology requires ongoing measurement, not just initial classification.
+**Framework connection:** This is [Human Oversight](../core/controls.md#3-human-oversight-hitl) at HIGH tier - structured review with domain expertise. The [Risk Assessment](../core/risk-assessment.md) methodology requires ongoing measurement, not just initial classification.
 
 **Who acts:** HR Analytics lead presents findings. HR Legal advisor sets the watch threshold. AI engineering team is on standby for prompt or training data adjustments if needed.
 

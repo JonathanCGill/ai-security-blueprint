@@ -100,6 +100,14 @@ The existing framework does not fully address:
 
 Microsoft's Agent Governance Toolkit addresses some of this with its Agent Marketplace component, which provides Ed25519 signing, manifest verification, and trust-tiered capability gating for agent plugins. This is the direction the industry needs to move.
 
+### The Lethal Trifecta
+
+A useful test for whether a given skill is worth the risk it carries, popularised by Simon Willison and echoed in subsequent industry analysis: a skill is dangerous when it simultaneously has **access to private data** (credentials, wallet files, browser data), **exposure to untrusted content** (instructions embedded in skill files, retrieved documents, inbound messages), and **the ability to communicate externally** (network egress, webhook calls). Any two of the three are usually manageable. All three together is where the OpenClaw skills did their damage - a skill that can read a credential file, take instructions from content it did not author, and call out to the network has everything it needs to exfiltrate without the agent's operator ever seeing the data leave.
+
+**Implication:** Before approving a skill for the registry, check it against the trifecta explicitly. If a skill needs all three properties to do its job, it needs the heaviest controls in this section, not the default ones.
+
+OWASP has formalised this class of risk separately from the main Agentic Top 10: the **[OWASP Agentic Skills Top 10](https://owasp.org/www-project-agentic-skills-top-10/)** (AST01-AST10), led by AST01: Malicious Skills. It is scoped specifically to the SKILL.md / marketplace pattern this incident exposed, and is worth tracking alongside ASI04 (Agentic Supply Chain) rather than folding into it - the failure modes and the controls that address them are different enough to warrant the separate list.
+
 ## Practical Guidance
 
 **For organisations using agent frameworks:**
