@@ -93,6 +93,8 @@ This is not only a cost optimisation, it is an audit artifact. For each data flo
 | [Human Oversight](../controls.md#4-human-oversight-hitl) | The gate applied to consequential or regulated actions regardless of which checker passed them. |
 | [Multi-agent controls](../multi-agent-controls.md) | Inter-agent messages are a special case: one compromised agent's message is, to the receiving agent, just more data that must not auto-upgrade to instruction. |
 
+See [ASI Top 10 Through the Provenance and Authority Lens](asi-top10-provenance-mapping.md) for the full demonstration that each OWASP Agentic risk resolves to this core.
+
 !!! info "References"
     - [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
     - [Simon Willison: prompt injection and the lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)

@@ -138,6 +138,7 @@ nav:
       - "Three-Layer Model: Guardrails, Judge, Oversight": core/controls.md
       - Semantic Firewall: core/controls/semantic-firewall.md
       - Data Provenance & Authority Boundaries: core/controls/data-provenance-and-authority-boundaries.md
+      - "ASI Top 10: Provenance Mapping": core/controls/asi-top10-provenance-mapping.md
       - Implementation Checklist: core/checklist.md
       - Judge Assurance: core/judge-assurance.md
       - When the Judge Can Be Fooled: core/when-the-judge-can-be-fooled.md
