@@ -62,8 +62,11 @@ body:has(.airs-rd-main) .md-grid {
 
 .airs-redesign p { margin: 0; text-wrap: pretty; }
 
-.airs-redesign a { color: var(--accent); text-decoration: none; transition: color 0.18s ease, border-color 0.18s ease; }
-.airs-redesign a:hover { color: var(--accent-hover); }
+/* Base link colour for bare content links only. :where() keeps this at
+   near-zero specificity so component classes (buttons, role cards, nav)
+   always win and never inherit accent-on-accent text. */
+:where(.airs-redesign) a { color: var(--accent); text-decoration: none; transition: color 0.18s ease, border-color 0.18s ease; }
+:where(.airs-redesign) a:hover { color: var(--accent-hover); }
 
 /* ── Header (sticky, shared) ──────────────────────────────── */
 .airs-rd-header {
