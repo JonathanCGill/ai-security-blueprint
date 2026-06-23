@@ -1,98 +1,65 @@
 ---
 title: What is AI Runtime Security?
 description: "AI Runtime Security (AIRS) is the discipline of reducing harm caused by AI systems during live operation. It provides risk-proportionate controls that organisations can select, adapt, or consciously deselect based on their own risk appetite and context."
+template: redesign.html
+nav_active: what-is
 ---
 
-# What is AI Runtime Security?
+<section class="airs-section airs-hero airs-hero--narrow airs-section--paper airs-section--first">
+  <div class="airs-wrap--narrow">
+    <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">Start here</p>
+    <h1 class="airs-hero__title">What is AI Runtime Security?</h1>
+    <p class="airs-hero__lead">It is the set of live controls that watch your AI <em>while it is working</em> &mdash; and step in the moment it does something it shouldn't.</p>
+  </div>
+</section>
 
-**AI Runtime Security (AIRS)** is the discipline of reducing harm caused by AI systems during live operation, rather than relying solely on design-time testing or model evaluation.
+<section class="airs-section airs-section--paper airs-article">
+  <div class="airs-wrap--article">
+    <p>Think of a new AI feature as a new employee. <strong>Governance</strong> is its job description and the company rulebook: what it is hired to do, what it must never do, and who is accountable when something goes wrong. Most organisations already have this part.</p>
+    <p class="airs-muted">But a rulebook on its own never stopped anyone. <strong>Runtime security</strong> is the supervisor standing over their shoulder: checking the work in real time, catching mistakes before a customer ever sees them, and pulling the plug the moment something goes badly wrong.</p>
 
-It addresses a gap that existing security disciplines do not cover: the period between deployment and decommission, when AI systems interact with real users, real data, and real business processes, and when their behaviour can diverge from what was tested, expected, or authorised. The framework provides risk-oriented control patterns that organisations select based on their own risk appetite, applying the right controls at the right time for the right purposes.
+    <blockquote class="airs-pullquote">Governance decides what AI should do. Runtime security verifies what it actually does.</blockquote>
 
-## Definition
+    <h2>Why does it matter now?</h2>
+    <p class="airs-muted">For years, AI mostly answered questions. Now it acts: it books, buys, sends, edits, and reaches into other systems on your behalf. A wrong answer is awkward. A wrong action has consequences in the real world.</p>
+    <p class="airs-muted">And almost every new failure traces back to a single trick: hidden instructions dressed up as ordinary content. A web page, a document, or an email the AI reads can quietly tell it to do something it was never meant to do. Catch that one move and most of the named threats lose their teeth.</p>
 
-> AI Runtime Security is the practice of identifying, assessing, and treating threats to the confidentiality, integrity, and availability of AI systems in production. It applies defence-in-depth principles at the point of execution, treating deployment as the beginning of the risk lifecycle rather than the end of it.
+    <h2>How AIRS handles it</h2>
+    <p class="airs-muted">AIRS answers it with four independent layers. Each does one job, and each keeps working even if the others fail.</p>
+    <div class="airs-vlist">
+      <div class="airs-vlist__row">
+        <span class="airs-vlist__num">01</span>
+        <div>
+          <span class="airs-vlist__title">Guardrails</span>
+          <p class="airs-vlist__summary">Block the obvious failures instantly.</p>
+        </div>
+      </div>
+      <div class="airs-vlist__row">
+        <span class="airs-vlist__num">02</span>
+        <div>
+          <span class="airs-vlist__title">Reviewing controls</span>
+          <p class="airs-vlist__summary">Check the output before anyone sees it.</p>
+        </div>
+      </div>
+      <div class="airs-vlist__row">
+        <span class="airs-vlist__num">03</span>
+        <div>
+          <span class="airs-vlist__title">Human oversight</span>
+          <p class="airs-vlist__summary">Put a person on the high-stakes calls.</p>
+        </div>
+      </div>
+      <div class="airs-vlist__row">
+        <span class="airs-vlist__num">04</span>
+        <div>
+          <span class="airs-vlist__title">Circuit breakers</span>
+          <p class="airs-vlist__summary">Stop everything and fail safe when needed.</p>
+        </div>
+      </div>
+    </div>
 
-## Scope
-
-AI Runtime Security covers the operational phase of AI systems. It is concerned with what AI systems actually do, not what they were designed to do.
-
-| In scope | Out of scope |
-|----------|-------------|
-| Runtime behavioural controls | Model training and fine-tuning |
-| Production monitoring and observability | Pre-deployment red-teaming (as standalone) |
-| Automated evaluation of live outputs | Dataset curation and provenance |
-| Human oversight and escalation | Model architecture selection |
-| Incident response for AI-specific failures | Prompt engineering best practices |
-| Multi-agent coordination security | AI ethics and fairness (as standalone) |
-| Regulatory evidence from live operation | Theoretical alignment research |
-
-This does not mean pre-deployment activities are unimportant. They are necessary but insufficient. A model that passed every evaluation can still hallucinate a regulatory disclosure, leak PII through a tool call, or take an action in an agent chain that no human authorised.
-
-### AI You Build vs. AI You Consume
-
-The full framework (three-layer controls, PACE resilience, risk tiers, MASO) is designed for **AI systems your organisation develops and operates**: custom models, RAG pipelines, autonomous agents, and multi-agent systems. These are the systems where you own the runtime and bear full responsibility for behaviour in production.
-
-Most organisations also consume AI through vendor platforms (copilots, SaaS features, cloud AI services). For consumed AI, the security questions are different: data classification, access governance, platform control configuration, and understanding what the vendor does and does not secure on your behalf. The framework's [maturity levels](strategy/maturity-levels.md) address how these tracks differ and what good practice looks like for each.
-
-## Core Controls
-
-AI Runtime Security is built on layered, independent controls that compensate for each other's weaknesses:
-
-**Guardrails** are fast, deterministic boundaries that enforce content policies, scope constraints, and tool-use permissions at the point of execution.
-
-**Model-as-Judge** is an independent model that evaluates the primary model's outputs against policy, context, and intent before those outputs reach users or downstream systems. The Judge can be a large LLM for async assurance or a [distilled SLM](extensions/technical/distill-judge-slm.md) for inline, real-time evaluation.
-
-**Human Oversight** provides structured escalation paths, audit trails, and intervention capability for high-risk decisions and anomaly-triggered review.
-
-**Circuit Breakers** are emergency failsafes that halt AI operations and activate safe fallbacks when controls themselves fail or when confirmed compromise is detected.
-
-Each layer operates independently. No single failure compromises the system.
-
-## Detect-Only and Enforcing Postures
-
-AIRS is a runtime control plane for AI behaviour. Like any control plane, each layer can run in **detect-only** mode (observe, log, alert) or **enforcing** mode (block, escalate, halt). The posture is a deployment decision, not a property of the framework.
-
-| Layer | Detect-only posture | Enforcing posture |
-|-------|---------------------|-------------------|
-| **Guardrails** | Log pattern matches; let requests through | Block requests that match high-confidence patterns |
-| **Model-as-Judge** | Evaluate outputs after delivery (async), flag for review | Evaluate before delivery (sync), block or rewrite failing outputs |
-| **Human Oversight** | Sample interactions for review; no blocking authority | Approval required for defined action classes before execution |
-| **Circuit Breakers** | Fire alerts on threshold breaches | Trip the system into a PACE fallback posture automatically |
-
-Most organisations deploy detect-only first, measure false-positive rates and latency, and graduate individual layers to enforcement as they earn confidence. The [Chevrolet $1 walkthrough](walkthrough-chevrolet-1-dollar.md) shows what enforcing mode catches. The [maturity levels](strategy/maturity-levels.md) describe how teams progress from one posture to the other.
-
-Typical added latency is ~10ms for guardrails and 500ms to 5s for the Judge. Full cost and latency modelling by risk tier is in [Cost & Latency](extensions/technical/cost-and-latency.md).
-
-## Relationship to Existing Security Domains
-
-AI Runtime Security does not replace existing security disciplines. It extends them into a domain they were not designed to cover.
-
-| Existing discipline | What it secures | Where AIRS extends it |
-|--------------------|----------------|----------------------|
-| Application Security | Code, APIs, web applications | AI-specific input/output validation, prompt injection defence |
-| Network Security | Traffic, segmentation, perimeters | Agent-to-agent communication, tool-call routing |
-| Identity & Access | Users, roles, permissions | Per-agent identity, delegation chains, transitive authority |
-| Data Protection | Storage, transit, classification | Context window leakage, cross-agent data flow, RAG poisoning |
-| Incident Response | Detection, containment, recovery | AI-specific failure modes, PACE resilience, circuit breaker activation |
-| Security Operations | Monitoring, alerting, investigation | AI behavioural telemetry, judge evaluation pipelines, drift detection |
-
-The principle is not new. Defence-in-depth has always been how we secure complex systems. What is new is applying it systematically to AI runtime behaviour, where the system's outputs are non-deterministic, context-dependent, and capable of autonomous action.
-
-## Why a Discipline, Not Just a Framework
-
-AI Runtime Security is a field of practice, not a product, vendor capability, or proprietary methodology. The [AIRS Framework](architecture.md) is one reference architecture for the discipline, spanning [Foundation](foundations/README.md) for single agents, [MASO](maso/README.md) for multi-agent coordination, [infrastructure controls](infrastructure/README.md), and [regulatory alignment](extensions/regulatory/eu-ai-act-crosswalk.md). Every organisation adopts, adapts, or deselects patterns based on its own risk appetite. The question is not whether organisations need AI Runtime Security, but whether they implement it before or after the first production incident forces them to.
-
-## Standards Alignment
-
-AI Runtime Security maps to established regulatory and standards frameworks:
-
-- **EU AI Act**: Article 9 (risk management), Article 14 (human oversight), Article 15 (accuracy and robustness)
-- **NIST AI RMF**: GOVERN, MAP, MEASURE, MANAGE functions
-- **ISO 42001**: Annex A controls for AI management systems
-- **OWASP LLM Top 10 (2025)**: full coverage across runtime control layers
-- **OWASP Agentic Top 10 (2026)**: multi-agent specific controls via MASO
-
----
-
-*[Jonathan Gill](https://www.linkedin.com/in/jonathancgill/) contributes to the AI Runtime Security discipline through the AIRS Framework at [airuntimesecurity.io](https://airuntimesecurity.io).*
+    <div class="airs-actionrow">
+      <a class="airs-btn airs-btn--primary" href="/architecture/">See the full framework &rarr;</a>
+      <a class="airs-btn airs-btn--secondary" href="/#roles">Find your role</a>
+    </div>
+  </div>
+</section>
