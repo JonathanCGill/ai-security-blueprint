@@ -114,6 +114,31 @@ nav_active: home
   </div>
 </section>
 
+<section class="airs-section airs-section--card">
+  <div class="airs-wrap">
+    <p class="airs-eyebrow">Insights &amp; news</p>
+    <h2 class="airs-h2">The thinking, and what's happening.</h2>
+    <p class="airs-intro">Short reads on why runtime security works, and a running record of real incidents mapped back to the framework.</p>
+    <div class="airs-cards airs-cards--roles">
+      <a class="airs-card" href="/insights/">
+        <p class="airs-card__title">Insights</p>
+        <p class="airs-card__body">The evidence behind the framework: why pre-deployment testing isn't enough, why guardrails leak, and what actually holds in production.</p>
+        <span class="airs-card__more">Read the insights &rarr;</span>
+      </a>
+      <a class="airs-card" href="/news/">
+        <p class="airs-card__title">News</p>
+        <p class="airs-card__body">A biweekly roundup of incidents and research, each item tagged with the AIRS controls, layers, and domains it touches.</p>
+        <span class="airs-card__more">See the latest &rarr;</span>
+      </a>
+      <a class="airs-card" href="/reading-paths/">
+        <p class="airs-card__title">The Golden Thread</p>
+        <p class="airs-card__body">A guided two-hour path from <em>why runtime security?</em> through <em>which controls?</em> to <em>how do they improve over time?</em></p>
+        <span class="airs-card__more">Follow the thread &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="airs-section airs-section--ink airs-center">
   <div class="airs-wrap--narrow">
     <h2 class="airs-cta__title">Ship your first AI feature safely.</h2>

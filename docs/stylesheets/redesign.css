@@ -470,6 +470,42 @@ body:has(.airs-rd-main) .md-grid {
 }
 .airs-layerrow__body { font-size: 16.5px; line-height: 1.6; color: var(--muted); max-width: 60ch; margin: 0; }
 
+/* Small detail link inside a layer row / card */
+.airs-textlink--sm { margin-top: 16px; font-size: 14.5px; }
+
+/* ── Figures / diagrams ───────────────────────────────────── */
+.airs-figure { margin: 40px auto 0; }
+.airs-figure__img {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+}
+.airs-figure__cap {
+  margin: 16px auto 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  text-align: center;
+  max-width: 56ch;
+}
+
+/* ── Clickable card (domains, insights & news) ────────────── */
+a.airs-card { display: block; color: var(--ink); transition: border-color 0.18s ease; }
+a.airs-card:hover { border-color: var(--ink); color: var(--ink); }
+.airs-card__more {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
 /* ── Hero blocks ──────────────────────────────────────────── */
 .airs-hero { padding: 96px 32px 72px; border-top: none; }
 .airs-hero--narrow { padding: 88px 32px 56px; }
