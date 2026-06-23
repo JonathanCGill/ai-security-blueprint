@@ -26,6 +26,10 @@ nav_active: what-is
 
     <h2>How AIRS handles it</h2>
     <p class="airs-muted">AIRS answers it with four independent layers. Each does one job, and each keeps working even if the others fail.</p>
+    <figure class="airs-figure">
+      <img class="arch-diagram airs-figure__img" src="/images/three-layer-stack.svg" alt="Three stacked layers over an AI system: guardrails filter in real time, a model-as-judge reviews, and human oversight handles escalated decisions">
+      <figcaption class="airs-figure__cap">Three layers sit over your AI system, each with its own speed and job. Circuit breakers stand behind them as the failsafe.</figcaption>
+    </figure>
     <div class="airs-vlist">
       <div class="airs-vlist__row">
         <span class="airs-vlist__num">01</span>
