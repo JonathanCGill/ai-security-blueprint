@@ -1,0 +1,59 @@
+{#
+  Shared editorial chrome for the AIRS redesign pages.
+  Extends the local main.html (SEO / CSP / analytics) and replaces the
+  Material header, container and footer with the editorial layout.
+  Pages opt in with `template: redesign.html` and set `nav_active` meta.
+#}
+{% extends "main.html" %}
+
+{% set home_url = (config.extra.homepage | d(nav.homepage.url, true)) | url %}
+{% set whatis_url = "what-is-ai-runtime-security/" | url %}
+{% set framework_url = "architecture/" | url %}
+{% set active = page.meta.nav_active | default("") %}
+
+{% block extrahead %}
+  {{ super() }}
+  {# Editorial fonts: loaded only on the redesign pages #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+<header class="airs-rd-header airs-redesign">
+  <div class="airs-rd-header__inner">
+    <a class="airs-rd-logo" href="{{ home_url }}" aria-label="AIRS home">
+      <span class="airs-rd-logo__mark">AIRS</span>
+      <span class="airs-rd-logo__sub">AI Runtime Security</span>
+    </a>
+    <nav class="airs-rd-nav" aria-label="Primary">
+      <a href="{{ whatis_url }}"{% if active == 'what-is' %} class="is-active"{% endif %}>What it is</a>
+      <a href="{{ framework_url }}"{% if active == 'framework' %} class="is-active"{% endif %}>Framework</a>
+      <a href="{% if active == 'home' %}#roles{% else %}{{ home_url }}#roles{% endif %}">For your role</a>
+      {% if active == 'home' %}
+      <a class="airs-rd-nav__start" href="{{ whatis_url }}">Start here &rarr;</a>
+      {% endif %}
+    </nav>
+  </div>
+</header>
+{% endblock %}
+
+{# Drop the Material tabs, hero and sidebars on the editorial pages #}
+{% block tabs %}{% endblock %}
+{% block hero %}{% endblock %}
+{% block site_nav %}{% endblock %}
+
+{% block container %}
+<div class="airs-rd-main airs-redesign" data-md-component="content">
+  {{ page.content }}
+</div>
+{% endblock %}
+
+{% block footer %}
+<footer class="airs-rd-footer airs-redesign">
+  <div class="airs-rd-footer__inner">
+    <div class="airs-rd-footer__left">AIRS &middot; vendor-neutral, risk-proportionate</div>
+    <div class="airs-rd-footer__right">Created by Jonathan Gill &middot; Last updated June 2026</div>
+  </div>
+</footer>
+{% endblock %}

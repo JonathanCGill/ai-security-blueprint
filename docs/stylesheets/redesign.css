@@ -1,0 +1,514 @@
+/* =============================================================
+   AIRS editorial redesign
+   Shared design tokens, chrome (header/footer) and components.
+   Loaded globally, but every selector is scoped to the editorial
+   pages (.airs-redesign / .airs-rd-*) so the rest of the
+   MkDocs Material site is untouched.
+   ============================================================= */
+
+/* ── Design tokens (the cascade) ───────────────────────────── */
+:root {
+  --ink: #1d1d1f;            /* primary text, dark CTA & footer bg */
+  --muted: #6b6b70;          /* secondary text, labels, body copy */
+  --paper: #f7f5f1;          /* page background (warm paper) */
+  --card: #fffdfa;           /* card / alternating section bg */
+  --line: #e6e3dc;           /* borders, dividers, hairlines */
+  --accent: #34507d;         /* ink-blue accent */
+  --accent-hover: #283f63;   /* primary button hover (light bg) */
+  --accent-hover-dark: #3c5c92; /* primary button hover (ink bg) */
+  --footer-text: #8d8a83;    /* footer text on ink */
+  --footer-divider: #2e2e31; /* divider on dark footer */
+  --cta-body: #b9b6ad;       /* muted text on dark CTA band */
+}
+
+html { scroll-behavior: smooth; }
+
+/* Warm-paper background only on the editorial pages */
+body:has(.airs-rd-main) { background: var(--paper); }
+
+/* Let the editorial sections go full-bleed: neutralise Material's
+   grid/main/content wrappers on the redesign pages only. */
+body:has(.airs-rd-main) .md-container,
+body:has(.airs-rd-main) .md-main,
+body:has(.airs-rd-main) .md-main__inner,
+body:has(.airs-rd-main) .md-grid {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.airs-rd-main { width: 100%; }
+
+/* ── Base typography ──────────────────────────────────────── */
+.airs-redesign {
+  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.airs-redesign h1,
+.airs-redesign h2,
+.airs-redesign h3 {
+  font-family: "Spectral", Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.airs-redesign p { margin: 0; text-wrap: pretty; }
+
+.airs-redesign a { color: var(--accent); text-decoration: none; transition: color 0.18s ease, border-color 0.18s ease; }
+.airs-redesign a:hover { color: var(--accent-hover); }
+
+/* ── Header (sticky, shared) ──────────────────────────────── */
+.airs-rd-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.airs-rd-header__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 18px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.airs-rd-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  color: var(--ink);
+}
+.airs-rd-logo:hover { color: var(--ink); }
+.airs-rd-logo__mark {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 600;
+  font-size: 21px;
+  color: var(--ink);
+  line-height: 1;
+}
+.airs-rd-logo__sub {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.airs-rd-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.airs-rd-nav a {
+  font-family: "Public Sans", sans-serif;
+  font-weight: 500;
+  font-size: 14.5px;
+  color: var(--muted);
+}
+.airs-rd-nav a:hover { color: var(--ink); }
+.airs-rd-nav a.is-active { color: var(--ink); }
+.airs-rd-nav a.airs-rd-nav__start { color: var(--accent); font-weight: 600; }
+.airs-rd-nav a.airs-rd-nav__start:hover { color: var(--accent-hover); }
+
+/* ── Footer (dark, shared) ────────────────────────────────── */
+.airs-rd-footer {
+  background: var(--ink);
+  border-top: 1px solid var(--footer-divider);
+}
+.airs-rd-footer__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.airs-rd-footer__left {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--footer-text);
+}
+.airs-rd-footer__right {
+  font-size: 13.5px;
+  color: var(--footer-text);
+}
+
+/* ── Section scaffolding ──────────────────────────────────── */
+.airs-section { padding: 80px 32px; border-top: 1px solid var(--line); }
+.airs-section--paper { background: var(--paper); }
+.airs-section--card { background: var(--card); }
+.airs-section--ink { background: var(--ink); color: #fff; border-top: none; }
+.airs-section--first { border-top: none; }
+
+.airs-wrap { max-width: 1080px; margin: 0 auto; }
+.airs-wrap--narrow { max-width: 760px; margin: 0 auto; }
+.airs-wrap--article { max-width: 680px; margin: 0 auto; }
+
+/* ── Shared inline elements ───────────────────────────────── */
+.airs-eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+.airs-eyebrow--accent { color: var(--accent); }
+
+.airs-h2 {
+  font-size: clamp(26px, 3.4vw, 38px);
+  line-height: 1.15;
+  max-width: 20ch;
+}
+.airs-lead {
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-top: 18px;
+  max-width: 46ch;
+}
+.airs-intro {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-top: 16px;
+  max-width: 50ch;
+}
+.airs-redesign em { font-style: italic; }
+
+/* Buttons */
+.airs-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+.airs-btn {
+  display: inline-block;
+  font-family: "Public Sans", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 15px 26px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.airs-btn--primary { background: var(--accent); color: #fff; }
+.airs-btn--primary:hover { background: var(--accent-hover); color: #fff; }
+.airs-btn--secondary { background: transparent; color: var(--ink); border-color: var(--line); }
+.airs-btn--secondary:hover { border-color: var(--ink); color: var(--ink); }
+
+/* On the dark CTA band */
+.airs-section--ink .airs-btn--primary:hover { background: var(--accent-hover-dark); }
+
+/* Text link with arrow */
+.airs-textlink {
+  display: inline-block;
+  margin-top: 28px;
+  font-weight: 500;
+  font-size: 15.5px;
+  color: var(--accent);
+}
+.airs-textlink:hover { color: var(--accent-hover); }
+
+/* ── Hairline grid trick (crisp internal dividers) ────────── */
+.airs-hairgrid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 40px;
+}
+.airs-hairgrid > * { background: var(--card); }
+.airs-hairgrid--4 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+/* ── Plain card grid (Gap, roles, domains) ────────────────── */
+.airs-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+.airs-cards--roles { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+.airs-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 30px 32px;
+}
+.airs-card__label {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+.airs-card__label--accent { color: var(--accent); }
+.airs-card__title {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+.airs-card__body { font-size: 15px; line-height: 1.6; color: var(--muted); margin: 0; }
+
+/* Highlighted accent card (Runtime security) */
+.airs-card--accent {
+  border-color: var(--accent);
+  box-shadow: 0 1px 0 var(--accent);
+}
+
+/* Hairline grid cells */
+.airs-hairgrid .airs-layer {
+  padding: 30px;
+  background: var(--card);
+}
+.airs-layer__num {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 14px;
+}
+.airs-layer__title {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 500;
+  font-size: 21px;
+  margin: 0 0 10px;
+}
+.airs-layer__body { font-size: 15px; line-height: 1.6; color: var(--muted); margin: 0; }
+
+/* ── Role cards ───────────────────────────────────────────── */
+.airs-role {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 30px 32px;
+  color: var(--ink);
+  transition: border-color 0.18s ease;
+}
+.airs-role:hover { border-color: var(--ink); color: var(--ink); }
+.airs-role__title {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 500;
+  font-size: 22px;
+  margin: 0 0 12px;
+}
+.airs-role__q {
+  font-family: "Spectral", Georgia, serif;
+  font-style: italic;
+  font-size: 16.5px;
+  line-height: 1.4;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+.airs-role__roles { font-size: 14px; line-height: 1.5; color: var(--muted); margin: 0; }
+
+/* ── Pipeline strip ───────────────────────────────────────── */
+.airs-pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 28px 0 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.airs-pipeline__sep { color: var(--accent); }
+.airs-pill {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  text-transform: lowercase;
+}
+.airs-pill--filled { background: var(--accent); color: #fff; }
+.airs-pill--dashed { border: 1px dashed var(--line); color: var(--muted); }
+
+/* ── Centred closing line (Gap section) ───────────────────── */
+.airs-closingline {
+  text-align: center;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 54ch;
+  margin: 44px auto 0;
+}
+.airs-closingline em { color: var(--ink); font-style: italic; }
+
+/* ── Big idea statement ───────────────────────────────────── */
+.airs-statement {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.4;
+  margin: 18px 0 0;
+}
+.airs-statement em { font-style: italic; color: var(--accent); }
+
+/* ── Pull quote (What is AIRS) ────────────────────────────── */
+.airs-pullquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 24px;
+  margin: 40px 0;
+  font-family: "Spectral", Georgia, serif;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+/* ── Article reading column ───────────────────────────────── */
+.airs-article p { font-size: 17px; line-height: 1.65; color: var(--ink); margin: 0 0 22px; }
+.airs-article p.airs-muted { color: var(--muted); }
+.airs-article h2 {
+  font-size: clamp(24px, 3vw, 30px);
+  margin: 44px 0 16px;
+}
+.airs-article strong { font-weight: 600; color: var(--ink); }
+
+/* Vertical hairline list of layers */
+.airs-vlist {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 24px 0 0;
+}
+.airs-vlist__row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 22px 28px;
+  background: var(--card);
+}
+.airs-vlist__num {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--accent);
+}
+.airs-vlist__title {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 500;
+  font-size: 19px;
+}
+.airs-vlist__summary { font-size: 15px; color: var(--muted); margin-top: 4px; }
+
+/* Action row */
+.airs-actionrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  border-top: 1px solid var(--line);
+  margin-top: 44px;
+  padding: 32px 0;
+}
+
+/* ── Layer detail (The Framework) ─────────────────────────── */
+.airs-layers { display: flex; flex-direction: column; gap: 20px; margin-top: 40px; }
+.airs-layerrow {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+  padding: 36px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+}
+.airs-layerrow__meta { }
+.airs-layerrow__num {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+.airs-layerrow__latency {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin: 0;
+}
+.airs-layerrow__title {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 500;
+  font-size: 26px;
+  margin: 0 0 12px;
+}
+.airs-layerrow__body { font-size: 16.5px; line-height: 1.6; color: var(--muted); max-width: 60ch; margin: 0; }
+
+/* ── Hero blocks ──────────────────────────────────────────── */
+.airs-hero { padding: 96px 32px 72px; border-top: none; }
+.airs-hero--narrow { padding: 88px 32px 56px; }
+.airs-hero__eyebrow { margin-bottom: 18px; }
+.airs-hero__title {
+  font-size: clamp(38px, 6vw, 68px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-width: 16ch;
+}
+.airs-hero__title em { font-style: italic; }
+.airs-hero__title em.is-muted { color: var(--muted); }
+.airs-hero__title em.is-accent { color: var(--accent); }
+.airs-hero--narrow .airs-hero__title { font-size: clamp(34px, 5.5vw, 56px); max-width: 18ch; }
+
+/* Hero lead, slightly different measure on the explainer */
+.airs-hero__lead { font-size: 21px; line-height: 1.5; color: var(--muted); margin-top: 20px; max-width: 52ch; }
+.airs-hero__lead em { color: var(--ink); font-style: italic; }
+.airs-hero__lead strong { color: var(--ink); font-weight: 600; }
+
+/* Closing CTA band text */
+.airs-section--ink .airs-eyebrow { color: var(--cta-body); }
+.airs-cta__title { font-size: clamp(28px, 4vw, 42px); color: #fff; line-height: 1.1; }
+.airs-cta__body { font-size: 18px; color: var(--cta-body); margin: 18px auto 0; max-width: 42ch; }
+
+/* Centred helpers */
+.airs-center { text-align: center; }
+.airs-center .airs-eyebrow,
+.airs-center .airs-btns { justify-content: center; }
+.airs-center .airs-h2,
+.airs-center .airs-lead,
+.airs-center .airs-intro,
+.airs-center .airs-cta__title,
+.airs-center .airs-statement { margin-left: auto; margin-right: auto; }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .airs-section { padding: 56px 24px; }
+  .airs-hero { padding: 72px 24px 48px; }
+  .airs-hero--narrow { padding: 64px 24px 40px; }
+  .airs-rd-header__inner { padding: 16px 24px; }
+  .airs-rd-footer__inner { padding: 32px 24px; }
+  .airs-layerrow { grid-template-columns: 1fr; gap: 12px; padding: 28px; }
+  .airs-rd-nav { gap: 18px; }
+}

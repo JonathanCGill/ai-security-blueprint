@@ -10,6 +10,7 @@
 
 - Text font is Inter. Code font is Roboto Mono. Never introduce other fonts.
 - Do not override font sizes with inline styles. Use the existing CSS classes.
+- Exception: the editorial redesign pages (Home, *What is AIRS*, *The Framework*) use the `redesign.html` template and the `redesign.css` stylesheet, which load Spectral, Public Sans, and IBM Plex Mono. These fonts are scoped to those pages only and must not leak into the rest of the documentation.
 
 ## Diagrams and visuals
 
