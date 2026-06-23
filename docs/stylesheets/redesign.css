@@ -217,6 +217,8 @@ body:has(.airs-rd-main) .md-grid {
 
 /* On the dark CTA band */
 .airs-section--ink .airs-btn--primary:hover { background: var(--accent-hover-dark); }
+.airs-section--ink .airs-btn--secondary { color: #fff; border-color: rgba(255, 255, 255, 0.28); }
+.airs-section--ink .airs-btn--secondary:hover { color: #fff; border-color: #fff; }
 
 /* Text link with arrow */
 .airs-textlink {
