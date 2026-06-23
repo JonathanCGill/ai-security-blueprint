@@ -15,9 +15,7 @@ site_dir: site
 theme:
   name: material
   custom_dir: overrides
-  font:
-    text: Inter
-    code: Roboto Mono
+  font: false
   palette:
     - scheme: default
       primary: custom
@@ -74,9 +72,9 @@ plugins:
         VALIDATED-AGAINST.md: validated-against.md
   - social:
       cards_layout_options:
-        background_color: "#1a1a2e"
+        background_color: "#1d1d1f"
         color: "#ffffff"
-        font_family: Inter
+        font_family: Public Sans
 
 markdown_extensions:
   - tables

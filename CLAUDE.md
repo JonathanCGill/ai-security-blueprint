@@ -8,9 +8,10 @@
 
 ## Fonts
 
-- Text font is Inter. Code font is Roboto Mono. Never introduce other fonts.
+- The site uses three fonts, loaded once globally in `overrides/main.html`: **Spectral** (headings, editorial voice), **Public Sans** (body and UI), and **IBM Plex Mono** (code and mono labels). Never introduce other fonts.
+- Fonts are wired through Material's `--md-text-font` / `--md-code-font` (in `stylesheets/extra.css`) with `theme.font: false` in `mkdocs.yml`. Headings are set to Spectral in `extra.css`.
 - Do not override font sizes with inline styles. Use the existing CSS classes.
-- Exception: the editorial redesign pages (Home, *What is AIRS*, *The Framework*) use the `redesign.html` template and the `redesign.css` stylesheet, which load Spectral, Public Sans, and IBM Plex Mono. These fonts are scoped to those pages only and must not leak into the rest of the documentation.
+- The editorial pages (Home, *What is AIRS*, *The Framework*) layer a full-bleed layout on top via the `redesign.html` template and `redesign.css`. Those styles are scoped to `.airs-redesign` / `.airs-rd-*` and must not leak into the standard documentation layout.
 
 ## Diagrams and visuals
 
