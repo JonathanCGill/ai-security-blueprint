@@ -33,7 +33,6 @@ theme:
     - navigation.tabs
     - navigation.indexes
     - navigation.top
-    - navigation.footer
     - navigation.path
     - navigation.prune
     - navigation.instant
@@ -157,6 +156,7 @@ nav:
       - PACE Checklist: core/pace-checklist-section.md
     - MASO (Multi-Agent):
       - maso/README.md
+      - Framework Reference: maso/reference.md
       - "▶ Interactive Demo": maso/demo.md
       - Objective Intent: maso/controls/objective-intent.md
       - Prompt, Goal & Epistemic Integrity: maso/controls/prompt-goal-and-epistemic-integrity.md
