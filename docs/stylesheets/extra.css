@@ -245,8 +245,14 @@ img[src$=".svg"] {
    on the standard doc pages (only the editorial pages override it, via
    redesign.css), so the navbar appeared to "revert" the moment you left an
    editorial page. The high-specificity selector also wins on the editorial
-   pages, so the navbar is now identical everywhere. */
+   pages, so the navbar is now identical everywhere. The flex declarations
+   are restated here so the row layout (brand · tabs · palette · search) is
+   owned in one place and can't be clobbered by another .md-grid rule. */
 .md-header .md-header__inner.md-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
   max-width: none;
   margin: 0;
   padding: 0 0.6rem;

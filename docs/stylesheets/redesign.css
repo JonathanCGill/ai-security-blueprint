@@ -27,11 +27,15 @@ html { scroll-behavior: smooth; }
 body:has(.airs-rd-main) { background: var(--paper); }
 
 /* Let the editorial sections go full-bleed: neutralise Material's
-   grid/main/content wrappers on the redesign pages only. */
+   content wrappers on the redesign pages only. The content grid is
+   .md-main__inner.md-grid, so target that by name. Do NOT target a bare
+   .md-grid here: it also matches the header nav (.md-header__inner.md-grid)
+   and footer bar, and the display:block below would break their flex
+   layout, dropping the palette toggle and search out of the navbar row.
+   The header/footer are made full-bleed globally in extra.css instead. */
 body:has(.airs-rd-main) .md-container,
 body:has(.airs-rd-main) .md-main,
-body:has(.airs-rd-main) .md-main__inner,
-body:has(.airs-rd-main) .md-grid {
+body:has(.airs-rd-main) .md-main__inner {
   max-width: none;
   margin: 0;
   padding: 0;
