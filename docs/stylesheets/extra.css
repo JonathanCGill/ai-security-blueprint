@@ -191,37 +191,46 @@ img[src$=".svg"] {
   }
 }
 
-/* ── AIRS purple dot logo ── */
-.airs-dot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  border-radius: 50%;
-  background-color: #7B1FA2;
-  color: #fff !important;
-  font-family: var(--md-text-font);
-  font-size: 0.5rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+/* ── AIRS brand lockup (shared header) ── */
+.airs-brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
   text-decoration: none;
-  line-height: 1;
-  margin-right: 0.5rem;
+  margin-right: 1rem;
   flex-shrink: 0;
 }
-
-.airs-dot:hover {
-  background-color: #6A1B9A;
-  text-decoration: none;
+.airs-brand__mark {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 1;
+  color: var(--md-default-fg-color);
 }
+.airs-brand__sub {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--md-default-fg-color--light);
+}
+.airs-brand:hover .airs-brand__mark { color: var(--md-accent-fg-color); }
+@media (max-width: 480px) { .airs-brand__sub { display: none; } }
 
 /* ── Single-row navbar ── */
 .md-header {
   box-shadow: none;
-  background-color: var(--md-default-bg-color) !important;
+  background-color: color-mix(in srgb, var(--md-default-bg-color) 88%, transparent) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* Full-bleed editorial pages: hide the doc sidebars on desktop so sections
+   span the page; the mobile drawer (same sidebars) keeps working. */
+@media screen and (min-width: 76.25em) {
+  body:has(.airs-rd-main) .md-sidebar { display: none; }
 }
 
 .md-header__inner {

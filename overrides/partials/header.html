@@ -2,24 +2,17 @@
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
 
-    {# AIRS purple dot logo #}
-    <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
-       class="airs-dot" aria-label="AIRS Home">AIRS</a>
-
     {# Mobile drawer toggle #}
     <label class="md-header__button md-icon" for="__drawer">
       {% set icon = config.theme.icon.menu or "material/menu" %}
       {% include ".icons/" ~ icon ~ ".svg" %}
     </label>
 
-    {# Logo #}
-    <a
-      href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
-      title="{{ config.site_name | e }}"
-      class="md-header__button md-logo"
-      aria-label="{{ config.site_name }}"
-    >
-      {% include "partials/logo.html" %}
+    {# Editorial brand lockup (shared across every page) #}
+    <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
+       class="airs-brand" aria-label="{{ config.site_name }} home">
+      <span class="airs-brand__mark">AIRS</span>
+      <span class="airs-brand__sub">AI Runtime Security</span>
     </a>
 
     {# Inline nav tabs | visible on desktop only #}
