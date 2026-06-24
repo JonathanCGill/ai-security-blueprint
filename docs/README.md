@@ -9,7 +9,7 @@ nav_active: home
   <div class="airs-wrap">
     <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">A framework for running AI safely</p>
     <h1 class="airs-hero__title">Governance decides what AI <em class="is-muted">should</em> do. Security verifies what it <em class="is-accent">actually</em> does.</h1>
-    <p class="airs-lead">Most organisations have the first. Few have the second. That gap is where the failures live.</p>
+    <p class="airs-hero__lead">Most organisations have the first. Few have the second. That gap is where the failures live.</p>
     <div class="airs-btns">
       <a class="airs-btn airs-btn--primary" href="/what-is-ai-runtime-security/">Start here &rarr;</a>
       <a class="airs-btn airs-btn--secondary" href="/architecture/">See the framework</a>
