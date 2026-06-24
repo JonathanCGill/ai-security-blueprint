@@ -9,7 +9,7 @@ nav_active: what-is
   <div class="airs-wrap--narrow">
     <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">Start here</p>
     <h1 class="airs-hero__title">What is AI Runtime Security?</h1>
-    <p class="airs-hero__lead">It is the set of live controls that watch your AI <em>while it is working</em> &mdash; and step in the moment it does something it shouldn't.</p>
+    <p class="airs-hero__lead">It is the set of live controls that watch your AI <em>while it is working</em>, and step in the moment it does something it shouldn't.</p>
   </div>
 </section>
 

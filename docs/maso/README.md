@@ -9,7 +9,7 @@ nav_active: framework
   <div class="airs-wrap">
     <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">MASO &middot; Multi-agent security</p>
     <h1 class="airs-hero__title">When agents work together, trust gets <em class="is-accent">complicated.</em></h1>
-    <p class="airs-hero__lead">Multi-Agent Security Operations secures systems where many AI agents collaborate. The same four layers apply &mdash; but now they have to govern what agents do <strong>to each other</strong>.</p>
+    <p class="airs-hero__lead">Multi-Agent Security Operations secures systems where many AI agents collaborate. The same four layers apply, but now they have to govern what agents do <strong>to each other</strong>.</p>
     <div class="airs-btns">
       <a class="airs-btn airs-btn--primary" href="/maso/demo/">Try the interactive demo &rarr;</a>
       <a class="airs-btn airs-btn--secondary" href="/maso/reference/">Read the full reference</a>
@@ -30,7 +30,7 @@ nav_active: framework
   <div class="airs-wrap">
     <p class="airs-eyebrow">The shift</p>
     <h2 class="airs-h2">One chatbot is one risk. A fleet is a system of risks.</h2>
-    <p class="airs-intro">Every agent is fragile in the same ways. Put them in a line and the failures don't add up &mdash; they multiply.</p>
+    <p class="airs-intro">Every agent is fragile in the same ways. Put them in a line and the failures don't add up. They multiply.</p>
     <div class="airs-cards">
       <div class="airs-card">
         <p class="airs-card__label">Injection propagates</p>
@@ -51,7 +51,7 @@ nav_active: framework
 <section class="airs-section airs-section--card airs-center">
   <div class="airs-wrap--narrow">
     <p class="airs-eyebrow">The core idea</p>
-    <p class="airs-statement">Agents can't police themselves. Something outside the agent has to <em>declare what it should do, constrain what it can do, and judge whether it did the right thing</em> &mdash; before an irreversible action is committed.</p>
+    <p class="airs-statement">Agents can't police themselves. Something outside the agent has to <em>declare what it should do, constrain what it can do, and judge whether it did the right thing</em>, before an irreversible action is committed.</p>
     <a class="airs-textlink" href="/constraining-agents/">Why agents need external evaluation &rarr;</a>
   </div>
 </section>
@@ -64,12 +64,12 @@ nav_active: framework
     <div class="airs-cards airs-cards--roles">
       <a class="airs-card" href="/maso/controls/objective-intent/">
         <p class="airs-card__title">Declared intent</p>
-        <p class="airs-card__body">Every agent, judge, and workflow runs against a versioned Objective Intent Spec &mdash; the statute book the judge rules against.</p>
+        <p class="airs-card__body">Every agent, judge, and workflow runs against a versioned Objective Intent Spec: the statute book the judge rules against.</p>
         <span class="airs-card__more">Objective Intent &amp; mandates &rarr;</span>
       </a>
       <a class="airs-card" href="/maso/reference/#control-domains">
         <p class="airs-card__title">Eleven control domains</p>
-        <p class="airs-card__body">Identity, data, execution, observability, supply chain, epistemic integrity, privileged agents, and more &mdash; scaled by tier.</p>
+        <p class="airs-card__body">Identity, data, execution, observability, supply chain, epistemic integrity, privileged agents, and more, scaled by tier.</p>
         <span class="airs-card__more">Browse the control domains &rarr;</span>
       </a>
       <a class="airs-card" href="/maso/implementation/tier-1-supervised/">
@@ -89,7 +89,7 @@ nav_active: framework
       </a>
       <a class="airs-card" href="/maso/distributed-architecture/">
         <p class="airs-card__title">Distributed architecture</p>
-        <p class="airs-card__body">At scale, Layer 2 becomes sidecars, a hardened message bus, and agent-to-agent IAM &mdash; not one judge as a chokepoint.</p>
+        <p class="airs-card__body">At scale, Layer 2 becomes sidecars, a hardened message bus, and agent-to-agent IAM, not one judge as a chokepoint.</p>
         <span class="airs-card__more">Scale beyond a single judge &rarr;</span>
       </a>
     </div>

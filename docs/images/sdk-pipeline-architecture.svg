@@ -34,7 +34,7 @@
   <text x="200" y="213" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="bold" fill="#475569" text-anchor="middle">Your AI Model</text>
   <text x="200" y="231" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Model / agent / pipeline</text>
   <!-- Annotation -->
-  <text x="340" y="218" font-family="Inter, Arial, sans-serif" font-size="11" fill="#94a3b8">Your code — AIRS wraps this</text>
+  <text x="340" y="218" font-family="Inter, Arial, sans-serif" font-size="11" fill="#94a3b8">Your code: AIRS wraps this</text>
 
   <!-- Arrow -->
   <line x1="200" y1="252" x2="200" y2="284" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>

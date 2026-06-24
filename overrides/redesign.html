@@ -9,6 +9,7 @@
 {% set home_url = (config.extra.homepage | d(nav.homepage.url, true)) | url %}
 {% set whatis_url = "what-is-ai-runtime-security/" | url %}
 {% set framework_url = "architecture/" | url %}
+{% set insights_url = "insights/" | url %}
 {% set active = page.meta.nav_active | default("") %}
 
 {% block header %}
@@ -21,6 +22,7 @@
     <nav class="airs-rd-nav" aria-label="Primary">
       <a href="{{ whatis_url }}"{% if active == 'what-is' %} class="is-active"{% endif %}>What it is</a>
       <a href="{{ framework_url }}"{% if active == 'framework' %} class="is-active"{% endif %}>Framework</a>
+      <a href="{{ insights_url }}"{% if active == 'insights' %} class="is-active"{% endif %}>Insights</a>
       <a href="{% if active == 'home' %}#roles{% else %}{{ home_url }}#roles{% endif %}">For your role</a>
       {% if active == 'home' %}
       <a class="airs-rd-nav__start" href="{{ whatis_url }}">Start here &rarr;</a>

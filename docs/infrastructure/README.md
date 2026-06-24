@@ -9,7 +9,7 @@ nav_active: framework
   <div class="airs-wrap">
     <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">Infrastructure &middot; The layer underneath</p>
     <h1 class="airs-hero__title">You can't enforce on infrastructure you don't <em class="is-accent">control.</em></h1>
-    <p class="airs-hero__lead">The framework tells you <strong>what</strong> to enforce. This layer is <strong>how</strong>: 80 technical controls across identity, logging, network, data, secrets, supply chain, and incident response &mdash; each tagged with the risk tiers it applies to.</p>
+    <p class="airs-hero__lead">The framework tells you <strong>what</strong> to enforce. This layer is <strong>how</strong>: 80 technical controls across identity, logging, network, data, secrets, supply chain, and incident response, each tagged with the risk tiers it applies to.</p>
     <div class="airs-btns">
       <a class="airs-btn airs-btn--primary" href="/infrastructure/reference/">Browse all 80 controls &rarr;</a>
       <a class="airs-btn airs-btn--secondary" href="/infrastructure/mappings/controls-to-three-layers/">See the mappings</a>
@@ -95,7 +95,7 @@ nav_active: framework
 <section class="airs-section airs-section--card airs-center">
   <div class="airs-wrap--narrow">
     <p class="airs-eyebrow">The principle</p>
-    <p class="airs-statement">Security is enforced by <em>deterministic infrastructure</em> &mdash; gateways, network policy, vaults &mdash; never by prompt instructions that can be overridden. Infrastructure beats instructions.</p>
+    <p class="airs-statement">Security is enforced by <em>deterministic infrastructure</em> like gateways, network policy, and vaults, never by prompt instructions that can be overridden. Infrastructure beats instructions.</p>
     <a class="airs-textlink" href="/insights/infrastructure-beats-instructions/">Read the argument &rarr;</a>
   </div>
 </section>

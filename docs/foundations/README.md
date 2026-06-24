@@ -9,7 +9,7 @@ nav_active: framework
   <div class="airs-wrap">
     <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">Foundation &middot; Single agent</p>
     <h1 class="airs-hero__title">You can't test your way to a safe AI.</h1>
-    <p class="airs-hero__lead">Same prompt, same model, different answer &mdash; every time. Tests prove the system <em>can</em> behave. They can't prove it <strong>will</strong> on the next request. So you verify it live.</p>
+    <p class="airs-hero__lead">Same prompt, same model, different answer. Every time. Tests prove the system <em>can</em> behave. They can't prove it <strong>will</strong> on the next request. So you verify it live.</p>
     <div class="airs-btns">
       <a class="airs-btn airs-btn--primary" href="/core/">See every control &rarr;</a>
       <a class="airs-btn airs-btn--secondary" href="/core/risk-tiers/">Classify by risk</a>
@@ -21,7 +21,7 @@ nav_active: framework
   <div class="airs-wrap--narrow">
     <figure class="airs-figure">
       <img class="arch-diagram airs-figure__img" src="/images/single-agent-architecture.svg" alt="Single-agent security architecture: guardrails, reviewing controls, and human oversight wrapped around one AI model, with a circuit breaker behind them">
-      <figcaption class="airs-figure__cap">One model, four layers. Each layer catches what the one before it misses &mdash; compound defence by design, not by coincidence.</figcaption>
+      <figcaption class="airs-figure__cap">One model, four layers. Each layer catches what the one before it misses: compound defence by design, not by coincidence.</figcaption>
     </figure>
   </div>
 </section>
@@ -85,7 +85,7 @@ nav_active: framework
 <section class="airs-section airs-section--paper">
   <div class="airs-wrap--article airs-article">
     <h2 id="defence-in-depth-beyond-the-ai-layer">Defence in depth beyond the AI layer</h2>
-    <p class="airs-muted">The four-layer model addresses controls specific to non-deterministic AI behaviour. It does not replace the security you already have &mdash; it sits inside it.</p>
+    <p class="airs-muted">The four-layer model addresses controls specific to non-deterministic AI behaviour. It does not replace the security you already have. It sits inside it.</p>
     <p class="airs-muted">Your DLP still applies to data flowing in and out. API gateways still validate requests whether the caller is human or AI. Database access controls and parameterised queries still prevent injection even if an agent builds a malicious query. IAM still governs who can invoke AI at all, and your SIEM still correlates AI events with everything else. When one of these catches something, it is your safety net.</p>
     <p class="airs-muted">For multi-agent systems, <a href="/maso/environment-containment/">MASO Environment Containment</a> formalises this: harden every system the agent touches so misbehaviour is structurally harmless, whatever the agent intends.</p>
   </div>

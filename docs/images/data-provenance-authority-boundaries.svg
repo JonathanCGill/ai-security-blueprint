@@ -54,14 +54,14 @@
   <text x="566" y="90" text-anchor="middle" class="h">Deterministic check</text>
   <text x="566" y="110" text-anchor="middle" class="d">destination allowlist + port / protocol + schema</text>
   <text x="566" y="126" text-anchor="middle" class="d">NET-04 egress · NET-07 gateway</text>
-  <text x="566" y="148" text-anchor="middle" class="note">structural — immune to novel phrasing</text>
+  <text x="566" y="148" text-anchor="middle" class="note">structural: immune to novel phrasing</text>
 
   <!-- Lane 2: semantic content check -->
   <rect x="432" y="296" width="268" height="110" rx="10" fill="#4051b5"/>
   <text x="566" y="322" text-anchor="middle" class="h">Semantic firewall</text>
   <text x="566" y="342" text-anchor="middle" class="d">intent classification vs declared taxonomy</text>
   <text x="566" y="360" text-anchor="middle" class="d">escalate to Model-as-Judge on ambiguity</text>
-  <text x="566" y="384" text-anchor="middle" class="note">probabilistic — confine to where meaning is the risk</text>
+  <text x="566" y="384" text-anchor="middle" class="note">probabilistic: confine to where meaning is the risk</text>
 
   <!-- converge arrows -->
   <line x1="700" y1="113" x2="752" y2="180" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrp)"/>

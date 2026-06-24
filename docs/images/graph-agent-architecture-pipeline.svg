@@ -70,7 +70,7 @@
   <!-- Log Store box -->
   <rect x="605" y="225" width="140" height="50" rx="8" fill="#fff" stroke="#6366f1" stroke-width="2" filter="url(#shadow)"/>
   <text x="675" y="247" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e293b" text-anchor="middle">Log Store</text>
-  <text x="675" y="263" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">(Immutable) — OB-2.1</text>
+  <text x="675" y="263" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">(Immutable): OB-2.1</text>
 
   <!-- PACE box -->
   <rect x="775" y="275" width="70" height="40" rx="8" fill="#7c3aed" stroke="#7c3aed" stroke-width="2" filter="url(#shadow)"/>
