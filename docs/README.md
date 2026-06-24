@@ -25,7 +25,7 @@ nav_active: home
       <div class="airs-card">
         <p class="airs-card__label">Governance</p>
         <p class="airs-card__title">Asks: <em>what is this AI allowed to do?</em></p>
-        <p class="airs-card__body">Policies, accountability, and audits set the intent. They decide the rules &mdash; but they cannot enforce them in the moment.</p>
+        <p class="airs-card__body">Policies, accountability, and audits set the intent. They decide the rules, but they cannot enforce them in the moment.</p>
       </div>
       <div class="airs-card airs-card--accent">
         <p class="airs-card__label airs-card__label--accent">Runtime security</p>
@@ -64,7 +64,7 @@ nav_active: home
       <div class="airs-layer">
         <p class="airs-layer__num">02</p>
         <p class="airs-layer__title">Reviewing controls</p>
-        <p class="airs-layer__body">A second look at the output before it reaches a user &mdash; catching the subtle failures guardrails miss.</p>
+        <p class="airs-layer__body">A second look at the output before it reaches a user, catching the subtle failures guardrails miss.</p>
       </div>
       <div class="airs-layer">
         <p class="airs-layer__num">03</p>
@@ -85,7 +85,7 @@ nav_active: home
   <div class="airs-wrap">
     <p class="airs-eyebrow">For your role</p>
     <h2 class="airs-h2">Where do you fit in?</h2>
-    <p class="airs-intro">Three ways in. Each one starts where your job starts &mdash; and tells you what to do first.</p>
+    <p class="airs-intro">Three ways in. Each one starts where your job starts, and tells you what to do first.</p>
     <div class="airs-cards airs-cards--roles">
       <a class="airs-role" href="/what-is-ai-runtime-security/">
         <p class="airs-role__title">Set the strategy</p>

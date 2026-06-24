@@ -35,7 +35,7 @@ nav_active: framework
         </div>
         <div>
           <h2 class="airs-layerrow__title">Guardrails</h2>
-          <p class="airs-layerrow__body">Fast, fixed boundaries: content policies, scope limits, tool permissions. These are the locked doors of the system &mdash; cheap, reliable, and impossible to talk your way past.</p>
+          <p class="airs-layerrow__body">Fast, fixed boundaries: content policies, scope limits, tool permissions. These are the locked doors of the system: cheap, reliable, and impossible to talk your way past.</p>
           <a class="airs-textlink airs-textlink--sm" href="/core/controls/">How guardrails are built &rarr;</a>
         </div>
       </div>
@@ -57,7 +57,7 @@ nav_active: framework
         </div>
         <div>
           <h2 class="airs-layerrow__title">Human oversight</h2>
-          <p class="airs-layerrow__body">Escalation paths, audit trails, and a real person on the high-stakes decisions. The scope of oversight scales with the consequence &mdash; the more that rides on a call, the closer a human watches.</p>
+          <p class="airs-layerrow__body">Escalation paths, audit trails, and a real person on the high-stakes decisions. The scope of oversight scales with the consequence: the more that rides on a call, the closer a human watches.</p>
           <a class="airs-textlink airs-textlink--sm" href="/core/oversight-readiness-problem/">Making oversight work &rarr;</a>
         </div>
       </div>
@@ -68,7 +68,7 @@ nav_active: framework
         </div>
         <div>
           <h2 class="airs-layerrow__title">Circuit breakers</h2>
-          <p class="airs-layerrow__body">The emergency stop. It halts the AI and fails over to a safe fallback when the other layers can't hold. You rarely need it &mdash; and you're very glad it's there when you do.</p>
+          <p class="airs-layerrow__body">The emergency stop. It halts the AI and fails over to a safe fallback when the other layers can't hold. You rarely need it, and you're very glad it's there when you do.</p>
           <a class="airs-textlink airs-textlink--sm" href="/pace-resilience/">PACE resilience &amp; fail-safe &rarr;</a>
         </div>
       </div>
@@ -94,7 +94,7 @@ nav_active: framework
       </a>
       <a class="airs-card" href="/infrastructure/">
         <p class="airs-card__title">Infrastructure</p>
-        <p class="airs-card__body">The platforms, cloud, tools, and data underneath it all &mdash; the layer everything else depends on.</p>
+        <p class="airs-card__body">The platforms, cloud, tools, and data underneath it all, the layer everything else depends on.</p>
         <span class="airs-card__more">Secure the platform &rarr;</span>
       </a>
     </div>
@@ -105,7 +105,7 @@ nav_active: framework
   <div class="airs-wrap">
     <p class="airs-eyebrow">The thinking behind it</p>
     <h2 class="airs-h2">Why these layers, in this order.</h2>
-    <p class="airs-intro">Six short reads make the whole case for runtime security &mdash; the why before the how.</p>
+    <p class="airs-intro">Six short reads make the whole case for runtime security: the why before the how.</p>
     <div class="airs-cards airs-cards--roles">
       <a class="airs-role" href="/insights/why-ai-security-is-a-runtime-problem/">
         <p class="airs-role__title">A runtime problem</p>
@@ -117,7 +117,7 @@ nav_active: framework
       </a>
       <a class="airs-role" href="/insights/judge-detects-not-decides/">
         <p class="airs-role__title">The judge detects</p>
-        <p class="airs-role__roles">An evaluator surfaces unknown-bad against declared intent &mdash; it informs humans, not replaces them.</p>
+        <p class="airs-role__roles">An evaluator surfaces unknown-bad against declared intent. It informs humans, not replaces them.</p>
       </a>
       <a class="airs-role" href="/insights/infrastructure-beats-instructions/">
         <p class="airs-role__title">Infrastructure beats instructions</p>
