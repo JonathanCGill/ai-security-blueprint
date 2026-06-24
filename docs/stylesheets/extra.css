@@ -239,6 +239,19 @@ img[src$=".svg"] {
   align-items: center;
 }
 
+/* The header nav carries Material's .md-grid, which centres it to 61rem.
+   Override globally so the navbar spans the full viewport on every page.
+   Without this, the bar snapped back to the narrow, indented Material grid
+   on the standard doc pages (only the editorial pages override it, via
+   redesign.css), so the navbar appeared to "revert" the moment you left an
+   editorial page. The high-specificity selector also wins on the editorial
+   pages, so the navbar is now identical everywhere. */
+.md-header .md-header__inner.md-grid {
+  max-width: none;
+  margin: 0;
+  padding: 0 0.6rem;
+}
+
 .md-header .md-logo img,
 .md-header .md-logo svg {
   filter: none;
@@ -454,6 +467,14 @@ img[src$=".svg"] {
 
 .md-footer-meta__inner {
   color: #8d8a83;
+}
+
+/* Same story as the header: the footer meta bar carries Material's .md-grid
+   and was centred to 61rem on standard pages but full-width on editorial
+   pages. Span it full-width everywhere so the footer matches the navbar. */
+.md-footer .md-footer-meta__inner.md-grid {
+  max-width: none;
+  margin: 0;
 }
 
 .md-footer-meta__inner a,
