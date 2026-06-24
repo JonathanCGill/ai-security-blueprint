@@ -1,177 +1,105 @@
 ---
+title: AI Runtime Security - Core
 description: Core implementation guide for AI runtime security controls including risk classification, control definitions, and specialised controls for production AI systems.
+template: redesign.html
+nav_active: framework
 ---
 
-# AI Runtime Security - Core
+<section class="airs-section airs-hero airs-hero--narrow airs-section--paper airs-section--first">
+  <div class="airs-wrap">
+    <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">Core controls &middot; Implementation</p>
+    <h1 class="airs-hero__title">From design-time testing to runtime verification.</h1>
+    <p class="airs-hero__lead">Traditional software is tested before it ships. AI can't be, not fully. This is the implementation library: classify the risk, apply the layers, and deselect what you don't need.</p>
+    <div class="airs-btns">
+      <a class="airs-btn airs-btn--primary" href="/core/risk-tiers/">Start: classify your system &rarr;</a>
+      <a class="airs-btn airs-btn--secondary" href="/core/reference/">Full reference</a>
+    </div>
+  </div>
+</section>
 
-Reducing harm caused by AI systems in production through risk-proportionate controls that you select, adapt, or consciously deselect based on your risk appetite and the way your organisation works.
+<section class="airs-section airs-section--card">
+  <div class="airs-wrap">
+    <p class="airs-eyebrow">The essentials</p>
+    <h2 class="airs-h2">Seven steps, in order.</h2>
+    <p class="airs-intro">Start here and work down. Each step builds on the one before it; branch into specialised controls once the essentials are in place.</p>
+    <div class="airs-cards airs-cards--roles">
+      <a class="airs-card" href="/core/risk-tiers/">
+        <p class="airs-card__label">01</p>
+        <p class="airs-card__title">Risk Tiers</p>
+        <p class="airs-card__body">Classify your system by impact, so the controls match the consequence.</p>
+      </a>
+      <a class="airs-card" href="/core/risk-assessment/">
+        <p class="airs-card__label">02</p>
+        <p class="airs-card__title">Risk Assessment</p>
+        <p class="airs-card__body">Quantify control effectiveness and residual risk per tier.</p>
+      </a>
+      <a class="airs-card" href="/core/controls/">
+        <p class="airs-card__label">03</p>
+        <p class="airs-card__title">Controls</p>
+        <p class="airs-card__body">Implement the layered pattern: guardrails, reviewing controls, oversight.</p>
+      </a>
+      <a class="airs-card" href="/core/agentic/">
+        <p class="airs-card__label">04</p>
+        <p class="airs-card__title">Agentic</p>
+        <p class="airs-card__body">Add controls when your agent can invoke tools or take actions.</p>
+      </a>
+      <a class="airs-card" href="/core/iam-governance/">
+        <p class="airs-card__label">05</p>
+        <p class="airs-card__title">IAM Governance</p>
+        <p class="airs-card__body">Identity, lifecycle, and delegation for human and non-human callers.</p>
+      </a>
+      <a class="airs-card" href="/core/judge-assurance/">
+        <p class="airs-card__label">06</p>
+        <p class="airs-card__title">Judge Assurance</p>
+        <p class="airs-card__body">Measure and calibrate the model-as-judge so you can trust its verdicts.</p>
+      </a>
+      <a class="airs-card" href="/core/checklist/">
+        <p class="airs-card__label">07</p>
+        <p class="airs-card__title">Checklist</p>
+        <p class="airs-card__body">Track implementation progress against the controls you selected.</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-> *This is the implementation companion to the [Foundation overview](../foundations/README.md). The Foundation explains the architecture and principles. This section contains the risk classification criteria, control definitions, checklists, and specialised controls you need to implement them. Start with the essentials. Branch into specialised topics based on your deployment. Deselect what does not apply.*
+<section class="airs-section airs-section--paper">
+  <div class="airs-wrap">
+    <p class="airs-eyebrow">Specialised controls</p>
+    <h2 class="airs-h2">Reach for these when your deployment needs them.</h2>
+    <p class="airs-intro">Match the add-on controls to what you're actually running. Deselect the rest.</p>
+    <div class="airs-cards airs-cards--roles">
+      <a class="airs-card" href="/core/multimodal-controls/">
+        <p class="airs-card__title">Multimodal</p>
+        <p class="airs-card__body">Image, audio, and video inputs that bypass text-based guardrails.</p>
+      </a>
+      <a class="airs-card" href="/core/reasoning-model-controls/">
+        <p class="airs-card__title">Reasoning models</p>
+        <p class="airs-card__body">Chain-of-thought models where the reasoning itself needs scrutiny.</p>
+      </a>
+      <a class="airs-card" href="/core/streaming-controls/">
+        <p class="airs-card__title">Streaming</p>
+        <p class="airs-card__body">Real-time outputs that commit before a full review can finish.</p>
+      </a>
+      <a class="airs-card" href="/core/memory-and-context/">
+        <p class="airs-card__title">Memory &amp; context</p>
+        <p class="airs-card__body">Long context and persistent memory that carry risk across sessions.</p>
+      </a>
+      <a class="airs-card" href="/core/multi-agent-controls/">
+        <p class="airs-card__title">Multi-agent</p>
+        <p class="airs-card__body">The primer for many-agent systems, before you go deep on MASO.</p>
+      </a>
+      <a class="airs-card" href="/pace-resilience/">
+        <p class="airs-card__title">PACE resilience</p>
+        <p class="airs-card__body">What each layer does when it fails, and the safe state it falls back to.</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-## Reading Order
-
-Start with the essentials, then branch into specialised topics based on your deployment:
-
-**Essential (read in order):**
-1. [Risk Tiers](risk-tiers.md) - classify your system
-2. [Risk Assessment](risk-assessment.md) - quantify control effectiveness and residual risk per tier
-3. [Controls](controls.md) - implement the three-layer pattern
-4. [Agentic](agentic.md) - add controls if your agent has tool access
-5. [IAM Governance](iam-governance.md) - identity, lifecycle, delegation
-6. [Judge Assurance](judge-assurance.md) - measure and calibrate the Judge
-7. [Checklist](checklist.md) - track implementation progress
-
-**Specialised (read based on your deployment type):**
-
-| If you're deploying... | Read |
-|---|---|
-| Multimodal models (image, audio, video) | [Multimodal Controls](multimodal-controls.md) |
-| Reasoning models (chain-of-thought) | [Reasoning Model Controls](reasoning-model-controls.md) |
-| Streaming responses | [Streaming Controls](streaming-controls.md) |
-| Persistent memory or long context | [Memory and Context](memory-and-context.md) |
-| Multi-agent systems | [Multi-Agent Controls](multi-agent-controls.md) then [MASO](../maso/README.md) |
-| Open-weight / self-hosted models | [Open-Weight Models](../insights/open-weight-models-shift-the-burden.md) |
-
-**PACE resilience (read after controls):**
-- [Control Layer Resilience](pace-controls-section.md) - PACE for each control layer
-- [PACE for Agentic AI](pace-agentic-section.md) - PACE for agentic deployments
-- [PACE Checklist](pace-checklist-section.md) - verify your fail postures
-
-## The Fundamental Shift
-
-Traditional software can be tested before deployment. AI cannot - not fully.
-
-| Traditional Software | AI Systems |
-|---------------------|------------|
-| Deterministic outputs | Non-deterministic |
-| Testable at design time | Emergent behavior |
-| Known failure modes | Adversarial discovery |
-
-**The shift:** From design-time assurance to runtime behavioral monitoring.
-
-## The Pattern
-
-The industry is converging on three layers:
-
-| Layer | Function | Timing |
-|-------|----------|--------|
-| **Guardrails** | Block known-bad inputs/outputs | Real-time |
-| **Judge** | Detect unknown-bad via LLM evaluation | Async |
-| **Human Oversight** | Decide, act, remain accountable | As needed |
-
-**Guardrails prevent. Judge detects. Humans decide.**
-
-### Where This Pattern Exists
-
-This isn't theoretical. Production implementations include:
-
-| Platform | Implementation |
-|----------|----------------|
-| [NVIDIA NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | Input, dialog, retrieval, execution, output rails |
-| [LangChain](https://docs.langchain.com/) | Middleware + human-in-the-loop |
-| [Guardrails AI](https://www.guardrailsai.com/) | Open-source validator framework |
-| [Galileo](https://www.rungalileo.io/) | Eval-to-guardrail lifecycle |
-| [DeepEval](https://github.com/confident-ai/deepeval) | Model-as-Judge evaluation |
-| AWS Bedrock Guardrails | Managed filtering |
-| Azure AI Content Safety | Content moderation |
-
-**→ For detailed solution comparison, see [Current Solutions](../extensions/technical/current-solutions.md)**
-
-What has been missing: clear guidance on *why* this pattern is necessary and *how* to implement it proportionate to risk, in a way that respects how each organisation actually works.
-
-## Scope
-
-**In:** Custom LLM apps, AI decision support, document processing, agentic systems  
-**Out:** Vendor AI products, model training, data preparation
-
-## Quick Start
-
-### 1. Classify Your System
-
-| Tier | Profile | Examples |
-|------|---------|----------|
-| <span class="tier-critical">CRITICAL</span> | Direct decisions, customer/financial/safety impact | Credit decisions, fraud blocking |
-| <span class="tier-high">HIGH</span> | Significant influence, sensitive data | Customer service with account access |
-| <span class="tier-medium">MEDIUM</span> | Moderate impact, human review expected | Internal Q&A, document drafting |
-| <span class="tier-low">LOW</span> | Minimal impact, non-sensitive | Public FAQ, suggestions |
-
-### 2. Select Controls
-
-| Control | LOW | MEDIUM | HIGH | CRITICAL |
-|---------|-----|--------|------|----------|
-| Input guardrails | Basic | Standard | Enhanced | Maximum |
-| Output guardrails | Basic | Standard | Enhanced | Maximum |
-| Judge evaluation | - | Sampling | All | All + real-time |
-| Human review | Exceptions | Sampling | Risk-based | All significant |
-
-### 3. Implement in Order
-
-1. **Logging** - Can't evaluate what you don't capture
-2. **Basic guardrails** - Block obvious attacks  
-3. **Judge in shadow mode** - Evaluate without action
-4. **HITL queues** - Somewhere for findings to go
-5. **Operationalise** - Act on findings, tune continuously
-
-## Core Documents
-
-| Document | Purpose |
-|----------|---------|
-| [Risk Tiers](risk-tiers.md) | Classification criteria, control mapping |
-| [Risk Assessment](risk-assessment.md) | Quantitative control effectiveness, residual risk analysis, worked examples per tier |
-| [Controls](controls.md) | Guardrails, Judge, HITL implementation |
-| [Agentic](agentic.md) | Additional controls for agents |
-| [IAM Governance](iam-governance.md) | Identity governance, agent lifecycle, delegation, threats |
-| [Checklist](checklist.md) | Implementation tracking |
-| [Emerging Controls](emerging-controls.md) | Multimodal, reasoning, streaming overview |
-
-### Specialized Controls
-
-| Document | Purpose |
-|----------|---------|
-| [Judge Assurance](judge-assurance.md) | Judge accuracy measurement and calibration |
-| [Multi-Agent Controls](multi-agent-controls.md) | Controls for multi-agent systems |
-| [Multimodal Controls](multimodal-controls.md) | Controls for image, audio, and video AI |
-| [Memory and Context](memory-and-context.md) | Long context and persistent memory controls |
-| [Reasoning Model Controls](reasoning-model-controls.md) | Controls for chain-of-thought reasoning models |
-| [Streaming Controls](streaming-controls.md) | Controls for real-time streaming outputs |
-
-### Analysis & Insights
-
-| Document | Purpose |
-|----------|---------|
-| [Oversight Readiness Problem](oversight-readiness-problem.md) | Why human-in-the-loop fails and how to fix it |
-| [When the Judge Can Be Fooled](when-the-judge-can-be-fooled.md) | Judge adversarial robustness |
-| [Open Weight Models Shift the Burden](open-weight-models-shift-the-burden.md) | Self-hosted model control implications |
-| [Future Considerations](future-considerations.md) | Future framework scope |
-
-### PACE Sections
-
-| Document | Purpose |
-|----------|---------|
-| [PACE Controls Section](pace-controls-section.md) | PACE framework - controls |
-| [PACE Agentic Section](pace-agentic-section.md) | PACE framework - agentic controls |
-| [PACE Checklist Section](pace-checklist-section.md) | PACE framework - implementation checklist |
-
-### Architecture Overview
-
-![Architecture Overview](../images/architecture-overview.svg)
-
-## Extensions
-
-| Folder | Contents |
-|--------|----------|
-| [regulatory/](../extensions/regulatory/README.md) | ISO 42001, EU AI Act mapping |
-| [technical/](../extensions/technical/README.md) | Bypass prevention, infrastructure, metrics |
-| [templates/](../extensions/templates/README.md) | Playbooks, threat models |
-| [examples/](../extensions/examples/README.md) | Worked examples |
-
-## Key Principles
-
-1. **Match controls to risk** - Apply the right controls at the right time for the right purposes. Do not over-engineer low-risk systems
-2. **Respect organisational context** - Every organisation has its own structures and ways of working. Select and adapt controls accordingly
-3. **Guardrails are necessary but not sufficient** - They miss novel attacks and nuance
-4. **Judge is assurance, not control** - It detects; humans decide what to do
-5. **Infrastructure beats instructions** - Enforce technically, not via prompts
-6. **Assume bypasses happen** - Design for detection, not just prevention
-7. **Humans remain accountable** - AI assists; humans own outcomes
-
+<section class="airs-section airs-section--card airs-center">
+  <div class="airs-wrap--narrow">
+    <p class="airs-eyebrow">The principle</p>
+    <p class="airs-statement">Match controls to risk. <em>Guardrails are necessary but not sufficient, the judge is assurance not control, and humans remain accountable.</em> Apply the right controls at the right time, for the right reasons.</p>
+    <a class="airs-textlink" href="/core/reference/">All the principles, in full &rarr;</a>
+  </div>
+</section>

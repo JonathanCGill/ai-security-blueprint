@@ -130,6 +130,7 @@ nav:
       - PACE Resilience: pace-resilience.md
     - Core Controls:
       - core/README.md
+      - Core Controls Reference: core/reference.md
       - Single-Agent Overview: foundations/README.md
       - Risk Tiers: core/risk-tiers.md
       - Risk Assessment: core/risk-assessment.md
@@ -259,6 +260,7 @@ nav:
 
     - Infrastructure:
       - infrastructure/README.md
+      - Infrastructure Controls Reference: infrastructure/reference.md
       - Controls:
         - Identity & Access: infrastructure/controls/identity-and-access.md
         - Logging & Observability: infrastructure/controls/logging-and-observability.md
