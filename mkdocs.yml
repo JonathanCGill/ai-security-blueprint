@@ -187,6 +187,64 @@ nav:
       - MASO 2.0 Roadmap: maso/maso-2.0-anticipated-changes.md
       - Distributed Security Architecture: maso/distributed-architecture.md
 
+  - Insights:
+    - insights/README.md
+    - The Insights Guide: insights/reference.md
+    - Foundations:
+      - Why Guardrails Aren't Enough: insights/why-guardrails-arent-enough.md
+      - Why AI Security Is a Runtime Problem: insights/why-ai-security-is-a-runtime-problem.md
+      - Why Containment Beats Evaluation: insights/why-containment-beats-evaluation.md
+      - Infrastructure Beats Instructions: insights/infrastructure-beats-instructions.md
+      - The First Control: insights/the-first-control.md
+      - Security as Enablement: insights/security-as-enablement.md
+      - Humans Remain Accountable: insights/humans-remain-accountable.md
+    - Architecture:
+      - The Verification Gap: insights/the-verification-gap.md
+      - The Judge Detects, Not Decides: insights/judge-detects-not-decides.md
+      - Practical Guardrails: insights/practical-guardrails.md
+      - Containment Through Declared Intent: insights/containment-through-intent.md
+      - The Intent Layer: insights/the-intent-layer.md
+      - Process-Aware Evaluation: insights/process-aware-evaluation.md
+      - The Constraint Curve: insights/the-constraint-curve.md
+      - Feedback Loops: insights/feedback-loops.md
+    - Threats & Attack Surfaces:
+      - RAG Is Your Biggest Attack Surface: insights/rag-is-your-biggest-attack-surface.md
+      - The MCP Problem: insights/the-mcp-problem.md
+      - The Supply Chain Problem: insights/the-supply-chain-problem.md
+      - The Memory Problem: insights/the-memory-problem.md
+      - Multimodal Breaks Guardrails: insights/multimodal-breaks-guardrails.md
+      - The Hallucination Boundary: insights/the-hallucination-boundary.md
+      - Evaluation Integrity Risks: insights/evaluation-integrity-risks.md
+      - You Don't Know What You're Deploying: insights/you-dont-know-what-youre-deploying.md
+      - The Sandbox Escape Problem: insights/the-sandbox-escape-problem.md
+      - The Agent Supply Chain Crisis: insights/the-agent-supply-chain-crisis.md
+    - Agentic AI:
+      - When Agents Talk to Agents: insights/when-agents-talk-to-agents.md
+      - Agentic Drift: insights/agentic-drift.md
+      - The Orchestrator Problem: insights/the-orchestrator-problem.md
+      - The Long-Horizon Problem: insights/the-long-horizon-problem.md
+      - The Visibility Problem: insights/the-visibility-problem.md
+      - When the Pattern Breaks: insights/when-the-pattern-breaks.md
+      - What Scales: insights/what-scales.md
+    - Models & Technology:
+      - When AI Thinks: insights/when-ai-thinks.md
+      - The Model You Choose: insights/the-model-you-choose.md
+      - The Backbone Problem: insights/the-backbone-problem.md
+      - Open-Weight Models Shift the Burden: insights/open-weight-models-shift-the-burden.md
+      - Temporal Decay: insights/temporal-decay.md
+      - You Can't Validate Unfinished: insights/you-cant-validate-unfinished.md
+      - Risk Tier Is Use Case: insights/risk-tier-is-use-case.md
+      - When Learning Goes Wrong: insights/when-learning-goes-wrong.md
+      - Beyond Language Models: insights/beyond-language-models.md
+    - Evidence & Analysis:
+      - State of Reality: insights/state-of-reality.md
+      - What Works: insights/what-works.md
+      - The Evidence Gap: insights/the-evidence-gap.md
+      - Risk Stories: insights/risk-stories.md
+      - The Flight Recorder Problem: insights/the-flight-recorder-problem.md
+      - Securing the Connective Tissue: insights/securing-the-connective-tissue.md
+      - Automated Risk Tiering: insights/automated-risk-tiering.md
+
   - For Your Role:
     - stakeholders/README.md
     - Security Leaders: stakeholders/security-leaders.md
@@ -201,63 +259,6 @@ nav:
 
   - Library:
     - library.md
-    - Insights:
-      - insights/README.md
-      - Foundations:
-        - Why Guardrails Aren't Enough: insights/why-guardrails-arent-enough.md
-        - Why AI Security Is a Runtime Problem: insights/why-ai-security-is-a-runtime-problem.md
-        - Why Containment Beats Evaluation: insights/why-containment-beats-evaluation.md
-        - Infrastructure Beats Instructions: insights/infrastructure-beats-instructions.md
-        - The First Control: insights/the-first-control.md
-        - Security as Enablement: insights/security-as-enablement.md
-        - Humans Remain Accountable: insights/humans-remain-accountable.md
-      - Architecture:
-        - The Verification Gap: insights/the-verification-gap.md
-        - The Judge Detects, Not Decides: insights/judge-detects-not-decides.md
-        - Practical Guardrails: insights/practical-guardrails.md
-        - Containment Through Declared Intent: insights/containment-through-intent.md
-        - The Intent Layer: insights/the-intent-layer.md
-        - Process-Aware Evaluation: insights/process-aware-evaluation.md
-        - The Constraint Curve: insights/the-constraint-curve.md
-        - Feedback Loops: insights/feedback-loops.md
-      - Threats & Attack Surfaces:
-        - RAG Is Your Biggest Attack Surface: insights/rag-is-your-biggest-attack-surface.md
-        - The MCP Problem: insights/the-mcp-problem.md
-        - The Supply Chain Problem: insights/the-supply-chain-problem.md
-        - The Memory Problem: insights/the-memory-problem.md
-        - Multimodal Breaks Guardrails: insights/multimodal-breaks-guardrails.md
-        - The Hallucination Boundary: insights/the-hallucination-boundary.md
-        - Evaluation Integrity Risks: insights/evaluation-integrity-risks.md
-        - You Don't Know What You're Deploying: insights/you-dont-know-what-youre-deploying.md
-        - The Sandbox Escape Problem: insights/the-sandbox-escape-problem.md
-        - The Agent Supply Chain Crisis: insights/the-agent-supply-chain-crisis.md
-      - Agentic AI:
-        - When Agents Talk to Agents: insights/when-agents-talk-to-agents.md
-        - Agentic Drift: insights/agentic-drift.md
-        - The Orchestrator Problem: insights/the-orchestrator-problem.md
-        - The Long-Horizon Problem: insights/the-long-horizon-problem.md
-        - The Visibility Problem: insights/the-visibility-problem.md
-        - When the Pattern Breaks: insights/when-the-pattern-breaks.md
-        - What Scales: insights/what-scales.md
-      - Models & Technology:
-        - When AI Thinks: insights/when-ai-thinks.md
-        - The Model You Choose: insights/the-model-you-choose.md
-        - The Backbone Problem: insights/the-backbone-problem.md
-        - Open-Weight Models Shift the Burden: insights/open-weight-models-shift-the-burden.md
-        - Temporal Decay: insights/temporal-decay.md
-        - You Can't Validate Unfinished: insights/you-cant-validate-unfinished.md
-        - Risk Tier Is Use Case: insights/risk-tier-is-use-case.md
-        - When Learning Goes Wrong: insights/when-learning-goes-wrong.md
-        - Beyond Language Models: insights/beyond-language-models.md
-      - Evidence & Analysis:
-        - State of Reality: insights/state-of-reality.md
-        - What Works: insights/what-works.md
-        - The Evidence Gap: insights/the-evidence-gap.md
-        - Risk Stories: insights/risk-stories.md
-        - The Flight Recorder Problem: insights/the-flight-recorder-problem.md
-        - Securing the Connective Tissue: insights/securing-the-connective-tissue.md
-        - Automated Risk Tiering: insights/automated-risk-tiering.md
-
     - Infrastructure:
       - infrastructure/README.md
       - Infrastructure Controls Reference: infrastructure/reference.md

@@ -508,6 +508,30 @@ a.airs-card:hover { border-color: var(--ink); color: var(--ink); }
   color: var(--accent);
 }
 
+/* Card whose title is itself a link (insight cards with a separate
+   'drives' link to the related control). */
+.airs-card__titlelink {
+  display: block;
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+.airs-card__titlelink:hover { color: var(--accent); }
+.airs-card__drives {
+  display: block;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+.airs-card__drives:hover { color: var(--accent-hover); }
+
 /* ── Hero blocks ──────────────────────────────────────────── */
 .airs-hero { padding: 96px 32px 72px; border-top: none; }
 .airs-hero--narrow { padding: 88px 32px 56px; }
