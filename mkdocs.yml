@@ -118,6 +118,7 @@ nav:
     - "See It Fail: Chevrolet $1 Chatbot": walkthrough-chevrolet-1-dollar.md
     - Learn the Framework: reading-paths.md
     - "AIRSLite: Seven Controls to Ship": minimum-viable-airs.md
+    - Build Your Control Set: select.md
     - Working Code in 30 Minutes: quick-start.md
     - Skip the Security Review: fast-lane.md
     - FAQ: faq.md
