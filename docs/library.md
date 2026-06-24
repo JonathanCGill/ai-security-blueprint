@@ -1,89 +1,110 @@
 ---
 title: Library
 description: "Index to the AI Runtime Security reference library: insights, implementation guidance, SDK, regulatory mappings, technical reference, templates, examples, and project history."
+template: redesign.html
+nav_active: library
 ---
 
-# Library
+<section class="airs-section airs-hero airs-hero--narrow airs-section--paper airs-section--first">
+  <div class="airs-wrap">
+    <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">Library</p>
+    <h1 class="airs-hero__title">Everything behind the framework.</h1>
+    <p class="airs-hero__lead">Research, implementation guidance, platform patterns, reference code, regulatory mappings, templates, and worked examples. Find the right shelf.</p>
+  </div>
+</section>
 
-**Everything behind the framework.** Research articles, implementation guidance, platform patterns, reference code, regulatory mappings, templates, and examples. Use the cards below to find the right shelf.
+<section class="airs-section airs-section--card">
+  <div class="airs-wrap">
+    <p class="airs-eyebrow">Reading &amp; research</p>
+    <h2 class="airs-h2">The thinking and the headlines.</h2>
+    <div class="airs-cards airs-cards--roles">
+      <a class="airs-card" href="/insights/">
+        <p class="airs-card__title">Insights</p>
+        <p class="airs-card__body">The why before the how. Forty-plus research articles across six themes, each tied to the control it drives.</p>
+        <span class="airs-card__more">Read the insights &rarr;</span>
+      </a>
+      <a class="airs-card" href="/news/">
+        <p class="airs-card__title">News</p>
+        <p class="airs-card__body">Curated AI runtime security news, each item mapped to the framework's controls and domains.</p>
+        <span class="airs-card__more">See the latest &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-## Reading and research
+<section class="airs-section airs-section--paper">
+  <div class="airs-wrap">
+    <p class="airs-eyebrow">Implementation guidance</p>
+    <h2 class="airs-h2">From strategy to running code.</h2>
+    <div class="airs-cards airs-cards--roles">
+      <a class="airs-card" href="/infrastructure/">
+        <p class="airs-card__title">Infrastructure</p>
+        <p class="airs-card__body">Eighty controls across seven domains plus agentic extensions, with standards mappings and platform patterns for AWS, Azure, and Databricks.</p>
+        <span class="airs-card__more">Open infrastructure &rarr;</span>
+      </a>
+      <a class="airs-card" href="/strategy/">
+        <p class="airs-card__title">Strategy</p>
+        <p class="airs-card__body">The guided path from "we have a business problem" to "we have a governed AI system in production". Twelve articles end to end.</p>
+        <span class="airs-card__more">Walk the path &rarr;</span>
+      </a>
+      <a class="airs-card" href="/sdk/">
+        <p class="airs-card__title">SDK</p>
+        <p class="airs-card__body">A Python reference implementation: guardrails, judge, circuit breakers, PACE, pipeline, telemetry, and FastAPI integration. The framework in runnable code.</p>
+        <span class="airs-card__more">Read the code &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-<div class="grid cards" markdown>
+<section class="airs-section airs-section--card">
+  <div class="airs-wrap">
+    <p class="airs-eyebrow">Reference</p>
+    <h2 class="airs-h2">Standards, deep dives, and ready-made artefacts.</h2>
+    <div class="airs-cards airs-cards--roles">
+      <a class="airs-card" href="/extensions/regulatory/">
+        <p class="airs-card__title">Regulatory</p>
+        <p class="airs-card__body">Standards alignment: EU AI Act, ISO 42001 and 27001, NIST IR 8596, ETSI SAI, and high-risk financial services guidance.</p>
+        <span class="airs-card__more">See the crosswalks &rarr;</span>
+      </a>
+      <a class="airs-card" href="/extensions/technical/">
+        <p class="airs-card__title">Technical reference</p>
+        <p class="airs-card__body">Deep dives on judge internals, detection and SOC integration, control catalogues, and the economics of evaluation.</p>
+        <span class="airs-card__more">Go deep &rarr;</span>
+      </a>
+      <a class="airs-card" href="/extensions/templates/">
+        <p class="airs-card__title">Templates</p>
+        <p class="airs-card__body">Ready-to-use artefacts: incident playbook, threat model, judge prompts, vendor questionnaire, model card.</p>
+        <span class="airs-card__more">Grab a template &rarr;</span>
+      </a>
+      <a class="airs-card" href="/extensions/examples/">
+        <p class="airs-card__title">Examples</p>
+        <p class="airs-card__body">The framework applied end to end: customer service, doc assistant, credit support, fraud analytics, and a multi-agent demo.</p>
+        <span class="airs-card__more">See worked examples &rarr;</span>
+      </a>
+      <a class="airs-card" href="/downloads/">
+        <p class="airs-card__title">Downloads</p>
+        <p class="airs-card__body">Downloadable resources, including position papers and practitioner training materials.</p>
+        <span class="airs-card__more">Get the files &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
 
--   **[Insights](insights/README.md)**
-
-    The *why* before the *how*. Forty-six research articles grouped into six themes: foundations, architecture, threats, agentic AI, models and technology, and evidence and analysis. Start with the Core Six if you are new to the thesis.
-
--   **[News](news.md)**
-
-    Curated AI runtime security news linked to the framework's controls and domains. Useful for tracking where the threat landscape is moving and which controls new incidents validate.
-
-</div>
-
-## Implementation guidance
-
-<div class="grid cards" markdown>
-
--   **[Infrastructure](infrastructure/README.md)**
-
-    Eighty infrastructure controls across seven domains (identity, logging, network, data, secrets, supply chain, incident response) plus agentic extensions (sandboxing, delegation, tool access). Includes standards mappings to ISO 42001, NIST, OWASP, and platform patterns for AWS, Azure, and Databricks.
-
--   **[Strategy](strategy/README.md)**
-
-    The guided path from "we have a business problem" to "we have a governed AI system in production". Twelve articles covering business alignment, use-case filtering, data reality, human factors, progression, framework tensions, maturity levels, and the return loop that keeps systems honest after launch.
-
--   **[SDK](sdk/README.md)**
-
-    Python reference implementation. Guardrails, Judge evaluation, circuit breakers, PACE resilience, pipeline, agent security, telemetry, FastAPI integration, examples, and what the tests prove. The framework, in runnable code.
-
-</div>
-
-## Reference
-
-<div class="grid cards" markdown>
-
--   **[Regulatory](extensions/regulatory/README.md)**
-
-    Standards alignment: EU AI Act crosswalk and risk tiering, ISO 42001 alignment and clause mapping, ISO 27001 alignment, NIST IR 8596, ETSI SAI, AI governance operating model, and high-risk financial services guidance.
-
--   **[Technical Reference](extensions/technical/README.md)**
-
-    Deep dives grouped by purpose: judge internals (model selection, distillation, precedents), detection and SOC (integration, content packs, anomaly detection, graph monitoring), control catalogues (agentic, endpoint hardening, RAG security), and economics and identity (cost and latency, economic governance, NHI lifecycle).
-
--   **[Templates](extensions/templates/README.md)**
-
-    Ready-to-use artefacts: AI incident playbook, threat model template, judge prompt examples, data retention guidance, testing guidance, vendor assessment questionnaire, model card template.
-
--   **[Examples](extensions/examples/README.md)**
-
-    Worked examples of the framework applied end-to-end: customer service AI, internal doc assistant, credit decision support, high-volume customer communications, fraud analytics, and a multi-agent risk demo.
-
--   **[Downloads](downloads.md)**
-
-    Downloadable resources including position papers and practitioner training materials.
-
-</div>
-
-## Project
-
-<div class="grid cards" markdown>
-
--   **[Changes & Evidence](changelog.md)**
-
-    Changelog, maturity and validation, incidents the framework has been validated against, implementation guide, and the full references list.
-
--   **[About](what-is-ai-runtime-security.md)**
-
-    About the discipline (what AI Runtime Security covers, and what it does not) and about the author.
-
-</div>
-
-!!! tip "Looking for the framework itself?"
-    The framework lives under [Framework](architecture.md) in the top nav, split into [Core Controls](core/README.md) for single-agent deployments and [MASO](maso/README.md) for multi-agent orchestration. This library sits alongside it as supporting material.
-
-!!! info "References"
-    - [Home](README.md)
-    - [Start](start.md)
-    - [For Your Role](stakeholders/README.md)
-    - [Framework: Architecture Overview](architecture.md)
+<section class="airs-section airs-section--paper">
+  <div class="airs-wrap">
+    <p class="airs-eyebrow">Project</p>
+    <h2 class="airs-h2">History, evidence, and the people behind it.</h2>
+    <div class="airs-cards airs-cards--roles">
+      <a class="airs-card" href="/changelog/">
+        <p class="airs-card__title">Changes &amp; evidence</p>
+        <p class="airs-card__body">Changelog, maturity and validation, the incidents the framework has been validated against, and the full references list.</p>
+        <span class="airs-card__more">See what changed &rarr;</span>
+      </a>
+      <a class="airs-card" href="/what-is-ai-runtime-security/">
+        <p class="airs-card__title">About</p>
+        <p class="airs-card__body">About the discipline, what AI Runtime Security covers and what it does not, and about the author.</p>
+        <span class="airs-card__more">About AIRS &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
