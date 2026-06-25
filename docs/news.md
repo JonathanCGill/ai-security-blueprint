@@ -1,44 +1,98 @@
 ---
-description: Curated AI runtime security news, linked to AIRS framework controls and domains.
+title: News
+description: Curated AI runtime security news, linked to AIRS and MASO framework controls. A biweekly roundup of incidents, research, and developments, each mapped to the controls it puts to the test.
 ---
+
+<p class="airs-eyebrow airs-eyebrow--accent">AIRS &middot; Runtime security news</p>
 
 # AI Runtime Security News
 
-A biweekly roundup of incidents, research, and developments in AI runtime security. Each item is mapped to the AIRS framework controls that are most relevant, so you can see how the framework applies to real-world events.
+*Every fortnight, the field runs a live experiment against the framework. This page records what it found, and the control each result puts to the test.*
 
-## How to read this page
+A biweekly roundup of incidents, research, and developments in AI runtime security, weighted toward agentic and multi-agent stories that test the [MASO](maso/README.md) domains. Each item is mapped to the AIRS and MASO controls most relevant to it, so you can see the framework applied to real events as they break. Newest items first.
 
-Each news item includes:
+!!! info "How to read each entry"
+    Every item carries a short **summary** of what happened or was published, a **framework relevance** note tying it to specific AIRS or MASO controls, and a **source** link to the primary report. The tags below place each item in a framework area.
 
-- **Summary**: what happened or what was published
-- **Framework relevance**: which AIRS controls, layers, or domains apply
-- **Source link**: the original article or report
-
-Framework tags use these categories:
-
-| Tag | Framework area |
-|-----|---------------|
-| **Guardrails** | Input/output containment boundaries |
-| **Judge** | Model-as-Judge evaluation layer |
-| **Human Oversight** | Escalation and human-in-the-loop controls |
-| **Circuit Breaker** | Safe failure and PACE resilience |
-| **Risk Tiers** | Risk classification and proportionate controls |
-| **IAM** | Identity and access management governance |
-| **Agentic** | Agentic AI and multi-agent controls |
-| **MASO** | Multi-Agent Security Operations domains |
-| **Supply Chain** | Model and tool supply chain integrity |
-| **Multimodal** | Multimodal input/output controls |
-| **Memory & Context** | Context window and memory persistence controls |
-| **Observability** | Logging, telemetry, and audit |
-| **Data Protection** | Data leakage prevention and classification |
-
----
-
-*This page is updated every two weeks. Items are listed newest first.*
+    | Tag | Framework area |
+    |-----|---------------|
+    | **Guardrails** | Input/output containment boundaries |
+    | **Judge** | Model-as-Judge evaluation layer |
+    | **Human Oversight** | Escalation and human-in-the-loop controls |
+    | **Circuit Breaker** | Safe failure and PACE resilience |
+    | **Risk Tiers** | Risk classification and proportionate controls |
+    | **IAM** | Identity and access management governance |
+    | **Agentic** | Agentic AI and multi-agent controls |
+    | **MASO** | Multi-Agent Security Operations domains |
+    | **Supply Chain** | Model and tool supply chain integrity |
+    | **Multimodal** | Multimodal input/output controls |
+    | **Memory & Context** | Context window and memory persistence controls |
+    | **Observability** | Logging, telemetry, and audit |
+    | **Data Protection** | Data leakage prevention and classification |
 
 ---
 
 <!-- NEWS_START -->
+
+### 2026-06-24: SymJack and TrustFall Break the Coding-Agent Fleet With a Single Technique Each
+
+**Tags**: Supply Chain, Agentic, MASO
+
+*Adversa AI*'s June agentic security roundup details two disclosures that hit the AI coding-agent ecosystem at once. **SymJack** is a symlink-hijack remote code execution that compromised six AI coding agents through one shared file-handling flaw, and **TrustFall** is a one-click RCE that reached Claude Code, Cursor, Gemini CLI, and GitHub Copilot by exploiting a regressed trust-confirmation dialog that had previously gated risky actions. Adversa frames both as products of an "agentic coding gold rush" that is shipping autonomy faster than the surrounding controls mature.
+
+**Framework relevance**: One technique compromising six agent products simultaneously is the cross-fleet blast radius that [MASO](maso/README.md) supply chain and containment controls exist to bound: a shared dependency or shared design flaw turns a single bug into an estate-wide event, the pattern catalogued in [ET-13 (Agent Ecosystem Supply Chain Compromise at Scale)](maso/threat-intelligence/emerging-threats.md#et-13-agent-ecosystem-supply-chain-compromise-at-scale) and [ET-27 (Coding-agent-as-initial-access-vector)](maso/threat-intelligence/emerging-threats.md#et-27-coding-agent-as-initial-access-vector). TrustFall is the sharper lesson for [Human Oversight](core/controls.md): a confirmation dialog that silently regresses removes an approval gate without anyone noticing, which is why [Execution Control](maso/controls/execution-control.md) treats approval prompts as enforced policy at the host, not UI the agent or a refactor can bypass. Reinforces [Environment Containment](maso/environment-containment.md) and [Infrastructure Beats Instructions](insights/infrastructure-beats-instructions.md): the host running the agent is part of its blast radius.
+
+**Source**: [Adversa AI: Top Agentic AI Security Resources, June 2026](https://adversa.ai/blog/top-agentic-ai-security-resources-june-2026/)
+
+---
+
+### 2026-06-22: Embedding-Based Detection of Malicious Agents Collapses in Multi-Agent Systems
+
+**Tags**: MASO, Judge, Observability
+
+The paper *When Embedding-Based Defenses Fail: Rethinking Safety in LLM-Based Multi-Agent Systems* (arXiv:2605.01133) shows that screening inter-agent messages by their embeddings is brittle by construction. An attacker can craft messages whose embeddings sit close to benign ones, demonstrated with three attacks the authors name **Slow Drift**, **Benign Wrapper**, and **Chaos Seeding**. Worse, once agents start exchanging peer views the system becomes *self-mixing*: benign agents echo attacker-influenced content, every message embedding drifts toward a shared cluster, and the detection signal collapses across rounds. The authors propose falling back on token-level confidence signals such as logits, which can stay informative when embeddings no longer separate, to prune or down-weight suspect messages.
+
+**Framework relevance**: This directly tests the [MASO](maso/README.md) assumption that inter-agent traffic can be policed by a single anomaly signal. Self-mixing is the mechanism behind [ET-01 (Cross-Agent Prompt Injection Worms)](maso/threat-intelligence/emerging-threats.md#et-01-cross-agent-prompt-injection-worms) and [ET-05 (Epistemic Cascading Failure)](maso/threat-intelligence/emerging-threats.md#et-05-epistemic-cascading-failure): the more the agents talk, the weaker a similarity-based detector gets. For the [Judge](core/judge-assurance.md) layer the implication is concrete, evaluation of inter-agent messages must combine independent signals (semantic judgement, claim provenance, token-level confidence) rather than rely on embedding distance, and [Observability](maso/controls/observability.md) must score the *trajectory* of message similarity across rounds, not just per-message outliers. Validates [When Agents Talk to Agents](insights/when-agents-talk-to-agents.md).
+
+**Source**: [arXiv:2605.01133: When Embedding-Based Defenses Fail: Rethinking Safety in LLM-Based Multi-Agent Systems](https://arxiv.org/abs/2605.01133)
+
+---
+
+### 2026-06-19: AgentLeak Finds Internal Channels, Not Outputs, Are the Primary Privacy Leak in Multi-Agent Systems
+
+**Tags**: MASO, Data Protection, Memory & Context
+
+*AgentLeak* (arXiv:2602.11510), a full-stack benchmark for privacy leakage in multi-agent LLM systems, measures where sensitive data actually escapes across 1,000 scenarios in healthcare, finance, legal, and corporate settings, paired with a 32-class attack taxonomy. The central finding is that the leak happens on the inside: sensitive data passes through inter-agent messages, shared memory, and tool arguments, pathways that output-only audits never inspect. Agents forwarded unfiltered sensitive data to external tools in 62% to 86% of scenarios across every model tested, treating tool parameters as internal scratch space rather than a trust boundary, and chain-of-thought reasoning leaked sensitive content into system logs even when the agent ultimately declined to send it onward.
+
+**Framework relevance**: Internal channels are exactly the inter-agent trust boundary that [MASO](maso/README.md) governs, and the benchmark quantifies why output-only [Data Protection](maso/controls/data-protection.md) is insufficient: DLP has to inspect inter-agent messages and tool-call arguments, not just the final user-facing response. The shared-memory finding maps to [Memory and Context](core/memory-and-context.md) isolation, and the tool-argument leakage reinforces [Transitive Authority Exploitation](maso/threat-intelligence/emerging-threats.md#et-03-transitive-authority-exploitation): an agent that pours sensitive context into a tool call hands that data to whatever sits behind the tool. The chain-of-thought-to-logs gap is an [Observability](maso/controls/observability.md) requirement, reasoning traces are themselves a data-classification surface.
+
+**Source**: [arXiv:2602.11510: AgentLeak: A Full-Stack Benchmark for Privacy Leakage in Multi-Agent LLM Systems](https://arxiv.org/abs/2602.11510)
+
+---
+
+### 2026-06-17: OWASP GenAI Round-up Confirms Prompt Injection Still Drives Most Agentic Failures in Production
+
+**Tags**: Guardrails, Agentic, MASO
+
+The *OWASP GenAI Security Project* published its 2026 exploit round-up, and the headline shift is from theory to evidence: where the 2025 edition catalogued plausible threats, the 2026 edition ties CVEs, vendor advisories, and breach reports to nearly every category of agentic risk. Prompt injection remains the number-one LLM vulnerability and, per the audits cited, appears in roughly 73% of production AI deployments. The round-up notes that attackers are increasingly aiming at **agent identities, orchestration layers, and supply chains** rather than just model outputs, and uses the March 2026 LiteLLM PyPI backdoor (a malicious gateway live for about three hours, with close to 47,000 downloads) as its supply chain exemplar.
+
+**Framework relevance**: "Orchestration layers and agent identities" is a precise description of the [MASO](maso/README.md) attack surface, and the persistence of prompt injection at the top of the list is the core argument for layered containment: [Guardrails](core/controls.md) cannot be the only defence, which is why the framework pairs them with a [Judge](core/judge-assurance.md) and [Human Oversight](core/controls.md). The shift toward agent identity as a target reinforces [IAM Governance](core/iam-governance.md) and per-agent [Non-Human Identity](maso/controls/identity-and-access.md), and the orchestration-layer focus is what [Observability](maso/controls/observability.md) of inter-agent activity is built to catch. A standards-body round-up that cites CVEs and breaches gives regulated buyers an external reference for these controls.
+
+**Source**: [OWASP GenAI Exploit Round-up Report Q1 2026](https://genai.owasp.org/2026/04/14/owasp-genai-exploit-round-up-report-q1-2026/) &middot; [Help Net Security: Prompt injection still drives most agentic AI security failures in production](https://www.helpnetsecurity.com/2026/06/11/owasp-prompt-injection-ai-security-failures/)
+
+---
+
+### 2026-06-15: Chained LiteLLM Gateway Flaws (CVSS 9.9) Put the Multi-Agent Control Plane at Risk
+
+**Tags**: Supply Chain, IAM, MASO
+
+*Obsidian Security* disclosed three chained vulnerabilities in **LiteLLM**, the open-source model gateway, tracked as CVE-2026-47101, CVE-2026-47102, and CVE-2026-40217 and described as a CVSS 9.9 path from a low-privilege user to administrator access and remote code execution. LiteLLM matters disproportionately because it is the language-model gateway for CrewAI, DSPy, Microsoft GraphRAG, and dozens of other agent frameworks, so a single compromised gateway sits in front of many agents at once. The disclosure follows CISA adding a related AI-gateway flaw, CVE-2026-42271, to its Known Exploited Vulnerabilities catalogue on June 8, 2026.
+
+**Framework relevance**: A shared gateway is a chokepoint whose compromise reaches every agent routed through it, the connective tissue that [MASO](maso/README.md) supply chain and IAM controls are meant to protect. The low-privilege-to-admin path is an [IAM Governance](core/iam-governance.md) failure: the gateway holds the keys to every downstream model, so it is a high-value machine identity that needs scoped credentials, rotation, and isolation, not a flat trust boundary. The breadth of affected frameworks is [ET-13 (Agent Ecosystem Supply Chain Compromise at Scale)](maso/threat-intelligence/emerging-threats.md#et-13-agent-ecosystem-supply-chain-compromise-at-scale) in practice, and the CISA KEV listing makes [Supply Chain](maso/controls/supply-chain.md) control SC-3.1 (continuous vulnerability scanning of AI infrastructure, not just models) a near-term requirement. Connects to [Securing the Connective Tissue](insights/securing-the-connective-tissue.md).
+
+**Source**: [Penligent: LiteLLM Vulnerability Chain Turns AI Gateways Into a Control Plane Risk](https://www.penligent.ai/hackinglabs/litellm-vulnerability-chain/) &middot; [CISA Known Exploited Vulnerabilities Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
+
+---
 
 ### 2026-06-14: Real World AI Security Conference at Stanford (June 23-25) Flagged for Future Coverage
 
