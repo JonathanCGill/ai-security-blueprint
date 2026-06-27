@@ -3,8 +3,6 @@ title: News
 description: Curated AI runtime security news, linked to AIRS and MASO framework controls. A biweekly roundup of incidents, research, and developments, each mapped to the controls it puts to the test.
 ---
 
-<p class="airs-eyebrow airs-eyebrow--accent">AIRS &middot; Runtime security news</p>
-
 # AI Runtime Security News
 
 *Every fortnight, the field runs a live experiment against the framework. This page records what it found, and the control each result puts to the test.*
