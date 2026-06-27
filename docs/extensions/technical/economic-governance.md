@@ -1,5 +1,5 @@
 ---
-description: Guidance on managing the unpredictable cost risks of agentic AI systems through metering, budget controls, and economic governance practices.
+description: "Guidance on managing the unpredictable cost risks of agentic AI systems through metering, budget controls, and economic governance, distinguishing adversarial economic abuse (financial denial-of-service) from self-inflicted cost damage like poor token control, uncapped reasoning, runaway loops, and using the wrong model for the task."
 ---
 
 # Economic Governance
@@ -23,6 +23,25 @@ This isn't hypothetical:
 - **IDC FutureScape 2026** warns that by 2027, G1000 organisations will face up to a 30% rise in underestimated AI infrastructure costs, not from overspending, but from under-forecasting expenses unique to AI workloads.
 
 The framework's [Cost & Latency](cost-and-latency.md) guide covers how to budget for security controls. This document covers a different problem: **how to govern AI economics at runtime**: monitoring spend, enforcing budgets, and preventing runaway costs before they become incidents.
+
+## Two Sources of Economic Risk: Abuse and Own Goals
+
+AI economic risk comes from two directions, and they are easy to conflate because they show up identically on the invoice as a cost spike. The response differs, so name them separately.
+
+**Economic abuse** is adversarial. Someone outside, or a compromised component inside, deliberately drives cost up: verbose prompt injection, agent-loop triggering, reasoning provocation, tool-call amplification, distributed low-rate attacks. This is financial denial-of-service (FDoS), treated in full [later on this page](#the-financial-denial-of-service-threat). The defining feature is intent: a party is trying to make you spend.
+
+**Self-inflicted economic damage** is the own goal. No attacker is involved. The system bleeds money because it was built or operated carelessly. The surveys above show this is the larger problem in practice: the Greyhound CIO Pulse attributed nearly half of agent budget overruns to runaway tool loops and recursive logic, not to attackers. The common own goals:
+
+| Own goal | What it looks like | Fix |
+|---|---|---|
+| **Wrong model for the task** | A frontier reasoning model used for a classification or extraction job that a small model does as well at a fraction of the cost. Or the reverse: a cheap model on a task that needs capability, paying the difference back in retries and rework | Match model to task with tiered routing (see [Optimise](#4-optimise-spend-effectively-not-less)). Using AI where it is strong, reading and producing text, and not forcing it into work it does poorly, is the first economic control, not only an accuracy one |
+| **Poor token control** | No `max_tokens`, no per-task budget, full prompts re-sent uncached, the full OISpec injected on every call, conversation history never summarised | Per-request caps, prompt caching, context summarisation (see [Token Economics](token-economics.md)) |
+| **Uncapped reasoning** | Extended-thinking models left to spend 20,000+ reasoning tokens on a simple action | Set `budget_tokens`; reserve reasoning models for tasks that need them |
+| **Runaway loops by design, not by attack** | An under-constrained agent retries, reformulates, and chains tool calls hundreds of times for one task | Iteration caps, loop detection, diminishing-returns termination (see [The Agent Loop Problem](#the-agent-loop-problem)) |
+| **Over-evaluation** | A cloud judge on 100% of actions including read-only ones; naive MASO where security overhead runs 3 to 5x generator cost | Risk-gated evaluation routing and SLM sidecars (see [Token Economics](token-economics.md#risk-as-the-evaluation-gate)) |
+| **No cost attribution** | Spend lands as a single number, so nobody owns it and the first cut under pressure is the security controls | Attribute by application, team, feature, and control layer (see [Attribute](#2-attribute-know-whos-spending-it)) |
+
+Both categories are caught by the same machinery: meter, attribute, enforce, optimise. The difference in handling is that abuse also belongs in your [incident response](#integration-with-existing-controls) and threat model, while own goals are an architecture and operating-discipline problem. A system with no budget caps cannot tell the two apart anyway: it bleeds money whether the cause is an attacker or its own design, which is why the enforcement layer has to exist before you can even attribute a spike to one source or the other.
 
 ## Why This Is a Security Problem
 
