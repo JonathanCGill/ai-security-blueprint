@@ -17,6 +17,14 @@ nav_active: home
   </div>
 </section>
 
+<section class="airs-section airs-section--paper airs-center">
+  <div class="airs-wrap--narrow">
+    <p class="airs-eyebrow">Before any of it</p>
+    <p class="airs-statement">A cheaper question comes first: <em>is generative AI even the right tool for this?</em> Point a stochastic model at a task that needed a deterministic one and you take on a class of runtime risk you could have designed out. The most effective control is the one you never had to build.</p>
+    <a class="airs-textlink" href="/should-you-use-ai/">Should you use AI at all? &rarr;</a>
+  </div>
+</section>
+
 <section class="airs-section airs-section--card">
   <div class="airs-wrap">
     <p class="airs-eyebrow">The gap</p>
