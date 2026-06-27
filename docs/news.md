@@ -34,18 +34,6 @@ A biweekly roundup of incidents, research, and developments in AI runtime securi
 
 <!-- NEWS_START -->
 
-### 2026-06-24: SymJack and TrustFall Break the Coding-Agent Fleet With a Single Technique Each
-
-**Tags**: Supply Chain, Agentic, MASO
-
-*Adversa AI*'s June agentic security roundup details two disclosures that hit the AI coding-agent ecosystem at once. **SymJack** is a symlink-hijack remote code execution that compromised six AI coding agents through one shared file-handling flaw, and **TrustFall** is a one-click RCE that reached Claude Code, Cursor, Gemini CLI, and GitHub Copilot by exploiting a regressed trust-confirmation dialog that had previously gated risky actions. Adversa frames both as products of an "agentic coding gold rush" that is shipping autonomy faster than the surrounding controls mature.
-
-**Framework relevance**: One technique compromising six agent products simultaneously is the cross-fleet blast radius that [MASO](maso/README.md) supply chain and containment controls exist to bound: a shared dependency or shared design flaw turns a single bug into an estate-wide event, the pattern catalogued in [ET-13 (Agent Ecosystem Supply Chain Compromise at Scale)](maso/threat-intelligence/emerging-threats.md#et-13-agent-ecosystem-supply-chain-compromise-at-scale) and [ET-27 (Coding-agent-as-initial-access-vector)](maso/threat-intelligence/emerging-threats.md#et-27-coding-agent-as-initial-access-vector). TrustFall is the sharper lesson for [Human Oversight](core/controls.md): a confirmation dialog that silently regresses removes an approval gate without anyone noticing, which is why [Execution Control](maso/controls/execution-control.md) treats approval prompts as enforced policy at the host, not UI the agent or a refactor can bypass. Reinforces [Environment Containment](maso/environment-containment.md) and [Infrastructure Beats Instructions](insights/infrastructure-beats-instructions.md): the host running the agent is part of its blast radius.
-
-**Source**: [Adversa AI: Top Agentic AI Security Resources, June 2026](https://adversa.ai/blog/top-agentic-ai-security-resources-june-2026/)
-
----
-
 ### 2026-06-22: Embedding-Based Detection of Malicious Agents Collapses in Multi-Agent Systems
 
 **Tags**: MASO, Judge, Observability
@@ -127,6 +115,18 @@ At Build 2026, Microsoft announced that the Agent 365 SDK has reached general av
 **Framework relevance**: Agent 365 SDK reaching GA is further vendor confirmation that per-agent [Non-Human Identity](maso/controls/identity-and-access.md) (IA-2.1) is a shipping product category, not just a framework recommendation organisations have to build themselves. MXC's sandboxed execution model maps to [Execution Control](maso/controls/execution-control.md) and [Environment Containment](maso/environment-containment.md), but its early-preview status means it shouldn't yet be relied on as a sole containment control in Tier 2/3 deployments. Organisations adopting either SDK should still apply the same vetting (SC-2.2, SC-2.3) they'd apply to any other agent framework dependency: the framework-level RCE vulnerabilities disclosed in LangChain, LangGraph, and Microsoft's own Semantic Kernel earlier in 2026 (see [Agent Supply Chain Crisis](insights/the-agent-supply-chain-crisis.md)) all involved the orchestration SDK itself, the same category Agent 365 and MXC sit in.
 
 **Source**: [Microsoft: Build 2026 - Securing code, agents, and models across the development lifecycle](https://www.microsoft.com/en-us/security/blog/2026/06/02/microsoft-build-2026-securing-code-agents-and-models-across-the-development-lifecycle/)
+
+---
+
+### 2026-06-01: SymJack and TrustFall Break the Coding-Agent Fleet With a Single Technique Each
+
+**Tags**: Supply Chain, Agentic, MASO
+
+*Adversa AI*'s June agentic security roundup (published June 1, 2026) details two disclosures that hit the AI coding-agent ecosystem in May. **SymJack** (disclosed May 26) is a symlink-hijack remote code execution that compromised six AI coding agents through one shared file-handling flaw, and **TrustFall** (disclosed May 7) is a one-click RCE that reached Claude Code, Cursor, Gemini CLI, and GitHub Copilot by exploiting a regressed trust-confirmation dialog that had previously gated risky actions. Adversa frames both as products of an "agentic coding gold rush" that is shipping autonomy faster than the surrounding controls mature.
+
+**Framework relevance**: One technique compromising six agent products simultaneously is the cross-fleet blast radius that [MASO](maso/README.md) supply chain and containment controls exist to bound: a shared dependency or shared design flaw turns a single bug into an estate-wide event, the pattern catalogued in [ET-13 (Agent Ecosystem Supply Chain Compromise at Scale)](maso/threat-intelligence/emerging-threats.md#et-13-agent-ecosystem-supply-chain-compromise-at-scale) and [ET-27 (Coding-agent-as-initial-access-vector)](maso/threat-intelligence/emerging-threats.md#et-27-coding-agent-as-initial-access-vector). TrustFall is the sharper lesson for [Human Oversight](core/controls.md): a confirmation dialog that silently regresses removes an approval gate without anyone noticing, which is why [Execution Control](maso/controls/execution-control.md) treats approval prompts as enforced policy at the host, not UI the agent or a refactor can bypass. Reinforces [Environment Containment](maso/environment-containment.md) and [Infrastructure Beats Instructions](insights/infrastructure-beats-instructions.md): the host running the agent is part of its blast radius.
+
+**Source**: [Adversa AI: Top Agentic AI Security Resources, June 2026](https://adversa.ai/blog/top-agentic-ai-security-resources-june-2026/)
 
 ---
 
