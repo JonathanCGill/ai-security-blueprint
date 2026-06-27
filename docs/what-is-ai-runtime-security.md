@@ -23,6 +23,7 @@ nav_active: what-is
     <h2>Why does it matter now?</h2>
     <p class="airs-muted">For years, AI mostly answered questions. Now it acts: it books, buys, sends, edits, and reaches into other systems on your behalf. A wrong answer is awkward. A wrong action has consequences in the real world.</p>
     <p class="airs-muted">And many of the most dangerous failures begin the same way: untrusted content, a tool, a stored memory, or borrowed authority quietly steering the AI while it runs. The classic version is a hidden instruction dressed up as ordinary content: a web page, a document, or an email the AI reads can tell it to do something it was never meant to do. Catch those moments and a long list of named threats loses much of its teeth.</p>
+    <p class="airs-muted">So the surface worth watching is wider than the words going in and out. It includes who the AI is acting as and how far that authority reaches, what it remembers, the tools and models it trusts, and what it costs to run. The framework treats each of these as a place to put controls, not an afterthought. <a href="/architecture/#wider-boundary">See the wider boundary &rarr;</a></p>
 
     <h2>How AIRS handles it</h2>
     <p class="airs-muted">AIRS answers it with four independent layers. Each does one job, and each keeps working even if the others fail.</p>
