@@ -62,6 +62,19 @@ They are.
 
 **Control required:** Encryption at rest and in transit, access control, audit logging, and network segmentation for vector databases - the same controls you apply to any data store containing sensitive information.
 
+## Has This Happened?
+
+Yes. Unauthorised retrieval is not a hypothetical risk class. It is the most common reason enterprise AI rollouts stall, and it has produced named, public incidents. There are three distinct ways it goes wrong, and they need different fixes.
+
+The most common is the quietest: the AI faithfully respects existing permissions, but those permissions were already too loose. Finding an over-shared file used to require knowing it existed. RAG removes that friction and surfaces everything a user *technically* can open but was never meant to see. The second is sharper: a retrieval layer or agent with broader access than the user, and nothing trimming results to the user's own entitlements (the **confused deputy**, covered in [IAM Governance](../core/iam-governance.md)). The third is the boundary breaking even when permissions are correct, via [indirect prompt injection](#3-prompt-injection-via-retrieved-content).
+
+!!! abstract "The public record"
+    - **Microsoft 365 Copilot oversharing (industry-wide).** Copilot honours existing permissions, but it amplifies years of latent oversharing: sites shared with "Everyone," broken inheritance, stale "All Employees" links. *Gartner found 40% of organisations delayed Copilot rollout by three months or more over oversharing concerns.* Microsoft shipped SharePoint Advanced Management and Purview DSPM specifically to address it. This is **Risk 1** at enterprise scale: the permissions were the problem, and the AI made the mess findable.
+    - **Slack AI cross-channel leak (August 2024).** Security firm PromptArmor showed Slack AI would pull context from public *and* private channels, including public channels the user had not joined. An attacker posting crafted instructions in a public channel could exfiltrate secrets, such as API keys, from a private channel they had no access to. Slack patched it. This is **Risk 1 plus Risk 3** in combination.
+    - **EchoLeak, CVE-2025-32711 (June 2025).** A *zero-click* flaw in Microsoft 365 Copilot, CVSS 9.3. A single crafted email caused Copilot to exfiltrate anything in its scope (OneDrive, SharePoint, Teams, chat history) with no user interaction. Aim Labs named the technique an **LLM Scope Violation**. Microsoft fixed it server-side, with no evidence of in-the-wild abuse.
+
+The lesson across all three: the AI will faithfully amplify whatever access mess already exists. Cleaning up underlying permissions and enforcing **per-user, query-time access filtering derived from the user's identity, not the agent's** is the primary control. It has to come *before* deployment, not after the first leak.
+
 ## What the Three-Layer Pattern Catches
 
 | Layer | RAG Risk Mitigated |
@@ -85,4 +98,12 @@ The three-layer pattern monitors output quality. RAG security requires controlli
 ## The Controls
 
 See [RAG Security Controls](../extensions/technical/rag-security.md) for implementation guidance.
+
+!!! info "References"
+    - [Mitigate Oversharing to Govern Microsoft 365 Copilot and Agents (Microsoft)](https://techcommunity.microsoft.com/blog/microsoft365copilotblog/mitigate-oversharing-to-govern-microsoft-365-copilot-and-agents/4448744)
+    - [Get ready for Microsoft 365 Copilot with SharePoint Advanced Management (Microsoft Learn)](https://learn.microsoft.com/en-us/sharepoint/get-ready-copilot-sharepoint-advanced-management)
+    - [Data Exfiltration from Slack AI via Indirect Prompt Injection (PromptArmor)](https://www.promptarmor.com/resources/data-exfiltration-from-slack-ai-via-indirect-prompt-injection)
+    - [Slack AI can leak private data via prompt injection (The Register)](https://www.theregister.com/2024/08/21/slack_ai_prompt_injection/)
+    - [Zero-Click AI Vulnerability Exposes Microsoft 365 Copilot Data, CVE-2025-32711 EchoLeak (The Hacker News)](https://thehackernews.com/2025/06/zero-click-ai-vulnerability-exposes.html)
+    - [EchoLeak: The First Real-World Zero-Click Prompt Injection Exploit in a Production LLM System (arXiv:2509.10540)](https://arxiv.org/abs/2509.10540)
 
