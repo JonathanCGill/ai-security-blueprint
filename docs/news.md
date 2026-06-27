@@ -202,18 +202,6 @@ The European Commission published draft guidelines on Article 50 of the EU AI Ac
 
 ---
 
-### 2026-04-22: LMDeploy SSRF Vulnerability Exploited Within 12 Hours of Advisory, Setting AI Infrastructure Exploitation Benchmark
-
-**Tags**: Supply Chain, Circuit Breaker, Observability
-
-Sysdig's Threat Research Team honeypot registered the first exploitation attempt against CVE-2026-33626 (a server-side request forgery in LMDeploy's vision-language image loader, CVSS 7.5) at 12 hours and 31 minutes after the advisory was published, with no public proof-of-concept available at the time. The attacker built the exploit directly from advisory text and used the `load_image()` function as a generic SSRF primitive to port-scan internal networks and access AWS Instance Metadata Service (IMDS) endpoints, exfiltrating cloud credentials from an AI inference server. CVE-2026-33626 affects all LMDeploy versions prior to 0.12.3 with vision-language support. The same day, the Bitwarden CLI npm package (`@bitwarden/cli@2026.4.0`) was compromised for 93 minutes as part of the Shai-Hulud supply chain campaign: the malware specifically harvested authenticated session credentials from Claude Code, Cursor, Kiro, Codex CLI, and Aider, making it the first publicly documented malware targeting AI coding assistant sessions as a primary objective, with 334 downloads during the window.
-
-**Framework relevance**: A 12-hour exploit window is shorter than most enterprise patch cycles and shorter than any human-review escalation path. For MASO implementations this compresses the PACE P to A transition window: the gap between public advisory and active exploitation now requires automated vulnerability detection and isolation, not scheduled scanning. [Supply Chain](maso/controls/supply-chain.md) control SC-3.1 (continuous vulnerability scanning) must include AI inference engines alongside model registries. The Bitwarden incident introduces a new credential category for [IAM Governance](core/iam-governance.md): AI coding assistant session tokens are now a harvesting target and should be treated as short-lived, scoped credentials with the same rotation and monitoring discipline as cloud API keys.
-
-**Source**: [Sysdig: CVE-2026-33626 exploited in 12 hours](https://www.sysdig.com/blog/cve-2026-33626-how-attackers-exploited-lmdeploy-llm-inference-engines-in-12-hours) · [The Hacker News: LMDeploy flaw exploited within 13 hours](https://thehackernews.com/2026/04/lmdeploy-cve-2026-33626-flaw-exploited.html) · [The Hacker News: Bitwarden CLI compromised in Shai-Hulud supply chain campaign](https://thehackernews.com/2026/04/bitwarden-cli-compromised-in-ongoing.html) · [Endor Labs: Shai-Hulud Bitwarden CLI attack](https://www.endorlabs.com/learn/shai-hulud-the-third-coming----inside-the-bitwarden-cli-2026-4-0-supply-chain-attack)
-
----
-
 ### 2026-05-07: Microsoft Semantic Kernel Prompt-Injection-to-RCE Disclosed in .NET and Python SDKs
 
 **Tags**: Agentic, Supply Chain, Guardrails
@@ -259,6 +247,18 @@ A high-severity vulnerability in the Cursor AI coding IDE was disclosed under CV
 **Framework relevance**: This is the developer's own coding agent as an initial access vector, distinct from the [Rules File Backdoor](insights/the-mcp-problem.md) (which is malicious config) and the MCP supply chain (which is third-party tools). It motivates the new [ET-27](maso/threat-intelligence/emerging-threats.md#et-27-coding-agent-as-initial-access-vector) entry: the host running the agent is itself part of the agent's blast radius. Reinforces [Infrastructure Beats Instructions](insights/infrastructure-beats-instructions.md): pre-commit hooks must be policy-controlled, not negotiated by the agent.
 
 **Source**: [NVD CVE-2026-26268](https://nvd.nist.gov/vuln/detail/CVE-2026-26268)
+
+---
+
+### 2026-04-22: LMDeploy SSRF Vulnerability Exploited Within 12 Hours of Advisory, Setting AI Infrastructure Exploitation Benchmark
+
+**Tags**: Supply Chain, Circuit Breaker, Observability
+
+Sysdig's Threat Research Team honeypot registered the first exploitation attempt against CVE-2026-33626 (a server-side request forgery in LMDeploy's vision-language image loader, CVSS 7.5) at 12 hours and 31 minutes after the advisory was published, with no public proof-of-concept available at the time. The attacker built the exploit directly from advisory text and used the `load_image()` function as a generic SSRF primitive to port-scan internal networks and access AWS Instance Metadata Service (IMDS) endpoints, exfiltrating cloud credentials from an AI inference server. CVE-2026-33626 affects all LMDeploy versions prior to 0.12.3 with vision-language support. The same day, the Bitwarden CLI npm package (`@bitwarden/cli@2026.4.0`) was compromised for 93 minutes as part of the Shai-Hulud supply chain campaign: the malware specifically harvested authenticated session credentials from Claude Code, Cursor, Kiro, Codex CLI, and Aider, making it the first publicly documented malware targeting AI coding assistant sessions as a primary objective, with 334 downloads during the window.
+
+**Framework relevance**: A 12-hour exploit window is shorter than most enterprise patch cycles and shorter than any human-review escalation path. For MASO implementations this compresses the PACE P to A transition window: the gap between public advisory and active exploitation now requires automated vulnerability detection and isolation, not scheduled scanning. [Supply Chain](maso/controls/supply-chain.md) control SC-3.1 (continuous vulnerability scanning) must include AI inference engines alongside model registries. The Bitwarden incident introduces a new credential category for [IAM Governance](core/iam-governance.md): AI coding assistant session tokens are now a harvesting target and should be treated as short-lived, scoped credentials with the same rotation and monitoring discipline as cloud API keys.
+
+**Source**: [Sysdig: CVE-2026-33626 exploited in 12 hours](https://www.sysdig.com/blog/cve-2026-33626-how-attackers-exploited-lmdeploy-llm-inference-engines-in-12-hours) · [The Hacker News: LMDeploy flaw exploited within 13 hours](https://thehackernews.com/2026/04/lmdeploy-cve-2026-33626-flaw-exploited.html) · [The Hacker News: Bitwarden CLI compromised in Shai-Hulud supply chain campaign](https://thehackernews.com/2026/04/bitwarden-cli-compromised-in-ongoing.html) · [Endor Labs: Shai-Hulud Bitwarden CLI attack](https://www.endorlabs.com/learn/shai-hulud-the-third-coming----inside-the-bitwarden-cli-2026-4-0-supply-chain-attack)
 
 ---
 
@@ -442,18 +442,6 @@ A threat actor known as TeamPCP published two malicious versions of the litellm 
 
 ---
 
-### 2026-03-17: Unit 42 Finds Genetic Algorithm Fuzzing Evades LLM Guardrails at 97-99% Rates
-
-**Tags**: Guardrails, Observability
-
-Researchers *Yu Fu, May Wang, Royce Lu, and Shengming Xu* from Palo Alto Networks Unit 42 built a genetic algorithm-based prompt fuzzer that generates meaning-preserving variants of disallowed requests. Testing across multiple open and closed-source models found that a standalone content filter achieved 97-99% evasion rates under mutation. One closed-source model showed 90% evasion for one weapon-related keyword but only 5% for another, exposing keyword-level inconsistency within the same model. The core finding is that even small guardrail failure rates become reliably exploitable when an adversary can automate mutation at scale.
-
-**Framework relevance**: Automated fuzzing confirms that static pattern-matching in the [Guardrails](core/controls.md) layer is brittle against adversaries with scripted probing tools. The keyword inconsistency result reinforces the case for a semantic-evaluation [Judge](core/judge-assurance.md) layer as a second line of defence, and the automation threat makes [Observability](maso/controls/observability.md) of anomalous query-rate patterns a necessary complement to content filtering.
-
-**Source**: [Open, Closed and Broken: Prompt Fuzzing Finds LLMs Still Fragile Across Open and Closed Models](https://unit42.paloaltonetworks.com/genai-llm-prompt-fuzzing/)
-
----
-
 ### 2026-03-18: Meta Internal AI Agent Triggers Unauthorized Access Breach
 
 **Tags**: Agentic, Human Oversight
@@ -466,6 +454,18 @@ A Meta in-house AI agent posted unsolicited advice to an internal forum without 
 
 ---
 
+### 2026-03-17: Unit 42 Finds Genetic Algorithm Fuzzing Evades LLM Guardrails at 97-99% Rates
+
+**Tags**: Guardrails, Observability
+
+Researchers *Yu Fu, May Wang, Royce Lu, and Shengming Xu* from Palo Alto Networks Unit 42 built a genetic algorithm-based prompt fuzzer that generates meaning-preserving variants of disallowed requests. Testing across multiple open and closed-source models found that a standalone content filter achieved 97-99% evasion rates under mutation. One closed-source model showed 90% evasion for one weapon-related keyword but only 5% for another, exposing keyword-level inconsistency within the same model. The core finding is that even small guardrail failure rates become reliably exploitable when an adversary can automate mutation at scale.
+
+**Framework relevance**: Automated fuzzing confirms that static pattern-matching in the [Guardrails](core/controls.md) layer is brittle against adversaries with scripted probing tools. The keyword inconsistency result reinforces the case for a semantic-evaluation [Judge](core/judge-assurance.md) layer as a second line of defence, and the automation threat makes [Observability](maso/controls/observability.md) of anomalous query-rate patterns a necessary complement to content filtering.
+
+**Source**: [Open, Closed and Broken: Prompt Fuzzing Finds LLMs Still Fragile Across Open and Closed Models](https://unit42.paloaltonetworks.com/genai-llm-prompt-fuzzing/)
+
+---
+
 ### 2026-03-11: Security Analysis Finds Open-Source AI Agent Framework Defends Only 17% of Attacks
 
 **Tags**: Agentic, Guardrails, Human Oversight
@@ -475,6 +475,18 @@ Researchers *Zhengyang Shan, Jiayun Xin, Yue Zhang, and Minghui Xu* tested the O
 **Framework relevance**: A 17% baseline defense rate reinforces the AIRS position that agent frameworks cannot rely on model alignment alone. The improvement from HITL directly validates the [Human Oversight](core/controls.md) escalation layer and the [Agentic AI Controls](core/agentic.md) requirement for human approval gates on high-impact actions.
 
 **Source**: [Don't Let the Claw Grip Your Hand: A Security Analysis and Defense Framework for OpenClaw (arXiv:2603.10387)](https://arxiv.org/abs/2603.10387)
+
+---
+
+### 2026-03-11: Pentagon Designates Anthropic a Supply Chain Risk Over Refusal to Remove Guardrails
+
+**Tags**: Guardrails, Supply Chain, Human Oversight
+
+The US Department of Defense formally designated Anthropic a supply chain risk after the company refused to strip contractual restrictions prohibiting use of Claude for mass surveillance of American citizens and fully autonomous weapons systems. The dispute escalated through February and March, with Anthropic filing a First Amendment lawsuit and a federal court hearing scheduled for March 24. Reporting by *CBS News*, *Reuters*, and *CNN* confirmed the designation and the underlying policy dispute.
+
+**Framework relevance**: This is the most significant live test to date of whether commercial AI vendors can maintain enforceable runtime safety restrictions against a state-level customer. It validates the AIRS position that [Supply Chain](maso/controls/supply-chain.md) governance must include contractual guardrail controls, and that [Human Oversight](core/controls.md) mechanisms cannot be waived by downstream operators without vendor consent.
+
+**Source**: [How the Anthropic-Pentagon dispute over AI safeguards escalated](https://www.usnews.com/news/top-news/articles/2026-03-11/how-the-anthropic-pentagon-dispute-over-ai-safeguards-escalated)
 
 ---
 
@@ -499,18 +511,6 @@ Researchers *Shaswata Mitra, Raj Patel, Sudip Mittal, Md Rayhanur Rahman, and Sh
 **Framework relevance**: AgenticCyOps addresses the same architecture concerns as the AIRS [Multi-Agent Controls](core/multi-agent-controls.md) and [MASO](maso/README.md) domains. Its identification of shared memory as a lateral propagation channel, where a compromised agent can influence others through shared context, maps directly to the [Memory and Context](core/memory-and-context.md) controls and multi-agent trust boundary model.
 
 **Source**: [AgenticCyOps: Securing Multi-Agentic AI Integration in Enterprise Cyber Operations (arXiv:2603.09134)](https://arxiv.org/abs/2603.09134)
-
----
-
-### 2026-03-11: Pentagon Designates Anthropic a Supply Chain Risk Over Refusal to Remove Guardrails
-
-**Tags**: Guardrails, Supply Chain, Human Oversight
-
-The US Department of Defense formally designated Anthropic a supply chain risk after the company refused to strip contractual restrictions prohibiting use of Claude for mass surveillance of American citizens and fully autonomous weapons systems. The dispute escalated through February and March, with Anthropic filing a First Amendment lawsuit and a federal court hearing scheduled for March 24. Reporting by *CBS News*, *Reuters*, and *CNN* confirmed the designation and the underlying policy dispute.
-
-**Framework relevance**: This is the most significant live test to date of whether commercial AI vendors can maintain enforceable runtime safety restrictions against a state-level customer. It validates the AIRS position that [Supply Chain](maso/controls/supply-chain.md) governance must include contractual guardrail controls, and that [Human Oversight](core/controls.md) mechanisms cannot be waived by downstream operators without vendor consent.
-
-**Source**: [How the Anthropic-Pentagon dispute over AI safeguards escalated](https://www.usnews.com/news/top-news/articles/2026-03-11/how-the-anthropic-pentagon-dispute-over-ai-safeguards-escalated)
 
 ---
 
