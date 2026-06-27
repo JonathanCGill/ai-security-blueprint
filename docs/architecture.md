@@ -102,7 +102,7 @@ nav_active: framework
   </div>
 </section>
 
-<section class="airs-section airs-section--paper">
+<section class="airs-section airs-section--paper" id="wider-boundary">
   <div class="airs-wrap">
     <p class="airs-eyebrow">The wider boundary</p>
     <h2 class="airs-h2">The layers act on more than words in and out.</h2>
