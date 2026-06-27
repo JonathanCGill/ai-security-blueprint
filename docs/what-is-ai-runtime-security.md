@@ -9,7 +9,7 @@ nav_active: what-is
   <div class="airs-wrap--narrow">
     <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">Start here</p>
     <h1 class="airs-hero__title">What is AI Runtime Security?</h1>
-    <p class="airs-hero__lead">It is the set of live controls that watch your AI <em>while it is working</em>, and step in the moment it does something it shouldn't.</p>
+    <p class="airs-hero__lead">It is the set of live controls that watch what your AI does <em>while it is working</em>, the actions it takes, the tools it calls, the data and memory it reaches for, and step in the moment it crosses a line it shouldn't.</p>
   </div>
 </section>
 
@@ -22,7 +22,7 @@ nav_active: what-is
 
     <h2>Why does it matter now?</h2>
     <p class="airs-muted">For years, AI mostly answered questions. Now it acts: it books, buys, sends, edits, and reaches into other systems on your behalf. A wrong answer is awkward. A wrong action has consequences in the real world.</p>
-    <p class="airs-muted">And almost every new failure traces back to a single trick: hidden instructions dressed up as ordinary content. A web page, a document, or an email the AI reads can quietly tell it to do something it was never meant to do. Catch that one move and most of the named threats lose their teeth.</p>
+    <p class="airs-muted">And many of the most dangerous failures begin the same way: untrusted content, a tool, a stored memory, or borrowed authority quietly steering the AI while it runs. The classic version is a hidden instruction dressed up as ordinary content: a web page, a document, or an email the AI reads can tell it to do something it was never meant to do. Catch those moments and a long list of named threats loses much of its teeth.</p>
 
     <h2>How AIRS handles it</h2>
     <p class="airs-muted">AIRS answers it with four independent layers. Each does one job, and each keeps working even if the others fail.</p>

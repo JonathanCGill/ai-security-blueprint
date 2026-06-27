@@ -117,7 +117,7 @@ nav_active: home
 <section class="airs-section airs-section--paper airs-center">
   <div class="airs-wrap--narrow">
     <p class="airs-eyebrow">One idea underneath it all</p>
-    <p class="airs-statement">Most AI attacks are the same event in disguise: <em>untrusted content treated as an instruction instead of as data.</em> Fix that one thing, and the long list of named threats collapses into a single problem you can actually hold.</p>
+    <p class="airs-statement">A surprising number of AI attacks are the same event in disguise: <em>untrusted content, tools, memory, or borrowed authority treated as trusted instruction instead of as data to be checked.</em> Hold that line, and a long list of named threats collapses into a handful of problems you can actually get your arms around.</p>
     <a class="airs-textlink" href="/what-is-ai-runtime-security/">Read the idea in full &rarr;</a>
   </div>
 </section>

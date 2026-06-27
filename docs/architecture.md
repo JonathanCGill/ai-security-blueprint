@@ -46,8 +46,9 @@ nav_active: framework
         </div>
         <div>
           <h2 class="airs-layerrow__title">Reviewing controls</h2>
-          <p class="airs-layerrow__body">A second opinion before anything reaches the user: scanners, a semantic firewall, and a model-as-judge weighing the response against policy, context, and intent. This is what catches the subtle failures a fixed rule waves straight through.</p>
+          <p class="airs-layerrow__body">A second opinion before anything reaches the user: scanners, a semantic firewall, and a model-as-judge weighing the response against policy, context, and intent. This is what catches the subtle failures a fixed rule waves straight through. The judge is itself a model, so it is probabilistic and can be fooled: it informs the decision rather than making the final call, and it never stands in for the deterministic guardrails beneath it.</p>
           <a class="airs-textlink airs-textlink--sm" href="/core/controls/semantic-firewall/">Inside the semantic firewall &rarr;</a>
+          <a class="airs-textlink airs-textlink--sm" href="/core/when-the-judge-can-be-fooled/">When the judge can be fooled &rarr;</a>
         </div>
       </div>
       <div class="airs-layerrow">
