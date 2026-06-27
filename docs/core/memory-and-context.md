@@ -18,6 +18,20 @@ The three-layer pattern evaluates individual requests and responses. But AI syst
 
 A single request-response pair may be safe. The accumulated context may not be.
 
+## A Taxonomy of AI Memory
+
+"Memory" is not one thing, and the controls differ by type. Naming the types makes two things precise: which store an attack actually lands in, and why a poisoned entry can lie dormant and activate much later (the delayed-trigger property of [sleeper memory poisoning](#threat-model)). Borrowing the cognitive vocabulary:
+
+| Memory type | What it holds | Scope and lifetime | Primary attack | Controlled in |
+|---|---|---|---|---|
+| **Working / context memory** | The active context window: current turns, retrieved chunks, tool results | Single session, volatile | Gradual context poisoning, context-window overflow | [Context Window Hygiene](#2-context-window-hygiene) |
+| **Episodic memory** | Past conversations and events: session history, what happened and when | Per user, across sessions | Memory manipulation, sleeper poisoning | [Persistent Memory Controls](#3-persistent-memory-controls) |
+| **Semantic memory** | Learned facts and preference profiles: durable knowledge *about* the user | Per user, long-lived | Preference poisoning, accumulated PII | [Persistent Memory Controls](#3-persistent-memory-controls), [Behavioral Learning](#behavioral-learning-and-preference-data) |
+| **Procedural memory** | Learned tool and workflow patterns: how the agent tends to act | Per agent or user, durable | Memory-targeted tool hijacking | [Persistent Memory Controls](#3-persistent-memory-controls) |
+| **Shared / vector memory** | Embeddings and knowledge shared across users | Multi-user | Vector and embedding-store poisoning, cross-session leakage | [Session Isolation](#1-session-isolation), [RAG Security](../extensions/technical/rag-security.md) |
+
+The reason this matters for runtime security: the more durable the memory type, the longer an injected payload survives and the further it travels from the session that wrote it. A poisoned **working-memory** entry dies when the context flushes. A poisoned **episodic or semantic** entry persists across sessions, which is exactly what makes the delayed-trigger attacks below possible. The write happens in one session and the activation in another, so no per-turn guardrail ever sees both halves. Match the scrutiny to the durability: the longer-lived the store, the stronger the write-time provenance and validation it needs.
+
 ## Threat Model
 
 | Threat | Vector | Impact |
@@ -27,6 +41,7 @@ A single request-response pair may be safe. The accumulated context may not be.
 | **Memory manipulation** | Injecting false "memories" via conversation that persist across sessions | Ongoing manipulation of model behavior for a user |
 | **Sleeper memory poisoning** | Adversarial content in an external document, webpage, or repository causes the agent to write a fabricated memory that lies dormant across sessions and activates only when a contextually relevant query arises | Ongoing cross-session behavioral manipulation; bypasses session-isolation defenses because the payload is injected in one session and activated in another. Achieves near-perfect write success on current frontier models (arXiv:2605.15338). |
 | **Memory-targeted tool hijacking** | Adversarial records injected into long-term memory reshape the agent's contextual perception, causing it to autonomously select attacker-preferred tools | Tool selection manipulation without any tool manifest tampering; harder to detect because memory receives less scrutiny than tool call parameters (arXiv:2605.26154). |
+| **Vector and embedding-store poisoning** | Adversarial documents embedded into a shared vector store skew similarity search for any user querying a related topic | Cross-user behavioural manipulation and data exposure through a store security teams rarely treat as sensitive; the payload persists until the store is re-indexed. Controls live in [RAG Security](../extensions/technical/rag-security.md) ingestion validation plus the semantic deduplication in [Section 3](#3-persistent-memory-controls). |
 | **Context window overflow** | Filling the context with irrelevant content to push out system instructions | Guardrail bypass - system prompt "forgotten" |
 | **Accumulated PII** | Individual turns are PII-free but the conversation as a whole builds a profile | Privacy violation - model holds more personal data than any individual turn reveals |
 
