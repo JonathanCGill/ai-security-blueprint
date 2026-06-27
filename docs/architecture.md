@@ -104,6 +104,32 @@ nav_active: framework
 
 <section class="airs-section airs-section--paper">
   <div class="airs-wrap">
+    <p class="airs-eyebrow">The wider boundary</p>
+    <h2 class="airs-h2">The layers act on more than words in and out.</h2>
+    <p class="airs-intro">A request is the obvious thing to watch, but it is not the only one. The same four layers also bound what an agent is allowed to be, remember, trust, and spend. Treat these as factors to weigh when you place your controls, not afterthoughts.</p>
+    <div class="airs-cards airs-cards--roles">
+      <a class="airs-role" href="/core/iam-governance/">
+        <p class="airs-role__title">Identity &amp; delegated authority</p>
+        <p class="airs-role__roles">Who is the agent acting as, and how far does its borrowed authority reach? Scope it per action, not just at sign-up.</p>
+      </a>
+      <a class="airs-role" href="/core/memory-and-context/">
+        <p class="airs-role__title">Memory &amp; context</p>
+        <p class="airs-role__roles">What an agent stores and recalls is an attack surface. Poisoned memory can sit dormant and steer a later decision.</p>
+      </a>
+      <a class="airs-role" href="/insights/the-supply-chain-problem/">
+        <p class="airs-role__title">Supply chain &amp; tool provenance</p>
+        <p class="airs-role__roles">Models, tools, and their manifests arrive from somewhere. Trust what you can verify, not what claims to be safe.</p>
+      </a>
+      <a class="airs-role" href="/extensions/technical/economic-governance/">
+        <p class="airs-role__title">Cost &amp; token governance</p>
+        <p class="airs-role__roles">An agent that can loop or fan out can also burn a budget. Cap the blast radius before a runaway run does.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="airs-section airs-section--paper">
+  <div class="airs-wrap">
     <p class="airs-eyebrow">The thinking behind it</p>
     <h2 class="airs-h2">Why these layers, in this order.</h2>
     <p class="airs-intro">Six short reads make the whole case for runtime security: the why before the how.</p>
