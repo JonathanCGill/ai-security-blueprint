@@ -129,6 +129,7 @@ nav:
       - "Three-Layer Model: Guardrails, Judge, Oversight": core/controls.md
       - Semantic Firewall: core/controls/semantic-firewall.md
       - Data Provenance & Authority Boundaries: core/controls/data-provenance-and-authority-boundaries.md
+      - Provenance & Attestation: core/controls/provenance-and-attestation.md
       - "ASI Top 10: Provenance Mapping": core/controls/asi-top10-provenance-mapping.md
       - Safety Cases & Oversight Durability: core/controls/safety-cases-and-oversight-durability.md
       - Implementation Checklist: core/checklist.md

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-label="Provenance and attestation: each artifact (model, adapter, tool manifest, prompt and OISpec) is signed at build with provenance metadata, stored with its signature in a registry, and verified at three runtime gates (admission, load, and per-action). A failed signature or provenance check fails closed. Every verification result is written to the attestation log as tamper-evident audit evidence.">
+  <defs>
+    <marker id="arrpa" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrred" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+
+  <style>
+    text { font-family: Inter, system-ui, sans-serif; }
+    .h { font-size: 13px; font-weight: 700; fill: #fff; }
+    .d { font-size: 10px; fill: rgba(255,255,255,0.82); }
+    .src { font-size: 10.5px; fill: rgba(255,255,255,0.92); }
+    .lbl { font-size: 9.5px; fill: #64748b; font-weight: 600; }
+    .arrow-text { font-size: 9px; fill: #64748b; font-style: italic; }
+    .gate { font-size: 11px; fill: #1e3a8a; font-weight: 700; }
+    .tag { font-size: 9px; fill: #fff; font-weight: 700; }
+    .note { font-size: 9px; fill: rgba(255,255,255,0.78); font-style: italic; }
+    .reject { font-size: 9.5px; fill: #b91c1c; font-weight: 700; }
+  </style>
+
+  <!-- Stage A: artifacts signed at build -->
+  <rect x="16" y="96" width="172" height="252" rx="10" fill="#1a1a2e"/>
+  <text x="102" y="122" text-anchor="middle" class="h">Build / publish</text>
+  <text x="102" y="150" text-anchor="middle" class="src">Model weights</text>
+  <text x="102" y="172" text-anchor="middle" class="src">Adapter / LoRA</text>
+  <text x="102" y="194" text-anchor="middle" class="src">Tool manifest</text>
+  <text x="102" y="216" text-anchor="middle" class="src">Prompt / OISpec</text>
+  <text x="102" y="238" text-anchor="middle" class="src">Guardrail config</text>
+  <rect x="40" y="262" width="124" height="22" rx="5" fill="#15803d"/>
+  <text x="102" y="277" text-anchor="middle" class="tag">sign + provenance</text>
+  <text x="102" y="306" text-anchor="middle" class="d">identity, source,</text>
+  <text x="102" y="322" text-anchor="middle" class="d">build inputs recorded</text>
+
+  <!-- arrow A -> registry -->
+  <line x1="188" y1="222" x2="242" y2="222" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrpa)"/>
+
+  <!-- Stage B: registry -->
+  <rect x="244" y="120" width="150" height="204" rx="10" fill="#1a1a2e"/>
+  <text x="319" y="146" text-anchor="middle" class="h">Registry</text>
+  <text x="319" y="174" text-anchor="middle" class="d">artifact + version</text>
+  <text x="319" y="194" text-anchor="middle" class="d">signature</text>
+  <text x="319" y="214" text-anchor="middle" class="d">provenance record</text>
+  <text x="319" y="234" text-anchor="middle" class="d">trusted signing keys</text>
+  <rect x="268" y="252" width="102" height="22" rx="5" fill="#1e3a8a"/>
+  <text x="319" y="267" text-anchor="middle" class="tag">version pinned</text>
+  <text x="319" y="296" text-anchor="middle" class="note">no floating tags</text>
+
+  <!-- arrow registry -> gates -->
+  <line x1="394" y1="222" x2="448" y2="222" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrpa)"/>
+
+  <!-- Stage C: three verification gates -->
+  <rect x="450" y="60" width="262" height="328" rx="10" fill="#0f172a"/>
+  <text x="581" y="86" text-anchor="middle" class="h">Verification gates</text>
+
+  <rect x="470" y="104" width="222" height="64" rx="8" fill="#1a1a2e"/>
+  <text x="481" y="126" class="gate">1. Admission</text>
+  <text x="481" y="146" class="d">deploy time: signature +</text>
+  <text x="481" y="160" class="d">provenance + risk approval</text>
+
+  <rect x="470" y="180" width="222" height="64" rx="8" fill="#1a1a2e"/>
+  <text x="481" y="202" class="gate">2. Load</text>
+  <text x="481" y="222" class="d">on instantiation: hash of</text>
+  <text x="481" y="236" class="d">what actually loaded</text>
+
+  <rect x="470" y="256" width="222" height="64" rx="8" fill="#1a1a2e"/>
+  <text x="481" y="278" class="gate">3. Per-action</text>
+  <text x="481" y="298" class="d">runtime: prompt / OISpec /</text>
+  <text x="481" y="312" class="d">tool version still trusted</text>
+
+  <text x="581" y="346" text-anchor="middle" class="note">each gate fails closed</text>
+  <text x="581" y="362" text-anchor="middle" class="note">on signature or provenance mismatch</text>
+
+  <!-- reject arrow -->
+  <line x1="581" y1="388" x2="581" y2="424" stroke="#b91c1c" stroke-width="1.4" marker-end="url(#arrred)"/>
+  <text x="581" y="444" text-anchor="middle" class="reject">REJECT: unverified artifact never runs</text>
+
+  <!-- arrow gates -> attestation log -->
+  <line x1="712" y1="222" x2="766" y2="222" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrpa)"/>
+
+  <!-- Stage D: attestation log -->
+  <rect x="768" y="120" width="118" height="204" rx="10" fill="#1a1a2e"/>
+  <text x="827" y="146" text-anchor="middle" class="h">Attestation</text>
+  <text x="827" y="162" text-anchor="middle" class="h">log</text>
+  <text x="827" y="190" text-anchor="middle" class="d">who signed</text>
+  <text x="827" y="210" text-anchor="middle" class="d">what verified</text>
+  <text x="827" y="230" text-anchor="middle" class="d">when, at which</text>
+  <text x="827" y="244" text-anchor="middle" class="d">gate</text>
+  <rect x="788" y="262" width="78" height="22" rx="5" fill="#1e3a8a"/>
+  <text x="827" y="277" text-anchor="middle" class="tag">evidence</text>
+  <text x="827" y="306" text-anchor="middle" class="note">tamper-evident</text>
+
+  <!-- bottom caption -->
+  <text x="450" y="478" text-anchor="middle" class="lbl">Data provenance asks "what may this content do?". Artifact attestation asks "is this the artifact we approved, and can we prove it?".</text>
+</svg>

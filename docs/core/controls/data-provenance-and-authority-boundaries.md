@@ -12,6 +12,8 @@ Prompt injection has no such shape. An instruction smuggled into a fetched docum
 
 This page states the invariant that collapses those separate detection problems into one enforcement principle, and then the rule for choosing the **right checker** at each boundary. The layered controls (Guardrails, [Semantic Firewall](semantic-firewall.md), [Model-as-Judge](../controls.md), Human Oversight) are *how* you enforce this. The invariant is *what* must hold, regardless of what this quarter's attack is called.
 
+This page governs what untrusted *content* is allowed to do at runtime. Its counterpart, [Provenance and Attestation](provenance-and-attestation.md), governs whether the *artifacts* doing the governing (the model, adapters, tool manifests, prompts, and OISpecs) are the approved, unmodified versions in the first place. Behaviour and identity are different questions, and both have to hold.
+
 ## The invariant
 
 Three properties must hold everywhere data moves:
