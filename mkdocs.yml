@@ -105,6 +105,7 @@ nav:
   - Home: README.md
 
   - Start:
+    - "Should You Use AI at All?": should-you-use-ai.md
     - Choose Your Path: start.md
     - "See It Fail: Chevrolet $1 Chatbot": walkthrough-chevrolet-1-dollar.md
     - Learn the Framework: reading-paths.md
