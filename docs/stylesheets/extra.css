@@ -288,7 +288,7 @@ img[src$=".svg"] {
 .md-header-tabs__link {
   color: var(--md-default-fg-color--light);
   font-family: var(--md-text-font);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 500;
   padding: 0.4rem 0;
   text-decoration: none;
