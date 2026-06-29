@@ -81,6 +81,19 @@ Rationale: While Aria doesn't make decisions, it accesses sensitive customer fin
 
 Based on HIGH risk tier, these controls apply:
 
+### Threat-to-Control Mapping
+
+Each threat maps to a control at the depth the HIGH tier demands. The [control matrix](../../core/risk-tiers.md#control-matrix) gives the HIGH-tier baseline:
+
+| Threat | Control | Layer | Depth at HIGH |
+|--------|---------|-------|---------------|
+| Prompt injection (direct) | Input guardrails: injection detection, topic and length limits | [Guardrails](../../core/controls.md#1-guardrails) | Enhanced |
+| Indirect injection via RAG | Treat retrieved content as untrusted; strip instructions; access-controlled retrieval | [Guardrails](../../core/controls.md#1-guardrails) + [Data Protection](../../infrastructure/controls/data-protection.md) | Enhanced |
+| Sensitive-data disclosure | Output guardrails: PII checks, cross-customer leakage prevention, response scanning | [Guardrails](../../core/controls.md#1-guardrails) + [DAT-06](../../infrastructure/controls/data-protection.md#dat-06-response-leakage-prevention) | Enhanced |
+| Unknown-bad behaviour | Model-as-Judge evaluating a risk-weighted async sample, high-risk interactions first | [Judge](../../core/controls.md#2-model-as-judge) | 20-50% sampled |
+
+At HIGH tier the Judge samples outputs rather than evaluating every one. The [control matrix](../../core/risk-tiers.md#control-matrix) sets HIGH coverage at 20-50% and reserves 100% evaluation for CRITICAL systems, so sampling high-risk interactions first keeps the cost proportionate to the tier. This is why Aria's [sampling strategy](#sampling-strategy) below runs a 20% baseline plus 100% of near-misses, complaints, and long conversations, not 100% of all traffic.
+
 ### Control Architecture
 
 ![Aria Control Architecture](../../images/example-aria-architecture.svg)
