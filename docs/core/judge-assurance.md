@@ -5,7 +5,7 @@ description: "How to validate Model-as-Judge accuracy against human ground truth
 # Judge Assurance
 
 <!-- golden-thread-nav -->
-!!! tip "Part of the Golden Thread (8 of 14)"
+!!! tip "Part of the Golden Thread (9 of 15)"
     Previous: [The Judge Detects, Not Decides](../insights/judge-detects-not-decides.md) · Next: [When the Judge Can Be Fooled](when-the-judge-can-be-fooled.md) · [See the full sequence](../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
 <!-- golden-thread-nav -->
 

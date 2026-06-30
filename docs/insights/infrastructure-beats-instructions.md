@@ -1,7 +1,7 @@
 # Infrastructure Beats Instructions
 
 <!-- golden-thread-nav -->
-!!! tip "Part of the Golden Thread (11 of 14)"
+!!! tip "Part of the Golden Thread (12 of 15)"
     Previous: [Humans Remain Accountable](humans-remain-accountable.md) · Next: [The Feedback Loops That Make It Work](feedback-loops.md) · [See the full sequence](../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
 <!-- golden-thread-nav -->
 

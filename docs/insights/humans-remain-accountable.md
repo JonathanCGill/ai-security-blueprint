@@ -1,7 +1,7 @@
 # Humans Remain Accountable
 
 <!-- golden-thread-nav -->
-!!! tip "Part of the Golden Thread (10 of 14)"
+!!! tip "Part of the Golden Thread (11 of 15)"
     Previous: [When the Judge Can Be Fooled](../core/when-the-judge-can-be-fooled.md) · Next: [Infrastructure Beats Instructions](infrastructure-beats-instructions.md) · [See the full sequence](../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
 <!-- golden-thread-nav -->
 

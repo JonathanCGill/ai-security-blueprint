@@ -7,7 +7,7 @@ og_description: Analysis of when LLM constraints become counterproductive, with 
 # The Constraint Curve: When LLM Constraints Become Counterproductive
 
 <!-- golden-thread-nav -->
-!!! tip "Part of the Golden Thread (4 of 14)"
+!!! tip "Part of the Golden Thread (4 of 15)"
     Previous: [Process-Aware Evaluation](process-aware-evaluation.md) · Next: [Why Your Guardrails Aren't Enough](why-guardrails-arent-enough.md) · [See the full sequence](../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
 <!-- golden-thread-nav -->
 

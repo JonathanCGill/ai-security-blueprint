@@ -4,6 +4,9 @@ description: "The semantic firewall: intent-level boundary enforcement between G
 
 # Semantic Firewall
 
+!!! tip "Part of the Golden Thread (7 of 15)"
+    Previous: [Practical Guardrails](../../insights/practical-guardrails.md) · Next: [The Judge Detects, Not Decides](../../insights/judge-detects-not-decides.md) · [See the full sequence](../../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
+
 Intent-level boundary enforcement that sits between Guardrails and Model-as-Judge. Catches requests that are semantically equivalent to a prohibited intent even when the surface wording is novel.
 
 ## Why This Layer Exists

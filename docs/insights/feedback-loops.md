@@ -5,7 +5,7 @@ description: "How feedback loops between guardrails, judges, humans, and downstr
 # The Feedback Loops That Make It Work
 
 <!-- golden-thread-nav -->
-!!! tip "Part of the Golden Thread (12 of 14)"
+!!! tip "Part of the Golden Thread (13 of 15)"
     Previous: [Infrastructure Beats Instructions](infrastructure-beats-instructions.md) · Next: [Architecture Overview](../architecture.md) · [See the full sequence](../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
 <!-- golden-thread-nav -->
 
