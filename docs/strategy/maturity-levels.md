@@ -56,7 +56,7 @@ From the U.S. Department of Energy. Four levels (MIL 0-3), 356 practices across 
 | **AI Maturity Model for Cybersecurity** | Cloud Security Alliance + Darktrace | January 2026 | Five levels (L0-L4) based on operational data from ~10,000 deployments. Grounded in what organisations actually do, not what they should do. |
 | **AI Maturity Assessment (AIMA)** | OWASP | August 2025 | Eight assessment domains including data management, governance, and operations. Adapted from OWASP SAMM. |
 | **ISO/IEC 42001:2023** | ISO | 2023 | First certifiable AI management system standard. Not a maturity model, but a management system that builds on ISO 27001. Organisations already ISO 27001 certified can reach 42001 compliance up to 40% faster. |
-| **AI Controls Matrix** | Cloud Security Alliance | 2025 | 243 control objectives with an explicit shared responsibility model distinguishing AI Consumer, Model Provider, and Application Provider roles. |
+| **AI Controls Matrix** | Cloud Security Alliance | 2025 | 243 control objectives with an explicit shared responsibility model distinguishing AI Consumer, Model Provider, and Application Provider roles. See [CSA AICM Alignment](../extensions/regulatory/csa-aicm-alignment.md) and [Shared Responsibility](../core/shared-responsibility.md). |
 
 A **DoD AI Security Framework** (CMMC-style for AI) is mandated by Section 1513 of defence policy law, with a status report to Congress due June 2026.
 
