@@ -4,13 +4,13 @@ description: "Alignment between this framework and the CSA AI Controls Matrix (A
 
 # CSA AI Controls Matrix (AICM) Alignment
 
-The **CSA AI Controls Matrix (AICM)** is the most directly comparable AI control framework to this one, so it is worth being explicit about how the two relate. AICM v1.1 is **243 control objectives across 18 domains**, built on top of CSA's Cloud Controls Matrix (CCM). It maps to ISO/IEC 42001, ISO/IEC 27001, NIST AI 600-1, and BSI AIC4, and ships with the **AI-CAIQ** assessment questionnaire and a pathway to STAR for AI certification.
+The **CSA AI Controls Matrix (AICM)** is the most directly comparable AI control framework to this one, so it is worth being explicit about how the two relate. AICM v1.1 is **247 control objectives across 18 domains**, built on top of CSA's Cloud Controls Matrix (CCM). It maps to ISO/IEC 42001, ISO/IEC 27001, NIST AI 600-1, and BSI AIC4, and ships with the **AI-CAIQ** assessment questionnaire and a pathway to STAR for AI certification.
 
 The short version: this framework already covers AICM's AI-specific substance and goes deeper on runtime behaviour, while AICM contributes structure this framework borrows, principally its shared responsibility model.
 
 ## Where the two frameworks differ in purpose
 
-AICM is an **assurance and compliance** framework. Most of its 243 controls are CCM cloud controls (cryptography, datacenter, endpoint, human resources) inherited unchanged, and its end goal is a certifiable posture: AI-CAIQ, STAR for AI. Only one of its 18 domains, **Model Security (MDS)**, is genuinely AI-specific.
+AICM is an **assurance and compliance** framework. Most of its 247 controls are CCM cloud controls (cryptography, datacenter, endpoint, human resources) inherited unchanged, and its end goal is a certifiable posture: AI-CAIQ, STAR for AI. Only one of its 18 domains, **Model Security (MDS)**, is genuinely AI-specific.
 
 This framework is a **runtime behavioural** framework. It is explicit that it is [not a certification or audit standard](../../about.md). It deliberately scopes out the traditional cloud controls AICM inherits, treating them as the job of your existing infrastructure, and concentrates on what is unique to non-deterministic AI behaviour at runtime: guardrails, the Judge, oversight, circuit breakers, PACE resilience, and the multi-agent failure modes that have no cloud-control equivalent.
 
