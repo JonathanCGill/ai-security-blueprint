@@ -5,7 +5,7 @@ description: "Where AI security controls are measurably reducing harm: evidence 
 # What's Working: Where Controls Are Reducing Harm
 
 <!-- golden-thread-nav -->
-!!! tip "Part of the Golden Thread (14 of 14)"
+!!! tip "Part of the Golden Thread (15 of 15)"
     Previous: [Architecture Overview](../architecture.md) · [See the full sequence](../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
 <!-- golden-thread-nav -->
 

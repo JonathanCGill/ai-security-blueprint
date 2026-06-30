@@ -5,7 +5,7 @@ description: "Why AI security must shift from pre-deployment testing to continuo
 # Why AI Security Is a Runtime Problem
 
 <!-- golden-thread-nav -->
-!!! tip "Part of the Golden Thread (1 of 14)"
+!!! tip "Part of the Golden Thread (1 of 15)"
     Next: [Containment Through Declared Intent](containment-through-intent.md) · [See the full sequence](../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
 <!-- golden-thread-nav -->
 

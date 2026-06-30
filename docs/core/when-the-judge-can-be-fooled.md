@@ -5,7 +5,7 @@ description: "Adversarial failure modes for Model-as-Judge evaluation, including
 # When the Judge Can Be Fooled
 
 <!-- golden-thread-nav -->
-!!! tip "Part of the Golden Thread (9 of 14)"
+!!! tip "Part of the Golden Thread (10 of 15)"
     Previous: [Judge Assurance](judge-assurance.md) · Next: [Humans Remain Accountable](../insights/humans-remain-accountable.md) · [See the full sequence](../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
 <!-- golden-thread-nav -->
 

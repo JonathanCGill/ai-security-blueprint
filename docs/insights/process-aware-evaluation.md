@@ -1,7 +1,7 @@
 # Process-Aware Evaluation: Judge the Trace, Not Just the Output
 
 <!-- golden-thread-nav -->
-!!! tip "Part of the Golden Thread (3 of 14)"
+!!! tip "Part of the Golden Thread (3 of 15)"
     Previous: [Containment Through Declared Intent](containment-through-intent.md) · Next: [The Constraint Curve](the-constraint-curve.md) · [See the full sequence](../reading-paths.md#the-golden-thread-guardrails-judges-and-why-they-work-together)
 <!-- golden-thread-nav -->
 
