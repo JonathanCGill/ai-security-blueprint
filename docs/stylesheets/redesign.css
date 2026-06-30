@@ -389,6 +389,10 @@ body:has(.airs-rd-main) .md-main__inner {
   margin: 0 0 12px;
 }
 .airs-layerrow__body { font-size: 16.5px; line-height: 1.6; color: var(--muted); max-width: 60ch; margin: 0; }
+.airs-layerrow__parts { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; max-width: 60ch; }
+.airs-layerrow__part { font-size: 16px; line-height: 1.6; color: var(--muted); padding-left: 16px; border-left: 2px solid var(--line); }
+.airs-layerrow__part strong { color: var(--ink); font-weight: 600; }
+.airs-layerrow__part .airs-textlink--sm { display: inline; margin-top: 0; }
 
 /* Small detail link inside a layer row / card */
 .airs-textlink--sm { margin-top: 16px; font-size: 14.5px; }
