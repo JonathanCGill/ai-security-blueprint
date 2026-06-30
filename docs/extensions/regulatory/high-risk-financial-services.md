@@ -286,7 +286,7 @@ This is where adversarial intent meets AI deployment risk. The attack surface ex
 
 **3 risks require all three layers at full strength** (Payments, Bias, Fraud). These involve AI taking actions with direct financial or legal consequences - every layer provides independent, essential coverage.
 
-**4 risks are primarily a Guardrails + Judge problem** (Hallucination, Data leakage, Scope violations, Adversarial manipulation). Detection and prevention at the output layer, with Human Oversight for edge cases and pattern review.
+**4 risks are primarily a reviewing-controls problem** (Hallucination, Data leakage, Scope violations, Adversarial manipulation). Prevention and detection at increasing depth: guardrails block known patterns, a [semantic firewall](../../core/controls/semantic-firewall.md) catches scope violations and manipulation attempts as intent-level failures against declared scope in milliseconds, and the Judge adds deeper, context-dependent evaluation, with Human Oversight for edge cases and pattern review. Hallucination is the exception in this group: confirming factual accuracy needs independent verification, not a second model.
 
 **3 risks are primarily a Judge + Human Oversight problem** (Explainability, Insider manipulation, Regulatory compliance). These require continuous evaluation and human accountability rather than real-time blocking.
 

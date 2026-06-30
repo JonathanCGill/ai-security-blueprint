@@ -19,7 +19,7 @@ Six articles carry the main argument. Read these, in order, and you have the cas
 | # | Article | The argument |
 |---|---------|-------------|
 | 1 | [Why AI Security Is a Runtime Problem](why-ai-security-is-a-runtime-problem.md) | AI systems are non-deterministic. Pre-deployment testing cannot prove future safety. Security must be continuous. |
-| 2 | [Why Your AI Guardrails Aren't Enough](why-guardrails-arent-enough.md) | Guardrails catch known-bad patterns. Novel attacks, semantic violations, and emergent behaviour walk straight past them. |
+| 2 | [Why Your AI Guardrails Aren't Enough](why-guardrails-arent-enough.md) | Guardrails catch known-bad patterns. Novel attacks, semantic violations, and emergent behaviour walk straight past them, which is why reviewing controls (a semantic firewall, then the Judge) sit behind them at increasing depth. |
 | 3 | [The Judge Detects. It Doesn't Decide.](judge-detects-not-decides.md) | An asynchronous LLM evaluator detects unknown-bad against declared intent, without blocking, and informs humans rather than replacing them. |
 | 4 | [Infrastructure Beats Instructions](infrastructure-beats-instructions.md) | Telling an agent what not to do fails. Make violations technically impossible through controls enforced outside the agent. |
 | 5 | [Humans Remain Accountable](humans-remain-accountable.md) | AI assists decisions; humans own outcomes. The Judge makes oversight scalable, not optional. |

@@ -47,6 +47,8 @@ Key constraint: **the Judge must use a different model than your task agent**. S
 - Model selection: [Model-as-Judge Selection](../extensions/technical/judge-model-selection.md)
 - Calibration: [Judge Assurance](../core/judge-assurance.md)
 
+*Optional but recommended at volume:* a [Semantic Firewall](../core/controls/semantic-firewall.md) between guardrails and the Judge classifies intent against a declared taxonomy in 15 to 30ms, catching known-bad intent in novel wording before the Judge runs. Same detection goal for that class of failure, at a fraction of the latency and cost: it narrows what reaches the Judge instead of sending every call through the expensive layer.
+
 **3. Circuit breaker / PACE fail postures** - what your system does when control layers fail.
 
 What you're implementing:

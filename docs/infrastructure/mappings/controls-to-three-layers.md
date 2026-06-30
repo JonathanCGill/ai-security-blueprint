@@ -16,7 +16,7 @@ Every infrastructure control supports all three layers of the behavioral securit
 The three layers operate as concentric defences:
 
 - **Guardrails** prevent - they block or constrain before or during model execution.
-- **Judge** detects - it evaluates outputs and behavior against policy, asynchronously.
+- **Judge** detects - the Model-as-Judge evaluates outputs and behavior against policy, asynchronously. It is the deepest of the reviewing controls; a faster [semantic firewall](../../core/controls/semantic-firewall.md) sits ahead of it, classifying intent against a declared taxonomy in milliseconds. Same detection goal, different speeds and depths of checking.
 - **Human Oversight** decides - humans review, approve, investigate, and adjust.
 
 Infrastructure controls make these layers enforceable. Without the infrastructure, the behavioral pattern is aspirational.

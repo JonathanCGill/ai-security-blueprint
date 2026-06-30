@@ -44,6 +44,8 @@ The same guardrail infrastructure, configured differently because the intent is 
 
 Guardrails catch mechanical violations. The Judge catches semantic ones - actions that are technically permitted but do not align with the declared purpose.
 
+This semantic layer is itself a spectrum. A fast [semantic firewall](../core/controls/semantic-firewall.md) classifies intent against the declared taxonomy in milliseconds, catching known-bad intent expressed in novel wording before the Judge runs; the Judge then does the deeper, context-dependent alignment check on what remains. Same goal, different controls at different speeds and depths of checking.
+
 A sales advisor agent with intent "guide customers toward suitable products based on their stated needs" operates within its guardrails. But the Judge evaluates: is the agent actually guiding based on customer needs, or is it pushing the highest-margin product regardless of fit? Is it applying discounts appropriately, or giving away margin to close every sale? Is its persuasion proportionate, or is it manipulating?
 
 These are semantic questions. They require understanding what the agent was *supposed* to accomplish. Without the intent specification, the Judge can assess coherence and policy compliance in the abstract. With intent, it can assess *alignment* - is this agent doing what it was deployed to do, in the way it was meant to do it?
