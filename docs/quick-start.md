@@ -26,6 +26,9 @@ The industry is converging on three layers of control:
 
 **Guardrails prevent. Judge detects. Humans decide.**
 
+!!! note "Each layer is a goal, not a single tool"
+    A layer is the job to be done, and within it different controls reach the same goal at different speeds and depths of checking. Detection is the clearest example: a [Semantic Firewall](core/controls/semantic-firewall.md) classifies intent against a declared taxonomy in 15 to 30ms, the Judge does slower, deeper behavioural evaluation, and factual claims need [independent verification](insights/the-verification-gap.md) that does not lean on another LLM. Pick the control by the speed and depth of checking the risk needs, not by habit.
+
 This guide shows you how to implement this pattern proportionate to your risk level.
 
 ## Step 1: Classify Your System (5 minutes)

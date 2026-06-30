@@ -48,6 +48,8 @@ The [Quick Start](quick-start.md) guide is designed to get you from zero to work
 
 The three-layer pattern - Guardrails, Judge, Human Oversight - is where the industry is converging. Guardrails block known-bad patterns in real time. Judges catch what guardrails miss through asynchronous evaluation. Humans decide the edge cases that machines shouldn't.
 
+The layers are goals, not single tools, and the middle one is a spectrum rather than the Judge alone. A [Semantic Firewall](core/controls/semantic-firewall.md) catches known-bad intent in novel wording in milliseconds, the Judge does slower, deeper behavioural evaluation, and factual claims need independent verification. Same detection goal, different controls at different speeds and depths of checking.
+
 Does every layer work perfectly? No. Guardrails need tuning to reduce false positives. Judges need calibration against your specific use case. Humans need clear escalation paths or they become a bottleneck.
 
 Concretely: a guardrail that blocks prompt injection patterns will catch the obvious attacks on day one. After a week of reviewing logs, you tune it to reduce false positives on legitimate queries that happen to contain code snippets. That iteration cycle is exactly how these controls mature in production.

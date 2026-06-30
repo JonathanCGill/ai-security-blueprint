@@ -102,6 +102,8 @@ Without guardrails, you cannot safely deploy a customer-facing chatbot. Without 
 
 **What the Judge adds:** This is where the second control layer activates. The Judge, a separate model evaluating your system's outputs, reviews a sample of transactions daily. It catches problems that guardrails miss: subtle policy violations, quality drift, emerging patterns that rules-based filters cannot detect. When the Judge flags something, it routes to a human reviewer.
 
+That second layer is a spectrum, not the Judge alone. Ahead of the Judge, a [Semantic Firewall](../../core/controls/semantic-firewall.md) classifies intent against this tier's declared scope in 15 to 30ms, catching known-bad intent in novel wording before the Judge samples. Same detection goal, lower latency and cost: it narrows what the Judge has to review, and the Judge adds the deeper, context-dependent evaluation on what remains.
+
 This is the tier where the principle "Guardrails prevent. Judge detects. Humans decide." begins to operate as designed.
 
 **EU AI Act alignment:** Art. 50 requires transparency: users must be informed they are interacting with an AI system. General-purpose AI model providers have additional obligations around technical documentation and copyright compliance.

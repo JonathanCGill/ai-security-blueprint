@@ -45,7 +45,7 @@ Each control layer generates specific compliance evidence:
 | Regulatory Question | Framework Control | Evidence Produced |
 |---|---|---|
 | "How do you manage AI risk?" | Risk tier classification + risk assessment | Documented six-dimension scoring, quantified residual risk |
-| "How do you detect harmful AI output?" | Three-layer controls | Guardrail logs, Judge evaluations, human review records |
+| "How do you detect harmful AI output?" | Three-layer controls | Guardrail logs, semantic firewall intent-classification results, Judge evaluations, human review records |
 | "Do you have human oversight?" | Human oversight layer + PACE | Documented escalation criteria, review rates, override records |
 | "What happens when AI fails?" | PACE resilience | Tested fail postures, degradation path documentation, circuit breaker evidence |
 | "Can you explain AI decisions?" | Observability + Judge | Decision chain audit trail, Judge evaluation reasoning, input/output pairs |

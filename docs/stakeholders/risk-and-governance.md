@@ -44,6 +44,8 @@ Three independent control layers, each catching what the previous one missed:
 | **AI Evaluation** | Assess output quality and safety | Near-real-time | Hallucination, semantic policy breaches, tone violations |
 | **Human Oversight** | Review flagged and sampled outputs | Hours to days | Edge cases, novel risks, calibration drift |
 
+The middle layer is a spectrum, not a single tool. A [semantic firewall](../core/controls/semantic-firewall.md) classifies intent against a declared taxonomy in milliseconds, a Model-as-Judge does slower, deeper behavioural evaluation, and factual claims need independent verification that does not lean on another model. Same detection goal, different controls at different speeds and depths of checking, so you can tune cost and latency to the risk tier.
+
 Circuit breakers sit across all three: if any layer detects a critical failure or becomes unavailable, the system transitions to a predetermined safe state.
 
 ## What This Adds That Existing Standards Don't

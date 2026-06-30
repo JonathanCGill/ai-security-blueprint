@@ -99,6 +99,8 @@ Effective AI security combines three layers:
 
 No single layer is sufficient. Together, they provide defence in depth.
 
+Each layer is a goal, not a single tool. Detection in particular runs as a spectrum: a [semantic firewall](../core/controls/semantic-firewall.md) catches known-bad intent in novel wording in milliseconds, the Judge does slower, deeper behavioural evaluation, and confirming facts needs independent verification rather than a second model. Same goal, different controls at different speeds and depths of checking.
+
 ## Implementation Principles
 
 **Start with logging.** The Judge needs data. If you're not capturing full AI interactions - inputs, outputs, context - start there. You can't evaluate what you didn't record.

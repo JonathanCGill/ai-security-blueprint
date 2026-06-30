@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Lethal Trifecta** heuristic and **OWASP Agentic Skills Top 10 (AST01-AST10)** reference, added to `insights/the-agent-supply-chain-crisis.md`, `maso/threat-intelligence/emerging-threats.md` (ET-13), and `maso/controls/supply-chain.md` (Common Pitfalls). Tracks a class of risk OWASP scoped separately from ASI04 after the ClawHub/OpenClaw incident.
 - **Least Agency** as a named principle distinct from least privilege, added to `core/iam-governance.md` - autonomy is scoped per task independently of permission scope.
 
+### Changed
+- **Consistent reviewing framing across the site.** Following the `reading-paths.md` rebalance, swept pages that presented the middle of the stack as the Model-as-Judge alone and reframed the detection tier as a spectrum of controls reaching the same goal at different speeds and depths (semantic firewall for known-bad intent in milliseconds, Judge for deeper behavioural evaluation, independent verification for facts), keeping the three-layer model intact. Touched `quick-start.md`, `faq.md`, `core/controls.md`, `infrastructure/mappings/controls-to-three-layers.md`, `infrastructure/mappings/csf-2.0.md`, `stakeholders/risk-and-governance.md`, `stakeholders/compliance-and-legal.md`, `stakeholders/ai-engineers.md`, `extensions/regulatory/eu-ai-act-risk-tiering.md`, `extensions/regulatory/high-risk-financial-services.md`, and the Golden Thread articles `insights/why-guardrails-arent-enough.md`, `insights/containment-through-intent.md`, and `insights/reference.md`.
+
 ### Planned
 - Cost model with production data
 - Platform-specific implementation guides (detailed)
