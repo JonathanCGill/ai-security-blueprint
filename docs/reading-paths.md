@@ -45,6 +45,24 @@ With behaviour understood and proportionality in mind, now select and configure 
 | 10 | [Humans Remain Accountable](insights/humans-remain-accountable.md) | Humans own outcomes. The Judge makes oversight scalable, not optional. Regulation requires it. | We have layers. How do we enforce them outside the agent's control? |
 | 11 | [Infrastructure Beats Instructions](insights/infrastructure-beats-instructions.md) | Telling agents what not to do fails. Make violations technically impossible through network controls, access restrictions, and action allowlists enforced outside the agent. | Controls are in place. How do they stay effective over time? |
 
+!!! abstract "Between the guardrails and the Judge: the Semantic Firewall"
+    Articles 5 and 6 cover guardrails, which catch known-bad patterns, and articles 7 to 9 cover the Judge, which catches unknown-bad behaviour. A layer sits between them, and it does as much of the reviewing work as the Judge does. The [Semantic Firewall](core/controls/semantic-firewall.md) catches prohibited *intent* expressed in novel wording: the same request a guardrail has never seen, scored by meaning rather than surface text. It runs faster and cheaper than a Judge call, roughly 15 to 30ms against a declared intent taxonomy, so it narrows what reaches the Judge rather than sending every request through the expensive layer. It does not replace either neighbour: guardrails still catch known patterns, and the Judge still handles the genuinely novel and context-dependent. Reach for it before you reach for the Judge.
+
+!!! abstract "Match the review control to latency and accuracy"
+    The Judge is one review process among several, and it is the slowest and least independent of them, because a second LLM shares the first one's blind spots. Every control trades latency against accuracy and against how much it actually reviews. Pick the one that fits the claim and the [risk tier](core/risk-tiers.md), not the one you reach for by habit.
+
+    | Review process | What it reviews | Added latency | Accuracy | Best for |
+    | --- | --- | --- | --- | --- |
+    | Guardrails | Known-bad patterns | 10-50ms | ~85% | Cheap deterministic first pass |
+    | Semantic Firewall | Known-bad intent, novel wording | 15-30ms | High on a declared taxonomy | Narrowing what reaches the Judge |
+    | Knowledge-graph or API lookup | Factual claims | 50-100ms | ~92% | Facts in a covered domain |
+    | Token-level uncertainty | Model confidence in RAG | 80-160ms | ~96% signal | RAG with source documents |
+    | Formal verification | Documented-rule compliance | 200-500ms | ~99% | Regulated, well-documented policy |
+    | Model-as-Judge | Unknown-bad behaviour | 500ms-5s | ~80% | Behavioural alignment, not facts |
+    | Human review | Judgement calls and edge cases | Minutes+ | Highest, does not scale | Critical-tier sampling and escalation |
+
+    Cheaper checks sit at the top, more independent fact checks in the middle, the Judge near the bottom because it shares the generator's blind spots, and humans as the backstop. No single control covers everything, so high tiers combine independent ones. [The Verification Gap](insights/the-verification-gap.md) has the full matrix and how to combine them; the [reviewing reading path](#i-need-to-review-and-verify-what-the-ai-produced) walks the sequence.
+
 ### Act III: Monitor and improve
 
 Controls degrade. Attackers adapt. Models drift. The system only stays effective if every layer feeds information back into the others.
@@ -61,6 +79,20 @@ Controls degrade. Attackers adapt. Models drift. The system only stays effective
 ---
 
 ## By goal
+
+### "I need to review and verify what the AI produced"
+
+Reviewing AI output is not a single tool, and reaching for an LLM Judge by default is the most common mistake. The Judge is the right tool for some checks and the wrong one for others. This path starts with the verification spectrum, so you can match the method to the kind of claim you are checking, then covers what the Judge is for, how to validate it, where it breaks, and why a human stays in the loop.
+
+1. [The Verification Gap](insights/the-verification-gap.md): the spectrum of verification methods, from fully dependent (Model-as-Judge) to fully independent (formal verification, knowledge-graph lookup), and how to match each to your claims.
+2. [The Judge Detects. It Doesn't Decide.](insights/judge-detects-not-decides.md): what the Judge is actually good at, namely detecting unknown-bad behaviour against declared intent, without blocking.
+3. [Process-Aware Evaluation](insights/process-aware-evaluation.md): review the full trace, not just the final output. Correct answers from compromised processes are still failures.
+4. [Judge Assurance](core/judge-assurance.md): validate the Judge against human ground truth before you trust it, and keep calibrating.
+5. [When the Judge Can Be Fooled](core/when-the-judge-can-be-fooled.md): the Judge is an LLM, so it inherits LLM weaknesses. Know them before you rely on it.
+6. [Humans Remain Accountable](insights/humans-remain-accountable.md): human review is part of the toolkit, not a fallback. The Judge makes oversight scalable, not optional.
+
+!!! abstract "Pick the tool for the claim"
+    Use [risk tiers](core/risk-tiers.md) to decide how much independent verification a deployment needs, and [judge model selection](extensions/technical/judge-model-selection.md) when an LLM Judge genuinely is the right tool. For the wider catalogue of techniques, see the [current solutions reference](extensions/technical/current-solutions.md).
 
 ### "I need to understand the threat landscape"
 
