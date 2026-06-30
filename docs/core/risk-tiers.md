@@ -154,6 +154,8 @@ If any dimension suggests higher tier, use it.
 | Customer chat, sees accounts | Sensitive data | HIGH |
 | Customer chat, takes actions | Actions + external | CRITICAL |
 
+These six dimensions pair impact with autonomy and reversibility, the same logic CSA's [Capabilities-Based Risk Assessment (CBRA)](../extensions/regulatory/csa-aicm-alignment.md) reaches independently by scoring **Criticality x Autonomy x Permission x Impact**. CBRA's point, that autonomy over reversible actions is a far lower risk than the same autonomy over financial transactions or production code, is why this scoring weights reversibility and decision authority rather than autonomy alone.
+
 ### Step 3: Document
 
 - Tier assigned
@@ -183,6 +185,7 @@ The [MASO Framework](../maso/README.md) also uses Tier 1/2/3 for multi-agent **a
 | Cost implications of each tier | [Cost & Latency](../extensions/technical/cost-and-latency.md) - security overhead is 15–40% at Tier 2, 40–100% at Tier 3 |
 | Quantitative risk scoring | [Risk Assessment](risk-assessment.md) - six-dimension scoring for board reporting |
 | Multi-agent tier progression | [MASO Implementation Tiers](../maso/README.md) - Supervised → Managed → Autonomous |
+| Who owns each control when you consume AI | [Shared Responsibility for AI Systems](shared-responsibility.md) - five-actor build-vs-consume model |
 
 ## Tier Changes
 

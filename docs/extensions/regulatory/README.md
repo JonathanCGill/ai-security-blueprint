@@ -17,6 +17,7 @@ Cross-jurisdiction standards that apply wherever the framework is deployed.
 | [ISO 27001 Alignment](iso-27001-alignment.md) | ISO 27001 information security alignment. |
 | [NIST IR 8596 Alignment](nist-ir-8596-alignment.md) | Cyber AI Profile alignment review and gap analysis. |
 | [ETSI SAI Alignment](etsi-sai-alignment.md) | ETSI Securing AI standards alignment. |
+| [CSA AICM Alignment](csa-aicm-alignment.md) | AI Controls Matrix domain crosswalk, shared responsibility model, and CBRA. |
 
 ## EU
 

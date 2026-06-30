@@ -145,6 +145,7 @@ Three constraints strategies routinely underestimate: **[Data Reality](docs/stra
 | [OWASP Agentic Top 10 (2026)](https://genai.owasp.org/) | Full mapping in MASO |
 | [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework) | Govern, Map, Measure, Manage |
 | [ISO 42001](https://www.iso.org/standard/81230.html) | AI management system alignment |
+| [CSA AI Controls Matrix (AICM)](https://cloudsecurityalliance.org/artifacts/ai-controls-matrix-v1-1) | Domain crosswalk; five-actor shared responsibility model adopted for build-vs-consume |
 | [NIST SP 800-218A](https://csrc.nist.gov/pubs/sp/800/218/a/final) | Pre-deployment complement |
 | [MITRE ATLAS](https://atlas.mitre.org/) | Agent-focused threat intelligence |
 | [EU AI Act](https://artificialintelligenceact.eu/) | Art. 9, 14, 15, risk management, oversight, robustness |
