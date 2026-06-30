@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Reviewing reading path** on `reading-paths.md`. New "I need to review and verify what the AI produced" goal path leads with [The Verification Gap](insights/the-verification-gap.md) so reviewing reads as matching the right verification tool to the claim, not defaulting to an LLM Judge. Added a "Reviewing is broader than the Judge" callout to the Golden Thread's Judge-heavy Act II.
 - **Semantic Firewall** standalone page (`core/controls/semantic-firewall.md`), documenting intent-level boundary enforcement between Guardrails and Model-as-Judge. Linked from the homepage's Reviewing Controls bullet, the three-layer controls page, LOG-06 (injection detection), and NET-03 (Judge isolation) on AWS Bedrock and Databricks.
 - **Lethal Trifecta** heuristic and **OWASP Agentic Skills Top 10 (AST01-AST10)** reference, added to `insights/the-agent-supply-chain-crisis.md`, `maso/threat-intelligence/emerging-threats.md` (ET-13), and `maso/controls/supply-chain.md` (Common Pitfalls). Tracks a class of risk OWASP scoped separately from ASI04 after the ClawHub/OpenClaw incident.
 - **Least Agency** as a named principle distinct from least privilege, added to `core/iam-governance.md` - autonomy is scoped per task independently of permission scope.

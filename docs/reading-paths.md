@@ -45,6 +45,9 @@ With behaviour understood and proportionality in mind, now select and configure 
 | 10 | [Humans Remain Accountable](insights/humans-remain-accountable.md) | Humans own outcomes. The Judge makes oversight scalable, not optional. Regulation requires it. | We have layers. How do we enforce them outside the agent's control? |
 | 11 | [Infrastructure Beats Instructions](insights/infrastructure-beats-instructions.md) | Telling agents what not to do fails. Make violations technically impossible through network controls, access restrictions, and action allowlists enforced outside the agent. | Controls are in place. How do they stay effective over time? |
 
+!!! tip "Reviewing is broader than the Judge"
+    The LLM Judge is one reviewing tool, not the whole job. It is well suited to detecting unknown-bad behaviour against declared intent, and it is the wrong tool for confirming whether an output is factually true, because a second LLM shares the first one's blind spots. Good reviewing matches the method to the claim: formal verification for documented rules, retrieval or knowledge-graph lookups for facts, human review for judgement calls, the Judge for behavioural alignment. See [The Verification Gap](insights/the-verification-gap.md) for the full spectrum and how to choose, or the dedicated reading path [below](#i-need-to-review-and-verify-what-the-ai-produced).
+
 ### Act III: Monitor and improve
 
 Controls degrade. Attackers adapt. Models drift. The system only stays effective if every layer feeds information back into the others.
@@ -61,6 +64,20 @@ Controls degrade. Attackers adapt. Models drift. The system only stays effective
 ---
 
 ## By goal
+
+### "I need to review and verify what the AI produced"
+
+Reviewing AI output is not a single tool, and reaching for an LLM Judge by default is the most common mistake. The Judge is the right tool for some checks and the wrong one for others. This path starts with the verification spectrum, so you can match the method to the kind of claim you are checking, then covers what the Judge is for, how to validate it, where it breaks, and why a human stays in the loop.
+
+1. [The Verification Gap](insights/the-verification-gap.md): the spectrum of verification methods, from fully dependent (Model-as-Judge) to fully independent (formal verification, knowledge-graph lookup), and how to match each to your claims.
+2. [The Judge Detects. It Doesn't Decide.](insights/judge-detects-not-decides.md): what the Judge is actually good at, namely detecting unknown-bad behaviour against declared intent, without blocking.
+3. [Process-Aware Evaluation](insights/process-aware-evaluation.md): review the full trace, not just the final output. Correct answers from compromised processes are still failures.
+4. [Judge Assurance](core/judge-assurance.md): validate the Judge against human ground truth before you trust it, and keep calibrating.
+5. [When the Judge Can Be Fooled](core/when-the-judge-can-be-fooled.md): the Judge is an LLM, so it inherits LLM weaknesses. Know them before you rely on it.
+6. [Humans Remain Accountable](insights/humans-remain-accountable.md): human review is part of the toolkit, not a fallback. The Judge makes oversight scalable, not optional.
+
+!!! abstract "Pick the tool for the claim"
+    Use [risk tiers](core/risk-tiers.md) to decide how much independent verification a deployment needs, and [judge model selection](extensions/technical/judge-model-selection.md) when an LLM Judge genuinely is the right tool. For the wider catalogue of techniques, see the [current solutions reference](extensions/technical/current-solutions.md).
 
 ### "I need to understand the threat landscape"
 
