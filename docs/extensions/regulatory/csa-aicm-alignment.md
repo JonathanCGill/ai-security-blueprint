@@ -1,5 +1,5 @@
 ---
-description: "Alignment between this framework and the CSA AI Controls Matrix (AICM) v1.1: how the AICM's 18 domains map to existing coverage, what the shared responsibility model and CBRA add, and where the two frameworks differ in purpose."
+description: "Alignment between this framework and the CSA AI Controls Matrix (AICM) v1.1: how the AICM's 18 domains map to existing coverage, how AICM relates to MASO multi-agent controls, and what the shared responsibility model and CBRA add."
 ---
 
 # CSA AI Controls Matrix (AICM) Alignment
@@ -32,6 +32,29 @@ How AICM's 18 domains land against existing coverage. AICM's single AI-specific 
 | Business Continuity & Operational Resilience (BCR) | Covered and distinctive: [PACE Resilience](../../pace-resilience.md), circuit breaker |
 | Application & Interface Security (AIS) | Covered: [Three-Layer Model](../../core/controls.md), [Semantic Firewall](../../core/controls/semantic-firewall.md) |
 | Audit & Assurance (AAC), Change Control (CCC), Cryptography (CEK), Datacenter (DCS), Human Resources (HRS), Interoperability (IPY), Infrastructure & Virtualization (IVS), Universal Endpoint Management (UEM) | Traditional cloud controls deliberately deferred to existing infrastructure, per the framework's [scope statement](../../about.md) |
+
+## AICM and MASO: different altitudes
+
+The domain mapping above flattens AICM against the whole framework. The relationship with [MASO](../../maso/README.md), the multi-agent control set, is worth drawing out on its own, because it is where the two frameworks are most complementary and least overlapping.
+
+AICM treats an AI system as a **single model or service in a supply chain**. MASO treats it as a **fleet of agents handing work to each other**. AICM is wide and assurance-oriented (18 domains, mostly inherited cloud controls); MASO is narrow and runtime-oriented (deep control depth concentrated on one slice AICM barely addresses). They meet at a few domains and diverge sharply on either side.
+
+**Where they overlap.** A handful of AICM domains map onto MASO domains, with MASO far more granular:
+
+| AICM domain | MASO equivalent |
+|-------------|-----------------|
+| Model Security (MDS) | [Model Cognition Assurance](../../maso/controls/model-cognition-assurance.md) |
+| Identity & Access (IAM) | [Identity & Access](../../maso/controls/identity-and-access.md) + [Privileged Agent Governance](../../maso/controls/privileged-agent-governance.md) |
+| Supply Chain (STA) | [Supply Chain](../../maso/controls/supply-chain.md) |
+| Logging & Monitoring (LOG) | [Observability](../../maso/controls/observability.md) |
+| Data Security & Privacy (DSP) | [Data Protection](../../maso/controls/data-protection.md) |
+| Application & Interface Security (AIS) | [Execution Control](../../maso/controls/execution-control.md) + [Prompt, Goal & Epistemic Integrity](../../maso/controls/prompt-goal-and-epistemic-integrity.md) |
+
+**Where MASO goes and AICM cannot.** Because AICM has no model for agents collaborating, several MASO domains have no AICM counterpart at all: [Extraction Integrity](../../maso/controls/extraction-integrity.md), [Objective Intent](../../maso/controls/objective-intent.md), [Agentic Task Mandate](../../maso/controls/agentic-task-mandate.md), [Environment Containment](../../maso/environment-containment.md), and the emergent epistemic risks in the [Risk Register](../../maso/controls/risk-register.md) (injection propagation, transitive privilege, groupthink, synthetic corroboration). Secure a multi-agent system to AICM alone and every one of these is a blind spot.
+
+**Where AICM goes and MASO cannot.** MASO assumes you build and operate every agent. The moment a multi-agent system includes a vendor model or a third-party orchestration layer, you need AICM's [shared responsibility model](../../core/shared-responsibility.md) to say who owns which MASO control. In AICM's terms, **MASO is the control set for the Orchestrator and Application Provider roles, for the agents where those roles are you.**
+
+**How they combine in practice.** Use CBRA to size the system (its autonomy axis maps onto MASO's Supervised to Managed to Autonomous tiers); use AICM's five actors to decide which agents you own versus consume; use MASO to actually implement the runtime controls for the parts you own; then map that MASO implementation back up to AICM domains when an auditor asks. AICM is the org chart and the audit checklist for the whole supply chain. MASO is the engineering manual for the multi-agent part you are responsible for.
 
 ## What this framework borrows from AICM
 
