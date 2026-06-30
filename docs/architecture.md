@@ -46,9 +46,12 @@ nav_active: framework
         </div>
         <div>
           <h2 class="airs-layerrow__title">Reviewing controls</h2>
-          <p class="airs-layerrow__body">A second opinion before anything reaches the user: scanners, a semantic firewall, and a model-as-judge weighing the response against policy, context, and intent. This is what catches the subtle failures a fixed rule waves straight through. The judge is itself a model, so it is probabilistic and can be fooled: it informs the decision rather than making the final call, and it never stands in for the deterministic guardrails beneath it.</p>
-          <a class="airs-textlink airs-textlink--sm" href="/core/controls/semantic-firewall/">Inside the semantic firewall &rarr;</a>
-          <a class="airs-textlink airs-textlink--sm" href="/core/when-the-judge-can-be-fooled/">When the judge can be fooled &rarr;</a>
+          <p class="airs-layerrow__body">A second opinion before anything reaches the user. Three controls of increasing depth, each catching what the one before it waves through:</p>
+          <ul class="airs-layerrow__parts">
+            <li class="airs-layerrow__part"><strong>Deterministic scanners.</strong> Pattern and signature checks on the response: secrets, PII, banned strings. Cheap, exact, and run on everything.</li>
+            <li class="airs-layerrow__part"><strong>Semantic firewall.</strong> Catches known-bad <em>intent</em> in wording neither the scanners nor the judge has seen before: a prohibited request reworded, translated, or indirected to mean the same thing. <a class="airs-textlink airs-textlink--sm" href="/core/controls/semantic-firewall/">Inside the semantic firewall &rarr;</a></li>
+            <li class="airs-layerrow__part"><strong>Contextual review (model-as-judge).</strong> A model weighing the response against policy, context, and declared intent, to surface the unknown-bad a fixed rule can't name. It is itself a model, so it is probabilistic and can be fooled: it informs the decision rather than making the final call, and never stands in for the deterministic guardrails beneath it. <a class="airs-textlink airs-textlink--sm" href="/core/when-the-judge-can-be-fooled/">When the judge can be fooled &rarr;</a></li>
+          </ul>
         </div>
       </div>
       <div class="airs-layerrow">
