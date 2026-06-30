@@ -48,8 +48,20 @@ With behaviour understood and proportionality in mind, now select and configure 
 !!! abstract "Between the guardrails and the Judge: the Semantic Firewall"
     Articles 5 and 6 cover guardrails, which catch known-bad patterns, and articles 7 to 9 cover the Judge, which catches unknown-bad behaviour. A layer sits between them, and it does as much of the reviewing work as the Judge does. The [Semantic Firewall](core/controls/semantic-firewall.md) catches prohibited *intent* expressed in novel wording: the same request a guardrail has never seen, scored by meaning rather than surface text. It runs faster and cheaper than a Judge call, roughly 15 to 30ms against a declared intent taxonomy, so it narrows what reaches the Judge rather than sending every request through the expensive layer. It does not replace either neighbour: guardrails still catch known patterns, and the Judge still handles the genuinely novel and context-dependent. Reach for it before you reach for the Judge.
 
-!!! tip "Reviewing is broader than the Judge"
-    The LLM Judge is one reviewing tool, not the whole job. It is well suited to detecting unknown-bad behaviour against declared intent, and it is the wrong tool for confirming whether an output is factually true, because a second LLM shares the first one's blind spots. Good reviewing matches the method to the claim: formal verification for documented rules, retrieval or knowledge-graph lookups for facts, human review for judgement calls, the Judge for behavioural alignment. See [The Verification Gap](insights/the-verification-gap.md) for the full spectrum and how to choose, or the dedicated reading path [below](#i-need-to-review-and-verify-what-the-ai-produced).
+!!! abstract "Match the review control to latency and accuracy"
+    The Judge is one review process among several, and it is the slowest and least independent of them, because a second LLM shares the first one's blind spots. Every control trades latency against accuracy and against how much it actually reviews. Pick the one that fits the claim and the [risk tier](core/risk-tiers.md), not the one you reach for by habit.
+
+    | Review process | What it reviews | Added latency | Accuracy | Best for |
+    | --- | --- | --- | --- | --- |
+    | Guardrails | Known-bad patterns | 10-50ms | ~85% | Cheap deterministic first pass |
+    | Semantic Firewall | Known-bad intent, novel wording | 15-30ms | High on a declared taxonomy | Narrowing what reaches the Judge |
+    | Knowledge-graph or API lookup | Factual claims | 50-100ms | ~92% | Facts in a covered domain |
+    | Token-level uncertainty | Model confidence in RAG | 80-160ms | ~96% signal | RAG with source documents |
+    | Formal verification | Documented-rule compliance | 200-500ms | ~99% | Regulated, well-documented policy |
+    | Model-as-Judge | Unknown-bad behaviour | 500ms-5s | ~80% | Behavioural alignment, not facts |
+    | Human review | Judgement calls and edge cases | Minutes+ | Highest, does not scale | Critical-tier sampling and escalation |
+
+    Cheaper checks sit at the top, more independent fact checks in the middle, the Judge near the bottom because it shares the generator's blind spots, and humans as the backstop. No single control covers everything, so high tiers combine independent ones. [The Verification Gap](insights/the-verification-gap.md) has the full matrix and how to combine them; the [reviewing reading path](#i-need-to-review-and-verify-what-the-ai-produced) walks the sequence.
 
 ### Act III: Monitor and improve
 
