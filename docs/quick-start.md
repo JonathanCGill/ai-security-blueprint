@@ -24,7 +24,7 @@ The industry is converging on three layers of control:
 | **Judge** | Detect unknown-bad | Async | DeepEval, Galileo, custom LLM evaluation |
 | **Humans** | Decide edge cases | As needed | Review queues, escalation workflows |
 
-**Guardrails prevent. Judge detects. Humans decide.**
+**Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain.**
 
 !!! note "Each layer is a goal, not a single tool"
     A layer is the job to be done, and within it different controls reach the same goal at different speeds and depths of checking. Detection is the clearest example: a [Semantic Firewall](core/controls/semantic-firewall.md) classifies intent against a declared taxonomy in 15 to 30ms, the Judge does slower, deeper behavioural evaluation, and factual claims need [independent verification](insights/the-verification-gap.md) that does not lean on another LLM. Pick the control by the speed and depth of checking the risk needs, not by habit.

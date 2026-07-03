@@ -21,7 +21,7 @@ nav_active: framework
   <div class="airs-wrap--narrow">
     <figure class="airs-figure">
       <img class="arch-diagram airs-figure__img" src="/images/single-agent-architecture.svg" alt="Single-agent security architecture: guardrails, reviewing controls, and human oversight wrapped around one AI model, with a circuit breaker behind them">
-      <figcaption class="airs-figure__cap">One model, four layers. Each layer catches what the one before it misses: compound defence by design, not by coincidence.</figcaption>
+      <figcaption class="airs-figure__cap">One model, three control layers, with a circuit breaker behind them. Each layer catches what the one before it misses: compound defence by design, not by coincidence.</figcaption>
     </figure>
   </div>
 </section>
@@ -29,7 +29,7 @@ nav_active: framework
 <section class="airs-section airs-section--paper">
   <div class="airs-wrap">
     <p class="airs-eyebrow">The pattern</p>
-    <h2 class="airs-h2">Four layers, one principle: verify in production.</h2>
+    <h2 class="airs-h2">Three control layers, one principle: verify in production.</h2>
     <p class="airs-intro">You cannot fully test a non-deterministic system before deployment, so the controls form a closed loop that watches behaviour as it happens.</p>
     <div class="airs-hairgrid airs-hairgrid--4">
       <div class="airs-layer">
@@ -48,9 +48,9 @@ nav_active: framework
         <p class="airs-layer__body">The accountability backstop. Spot checks for low risk, approval before commit for high risk.</p>
       </div>
       <div class="airs-layer">
-        <p class="airs-layer__num">04</p>
+        <p class="airs-layer__num">Failsafe</p>
         <p class="airs-layer__title">Circuit breaker</p>
-        <p class="airs-layer__body">Stops AI traffic and switches to a non-AI fallback when any layer fails. A full stop, not a degrade.</p>
+        <p class="airs-layer__body">Containment, not a behavioural layer. Stops AI traffic and switches to a non-AI fallback when the three layers are bypassed or overwhelmed. A full stop, not a degrade, and maps to PACE Emergency.</p>
       </div>
     </div>
     <a class="airs-textlink" href="/insights/why-containment-beats-evaluation/">Why containment beats evaluation &rarr;</a>
@@ -85,7 +85,7 @@ nav_active: framework
 <section class="airs-section airs-section--paper">
   <div class="airs-wrap--article airs-article">
     <h2 id="defence-in-depth-beyond-the-ai-layer">Defence in depth beyond the AI layer</h2>
-    <p class="airs-muted">The four-layer model addresses controls specific to non-deterministic AI behaviour. It does not replace the security you already have. It sits inside it.</p>
+    <p class="airs-muted">The three-layer control model, with its circuit breaker, addresses controls specific to non-deterministic AI behaviour. It does not replace the security you already have. It sits inside it.</p>
     <p class="airs-muted">Your DLP still applies to data flowing in and out. API gateways still validate requests whether the caller is human or AI. Database access controls and parameterised queries still prevent injection even if an agent builds a malicious query. IAM still governs who can invoke AI at all, and your SIEM still correlates AI events with everything else. When one of these catches something, it is your safety net.</p>
     <p class="airs-muted">For multi-agent systems, <a href="/maso/environment-containment/">MASO Environment Containment</a> formalises this: harden every system the agent touches so misbehaviour is structurally harmless, whatever the agent intends.</p>
   </div>

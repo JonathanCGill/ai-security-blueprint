@@ -90,10 +90,10 @@
   <!-- Arrow -->
   <line class="arrow" x1="360" y1="470" x2="360" y2="496"/>
 
-  <!-- Layer 4: Circuit Breaker -->
+  <!-- Containment: Circuit Breaker (not a numbered behavioural layer) -->
   <rect class="box-breaker" x="80" y="499" width="400" height="36"/>
-  <text class="label-breaker" x="280" y="522">LAYER 4: CIRCUIT BREAKER</text>
-  <text class="tag-def" x="500" y="522">&lt;-- ACTIVE DEFENSE</text>
+  <text class="label-breaker" x="280" y="522">CIRCUIT BREAKER: CONTAINMENT</text>
+  <text class="tag-def" x="500" y="522">&lt;-- PACE EMERGENCY</text>
 
   <!-- Detail -->
   <text class="detail" x="280" y="550">Kill Switch / Safe Fallback</text>

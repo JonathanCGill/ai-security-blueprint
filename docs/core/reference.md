@@ -62,7 +62,7 @@ The industry is converging on three layers:
 | **Judge** | Detect unknown-bad via LLM evaluation | Async |
 | **Human Oversight** | Decide, act, remain accountable | As needed |
 
-**Guardrails prevent. Judge detects. Humans decide.**
+**Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain.**
 
 ### Where This Pattern Exists
 
