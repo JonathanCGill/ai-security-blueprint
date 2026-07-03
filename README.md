@@ -22,18 +22,18 @@ Most enterprise "AI security" today is guardrails: input/output filters that blo
 
 ## The Architecture
 
-The industry is converging on the same answer independently. NVIDIA NeMo, AWS Bedrock, Azure AI, LangChain, Guardrails AI, all implement variants of the same pattern:
+The industry is converging on the same answer independently. NVIDIA NeMo, AWS Bedrock, Azure AI, LangChain, Guardrails AI, all implement variants of the same pattern: three continuous control layers, with a circuit breaker behind them for containment.
 
-| Layer | What It Does | Speed |
+| Control | What It Does | Speed |
 | --- | --- | --- |
-| **Guardrails** | Block known-bad inputs and outputs, PII, injection patterns, policy violations | Real-time (~10ms) |
-| **Model-as-Judge** | Detect unknown-bad, an independent model evaluating whether responses are appropriate | Async (~500ms–5s) |
-| **Human Oversight** | Decide genuinely ambiguous cases that automated layers can't resolve | As needed |
-| **Circuit Breaker** | Stop all AI traffic and activate a safe fallback when controls themselves fail | Immediate |
+| **Guardrails** *(layer 1)* | Block known-bad inputs and outputs, PII, injection patterns, policy violations | Real-time (~10ms) |
+| **Model-as-Judge** *(layer 2)* | Detect unknown-bad, an independent model evaluating whether responses are appropriate | Async (~500ms–5s) |
+| **Human Oversight** *(layer 3)* | Decide genuinely ambiguous cases that automated layers can't resolve | As needed |
+| **Circuit Breaker** *(containment, not a behavioural layer)* | Stop all AI traffic and activate a safe fallback when the three layers are bypassed or overwhelmed; maps to PACE Emergency | Immediate |
 
 **Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain.**
 
-Each layer catches what the others miss. Remove any layer and you have a gap. The Judge is a probabilistic control, an LLM evaluating another LLM, and recent research (HiddenLayer, arXiv 2504.11168, intent laundering) shows commercial guardrail-and-judge stacks can be bypassed at near-100% rates by an adversary who can probe them. Treat the Judge as a layer that raises the attacker's cost, not as a peer of deterministic policy enforcement; pair it with capability tokens, infrastructure-level scoping, and network-layer DLP wherever the action is consequential. The framework pairs every control with a **[PACE resilience architecture](docs/PACE-RESILIENCE.md)**, Primary, Alternate, Contingency, Emergency, so when a layer degrades, the system transitions to a predetermined safe state rather than failing silently.
+Each control layer catches what the others miss. Remove any of the three and you have a gap; the circuit breaker contains what still gets through. The Judge is a probabilistic control, an LLM evaluating another LLM, and recent research (HiddenLayer, arXiv 2504.11168, intent laundering) shows commercial guardrail-and-judge stacks can be bypassed at near-100% rates by an adversary who can probe them. Treat the Judge as a layer that raises the attacker's cost, not as a peer of deterministic policy enforcement; pair it with capability tokens, infrastructure-level scoping, and network-layer DLP wherever the action is consequential. The framework pairs every control with a **[PACE resilience architecture](docs/PACE-RESILIENCE.md)**, Primary, Alternate, Contingency, Emergency, so when a layer degrades, the system transitions to a predetermined safe state rather than failing silently.
 
 ![Single-Agent Security Architecture](docs/images/single-agent-architecture.svg)
 

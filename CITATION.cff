@@ -22,6 +22,7 @@ keywords:
 abstract: >-
   A practical, open-source framework for implementing runtime behavioral
   security controls across generative and agentic AI systems. Defines a
-  three-layer architecture — guardrails, Model-as-Judge evaluation, and
-  human oversight — with risk-tiered implementation guidance, regulatory
-  mapping, and worked examples.
+  three-layer control architecture, guardrails, Model-as-Judge evaluation,
+  and human oversight, with a circuit breaker for containment behind them,
+  plus risk-tiered implementation guidance, regulatory mapping, and worked
+  examples.
