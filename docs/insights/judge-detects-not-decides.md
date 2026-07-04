@@ -11,6 +11,8 @@ When teams discover that guardrails miss things, the instinct is to add another 
 
 This is a mistake. A well-intentioned, logical mistake - but a mistake.
 
+One clarification before the argument. The mistake is asking *the Judge* to block, and the Judge is only one of the reviewing controls that sit behind your guardrails. Reviewing is a spectrum, not a single slow step. A [semantic firewall](../core/controls/semantic-firewall.md) reviews the *intent* of a request, a prohibited ask reworded, translated, or indirected to mean the same thing, and because it checks meaning rather than reasoning over full behaviour it is fast enough to run inline and gate a call before it executes, the same way a guardrail does one level up in abstraction. The Judge is the deep end of that spectrum: it evaluates unknown-bad content and behaviour against declared intent, with chain-of-thought reasoning over the whole context, and that depth takes real time. This page is about that deep evaluator specifically. When it says the Judge should detect rather than decide, it is not saying no reviewing control may ever gate. It is saying the slow, thorough one should not.
+
 ## The Appeal of Active Blocking
 
 The reasoning makes sense on the surface:
@@ -32,6 +34,8 @@ LLM evaluation takes time. Even fast models need hundreds of milliseconds. Compl
 Add that to every customer interaction and you've destroyed the experience. Chatbots feel sluggish. APIs miss SLAs. Users leave.
 
 Guardrails work because they're fast - pattern matching in single-digit milliseconds. The Judge is valuable precisely because it's thorough. Thoroughness and speed are opposing forces.
+
+The [semantic firewall](../core/controls/semantic-firewall.md) sits between the two: fast enough to gate inline, but checking intent rather than surface pattern. It is a reviewing control that *can* block in real time, because catching a known-bad intent cheaply is a shallow check, not a deep one. The Judge occupies the far end, and that depth is exactly why real-time blocking is the wrong job for it.
 
 ### 2. False Positives Create Harm
 
