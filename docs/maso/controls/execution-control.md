@@ -2,7 +2,7 @@
 description: "MASO execution controls: bounding agent actions by permission, impact, and time with circuit breakers, PACE escalation, and cascading failure prevention."
 ---
 
-# MASO Control Domain: Execution Control
+# MASO (Multi-Agent Security Operations) Control Domain: Execution Control
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Covers: ASI02 (Tool Misuse) · ASI05 (Unexpected Code Execution) · ASI08 (Cascading Failures) · LLM05 (Improper Output Handling) · ASI07 (Insecure Inter-Agent Comms, structural validation)

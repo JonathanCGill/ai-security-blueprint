@@ -2,7 +2,7 @@
 description: "MASO controls for protecting agent instructions, goals, and information quality, covering prompt injection propagation, goal hijacking, and epistemic risks in multi-agent systems."
 ---
 
-# MASO Control Domain: Prompt, Goal & Epistemic Integrity
+# MASO (Multi-Agent Security Operations) Control Domain: Prompt, Goal & Epistemic Integrity
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Covers: LLM01 (Prompt Injection) · LLM07 (System Prompt Leakage) · ASI01 (Agent Goal Hijack)

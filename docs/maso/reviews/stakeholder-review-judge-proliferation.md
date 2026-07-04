@@ -6,7 +6,7 @@ description: "Stakeholder review of MASO's judge architecture: does the framewor
 
 **The "judge hell" problem, examined from five business perspectives.**
 
-> *Review of [MASO Framework](../README.md) · [Objective Intent](../controls/objective-intent.md) · [Privileged Agent Governance](../controls/privileged-agent-governance.md) · [Judge Assurance](../../core/judge-assurance.md)*
+> *Review of [MASO (Multi-Agent Security Operations) Framework](../README.md) · [Objective Intent](../controls/objective-intent.md) · [Privileged Agent Governance](../controls/privileged-agent-governance.md) · [Judge Assurance](../../core/judge-assurance.md)*
 
 ## The Question
 

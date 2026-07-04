@@ -2,7 +2,7 @@
 description: "MASO data protection controls: classifying and controlling data flows between agents, securing shared knowledge bases, and preventing cross-agent data leakage."
 ---
 
-# MASO Control Domain: Data Protection
+# MASO (Multi-Agent Security Operations) Control Domain: Data Protection
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Covers: LLM02 (Sensitive Info Disclosure) · LLM04 (Data/Model Poisoning) · ASI06 (Memory & Context Poisoning) · LLM08 (Vector/Embedding Weaknesses)

@@ -6,7 +6,7 @@ description: "Tier 1 MASO implementation: supervised multi-agent deployment with
 
 **Low Autonomy · Human-in-the-Loop · Pilot Phase**
 
-> Part of the [MASO Framework](../README.md) · Implementation Guidance
+> Part of the [MASO (Multi-Agent Security Operations) Framework](../README.md) · Implementation Guidance
 
 ## When to Use Tier 1
 

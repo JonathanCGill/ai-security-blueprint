@@ -100,7 +100,7 @@ Controls that aren't tested don't work. The framework provides:
 
 **If you're building agents:** [Agentic Controls](../core/agentic.md) - tool scoping, action classification, confirmation gates.
 
-**If you're building multi-agent systems:** [MASO Integration Guide](../maso/integration/integration-guide.md) - message bus signing, per-agent identity, cross-agent DLP.
+**If you're building multi-agent systems:** [MASO (Multi-Agent Security Operations) Integration Guide](../maso/integration/integration-guide.md) - message bus signing, per-agent identity, cross-agent DLP.
 
 **If you're building RAG:** [RAG Security](../extensions/technical/rag-security.md) - the attack surface you probably haven't considered.
 

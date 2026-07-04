@@ -40,7 +40,7 @@ Reorganised the site into a product-shaped structure with five top-level tabs (*
 - **Edit on GitHub links.** `repo_url`, `repo_name`, and `edit_uri: edit/main/docs/` wired up so the previously dormant `content.action.edit` and `content.action.view` theme features now work.
 - **Automatic "Last updated" dates** per page via `mkdocs-git-revision-date-localized-plugin`. Workflow uses `fetch-depth: 0` so CI has full history.
 - **Per-page social cards** via Material's `social` plugin. Each page now gets a unique OG / Twitter card image instead of the single static `architecture-overview.png`.
-- **MASO File Structure block** updated to reflect all promoted documents (extraction-integrity, privileged-agent-governance, threat-intelligence-review, ecommerce stress test, judge-proliferation review, MASO 2.0 roadmap).
+- **MASO (Multi-Agent Security Operations) File Structure block** updated to reflect all promoted documents (extraction-integrity, privileged-agent-governance, threat-intelligence-review, ecommerce stress test, judge-proliferation review, MASO 2.0 roadmap).
 
 ### Changed
 

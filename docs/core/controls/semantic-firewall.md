@@ -77,4 +77,4 @@ The taxonomy is a configuration artefact, reviewed and versioned the same way gu
 | Cost and latency budgeting across the full evaluation stack | [Cost & Latency](../../extensions/technical/cost-and-latency.md) |
 | Injection detection at the logging layer | [Logging & Observability - LOG-06](../../infrastructure/controls/logging-and-observability.md#log-06-prompt-injection-detection) |
 | Judge isolation in a multi-provider gateway | [AWS Bedrock - NET-03](../../infrastructure/reference/platform-patterns/aws-bedrock.md#net-03-judge-isolation) |
-| Declared intent as the reference standard for evaluation | [MASO: Objective Intent](../../maso/controls/objective-intent.md) |
+| Declared intent as the reference standard for evaluation | [MASO (Multi-Agent Security Operations): Objective Intent](../../maso/controls/objective-intent.md) |

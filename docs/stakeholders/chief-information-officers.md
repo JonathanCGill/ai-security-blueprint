@@ -46,7 +46,7 @@ The control overhead is real and varies dramatically by tier. The [Cost & Latenc
 
 **When multiple products run different agent sets**, total AI security cost is the sum across the portfolio - not an average. A portfolio of 5 LOW-tier and 1 CRITICAL-tier system is dominated by the CRITICAL-tier cost. Budget accordingly.
 
-For multi-agent systems, add MASO controls: inter-agent message bus, per-agent identity management, cross-agent DLP, and delegation chain auditing. The [MASO Integration Guide](../maso/integration/integration-guide.md) details the implementation overhead per agent framework (LangGraph, AutoGen, CrewAI, AWS Bedrock).
+For multi-agent systems, add MASO (Multi-Agent Security Operations) controls: inter-agent message bus, per-agent identity management, cross-agent DLP, and delegation chain auditing. The [MASO Integration Guide](../maso/integration/integration-guide.md) details the implementation overhead per agent framework (LangGraph, AutoGen, CrewAI, AWS Bedrock).
 
 ### Technology skills planning
 

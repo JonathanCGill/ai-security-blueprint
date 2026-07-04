@@ -9,7 +9,7 @@ nav_active: insights
   <div class="airs-wrap">
     <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">Insights</p>
     <h1 class="airs-hero__title">The insights drive the <em class="is-accent">design.</em></h1>
-    <p class="airs-hero__lead">Every layer in the framework exists because something fails in a specific, repeatable way. These are those failures, and the MASO control each one forces into being.</p>
+    <p class="airs-hero__lead">Every layer in the framework exists because something fails in a specific, repeatable way. These are those failures, and the MASO (Multi-Agent Security Operations) control each one forces into being.</p>
     <div class="airs-btns">
       <a class="airs-btn airs-btn--primary" href="#core">The core arguments &rarr;</a>
       <a class="airs-btn airs-btn--secondary" href="/insights/reference/">Browse the full library</a>

@@ -40,7 +40,7 @@ This framework's treatment of prompt injection and hallucination as distinct con
 
 The practitioner-oriented ranking of LLM security risks: (1) Prompt Injection, (2) Sensitive Information Disclosure, (3) Supply Chain Vulnerabilities, (4) Data and Model Poisoning, (5) Improper Output Handling, (6) Excessive Agency, (7) System Prompt Leakage, (8) Vector and Embedding Weaknesses, (9) Misinformation, (10) Unbounded Consumption.
 
-This framework provides full mapping against all ten risks across both the foundation layer and MASO. The 2025 additions of "Excessive Agency" and "Vector and Embedding Weaknesses" directly validate the control domains we define for execution control and data protection.
+This framework provides full mapping against all ten risks across both the foundation layer and MASO (Multi-Agent Security Operations). The 2025 additions of "Excessive Agency" and "Vector and Embedding Weaknesses" directly validate the control domains we define for execution control and data protection.
 
 - [OWASP Top 10 for LLM Applications 2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/)
 

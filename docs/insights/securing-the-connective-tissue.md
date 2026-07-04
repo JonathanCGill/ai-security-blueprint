@@ -114,7 +114,7 @@ Early production for specialised small-to-mid-size models (credit scoring, medic
 
 Red-teaming has traditionally been a periodic exercise. A specialist team (internal or external) spends two weeks probing your AI systems, produces a report, and leaves. The organisation fixes the findings and waits for the next engagement. Meanwhile, models update, configurations change, new agents are deployed, and the attack surface shifts underneath.
 
-The framework's [red team playbook](../maso/red-team/red-team-playbook.md) provides structured scenarios (RT-01 through RT-13+) mapped to OWASP risks and MASO controls. It recommends testing frequencies: every deployment for Tier 1, monthly for Tier 2, quarterly for Tier 3. This is sound, but it is inherently backward-looking. You test against known attack patterns. The gap between tests is a window of exposure.
+The framework's [red team playbook](../maso/red-team/red-team-playbook.md) provides structured scenarios (RT-01 through RT-13+) mapped to OWASP risks and MASO (Multi-Agent Security Operations) controls. It recommends testing frequencies: every deployment for Tier 1, monthly for Tier 2, quarterly for Tier 3. This is sound, but it is inherently backward-looking. You test against known attack patterns. The gap between tests is a window of exposure.
 
 In 2026, red-teaming has become a continuous, automated, runtime process.
 

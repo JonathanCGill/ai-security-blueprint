@@ -4,7 +4,7 @@ description: "MASO integration guide for LangGraph, AutoGen, CrewAI, and AWS Bed
 
 # Integration Guide
 
-**Implementing MASO Controls in Agent Orchestration Frameworks**
+**Implementing MASO (Multi-Agent Security Operations) Controls in Agent Orchestration Frameworks**
 
 > Part of the [MASO Framework](../README.md) · Integration
 

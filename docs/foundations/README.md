@@ -87,7 +87,7 @@ nav_active: framework
     <h2 id="defence-in-depth-beyond-the-ai-layer">Defence in depth beyond the AI layer</h2>
     <p class="airs-muted">The three-layer control model, with its circuit breaker, addresses controls specific to non-deterministic AI behaviour. It does not replace the security you already have. It sits inside it.</p>
     <p class="airs-muted">Your DLP still applies to data flowing in and out. API gateways still validate requests whether the caller is human or AI. Database access controls and parameterised queries still prevent injection even if an agent builds a malicious query. IAM still governs who can invoke AI at all, and your SIEM still correlates AI events with everything else. When one of these catches something, it is your safety net.</p>
-    <p class="airs-muted">For multi-agent systems, <a href="/maso/environment-containment/">MASO Environment Containment</a> formalises this: harden every system the agent touches so misbehaviour is structurally harmless, whatever the agent intends.</p>
+    <p class="airs-muted">For multi-agent systems, <a href="/maso/environment-containment/">MASO (Multi-Agent Security Operations) Environment Containment</a> formalises this: harden every system the agent touches so misbehaviour is structurally harmless, whatever the agent intends.</p>
   </div>
 </section>
 

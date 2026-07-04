@@ -192,7 +192,7 @@ These are experiments, not production systems. The risk is genuinely low because
 
 ### 5. Multi-Agent Progression Isn't Addressed
 
-The framework's [MASO section](../maso/README.md) covers multi-agent security in detail. But the progression from single-agent to multi-agent isn't mapped.
+The framework's [MASO (Multi-Agent Security Operations) section](../maso/README.md) covers multi-agent security in detail. But the progression from single-agent to multi-agent isn't mapped.
 
 An organisation with mature Tier 2 single-agent deployments wants to introduce multi-agent orchestration. The MASO framework starts at Tier 1 (Supervised - all writes require human approval). But the organisation's single-agent capability is already beyond this.
 

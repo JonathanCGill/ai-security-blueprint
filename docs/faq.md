@@ -140,5 +140,5 @@ AI security is too important to gatekeep.
 | What controls do I actually need? | [Risk Tiers](core/risk-tiers.md) |
 | What does implementation look like? | [Worked Examples](extensions/examples/README.md) |
 | How do guardrails work in practice? | [Practical Guardrails](insights/practical-guardrails.md) |
-| What about multi-agent systems? | [MASO Framework](maso/README.md) |
+| What about multi-agent systems? | [MASO (Multi-Agent Security Operations) Framework](maso/README.md) |
 

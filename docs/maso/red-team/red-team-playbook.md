@@ -6,7 +6,7 @@ description: "Structured red team test scenarios for multi-agent AI systems, map
 
 **Structured Test Scenarios for Multi-Agent AI Systems**
 
-> Part of the [MASO Framework](../README.md) · Red Team Operations
+> Part of the [MASO (Multi-Agent Security Operations) Framework](../README.md) · Red Team Operations
 
 ## Purpose
 

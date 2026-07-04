@@ -6,7 +6,7 @@ description: "Real-world AI security incidents mapped to framework controls, tra
 
 **Real-World AI Security Incidents Mapped to Framework Controls**
 
-> Part of the [MASO Framework](../README.md) · Threat Intelligence
+> Part of the [MASO (Multi-Agent Security Operations) Framework](../README.md) · Threat Intelligence
 > Last updated: July 2026
 
 ## Purpose

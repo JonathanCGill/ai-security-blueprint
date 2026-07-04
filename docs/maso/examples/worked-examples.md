@@ -4,7 +4,7 @@ description: "End-to-end MASO implementation examples for financial services, he
 
 # Worked Examples
 
-**MASO Implementation for Financial Services, Healthcare, and Critical Infrastructure**
+**MASO (Multi-Agent Security Operations) Implementation for Financial Services, Healthcare, and Critical Infrastructure**
 
 > Part of the [MASO Framework](../README.md) · Examples
 

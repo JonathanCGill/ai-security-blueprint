@@ -43,7 +43,7 @@ Yes. And the architecture is not speculative.
 
 In-memory graph databases like [Memgraph](https://memgraph.com/) are designed for exactly this pattern: high-throughput event ingestion with concurrent graph traversal and algorithm execution. The key characteristics:
 
-**Ingestion.** Memgraph supports native Kafka and Pulsar stream connectors. Agent events flow from the message bus (which the MASO framework already mandates) through the stream processor into the graph as nodes and edges. Ingestion latency is typically under 10ms per event.
+**Ingestion.** Memgraph supports native Kafka and Pulsar stream connectors. Agent events flow from the message bus (which the MASO (Multi-Agent Security Operations) framework already mandates) through the stream processor into the graph as nodes and edges. Ingestion latency is typically under 10ms per event.
 
 **Query.** Cypher queries against an in-memory graph execute in single-digit milliseconds for local traversals (neighbourhood queries, path finding) and tens of milliseconds for global algorithms (PageRank, community detection) on graphs with millions of edges. The framework's nine-signal anomaly scoring vector can be computed per agent on every event or on a sub-second polling interval.
 

@@ -6,7 +6,7 @@ description: "Tier 3 MASO implementation: autonomous multi-agent deployment with
 
 **High Autonomy · Exception-Based Human Oversight · Adversarial-Tested Operations**
 
-> Part of the [MASO Framework](../README.md) · Implementation Guidance
+> Part of the [MASO (Multi-Agent Security Operations) Framework](../README.md) · Implementation Guidance
 
 ## When to Use Tier 3
 

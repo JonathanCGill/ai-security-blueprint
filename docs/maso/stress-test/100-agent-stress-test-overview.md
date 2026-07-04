@@ -2,7 +2,7 @@
 description: A tabletop stress-test methodology for identifying where MASO's controls break down as agent counts scale from single digits to triple digits.
 ---
 
-# Stress Testing MASO at Scale
+# Stress Testing MASO (Multi-Agent Security Operations) at Scale
 
 **A Tabletop Methodology for Finding Framework Breakpoints**
 

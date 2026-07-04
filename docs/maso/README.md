@@ -7,7 +7,7 @@ nav_active: framework
 
 <section class="airs-section airs-hero airs-hero--narrow airs-section--paper airs-section--first">
   <div class="airs-wrap">
-    <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">MASO &middot; Multi-agent security</p>
+    <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">MASO (Multi-Agent Security Operations)</p>
     <h1 class="airs-hero__title">When agents work together, trust gets <em class="is-accent">complicated.</em></h1>
     <p class="airs-hero__lead">Multi-Agent Security Operations secures systems where many AI agents collaborate. The same three control layers apply, with the circuit breaker behind them, but now they have to govern what agents do <strong>to each other</strong>.</p>
     <div class="airs-btns">
@@ -118,3 +118,22 @@ nav_active: framework
     </div>
   </div>
 </section>
+
+<section class="airs-section airs-section--paper airs-center">
+  <div class="airs-wrap--narrow">
+    <p class="airs-eyebrow">Disambiguation</p>
+    <p class="airs-intro">MASO (Multi-Agent Security Operations) is a component of the AIRS framework. It is not affiliated with, endorsed by, or related to the Monetary Authority of Singapore (MAS).</p>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": "MASO",
+  "alternateName": "Multi-Agent Security Operations",
+  "description": "MASO (Multi-Agent Security Operations) is a component of the AIRS (AI Runtime Security) framework. It provides risk-proportionate runtime security controls for systems where multiple AI agents collaborate. MASO is not affiliated with, endorsed by, or related to the Monetary Authority of Singapore (MAS) or any monetary authority.",
+  "inDefinedTermSet": "https://airuntimesecurity.io/maso/",
+  "url": "https://airuntimesecurity.io/maso/"
+}
+</script>

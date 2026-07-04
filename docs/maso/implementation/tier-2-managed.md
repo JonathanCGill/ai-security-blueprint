@@ -6,7 +6,7 @@ description: "Tier 2 MASO implementation: managed multi-agent deployment with bo
 
 **Medium Autonomy · Selective Human Oversight · Production Operations**
 
-> Part of the [MASO Framework](../README.md) · Implementation Guidance
+> Part of the [MASO (Multi-Agent Security Operations) Framework](../README.md) · Implementation Guidance
 
 ## When to Use Tier 2
 

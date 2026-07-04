@@ -99,7 +99,8 @@ extra:
 
 copyright: >-
   Copyright &copy; 2026 Jonathan Gill | MIT License<br>
-  Feedback welcome | <a href="mailto:feedback@airuntimesecurity.io">feedback@airuntimesecurity.io</a>
+  Feedback welcome | <a href="mailto:feedback@airuntimesecurity.io">feedback@airuntimesecurity.io</a><br>
+  MASO (Multi-Agent Security Operations) is a component of the AIRS framework and is not affiliated with, endorsed by, or related to the Monetary Authority of Singapore (MAS).
 
 nav:
   - Home: README.md

@@ -69,7 +69,7 @@ The new layer is harder to secure because it is designed for flexibility. Agents
 
 ## Framework Implications
 
-### MASO Supply Chain Controls
+### MASO (Multi-Agent Security Operations) Supply Chain Controls
 
 The MASO framework's supply chain controls cover provenance verification, risk assessment, and vulnerability monitoring. These apply directly to agent skills, but the implementation needs to account for:
 

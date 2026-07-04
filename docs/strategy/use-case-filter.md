@@ -193,7 +193,7 @@ This is the boundary between a generative AI application and an agentic AI syste
 | Attribute | Value |
 |-----------|-------|
 | Risk profile | High–Critical |
-| Framework applies? | Yes - full framework + [MASO](../maso/README.md) |
+| Framework applies? | Yes - full framework + [MASO (Multi-Agent Security Operations)](../maso/README.md) |
 | Examples | Automated research workflows, autonomous customer resolution, multi-system orchestration |
 | Typical cost | High build, high operate |
 | Maintenance | All of the above + agent coordination, sandbox management, action validation |

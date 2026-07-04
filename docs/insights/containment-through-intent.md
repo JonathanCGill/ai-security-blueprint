@@ -62,7 +62,7 @@ Humans also calibrate the other layers. When a Judge flags an action that turns 
 
 ### Layer 4: Monitoring and Observability - Detecting Violations
 
-MASO's observability controls (anomaly scoring, drift detection, communication profiling) watch for agents that deviate from expected behavior. Expected behavior is defined by - intent.
+MASO (Multi-Agent Security Operations)'s observability controls (anomaly scoring, drift detection, communication profiling) watch for agents that deviate from expected behavior. Expected behavior is defined by - intent.
 
 If a delivery logistics agent with intent "calculate shipping options and schedule deliveries" starts making unusually frequent calls to the customer support API, that is an anomaly. Not because API calls are forbidden (they might be within its technical permissions), but because they are inconsistent with the declared purpose. The monitoring layer knows this because it knows the intent.
 

@@ -4,7 +4,7 @@ description: "MASO environment containment strategy: securing the systems agents
 
 # Environment Containment
 
-> Part of the [MASO Framework](README.md) · Containment Strategy
+> Part of the [MASO (Multi-Agent Security Operations) Framework](README.md) · Containment Strategy
 > Cross-cuts: All Control Domains · All Implementation Tiers
 
 ## Principle

@@ -23,7 +23,7 @@ How AICM's 18 domains land against existing coverage. AICM's single AI-specific 
 | AICM domain | This framework |
 |-------------|----------------|
 | **Model Security (MDS)** | Covered: [Foundations](../../foundations/README.md), [Model Cognition Assurance](../../maso/controls/model-cognition-assurance.md), [Provenance & Attestation](../../core/controls/provenance-and-attestation.md) |
-| Identity & Access Management (IAM) | Covered and deeper: [IAM Governance](../../core/iam-governance.md), [MASO Identity & Access](../../maso/controls/identity-and-access.md) |
+| Identity & Access Management (IAM) | Covered and deeper: [IAM Governance](../../core/iam-governance.md), [MASO (Multi-Agent Security Operations) Identity & Access](../../maso/controls/identity-and-access.md) |
 | Supply Chain, Transparency & Accountability (STA) | Covered: [Supply Chain](../../maso/controls/supply-chain.md), AIBOM and signed manifests |
 | Logging & Monitoring (LOG) | Covered: [Observability](../../maso/controls/observability.md), [Runtime Telemetry Reference](../../extensions/technical/runtime-telemetry-reference.md) |
 | Data Security & Privacy (DSP) | Covered: [Data Protection](../../maso/controls/data-protection.md), [Data Provenance & Authority Boundaries](../../core/controls/data-provenance-and-authority-boundaries.md) |

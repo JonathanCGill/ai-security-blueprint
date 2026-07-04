@@ -76,7 +76,7 @@ IR 8596 urges organisations to maintain inventories covering models, agents, API
 | AI-specific vulnerability identification | Guardrail patterns (prompt injection, jailbreak vectors), [Red Team Playbook](../../maso/red-team/red-team-playbook.md) (RT-01 through RT-13) | **Strong** |
 | AI-specific threat identification | [Threat Intelligence Review](../../maso/threat-intelligence/threat-intelligence-review.md), [Incident Tracker](../../maso/threat-intelligence/incident-tracker.md), [Emerging Threats](../../maso/threat-intelligence/emerging-threats.md) | **Strong** |
 | Risk assessment incorporating AI-specific factors | Six-dimension risk scoring, tier-based control selection | **Strong** |
-| Embedded AI integrations/permissions inventory | MASO [Identity & Access](../../maso/controls/identity-and-access.md) controls cover agent identity and tool permissions | **Strong** |
+| Embedded AI integrations/permissions inventory | MASO (Multi-Agent Security Operations) [Identity & Access](../../maso/controls/identity-and-access.md) controls cover agent identity and tool permissions | **Strong** |
 | AI data flow boundary enforcement and anomaly detection | [Observability controls](../../maso/controls/observability.md) (OB-1.1 through OB-3.5), behavioral drift detection | **Strong** |
 
 ### PROTECT (PR): Strong Alignment

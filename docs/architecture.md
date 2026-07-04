@@ -92,7 +92,7 @@ nav_active: framework
         <span class="airs-card__more">Secure a single agent &rarr;</span>
       </a>
       <a class="airs-card" href="/maso/">
-        <p class="airs-card__title">MASO</p>
+        <p class="airs-card__title">MASO (Multi-Agent Security Operations)</p>
         <p class="airs-card__body">Many agents working together. As they hand work to each other, trust gets complicated and the controls have to follow.</p>
         <span class="airs-card__more">Secure multi-agent systems &rarr;</span>
       </a>
