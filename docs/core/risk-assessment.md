@@ -41,6 +41,8 @@ Each layer operates independently. When one layer misses a threat, the next has 
 | **Model-as-Judge** | ~95% | Catches 95% of issues in the transactions it evaluates - semantic violations, subtle policy breaches, quality failures | Sampled or full coverage depending on tier |
 | **Human Oversight** | ~98% | Catches 98% of issues surfaced to reviewers - edge cases, nuanced judgement calls, novel threats | Flagged transactions + sampling |
 
+The Model-as-Judge row stands for the whole reviewing tier, which in practice is itself staged: a [semantic firewall](controls/semantic-firewall.md) catches known-bad *intent* inline (a prohibited request reworded or indirected to mean the same thing), and the Judge handles the deeper, unknown-bad evaluation asynchronously. The single rate here keeps the independence model readable; measure the two separately when you calibrate.
+
 ### How Layers Compound
 
 When all three layers are active and operating independently on a transaction:

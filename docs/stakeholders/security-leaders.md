@@ -82,7 +82,7 @@ Read these in order. Total time: ~90 minutes.
 ## Common Objections - With Answers
 
 **"We already have guardrails."**
-Guardrails alone catch ~90% of known-pattern issues. They miss semantic violations, novel attacks, and subtle policy breaches. The Judge layer catches 95% of what guardrails miss. [Why Guardrails Aren't Enough](../insights/why-guardrails-arent-enough.md) has the full argument.
+Guardrails alone catch ~90% of known-pattern issues. They miss semantic violations, novel attacks, and subtle policy breaches. Behind them sit reviewing controls of increasing depth: a semantic firewall catches known-bad intent that has been reworded or indirected, and the Judge layer catches 95% of what still gets through. [Why Guardrails Aren't Enough](../insights/why-guardrails-arent-enough.md) has the full argument.
 
 **"This will slow down our AI delivery."**
 The [Fast Lane](../fast-lane.md) pre-approves low-risk deployments with minimal controls. Only HIGH and CRITICAL tier systems need the full three layers. The framework doesn't slow delivery - it prevents teams from deploying CRITICAL-tier systems with LOW-tier controls.

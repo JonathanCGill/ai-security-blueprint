@@ -59,10 +59,10 @@ The industry is converging on three layers:
 | Layer | Function | Timing |
 |-------|----------|--------|
 | **Guardrails** | Block known-bad inputs/outputs | Real-time |
-| **Judge** | Detect unknown-bad via LLM evaluation | Async |
+| **Reviewing controls** | Semantic firewall catches known-bad intent; the Judge detects unknown-bad via LLM evaluation | Inline to async |
 | **Human Oversight** | Decide, act, remain accountable | As needed |
 
-**Guardrails prevent. Judge detects. Humans decide. Circuit breakers contain.**
+**Guardrails prevent. Reviewing controls detect. Humans decide. Circuit breakers contain.**
 
 ### Where This Pattern Exists
 
