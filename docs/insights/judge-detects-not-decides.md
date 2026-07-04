@@ -65,6 +65,8 @@ The Judge operates **after the fact**, reviewing what has already happened:
 
 The transaction completes before the Judge evaluates. The Judge informs future action; it doesn't gate current action.
 
+This is where the Judge parts company with the rest of the reviewing layer. Reviewer controls *may* detect and decide: the deterministic scanners and the [semantic firewall](../core/controls/semantic-firewall.md) catch something and gate the call inline, blocking it before it executes. The LLM-as-judge does not decide. It runs after the action has already completed, an after-action check that surfaces concerns for a human rather than blocking anything itself.
+
 ## What the Judge Does Well
 
 Freed from real-time blocking, the Judge can:
