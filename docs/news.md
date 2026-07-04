@@ -32,6 +32,54 @@ A biweekly roundup of incidents, research, and developments in AI runtime securi
 
 <!-- NEWS_START -->
 
+### 2026-07-01: Context Compaction Silently Erases Safety Constraints in Long-Horizon Agents
+
+**Tags**: Judge, Human Oversight, Memory & Context, Agentic
+
+The paper *Governance Decay: How Context Compaction Silently Erases Safety Constraints in Long-Horizon LLM Agents* (arXiv:2606.22528) identifies a failure mode that is not an attack in the usual sense: it is a side effect of how long-running agents stay inside their token budget. Agents periodically **compact** their context by summarising it, and standing governance constraints (runtime policies, memory entries, standing instructions) get dropped during that summary because the compaction step treats them as low-salience next to the active task. Using a benchmark called **ConstraintRot** with deterministic violation grading across seven models and 1,323 episodes, compaction raised constraint-violation from 0% to 30% (up to 59%); when a constraint survived the summary, violation stayed at 0%, and when it was dropped, violation reached 38%. The decay was 8.3x larger for soft organisational policies than for hard safety norms, eroding exactly the deployment-specific rules that live only in context. The author also weaponises the mechanism as a **Compaction-Eviction Attack** (an adversary biases compaction to delete a specific constraint) and proposes **Constraint Pinning**, a training-free defence that reasserts pinned constraints after every compaction at under 0.5% token overhead.
+
+**Framework relevance**: This is the concrete mechanism behind [ET-15 (Long-horizon, Always-on Agents)](maso/threat-intelligence/emerging-threats.md#et-15-long-horizon-always-on-agents), which already flagged that intent declarations have no expiry or re-validation cadence. The constraint does not expire, it is quietly summarised away, so a [Judge](core/judge-assurance.md) or [Human Oversight](core/controls.md) gate cannot enforce a policy the model can no longer see. It maps directly to [Memory and Context](core/memory-and-context.md): governance constraints and their provenance must survive compaction, not just be declared once, and it is a live example of the durability problem in [Safety Cases and Oversight Durability](core/controls/safety-cases-and-oversight-durability.md). Constraint Pinning is a cheap control worth adopting for any agent that runs long enough to compact its context.
+
+**Source**: [arXiv:2606.22528: Governance Decay: How Context Compaction Silently Erases Safety Constraints in Long-Horizon LLM Agents](https://arxiv.org/abs/2606.22528)
+
+---
+
+### 2026-06-29: Guardrails Become the Target as Reasoning DoS Starves Shared Infrastructure
+
+**Tags**: Guardrails, Circuit Breaker, MASO
+
+*From Shield to Target: Denial-of-Service Attacks on LLM-Based Agent Guardrails* (arXiv:2606.14517) turns the defence into the attack surface. LLM-based guardrails inherit the reasoning and task-following behaviour of the model behind them, and that is the vulnerability: crafted input traps the guardrail in extended reasoning loops. The authors build two attack frameworks, a beam-search optimiser that maximises guardrail reasoning length and a lighter mechanism-aware structural mutation, and show payloads optimised on a single open-source surrogate transfer to eight leading backbones (Claude, GPT, Gemini, DeepSeek, and Qwen) with **13x to 63x token amplification**. In real agent deployments the attack reaches **up to 148x latency amplification**, and because guardrail inference is frequently shared infrastructure, a single poisoned document can saturate it and starve every co-located agent, converting a per-request compute attack into a multi-tenant availability failure.
+
+**Framework relevance**: This extends [ET-19 (Inference-time Compute Exhaustion, Reasoning DoS)](maso/threat-intelligence/emerging-threats.md#et-19-inference-time-compute-exhaustion-reasoning-dos) from the reasoning model and orchestrator to the [Guardrails](core/controls.md) and [Judge](core/judge-assurance.md) tiers themselves. The framework's compute envelopes (token budgets, step budgets, fan-out caps) cannot bound only the primary model, they have to bound the guardrail and Judge inference too, and shared guardrail infrastructure needs per-tenant isolation so one trace cannot exhaust the pool. Latency and token amplification are exactly the signals a [Circuit Breaker](pace-resilience.md) should trip on. Reinforces [Why Guardrails Aren't Enough](insights/why-guardrails-arent-enough.md): a defence you can weaponise for denial of service is not a defence you can lean on alone.
+
+**Source**: [arXiv:2606.14517: From Shield to Target: Denial-of-Service Attacks on LLM-Based Agent Guardrails](https://arxiv.org/abs/2606.14517)
+
+---
+
+### 2026-06-26: Nation-State Actor Backdoors 144 Mastra AI-Agent-Framework npm Packages
+
+**Tags**: Supply Chain, IAM, Agentic
+
+On 17 June 2026 an attacker used a hijacked npm contributor account whose publish access to the `@mastra` scope had never been revoked to republish 142 `@mastra/*` packages, plus the top-level `mastra` and `create-mastra`, in an 88-minute automated run. Each republished package carried a single injected dependency, **easy-day-js**, a typosquat of the legitimate `dayjs` library, whose second-stage payload was a cross-platform RAT that installs OS-level persistence on Windows, macOS, and Linux and targets **LLM API keys, cloud credentials, and 166 cryptocurrency wallet extensions**. Mastra is a TypeScript framework for building AI agents; `@mastra/core` alone sees roughly 918,000 weekly downloads and the affected scope exceeds 1.1 million per week. Microsoft Threat Intelligence attributed the campaign with high confidence to **Sapphire Sleet** (also tracked as BlueNoroff and APT38), the North Korean group behind a near-identical attack on the Axios HTTP client the previous March.
+
+**Framework relevance**: [ET-13 (Agent Ecosystem Supply Chain Compromise at Scale)](maso/threat-intelligence/emerging-threats.md#et-13-agent-ecosystem-supply-chain-compromise-at-scale) argued that the npm and PyPI attack patterns apply to agent ecosystems; Mastra is that pattern hitting the agent *framework* itself, the runtime every downstream agent is built on, not just a loadable skill. It reinforces [Supply Chain](maso/controls/supply-chain.md) controls SC-1.3 (pinned dependency sets), SC-2.2 (signed manifests), and SC-3.1 (continuous vulnerability scanning), and because the payload harvests LLM API keys and cloud credentials it is equally an [IAM Governance](core/iam-governance.md) failure: the blast radius is every credential the build host can see, and the never-revoked contributor token is a machine-identity lifecycle gap. Connects to [The Agent Supply Chain Crisis](insights/the-agent-supply-chain-crisis.md).
+
+**Source**: [Orca Security: 144 Mastra npm Packages Compromised via Supply Chain Attack](https://orca.security/resources/blog/mastra-npm-supply-chain-attack/) &middot; [StepSecurity: Mastra npm Supply Chain Attack](https://www.stepsecurity.io/blog/mastra-npm-packages-compromised-using-easy-day-js)
+
+---
+
+### 2026-06-24: Systematic Study Confirms Internal Memory, Not Prompts, Is the Durable Agent Attack Surface
+
+**Tags**: Memory & Context, MASO, Data Protection
+
+*From Untrusted Input to Trusted Memory: A Systematic Study of Memory Poisoning Attacks in LLM Agents* (arXiv:2606.04329) traces the full path by which an ordinary untrusted input is laundered into an agent's trusted long-term memory, the point at which a one-off injection becomes a persistent implant that survives the session resets meant to contain it. The study lands alongside OWASP formally tracking this class as **ASI06 (Memory and Context Poisoning)** in its 2026 Top 10 for Agentic Applications, with reported write-success rates of 95% to 99.8% against production agents and the AgentLAB long-horizon benchmark (644 test cases across 28 environments) showing that per-turn defences do not catch it.
+
+**Framework relevance**: This reinforces [ET-06 (Agent Memory Poisoning at Scale)](maso/threat-intelligence/emerging-threats.md#et-06-agent-memory-poisoning-at-scale) and the [Memory and Context](core/memory-and-context.md) controls, and the ASI06 classification gives regulated buyers an external standard to cite. The systematic framing, untrusted input becoming trusted memory, is the argument for putting the control at the **write boundary**, not the read: memory write provenance and origin partitioning (DP-1.3 memory isolation, PG-2.5 claim provenance enforcement) so agent-written and human-authored content are never retrieved as equally authoritative. Validates [The Memory Problem](insights/the-memory-problem.md).
+
+**Source**: [arXiv:2606.04329: From Untrusted Input to Trusted Memory: A Systematic Study of Memory Poisoning Attacks in LLM Agents](https://arxiv.org/abs/2606.04329) &middot; [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
+
+---
+
 ### 2026-06-22: Embedding-Based Detection of Malicious Agents Collapses in Multi-Agent Systems
 
 **Tags**: MASO, Judge, Observability

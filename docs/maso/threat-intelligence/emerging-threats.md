@@ -7,7 +7,7 @@ description: A forward-looking catalogue of threat patterns for multi-agent AI s
 **Forward-Looking Threat Patterns for Multi-Agent AI Systems**
 
 > Part of the [MASO Framework](../README.md) · Threat Intelligence
-> Last updated: May 2026
+> Last updated: July 2026
 
 ## Purpose
 
@@ -266,6 +266,8 @@ EC-2.12 (multimodal boundary validation, Tier 2) is the closest existing control
 
 Additionally, the **TrapDoor** supply chain campaign (May 2026) confirmed this class at production scale: zero-width Unicode characters hidden in CLAUDE.md, .cursorrules, and AGENTS.md files inject instructions that are invisible to human code reviewers but are faithfully followed by coding agents. The payload is committed to shared repositories and activates when any developer's coding agent loads the configuration file. Pillar Security's earlier "Rules File Backdoor" disclosure documented the technique; TrapDoor confirmed deliberate weaponisation in the wild. See the 2026-05-22 entry in [News](../../news.md).
 
+The **Mastra** npm compromise (June 2026) extended this class from agent *skills* to the agent *framework* itself. A hijacked contributor account with never-revoked publish rights to the `@mastra` scope was used to republish 142 packages, plus `mastra` and `create-mastra` (over 1.1 million combined weekly downloads), each with a typosquatted dependency that delivered a cross-platform RAT harvesting LLM API keys and cloud credentials. Microsoft Threat Intelligence attributed it to the North Korean group Sapphire Sleet (BlueNoroff). It confirms the ET-13 thesis at the runtime layer every downstream agent depends on, and the credential-harvesting payload makes this an IAM lifecycle failure as much as a supply-chain one: the publish token should have been revoked when the account changed hands. See the 2026-06-26 entry in [News](../../news.md).
+
 **Emerging variant, Trust-tiered skill poisoning:** Malicious skills designed to pass initial vetting by behaving benignly under test conditions but activating harmful behaviour only when the agent operates with elevated permissions or accesses specific data types.
 
 **MASO controls:** SC-1.3 (fixed toolsets, prevents runtime discovery), SC-2.2 (signed tool manifests), SC-2.3 (MCP server allow-listing), SC-3.1 (cryptographic trust chain)
@@ -312,11 +314,15 @@ The following threats reflect trends visible in production deployments and resea
 
 **Emerging variant, Slow drift below alerting thresholds:** Each step is within tolerance; the cumulative deviation over thousands of steps is not.
 
+**Confirmed mechanism, Governance Decay (Q3 2026):** *Chen* (ConstraintRot, arXiv:2606.22528) showed the drift is not only behavioural, it is structural. To stay within their token budget, long-running agents periodically compact their context by summarising it, and standing governance constraints get dropped in the summary because compaction prioritises task continuity and treats standing policy as low-salience. Across seven models and 1,323 episodes, compaction raised constraint-violation from 0% to 30% (up to 59%), and the effect was 8.3x larger for soft organisational policies than for hard safety norms. The paper weaponises this as a Compaction-Eviction Attack, in which an adversary biases compaction to delete a specific constraint, and proposes Constraint Pinning, a training-free defence that reasserts pinned constraints after every compaction at under 0.5% token overhead. This is the concrete control the gap below calls for.
+
 **MASO controls:** OB-2.2 (drift detection), OB-2.3 (behavioural baselines), AT-1.x (intent declaration)
 
-**Gap in current controls:** Drift detection lacks temporal baselines for week-scale agents. Intent declarations have no expiry or mandatory re-validation cadence. MASO 2.0 should add a session-bounded intent token with explicit TTL.
+**Gap in current controls:** Drift detection lacks temporal baselines for week-scale agents. Intent declarations have no expiry or mandatory re-validation cadence, and nothing guarantees that a declared constraint survives context compaction rather than being silently summarised away. MASO 2.0 should add a session-bounded intent token with explicit TTL, and require constraint pinning so governance rules are reasserted after every compaction.
 
 **Assessment:** High likelihood for any organisation deploying persistent agents.
+
+> **Source:** [Governance Decay: How Context Compaction Silently Erases Safety Constraints in Long-Horizon LLM Agents (arXiv:2606.22528)](https://arxiv.org/abs/2606.22528)
 
 ### ET-16: Synthetic Media Erodes the Human-in-the-Loop
 
@@ -376,11 +382,15 @@ The following threats reflect trends visible in production deployments and resea
 
 **Emerging variant, Recursive delegation bombs:** A prompt that causes an orchestrator to spawn sub-agents that each spawn further sub-agents.
 
+**Confirmed against the guardrail tier (Q3 2026):** *From Shield to Target* (arXiv:2606.14517) showed the DoS surface includes the defence itself. Crafted input traps an LLM-based guardrail in extended reasoning, with 13x to 63x token amplification and up to 148x latency amplification in real agent deployments, and payloads optimised on one open-source surrogate transferred to eight leading backbones. Because guardrail and Judge inference is frequently shared infrastructure, a single poisoned document can saturate it and starve every co-located agent, turning a per-request compute attack into a multi-tenant availability failure.
+
 **MASO controls:** EC-1.5 (interaction timeout), EC-2.6 (decision commit protocol)
 
-**Gap in current controls:** No token budget, step budget, or fan-out cap enforced at the orchestrator. MASO should add per-request and per-trace compute envelopes.
+**Gap in current controls:** No token budget, step budget, or fan-out cap enforced at the orchestrator, and the same envelopes have to bound the guardrail and Judge tiers, not just the primary model. MASO should add per-request and per-trace compute envelopes, and isolate guardrail inference per tenant so one trace cannot starve co-located agents.
 
 **Assessment:** High likelihood. The economic incentive to exploit it is direct.
+
+> **Source:** [From Shield to Target: Denial-of-Service Attacks on LLM-Based Agent Guardrails (arXiv:2606.14517)](https://arxiv.org/abs/2606.14517)
 
 ### ET-20: Steganographic Agent-to-Agent Communication
 

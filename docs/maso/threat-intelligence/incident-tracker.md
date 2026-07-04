@@ -7,7 +7,7 @@ description: "Real-world AI security incidents mapped to framework controls, tra
 **Real-World AI Security Incidents Mapped to Framework Controls**
 
 > Part of the [MASO Framework](../README.md) · Threat Intelligence
-> Last updated: June 2026
+> Last updated: July 2026
 
 ## Purpose
 
@@ -38,6 +38,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | 12 | [Meta AI Agent Unauthorized Access](#inc-12-meta-internal-ai-agent-unauthorized-access-2026) | Unsolicited agent action + cascading permission failure | <span class="tier-high">High</span> | Tool allow-lists, Human approval, Scoped permissions, Circuit breakers, Decision chain logging | Prevents unsolicited agent actions and detects cascading permission failures |
 | 13 | [GitHub MCP Exploited](#inc-13-github-mcp-exploited-cross-repository-data-exfiltration-via-prompt-injection-2025) | Indirect prompt injection via MCP-connected tool → cross-repository data exfiltration | <span class="tier-high">High</span> | Message source tagging, Input guardrails, Scoped permissions, No transitive permissions | Confines the MCP credential's reach to the repository in scope, preventing exfiltration across the trust boundary |
 | 14 | [MCP Server Supply Chain CVEs](#inc-14-mcp-server-supply-chain-cves-gemini-mcp-tool-and-nginx-ui-2026) | MCP server supply chain compromise → critical RCE / authentication bypass | <span class="tier-high">High</span> | MCP server vetting, Runtime component audit, Cryptographic trust chain, Hardened MCP gateway | Continuous vetting and a hardened gateway catch vulnerable or unauthenticated MCP servers before and after deployment |
+| 15 | [Mastra npm Framework Backdoor](#inc-15-mastra-npm-agent-framework-supply-chain-attack-2026) | Agent framework supply chain compromise → credential harvesting | <span class="tier-high">High</span> | Pinned dependency sets, Signed manifests, Build-host credential isolation, NHI token lifecycle, Runtime integrity | Pinned and signed dependencies block the backdoored versions; scoped, rotated build credentials limit what a harvesting payload can reach |
 
 ## Incident Register
 
@@ -296,6 +297,26 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 
 **Why this matters:** This is the same pattern as the OX Security disclosure covered in [ET-04](emerging-threats.md#et-04-model-context-protocol-mcp-as-attack-surface), recurring in unrelated, independently developed MCP server implementations within the same quarter. Each individual CVE is a vendor bug; the recurrence across the ecosystem is the finding. MCP server vetting needs to be an ongoing process, not a one-time gate: every MCP server in a deployment needs the same continuous vulnerability monitoring as any other internet-facing dependency.
 
+### INC-15: Mastra npm Agent Framework Supply Chain Attack (2026)
+
+**What happened:** On 17 June 2026, an attacker used a hijacked npm contributor account whose publish access to the `@mastra` scope had never been revoked to republish 142 `@mastra/*` packages, plus the top-level `mastra` and `create-mastra`, in an 88-minute automated run. Each republished version carried a single injected dependency, `easy-day-js`, a typosquat of the legitimate `dayjs` library, whose second-stage payload was a cross-platform remote access trojan that installs OS-level persistence on Windows, macOS, and Linux and harvests LLM API keys, cloud credentials, and 166 cryptocurrency wallet extensions. Mastra is a TypeScript framework for building AI agents; `@mastra/core` alone sees roughly 918,000 weekly downloads, and the affected scope exceeds 1.1 million per week. Microsoft Threat Intelligence attributed the campaign with high confidence to Sapphire Sleet (also tracked as BlueNoroff and APT38), the North Korean actor behind a near-identical attack on the Axios HTTP client the previous March.
+
+**Failure class:** Agent framework supply chain compromise → credential harvesting
+
+**Confidence: High.** Pinned and signed dependency sets deterministically block the backdoored versions, and build-host credential isolation contains the payload's reach.
+
+**Controls that address this:**
+
+| Control | Mechanism | Effect |
+|---------|-----------|--------|
+| Pinned dependency sets (SC-1.3) | Builds resolve to pinned, hash-verified versions rather than the latest published tag | Prevents automatic pickup of the backdoored republished versions |
+| Signed manifests (SC-2.2) | Package integrity verified against publisher signatures before install | Flags the injected `easy-day-js` dependency and tampered manifests |
+| Continuous vulnerability scanning (SC-3.1) | Dependency and typosquat feeds monitored on an ongoing basis | Surfaces the malicious dependency and compromised scope after disclosure |
+| Build-host credential isolation (Environment Containment) | Build and CI hosts hold only scoped, short-lived credentials, not standing LLM API keys or cloud secrets | Limits what a credential-harvesting payload can exfiltrate |
+| NHI token lifecycle (IA-2.1) | Machine and publish tokens are scoped, rotated, and revoked on account or ownership change | Would have closed the never-revoked contributor token that enabled the republish |
+
+**Why this matters:** [ET-13](emerging-threats.md#et-13-agent-ecosystem-supply-chain-compromise-at-scale) framed agent supply chain compromise around loadable skills and registries. Mastra shows the same class hitting the agent *framework* itself, the runtime every downstream agent is built on, which raises the blast radius from one capability to the whole application. The credential-harvesting payload makes this an identity failure as much as a supply-chain one: the defensible boundary is what the build host can reach, so scoped and rotated build credentials matter as much as dependency pinning. See the 2026-06-26 entry in [News](../../news.md).
+
 ## Incident Statistics
 
 | Category | Count | Pattern |
@@ -305,7 +326,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | Hallucination / ungrounded output | 2 | LLM generating confident but incorrect information |
 | Unauthorised commitment / agency | 1 | LLM making decisions beyond its authority |
 | Database/code injection via LLM | 2 | LLM output used unsafely in downstream systems |
-| Supply chain compromise | 2 | Malicious skills and vulnerable or unauthenticated MCP servers in the agent ecosystem |
+| Supply chain compromise | 3 | Malicious skills, vulnerable or unauthenticated MCP servers, and a backdoored agent framework in the ecosystem |
 | Excessive agency / access control | 1 | AI trading agents with sweeping inherited permissions |
 | Unsolicited agent action / cascading failure | 1 | Agent acting outside directed scope, triggering permission cascade |
 
@@ -313,7 +334,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 
 | Confidence | Count | Common factor |
 |------------|-------|---------------|
-| <span class="tier-high">High</span> | 12 | Deterministic controls directly prevent the failure mode |
+| <span class="tier-high">High</span> | 13 | Deterministic controls directly prevent the failure mode |
 | **Moderate** | 2 | Both hallucination incidents, inherently probabilistic failure |
 
 ## How to Use This Tracker
