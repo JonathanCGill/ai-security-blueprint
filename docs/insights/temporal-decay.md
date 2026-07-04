@@ -92,7 +92,7 @@ Track the Judge-Agent disagreement rate as a time series. Alert on sustained dec
 
 ## Model Currency as a Control Input
 
-The MASO architecture defines four control layers: Guardrails, Judge, Human Oversight, and Observability. Temporal decay suggests a fifth input that feeds into the Overseer's risk calculus: **model currency**.
+The MASO architecture defines three control layers, Guardrails, the Model-as-Judge, and Human Oversight, with Observability running across them rather than as a fourth behavioural layer. Temporal decay suggests an additional input that feeds into the Overseer's risk calculus: **model currency**.
 
 Model currency tracks training cutoff age against real-world drift indicators for the specific domain. It is not a control layer itself. It is a signal that modulates the stringency of every other layer.
 

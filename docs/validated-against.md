@@ -46,7 +46,7 @@ These controls are referenced across the highest number of documented incidents.
 | 4 | **Tool scoping / capability constraints** | 5 of 9 | INC-01, 02, 04, 05, 06 |
 | 5 | **Audit logging** | 5 of 9 | INC-01, 04, 06, 07, 09 |
 
-**What this tells you:** If you implement nothing else, input guardrails and an independent Judge gate address the widest range of documented attack patterns. Circuit breakers provide the safety net when prevention fails. This is consistent with the framework's core architecture: Guardrails prevent, Judge detects, Circuit breaker contains.
+**What this tells you:** If you implement nothing else, input guardrails and an independent Judge gate address the widest range of documented attack patterns. Circuit breakers provide the safety net when prevention fails. This is consistent with the framework's core architecture: Guardrails prevent, Judge detects, Humans decide, Circuit breakers contain.
 
 ## Control-by-Control Validation
 

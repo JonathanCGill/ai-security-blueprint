@@ -1,11 +1,11 @@
 ---
 title: "Walkthrough: The Chevrolet $1 Chatbot"
-description: "An end-to-end walkthrough of the 2023 Chevrolet dealership $1 chatbot incident, showing where each of the four AIRS control layers would have intervened, and what happens when one or more of them fails."
+description: "An end-to-end walkthrough of the 2023 Chevrolet dealership $1 chatbot incident, showing where each of the three AIRS control layers, and the circuit breaker behind them, would have intervened, and what happens when one or more of them fails."
 ---
 
 # Walkthrough: The Chevrolet $1 Chatbot
 
-*One real incident, traced end to end. What went wrong, where each of the four AIRS layers would have caught it, and what the architecture looks like when one or more layers fail.*
+*One real incident, traced end to end. What went wrong, where each of the three AIRS control layers, and the circuit breaker behind them, would have caught it, and what the architecture looks like when one or more layers fail.*
 
 ## The thirty-second story
 
@@ -46,7 +46,7 @@ The interesting question is not *"which layer catches it?"* but *"what if the on
 - **Both guardrail layers and the Judge fail.** Architecturally unlikely, but assume it. The response is composed but still has to pass through authority separation. No deterministic workflow will confirm a $1 sale of a vehicle. The bot can say whatever it wants. The commitment cannot execute.
 - **Human Oversight is bypassed.** This is a governance failure, not a control failure. The Circuit Breaker is the last line: repeated policy violations trip the chatbot into PACE fallback automatically. The attack surface is withdrawn until the team responds.
 
-This is defence in depth. Any single layer can fail without compromising the system. The attacker would have to defeat four independent, heterogeneous controls, and the first three generate telemetry that feeds the fourth.
+This is defence in depth. Any single layer can fail without compromising the system. The attacker would have to defeat three independent, heterogeneous control layers, and the telemetry they generate is what trips the circuit breaker that contains the breach behind them.
 
 ## Why evaluation and red-teaming did not help here
 

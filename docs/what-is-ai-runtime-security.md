@@ -26,7 +26,7 @@ nav_active: what-is
     <p class="airs-muted">So the surface worth watching is wider than the words going in and out. It includes who the AI is acting as and how far that authority reaches, what it remembers, the tools and models it trusts, and what it costs to run. The framework treats each of these as a place to put controls, not an afterthought. <a href="/architecture/#wider-boundary">See the wider boundary &rarr;</a></p>
 
     <h2>How AIRS handles it</h2>
-    <p class="airs-muted">AIRS answers it with four independent layers. Each does one job, and each keeps working even if the others fail.</p>
+    <p class="airs-muted">AIRS answers it with three independent control layers, and a circuit breaker behind them. Each does one job, and each keeps working even if the others fail.</p>
     <figure class="airs-figure">
       <img class="arch-diagram airs-figure__img" src="/images/three-layer-stack.svg" alt="Layers over an AI system: guardrails filter in real time, reviewing controls (scanners, a semantic firewall, and a model-as-judge) check the output, and human oversight handles escalated decisions">
       <figcaption class="airs-figure__cap">Three layers sit over your AI system. The reviewing layer is itself three independent checks. Circuit breakers stand behind them as the failsafe.</figcaption>
@@ -54,10 +54,10 @@ nav_active: what-is
         </div>
       </div>
       <div class="airs-vlist__row">
-        <span class="airs-vlist__num">04</span>
+        <span class="airs-vlist__num">Failsafe</span>
         <div>
           <span class="airs-vlist__title">Circuit breakers</span>
-          <p class="airs-vlist__summary">Stop everything and fail safe when needed.</p>
+          <p class="airs-vlist__summary">Containment, not a behavioural layer: stop everything and fail safe when the three layers are bypassed or overwhelmed.</p>
         </div>
       </div>
     </div>

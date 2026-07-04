@@ -48,8 +48,8 @@ nav_active: home
 <section class="airs-section airs-section--paper" id="how">
   <div class="airs-wrap">
     <p class="airs-eyebrow">How it works</p>
-    <h2 class="airs-h2">Four layers a request passes through.</h2>
-    <p class="airs-intro">Each layer works on its own. If one fails, the others still hold. Start in detect-only, then turn on enforcement when you trust it.</p>
+    <h2 class="airs-h2">Three layers a request passes through, and a breaker behind them.</h2>
+    <p class="airs-intro">Each control layer works on its own. If one fails, the others still hold, and a circuit breaker contains what gets through. Start in detect-only, then turn on enforcement when you trust it.</p>
     <div class="airs-pipeline">
       <span class="airs-pill airs-pill--dashed">request</span>
       <span class="airs-pipeline__sep">&rsaquo;</span>
@@ -80,9 +80,9 @@ nav_active: home
         <p class="airs-layer__body">A person in the loop for high-stakes calls. The bigger the consequence, the closer the watch.</p>
       </div>
       <div class="airs-layer">
-        <p class="airs-layer__num">04</p>
+        <p class="airs-layer__num">Failsafe</p>
         <p class="airs-layer__title">Circuit breakers</p>
-        <p class="airs-layer__body">The emergency stop. Halts the AI and switches to a safe fallback when something breaks.</p>
+        <p class="airs-layer__body">Containment, not a behavioural layer. Halts the AI and switches to a safe fallback when the three layers are bypassed or overwhelmed.</p>
       </div>
     </div>
     <a class="airs-textlink" href="/architecture/">How the layers work together &rarr;</a>

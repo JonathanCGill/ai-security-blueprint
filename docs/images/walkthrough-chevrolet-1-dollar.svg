@@ -13,7 +13,7 @@
 
   <rect width="760" height="620" rx="10" fill="#FAFAFA"/>
 
-  <text x="380" y="30" text-anchor="middle" fill="#37474F" font-size="14" font-weight="600">The Chevrolet $1 Attack and the Four Layers That Would Catch It</text>
+  <text x="380" y="30" text-anchor="middle" fill="#37474F" font-size="14" font-weight="600">The Chevrolet $1 Attack: Three Control Layers and the Circuit Breaker That Would Catch It</text>
 
   <!-- Attacker prompt -->
   <rect x="230" y="50" width="300" height="58" rx="8" fill="#FFEBEE" stroke="#C62828" stroke-width="1.5" filter="url(#wc-shadow)"/>
@@ -65,9 +65,9 @@
 
   <line x1="380" y1="378" x2="380" y2="396" stroke="#78909C" stroke-width="1.5" marker-end="url(#wc-arrow)"/>
 
-  <!-- Layer 4: Circuit Breaker -->
+  <!-- Containment: Circuit Breaker (not a numbered behavioural layer) -->
   <rect x="180" y="400" width="400" height="68" rx="8" fill="#EF6C00" filter="url(#wc-shadow)"/>
-  <text x="380" y="418" text-anchor="middle" fill="white" font-size="12" font-weight="600">4. Circuit Breaker</text>
+  <text x="380" y="418" text-anchor="middle" fill="white" font-size="12" font-weight="600">Circuit Breaker (containment)</text>
   <text x="380" y="434" text-anchor="middle" fill="white" font-size="11" font-weight="500">Catches: same pattern recurring across sessions</text>
   <text x="380" y="449" text-anchor="middle" fill="#FFE0B2" font-size="10">repeated offer-policy violations trip a halt</text>
   <text x="380" y="461" text-anchor="middle" fill="#FFE0B2" font-size="10">chatbot serves static fallback until reset</text>
@@ -86,5 +86,5 @@
   <!-- Defence-in-depth note -->
   <rect x="30" y="550" width="700" height="44" rx="6" fill="#FFF8E1" stroke="#F9A825" stroke-width="1" stroke-dasharray="4,2"/>
   <text x="50" y="570" fill="#E65100" font-size="11" font-weight="600">Defence in depth:</text>
-  <text x="50" y="586" fill="#5D4037" font-size="10">each layer is independent. The attacker must bypass all four, and the first three generate telemetry that feeds the fourth.</text>
+  <text x="50" y="586" fill="#5D4037" font-size="10">each control layer is independent. The attacker must bypass all three, and their telemetry is what trips the circuit breaker that contains the breach.</text>
 </svg>

@@ -15,7 +15,7 @@
 
   <!-- Title -->
   <text x="450" y="36" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">Single-Agent Security Architecture</text>
-  <text x="450" y="56" text-anchor="middle" font-size="12" fill="#64748b">Three-Layer Defence Model with PACE Resilience</text>
+  <text x="450" y="56" text-anchor="middle" font-size="12" fill="#64748b">Three Control Layers + Circuit Breaker Containment, with PACE Resilience</text>
 
   <!-- Flow arrow background -->
   <rect x="60" y="75" width="780" height="360" rx="12" fill="url(#flowGrad)" stroke="#cbd5e1" stroke-width="0.5"/>

@@ -8,8 +8,8 @@ nav_active: framework
 <section class="airs-section airs-hero airs-hero--narrow airs-section--paper airs-section--first">
   <div class="airs-wrap">
     <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">The framework</p>
-    <h1 class="airs-hero__title">Four layers, working together.</h1>
-    <p class="airs-hero__lead">Four independent layers, each doing one job. If one fails, the others still hold. They start in <strong>detect-only</strong>, watching and logging without blocking, and graduate to <strong>enforcing</strong> once you trust what they catch.</p>
+    <h1 class="airs-hero__title">Three layers that act, one that contains.</h1>
+    <p class="airs-hero__lead">Three independent control layers, each doing one job, with a circuit breaker behind them to contain what they can't hold. If one layer fails, the others still hold. They start in <strong>detect-only</strong>, watching and logging without blocking, and graduate to <strong>enforcing</strong> once you trust what they catch.</p>
   </div>
 </section>
 
@@ -20,7 +20,7 @@ nav_active: framework
     <p class="airs-intro">A request passes through prevention, review, and human judgement on its way to the user. Each layer is independent, so a gap in one does not become a hole in all.</p>
     <figure class="airs-figure">
       <img class="arch-diagram airs-figure__img" src="/images/architecture-overview.svg" alt="AIRS reference architecture: input guardrails, the AI model, output guardrails, a reviewing layer, and human governance around them">
-      <figcaption class="airs-figure__cap">Guardrails prevent, reviewing controls detect, humans decide. The same shape holds whether you run one model or many.</figcaption>
+      <figcaption class="airs-figure__cap">Guardrails prevent, reviewing controls detect, humans decide, circuit breakers contain. The same shape holds whether you run one model or many.</figcaption>
     </figure>
   </div>
 </section>
@@ -67,12 +67,12 @@ nav_active: framework
       </div>
       <div class="airs-layerrow">
         <div class="airs-layerrow__meta">
-          <p class="airs-layerrow__num">Layer 04</p>
+          <p class="airs-layerrow__num">Failsafe</p>
           <p class="airs-layerrow__latency">instant</p>
         </div>
         <div>
           <h2 class="airs-layerrow__title">Circuit breakers</h2>
-          <p class="airs-layerrow__body">The emergency stop. It halts the AI and fails over to a safe fallback when the other layers can't hold. You rarely need it, and you're very glad it's there when you do.</p>
+          <p class="airs-layerrow__body">Not a behavioural layer but a containment mechanism: the emergency stop. It halts the AI and fails over to a safe fallback when the three layers above are bypassed or overwhelmed, and maps to PACE Emergency. You rarely need it, and you're very glad it's there when you do.</p>
           <a class="airs-textlink airs-textlink--sm" href="/pace-resilience/">PACE resilience &amp; fail-safe &rarr;</a>
         </div>
       </div>
@@ -88,7 +88,7 @@ nav_active: framework
     <div class="airs-cards airs-cards--roles">
       <a class="airs-card" href="/foundations/">
         <p class="airs-card__title">Foundation</p>
-        <p class="airs-card__body">One agent doing one job. This is where everyone starts, and where the four layers are easiest to see.</p>
+        <p class="airs-card__body">One agent doing one job. This is where everyone starts, and where the three control layers are easiest to see.</p>
         <span class="airs-card__more">Secure a single agent &rarr;</span>
       </a>
       <a class="airs-card" href="/maso/">
@@ -109,7 +109,7 @@ nav_active: framework
   <div class="airs-wrap">
     <p class="airs-eyebrow">The wider boundary</p>
     <h2 class="airs-h2">The layers act on more than words in and out.</h2>
-    <p class="airs-intro">A request is the obvious thing to watch, but it is not the only one. The same four layers also bound what an agent is allowed to be, remember, trust, and spend. Treat these as factors to weigh when you place your controls, not afterthoughts.</p>
+    <p class="airs-intro">A request is the obvious thing to watch, but it is not the only one. The same three control layers also bound what an agent is allowed to be, remember, trust, and spend. Treat these as factors to weigh when you place your controls, not afterthoughts.</p>
     <div class="airs-cards airs-cards--roles">
       <a class="airs-role" href="/core/iam-governance/">
         <p class="airs-role__title">Identity &amp; delegated authority</p>

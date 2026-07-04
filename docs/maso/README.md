@@ -1,6 +1,6 @@
 ---
 title: MASO (Multi-Agent)
-description: "Multi-Agent Security Operations (MASO): risk-proportionate runtime controls for systems where many AI agents collaborate. The same four layers, now governing what agents do to each other."
+description: "Multi-Agent Security Operations (MASO): risk-proportionate runtime controls for systems where many AI agents collaborate. The same three control layers, plus the circuit breaker, now governing what agents do to each other."
 template: redesign.html
 nav_active: framework
 ---
@@ -9,7 +9,7 @@ nav_active: framework
   <div class="airs-wrap">
     <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">MASO &middot; Multi-agent security</p>
     <h1 class="airs-hero__title">When agents work together, trust gets <em class="is-accent">complicated.</em></h1>
-    <p class="airs-hero__lead">Multi-Agent Security Operations secures systems where many AI agents collaborate. The same four layers apply, but now they have to govern what agents do <strong>to each other</strong>.</p>
+    <p class="airs-hero__lead">Multi-Agent Security Operations secures systems where many AI agents collaborate. The same three control layers apply, with the circuit breaker behind them, but now they have to govern what agents do <strong>to each other</strong>.</p>
     <div class="airs-btns">
       <a class="airs-btn airs-btn--primary" href="/maso/demo/">Try the interactive demo &rarr;</a>
       <a class="airs-btn airs-btn--secondary" href="/maso/reference/">Read the full reference</a>
