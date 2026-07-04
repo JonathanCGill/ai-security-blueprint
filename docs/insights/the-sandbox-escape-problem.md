@@ -50,7 +50,7 @@ The findings are specific enough to act on.
 
 ## Behavioral Signatures Worth Monitoring
 
-The transcript analysis reveals distinct patterns across model families that are directly relevant to [MASO observability](../maso/controls/observability.md):
+The transcript analysis reveals distinct patterns across model families that are directly relevant to [MASO (Multi-Agent Security Operations) observability](../maso/controls/observability.md):
 
 **Claude models** (Opus, Sonnet) attempted tasks until token budget exhaustion. They never disengaged, never submitted false flags, and were persistent and methodical in their exploration. From a monitoring perspective, these models will probe systematically for the full duration of their budget.
 

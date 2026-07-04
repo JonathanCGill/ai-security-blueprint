@@ -10,7 +10,7 @@ A comprehensive catalogue of technical controls for agentic AI systems, mapped t
 
 | Control | Framework Coverage | Reference |
 |---------|-------------------|-----------|
-| **Agent identity tokens / cryptographic agent credentials** | IA-2.1 Non-Human Identity (NHI) with certificate-based identity per agent | [MASO Identity & Access](../../maso/controls/identity-and-access.md), [IAM-01](../../infrastructure/controls/identity-and-access.md#iam-01-authentication-of-all-entities) |
+| **Agent identity tokens / cryptographic agent credentials** | IA-2.1 Non-Human Identity (NHI) with certificate-based identity per agent | [MASO (Multi-Agent Security Operations) Identity & Access](../../maso/controls/identity-and-access.md), [IAM-01](../../infrastructure/controls/identity-and-access.md#iam-01-authentication-of-all-entities) |
 | **Per-agent service accounts (least privilege)** | IA-1.2 no shared credentials, IA-1.4 scoped permissions, IAM-02 least-privilege access | [MASO Identity & Access](../../maso/controls/identity-and-access.md), [IAM-02](../../infrastructure/controls/identity-and-access.md#iam-02-least-privilege-access) |
 | **Agent-to-agent authentication (mTLS, signed requests)** | IA-2.3 mutual authentication on the message bus, mTLS in network controls | [MASO Identity & Access](../../maso/controls/identity-and-access.md), [Network & Segmentation](../../infrastructure/controls/network-and-segmentation.md) |
 | **Human-in-the-loop step-up authentication for privileged actions** | IAM-05 human approval for high-impact actions, EC-1.1 human approval gate | [IAM-05](../../infrastructure/controls/identity-and-access.md#iam-05-human-approval-for-high-impact-actions), [MASO Execution Control](../../maso/controls/execution-control.md) |

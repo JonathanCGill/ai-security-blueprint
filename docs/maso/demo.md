@@ -25,7 +25,7 @@ This demo plays back pre-recorded scenarios through a seven-stage evaluation pip
 | **Output judge** | Scans the assembled response for PII leakage and policy violations |
 | **Response delivered** | Final answer returned to the user, or a block notice |
 
-## Mapping to MASO controls
+## Mapping to MASO (Multi-Agent Security Operations) controls
 
 | Demo stage | MASO control |
 |------------|-------------|

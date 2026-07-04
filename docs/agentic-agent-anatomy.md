@@ -119,7 +119,7 @@ This creates emergent risks that do not exist in single-agent systems:
 - **Confused deputy.** An agent acts on behalf of another agent, using its own credentials but following potentially manipulated instructions.
 - **Coordination failures.** Agents make conflicting assumptions, duplicate work, or deadlock waiting for each other.
 
-For controls designed specifically for these failure modes, see [Multi-Agent Controls](core/multi-agent-controls.md) and the [MASO Framework](maso/README.md).
+For controls designed specifically for these failure modes, see [Multi-Agent Controls](core/multi-agent-controls.md) and the [MASO (Multi-Agent Security Operations) Framework](maso/README.md).
 
 ## Why This Architecture Creates Security Challenges
 

@@ -2,7 +2,7 @@
 description: "MASO controls for governing orchestrators, evaluators, and observers: securing the agents that have authority over other agents in multi-agent systems."
 ---
 
-# MASO Control Domain: Privileged Agent Governance
+# MASO (Multi-Agent Security Operations) Control Domain: Privileged Agent Governance
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Extends: [Execution Control](execution-control.md) · [Observability](observability.md) · [Identity & Access](identity-and-access.md)

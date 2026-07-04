@@ -4,7 +4,7 @@ description: "How MASO's Layer 2 evaluation adapts for multi-agent systems: a co
 
 # Distributed Security Architecture
 
-> Part of the [MASO Framework](README.md) · Architecture Pattern
+> Part of the [MASO (Multi-Agent Security Operations) Framework](README.md) · Architecture Pattern
 
 ## Principle
 

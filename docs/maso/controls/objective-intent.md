@@ -2,7 +2,7 @@
 description: "MASO Objective Intent: developer-declared intent specifications that define what agents should accomplish, within what parameters, enabling judges and evaluation agents to assess real behavioral compliance at both tactical and strategic levels."
 ---
 
-# MASO Control Domain: Objective Intent
+# MASO (Multi-Agent Security Operations) Control Domain: Objective Intent
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Extends: [Prompt, Goal & Epistemic Integrity](prompt-goal-and-epistemic-integrity.md) · [Observability](observability.md) · [Privileged Agent Governance](privileged-agent-governance.md)

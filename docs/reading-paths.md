@@ -103,7 +103,7 @@ Reviewing AI output is not a single tool, and reaching for an LLM Judge by defau
 
 ### "I need to secure multi-agent systems"
 
-1. [MASO Framework overview](maso/README.md)
+1. [MASO (Multi-Agent Security Operations) Framework overview](maso/README.md)
 2. [Prompt, Goal & Epistemic Integrity](maso/controls/prompt-goal-and-epistemic-integrity.md)
 3. [Identity & Access](maso/controls/identity-and-access.md)
 4. [Execution Control](maso/controls/execution-control.md)

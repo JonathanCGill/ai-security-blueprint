@@ -2,7 +2,7 @@
 description: "MASO controls for agentic task mandate governance: declaring intent, enforcing means compliance, detecting creative substitution, and evaluating behavioural deviation in agentic AI workflows."
 ---
 
-# MASO Control Domain: Agentic Task Mandate and Behavioural Governance
+# MASO (Multi-Agent Security Operations) Control Domain: Agentic Task Mandate and Behavioural Governance
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Extends: [Objective Intent](objective-intent.md) · [Execution Control](execution-control.md) · [Observability](observability.md) · [Model Cognition Assurance](model-cognition-assurance.md)

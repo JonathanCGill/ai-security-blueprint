@@ -2,7 +2,7 @@
 description: "MASO controls for assessing whether a model's internal reasoning aligns with its expressed outputs: activation-layer transparency, CoT integrity, reward hacking detection, third-party AI risk classification, and procurement attestation for regulated financial services."
 ---
 
-# MASO Control Domain: Model Cognition Assurance
+# MASO (Multi-Agent Security Operations) Control Domain: Model Cognition Assurance
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Extends: [Observability](observability.md) · [Supply Chain](supply-chain.md) · [Privileged Agent Governance](privileged-agent-governance.md)

@@ -63,7 +63,7 @@ Read these in order. Total time: ~90 minutes.
 | 4 | [Risk Assessment](../core/risk-assessment.md) | Quantitative methodology for board-level risk reporting |
 | 5 | [PACE Resilience](../pace-resilience.md) | Fail postures - what happens when each control layer degrades |
 
-**If you have multi-agent systems:** Add [MASO Overview](../maso/README.md) and the [Red Team Playbook](../maso/red-team/red-team-playbook.md).
+**If you have multi-agent systems:** Add [MASO (Multi-Agent Security Operations) Overview](../maso/README.md) and the [Red Team Playbook](../maso/red-team/red-team-playbook.md).
 
 **If you run a SOC:** Add [SOC Integration](../extensions/technical/soc-integration.md) and [Behavioral Anomaly Detection](../extensions/technical/behavioral-anomaly-detection.md).
 

@@ -52,4 +52,4 @@ Walk through these in order. Each one answers a question the previous one raises
     - [What AI Runtime Security is](what-is-ai-runtime-security.md)
     - [Architecture Overview](architecture.md)
     - [Core Controls](core/README.md)
-    - [MASO (Multi-Agent)](maso/README.md)
+    - [MASO (Multi-Agent Security Operations)](maso/README.md)

@@ -92,7 +92,7 @@ These projects have tested, maintained code:
 
 ## Multi-Agent Systems
 
-The pattern above applies to single-model deployments. For systems where **multiple agents communicate, delegate, and act autonomously**, the [MASO Framework](maso/README.md) extends these controls with additional requirements.
+The pattern above applies to single-model deployments. For systems where **multiple agents communicate, delegate, and act autonomously**, the [MASO (Multi-Agent Security Operations) Framework](maso/README.md) extends these controls with additional requirements.
 
 | MASO Component | What It Adds | Implementation Guidance |
 |---|---|---|

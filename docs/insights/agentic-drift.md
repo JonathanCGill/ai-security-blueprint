@@ -198,4 +198,4 @@ The fix is not more guardrails. It is carrying the intent alongside the task, in
     - [Multi-Agent Controls](../core/multi-agent-controls.md) - Trust topologies, identity propagation, and circuit breakers
     - [When Agents Talk to Agents](when-agents-talk-to-agents.md) - Accountability gaps and coordination failures in multi-agent systems
     - [Objective Intent Specification](../maso/controls/objective-intent.md) - Machine-readable intent declarations that can travel with delegation chains
-    - [MASO Observability Controls](../maso/controls/observability.md) - Per-agent monitoring and drift detection telemetry
+    - [MASO (Multi-Agent Security Operations) Observability Controls](../maso/controls/observability.md) - Per-agent monitoring and drift detection telemetry

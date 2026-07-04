@@ -18,5 +18,5 @@ Control implementations for specific use cases.
 
 ## Multi-Agent Examples
 
-For worked examples involving multi-agent orchestration (financial services, healthcare, critical infrastructure), see the **[MASO Worked Examples](../../maso/examples/worked-examples.md)**.
+For worked examples involving multi-agent orchestration (financial services, healthcare, critical infrastructure), see the **[MASO (Multi-Agent Security Operations) Worked Examples](../../maso/examples/worked-examples.md)**.
 

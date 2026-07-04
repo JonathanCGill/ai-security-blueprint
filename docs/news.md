@@ -7,7 +7,7 @@ description: Curated AI runtime security news, linked to AIRS and MASO framework
 
 *Every fortnight, the field runs a live experiment against the framework. This page records what it found, and the control each result puts to the test.*
 
-A biweekly roundup of incidents, research, and developments in AI runtime security, weighted toward agentic and multi-agent stories that test the [MASO](maso/README.md) domains. Each item is mapped to the AIRS and MASO controls most relevant to it, so you can see the framework applied to real events as they break. Newest items first.
+A biweekly roundup of incidents, research, and developments in AI runtime security, weighted toward agentic and multi-agent stories that test the [MASO (Multi-Agent Security Operations)](maso/README.md) domains. Each item is mapped to the AIRS and MASO controls most relevant to it, so you can see the framework applied to real events as they break. Newest items first.
 
 *Items older than three months move to the [News Archive](../archive/2026-03-31/news-archive.md).*
 

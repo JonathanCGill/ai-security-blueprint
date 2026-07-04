@@ -3,7 +3,7 @@ title: MASO Framework Reference
 description: "The Multi-Agent Security Operations (MASO) framework reference: risk-proportionate, PACE-driven controls for securing multi-model agent orchestration. Eleven control domains, three tiers, OWASP coverage, and the full architecture. Select the controls you need. Deselect the ones you do not."
 ---
 
-# MASO Framework Reference
+# MASO (Multi-Agent Security Operations) Framework Reference
 
 *The complete Multi-Agent Security Operations reference: control domains, tiers, OWASP coverage, PACE resilience, and architectural trade-offs. New to MASO? Start with the [MASO overview](README.md) for the short version.*
 

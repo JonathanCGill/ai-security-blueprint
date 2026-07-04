@@ -66,7 +66,7 @@ The Finance invoice processing system (CRITICAL tier) runs a mandatory pre-marke
 
 **Time spent:** 5 minutes. Automated checks, human review of dashboard.
 
-**MASO controls active:** [Identity & Access](../maso/controls/identity-and-access.md) (per-agent NHI), [Execution Control](../maso/controls/execution-control.md) (delegation limits, circuit breakers), [Observability](../maso/controls/observability.md) (decision chain logging), [Prompt & Goal Integrity](../maso/controls/prompt-goal-and-epistemic-integrity.md) (immutable task specifications per agent).
+**MASO (Multi-Agent Security Operations) controls active:** [Identity & Access](../maso/controls/identity-and-access.md) (per-agent NHI), [Execution Control](../maso/controls/execution-control.md) (delegation limits, circuit breakers), [Observability](../maso/controls/observability.md) (decision chain logging), [Prompt & Goal Integrity](../maso/controls/prompt-goal-and-epistemic-integrity.md) (immutable task specifications per agent).
 
 ---
 

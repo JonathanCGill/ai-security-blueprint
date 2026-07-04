@@ -2,7 +2,7 @@
 description: "MASO emergent risk register: 35 risks across nine categories mapped to MASO controls and OWASP, with gap analysis and prioritised remediation."
 ---
 
-# MASO Emergent Risk Register
+# MASO (Multi-Agent Security Operations) Emergent Risk Register
 
 > Part of the [MASO Framework](../README.md) · Risk Analysis
 

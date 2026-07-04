@@ -65,7 +65,7 @@ Every user session must be isolated. No shared state between users unless explic
 | **System prompt anchoring** | Re-inject system instructions at intervals in long conversations, not just at the start |
 | **Context summarisation** | Periodically summarise old turns and replace verbose history with summaries |
 | **Turn limits** | Maximum number of turns per conversation before requiring a new session |
-| **Token budget monitoring** | Alert when context window approaches capacity, because model behavior degrades near limits. This is a security control, not just a performance concern: attention dilution weakens system prompt adherence, increases hallucination rates, and degrades instruction-following. In multi-agent systems, this becomes a dual failure path when the Model-as-Judge's context also fills (see [MASO OP-04](../maso/controls/risk-register.md) for the full risk treatment). Recommended thresholds: 70% (info), 85% (warning), 95% (critical/fail-closed) |
+| **Token budget monitoring** | Alert when context window approaches capacity, because model behavior degrades near limits. This is a security control, not just a performance concern: attention dilution weakens system prompt adherence, increases hallucination rates, and degrades instruction-following. In multi-agent systems, this becomes a dual failure path when the Model-as-Judge's context also fills (see [MASO (Multi-Agent Security Operations) OP-04](../maso/controls/risk-register.md) for the full risk treatment). Recommended thresholds: 70% (info), 85% (warning), 95% (critical/fail-closed) |
 
 #### Context Rotation (Tier 2+)
 

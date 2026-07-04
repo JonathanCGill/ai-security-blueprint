@@ -88,7 +88,7 @@ The two-axis model above applies to single-model deployments. When **multiple ag
 
 Multi-agent systems fail differently. A single agent producing a bad output is a local problem. An agent chain where one compromised agent's output becomes another agent's trusted input is a systemic problem. PACE for multi-agent systems must handle cascading failures, not just component failures.
 
-The **[MASO Framework](maso/README.md)** integrates PACE at the orchestration level:
+The **[MASO (Multi-Agent Security Operations) Framework](maso/README.md)** integrates PACE at the orchestration level:
 
 | PACE Phase | Multi-Agent Response |
 |---|---|

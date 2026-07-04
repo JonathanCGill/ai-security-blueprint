@@ -45,6 +45,6 @@ Honesty about the edges keeps the claim credible.
 
 !!! info "References"
     - [OWASP Top 10 for Agentic Applications (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
-    - [MASO: Multi-Agent System Orchestration](../../maso/README.md)
+    - [MASO (Multi-Agent Security Operations)](../../maso/README.md)
     - [MASO: Objective Intent](../../maso/controls/objective-intent.md)
     - [UK AI Security Institute: *Loss of Oversight* (2026)](https://www.aisi.gov.uk/research)

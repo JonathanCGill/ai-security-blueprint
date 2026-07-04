@@ -86,7 +86,7 @@ nav_active: framework
       </a>
       <a class="airs-card" href="/core/multi-agent-controls/">
         <p class="airs-card__title">Multi-agent</p>
-        <p class="airs-card__body">The primer for many-agent systems, before you go deep on MASO.</p>
+        <p class="airs-card__body">The primer for many-agent systems, before you go deep on MASO (Multi-Agent Security Operations).</p>
       </a>
       <a class="airs-card" href="/pace-resilience/">
         <p class="airs-card__title">PACE resilience</p>

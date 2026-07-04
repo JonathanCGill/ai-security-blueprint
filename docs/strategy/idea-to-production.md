@@ -135,7 +135,7 @@ This stage explicitly evaluates alternatives. The framework's [first control](..
 | **RPA / workflow automation** | Structured, repeatable processes; UI-based integration | Low - deterministic, auditable | Outside framework scope |
 | **Traditional ML** | Pattern recognition on structured data; classification, regression | Low–Medium - predictable, testable | Partial framework (monitoring, bias) |
 | **LLM / Generative AI** | Unstructured input, natural language, content generation | Medium–Critical (depends on use case) | Full framework applies |
-| **Multi-agent AI** | Complex workflows requiring multiple AI components collaborating | High–Critical | Full framework + [MASO](../maso/README.md) |
+| **Multi-agent AI** | Complex workflows requiring multiple AI components collaborating | High–Critical | Full framework + [MASO (Multi-Agent Security Operations)](../maso/README.md) |
 
 ### The Hybrid Reality
 

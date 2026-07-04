@@ -6,7 +6,7 @@ description: A forward-looking catalogue of threat patterns for multi-agent AI s
 
 **Forward-Looking Threat Patterns for Multi-Agent AI Systems**
 
-> Part of the [MASO Framework](../README.md) · Threat Intelligence
+> Part of the [MASO (Multi-Agent Security Operations) Framework](../README.md) · Threat Intelligence
 > Last updated: July 2026
 
 ## Purpose

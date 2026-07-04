@@ -2,7 +2,7 @@
 description: "MASO extraction integrity controls: field-level confidence, authoritative cross-referencing, and provenance for document OCR and parsing in agentic pipelines."
 ---
 
-# MASO Control Domain: Document Extraction Integrity
+# MASO (Multi-Agent Security Operations) Control Domain: Document Extraction Integrity
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Covers: LLM04 (Data/Model Poisoning) · LLM09 (Misinformation) · ASI04 (Resource Overload via input) · ASI06 (Memory & Context Poisoning)

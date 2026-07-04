@@ -336,7 +336,7 @@ If agents (or their developers) can see the precedents the judge uses, they can 
 | **Precedent override** | Present a case that superficially matches a positive precedent but violates a criterion the precedent does not cover | Judge identifies the violation rather than blindly matching the precedent |
 
 !!! info "References"
-    - [MASO Objective Intent](../../maso/controls/objective-intent.md) : OISpec structure and evaluation hierarchy
+    - [MASO (Multi-Agent Security Operations) Objective Intent](../../maso/controls/objective-intent.md) : OISpec structure and evaluation hierarchy
     - [Judge Assurance](../../core/judge-assurance.md) : calibration and accuracy validation for Model-as-Judge instances
     - [Judge Prompt Examples](../templates/judge-prompt-examples.md) : base prompt templates that precedents extend
     - [The Intent Layer](../../insights/the-intent-layer.md) : post-execution semantic evaluation pattern

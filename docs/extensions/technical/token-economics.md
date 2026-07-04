@@ -2,7 +2,7 @@
 description: "How token consumption compounds across multi-agent systems, where MASO adds overhead and where it prevents waste, risk-gated evaluation routing, reasoning token costs, prompt caching, the performance effects of token exhaustion on MASO controls, and why token management is itself a runtime security control."
 ---
 
-# AI Token Economics and MASO
+# AI Token Economics and MASO (Multi-Agent Security Operations)
 
 > Tokens are not just a pricing unit. They are the resource budget every agent operates within. In multi-agent systems, how that budget is consumed, protected, and wasted determines whether your AI deployment is economically viable.
 

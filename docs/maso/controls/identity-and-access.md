@@ -2,7 +2,7 @@
 description: "MASO identity and access controls for multi-agent AI: per-agent credentials, privilege boundaries, delegation rules, and orchestrator isolation."
 ---
 
-# MASO Control Domain: Identity & Access
+# MASO (Multi-Agent Security Operations) Control Domain: Identity & Access
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Covers: ASI03 (Identity & Privilege Abuse) · ASI07 (Insecure Inter-Agent Comms) · LLM06 (Excessive Agency)

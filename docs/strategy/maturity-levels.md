@@ -21,7 +21,7 @@ Most organisations also consume AI through other channels. The maturity question
 | **Copilots and productivity AI** | Microsoft 365 Copilot, GitHub Copilot, Salesforce Einstein | Vendor operates the AI; you govern access and data. | Data classification, access governance, RAG exposure management, output review processes. |
 | **AI coding tools** | GitHub Copilot, Cursor, Claude Code | Vendor operates the AI; you own what ships to production. | Code review discipline. Understanding AI-generated output before it reaches production. |
 
-The rest of this article addresses maturity across all four tracks. The full [control architecture](../architecture.md), [risk tiers](../core/risk-tiers.md), and [MASO framework](../maso/README.md) apply in depth to the first track. For the other three, the framework provides the mental model; the implementation details differ.
+The rest of this article addresses maturity across all four tracks. The full [control architecture](../architecture.md), [risk tiers](../core/risk-tiers.md), and [MASO (Multi-Agent Security Operations) framework](../maso/README.md) apply in depth to the first track. For the other three, the framework provides the mental model; the implementation details differ.
 
 ## Why Maturity Models Matter
 

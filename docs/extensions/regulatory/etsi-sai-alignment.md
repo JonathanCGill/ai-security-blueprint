@@ -2,7 +2,7 @@
 description: "How ETSI's Securing Artificial Intelligence (SAI) and Experiential Networked Intelligence (ENI) standards affect the Multi-Agent Security Operations (MASO) framework: standard-by-standard alignment with gap analysis."
 ---
 
-# ETSI Standards Impact on MASO
+# ETSI Standards Impact on MASO (Multi-Agent Security Operations)
 
 **How European AI security and multi-agent standards shape MASO controls, and where MASO already meets or exceeds their requirements.**
 

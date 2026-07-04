@@ -75,7 +75,7 @@ The [epistemic integrity](../maso/controls/prompt-goal-and-epistemic-integrity.m
 
 **Uncertainty stripping.** Agent A reports a finding with "70% confidence." Agent B passes it along as "likely." Agent C receives it as "is the case." The confidence metadata was lost in translation, and a tentative finding became an established fact.
 
-The [MASO risk register](../maso/controls/risk-register.md) identifies these as the highest-priority gap in current multi-agent security:
+The [MASO (Multi-Agent Security Operations) risk register](../maso/controls/risk-register.md) identifies these as the highest-priority gap in current multi-agent security:
 
 > *"The most dangerous failure modes produce outputs that look correct, are well-formatted, and have multi-agent 'agreement' - but are wrong."*
 

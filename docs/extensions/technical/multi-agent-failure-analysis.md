@@ -102,7 +102,7 @@ Every multi-agent runtime operation falls into one of seven event classes. Each 
 
 ## 2. Failure Node Map
 
-Each runtime event is a potential failure node. Failures are classified by **detection** (loud or silent) and **propagation** (contained or propagating). The most dangerous failures are **silent + propagating**: the system continues operating with corrupted state and no alert. These are the primary targets for MASO controls.
+Each runtime event is a potential failure node. Failures are classified by **detection** (loud or silent) and **propagation** (contained or propagating). The most dangerous failures are **silent + propagating**: the system continues operating with corrupted state and no alert. These are the primary targets for MASO (Multi-Agent Security Operations) controls.
 
 ### 2.1 Agent Lifecycle Failure Nodes
 

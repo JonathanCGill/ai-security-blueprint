@@ -216,7 +216,7 @@ If your agents **communicate, delegate, or act autonomously**, you need addition
 - Transitive authority creating unintended privilege escalation
 - Consensus that looks like independent validation but isn't
 
-The **[MASO Framework](maso/README.md)** extends this pattern into multi-agent orchestration. Start with [Tier 1 - Supervised](maso/implementation/tier-1-supervised.md) and graduate upward as your controls mature.
+The **[MASO (Multi-Agent Security Operations) Framework](maso/README.md)** extends this pattern into multi-agent orchestration. Start with [Tier 1 - Supervised](maso/implementation/tier-1-supervised.md) and graduate upward as your controls mature.
 
 ## Common Mistakes
 

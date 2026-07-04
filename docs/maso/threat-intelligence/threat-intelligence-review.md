@@ -6,7 +6,7 @@ description: A cross-reference of current threat intelligence against the AI Run
 
 **Does Current Threat Intelligence Affect the Framework's Proposals?**
 
-> Part of the [MASO Framework](../README.md) · Threat Intelligence
+> Part of the [MASO (Multi-Agent Security Operations) Framework](../README.md) · Threat Intelligence
 > Last updated: May 2026 (Q2 addendum below the original review)
 
 ## Executive Summary

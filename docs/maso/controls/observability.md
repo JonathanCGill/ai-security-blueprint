@@ -2,7 +2,7 @@
 description: "MASO observability controls: continuous monitoring, immutable audit trails, and automated anomaly detection across multi-agent AI systems."
 ---
 
-# MASO Control Domain: Observability
+# MASO (Multi-Agent Security Operations) Control Domain: Observability
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Covers: ASI09 (Human-Agent Trust Exploitation) · ASI10 (Rogue Agents) · LLM09 (Misinformation) · LLM10 (Unbounded Consumption)

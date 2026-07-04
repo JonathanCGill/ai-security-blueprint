@@ -54,7 +54,7 @@ The framework fills the gaps, not replaces the stack. See [Infrastructure Contro
 |---|---|---|
 | RAG pipeline | [RAG Security](../extensions/technical/rag-security.md) | Retrieval layer is your biggest attack surface - poisoned documents become instructions |
 | Single agent with tools | [Agentic Controls](../core/agentic.md) | Tool access scoping, action classification (read/write/irreversible), confirmation gates |
-| Multi-agent orchestration | [MASO Integration Guide](../maso/integration/integration-guide.md) | Message bus signing, per-agent NHI, cross-agent DLP, delegation depth limits |
+| Multi-agent orchestration | [MASO (Multi-Agent Security Operations) Integration Guide](../maso/integration/integration-guide.md) | Message bus signing, per-agent NHI, cross-agent DLP, delegation depth limits |
 | Streaming responses | [Streaming Controls](../core/streaming-controls.md) | You can't evaluate output that hasn't finished - buffer or accept partial validation |
 | Multimodal (image/audio/video) | [Multimodal Controls](../core/multimodal-controls.md) | Text guardrails don't work on images - you need modality-specific evaluation |
 

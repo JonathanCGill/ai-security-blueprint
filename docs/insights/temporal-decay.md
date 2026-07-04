@@ -4,7 +4,7 @@ description: "Why AI models degrade over time as training cutoffs age, and why M
 
 # Temporal Decay Is Correlated Failure
 
-*The model was accurate when it shipped. The world kept moving. Now every layer of your MASO architecture is confidently wrong about the same things.*
+*The model was accurate when it shipped. The world kept moving. Now every layer of your MASO (Multi-Agent Security Operations) architecture is confidently wrong about the same things.*
 
 ## What the Evidence Shows
 

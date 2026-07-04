@@ -110,7 +110,7 @@ This is the central finding. The b³ results give empirical backing to what [The
 
 The practical implication is that backbone selection belongs in the risk assessment, not just the capability evaluation. When the framework's [risk tiers](../core/risk-tiers.md) require stronger controls at higher tiers, the choice of backbone LLM is one of those controls.
 
-### Attack Vectors Map to MASO Control Domains
+### Attack Vectors Map to MASO (Multi-Agent Security Operations) Control Domains
 
 The six-category attack objective taxonomy maps directly to what MASO already monitors:
 

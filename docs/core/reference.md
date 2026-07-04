@@ -32,7 +32,7 @@ Start with the essentials, then branch into specialised topics based on your dep
 | Reasoning models (chain-of-thought) | [Reasoning Model Controls](reasoning-model-controls.md) |
 | Streaming responses | [Streaming Controls](streaming-controls.md) |
 | Persistent memory or long context | [Memory and Context](memory-and-context.md) |
-| Multi-agent systems | [Multi-Agent Controls](multi-agent-controls.md) then [MASO](../maso/README.md) |
+| Multi-agent systems | [Multi-Agent Controls](multi-agent-controls.md) then [MASO (Multi-Agent Security Operations)](../maso/README.md) |
 | Open-weight / self-hosted models | [Open-Weight Models](../insights/open-weight-models-shift-the-burden.md) |
 
 **PACE resilience (read after controls):**

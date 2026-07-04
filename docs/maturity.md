@@ -58,7 +58,7 @@ Controls mapped to established international standards and industry frameworks.
 
 | Standard | Mapping Depth |
 |----------|--------------|
-| OWASP LLM Top 10 (2025) | Control-by-control across foundation + MASO |
+| OWASP LLM Top 10 (2025) | Control-by-control across foundation + MASO (Multi-Agent Security Operations) |
 | OWASP Agentic Top 10 (2026) | Control-by-control in MASO |
 | NIST AI RMF | Govern, Map, Measure, Manage functions |
 | ISO 42001 | Annex A clause-level alignment |

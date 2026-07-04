@@ -86,7 +86,7 @@ You don't need a meta-judge. You need **calibration testing** - periodic verific
 
 Production systems are already moving beyond flat topologies. A planning agent decomposes a complex task. A sub-orchestrator manages a cluster of specialist agents. Another sub-orchestrator handles a different cluster. Results flow up through aggregation agents before reaching the user.
 
-This creates multi-level hierarchies where MASO's current controls - designed for a single orchestration level - face ambiguity:
+This creates multi-level hierarchies where MASO (Multi-Agent Security Operations)'s current controls - designed for a single orchestration level - face ambiguity:
 
 **Does IA-2.4 (no transitive permissions) apply at every level?** In principle, yes. In practice, if Sub-orchestrator B manages Agents C, D, and E, and Sub-orchestrator B was invoked by Orchestrator A, the delegation chain is: User → A → B → C. Each boundary needs explicit permission scoping, not just the first.
 

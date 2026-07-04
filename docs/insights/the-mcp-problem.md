@@ -179,7 +179,7 @@ The UK AI Security Institute's *Frontier AI Trends Report* (December 2025) track
 
 **Why this matters for your control framework:**
 
-- **Levels 1–2** align with Tier 1 (Supervised) in the [MASO implementation tiers](../maso/README.md). Standard controls apply.
+- **Levels 1–2** align with Tier 1 (Supervised) in the [MASO (Multi-Agent Security Operations) implementation tiers](../maso/README.md). Standard controls apply.
 - **Level 3** is the transition point. Human approval mitigates execution risk, but consent fatigue (Risk 3 above) means the approval layer degrades over time. Judge evaluation of action patterns becomes essential.
 - **Levels 4–5** require Tier 2 (Managed) or Tier 3 (Autonomous) MASO controls. At these levels, the MCP server is no longer a tool - it's an autonomous agent operating through the MCP protocol. Govern it accordingly.
 
