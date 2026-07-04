@@ -71,3 +71,4 @@ A model is the right tool, and now you owe it runtime security. Pick up the fram
     - [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md)
     - [Risk Tier Is the Use Case](insights/risk-tier-is-use-case.md)
     - [Where to Begin](start.md)
+    - [AI Secured by Design: Should You Use AI?](https://aisecuredbydesign.io/how-to/should-you-use-ai/)

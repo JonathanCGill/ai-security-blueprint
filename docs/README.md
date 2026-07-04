@@ -122,6 +122,14 @@ nav_active: home
   </div>
 </section>
 
+<section class="airs-section airs-section--paper airs-center">
+  <div class="airs-wrap--narrow">
+    <p class="airs-eyebrow">Before runtime</p>
+    <p class="airs-statement">Runtime security begins the moment a system goes live, but how safe it <em>can</em> be is largely decided earlier: which model you trust, which platform you build on, how the thing is shipped and governed. That is the other half of the lifecycle, and it has its own companion framework.</p>
+    <a class="airs-textlink" href="https://aisecuredbydesign.io/">AI Secured by Design: securing AI before deployment &rarr;</a>
+  </div>
+</section>
+
 <section class="airs-section airs-section--card">
   <div class="airs-wrap">
     <p class="airs-eyebrow">Insights &amp; news</p>
