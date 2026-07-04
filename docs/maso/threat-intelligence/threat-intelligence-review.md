@@ -36,7 +36,7 @@ These framework proposals are directly confirmed by recent threat intelligence. 
 
 ### 1.1 The Three-Layer Defence Model (Guardrails → Judge → Human)
 
-**Framework proposal:** No single control layer is sufficient. Guardrails catch known-bad patterns. Model-as-Judge detects unknown-bad. Humans make final decisions.
+**Framework proposal:** No single control layer is sufficient. Guardrails catch known-bad patterns. A semantic firewall catches known-bad intent. Model-as-Judge detects unknown-bad content. Humans make final decisions.
 
 **Threat intelligence validation:**
 
