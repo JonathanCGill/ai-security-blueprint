@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Infrastructure controls for AI secrets management: preventing credential exposure via context windows, tool results, and model outputs."
 ---
 

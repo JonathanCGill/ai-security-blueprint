@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "MASO emergent risk register: 35 risks across nine categories mapped to MASO controls and OWASP, with gap analysis and prioritised remediation."
 ---
 

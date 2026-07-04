@@ -29,6 +29,20 @@
   --md-typeset-a-color: #8da9d8;
 }
 
+/* Per-artifact currency notice, rendered by the `as_at` front-matter block in
+   overrides/main.html. Point-in-time marker for reference artifacts only. */
+.md-typeset .as-at-note {
+  margin: 0 0 1.2rem;
+  padding: 0.55rem 0.9rem;
+  border-left: 3px solid var(--md-accent-fg-color);
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-radius: 2px;
+}
+.md-typeset .as-at-note strong { color: var(--md-default-fg-color); font-weight: 600; }
+
 /* ── Typography: Spectral headings, Public Sans body, Plex Mono code ── */
 :root {
   --md-text-font: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;

@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Security controls for streaming AI output, addressing the challenge of validating responses that reach users before evaluation completes."
 ---
 

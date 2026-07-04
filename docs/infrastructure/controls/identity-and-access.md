@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Infrastructure controls for AI identity and access management: authentication, authorisation, and session management across human users, agents, and model endpoints."
 ---
 

@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "MASO controls for governing orchestrators, evaluators, and observers: securing the agents that have authority over other agents in multi-agent systems."
 ---
 

@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 title: Infrastructure Controls Reference
 description: Infrastructure controls that enforce AI behavioral security across identity, access, logging, network segmentation, and incident response. Select or deselect controls based on your risk tier and organisational context.
 ---

@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Two assurance ideas from UK AISI research: making a structured safety case that safeguards are sufficient, and treating oversight as a depreciating asset whose supporting properties must be tracked so safety claims do not silently expire."
 ---
 

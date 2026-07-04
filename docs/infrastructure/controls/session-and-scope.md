@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: Explains controls for isolating agent sessions, limiting blast radius, and preventing scope creep in autonomous AI operations.
 ---
 

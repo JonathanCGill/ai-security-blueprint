@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "The semantic firewall: intent-level boundary enforcement between Guardrails and Model-as-Judge, catching prohibited intent expressed in novel wording."
 ---
 

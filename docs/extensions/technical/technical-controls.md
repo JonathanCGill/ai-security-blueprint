@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: Covers network, infrastructure, and platform controls that enforce AI security at the technical layer.
 ---
 

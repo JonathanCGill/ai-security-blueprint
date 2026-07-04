@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "MASO data protection controls: classifying and controlling data flows between agents, securing shared knowledge bases, and preventing cross-agent data leakage."
 ---
 

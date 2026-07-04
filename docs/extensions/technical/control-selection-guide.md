@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: A guide for selecting proportionate AI security controls based on risk tier, use case type, and deployment context.
 ---
 

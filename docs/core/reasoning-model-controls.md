@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Security controls for reasoning models with hidden chain-of-thought, addressing risks from opaque reasoning traces in OpenAI o1/o3, Claude, and Gemini."
 ---
 

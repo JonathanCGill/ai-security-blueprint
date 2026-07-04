@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "The three-layer control model for AI runtime security: guardrails for known-bad patterns, a reviewing layer (semantic firewall for known-bad intent, Model-as-Judge for unknown-bad behaviour) at increasing depth, and human oversight for high-consequence decisions. A circuit breaker sits behind the three as containment, not a behavioural layer, and maps to PACE Emergency."
 ---
 

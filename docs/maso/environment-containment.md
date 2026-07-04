@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "MASO environment containment strategy: securing the systems agents connect to rather than relying on the agent to behave correctly. Hardened APIs, opaque errors, stored procedures, and infrastructure-level kill switches."
 ---
 

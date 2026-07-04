@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Databricks implementation patterns for AI security controls: zone-by-zone architecture using Mosaic AI Gateway, Unity Catalog, and Model Serving."
 ---
 

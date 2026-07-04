@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Microsoft Azure and Foundry implementation patterns for AI security controls: zone-by-zone architecture mapping with Entra ID, Content Safety, and Sentinel."
 ---
 

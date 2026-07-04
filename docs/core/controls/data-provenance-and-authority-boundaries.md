@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "The invariant underneath the control layers: untrusted content is tagged as data at the boundary, never self-promotes to instruction, and each flow is routed to the cheapest sufficient checker. Commands take a deterministic protocol and port check; natural-language content takes the semantic firewall."
 ---
 

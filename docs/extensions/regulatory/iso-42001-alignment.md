@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "AI governance operating model aligned with ISO 42001: centralised policy, federated execution, and unified assurance across enterprise AI platforms."
 ---
 

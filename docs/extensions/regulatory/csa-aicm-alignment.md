@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Alignment between this framework and the CSA AI Controls Matrix (AICM) v1.1: how the AICM's 18 domains map to existing coverage, how AICM relates to MASO multi-agent controls, and what the shared responsibility model and CBRA add."
 ---
 

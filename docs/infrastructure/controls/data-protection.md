@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Infrastructure controls for AI data protection: securing sensitive data in prompts, context windows, RAG retrieval, model responses, and training pipelines."
 ---
 

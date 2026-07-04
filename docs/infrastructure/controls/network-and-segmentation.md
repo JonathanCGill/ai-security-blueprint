@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Infrastructure controls for AI network security: isolating model endpoints, vector stores, and agent tools into defined zones to limit blast radius."
 ---
 

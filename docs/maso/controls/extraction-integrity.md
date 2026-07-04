@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "MASO extraction integrity controls: field-level confidence, authoritative cross-referencing, and provenance for document OCR and parsing in agentic pipelines."
 ---
 

@@ -113,3 +113,15 @@
   <meta property="og:image" content="{{ config.site_url }}images/architecture-overview.png" />
 {% endif %}
 {% endblock %}
+
+{# Per-artifact currency notice. Renders only on pages that declare an `as_at`
+   date in their front matter (reference artifacts: control sets, crosswalks,
+   mapping tables). No site-wide "last updated" stamp is added here. #}
+{% block content %}
+  {% if page and page.meta and page.meta.as_at %}
+  <aside class="as-at-note md-typeset" role="note" aria-label="Currency notice">
+    <strong>As-at: {{ page.meta.as_at }}.</strong> Point-in-time snapshot. Verify current requirements against official sources before relying on this.
+  </aside>
+  {% endif %}
+  {{ super() }}
+{% endblock %}

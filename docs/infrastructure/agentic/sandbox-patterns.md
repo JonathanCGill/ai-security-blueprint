@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Sandbox patterns for agentic AI: containing code-generating agents with execution isolation, file system restrictions, network controls, and resource limits."
 ---
 

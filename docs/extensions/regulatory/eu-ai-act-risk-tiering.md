@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "A practical guide to deciding how far you can go with AI deployments, using EU AI Act risk categories mapped to framework controls. Shows how each control layer unlocks more ambitious AI use cases."
 ---
 

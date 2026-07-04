@@ -14,6 +14,7 @@ nav_active: home
       <a class="airs-btn airs-btn--primary" href="/what-is-ai-runtime-security/">Start here &rarr;</a>
       <a class="airs-btn airs-btn--secondary" href="/architecture/">See the framework</a>
     </div>
+    <p class="airs-fineprint">Control frameworks and crosswalks are point-in-time snapshots; see the date on each. Verify current regulatory requirements against official sources.</p>
   </div>
 </section>
 

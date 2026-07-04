@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: Maps AI Runtime Security controls to ISO 27001:2022 information security requirements, identifying where existing controls apply and where AI introduces novel gaps.
 ---
 
