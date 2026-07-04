@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Mapping 80 infrastructure controls to NIST Cybersecurity Framework 2.0 Functions, Categories, and Subcategories with three-layer pattern alignment."
 ---
 

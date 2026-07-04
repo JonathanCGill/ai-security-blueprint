@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Mapping infrastructure controls to the OWASP Top 10 for LLM Applications (2025) and the OWASP Top 10 for Agentic AI with specific mitigations per risk."
 ---
 

@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Quantitative risk assessment methodology for AI controls using layered defence-in-depth, aligned with NIST AI RMF, with worked examples across all four risk tiers."
 ---
 

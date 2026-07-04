@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "MASO execution controls: bounding agent actions by permission, impact, and time with circuit breakers, PACE escalation, and cascading failure prevention."
 ---
 

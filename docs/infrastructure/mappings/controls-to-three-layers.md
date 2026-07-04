@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: Maps all 80 infrastructure controls to the three-layer behavioral security pattern of Guardrails, Model-as-Judge, and Human Oversight.
 ---
 

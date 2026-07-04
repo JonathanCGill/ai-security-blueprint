@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Comprehensive technical controls catalogue for agentic AI systems: identity, execution, data, observability, and supply chain controls with framework cross-references."
 ---
 

@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Infrastructure controls for AI incident response: detection, classification, containment, and recovery procedures for prompt injection, data leakage, and model failures."
 ---
 

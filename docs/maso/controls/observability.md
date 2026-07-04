@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "MASO observability controls: continuous monitoring, immutable audit trails, and automated anomaly detection across multi-agent AI systems."
 ---
 

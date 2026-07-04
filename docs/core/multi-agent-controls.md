@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Security controls for multi-agent AI systems: trust topologies, delegation chains, privilege boundaries, and accountability across agent-to-agent interactions."
 ---
 

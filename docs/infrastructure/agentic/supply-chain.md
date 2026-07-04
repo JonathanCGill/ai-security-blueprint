@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: Security controls establishing verification, provenance, and integrity requirements across the full AI supply chain, from foundation models to third-party tools.
 ---
 

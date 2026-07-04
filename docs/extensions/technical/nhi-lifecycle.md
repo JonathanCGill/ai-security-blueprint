@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: A lifecycle management guide for AI agent identities covering provisioning, access control, and accountability as non-human principals.
 ---
 

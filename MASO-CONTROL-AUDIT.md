@@ -1,5 +1,7 @@
 # MASO Control Catalogue — Audit / Trim List
 
+**As-at: 2026-07-04.** Point-in-time snapshot. Verify current requirements against official sources before relying on this.
+
 Working document. Every defined control ID with its title, grouped by the eleven domains.
 Trim entries that are sub-controls rather than top-level controls, then the headline number follows from the count.
 

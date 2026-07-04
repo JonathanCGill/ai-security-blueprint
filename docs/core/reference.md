@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 title: Core Controls Reference
 description: Core implementation guide for AI runtime security controls including risk classification, control definitions, and specialised controls for production AI systems.
 ---

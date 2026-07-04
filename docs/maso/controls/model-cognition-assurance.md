@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "MASO controls for assessing whether a model's internal reasoning aligns with its expressed outputs: activation-layer transparency, CoT integrity, reward hacking detection, third-party AI risk classification, and procurement attestation for regulated financial services."
 ---
 

@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: Extended security controls for agentic AI systems that take autonomous multi-step actions, use tools, and interact with external systems.
 ---
 

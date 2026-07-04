@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Proposed security extensions for multimodal, reasoning, streaming, and multi-agent AI systems, covering design directions for capabilities that break single-model assumptions."
 ---
 

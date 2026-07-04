@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Risk tier definitions for AI systems, from LOW to CRITICAL, with control requirements scaled to impact, autonomy, and data sensitivity. Select or deselect controls based on your risk appetite and organisational context."
 ---
 

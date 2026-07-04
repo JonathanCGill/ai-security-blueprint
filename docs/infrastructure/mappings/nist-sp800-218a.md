@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Mapping NIST SP 800-218A secure development practices to the AIRS Framework: lifecycle handoff points between development-time and deployment-time controls."
 ---
 

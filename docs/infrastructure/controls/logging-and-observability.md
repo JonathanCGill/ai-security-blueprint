@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Infrastructure controls for AI logging and observability: capturing non-deterministic behaviour, semantic content, and multi-step reasoning chains in production."
 ---
 

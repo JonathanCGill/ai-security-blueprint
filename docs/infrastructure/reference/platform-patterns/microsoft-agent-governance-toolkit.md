@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Microsoft Agent Governance Toolkit implementation patterns for AI agent runtime security: policy enforcement, execution rings, compliance automation, and OWASP Agentic Top 10 coverage."
 ---
 

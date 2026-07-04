@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Mapping infrastructure controls to ISO/IEC 42001:2023 Annex A requirements for AI management systems with coverage analysis per clause."
 ---
 

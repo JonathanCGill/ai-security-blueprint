@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "AWS Bedrock implementation patterns for AI security controls: zone-by-zone architecture mapping with IAM, guardrails, and logging configuration."
 ---
 

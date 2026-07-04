@@ -95,6 +95,15 @@ body:has(.airs-rd-main) .md-main__inner {
 }
 .airs-eyebrow--accent { color: var(--accent); }
 
+/* Homepage currency/scope notice: points readers to per-artifact dates. */
+.airs-fineprint {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 62ch;
+  margin: 22px 0 0;
+}
+
 .airs-h2 {
   font-size: clamp(26px, 3.4vw, 38px);
   line-height: 1.15;

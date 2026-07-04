@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: Shows how each major framework control maps to documented, real-world AI security failures and incidents.
 ---
 

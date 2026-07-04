@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "How ETSI's Securing Artificial Intelligence (SAI) and Experiential Networked Intelligence (ENI) standards affect the Multi-Agent Security Operations (MASO) framework: standard-by-standard alignment with gap analysis."
 ---
 

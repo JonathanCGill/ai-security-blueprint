@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Detailed mapping of framework technical controls to ISO/IEC 42001:2023 clause requirements with a quick reference matrix across guardrails, Judge, and HITL."
 ---
 

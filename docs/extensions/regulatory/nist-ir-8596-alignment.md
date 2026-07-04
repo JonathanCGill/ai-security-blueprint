@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Alignment review of the AIRS Framework against the NIST Cybersecurity Framework Profile for Artificial Intelligence (IR 8596), covering all six CSF 2.0 Functions with gap analysis."
 ---
 

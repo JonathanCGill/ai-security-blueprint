@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Tool access controls for agentic AI: declaring, mediating, constraining, and logging all agent tool invocations through a deterministic authorisation gateway."
 ---
 

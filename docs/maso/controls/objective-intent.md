@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "MASO Objective Intent: developer-declared intent specifications that define what agents should accomplish, within what parameters, enabling judges and evaluation agents to assess real behavioral compliance at both tactical and strategic levels."
 ---
 

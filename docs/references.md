@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: Credits the researchers, practitioners, standards bodies, and organisations whose work informs this framework, with links to primary sources.
 ---
 

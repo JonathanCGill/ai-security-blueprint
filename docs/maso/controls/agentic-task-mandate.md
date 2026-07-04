@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "MASO controls for agentic task mandate governance: declaring intent, enforcing means compliance, detecting creative substitution, and evaluating behavioural deviation in agentic AI workflows."
 ---
 

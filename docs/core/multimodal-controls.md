@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Security controls for multimodal AI systems processing images, audio, video, and documents, addressing attack surfaces that text-based guardrails cannot cover."
 ---
 

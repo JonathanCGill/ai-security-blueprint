@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Cryptographic attestation for the AI artifact set: signing models, adapters, tool manifests, prompts, and OISpecs at build, verifying them at admission, load, and per-action gates, and keeping the verification results as tamper-evident audit evidence. The artifact counterpart to data provenance."
 ---
 

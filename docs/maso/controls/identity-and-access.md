@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "MASO identity and access controls for multi-agent AI: per-agent credentials, privilege boundaries, delegation rules, and orchestrator isolation."
 ---
 

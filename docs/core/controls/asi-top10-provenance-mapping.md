@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "The OWASP Agentic (ASI) Top 10 mapped against the provenance and authority model: every named risk resolves to the same small core of provenance tagging, a deterministic structural floor, and a conformance test against declared expectation."
 ---
 

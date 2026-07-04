@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Delegation chain controls for agentic AI: enforcing least privilege, maintaining audit trails, and preventing privilege escalation across agent-to-agent delegation."
 ---
 

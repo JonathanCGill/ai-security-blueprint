@@ -1,4 +1,5 @@
 ---
+as_at: "2026-07-04"
 description: "Mapping infrastructure controls to NIST AI RMF 1.0 subcategories across Govern, Map, Measure, and Manage functions, covering 51 of the framework's 72 subcategories."
 ---
 

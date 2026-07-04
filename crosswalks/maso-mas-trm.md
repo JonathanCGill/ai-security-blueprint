@@ -1,6 +1,8 @@
 # MASO → MAS TRM Crosswalk
 
-> This crosswalk maps MASO controls to the MAS TRM Guidelines (Jan 2021 revision) as understood at 4 July 2026. MAS guidance, notices, and advisories change. This is not legal or compliance advice. Adopters are responsible for verifying current MAS requirements directly against official MAS sources before relying on any mapping here.
+**As-at: 2026-07-04.** Point-in-time snapshot. Verify current requirements against official sources before relying on this.
+
+> This crosswalk maps MASO controls to the MAS TRM Guidelines (Jan 2021 revision) as understood at 2026-07-04. MAS guidance, notices, and advisories change. This is not legal or compliance advice. Adopters are responsible for verifying current MAS requirements directly against official MAS sources before relying on any mapping here.
 
 ## Positioning
 
