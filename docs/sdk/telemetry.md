@@ -1,3 +1,7 @@
+---
+description: "Emit structured security events from the AIRS SDK for SOC, SIEM, and compliance: correlate guardrail hits, Judge decisions, and blocked requests across a multi-agent chain."
+---
+
 # Telemetry & Audit
 
 Structured security event emission for SOC integration, compliance, and observability.

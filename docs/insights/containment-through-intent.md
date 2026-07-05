@@ -1,3 +1,7 @@
+---
+description: "If you know what an agent is supposed to do, every layer of defence gains a reference point. How declared intent turns open-ended agents into a containable, evaluable problem."
+---
+
 # Containment Through Declared Intent
 
 <!-- golden-thread-nav -->

@@ -1,3 +1,7 @@
+---
+description: "Why a security function that only produces findings and commentary fails to reduce risk, and how to shift from heckling delivery teams to giving them tools that solve real problems."
+---
+
 # Security as Enablement, Not Commentary
 
 *If your security function's primary output is a narrative about another team, you are not reducing risk. You are generating a backlog item competing for priority against revenue, customer experience, and regulatory change.*

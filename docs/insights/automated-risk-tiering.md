@@ -1,3 +1,7 @@
+---
+description: "If classifying an AI system needs a governance meeting and a three-week wait, you built a gate not a guardrail. How to make risk tiering automatic, immediate, and control-applying."
+---
+
 # Automated Risk Tiering
 
 *If classifying your AI system requires a governance meeting, a questionnaire, and a three-week wait for sign-off - you have built a gate, not a guardrail. Classification should take two minutes, produce an immediate result, and auto-apply the controls that make the risk manageable.*

@@ -1,3 +1,7 @@
+---
+description: "Every enterprise AI system depends on foundation models, frameworks, embeddings, and vector stores you did not build. Mapping the AI supply chain risk and the controls that contain it."
+---
+
 # The Supply Chain Problem
 
 ## You Don't Control the Model You Deploy

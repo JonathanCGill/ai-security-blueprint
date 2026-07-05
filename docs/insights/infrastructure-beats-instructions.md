@@ -1,3 +1,7 @@
+---
+description: "You cannot secure AI agents with prompts. Why runtime security must be enforced through infrastructure and hard constraints rather than instructions a model can ignore or be talked out of."
+---
+
 # Infrastructure Beats Instructions
 
 <!-- golden-thread-nav -->

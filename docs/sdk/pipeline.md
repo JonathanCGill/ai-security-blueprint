@@ -1,3 +1,7 @@
+---
+description: "The AIRS SecurityPipeline orchestrates guardrails, Judge, and human oversight into a single evaluation flow, the main entry point for integrating runtime security into your application."
+---
+
 # Security Pipeline
 
 The `SecurityPipeline` orchestrates all three layers into a single evaluation flow. It is the main entry point for integrating AIRS into your application.

@@ -1,3 +1,7 @@
+---
+description: "LLM weights are opaque even to the specialists who train them. Why you cannot inspect, trace, or fully verify a model you deploy, and what that means for runtime security."
+---
+
 # You Don't Know What You're Deploying
 
 *LLMs are built by specialists who retain the weights. Even they don't fully know what their models can do. That is why this framework exists.*

@@ -1,3 +1,7 @@
+---
+description: "Reasoning models run hidden internal chains before answering, creating a new trust gap. What extended thinking means for AI runtime security and the reasoning you cannot see."
+---
+
 # When AI Thinks Before It Answers
 
 *Reasoning models create a new problem: do you trust the thinking you can't see?*

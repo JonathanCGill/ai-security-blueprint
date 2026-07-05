@@ -1,3 +1,7 @@
+---
+description: "The most effective way to reduce AI risk is not using AI where it does not belong. Choosing the right tool as the first control, before guardrails, judges, or human oversight."
+---
+
 # The First Control: Choosing the Right Tool
 
 > The most effective way to reduce AI risk is to not use AI where it doesn't belong.

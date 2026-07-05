@@ -1,3 +1,7 @@
+---
+description: "What peer-reviewed research actually says about runtime AI security: where the science supports guardrails, Model-as-Judge, and human oversight, and where the evidence is still thin."
+---
+
 # The Evidence Gap: What Research Actually Says About Runtime AI Security
 
 *Where the science supports the controls - and where it doesn't yet*

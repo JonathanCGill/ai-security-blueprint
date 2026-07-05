@@ -1,3 +1,7 @@
+---
+description: "Model selection is a security decision, not just a capability one. A flawed model makes every downstream control harder, so ask whether you should trust it before how to monitor it."
+---
+
 # The Model You Choose Is a Security Decision
 
 *Choosing a flawed model makes every control downstream harder. The first security question isn't "how do we monitor it?" It's "should we trust it?"*

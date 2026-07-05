@@ -1,3 +1,7 @@
+---
+description: "In multi-agent systems the orchestrator is an LLM making decisions, yet it sits outside the controls applied to task agents. Why the highest-value target has the least protection."
+---
+
 # The Orchestrator Problem
 
 *The most powerful agents in your system have the least security controls applied to them.*

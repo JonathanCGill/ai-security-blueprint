@@ -1,5 +1,23 @@
 {% extends "base.html" %}
 
+{#
+  Page title. Mirrors the Material base theme logic, but on the homepage the
+  front-matter title already carries the brand ("AI Runtime Security (AIRS)"),
+  so the base theme's "<title> - <site_name>" suffix would repeat it. Emit the
+  title alone on the homepage; keep the suffixed form everywhere else.
+#}
+{% block htmltitle %}
+  {% if page and page.is_homepage %}
+    <title>{{ page.meta.title if page.meta and page.meta.title else config.site_name }}</title>
+  {% elif page and page.meta and page.meta.title %}
+    <title>{{ page.meta.title }} - {{ config.site_name }}</title>
+  {% elif page and page.title and not page.is_homepage %}
+    <title>{{ page.title | striptags }} - {{ config.site_name }}</title>
+  {% else %}
+    <title>{{ config.site_name }}</title>
+  {% endif %}
+{% endblock %}
+
 {% block extrahead %}
 {{ super() }}
 <!-- Editorial fonts loaded once, globally: Spectral (headings), Public Sans (body/UI), IBM Plex Mono (code/labels) -->
@@ -9,16 +27,11 @@
 <!-- Security headers (static site: delivered via meta where the HTML spec honours them) -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; upgrade-insecure-requests" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<!-- SEO meta tags -->
-{% if page and page.meta and page.meta.description %}
-  <meta name="description" content="{{ page.meta.description }}" />
-{% else %}
-  <meta name="description" content="{{ config.site_description }}" />
-{% endif %}
-<meta name="author" content="{{ config.site_author }}" />
+<!-- SEO meta tags. description, author and canonical are emitted by the
+     Material base theme (base.html) from page/config metadata, so they are
+     not repeated here. Only tags the base theme does not provide are added. -->
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
-<link rel="canonical" href="{{ page.canonical_url }}" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MTNR4PST40"></script>
 <script>
@@ -83,35 +96,12 @@
   ]
 }
 </script>
-{% if page and page.meta %}
-  {% set seo_description = page.meta.get('og_description', page.meta.get('description', config.site_description)) %}
-  <!-- Open Graph / LinkedIn -->
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="{{ page.meta.get('og_title', page.meta.get('title', page.title)) }} | {{ config.site_name }}" />
-  <meta property="og:description" content="{{ seo_description }}" />
-  <meta property="og:url" content="{{ page.canonical_url }}" />
-  <meta property="og:site_name" content="{{ config.site_name }}" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:image" content="{{ config.site_url }}images/architecture-overview.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="867" />
-  <meta property="og:image:alt" content="AIRS | AI Runtime Security Architecture Overview" />
-  <meta property="article:author" content="https://www.linkedin.com/in/jonathancgill/" />
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{ page.meta.get('og_title', page.meta.get('title', page.title)) }} | {{ config.site_name }}" />
-  <meta name="twitter:description" content="{{ seo_description }}" />
-  <meta name="twitter:image" content="{{ config.site_url }}images/architecture-overview.png" />
-  <meta name="twitter:image:alt" content="AIRS | AI Runtime Security Architecture Overview" />
-{% else %}
-  <!-- Fallback OG tags (e.g. 404 page) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="{{ config.site_name }}" />
-  <meta property="og:description" content="{{ config.site_description }}" />
-  <meta property="og:site_name" content="{{ config.site_name }}" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:image" content="{{ config.site_url }}images/architecture-overview.png" />
-{% endif %}
+<!-- Open Graph and Twitter/X card tags are generated per page by the Material
+     `social` plugin (see mkdocs.yml), using a unique social card image for
+     each page and og:type=website. They are intentionally not emitted here:
+     a second static set would duplicate every tag and override the per-page
+     card with a single generic image. -->
+<meta property="article:author" content="https://www.linkedin.com/in/jonathancgill/" />
 {% endblock %}
 
 {# Per-artifact currency notice. Renders only on pages that declare an `as_at`

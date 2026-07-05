@@ -1,3 +1,7 @@
+---
+description: "The same model can be low-risk or critical depending on deployment. Why AI risk classification belongs to the use case and what the system does, not the underlying technology."
+---
+
 # Risk Tier Is Use Case, Not Technology
 
 *The same model can be low-risk or critical - classification is about deployment, not capability*
