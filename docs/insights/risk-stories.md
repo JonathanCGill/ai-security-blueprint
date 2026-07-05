@@ -1,3 +1,7 @@
+---
+description: "Real AI incidents in production, from the $1 Chevy Tahoe to public failures, each mapped to the specific control layers and PACE resilience posture that would have contained them."
+---
+
 # Risk Stories
 
 *Real incidents. Concrete controls. Honest limits.*

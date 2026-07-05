@@ -1,3 +1,7 @@
+---
+description: "Securing an agent for one task is solved; securing it over weeks and months is not. How accumulated memory and evolving behaviour erode the security properties you validated on day one."
+---
+
 # The Long-Horizon Problem
 
 *Securing an agent for one task is solved. Securing it over weeks and months is not.*

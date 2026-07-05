@@ -1,3 +1,7 @@
+---
+description: "Streaming and real-time AI break the inspect-then-deliver model: you cannot validate an output that has not finished. How runtime security adapts to responses that arrive token by token."
+---
+
 # You Can't Validate What Hasn't Finished
 
 *Real-time AI breaks the inspect-then-deliver model*

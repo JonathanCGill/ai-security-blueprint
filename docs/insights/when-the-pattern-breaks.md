@@ -1,3 +1,7 @@
+---
+description: "Where the guardrails, Judge, and human three-layer pattern holds and where it breaks: an honest look at its scaling limits in complex multi-agent architectures."
+---
+
 # When the Pattern Breaks: Scaling Limits of Guardrails → Judge → Human
 
 > This framework's three-layer pattern (guardrails prevent, judge detects, humans decide) was designed for **single-agent, request-response architectures**. This document is honest about where that pattern holds, where it strains, and where it breaks in complex multi-agent systems.

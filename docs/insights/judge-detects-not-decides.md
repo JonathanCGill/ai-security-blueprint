@@ -1,3 +1,7 @@
+---
+description: "Why using an LLM Judge to block transactions is a mistake: the Judge detects and flags behaviour, but deterministic controls, not the model, should make the decision to stop."
+---
+
 # The Judge Detects. It Doesn't Decide.
 
 <!-- golden-thread-nav -->

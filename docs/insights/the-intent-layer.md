@@ -1,3 +1,7 @@
+---
+description: "Technical controls constrain what agents can do but not whether what they did was coherent. Post-execution semantic evaluation of declared intent for multi-agent systems."
+---
+
 # The Intent Layer: Post-Execution Semantic Evaluation for Multi-Agent Systems
 
 > The [technical controls that scale](what-scales.md) - invariants, identity, budget caps, trust zones - constrain *mechanics*. They govern what agents **can** do. They do not evaluate whether what was **done** was coherent, appropriate, or aligned with the stated objective. That is a semantic problem, and it requires a different kind of control.

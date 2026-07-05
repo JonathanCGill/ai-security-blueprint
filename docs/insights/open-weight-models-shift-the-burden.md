@@ -1,3 +1,7 @@
+---
+description: "Self-hosting an open-weight model means inheriting every control the provider would have applied: input filtering, patching, abuse monitoring, and incident response all move to you."
+---
+
 # Open-Weight Models Shift the Burden
 
 **When you self-host a model, you inherit the controls the provider would have applied. Most organisations don't realise this until something goes wrong.**

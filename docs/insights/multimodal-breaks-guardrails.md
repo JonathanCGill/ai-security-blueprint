@@ -1,3 +1,7 @@
+---
+description: "Images, audio, and video create attack surfaces that text-based guardrails cannot see. How multimodal AI defeats keyword filters and classifiers, and the controls that address it."
+---
+
 # Multimodal AI Breaks Your Text-Based Guardrails
 
 *Images, audio, and video create attack surfaces your current controls can't see*

@@ -1,3 +1,7 @@
+---
+description: "What guardrails should actually catch, when they can be turned off, and who decides: turning the first layer of the three-layer model from theory into practical controls."
+---
+
 # Practical Guardrails
 
 <!-- golden-thread-nav -->

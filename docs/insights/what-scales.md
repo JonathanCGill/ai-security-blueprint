@@ -1,3 +1,7 @@
+---
+description: "Which AI security patterns have viable scaling properties and which never will. A scaling test for multi-agent controls, from constant-cost budget caps to per-pair guardrails that collapse."
+---
+
 # What Scales: Security Patterns With Viable Scaling Properties
 
 > The previous document ([When the Pattern Breaks](when-the-pattern-breaks.md)) identified where the guardrail → judge → human pattern fails in complex multi-agent systems. This document asks the harder question: what *does* scale, and what fundamental constraints mean some things never will?

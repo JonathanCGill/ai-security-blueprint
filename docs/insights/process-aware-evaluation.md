@@ -1,3 +1,7 @@
+---
+description: "A correct answer reached the wrong way is still a failure. Why runtime evaluation should judge an agent's trace and tool calls, not just its final output."
+---
+
 # Process-Aware Evaluation: Judge the Trace, Not Just the Output
 
 <!-- golden-thread-nav -->

@@ -1,3 +1,7 @@
+---
+description: "Identity propagation, delegation limits, and tool access control for multi-agent systems, so every action traces back to a user and permissions never widen silently as delegation deepens."
+---
+
 # Agent Security
 
 Identity propagation, delegation enforcement, and tool access control for multi-agent systems.

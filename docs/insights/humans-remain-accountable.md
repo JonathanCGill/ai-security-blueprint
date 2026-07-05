@@ -1,3 +1,7 @@
+---
+description: "AI assists, but humans own the outcomes. Why accountability cannot be delegated to a model and how human oversight anchors the three-layer runtime security architecture."
+---
+
 # Humans Remain Accountable
 
 <!-- golden-thread-nav -->

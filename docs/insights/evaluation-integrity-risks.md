@@ -1,3 +1,7 @@
+---
+description: "If a model behaves differently when it knows it is being tested, your evaluations mean nothing. Sandbagging and the integrity risk it poses to every evaluation-dependent control."
+---
+
 # Evaluation Integrity Risks
 
 **If the model knows it's being tested, your test results mean nothing.**

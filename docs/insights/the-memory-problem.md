@@ -1,3 +1,7 @@
+---
+description: "Long context windows and persistent memory let attacks accumulate over time. How stateful agents change the AI threat model and the controls that address memory-based attacks."
+---
+
 # The Memory Problem
 
 *Long context and persistent memory create attack surfaces that accumulate over time*

@@ -1,3 +1,7 @@
+---
+description: "You cannot govern AI you cannot see. The scale of shadow AI in enterprises and why visibility is the prerequisite that comes before guardrails, judges, and PACE resilience."
+---
+
 # The Visibility Problem: You Can't Govern What You Can't See
 
 > *Sustaining oversight requires knowing what AI solutions are running. Most enterprises don't.*
