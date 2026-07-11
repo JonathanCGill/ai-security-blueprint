@@ -1,17 +1,19 @@
 ---
-as_at: "2026-07-04"
-description: "MASO Objective Intent: developer-declared intent specifications that define what agents should accomplish, within what parameters, enabling judges and evaluation agents to assess real behavioral compliance at both tactical and strategic levels."
+as_at: "2026-07-11"
+description: "MASO Objective Intent: developer-declared intent specifications that define what agents should accomplish, within what parameters, evaluated by the full reviewing controls layer (semantic firewall, independent verification, Model-as-Judge, human review) at both tactical and strategic levels."
 ---
 
 # MASO (Multi-Agent Security Operations) Control Domain: Objective Intent
 
 > Part of the [MASO Framework](../README.md) · Control Specifications
 > Extends: [Prompt, Goal & Epistemic Integrity](prompt-goal-and-epistemic-integrity.md) · [Observability](observability.md) · [Privileged Agent Governance](privileged-agent-governance.md)
-> Cross-references: [The Intent Layer](../../insights/the-intent-layer.md) · [Judge Assurance](../../core/judge-assurance.md) · [Judge Precedents](../../extensions/technical/judge-precedents.md)
+> Cross-references: [The Intent Layer](../../insights/the-intent-layer.md) · [Reviewing Controls](../../core/controls.md) · [Semantic Firewall](../../core/controls/semantic-firewall.md) · [The Verification Gap](../../insights/the-verification-gap.md) · [Judge Assurance](../../core/judge-assurance.md) · [Judge Precedents](../../extensions/technical/judge-precedents.md)
 
 ## Principle
 
-Every agent in a multi-agent system must operate against a **declared Objective Intent**, a structured specification of what the developer expects that agent to accomplish and within what parameters. These intents are not internal documentation. They are **machine-readable mandates** consumed by judges, evaluation agents, and the observability layer to assess whether actual agent behavior aligns with declared purpose.
+Every agent in a multi-agent system must operate against a **declared Objective Intent**, a structured specification of what the developer expects that agent to accomplish and within what parameters. These intents are not internal documentation. They are **machine-readable mandates** consumed by the full [reviewing controls](../../core/controls.md) layer (the semantic firewall, independent verification such as knowledge-graph and API lookups, token-level uncertainty, formal verification, and Model-as-Judge), by evaluation agents, and by the observability layer to assess whether actual agent behavior aligns with declared purpose.
+
+Model-as-Judge is one reviewing control among several, and for many OISpec criteria it is neither the cheapest nor the most reliable one. This page uses "judge" and "evaluator" as shorthand for whichever reviewing control fits the criterion being checked. A criterion that is a documented rule ("all data sources from the last 30 days", "required fields present", "no prohibited tool was called") is checked deterministically or by formal verification; a factual-traceability criterion ("the risk score is traceable to specific data points") is checked by independent verification against the source; only genuinely behavioural, spirit-of-the-intent criteria need an LLM Judge. Matching the control to the criterion is the point of [The Verification Gap](../../insights/the-verification-gap.md): the Judge is the slowest and least independent option, because a second LLM shares the first one's blind spots.
 
 Without declared intent, the framework catches faults where it can (injection, tool misuse, data leakage) but cannot evaluate whether the system is doing what it was designed to do. Objective Intent is the bridge from **fault detection** to **behavioral assurance**: from catching things that go wrong to verifying that things go right.
 
@@ -20,7 +22,8 @@ Without declared intent, the framework catches faults where it can (injection, t
 The existing MASO framework provides:
 
 - **Guardrails** that block known-bad patterns (mechanical)
-- **Model-as-Judge** that evaluates quality and safety (semantic, but reactive)
+- A **reviewing controls** layer that evaluates content at increasing depth: the **semantic firewall** for known-bad intent in novel wording, **independent verification** (knowledge-graph and API lookups, token-level uncertainty, formal verification) for factual and rule-based claims, and **Model-as-Judge** for unknown-bad, context-dependent behaviour
+- **Human oversight** for high-consequence judgement calls that do not scale to automation
 - **Observability** that detects drift from behavioral baselines (statistical)
 - **The Intent Layer** that evaluates workflow-level outcomes post-execution (strategic, but coarse)
 
@@ -43,7 +46,7 @@ The architecture operates at two levels:
 
 ### Tactical: Single-Agent Intent Compliance
 
-Each agent has a declared Objective Intent Specification (OISpec). A **tactical judge** evaluates that individual agent's actions and outputs against its OISpec. This catches:
+Each agent has a declared Objective Intent Specification (OISpec). A **tactical judge** (shorthand for the reviewing control selected per criterion, see [Matching Reviewing Controls to Intent Criteria](#matching-reviewing-controls-to-intent-criteria)) evaluates that individual agent's actions and outputs against its OISpec. This catches:
 
 - An agent operating outside its declared parameters
 - An agent pursuing a goal it was not assigned
@@ -248,6 +251,25 @@ This closes the "who watches the watchmen" loop, not through infinite recursion,
 
 **Key insight:** Intent flows downward (decomposed from workflow to agent). Evaluation flows upward (aggregated from agent to workflow). Judge monitoring is lateral, independent of both flows.
 
+## Matching Reviewing Controls to Intent Criteria
+
+The tactical and strategic evaluators above are not a single Model-as-Judge. They are the [reviewing controls](../../core/controls.md) layer applied to declared intent, and the right control depends on the *type* of the success or failure criterion being checked, not on habit. Routing every criterion to an LLM Judge is the most expensive and least independent choice available, and for the deterministic and factual criteria that make up most of an OISpec, it is also the least reliable, because a second LLM shares the first one's blind spots.
+
+Read each OISpec criterion, classify it, and route it to the cheapest control that can actually verify it. Escalate to the Judge only what genuinely needs behavioural reasoning, and to a human only what needs judgement.
+
+| Criterion type in the OISpec | Example from the OISpecs above | Reviewing control | Added latency | Why this control |
+| --- | --- | --- | --- | --- |
+| Deterministic rule | `required_fields` present, `prohibited_actions` not called, `time_boundary` respected | Guardrail / deterministic check | ~10ms | The rule is exactly checkable in code. An LLM adds cost and a false-negative rate for no benefit. |
+| Known-bad or out-of-scope intent | `prohibited_content` ("trading instructions", "personal advice") expressed in novel wording | [Semantic Firewall](../../core/controls/semantic-firewall.md) | ~15-30ms | Catches paraphrased and obfuscated violations of a declared taxonomy without a full Judge call. |
+| Factual traceability | "Risk score is traceable to specific data points", "factual claims are traceable to cited sources" | Independent verification (knowledge-graph / API lookup, token-level uncertainty) | ~80-160ms | Checks the claim against a source of truth. The Judge cannot verify a fact it cannot look up. |
+| Documented-policy compliance | "Recommendation to trade exceeding $50,000 exposure", `max_confidence_without_source` | Formal verification | ~200-500ms | Well-documented, machine-checkable policy is verified deterministically at near-99% accuracy. |
+| Behavioural / spirit-of-intent | "Output satisfies the evaluated agent's declared OISpec", "uncertainty signals are preserved or increased" | Model-as-Judge | 500ms-5s | Unknown-bad, context-dependent behaviour is what the Judge is actually for. |
+| Judgement call / edge case | Adversarial letter-vs-spirit satisfaction (OI-3.5), CRITICAL-tier disputes | Human review | Minutes+ | Highest accuracy, does not scale. Reserve for sampling and escalation. |
+
+This is the same "match the review control to latency and accuracy" discipline the rest of the site applies (see [Reviewing Controls](../../core/controls.md) and [The Verification Gap](../../insights/the-verification-gap.md)). The OISpec is what makes the routing possible: because success and failure criteria are typed and explicit, an evaluator can decide *per criterion* which control verifies it, rather than sending the whole output to one Judge and hoping.
+
+The `evaluation_model` field in the Judge OISpec, and the tactical and strategic evaluators throughout this page, should be read as the *selected* reviewing control for a given criterion, with Model-as-Judge as the default only for the behavioural class. Where a criterion can be verified independently, verifying it independently is both cheaper and stronger.
+
 ## Controls by Tier
 
 ### Tier 1 - Supervised
@@ -268,7 +290,7 @@ All Tier 1 controls remain active, plus:
 
 | Control | Requirement | Implementation Notes |
 |---------|-------------|---------------------|
-| **OI-2.1** Automated tactical evaluation | Tactical judge evaluates each agent's actions against its OISpec at the frequency defined in the OISpec | Evaluation frequency scales with risk: HIGH/CRITICAL = every action; MEDIUM = per phase; LOW = post-execution. |
+| **OI-2.1** Automated tactical evaluation | Tactical evaluation checks each agent's actions against its OISpec at the frequency defined in the OISpec | The evaluator is the [reviewing control](../../core/controls.md) matched to each criterion (deterministic check, semantic firewall, independent verification, or Model-as-Judge), not necessarily an LLM Judge. Route deterministic and factual criteria to cheaper, more independent controls; reserve the Judge for behavioural criteria. Evaluation frequency scales with risk: HIGH/CRITICAL = every action; MEDIUM = per phase; LOW = post-execution. |
 | **OI-2.2** Automated strategic evaluation | Strategic evaluation agent assesses aggregate outputs against workflow OISpec at phase boundaries and post-execution | Receives: workflow OISpec, all agent OISpecs, agent outputs, tactical judge verdicts, and audit trail summary. |
 | **OI-2.3** Judge OISpec declaration | Every judge must have a declared OISpec specifying its evaluation scope, criteria, and permitted actions | Judge OISpecs are version-controlled with the same rigour as agent OISpecs. |
 | **OI-2.4** Judge intent monitoring | Judge behavior is evaluated against its OISpec by an independent meta-evaluator | The meta-evaluator is not the judge and is not any agent the judge evaluates. |
@@ -315,7 +337,8 @@ Objective Intent evaluation intensity scales with risk classification:
 | **PA-2.1** Orchestrator intent verification | OISpec verification is continuous, not just at decomposition time |
 | **PA-2.2** Judge calibration | Judge OISpecs make calibration criteria explicit and evaluable, not just accuracy targets |
 | **OB-2.2** Anomaly scoring | Intent alignment score becomes an additional signal in the anomaly scoring vector |
-| **The Intent Layer** (post-execution evaluation) | OISpec provides the structured "Intent Specification" that the post-execution judge evaluates against, now extended to every agent and every judge |
+| **Reviewing controls** (semantic firewall, independent verification, Model-as-Judge, human review) | OISpec's typed success/failure criteria let each criterion be routed to the reviewing control that can actually verify it, rather than sending every check to an LLM Judge. See [Matching Reviewing Controls to Intent Criteria](#matching-reviewing-controls-to-intent-criteria) |
+| **The Intent Layer** (post-execution evaluation) | OISpec provides the structured "Intent Specification" that the post-execution reviewing controls evaluate against, now extended to every agent and every judge |
 
 ## What This Does Not Solve
 
@@ -388,6 +411,8 @@ As agents evolve, tools change, and requirements shift, OISpecs must be updated.
 **Writing OISpecs after deployment, not before.** If the OISpec is written to match existing agent behavior rather than to declare intended behavior, it becomes a description, not a mandate. OISpecs must be authored at design time and agents must be built to satisfy them.
 
 **Declaring intent for task agents but not for judges.** A judge without a declared OISpec is a black box with authority. Its evaluation criteria are implicit, its scope is undefined, and its drift is undetectable. Judges need OISpecs as much as task agents do.
+
+**Routing every OISpec criterion to a Model-as-Judge.** The Judge is the slowest and least independent reviewing control, and a second LLM shares the first one's blind spots. Deterministic criteria (required fields, prohibited tools, time boundaries) belong in a code check; factual-traceability criteria belong in independent verification against a source; known-bad intent belongs in the semantic firewall. Reserve the Judge for the behavioural criteria that genuinely need it, and route everything else to the [reviewing control](../../core/controls.md) that can actually verify it. Sending a documented rule to an LLM adds latency and a false-negative rate for no benefit.
 
 **Evaluating individual agents but not combined actions.** The most dangerous failures in multi-agent systems are emergent: they only appear when individually correct actions combine into collectively wrong outcomes. The strategic evaluation layer exists specifically to catch these.
 
