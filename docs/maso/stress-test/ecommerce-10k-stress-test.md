@@ -176,7 +176,7 @@ MASO's human oversight layer reviews agent outputs based on risk classification.
 If even 1% of the 40,000 actions per minute escalate to human review, that is **400 escalations per minute**. No human team can process this. The oversight model must shift from routine review to exception handling:
 
 - **Guardrails handle routine enforcement.** Input validation, output format, PCI data masking, rate limiting - all deterministic, all machine-speed. No human involved.
-- **Judge handles policy evaluation.** For the sampled or high-risk actions, the Model-as-Judge evaluates compliance. Most pass. Only Judge-flagged actions escalate.
+- **Reviewing controls handle policy evaluation.** For the sampled or high-risk actions, cheaper reviewing controls carry the factual load first: deterministic checks and independent verification confirm stock, price, and card validity without a Judge call, and the Model-as-Judge evaluates the compliance and context that they cannot. Most pass. Only flagged actions escalate.
 - **Humans handle genuine exceptions.** A human reviewer sees only the actions that the guardrails permitted and the Judge flagged. At well-calibrated thresholds, this should be 10-50 escalations per hour, not 400 per minute.
 
 The risk is **false negatives at the guardrail and Judge layers**. If the guardrails miss a policy violation and the Judge sampling does not catch it, the human layer never sees it. This is acceptable for MEDIUM-risk agent types (product presentation, delivery). It requires careful calibration for CRITICAL-risk types (payment).

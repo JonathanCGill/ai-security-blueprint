@@ -32,7 +32,7 @@ Key architectural constraints at Tier 1:
 
 **Guardrails (Layer 1)** are mandatory on every agent. Input validation, output sanitisation, tool permission scoping, and rate limiting are active. These are deterministic controls that operate at machine speed regardless of human availability.
 
-**Model-as-Judge (Layer 2)** is optional at Tier 1. Organisations that already have an evaluation model can deploy it, but it is not a gating requirement. The primary quality gate is human review.
+**Reviewing controls (Layer 2)** are optional at Tier 1. The Model-as-Judge is the heaviest of them; organisations that already have an evaluation model can deploy it, but a lighter reviewing control such as a [semantic firewall](../../core/controls/semantic-firewall.md) is usually the cheaper first pass. Either way, Layer 2 is not a gating requirement at Tier 1. The primary quality gate is human review.
 
 **Human Oversight (Layer 3)** is the dominant control. Every action that modifies external state - write operations, API calls, data mutations, file modifications, message sends - requires explicit human approval before execution.
 

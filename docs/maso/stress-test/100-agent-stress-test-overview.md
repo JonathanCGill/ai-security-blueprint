@@ -22,7 +22,7 @@ Design intent and operational reality diverge in predictable ways:
 
 - **Linear controls hit quadratic problems.** Output inspection scales linearly. Monitoring communication *between* agents scales with the number of agent pairs, quadratically.
 - **Composition creates emergent behavior.** Five agents with well-tested PACE transitions do not guarantee fifty agents degrade gracefully. Cascade dynamics only emerge at scale.
-- **Operational cost becomes a constraint.** A Judge evaluation on every inter-agent message is sound architecture. Whether the organisation can afford it at 10,000 messages per second is a question to answer before production.
+- **Operational cost becomes a constraint.** Reviewing every inter-agent message is sound architecture, but it does not have to be a Model-as-Judge call on every hop. A spectrum of reviewing controls (deterministic scanners at the edge, a [semantic firewall](../../core/controls/semantic-firewall.md) for injection patterns, independent verification for factual claims, and the Judge reserved for novel or ambiguous cases) resolves most messages far more cheaply. Whether the organisation can afford full evaluation at 10,000 messages per second, and which control each message actually needs, is a question to answer before production.
 
 This exercise helps architects anticipate breakpoints *before* scaling.
 
@@ -167,7 +167,7 @@ At 100 agents, the message volume changes the problem:
 - **Message throughput.** If each agent sends an average of 10 messages per minute to other agents, the system generates ~1,000 messages per minute. At peak (e.g., market open, incident response), this may spike to 10,000+ per minute. Every message needs anomaly scoring, drift comparison, and potentially DLP scanning.
 - **Anomaly baseline complexity.** Behavioral baselines at 5 agents are 5 profiles. At 100 agents, it is 100 profiles - plus the interaction patterns between agents, which is combinatorial. What constitutes "anomalous" for Agent 47's communication pattern with Agent 83?
 - **Alert fatigue.** More agents means more anomaly signals. If each agent generates a false positive alert once per day, 100 agents generate 100 false positives per day. The human review capacity for PACE escalation decisions becomes the bottleneck.
-- **Cost.** If every message is evaluated by a Model-as-Judge, the observability compute cost may exceed the task compute cost. The framework's [cost and latency guidance](../../extensions/technical/cost-and-latency.md) discusses sampling rates for single-model systems - the same logic applies at scale, but the trade-offs are sharper.
+- **Cost.** If every message is evaluated by a Model-as-Judge, the observability compute cost may exceed the task compute cost. Most messages do not need the Judge: deterministic scanners and a [semantic firewall](../../core/controls/semantic-firewall.md) resolve the majority at a fraction of the cost, with the Judge reserved for escalations. The framework's [cost and latency guidance](../../extensions/technical/cost-and-latency.md) discusses sampling rates for single-model systems - the same logic applies at scale, but the trade-offs are sharper.
 
 ### What to Assess
 
@@ -184,7 +184,7 @@ At 100 agents, the message volume changes the problem:
 | OB-2.1 Anomaly scoring | Per-agent anomaly detection | 100 baselines + interaction pattern baselines |
 | OB-2.2 Drift detection | Behavioral change detection | Drift thresholds harder to calibrate at scale |
 | OB-2.3 Communication profiling | Inter-agent traffic analysis | Volume may require sampling rather than full inspection |
-| EC-2.5 Model-as-Judge | Per-action evaluation | Cost scales linearly with message count |
+| EC-2.5 Model-as-Judge | Per-action evaluation | Cost scales linearly with message count; reserve for escalations, with scanners and a semantic firewall handling the rest |
 
 ## Stress Dimension 5: Provider Concentration
 

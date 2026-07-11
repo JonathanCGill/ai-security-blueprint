@@ -62,8 +62,8 @@ MASO scales evaluation to consequence:
 
 | Action Risk | Evaluation Approach | Example |
 |------------|-------------------|---------|
-| <span class="tier-low">Low</span> | Guardrails only, async judge sampling | Reading documents, logging notes, internal lookups |
-| <span class="tier-medium">Medium</span> | Pre-action judge evaluation | Sending emails, updating records, calling external APIs |
+| <span class="tier-low">Low</span> | Guardrails and semantic firewall, async judge sampling | Reading documents, logging notes, internal lookups |
+| <span class="tier-medium">Medium</span> | Semantic firewall, independent verification of factual claims, pre-action judge evaluation | Sending emails, updating records, calling external APIs |
 | <span class="tier-high">High</span> | Pre-action judge plus human approval | Issuing payments, modifying permissions, bulk operations |
 | <span class="tier-critical">Critical</span> | Pre-action judge, dual human approval, dry-run | Deploying code, regulatory submissions, irreversible decisions |
 

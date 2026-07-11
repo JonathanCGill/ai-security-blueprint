@@ -53,7 +53,7 @@ The rest of the library, grouped by theme. Expand the section you need. If you a
     | [The Intent Layer](the-intent-layer.md) | Mechanical controls constrain what agents can do; semantic evaluation determines whether actions align with objectives. |
     | [Process-Aware Evaluation](process-aware-evaluation.md) | Evaluating what an agent produced matters less than evaluating how it got there. |
     | [The Constraint Curve](the-constraint-curve.md) | Proportionate controls find the peak. Over-constraining destroys the value that justified using an LLM. |
-    | [The Verification Gap](the-verification-gap.md) | Current safety approaches cannot confirm ground truth. Solved by [Judge Assurance](../core/judge-assurance.md). |
+    | [The Verification Gap](the-verification-gap.md) | Current safety approaches cannot confirm ground truth. Match each claim to a verification method along the spectrum, from the dependent [Model-as-Judge](../core/judge-assurance.md) to fully independent formal verification and knowledge-graph lookups. |
     | [Automated Risk Tiering](automated-risk-tiering.md) | Classification should take two minutes, produce an immediate result, and auto-apply the controls that make the risk manageable. |
     | [The Hallucination Boundary](the-hallucination-boundary.md) | Tolerance for hallucination is a function of decision authority, blast radius, and reversibility. |
 
