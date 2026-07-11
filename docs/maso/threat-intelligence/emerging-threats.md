@@ -430,6 +430,8 @@ The following threats reflect trends visible in production deployments and resea
 
 **Threat:** Attackers target the agent's own safety reasoning rather than bypassing it. "Ethical persuasion" prompts argue that refusing the request is itself unethical, exploiting the model's trained-in deference to value reasoning. Distinct from jailbreaking because the model's own values are the lever.
 
+**Cross-vendor demonstration (BioShocking, July 2026):** LayerX's *BioShocking* technique confirmed this class against agentic browsers at scale, using reality-reframing rather than ethical persuasion. A malicious page presents a puzzle that rewards deliberately wrong answers (it rewards the agent for insisting two plus two equals five); once the agent accepts that the rules are a game rather than the real world, it stops applying its safety reasoning to the final step, which instructs it to open a linked GitHub repository and exfiltrate the credentials stored in the code. The attacker does not argue that refusing is wrong, it convinces the agent that it is not in a context where refusal applies. LayerX tested five agentic browsers and one plugin (ChatGPT Atlas, Comet, Fellou, Genspark, Sigma, and the Claude Chrome plugin), and all six performed the credential-exfiltration step. Only OpenAI shipped a working fix in Atlas; Anthropic's patch did not hold against the proof-of-concept, and Perplexity closed the report without a fix. Because the lever is the model's own context assessment, the primitive crosses vendors and models, which is why [PG-2.9 (model diversity)](../controls/prompt-goal-and-epistemic-integrity.md) does not dilute it, and the browser action surface in [ET-14](#et-14-computer-use-and-browser-agents-expand-the-action-surface) is where the exfiltration actually lands. Judge prompts that gate these workflows need explicit immunity clauses against fictional-framing and "this is only a game or test" meta-arguments, not only against ethical-persuasion arguments.
+
 **Why it matters for MASO:** Model-as-Judge is susceptible to the same persuasion. A Judge that has been argued out of its threshold approves what it would otherwise reject.
 
 **Emerging variant, Policy laundering:** The attacker frames the request as conformance with a stated policy that the model itself synthesises from the prompt.
@@ -518,6 +520,7 @@ The following threats reflect trends visible in production deployments and resea
 | **ET-26 AI-augmented OT/ICS intrusion** | <span class="tier-high">High</span> | **Critical** | **Tier 3** | **Execution Control, Identity & Access** |
 | **ET-27 Coding-agent-as-initial-access-vector** | <span class="tier-high">High</span> | **High** | **Tier 1** | **Supply Chain, Execution Control** |
 | **ET-28 Structural risk in agent ensembles** | <span class="tier-high">High</span> | **High** | **Tier 2** | **Observability, Prompt & Goal Integrity** |
+| **ET-29 Fully autonomous offensive agents (agentic ransomware)** | <span class="tier-high">High</span> | **Critical** | **Tier 1** | **Execution Control, Supply Chain** |
 
 ## 2026 Q2 Update (May 2026): Three Further Threat Patterns
 
@@ -580,3 +583,27 @@ The May 2026 review surfaced three patterns that warrant their own entries rathe
 **Assessment:** High likelihood for any production multi-agent system. Rarely reported because the failure looks like a quality issue rather than a security incident.
 
 > **Source:** [CISA: Secure Adoption of Agentic AI](https://www.cisa.gov/news-events/news/cisa-us-and-international-partners-release-guide-secure-adoption-agentic-ai)
+
+## 2026 Q3 Update (July 2026): The Agent as Autonomous Attacker
+
+The July 2026 review surfaced the first confirmed case of an LLM agent running an entire intrusion end to end, which the existing entries did not anticipate. ET-08 covers AI generating attacks against AI defences and ET-26 covers a coding agent doing an attacker's reasoning under human direction, but neither describes the agent operating the whole campaign with the operator out of the loop.
+
+### ET-29: Fully Autonomous Offensive Agents (Agentic Ransomware)
+
+**Status:** Confirmed in production. Sysdig's Threat Research Team disclosed **JadePuffer** (July 2026), which it assesses is the first fully agent-driven ransomware operation.
+
+**Threat:** An LLM agent, not a human operator running AI-assisted tooling, executes the entire intrusion kill chain autonomously: initial access, reconnaissance, credential harvesting, lateral movement, privilege escalation, and destructive encryption. The human role collapses to selecting a target and a payload objective; the agent improvises the rest and adapts to failures in real time.
+
+**Why it is distinct from ET-08 and ET-26:** ET-08 covers AI used to generate attacks against AI defences. ET-26 covers a coding agent doing an attacker's reasoning under human direction, where the operator's prompts still drive each step. ET-29 removes the operator from the loop: the agent owns the whole operation. JadePuffer gained access through Langflow CVE-2025-3248, an unauthenticated code-execution flaw in an internet-facing instance, then pivoted to the production database and ran a database-extortion playbook without step-by-step instruction. It retried failed steps within refined parameters, in one case turning a failed login into a working fix in 31 seconds, and its payloads were self-narrating, carrying the natural-language reasoning and target prioritisation that LLM-generated code produces reflexively.
+
+**Why it matters for MASO:** This is the mirror image of the framework's threat model. MASO assumes the agent under governance is the one being defended. ET-29 is the agent as adversary, operating against infrastructure that has no AI-aware monitoring. It also collapses the dwell time that detection and response depend on: an operation that adapts in seconds does not leave the human-scale window that SOC playbooks and human-escalation gates assume.
+
+**Emerging variant, unrecoverable extortion:** JadePuffer encrypted 1,342 Nacos service-configuration items and deleted the originals, but the AES key was generated randomly, printed to stdout, and never persisted or transmitted. Payment cannot restore the data. Agent-run extortion optimises for the operator's convenience, not the victim's recoverability, so "pay to decrypt" is not a safe assumption when the counterparty is an autonomous agent.
+
+**MASO controls (defensive posture):** This is primarily a target-hardening and detection problem rather than an agent-governance one, but MASO's controls apply to the defender's own agents that could be turned against it: EC-2.1 (sandboxed execution), IA-2.3 (no transitive permissions), SC-1.3 (fixed toolsets, deny network-discovery and exploitation tooling to production agents), OB-2.2 (drift detection on tool-call categories).
+
+**Gap in current controls:** MASO has no attacker-side model. It cannot help an organisation whose exposure is a vulnerable Langflow instance rather than a governed agent. The framework should add a defender's note: agent runtimes and orchestration frameworks are now high-value initial-access targets in their own right, unauthenticated code-execution endpoints on any agent runtime must be treated as critical, and the detection assumptions built for human dwell time do not hold against an adversary that adapts in seconds.
+
+**Assessment:** High likelihood, rising. The barrier to a fully autonomous intrusion has fallen to a known RCE plus a coding-capable model. The economics favour the attacker: the agent scales reconnaissance and adaptation at near-zero marginal cost.
+
+> **Sources:** [Sysdig: JADEPUFFER, Agentic ransomware for automated database extortion](https://www.sysdig.com/blog/jadepuffer-agentic-ransomware-for-automated-database-extortion) · [Dark Reading: JadePuffer, the first complete LLM-driven ransomware attack](https://www.darkreading.com/cyberattacks-data-breaches/jadepuffer-first-complete-llm-driven-ransomware-attack)
