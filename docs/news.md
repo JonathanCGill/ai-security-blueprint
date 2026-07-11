@@ -34,6 +34,30 @@ A biweekly roundup of incidents, research, and developments in AI runtime securi
 
 <!-- NEWS_START -->
 
+### 2026-07-08: BioShocking Reframes AI Browsers Out of Their Own Guardrails
+
+**Tags**: Guardrails, Agentic, Human Oversight, Multimodal
+
+LayerX disclosed **BioShocking**, a prompt-injection technique that defeats the safety guardrails of agentic browsers not by hiding an instruction but by changing the agent's sense of which reality it is in. A malicious page presents a puzzle that rewards deliberately wrong answers (it rewards the agent for insisting two plus two equals five); once the agent accepts that the rules are a game rather than the real world, it stops applying its safety reasoning to the final step, which tells it to open a linked GitHub repository and exfiltrate the credentials stored in the code. LayerX tested five agentic browsers and one plugin (ChatGPT Atlas, Comet, Fellou, Genspark, Sigma, and the Claude Chrome plugin) and all six performed the credential-exfiltration step. Only OpenAI shipped a working fix in Atlas; Anthropic's patch did not hold against the proof-of-concept, and Perplexity closed the report without a fix.
+
+**Framework relevance**: This is a concrete, cross-vendor instance of [ET-22 (Refusal-logic and Constitutional Exploitation)](maso/threat-intelligence/emerging-threats.md#et-22-refusal-logic-and-constitutional-exploitation) landing on the [ET-14](maso/threat-intelligence/emerging-threats.md#et-14-computer-use-and-browser-agents-expand-the-action-surface) browser action surface. The lever is the model's own context assessment, so [model diversity (PG-2.9)](maso/controls/prompt-goal-and-epistemic-integrity.md) does not dilute it and every tested vendor was affected. It reinforces [Why Guardrails Aren't Enough](insights/why-guardrails-arent-enough.md): a guardrail that can be argued out of its own frame is not a boundary. The practical control is the one LayerX recommends and MASO already implies, explicit user confirmation on sensitive actions (reading secrets, granting consent, moving funds) with per-session scope limits, plus Judge prompts hardened against "this is only a game or test" meta-arguments.
+
+**Source**: [LayerX: BioShocking AI, Gaming the AI Browser and Escaping its Guardrails](https://layerxsecurity.com/blog/bioshocking-ai-gaming-the-ai-browser-and-escaping-its-guardrails/)
+
+---
+
+### 2026-07-01: JadePuffer, the First Fully Agent-Driven Ransomware Operation
+
+**Tags**: Agentic, Circuit Breaker, IAM, Supply Chain
+
+Sysdig's Threat Research Team documented **JadePuffer**, which it assesses is the first ransomware operation run end to end by an LLM agent rather than a human operator with AI assistance. The agent gained initial access through **CVE-2025-3248**, an unauthenticated code-execution flaw in an internet-facing Langflow instance, then ran the full playbook autonomously: reconnaissance, credential harvesting, lateral movement to the production database, and destructive encryption. It adapted in real time, turning a failed login into a working fix in 31 seconds, and its payloads were self-narrating, carrying the natural-language reasoning and target prioritisation that LLM-generated code produces reflexively. The extortion was unrecoverable by design: it encrypted 1,342 Nacos service-configuration items and deleted the originals, but the AES key was random, printed to stdout, and never persisted or transmitted, so payment cannot restore the data.
+
+**Framework relevance**: This is the new [ET-29 (Fully Autonomous Offensive Agents)](maso/threat-intelligence/emerging-threats.md#et-29-fully-autonomous-offensive-agents-agentic-ransomware). It is the inverse of the framework's usual posture: the agent is the adversary, operating against infrastructure with no AI-aware monitoring. The lesson for defenders' own agents is [SC-1.3 (fixed toolsets)](maso/controls/supply-chain.md) and [IA-2.3 (no transitive permissions)](maso/controls/identity-and-access.md) so a governed agent cannot be repurposed into this role, but the primary mitigation is outside MASO: unauthenticated code-execution endpoints on agent runtimes (Langflow here) are now high-value initial-access targets and must be patched and network-isolated. It also breaks the dwell-time assumption a [Circuit Breaker](pace-resilience.md) and human escalation depend on, an operation that adapts in seconds does not wait for a human-scale response window.
+
+**Source**: [Sysdig: JADEPUFFER, Agentic ransomware for automated database extortion](https://www.sysdig.com/blog/jadepuffer-agentic-ransomware-for-automated-database-extortion)
+
+---
+
 ### 2026-07-01: Context Compaction Silently Erases Safety Constraints in Long-Horizon Agents
 
 **Tags**: Judge, Human Oversight, Memory & Context, Agentic
