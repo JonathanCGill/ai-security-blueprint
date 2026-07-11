@@ -34,7 +34,7 @@ Key architectural changes from Tier 1:
 
 **Non-Human Identity (NHI) per agent:** Each agent has a certificate-based identity with short-lived credentials (recommended rotation: 1–24 hours depending on risk). The NHI is bound to the agent's permission scope and is used for mutual authentication on the message bus and tool access.
 
-**Model-as-Judge (Layer 2) is mandatory:** A dedicated evaluation model (distinct from the task agents, ideally from a different model provider) reviews agent outputs and proposed actions against policy, quality, and safety criteria before they are committed. The Model-as-Judge does not execute actions - it evaluates and either approves, flags for human review, or blocks.
+**Reviewing controls (Layer 2) become mandatory:** Layer 2 is a spectrum of reviewing controls, not the Judge alone. Deterministic scanners and a [semantic firewall](../../core/controls/semantic-firewall.md) catch known-bad patterns and intent cheaply, [independent verification](../../insights/the-verification-gap.md) checks factual claims, and a dedicated Model-as-Judge (distinct from the task agents, ideally from a different model provider) evaluates the unknown-bad, context-dependent behaviour the cheaper controls cannot. The Judge reviews agent outputs and proposed actions against policy, quality, and safety criteria before they are committed. It does not execute actions: it evaluates and either approves, flags for human review, or blocks.
 
 **Continuous monitoring layer:** Automated anomaly detection replaces periodic manual log review. Behavioral baselines established during Tier 1 are used as reference. Deviations trigger alerts and, if thresholds are exceeded, automatic PACE phase transitions.
 
@@ -89,7 +89,7 @@ Key architectural changes from Tier 1:
 - **Sandboxed execution.** Agents that generate and execute code do so in isolated environments. Each agent's execution sandbox has defined filesystem, network, and process scope boundaries. The sandbox is destroyed and recreated after each execution.
 - **Blast radius caps.** Each agent has a defined maximum impact scope: maximum number of records it can modify per execution, maximum financial value of transactions, maximum number of external API calls. Exceeding any cap triggers automatic PACE escalation to Alternate.
 - **Circuit breakers.** If an agent's error rate exceeds a defined threshold within a time window (e.g., 3 guardrail blocks in 10 minutes), the circuit breaker engages: the agent is paused, the event is logged, and the monitoring layer evaluates whether to resume or escalate.
-- **Model-as-Judge gate.** The evaluation model reviews all agent outputs before they reach external systems or other agents. The judge evaluates against: factual accuracy (where verifiable), policy compliance, goal integrity (is the agent still pursuing its assigned objective?), output safety, and data leakage indicators.
+- **Model-as-Judge gate.** The evaluation model reviews all agent outputs before they reach external systems or other agents. The judge evaluates against: policy compliance, goal integrity (is the agent still pursuing its assigned objective?), output safety, and data leakage indicators. Factual claims are better routed to [independent verification](../../insights/the-verification-gap.md) than to the judge, which shares the task model's blind spots.
 
 **Implementation checklist:**
 

@@ -20,7 +20,7 @@ This is the same principle behind memory-safe languages. You do not train progra
 
 ## Why This Exists
 
-MASO's existing controls address agent behavior through guardrails, Model-as-Judge evaluation, and human oversight. These are necessary. They are not sufficient on their own for high-risk deployments, for three reasons:
+MASO's existing controls address agent behavior through guardrails, a spectrum of [reviewing controls](../core/controls.md) (from the semantic firewall through independent verification to Model-as-Judge evaluation), and human oversight. These are necessary. They are not sufficient on their own for high-risk deployments, for three reasons:
 
 1. **Agents have no self-interest in compliance.** Human security systems work because people want to stay employed, free, and respected. Agents have no equivalent motivation. Every interaction is a potential defection because the agent has no reason not to defect.
 
@@ -178,7 +178,7 @@ At Tier 3, agents operate with minimal human intervention. Environment containme
 
 **Applying environment controls only to agent-facing endpoints.** If the agent can reach an internal API that was built for trusted human callers and has lenient validation, that API becomes the path of least resistance. Every endpoint the agent can reach must be hardened, not just the ones designed for agent use.
 
-**Treating environment containment as a replacement for MASO.** Environment containment stops structurally invalid actions. It does not catch semantically wrong but structurally valid actions. MASO's Model-as-Judge, goal integrity monitoring, and human oversight address the semantic layer. Both are necessary.
+**Treating environment containment as a replacement for MASO.** Environment containment stops structurally invalid actions. It does not catch semantically wrong but structurally valid actions. MASO's reviewing controls (semantic firewall, independent verification, and Model-as-Judge), goal integrity monitoring, and human oversight address the semantic layer. Both are necessary.
 
 **Hardening the environment but not monitoring it.** Strict input validation silently rejects bad requests. If nobody monitors rejection rates, you miss the signal that the agent is compromised and probing. Rejection events must feed into observability (ENV-19) and PACE escalation logic.
 

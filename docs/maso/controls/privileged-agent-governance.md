@@ -19,7 +19,7 @@ The controls in other MASO domains secure task agents against each other and aga
 
 **Orchestrators influence outcomes through decisions, not tools.** A compromised orchestrator causes harm through task decomposition, agent selection, and result interpretation. Existing controls (IA-2.5, tool scoping) don't address this because the orchestrator's power is in planning, not execution.
 
-**Evaluators are single points of trust.** If Judge criteria drift or the Model-as-Judge is compromised, Layer 2 collapses silently: every output passes because the standard has shifted. The system reports healthy while controls are effectively disabled.
+**Evaluators are single points of trust.** If Judge criteria drift or the Model-as-Judge is compromised, the behavioural review it performs collapses silently: outputs that only the Judge would catch pass, because the standard has shifted. The other reviewing controls (guardrails, semantic firewall, independent verification) still fire, but the Judge's tier of review is effectively disabled while the system reports healthy.
 
 **Observers with kill switch authority can be weaponised.** An over-sensitive observer repeatedly triggers shutdowns. Operators disable it to restore service. The system now runs without its safety net, and nobody formally accepted that risk.
 
@@ -358,7 +358,7 @@ Not every workflow needs every evaluation layer. Use this decision framework:
 
 | Question | If Yes | If No |
 |----------|--------|-------|
-| Can guardrails alone catch the failure modes you care about? | No judge needed for those modes. Guardrails are cheaper and faster. | You need a judge for the semantic evaluation that guardrails cannot perform. |
+| Can guardrails alone catch the failure modes you care about? | No judge needed for those modes. Guardrails are cheaper and faster. | You need a reviewing control beyond guardrails. Match it to the failure mode: a semantic firewall for known-bad intent in novel wording, independent verification for factual claims, and a judge for context-dependent behaviour. See the [reviewing control spectrum](../../core/controls.md). |
 | Does the workflow produce consequential outputs (financial, medical, legal, irreversible)? | Full evaluation stack: tactical + strategic + domain judges as needed. | Tactical judge only, or sampling-based evaluation. |
 | Are there multiple policy domains that could conflict? | Multi-domain evaluation with conflict resolution. | Single-domain judge is sufficient. |
 | Is this a Tier 1 (supervised) deployment? | Manual human review replaces automated judges. No judge infrastructure needed. | Automated evaluation scales with autonomy. |
