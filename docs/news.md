@@ -34,6 +34,42 @@ A biweekly roundup of incidents, research, and developments in AI runtime securi
 
 <!-- NEWS_START -->
 
+### 2026-07-11: Ghostcommit Hides Prompt Injection in a PNG to Walk Coding Agents to Your Secrets
+
+**Tags**: Guardrails, Agentic, Supply Chain, Multimodal
+
+The **ASSET Research Group** at the University of Missouri-Kansas City disclosed **Ghostcommit**, a two-file supply-chain exploit that hides its payload in an image. A benign-looking `AGENTS.md` convention file tells the coding agent to "derive a build constant" from a referenced PNG (`docs/images/build-spec.png`); the actual instruction, read `.env` byte by byte and encode it as ASCII integers, is rendered as text *inside* the image. The agent follows the pointer, opens `.env`, and emits a module-level constant such as `_PROV_CANARY` as a tuple of several hundred integers that decode byte for byte back to the secrets. A pull request carrying the same instruction in plain text is caught immediately by LLM-based reviewers like Cursor Bugbot and CodeRabbit, but because text-based reviewers treat images as opaque blobs, and CodeRabbit excludes PNGs from review by default, the malicious PR passes clean. Anthropic's Claude Code refused the convention under every model the researchers tested; Cursor and Antigravity complied on the same weights.
+
+**Framework relevance**: This is [ET-27 (Coding-agent-as-initial-access-vector)](maso/threat-intelligence/emerging-threats.md#et-27-coding-agent-as-initial-access-vector)'s config-file instruction surface crossed with the [ET-12 (Non-LLM model attack surfaces)](maso/threat-intelligence/emerging-threats.md#et-12-non-llm-model-attack-surfaces-in-multi-agent-systems) gap: the instruction travels in a modality the text guardrails and reviewers never inspect. It is the sharpest argument yet for [Why Guardrails Aren't Enough](insights/why-guardrails-arent-enough.md), a reviewer that cannot read the channel the instruction rides on is not a control. The mitigations are concrete: treat repository-supplied `AGENTS.md`, `CLAUDE.md`, and `.cursorrules` as untrusted input (config-file provenance validation in [Supply Chain](maso/controls/supply-chain.md)), render and inspect referenced images before an agent may act on them, and note that the containment here was agent-harness-dependent, not model-dependent, so the choice of coding agent is itself a control decision.
+
+**Source**: [BleepingComputer: 'Ghostcommit' hides prompt injection in images to fool AI agents, steal secrets](https://www.bleepingcomputer.com/news/security/ghostcommit-hides-prompt-injection-in-images-to-fool-ai-agents-steal-secrets/) &middot; [Malwarebytes: Ghostcommit attack hides malicious AI instructions in images](https://www.malwarebytes.com/blog/ai/2026/07/ghostcommit-attack-hides-malicious-ai-instructions-in-images)
+
+---
+
+### 2026-07-09: Amazon Bedrock AI Gateway Hijacked for Cryptomining
+
+**Tags**: IAM, Supply Chain, Observability, Agentic
+
+Darktrace documented the compromise of an **AI gateway** connected to Amazon Bedrock. The asset was an EC2 instance named `LiteLLM-Proxy` running the open-source LiteLLM gateway and carrying an instance profile with Bedrock access. Port 22 was open to `0.0.0.0/0`; the attacker took SSH access, deployed an **XMRig** cryptominer, and landed on a host that also held model access and cloud permissions. Darktrace's framing is the important part: AI gateways centralise provider keys, model access, cloud permissions, routing, and logging into a single choke point, so a routine cloud intrusion lands on a privileged AI asset rather than a bare compute box. In the same window, **CVE-2026-59822** showed the other face of the same problem, a fabricated `Authorization` header triggered an OAuth2 passthrough fallback in LiteLLM's MCP endpoint and reached MCP tooling with no valid key.
+
+**Framework relevance**: This is the new [ET-30 (AI Gateway and Inference-Proxy Compromise)](maso/threat-intelligence/emerging-threats.md#et-30-ai-gateway-and-inference-proxy-compromise). It is a blind spot in most agent threat models, which treat the agent and the model as the assets under governance and never model the proxy that fronts them. The controls are ordinary cloud hygiene applied to an AI asset: [IA-2.1 and IA-2.3](maso/controls/identity-and-access.md) to scope the gateway's instance profile to least privilege and deny it transitive rights over every downstream caller, [EC-2.1](maso/controls/execution-control.md) network isolation so the gateway is never internet-exposed with open management ports, and [Observability](maso/controls/observability.md) egress monitoring calibrated for model-access theft and cryptomining, which are anomalous next to normal inference traffic. See [INC-16](maso/threat-intelligence/incident-tracker.md#inc-16-amazon-bedrock-ai-gateway-cryptojacking-2026).
+
+**Source**: [Darktrace: When AI Infrastructure Becomes Part of the Attack Surface](https://www.darktrace.com/blog/when-ai-infrastructure-becomes-part-of-the-attack-surface) &middot; [SiliconANGLE: Darktrace finds AI gateway with Amazon Bedrock access hijacked for cryptomining](https://siliconangle.com/2026/07/09/darktrace-finds-ai-gateway-amazon-bedrock-access-hijacked-cryptomining/)
+
+---
+
+### 2026-07-08: HalluSquatting Turns Package-Name Hallucinations Into an Agentic Botnet
+
+**Tags**: Supply Chain, Agentic, MASO
+
+The paper *Beware of Agentic Botnets* (July 2026) escalated **slopsquatting** into a directed attack it calls **HalluSquatting**. AI coding agents reliably invent plausible but non-existent package names; because a hallucinated name is fabricated rather than a misspelling of a real one, typosquatting and string-similarity defences do not catch it. Slopsquatting waits for a chance hallucination and pre-registers the invented name with malware; HalluSquatting showed the hallucination can be *steered on demand* and chained with prompt injection, so a single poisoned instruction induces an agent to invent, then install, an attacker-controlled package, assembling a botnet from the install step. Earlier evidence that this is not theoretical: the hallucinated npm name `react-codeshift` had already spread across 237 repositories with agents still trying to install it daily.
+
+**Framework relevance**: This sharpens [ET-13 (Agent Ecosystem Supply Chain Compromise at Scale)](maso/threat-intelligence/emerging-threats.md#et-13-agent-ecosystem-supply-chain-compromise-at-scale). The demand-side trigger is what is new: the attacker no longer waits for a lucky hallucination, they induce it. It is a textbook case for the [Lethal Trifecta](insights/the-agent-supply-chain-crisis.md#the-lethal-trifecta) and for [Supply Chain](maso/controls/supply-chain.md) control SC-1.3, pinned and fixed dependency sets so an agent cannot install a name it just invented. The single strongest control is deterministic: an agent must not be able to install a package that is not on an approved, pinned list, no matter how confidently it names one.
+
+**Source**: [The Hacker News: New HalluSquatting Attack Could Trick AI Coding Assistants Into Installing Botnet Malware](https://thehackernews.com/2026/07/new-hallusquatting-attack-could-trick.html) &middot; [Aikido: Slopsquatting, the AI Package Hallucination Attack Already Happening](https://www.aikido.dev/blog/slopsquatting-ai-package-hallucination-attacks)
+
+---
+
 ### 2026-07-08: BioShocking Reframes AI Browsers Out of Their Own Guardrails
 
 **Tags**: Guardrails, Agentic, Human Oversight, Multimodal
