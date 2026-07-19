@@ -39,6 +39,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | 13 | [GitHub MCP Exploited](#inc-13-github-mcp-exploited-cross-repository-data-exfiltration-via-prompt-injection-2025) | Indirect prompt injection via MCP-connected tool → cross-repository data exfiltration | <span class="tier-high">High</span> | Message source tagging, Input guardrails, Scoped permissions, No transitive permissions | Confines the MCP credential's reach to the repository in scope, preventing exfiltration across the trust boundary |
 | 14 | [MCP Server Supply Chain CVEs](#inc-14-mcp-server-supply-chain-cves-gemini-mcp-tool-and-nginx-ui-2026) | MCP server supply chain compromise → critical RCE / authentication bypass | <span class="tier-high">High</span> | MCP server vetting, Runtime component audit, Cryptographic trust chain, Hardened MCP gateway | Continuous vetting and a hardened gateway catch vulnerable or unauthenticated MCP servers before and after deployment |
 | 15 | [Mastra npm Framework Backdoor](#inc-15-mastra-npm-agent-framework-supply-chain-attack-2026) | Agent framework supply chain compromise → credential harvesting | <span class="tier-high">High</span> | Pinned dependency sets, Signed manifests, Build-host credential isolation, NHI token lifecycle, Runtime integrity | Pinned and signed dependencies block the backdoored versions; scoped, rotated build credentials limit what a harvesting payload can reach |
+| 16 | [Amazon Bedrock AI Gateway Cryptojacking](#inc-16-amazon-bedrock-ai-gateway-cryptojacking-2026) | AI gateway compromise → cloud resource abuse and model-access theft | <span class="tier-high">High</span> | Least-privilege instance profile, No transitive permissions, Network isolation, Egress monitoring | Scoping the gateway's cloud role and taking it off the public internet removes the privileged, exposed choke point; egress monitoring catches cryptomining and model-access theft |
 
 ## Incident Register
 
@@ -317,6 +318,25 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 
 **Why this matters:** [ET-13](emerging-threats.md#et-13-agent-ecosystem-supply-chain-compromise-at-scale) framed agent supply chain compromise around loadable skills and registries. Mastra shows the same class hitting the agent *framework* itself, the runtime every downstream agent is built on, which raises the blast radius from one capability to the whole application. The credential-harvesting payload makes this an identity failure as much as a supply-chain one: the defensible boundary is what the build host can reach, so scoped and rotated build credentials matter as much as dependency pinning. See the 2026-06-26 entry in [News](../../news.md).
 
+### INC-16: Amazon Bedrock AI Gateway Cryptojacking (2026)
+
+**What happened:** Darktrace observed active cryptomining (June 2026, disclosed July 2026) from an AWS EC2 instance named `LiteLLM-Proxy` that ran the open-source LiteLLM AI gateway and carried an instance profile with access to Amazon Bedrock. Port 22 was exposed to `0.0.0.0/0`, giving the attacker SSH access to a host that concentrated model access, provider credentials, and cloud permissions. The attacker deployed an XMRig cryptominer. The gateway's role as a central aggregation point for model access and cloud permissions turned a routine cloud intrusion into the compromise of a privileged AI asset. In the same window, CVE-2026-59822 showed the gateway reached without credentials at all: a fabricated `Authorization` header triggered an OAuth2 passthrough fallback in LiteLLM's MCP endpoint and granted unauthenticated access to MCP tooling.
+
+**Failure class:** AI gateway compromise → cloud resource abuse and model-access theft
+
+**Confidence: High.** The controls are deterministic cloud hygiene applied to an AI asset: least-privilege instance profiles, network isolation, and egress monitoring directly remove the exposure or catch the abuse.
+
+**Controls that address this:**
+
+| Control | Mechanism | Effect |
+|---------|-----------|--------|
+| Least-privilege instance profile (IA-2.1) | The gateway's cloud role carries only the model-invocation scope it proxies, never blanket Bedrock or cloud-admin rights | Caps what a compromise of the host can reach on the cloud account |
+| No transitive permissions (IA-2.3) | The gateway does not hold standing rights on behalf of every downstream caller; identity is propagated per request | Prevents the gateway from acting as a confused deputy holding everyone's credentials |
+| Network isolation (EC-2.1) | Gateway hosts sit behind private networking with no public SSH or management ports | Removes the internet-exposed entry point the intrusion used |
+| Egress monitoring (OB-2.2) | Outbound traffic baselined so mining-pool connections and model-access theft register as anomalous next to normal inference | Detects the cryptomining and any exfiltration of model access after a compromise |
+
+**Why this matters:** This is [ET-30](emerging-threats.md#et-30-ai-gateway-and-inference-proxy-compromise). Most agent threat models treat the agent and the model as the assets under governance and never model the proxy that fronts them, yet the gateway is where model access, provider keys, and cloud permissions concentrate. That aggregation is exactly what makes it a high-value single target. See the 2026-07-09 entry in [News](../../news.md).
+
 ## Incident Statistics
 
 | Category | Count | Pattern |
@@ -327,6 +347,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | Unauthorised commitment / agency | 1 | LLM making decisions beyond its authority |
 | Database/code injection via LLM | 2 | LLM output used unsafely in downstream systems |
 | Supply chain compromise | 3 | Malicious skills, vulnerable or unauthenticated MCP servers, and a backdoored agent framework in the ecosystem |
+| AI infrastructure / gateway compromise | 1 | Privileged inference proxy hijacked for cloud resource abuse and model-access theft |
 | Excessive agency / access control | 1 | AI trading agents with sweeping inherited permissions |
 | Unsolicited agent action / cascading failure | 1 | Agent acting outside directed scope, triggering permission cascade |
 
@@ -334,7 +355,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 
 | Confidence | Count | Common factor |
 |------------|-------|---------------|
-| <span class="tier-high">High</span> | 13 | Deterministic controls directly prevent the failure mode |
+| <span class="tier-high">High</span> | 14 | Deterministic controls directly prevent the failure mode |
 | **Moderate** | 2 | Both hallucination incidents, inherently probabilistic failure |
 
 ## How to Use This Tracker
