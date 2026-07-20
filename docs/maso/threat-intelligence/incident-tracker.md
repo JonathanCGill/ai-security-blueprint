@@ -322,7 +322,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 
 **What happened:** Darktrace observed active cryptomining (June 2026, disclosed July 2026) from an AWS EC2 instance named `LiteLLM-Proxy` that ran the open-source LiteLLM AI gateway and carried an instance profile with access to Amazon Bedrock. Port 22 was exposed to `0.0.0.0/0`, giving the attacker SSH access to a host that concentrated model access, provider credentials, and cloud permissions. The attacker deployed an XMRig cryptominer. The gateway's role as a central aggregation point for model access and cloud permissions turned a routine cloud intrusion into the compromise of a privileged AI asset. In the same window, CVE-2026-59822 showed the gateway reached without credentials at all: a fabricated `Authorization` header triggered an OAuth2 passthrough fallback in LiteLLM's MCP endpoint and granted unauthenticated access to MCP tooling.
 
-**Failure class:** AI gateway compromise → cloud resource abuse and model-access theft
+**Failure class:** AI gateway compromise → cloud resource abuse (observed) and potential model-access theft
 
 **Confidence: High.** The controls are deterministic cloud hygiene applied to an AI asset: least-privilege instance profiles, network isolation, and egress monitoring directly remove the exposure or catch the abuse.
 
@@ -347,7 +347,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | Unauthorised commitment / agency | 1 | LLM making decisions beyond its authority |
 | Database/code injection via LLM | 2 | LLM output used unsafely in downstream systems |
 | Supply chain compromise | 3 | Malicious skills, vulnerable or unauthenticated MCP servers, and a backdoored agent framework in the ecosystem |
-| AI infrastructure / gateway compromise | 1 | Privileged inference proxy hijacked for cloud resource abuse and model-access theft |
+| AI infrastructure / gateway compromise | 1 | Privileged inference proxy hijacked for cloud resource abuse, with model access and cloud permissions exposed |
 | Excessive agency / access control | 1 | AI trading agents with sweeping inherited permissions |
 | Unsolicited agent action / cascading failure | 1 | Agent acting outside directed scope, triggering permission cascade |
 
