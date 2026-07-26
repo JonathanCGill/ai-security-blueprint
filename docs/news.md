@@ -9,7 +9,7 @@ description: Curated AI runtime security news, linked to AIRS and MASO framework
 
 A biweekly roundup of incidents, research, and developments in AI runtime security, weighted toward agentic and multi-agent stories that test the [MASO (Multi-Agent Security Operations)](maso/README.md) domains. Each item is mapped to the AIRS and MASO controls most relevant to it, so you can see the framework applied to real events as they break. Newest items first.
 
-*Items older than three months move to the [News Archive](../archive/2026-03-31/news-archive.md).*
+*Items older than three months move to the [News Archive](https://github.com/JonathanCGill/airuntimesecurity.io/blob/main/archive/2026-03-31/news-archive.md).*
 
 !!! info "How to read each entry"
     Every item carries a short **summary** of what happened or was published, a **framework relevance** note tying it to specific AIRS or MASO controls, and a **source** link to the primary report. The tags below place each item in a framework area.
@@ -480,7 +480,7 @@ Anthropic announced Claude Mythos Preview and Project Glasswing, a consortium (A
 
 <!-- NEWS_END -->
 
-*Older items have been moved to the [News Archive](../archive/2026-03-31/news-archive.md).*
+*Older items have been moved to the [News Archive](https://github.com/JonathanCGill/airuntimesecurity.io/blob/main/archive/2026-03-31/news-archive.md).*
 
 !!! info "References"
     - [AIRS Framework Architecture](architecture.md)

@@ -19,6 +19,8 @@
   --footer-text: #8d8a83;    /* footer text on ink */
   --footer-divider: #2e2e31; /* divider on dark footer */
   --cta-body: #b9b6ad;       /* muted text on dark CTA band */
+  --accent-on-dark: #8da9d8; /* ink-blue, legible on the dark MASO card */
+  --surface-tint: #eef1f6;   /* pale brand tint: "you are here" lifecycle card */
 }
 
 html { scroll-behavior: smooth; }
@@ -463,6 +465,133 @@ a.airs-card:hover { border-color: var(--ink); color: var(--ink); }
 }
 .airs-card__drives:hover { color: var(--accent-hover); }
 
+/* ── The four MASO doors (hub + homepage) ─────────────────── */
+.airs-doors {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 40px;
+}
+.airs-door {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: 5px;
+  padding: 24px 22px;
+  color: var(--ink);
+  transition: border-color 0.18s ease;
+}
+.airs-door:hover { border-color: var(--accent); color: var(--ink); }
+.airs-door__label {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+.airs-door__body { font-size: 14.5px; line-height: 1.6; color: var(--muted); margin: 0; }
+.airs-door__more {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+}
+.airs-door:hover .airs-door__more { color: var(--accent-hover); }
+
+@media (max-width: 1000px) {
+  .airs-doors { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .airs-doors { grid-template-columns: 1fr; }
+}
+
+/* ── ASO → MASO scales row (homepage) ─────────────────────── */
+.airs-scales { display: flex; align-items: stretch; gap: 0; margin-top: 8px; }
+.airs-scale {
+  border-radius: 5px;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+}
+.airs-scale--aso { flex: 2; background: var(--card); border: 1px solid var(--line); color: var(--ink); }
+.airs-scale--aso:hover { border-color: var(--ink); color: var(--ink); }
+.airs-scale--maso { flex: 3; background: var(--ink); color: #fff; }
+.airs-scale__arrow {
+  flex: 0 0 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: var(--muted);
+}
+.airs-scale__label {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+.airs-scale--maso .airs-scale__label { color: var(--accent-on-dark); }
+.airs-scale__title {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+.airs-scale--maso .airs-scale__title { font-size: 22px; }
+.airs-scale__body { font-size: 15px; line-height: 1.6; color: var(--muted); margin: 0 0 16px; }
+.airs-scale--maso .airs-scale__body { color: #c3cedb; }
+.airs-scale__more { margin-top: auto; font-size: 14.5px; font-weight: 500; color: var(--accent); }
+.airs-scale--maso .airs-scale__more { color: var(--accent-on-dark); }
+.airs-scale--aso:hover .airs-scale__more { color: var(--accent-hover); }
+
+/* ── Two-column split: roles + go deeper (homepage) ───────── */
+.airs-split2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: start; margin-top: 8px; }
+.airs-stack { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.airs-minicard {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px 22px;
+  color: var(--ink);
+  transition: border-color 0.18s ease;
+}
+a.airs-minicard:hover { border-color: var(--ink); color: var(--ink); }
+.airs-minicard__title { font-weight: 700; font-size: 16px; margin: 0; }
+.airs-minicard__qual { font-size: 13.5px; color: var(--muted); }
+.airs-minicard__body { font-size: 14.5px; line-height: 1.55; color: var(--muted); margin: 6px 0 0; }
+.airs-minicard__body em { font-style: italic; color: var(--ink); }
+
+/* ── Lifecycle strip (homepage) ───────────────────────────── */
+.airs-lifecycle { display: flex; align-items: center; gap: 0; margin-top: 8px; }
+.airs-life {
+  border-radius: 5px;
+  padding: 18px 22px;
+}
+.airs-life--before { flex: 1; border: 1px dashed #c3cbd5; background: var(--card); }
+.airs-life--now { flex: 1.4; border: 1px solid var(--accent); background: var(--surface-tint); }
+.airs-life__arrow { flex: 0 0 48px; text-align: center; color: var(--muted); font-size: 20px; }
+.airs-life__title { font-size: 15px; font-weight: 700; margin: 0; }
+.airs-life__body { font-size: 14px; color: var(--muted); margin: 4px 0 0; line-height: 1.55; }
+
+@media (max-width: 900px) {
+  .airs-split2 { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 720px) {
+  .airs-scales { flex-direction: column; }
+  .airs-scale__arrow { flex-basis: auto; padding: 8px 0; transform: rotate(90deg); }
+  .airs-lifecycle { flex-direction: column; align-items: stretch; }
+  .airs-life__arrow { flex-basis: auto; padding: 8px 0; transform: rotate(90deg); }
+}
+
 /* ── Control Selector ─────────────────────────────────────── */
 .airs-sel-step { padding: 36px 0; border-top: 1px solid var(--line); }
 .airs-sel-step:first-child { border-top: none; padding-top: 0; }
@@ -556,7 +685,10 @@ a.airs-card:hover { border-color: var(--ink); color: var(--ink); }
 .airs-center .airs-lead,
 .airs-center .airs-intro,
 .airs-center .airs-cta__title,
+.airs-center .airs-hero__lead,
+.airs-center .airs-fineprint,
 .airs-center .airs-statement { margin-left: auto; margin-right: auto; }
+.airs-center .airs-hero__title { margin-left: auto; margin-right: auto; }
 
 /* ── Responsive ───────────────────────────────────────────── */
 @media (max-width: 640px) {

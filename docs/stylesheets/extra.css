@@ -119,6 +119,15 @@ img[src$=".svg"] {
   margin-top: 0.5rem;
 }
 
+/* ── MASO page context line (purpose group + role within it) ── */
+.md-typeset p.page-context {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--md-default-fg-color--light);
+  margin-top: -0.1rem;
+  margin-bottom: 1.2rem;
+}
+
 /* ── Learning site callout ── */
 .learning-callout {
   border: 2px solid var(--md-accent-fg-color);

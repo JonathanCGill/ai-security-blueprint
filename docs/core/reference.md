@@ -179,3 +179,8 @@ What has been missing: clear guidance on *why* this pattern is necessary and *ho
 6. **Assume bypasses happen** - Design for detection, not just prevention
 7. **Humans remain accountable** - AI assists; humans own outcomes
 
+
+
+---
+
+*At fleet scale:* each control here has a multi-agent equivalent. See the [MASO Framework Reference](../maso/reference.md) for how these extend across agents in a fleet.

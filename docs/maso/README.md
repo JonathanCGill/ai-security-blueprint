@@ -2,7 +2,9 @@
 title: MASO (Multi-Agent)
 description: "Multi-Agent Security Operations (MASO): risk-proportionate runtime controls for systems where many AI agents collaborate. The same three control layers, plus the circuit breaker, now governing what agents do to each other."
 template: redesign.html
-nav_active: framework
+nav_active: maso
+search:
+  boost: 3
 ---
 
 <section class="airs-section airs-hero airs-hero--narrow airs-section--paper airs-section--first">
@@ -58,39 +60,53 @@ nav_active: framework
 
 <section class="airs-section airs-section--paper">
   <div class="airs-wrap">
-    <p class="airs-eyebrow">How it's organised</p>
-    <h2 class="airs-h2">Pick what your deployment needs. Deselect the rest.</h2>
-    <p class="airs-intro">MASO is a system, not a checklist: declarations of intent, controls that enforce them, tiers that scale the scrutiny, and PACE for when something breaks.</p>
-    <div class="airs-cards airs-cards--roles">
-      <a class="airs-card" href="/maso/controls/objective-intent/">
-        <p class="airs-card__title">Declared intent</p>
-        <p class="airs-card__body">Every agent, judge, and workflow runs against a versioned Objective Intent Spec: the statute book the judge rules against.</p>
-        <span class="airs-card__more">Objective Intent &amp; mandates &rarr;</span>
+    <p class="airs-eyebrow">Inside MASO</p>
+    <h2 class="airs-h2">Four doors, depending on what you came to do.</h2>
+    <p class="airs-intro">MASO is a system, not a checklist. Pick what your deployment needs; consciously deselect the rest.</p>
+    <div class="airs-doors">
+      <a class="airs-door" href="/maso/understand/">
+        <p class="airs-door__label">Understand</p>
+        <p class="airs-door__body">The reference, the interactive demo, the anatomy of an agent, the whole framework on one map.</p>
+        <span class="airs-door__more">Start with the demo &rarr;</span>
       </a>
-      <a class="airs-card" href="/maso/reference/#control-domains">
-        <p class="airs-card__title">Eleven control domains</p>
-        <p class="airs-card__body">Identity, data, execution, observability, supply chain, epistemic integrity, privileged agents, and more, scaled by tier.</p>
-        <span class="airs-card__more">Browse the control domains &rarr;</span>
+      <a class="airs-door" href="/maso/implement/">
+        <p class="airs-door__label">Implement</p>
+        <p class="airs-door__body">Objective Intent, 11 control domains, three tiers, and integration guides for LangGraph, AutoGen, CrewAI, Bedrock.</p>
+        <span class="airs-door__more">Start at Tier 1 &rarr;</span>
+      </a>
+      <a class="airs-door" href="/maso/operate/">
+        <p class="airs-door__label">Operate</p>
+        <p class="airs-door__body">PACE resilience, the red-team playbook, and live threat intelligence, how MASO runs, degrades, and fails safe.</p>
+        <span class="airs-door__more">How MASO fails safe &rarr;</span>
+      </a>
+      <a class="airs-door" href="/maso/evidence/">
+        <p class="airs-door__label">Evidence</p>
+        <p class="airs-door__body">Worked examples, 100-agent and 10k e-commerce stress tests, OWASP mappings, the honest trade-offs.</p>
+        <span class="airs-door__more">See the stress tests &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="airs-section airs-section--card">
+  <div class="airs-wrap">
+    <p class="airs-eyebrow">Where to start</p>
+    <h2 class="airs-h2">Three concrete first steps.</h2>
+    <div class="airs-cards airs-cards--roles">
+      <a class="airs-card" href="/maso/demo/">
+        <p class="airs-card__title">Try the demo</p>
+        <p class="airs-card__body">Watch a multi-agent workflow run, then watch it get attacked. See where each layer catches what the last one missed.</p>
+        <span class="airs-card__more">Open the interactive demo &rarr;</span>
+      </a>
+      <a class="airs-card" href="/maso/reference/">
+        <p class="airs-card__title">Read the reference</p>
+        <p class="airs-card__body">Every control domain, the OWASP mappings, the tiers, the cost numbers, and the honest trade-offs, in one place.</p>
+        <span class="airs-card__more">Read the full reference &rarr;</span>
       </a>
       <a class="airs-card" href="/maso/implementation/tier-1-supervised/">
-        <p class="airs-card__title">Three tiers</p>
-        <p class="airs-card__body">Supervised, managed, autonomous. Scrutiny scales to autonomy: approve every write, or auto-approve the low-risk ones.</p>
+        <p class="airs-card__title">Pick your tier</p>
+        <p class="airs-card__body">Supervised, managed, or autonomous. Start at Tier 1, approve every write, and graduate as you build trust.</p>
         <span class="airs-card__more">Start at Tier 1 &rarr;</span>
-      </a>
-      <a class="airs-card" href="/pace-resilience/">
-        <p class="airs-card__title">PACE resilience</p>
-        <p class="airs-card__body">Primary, Alternate, Contingency, Emergency. Every layer has a defined failure mode and a safe state to fall back to.</p>
-        <span class="airs-card__more">How MASO fails safe &rarr;</span>
-      </a>
-      <a class="airs-card" href="/maso/threat-intelligence/incident-tracker/">
-        <p class="airs-card__title">Threat intelligence</p>
-        <p class="airs-card__body">Real incidents and a red-team playbook ground every control in attacks that have actually happened.</p>
-        <span class="airs-card__more">See the incidents &rarr;</span>
-      </a>
-      <a class="airs-card" href="/maso/distributed-architecture/">
-        <p class="airs-card__title">Distributed architecture</p>
-        <p class="airs-card__body">At scale, Layer 2 becomes sidecars, a hardened message bus, and agent-to-agent IAM, not one judge as a chokepoint.</p>
-        <span class="airs-card__more">Scale beyond a single judge &rarr;</span>
       </a>
     </div>
   </div>
@@ -120,6 +136,14 @@ nav_active: framework
 </section>
 
 <section class="airs-section airs-section--paper airs-center">
+  <div class="airs-wrap--narrow">
+    <p class="airs-eyebrow">Not running a fleet yet?</p>
+    <p class="airs-statement">If you run one AI system today, the foundation is <em>ASO</em>: the same three layers and circuit breaker, wrapped around a single boundary. Learn it there, and you are already learning MASO.</p>
+    <a class="airs-textlink" href="/aso/">The ASO foundation &rarr;</a>
+  </div>
+</section>
+
+<section class="airs-section airs-section--card airs-center">
   <div class="airs-wrap--narrow">
     <p class="airs-eyebrow">Disambiguation</p>
     <p class="airs-intro">MASO (Multi-Agent Security Operations) is a component of the AIRS framework. It is not affiliated with, endorsed by, or related to the Monetary Authority of Singapore (MAS).</p>

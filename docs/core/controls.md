@@ -188,3 +188,8 @@ Humans review findings, make decisions, remain accountable.
 7. **Judge operational** - Drive workflows
 8. **Continuous tuning** - Improve from findings
 
+
+
+---
+
+*At fleet scale:* these three layers extend into the space between agents. See [MASO](../maso/README.md) for the multi-agent version.
