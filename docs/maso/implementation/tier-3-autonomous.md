@@ -4,6 +4,8 @@ description: "Tier 3 MASO implementation: autonomous multi-agent deployment with
 
 # Tier 3 - Autonomous Multi-Agent Deployment
 
+<p class="page-context">Implement · Tier 3 of 3</p>
+
 **High Autonomy · Exception-Based Human Oversight · Adversarial-Tested Operations**
 
 > Part of the [MASO (Multi-Agent Security Operations) Framework](../README.md) · Implementation Guidance
@@ -307,3 +309,7 @@ Tier 3 autonomous operations face the most intense regulatory scrutiny. Specific
 
 **APRA CPS 234 (for Australian financial services):** Requires that information assets (including AI systems) are managed commensurate with their sensitivity and criticality. Tier 3 systems handling customer financial data must demonstrate that the autonomous controls (drift detection, blast radius caps, kill switch) provide protection equivalent to or better than human supervision. The adversarial testing programme provides the evidence base for this claim.
 
+
+
+!!! info "Next"
+    Keep it honest: pressure-test the fleet with the [Red Team Playbook](../red-team/red-team-playbook.md) in [Operate](../operate/index.md), and check your coverage against the [stress tests](../evidence/index.md) in Evidence.

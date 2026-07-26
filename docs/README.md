@@ -1,167 +1,151 @@
 ---
 title: AI Runtime Security (AIRS)
-description: AI Governance decides what AI should do. AI Runtime Security verifies what it actually does. A vendor-neutral, risk-proportionate framework for running AI safely in production.
+description: "Governance decides what AI should do. MASO verifies what your agents actually do. AIRS is a vendor-neutral, risk-proportionate framework for running AI safely in production: ASO for a single system, MASO for the fleet."
 template: redesign.html
 nav_active: home
+search:
+  boost: 2
 ---
 
-<section class="airs-section airs-hero airs-section--paper airs-section--first">
-  <div class="airs-wrap">
-    <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">A framework for running AI safely</p>
-    <h1 class="airs-hero__title">Governance decides what AI <em class="is-muted">should</em> do. Security verifies what it <em class="is-accent">actually</em> does.</h1>
-    <p class="airs-hero__lead">Most organisations have the first. Few have the second. That gap is where the failures live.</p>
-    <div class="airs-btns">
-      <a class="airs-btn airs-btn--primary" href="/what-is-ai-runtime-security/">Start here &rarr;</a>
-      <a class="airs-btn airs-btn--secondary" href="/architecture/">See the framework</a>
-    </div>
-    <p class="airs-fineprint">Control frameworks and crosswalks are point-in-time snapshots; see the date on each. Verify current regulatory requirements against official sources.</p>
-  </div>
-</section>
-
-<section class="airs-section airs-section--paper airs-center">
+<section class="airs-section airs-hero airs-section--paper airs-section--first airs-center">
   <div class="airs-wrap--narrow">
-    <p class="airs-eyebrow">Before any of it</p>
-    <p class="airs-statement">A cheaper question comes first: <em>is generative AI even the right tool for this?</em> Point a stochastic model at a task that needed a deterministic one and you take on a class of runtime risk you could have designed out. The most effective control is the one you never had to build.</p>
-    <a class="airs-textlink" href="/should-you-use-ai/">Should you use AI at all? &rarr;</a>
+    <p class="airs-eyebrow airs-eyebrow--accent airs-hero__eyebrow">A framework for running AI safely</p>
+    <h1 class="airs-hero__title">Governance decides what AI <em class="is-muted">should</em> do. MASO verifies what your agents <em class="is-accent">actually</em> do.</h1>
+    <p class="airs-hero__lead"><strong>Multi-Agent Security Operations</strong> is the heart of AIRS: risk-proportionate runtime controls for systems where many AI agents collaborate, built on the same three layers proven on single systems.</p>
+    <div class="airs-btns">
+      <a class="airs-btn airs-btn--primary" href="/maso/">Enter MASO &rarr;</a>
+      <a class="airs-btn airs-btn--secondary" href="/maso/demo/">&#9654; Try the interactive demo</a>
+    </div>
+    <p class="airs-fineprint">New to runtime security? <a href="/start/">Start here</a> &middot; Running one model, not a fleet? <a href="/aso/">See ASO</a></p>
   </div>
 </section>
 
 <section class="airs-section airs-section--card">
   <div class="airs-wrap">
-    <p class="airs-eyebrow">The gap</p>
-    <h2 class="airs-h2">Two different jobs, often mistaken for one.</h2>
+    <p class="airs-eyebrow">The shift</p>
+    <h2 class="airs-h2">One chatbot is one risk. A fleet is a system of risks.</h2>
+    <p class="airs-intro">Put fragile agents in a line and the failures don't add up, they multiply.</p>
     <div class="airs-cards">
       <div class="airs-card">
-        <p class="airs-card__label">Governance</p>
-        <p class="airs-card__title">Asks: <em>what is this AI allowed to do?</em></p>
-        <p class="airs-card__body">Policies, accountability, and audits set the intent. They decide the rules, but they cannot enforce them in the moment.</p>
+        <p class="airs-card__title">Injection propagates</p>
+        <p class="airs-card__body">A poisoned document one agent reads becomes an instruction the next agent obeys.</p>
       </div>
-      <div class="airs-card airs-card--accent">
-        <p class="airs-card__label airs-card__label--accent">Runtime security</p>
-        <p class="airs-card__title">Asks: <em>is it doing that, right now?</em></p>
-        <p class="airs-card__body">Live controls catch the prompt injection mid-request, check the output before users see it, and halt the agent that goes out of bounds.</p>
+      <div class="airs-card">
+        <p class="airs-card__title">Errors compound</p>
+        <p class="airs-card__body">One agent's hallucination becomes another's "fact", repeated with confidence instead of caught.</p>
+      </div>
+      <div class="airs-card">
+        <p class="airs-card__title">Privilege goes transitive</p>
+        <p class="airs-card__body">If A delegates to B, and B can touch a tool, then A effectively can too. Authority leaks through hand-offs.</p>
       </div>
     </div>
-    <p class="airs-closingline">Your policy says the model must not leak data. Runtime security is what <em>actually stops it.</em></p>
   </div>
 </section>
 
-<section class="airs-section airs-section--paper" id="how">
+<section class="airs-section airs-section--paper">
   <div class="airs-wrap">
-    <p class="airs-eyebrow">How it works</p>
-    <h2 class="airs-h2">Three layers a request passes through, and a breaker behind them.</h2>
-    <p class="airs-intro">Each control layer works on its own. If one fails, the others still hold, and a circuit breaker contains what gets through. Start in detect-only, then turn on enforcement when you trust it.</p>
-    <div class="airs-pipeline">
-      <span class="airs-pill airs-pill--dashed">request</span>
-      <span class="airs-pipeline__sep">&rsaquo;</span>
-      <span class="airs-pill airs-pill--filled">guardrails</span>
-      <span class="airs-pipeline__sep">&rsaquo;</span>
-      <span class="airs-pill airs-pill--filled">reviewing</span>
-      <span class="airs-pipeline__sep">&rsaquo;</span>
-      <span class="airs-pill airs-pill--filled">oversight</span>
-      <span class="airs-pipeline__sep">&rsaquo;</span>
-      <span class="airs-pill airs-pill--filled">breakers</span>
-      <span class="airs-pipeline__sep">&rsaquo;</span>
-      <span class="airs-pill airs-pill--dashed">user</span>
-    </div>
-    <div class="airs-hairgrid airs-hairgrid--4">
-      <div class="airs-layer">
-        <p class="airs-layer__num">01</p>
-        <p class="airs-layer__title">Guardrails</p>
-        <p class="airs-layer__body">Fast, fixed boundaries that block the obvious failures at machine speed.</p>
-      </div>
-      <div class="airs-layer">
-        <p class="airs-layer__num">02</p>
-        <p class="airs-layer__title">Reviewing controls</p>
-        <p class="airs-layer__body">A second look at the output before it reaches a user, catching the subtle failures guardrails miss.</p>
-      </div>
-      <div class="airs-layer">
-        <p class="airs-layer__num">03</p>
-        <p class="airs-layer__title">Human oversight</p>
-        <p class="airs-layer__body">A person in the loop for high-stakes calls. The bigger the consequence, the closer the watch.</p>
-      </div>
-      <div class="airs-layer">
-        <p class="airs-layer__num">Failsafe</p>
-        <p class="airs-layer__title">Circuit breakers</p>
-        <p class="airs-layer__body">Containment, not a behavioural layer. Halts the AI and switches to a safe fallback when the three layers are bypassed or overwhelmed.</p>
-      </div>
-    </div>
-    <a class="airs-textlink" href="/architecture/">How the layers work together &rarr;</a>
-  </div>
-</section>
-
-<section class="airs-section airs-section--card" id="roles">
-  <div class="airs-wrap">
-    <p class="airs-eyebrow">For your role</p>
-    <h2 class="airs-h2">Where do you fit in?</h2>
-    <p class="airs-intro">Three ways in. Each one starts where your job starts, and tells you what to do first.</p>
-    <div class="airs-cards airs-cards--roles">
-      <a class="airs-role" href="/what-is-ai-runtime-security/">
-        <p class="airs-role__title">Set the strategy</p>
-        <p class="airs-role__q">Is the board confident our AI controls actually work?</p>
-        <p class="airs-role__roles">Security leaders &middot; Risk &amp; governance &middot; Compliance &middot; CIOs</p>
+    <p class="airs-eyebrow">One pattern, two scales</p>
+    <h2 class="airs-h2">Guardrails prevent. Judge detects. Humans decide. Breakers contain.</h2>
+    <div class="airs-scales">
+      <a class="airs-scale airs-scale--aso" href="/aso/">
+        <p class="airs-scale__label">ASO &middot; Single-agent</p>
+        <p class="airs-scale__title">One model, one boundary.</p>
+        <p class="airs-scale__body">The three layers and the circuit breaker wrap a single system's input and output. This is the foundation, learn it here, prove it here.</p>
+        <span class="airs-scale__more">The ASO foundation &rarr;</span>
       </a>
-      <a class="airs-role" href="/architecture/">
-        <p class="airs-role__title">Design &amp; build</p>
-        <p class="airs-role__q">Where do the controls go, and what do they cost?</p>
-        <p class="airs-role__roles">Enterprise architects &middot; AI engineers</p>
-      </a>
-      <a class="airs-role" href="/what-is-ai-runtime-security/">
-        <p class="airs-role__title">Own the product</p>
-        <p class="airs-role__q">What do we need in place before we can ship?</p>
-        <p class="airs-role__roles">Product owners &middot; Business owners &middot; Insider-threat teams</p>
+      <div class="airs-scale__arrow" aria-hidden="true">&rarr;</div>
+      <a class="airs-scale airs-scale--maso" href="/maso/">
+        <p class="airs-scale__label">MASO &middot; Multi-agent</p>
+        <p class="airs-scale__title">Many agents, every hand-off secured.</p>
+        <p class="airs-scale__body">The same layers, extended to the space between models: per-agent identity and permissions, epistemic integrity, message-bus security, kill-switch architecture. 11 control domains, 3 tiers, full OWASP dual coverage.</p>
+        <span class="airs-scale__more">Enter MASO &rarr;</span>
       </a>
     </div>
-  </div>
-</section>
-
-<section class="airs-section airs-section--paper airs-center">
-  <div class="airs-wrap--narrow">
-    <p class="airs-eyebrow">One idea underneath it all</p>
-    <p class="airs-statement">A surprising number of AI attacks are the same event in disguise: <em>untrusted content, tools, memory, or borrowed authority treated as trusted instruction instead of as data to be checked.</em> Hold that line, and a long list of named threats collapses into a handful of problems you can actually get your arms around.</p>
-    <a class="airs-textlink" href="/what-is-ai-runtime-security/">Read the idea in full &rarr;</a>
-  </div>
-</section>
-
-<section class="airs-section airs-section--paper airs-center">
-  <div class="airs-wrap--narrow">
-    <p class="airs-eyebrow">Before runtime</p>
-    <p class="airs-statement">Runtime security begins the moment a system goes live, but how safe it <em>can</em> be is largely decided earlier: which model you trust, which platform you build on, how the thing is shipped and governed. That is the other half of the lifecycle, and it has its own companion framework.</p>
-    <a class="airs-textlink" href="https://aisecuredbydesign.io/">AI Secured by Design: securing AI before deployment &rarr;</a>
   </div>
 </section>
 
 <section class="airs-section airs-section--card">
   <div class="airs-wrap">
-    <p class="airs-eyebrow">Insights &amp; news</p>
-    <h2 class="airs-h2">The thinking, and what's happening.</h2>
-    <p class="airs-intro">Short reads on why runtime security works, and a running record of real incidents mapped back to the framework.</p>
-    <div class="airs-cards airs-cards--roles">
-      <a class="airs-card" href="/insights/">
-        <p class="airs-card__title">Insights</p>
-        <p class="airs-card__body">The evidence behind the framework: why pre-deployment testing isn't enough, why guardrails leak, and what actually holds in production.</p>
-        <span class="airs-card__more">Read the insights &rarr;</span>
+    <p class="airs-eyebrow">Inside MASO</p>
+    <h2 class="airs-h2">Four doors, depending on what you came to do.</h2>
+    <p class="airs-intro">MASO is a system, not a checklist. Pick what your deployment needs; consciously deselect the rest.</p>
+    <div class="airs-doors">
+      <a class="airs-door" href="/maso/understand/">
+        <p class="airs-door__label">Understand</p>
+        <p class="airs-door__body">The reference, the interactive demo, the anatomy of an agent, the whole framework on one map.</p>
+        <span class="airs-door__more">Start with the demo &rarr;</span>
       </a>
-      <a class="airs-card" href="/news/">
-        <p class="airs-card__title">News</p>
-        <p class="airs-card__body">A biweekly roundup of incidents and research, each item tagged with the AIRS controls, layers, and domains it touches.</p>
-        <span class="airs-card__more">See the latest &rarr;</span>
+      <a class="airs-door" href="/maso/implement/">
+        <p class="airs-door__label">Implement</p>
+        <p class="airs-door__body">Objective Intent, 11 control domains, three tiers, and integration guides for LangGraph, AutoGen, CrewAI, Bedrock.</p>
+        <span class="airs-door__more">Start at Tier 1 &rarr;</span>
       </a>
-      <a class="airs-card" href="/reading-paths/">
-        <p class="airs-card__title">The Golden Thread</p>
-        <p class="airs-card__body">A guided two-hour path from <em>why runtime security?</em> through <em>which controls?</em> to <em>how do they improve over time?</em></p>
-        <span class="airs-card__more">Follow the thread &rarr;</span>
+      <a class="airs-door" href="/maso/operate/">
+        <p class="airs-door__label">Operate</p>
+        <p class="airs-door__body">PACE resilience, the red-team playbook, and live threat intelligence, how MASO runs, degrades, and fails safe.</p>
+        <span class="airs-door__more">How MASO fails safe &rarr;</span>
+      </a>
+      <a class="airs-door" href="/maso/evidence/">
+        <p class="airs-door__label">Evidence</p>
+        <p class="airs-door__body">Worked examples, 100-agent and 10k e-commerce stress tests, OWASP mappings, the honest trade-offs.</p>
+        <span class="airs-door__more">See the stress tests &rarr;</span>
       </a>
     </div>
   </div>
 </section>
 
-<section class="airs-section airs-section--ink airs-center">
-  <div class="airs-wrap--narrow">
-    <h2 class="airs-cta__title">Ship your first AI feature safely.</h2>
-    <p class="airs-cta__body">Seven controls. One checklist. One decision on whether you need to go deeper.</p>
-    <div class="airs-btns">
-      <a class="airs-btn airs-btn--primary" href="/what-is-ai-runtime-security/">Start here &rarr;</a>
+<section class="airs-section airs-section--paper">
+  <div class="airs-wrap">
+    <div class="airs-split2">
+      <div>
+        <p class="airs-eyebrow">For your role</p>
+        <h2 class="airs-h2">Three ways in.</h2>
+        <div class="airs-stack">
+          <a class="airs-minicard" href="/stakeholders/security-leaders/">
+            <p class="airs-minicard__title">Set the strategy <span class="airs-minicard__qual">&mdash; security leaders, risk, CIOs</span></p>
+            <p class="airs-minicard__body">Is the board confident our agent controls actually work?</p>
+          </a>
+          <a class="airs-minicard" href="/stakeholders/enterprise-architects/">
+            <p class="airs-minicard__title">Design &amp; build <span class="airs-minicard__qual">&mdash; architects, AI engineers</span></p>
+            <p class="airs-minicard__body">Where do the controls go, and what do they cost?</p>
+          </a>
+          <a class="airs-minicard" href="/stakeholders/product-owners/">
+            <p class="airs-minicard__title">Own the product <span class="airs-minicard__qual">&mdash; product &amp; business owners</span></p>
+            <p class="airs-minicard__body">What do we need in place before we can ship?</p>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="airs-eyebrow">Go deeper</p>
+        <h2 class="airs-h2">The thinking behind it.</h2>
+        <div class="airs-stack">
+          <a class="airs-minicard" href="/reading-paths/">
+            <p class="airs-minicard__title">The Golden Thread</p>
+            <p class="airs-minicard__body">A guided two-hour path from <em>why runtime security?</em> to <em>how do controls improve?</em></p>
+          </a>
+          <a class="airs-minicard" href="/insights/">
+            <p class="airs-minicard__title">Insights &amp; News</p>
+            <p class="airs-minicard__body">Why guardrails leak, why containment beats evaluation, and a biweekly incident roundup tagged to MASO controls.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="airs-section airs-section--card">
+  <div class="airs-wrap">
+    <p class="airs-eyebrow">The lifecycle</p>
+    <div class="airs-lifecycle">
+      <div class="airs-life airs-life--before">
+        <p class="airs-life__title">Before deployment</p>
+        <p class="airs-life__body">Which model, which platform, how it ships. <a href="https://aisecuredbydesign.io/">AI Secured by Design &#8599;</a></p>
+      </div>
+      <div class="airs-life__arrow" aria-hidden="true">&rarr;</div>
+      <div class="airs-life airs-life--now">
+        <p class="airs-life__title">At runtime &mdash; you are here</p>
+        <p class="airs-life__body">AIRS: <a href="/aso/">ASO</a> for one system, <a href="/maso/">MASO</a> for the fleet.</p>
+      </div>
     </div>
   </div>
 </section>

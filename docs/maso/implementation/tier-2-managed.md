@@ -4,6 +4,8 @@ description: "Tier 2 MASO implementation: managed multi-agent deployment with bo
 
 # Tier 2 - Managed Multi-Agent Deployment
 
+<p class="page-context">Implement · Tier 2 of 3</p>
+
 **Medium Autonomy · Selective Human Oversight · Production Operations**
 
 > Part of the [MASO (Multi-Agent Security Operations) Framework](../README.md) · Implementation Guidance
@@ -302,3 +304,7 @@ Tier 3 (Autonomous Multi-Agent) requires a high bar of demonstrated maturity. Mo
 
 The drift detection system notices the Analysis Agent's preliminary amounts are trending 15% higher than baseline over the past 72 hours. The drift score reaches 65, triggering automatic P→A transition. The Analysis Agent is isolated. A backup Analysis Agent (using a different model provider) is activated with read-only access. All amount calculations now require human approval. The security team investigates and discovers the RAG knowledge base was updated with a new policy addendum that the agent is interpreting more broadly than intended. The RAG content is corrected, the original agent is re-tested, baselines are updated, and the system returns to Primary.
 
+
+
+!!! info "Next"
+    Move on to [Tier 3 – Autonomous](tier-3-autonomous.md) when the controls have earned it, or revisit the [Integration Guide](../integration/integration-guide.md). To see Tier 2 running at 100 agents, cross into [Evidence](../evidence/index.md).

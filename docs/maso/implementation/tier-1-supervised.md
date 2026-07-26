@@ -4,6 +4,8 @@ description: "Tier 1 MASO implementation: supervised multi-agent deployment with
 
 # Tier 1 - Supervised Multi-Agent Deployment
 
+<p class="page-context">Implement · Tier 1 of 3</p>
+
 **Low Autonomy · Human-in-the-Loop · Pilot Phase**
 
 > Part of the [MASO (Multi-Agent Security Operations) Framework](../README.md) · Implementation Guidance
@@ -275,3 +277,7 @@ Tier 1 is the foundation. An organisation should progress to Tier 2 when the fol
 
 **Graduation trigger:** After 90 days, the operator's rejection rate is 2%, no incidents have occurred, and behavioral baselines show consistent patterns. The bank's operational risk function approves progression to Tier 2, where the Analyst's read operations and the Summariser's writes to the staging area (for pre-approved document types) will proceed without per-action human approval.
 
+
+
+!!! info "Next"
+    Graduate to [Tier 2 – Managed](tier-2-managed.md) once your rejection rate is low and baselines are stable, or wire this into your framework with the [Integration Guide](../integration/integration-guide.md). To see Tier 1 running at scale, cross into [Evidence](../evidence/index.md).

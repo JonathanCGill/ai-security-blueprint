@@ -22,10 +22,11 @@ theme:
     accent: indigo
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
     - navigation.indexes
     - navigation.top
     - navigation.path
-    - navigation.prune
     - navigation.instant
     - navigation.tracking
     - search.suggest
@@ -80,6 +81,9 @@ markdown_extensions:
   - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 extra_css:
   - stylesheets/extra.css
@@ -106,22 +110,63 @@ nav:
   - Home: README.md
 
   - Start:
+    - Where to Begin: start.md
     - "Should You Use AI at All?": should-you-use-ai.md
-    - Choose Your Path: start.md
     - "See It Fail: Chevrolet $1 Chatbot": walkthrough-chevrolet-1-dollar.md
     - Learn the Framework: reading-paths.md
     - "AIRSLite: Seven Controls to Ship": minimum-viable-airs.md
     - Build Your Control Set: select.md
     - Working Code in 30 Minutes: quick-start.md
-    - Skip the Security Review: fast-lane.md
     - FAQ: faq.md
 
-  - Framework:
-    - Overview: architecture.md
-    - Concepts:
+  - MASO:
+    - maso/README.md
+    - Understand:
+      - maso/understand/index.md
+      - Framework Reference: maso/reference.md
+      - "▶ Interactive Demo": maso/demo.md
       - Anatomy of an Agent: agentic-agent-anatomy.md
-      - Constraining Agents: constraining-agents.md
+      - Distributed Security Architecture: maso/distributed-architecture.md
+    - Implement:
+      - maso/implement/index.md
+      - Objective Intent: maso/controls/objective-intent.md
+      - Control Domains:
+        - maso/controls/index.md
+        - Prompt, Goal & Epistemic Integrity: maso/controls/prompt-goal-and-epistemic-integrity.md
+        - Identity & Access: maso/controls/identity-and-access.md
+        - Data Protection: maso/controls/data-protection.md
+        - Document Extraction Integrity: maso/controls/extraction-integrity.md
+        - Execution Control: maso/controls/execution-control.md
+        - Observability: maso/controls/observability.md
+        - Supply Chain: maso/controls/supply-chain.md
+        - Privileged Agent Governance: maso/controls/privileged-agent-governance.md
+        - Model Cognition Assurance: maso/controls/model-cognition-assurance.md
+        - Agentic Task Mandate: maso/controls/agentic-task-mandate.md
+        - Emergent Risk Register: maso/controls/risk-register.md
+      - Environment Containment: maso/environment-containment.md
+      - Tier 1 - Supervised: maso/implementation/tier-1-supervised.md
+      - Tier 2 - Managed: maso/implementation/tier-2-managed.md
+      - Tier 3 - Autonomous: maso/implementation/tier-3-autonomous.md
+      - Integration Guide: maso/integration/integration-guide.md
+    - Operate:
+      - maso/operate/index.md
       - PACE Resilience: pace-resilience.md
+      - Red Team Playbook: maso/red-team/red-team-playbook.md
+      - Incident Tracker: maso/threat-intelligence/incident-tracker.md
+      - Emerging Threats: maso/threat-intelligence/emerging-threats.md
+      - Threat Intelligence Review: maso/threat-intelligence/threat-intelligence-review.md
+    - Evidence:
+      - maso/evidence/index.md
+      - Worked Examples: maso/examples/worked-examples.md
+      - 100-Agent Stress Test: maso/stress-test/100-agent-stress-test-overview.md
+      - E-commerce Stress Test: maso/stress-test/ecommerce-10k-stress-test.md
+      - Judge Proliferation Review: maso/reviews/stakeholder-review-judge-proliferation.md
+      - MASO 2.0 Roadmap: maso/maso-2.0-anticipated-changes.md
+
+  - ASO:
+    - aso/index.md
+    - Architecture Overview: architecture.md
+    - Constraining Agents: constraining-agents.md
     - Core Controls:
       - core/README.md
       - Core Controls Reference: core/reference.md
@@ -151,37 +196,7 @@ nav:
       - PACE for Controls: core/pace-controls-section.md
       - PACE for Agentic: core/pace-agentic-section.md
       - PACE Checklist: core/pace-checklist-section.md
-    - MASO (Multi-Agent):
-      - maso/README.md
-      - Framework Reference: maso/reference.md
-      - "▶ Interactive Demo": maso/demo.md
-      - Objective Intent: maso/controls/objective-intent.md
-      - Prompt, Goal & Epistemic Integrity: maso/controls/prompt-goal-and-epistemic-integrity.md
-      - Identity & Access: maso/controls/identity-and-access.md
-      - Data Protection: maso/controls/data-protection.md
-      - Document Extraction Integrity: maso/controls/extraction-integrity.md
-      - Execution Control: maso/controls/execution-control.md
-      - Observability: maso/controls/observability.md
-      - Supply Chain: maso/controls/supply-chain.md
-      - Privileged Agent Governance: maso/controls/privileged-agent-governance.md
-      - Model Cognition Assurance: maso/controls/model-cognition-assurance.md
-      - Agentic Task Mandate: maso/controls/agentic-task-mandate.md
-      - Emergent Risk Register: maso/controls/risk-register.md
-      - Environment Containment: maso/environment-containment.md
-      - Tier 1 - Supervised: maso/implementation/tier-1-supervised.md
-      - Tier 2 - Managed: maso/implementation/tier-2-managed.md
-      - Tier 3 - Autonomous: maso/implementation/tier-3-autonomous.md
-      - Integration Guide: maso/integration/integration-guide.md
-      - Worked Examples: maso/examples/worked-examples.md
-      - Red Team Playbook: maso/red-team/red-team-playbook.md
-      - Incident Tracker: maso/threat-intelligence/incident-tracker.md
-      - Emerging Threats: maso/threat-intelligence/emerging-threats.md
-      - Threat Intelligence Review: maso/threat-intelligence/threat-intelligence-review.md
-      - 100-Agent Stress Test: maso/stress-test/100-agent-stress-test-overview.md
-      - E-commerce Stress Test: maso/stress-test/ecommerce-10k-stress-test.md
-      - Judge Proliferation Review: maso/reviews/stakeholder-review-judge-proliferation.md
-      - MASO 2.0 Roadmap: maso/maso-2.0-anticipated-changes.md
-      - Distributed Security Architecture: maso/distributed-architecture.md
+    - Fast Lane: fast-lane.md
 
   - Insights:
     - insights/README.md

@@ -160,3 +160,8 @@ This trust is justified because:
 
 What the Fast Lane does *not* do is remove security's authority. If a deployment doesn't clearly meet all four criteria, it goes through you. The Fast Lane handles the easy calls so you can focus on the hard ones.
 
+
+
+---
+
+*At fleet scale:* the fast lane is single-agent (ASO). Running a fleet? Start with [MASO Tier 1 – Supervised](maso/implementation/tier-1-supervised.md).

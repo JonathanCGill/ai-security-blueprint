@@ -179,3 +179,8 @@ This is not about preventing agents from being useful. It is about making their 
     - [Judge Assurance](core/judge-assurance.md)
     - [MASO Framework](maso/README.md)
     - [Tier 1: Supervised Implementation](maso/implementation/tier-1-supervised.md)
+
+
+---
+
+*At fleet scale:* constraining one agent becomes constraining the fleet, through [Objective Intent](maso/controls/objective-intent.md) and [Environment Containment](maso/environment-containment.md) in MASO.

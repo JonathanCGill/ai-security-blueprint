@@ -103,3 +103,11 @@ nav_active: framework
     <a class="airs-textlink" href="/core/reference/">All the principles, in full &rarr;</a>
   </div>
 </section>
+
+<section class="airs-section airs-section--paper airs-center">
+  <div class="airs-wrap--narrow">
+    <p class="airs-eyebrow">At fleet scale</p>
+    <p class="airs-statement">These are the single-agent core controls, <em>ASO</em>. When one system becomes many, each maps onto a <em>MASO</em> control domain, extended across every hand-off.</p>
+    <a class="airs-textlink" href="/maso/controls/">See the MASO control domains &rarr;</a>
+  </div>
+</section>
