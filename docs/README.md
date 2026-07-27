@@ -94,7 +94,7 @@ search:
   </div>
 </section>
 
-<section class="airs-section airs-section--paper">
+<section class="airs-section airs-section--paper" id="roles">
   <div class="airs-wrap">
     <div class="airs-split2">
       <div>
@@ -124,8 +124,12 @@ search:
             <p class="airs-minicard__body">A guided two-hour path from <em>why runtime security?</em> to <em>how do controls improve?</em></p>
           </a>
           <a class="airs-minicard" href="/insights/">
-            <p class="airs-minicard__title">Insights &amp; News</p>
-            <p class="airs-minicard__body">Why guardrails leak, why containment beats evaluation, and a biweekly incident roundup tagged to MASO controls.</p>
+            <p class="airs-minicard__title">Insights</p>
+            <p class="airs-minicard__body">Why guardrails leak, why containment beats evaluation: the failures that force each MASO control into being.</p>
+          </a>
+          <a class="airs-minicard" href="/news/">
+            <p class="airs-minicard__title">News</p>
+            <p class="airs-minicard__body">A biweekly roundup of incidents, research, and developments, each mapped to the controls it puts to the test.</p>
           </a>
         </div>
       </div>
