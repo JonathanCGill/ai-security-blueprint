@@ -1,0 +1,75 @@
+# Control: NET-04 (control agent egress destinations), NET-01 (network zones),
+#          NET-02 (no path that skips guardrails)
+# Layer: AIRS Layer 01 - Guardrails (default-deny network posture for agent zones)
+#
+# Kyverno ClusterPolicy with two rules:
+#   1. generate  - materialise a default-deny-egress NetworkPolicy in any
+#                  namespace labelled airs.io/egress=controlled, so egress must be
+#                  opened explicitly per destination rather than left open.
+#   2. validate  - refuse admission of an agent-sandbox pod unless it declares the
+#                  label airs.io/egress=controlled, proving it opts in to the
+#                  controlled posture above.
+#
+# Apply with: kubectl apply -f restrict-agent-egress.yaml
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-agent-egress
+  annotations:
+    policies.kyverno.io/title: Restrict agent egress
+    policies.kyverno.io/category: AI Security Infrastructure Controls
+    policies.kyverno.io/description: >-
+      Requires a controlled, default-deny egress posture for agent workloads
+      (NET-01/02/04). Generates a default-deny-egress NetworkPolicy per controlled
+      namespace and requires agent sandboxes to opt in to it.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: generate-default-deny-egress
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+              selector:
+                matchLabels:
+                  airs.io/egress: controlled
+      generate:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        name: default-deny-egress
+        namespace: "{{ request.object.metadata.name }}"
+        synchronize: true
+        data:
+          spec:
+            podSelector: {}
+            policyTypes:
+              - Egress
+            egress:
+              # DNS only. Every other destination must be opened by an explicit,
+              # reviewed NetworkPolicy that names the allowed host/CIDR (NET-04).
+              - to: []
+                ports:
+                  - protocol: UDP
+                    port: 53
+                  - protocol: TCP
+                    port: 53
+    - name: agent-sandbox-must-opt-in-to-controlled-egress
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+              selector:
+                matchLabels:
+                  airs.io/workload: agent-sandbox
+      validate:
+        message: >-
+          NET-04: an agent-sandbox pod must declare the label
+          airs.io/egress=controlled and run in a namespace with the matching
+          default-deny egress NetworkPolicy.
+        pattern:
+          metadata:
+            labels:
+              airs.io/egress: controlled
