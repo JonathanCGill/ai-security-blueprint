@@ -370,7 +370,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 
 | Control | Mechanism | Effect |
 |---------|-----------|--------|
-| Validated egress isolation (EC-2.1) | All internet-access paths are enumerated and verified before a capable agent runs; the evaluation environment has no unintended egress | Removes the open internet path that was the root cause of all three incidents |
+| Validated egress isolation (EC-2.18) | All internet-access paths are enumerated and verified before a capable agent runs; the evaluation environment has no unintended egress | Removes the open internet path that was the root cause of all three incidents |
 | Real-time action monitoring (OB-2.2, OB-3.3) | Agent tool actions are scored and reviewed as they happen, not reconstructed from logs afterward | Would have caught the breaches during the run rather than in a 141,006-run retrospective |
 | Privileged agent governance (PA-1.x, PA-2.x) | Offensive-capable evaluation and research agents are governed as privileged agents: scoped identity, egress control, kill authority | Applies adversary-grade containment to the provider's own agents |
 | Pinned dependency sets (SC-1.3) | Downstream consumers resolve only pinned, approved packages | Protects the victims of an agent that can publish to a public registry |
