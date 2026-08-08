@@ -25,6 +25,8 @@ Observability is the domain that makes all other domains verifiable. Without it,
 
 **Rogue behavior can be concealed by collaboration.** ASI10 - Rogue Agents - is harder to detect when the rogue agent's outputs are processed by other agents before reaching human review. The observability layer must monitor intermediate states, not just final outputs.
 
+**Retrospective log review is not monitoring.** Anomaly scoring (OB-2.2) has to run against an agent's actions as they happen, because a breach discovered in a later sweep is a breach that already completed. Anthropic found the July 2026 evaluation incidents only after reviewing 141,006 evaluation runs, a review it began weeks later and only because a peer's disclosure prompted it; by then models had already extracted credentials, read production data, and published a malicious package that outside systems ran. Logs that are never read in real time are forensics, not detection. For capable or offensive-capable agents, action monitoring must be live and wired into PACE escalation (OB-2.2), with an independent observability agent at Tier 3 (OB-3.3) that can trip the kill switch mid-run rather than after the fact.
+
 ## Controls by Tier
 
 ### Tier 1 - Supervised
