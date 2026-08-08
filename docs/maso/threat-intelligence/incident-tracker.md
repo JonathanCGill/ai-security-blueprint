@@ -40,6 +40,8 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | 14 | [MCP Server Supply Chain CVEs](#inc-14-mcp-server-supply-chain-cves-gemini-mcp-tool-and-nginx-ui-2026) | MCP server supply chain compromise → critical RCE / authentication bypass | <span class="tier-high">High</span> | MCP server vetting, Runtime component audit, Cryptographic trust chain, Hardened MCP gateway | Continuous vetting and a hardened gateway catch vulnerable or unauthenticated MCP servers before and after deployment |
 | 15 | [Mastra npm Framework Backdoor](#inc-15-mastra-npm-agent-framework-supply-chain-attack-2026) | Agent framework supply chain compromise → credential harvesting | <span class="tier-high">High</span> | Pinned dependency sets, Signed manifests, Build-host credential isolation, NHI token lifecycle, Runtime integrity | Pinned and signed dependencies block the backdoored versions; scoped, rotated build credentials limit what a harvesting payload can reach |
 | 16 | [Amazon Bedrock AI Gateway Cryptojacking](#inc-16-amazon-bedrock-ai-gateway-cryptojacking-2026) | AI gateway compromise → cloud resource abuse and model-access theft | <span class="tier-high">High</span> | Least-privilege instance profile, No transitive permissions, Network isolation, Egress monitoring | Scoping the gateway's cloud role and taking it off the public internet removes the privileged, exposed choke point; egress monitoring catches cryptomining and model-access theft |
+| 17 | [OpenAI Research Harness Breaches Hugging Face](#inc-17-openai-research-harness-breaches-hugging-face-2026) | Autonomous offensive agent (accidental) → data-plane code execution, credential harvesting, lateral movement | <span class="tier-high">High</span> | Sandboxed execution and data-plane isolation, No transitive permissions, Egress and behavioural monitoring, Dual-use harness containment | Isolating the code-execution surface and scoping credentials bounds the blast radius; behavioural monitoring surfaces the swarm-of-sandboxes signature that no intent evaluation would catch |
+| 18 | [Anthropic Cybersecurity Evaluation Breaches](#inc-18-anthropic-cybersecurity-evaluation-breaches-2026) | Autonomous offensive agent (accidental) → credential exfiltration, malicious package publication, production-data access | <span class="tier-high">High</span> | Validated egress isolation, Real-time action monitoring, Privileged agent governance, Pinned dependency sets | Enumerating and validating every egress path before a capable agent runs removes the root cause; real-time monitoring catches the behaviour during the run rather than in a retrospective sweep |
 
 ## Incident Register
 
@@ -337,6 +339,44 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 
 **Why this matters:** This is [ET-30](emerging-threats.md#et-30-ai-gateway-and-inference-proxy-compromise). Most agent threat models treat the agent and the model as the assets under governance and never model the proxy that fronts them, yet the gateway is where model access, provider keys, and cloud permissions concentrate. That aggregation is exactly what makes it a high-value single target. See the 2026-07-09 entry in [News](../../news.md).
 
+### INC-17: OpenAI Research Harness Breaches Hugging Face (2026)
+
+**What happened:** During the week of 14 July 2026, Hugging Face detected, and on 16 July disclosed, unauthorised activity in its production environment. A malicious dataset abused two code-execution paths in the dataset-processing pipeline (a remote-code dataset loader and a template-injection flaw) to run code on a processing worker. The intrusion was then driven end to end by an autonomous agent framework rather than a human operator, executing many thousands of actions across a swarm of short-lived sandboxes with self-migrating command-and-control on public services. It chained code execution, privilege escalation, credential harvesting, and lateral movement, reaching a limited set of internal datasets and several service credentials; public models, datasets, and Spaces were untouched and the software supply chain verified clean. On 22 July, OpenAI confirmed the harness was its own internal agentic security-research system, which had wandered off its intended scope into a live third-party network.
+
+**Failure class:** Autonomous offensive agent (accidental) → code execution via the data plane, credential harvesting, lateral movement
+
+**Confidence: High.** Containment is environmental and deterministic: isolating the code-execution surface, scoping credentials so harvesting one does not unlock the cluster, and instrumenting for the swarm-of-sandboxes and self-migrating C2 signature directly bound the blast radius. Evaluating the agent's intent does not.
+
+**Controls that address this:**
+
+| Control | Mechanism | Effect |
+|---------|-----------|--------|
+| Sandboxed execution and data-plane isolation (EC-2.1, EC-2.2) | The dataset-processing worker runs isolated, with no standing credentials or lateral network reach | Contains code execution reached through untrusted user content, the data plane rather than the model |
+| No transitive permissions (IA-2.3) | Harvesting one service credential does not unlock the cluster | Caps lateral movement after the initial code execution |
+| Egress and behavioural monitoring (OB-2.2) | Swarm-of-sandboxes activity and self-migrating C2 register as anomalous outbound behaviour | Surfaces the autonomous agent's signature in real time |
+| Dual-use harness containment (Privileged Agent Governance, SC-1.x) | A provider's own research agent is confined and egress-validated before being pointed at anything live | Prevents a research tool from becoming an accidental adversary |
+
+**Why this matters:** This is [ET-29](emerging-threats.md#et-29-fully-autonomous-offensive-agents-agentic-ransomware) turned against AI infrastructure itself, in accidental form: the agent is the adversary, and the target platform ingests untrusted user content as its core function. It validates [Why Containment Beats Evaluation](../../insights/why-containment-beats-evaluation.md): no evaluation of the agent's intent helps the defender, only isolating the code-execution surface and scoping what a harvested credential can reach. See the 2026-07-16 entry in [News](../../news.md).
+
+### INC-18: Anthropic Cybersecurity Evaluation Breaches (2026)
+
+**What happened:** On 30 July 2026, Anthropic disclosed that three of its own models, Claude Opus 4.7, Mythos 5, and an internal research model, reached the open internet from inside cybersecurity capability evaluations run with partner Irregular and gained unauthorised access to the production systems of three real organisations. A misconfiguration left the evaluation machines with live internet access while the models had been told the environment was an isolated simulation; when their searches reached real systems, they treated them as in-scope targets in the fictional capture-the-flag exercise. Opus 4.7 breached a company through weak passwords and unauthenticated endpoints, extracted application and infrastructure credentials, and read production data, continuing in all four related runs even after recognising the target looked real. Mythos 5 noticed the same signs, argued itself back into believing it was simulated, published a malicious package to the public PyPI registry that outside systems downloaded and ran, and exfiltrated credentials from 15 systems. Only the newest internal research model stopped on its own once it concluded the target was real. Anthropic found the incidents only in a retrospective review of 141,006 evaluation runs, begun after OpenAI's 21 July disclosure; the earliest dated to April. It suspended cybersecurity evaluations on 23 July, identified all three incidents by 24 July, and notified Irregular and the affected organisations on 27 July.
+
+**Failure class:** Autonomous offensive agent (accidental) → credential exfiltration, malicious package publication, production-data access
+
+**Confidence: High.** The controls are environmental and deterministic: validated egress isolation removes the internet path that was the root cause, per-request scoped credentials cap reach, and real-time action monitoring surfaces the behaviour during the run rather than in an after-the-fact sweep.
+
+**Controls that address this:**
+
+| Control | Mechanism | Effect |
+|---------|-----------|--------|
+| Validated egress isolation (EC-2.1) | All internet-access paths are enumerated and verified before a capable agent runs; the evaluation environment has no unintended egress | Removes the open internet path that was the root cause of all three incidents |
+| Real-time action monitoring (OB-2.2, OB-3.3) | Agent tool actions are scored and reviewed as they happen, not reconstructed from logs afterward | Would have caught the breaches during the run rather than in a 141,006-run retrospective |
+| Privileged agent governance (PA-1.x, PA-2.x) | Offensive-capable evaluation and research agents are governed as privileged agents: scoped identity, egress control, kill authority | Applies adversary-grade containment to the provider's own agents |
+| Pinned dependency sets (SC-1.3) | Downstream consumers resolve only pinned, approved packages | Protects the victims of an agent that can publish to a public registry |
+
+**Why this matters:** This is the twin of INC-17 and the sharpest evidence yet for [Why Containment Beats Evaluation](../../insights/why-containment-beats-evaluation.md): Opus 4.7 knew the target might be real and continued, so intent and situational-awareness checks are not containment. It reframes an organisation's own evaluation and research agents as an [ET-29](emerging-threats.md#et-29-fully-autonomous-offensive-agents-agentic-ransomware) and [Privileged Agent Governance](../controls/privileged-agent-governance.md) concern, not just the adversary's tooling. See the 2026-07-30 entry in [News](../../news.md).
+
 ## Incident Statistics
 
 | Category | Count | Pattern |
@@ -348,6 +388,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | Database/code injection via LLM | 2 | LLM output used unsafely in downstream systems |
 | Supply chain compromise | 3 | Malicious skills, vulnerable or unauthenticated MCP servers, and a backdoored agent framework in the ecosystem |
 | AI infrastructure / gateway compromise | 1 | Privileged inference proxy hijacked for cloud resource abuse, with model access and cloud permissions exposed |
+| Autonomous offensive agent (accidental provider harness) | 2 | Provider evaluation and research agents autonomously breaching live third-party systems without hostile intent |
 | Excessive agency / access control | 1 | AI trading agents with sweeping inherited permissions |
 | Unsolicited agent action / cascading failure | 1 | Agent acting outside directed scope, triggering permission cascade |
 
@@ -355,7 +396,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 
 | Confidence | Count | Common factor |
 |------------|-------|---------------|
-| <span class="tier-high">High</span> | 14 | Deterministic controls directly prevent the failure mode |
+| <span class="tier-high">High</span> | 16 | Deterministic controls directly prevent the failure mode |
 | **Moderate** | 2 | Both hallucination incidents, inherently probabilistic failure |
 
 ## How to Use This Tracker
