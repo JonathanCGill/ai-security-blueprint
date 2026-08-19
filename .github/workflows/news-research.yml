@@ -73,7 +73,7 @@ jobs:
             echo "No changes to commit"
             exit 0
           fi
-          git add docs/news.md docs/news-archive.md
+          git add docs/news.md archive/2026-03-31/news-archive.md
           git commit -m "news: add biweekly AI runtime security roundup $(date +%Y-%m-%d)"
           git push -u origin "${{ steps.branch.outputs.name }}"
           PR_URL=$(gh pr create \
@@ -83,7 +83,7 @@ jobs:
 
           - Automated biweekly news research run
           - Adds recent AI runtime security news items to `docs/news.md`
-          - Older items (>2 months) archived to `docs/news-archive.md`
+          - Older items (>3 months) archived to `archive/2026-03-31/news-archive.md`
           - Each item is mapped to relevant AIRS framework controls
 
           ## Review checklist
