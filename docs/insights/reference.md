@@ -72,6 +72,7 @@ The rest of the library, grouped by theme. Expand the section you need. If you a
     | [Evaluation Integrity Risks](evaluation-integrity-risks.md) | The evaluator can be gamed, poisoned, or quietly wrong. |
     | [You Don't Know What You're Deploying](you-dont-know-what-youre-deploying.md) | Version drift, silent swaps, and opaque weights turn deployment into a moving target. |
     | [The Sandbox Escape Problem](the-sandbox-escape-problem.md) | Tool runtimes are harder to contain than the models that call them. |
+    | [The Model Is Optional](the-model-is-optional.md) | Attackers now run an agent's tools without a model turn at all, so controls that read model input and output are bypassed rather than broken. |
 
 ??? note "Agentic AI: where the pattern meets its limits"
     Multi-agent systems, orchestrators, and long-running behaviour.

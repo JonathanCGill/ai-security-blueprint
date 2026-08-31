@@ -226,7 +226,7 @@ The solution maps to Kubernetes-native identity:
 |---------|-------------|-------------------|
 | IA-2.1 Zero-trust credentials | Per-agent authentication | Map to Kubernetes pod identity; automated provisioning and revocation |
 | IA-2.2 NHI with crypto proof | Unique agent identity | NHI derived from pod identity + agent type + session ID |
-| IA-2.3 No transitive permissions | Preventing privilege laundering | Enforced architecturally: agent types cannot assume other types' IAM roles |
+| IA-2.4 No transitive permissions | Preventing privilege laundering | Enforced architecturally: agent types cannot assume other types' IAM roles |
 | IA-2.5 Credential rotation | Regular credential refresh | Eliminated: credentials die with the pod |
 
 ## Stress Dimension 5: Data Protection and PCI Scope

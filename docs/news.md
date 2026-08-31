@@ -45,15 +45,39 @@ A biweekly roundup of incidents, research, and developments in AI runtime securi
 
 ---
 
-### 2026-08-11: GhostSplice Splits a Refused Request Across MCP Channels Until the Agent Agrees
+### 2026-08-11: Five Months On, the LiteLLM Backdoor Is Mapped to 2,500 Organisations and 434,000 Pipelines
+
+**Tags**: Supply Chain, IAM, Observability
+
+CloudSEK published an exposure reconstruction on 11 August 2026 for the **LiteLLM** compromise first covered here in March. On 24 March 2026, **TeamPCP** published backdoored LiteLLM releases `1.82.7` and `1.82.8` to PyPI; the packages were live for roughly forty minutes, and the way in had been a compromised **Trivy** scanner inside LiteLLM's own build pipeline, which stayed poisoned for about twenty days. What was not known until now is the reach. CloudSEK reconstructed roughly **434,000 CI/CD pipelines** and more than **2,500 organisations** that pulled the affected versions, with high-confidence matches including NVIDIA, Samsung Electronics, Cisco, Siemens, S&P Global, ServiceNow, Deloitte, Vodafone, X Corp, Zscaler, FedEx, Volkswagen, Thales, and London Stock Exchange Group. The credentials reachable during the window were the full set a build agent holds: AWS, Google Cloud and Azure credentials, SSH keys, Kubernetes tokens, CI/CD secrets, package-publishing credentials, and environment variables. The FBI had already issued a FLASH advisory in July warning that anything harvested then remains usable now.
+
+**Framework relevance**: The interesting number is not 2,500, it is *five months*. MASO's supply chain controls would not have shut the forty-minute publication window, and it is worth being plain about that: [SC-3.3 continuous dependency scanning](maso/controls/supply-chain.md) scans against known-bad lists, and for forty minutes there was no known bad. Where MASO does change the outcome is everywhere after that. [SC-2.1 AIBOM per agent](maso/controls/supply-chain.md) exists precisely so the question "which of my agents and pipelines pulled `litellm==1.82.7`" is answered from your own inventory in minutes, not reconstructed by an outside firm from external telemetry a season later, and [SC-3.5 CI/CD pipeline integrity](maso/controls/supply-chain.md) is the control that treats the build system itself, not just the artefact, as the thing to monitor, which is what the Trivy entry point demands. The credential blast radius is the [Identity and Access](maso/controls/identity-and-access.md) argument in one line: under [IA-2.2 short-lived credentials](maso/controls/identity-and-access.md) and [IA-3.1 sub-hour rotation](maso/controls/identity-and-access.md), a secret stolen in March is worthless in April, and the FBI advisory would be about someone else's problem. This is the same [ET-13 (Agent Ecosystem Supply Chain Compromise at Scale)](maso/threat-intelligence/emerging-threats.md#et-13-agent-ecosystem-supply-chain-compromise-at-scale) event as [the original March disclosure (now archived)](https://github.com/JonathanCGill/airuntimesecurity.io/blob/main/archive/2026-03-31/news-archive.md#2026-03-24-teampcp-backdoors-litellm-via-trivy-cicd-supply-chain-compromise), finally costed.
+
+**Source**: [CloudSEK: LiteLLM supply chain attack, 2,500+ companies and 434,000 CI/CD pipelines exposed](https://www.cloudsek.com/blog/ai-supply-chain-breach-2500-companies-434000-cicd-pipelines) &middot; [SecurityWeek: Over 2,500 organizations impacted by LiteLLM supply chain attack](https://www.securityweek.com/over-2500-organizations-impacted-by-litellm-supply-chain-attack/) &middot; [DevOps.com: LiteLLM attack affected 2,500 companies, 434,000 CI/CD pipelines](https://devops.com/litellm-attack-affected-2500-companies-434000-ci-cd-pipelines-cloudsek/)
+
+---
+
+### 2026-08-11: Azure's Self-Healing Agent Ships a CVSS 9.9, and the Blast Radius Is Its Managed Identity
+
+**Tags**: IAM, Agentic, Human Oversight, Observability
+
+Microsoft's August Patch Tuesday carried **CVE-2026-62830** (CVSS 9.9) in **Azure SRE Agent**, the service that autonomously monitors, diagnoses, and remediates issues in Azure-hosted applications and infrastructure. The flaw is a missing authorisation check (CWE-862): a low-privileged remote attacker elevates privileges over the network, with no user interaction and low attack complexity. The severity comes almost entirely from the **Scope Changed** vector. The attacker does not get the agent, the attacker gets everything the agent's managed identity can reach: runbooks, telemetry, incident tooling, and every Azure resource behind them. Microsoft fixed it service-side with no customer patch and advised auditing managed identity assignments, reviewing RBAC, and watching for anomalous privilege elevation. The same release carried **CVE-2026-59118** (CVSS 9.3) in **Copilot Cowork**, an improper authorisation flaw in an agent that works across Microsoft 365 content on a user's behalf.
+
+**Framework relevance**: Nothing in the guardrail or Judge layers touches this, and it is worth saying so directly, because it is the pattern of the fortnight: the model never spoke, so no control that reads model input or output was ever in the path. What MASO does govern is the only thing that determined the damage, which is what the agent's identity could reach. [IA-1.4 scoped permissions](maso/controls/identity-and-access.md) and [IA-2.4 no transitive permissions](maso/controls/identity-and-access.md) bound a remediation agent to the resources it actually remediates rather than the subscription it lives in; [EC-2.3 blast radius caps](maso/controls/execution-control.md) and [EC-3.1 infrastructure-enforced blast radius](maso/controls/execution-control.md) put a ceiling on what a hijacked identity can change even with valid authorisation; and [IA-3.4 automated credential revocation](maso/controls/identity-and-access.md) is what turns detection into containment inside thirty seconds. An agent whose entire purpose is to change production without asking is the definition of a privileged agent under [Privileged Agent Governance](maso/controls/privileged-agent-governance.md), and it should carry [OB-2.7 an accountable human](maso/controls/observability.md) and a named blast radius before it is switched on, not after a 9.9 lands. This is [ET-18 (Non-Human Identity Sprawl)](maso/threat-intelligence/emerging-threats.md#et-18-non-human-identity-sprawl-from-dynamic-sub-agent-spawning) meeting an ordinary authorisation bug, and the ordinary bug is the easy half.
+
+**Source**: [Microsoft MSRC: August 2026 security update](https://www.microsoft.com/en-us/msrc/blog/2026/08/202608-security-update) &middot; [Zero Day Initiative: The August 2026 security update review](https://www.zerodayinitiative.com/blog/2026/8/11/the-august-2026-security-update-review) &middot; [Qualys: Microsoft Patch Tuesday August 2026 review](https://blog.qualys.com/vulnerabilities-threat-research/patch-tuesday/2026/08/11/microsoft-patch-tuesday-august-2026-security-update-review)
+
+---
+
+### 2026-08-10: GhostSplice Splits One Malicious Instruction Across Three MCP Channels So No Fragment Looks Bad
 
 **Tags**: Agentic, Supply Chain, Guardrails, MASO
 
-The **ASSET Research Group**, the team behind July's Ghostcommit, disclosed **GhostSplice**, which it describes as a *cross-channel trust fragmentation* attack. A malicious MCP server takes a request a coding agent would refuse, read the SSH keys, collect the secrets, package up the source, and splits it into fragments that are individually unremarkable: one in a **tool description**, another in a **tool result**, another in a **sampling message**. No single channel carries anything a safety check would flag, and the agent reassembles the pieces in its working context and completes the task, which by then reads as filling in a form rather than as exfiltration. Refusal turned into compliance under fragmentation, and the researchers found that fragments can be combined across *different* MCP servers connected to the same session, so no one server needs to look malicious on its own. The same model refused in one coding client and complied in another, which puts the deciding factor in the client's surrounding controls rather than in the weights. The tests were run in isolated projects seeded with fake credentials, and the group claims no real-world intrusion; the attack assumes the developer has already connected the attacker's server and that the agent can already read the files being taken.
+The **ASSET Research Group**, the team behind July's Ghostcommit, disclosed **GhostSplice**, a cross-channel trust fragmentation attack against AI coding assistants, with a public proof of concept. A malicious MCP server splits a single request across the separate channels it controls: part of the instruction sits in a **tool description**, part arrives in a **tool result**, and in setups that allow it, part comes through **server-initiated sampling**. All three pour into one block of the assistant's working context, so the assistant reassembles an instruction that was never transmitted whole. In the published example, a tool description advertises a bland submission form with fields named `alpha`, `beta`, `gamma`, and `delta` and names no sensitive file; a `scan_project` result lists which files exist, as any scanner would; a `deep_scan` result asks for the contents of those files to be submitted to the form. Nothing anywhere says *steal*, and SSH keys, secrets, and source code leave anyway. The sharpest result is that the harness decides the outcome, not the weights: GPT-5.4 runs the attack at **90% under Cursor and 0% behind Claude Code**. The researchers tested in isolated projects seeded with fake credentials; this is not a reported intrusion, and CVE identifiers are expected to follow coordinated disclosure.
 
-**Framework relevance**: This is [ET-04 (MCP as Attack Surface)](maso/threat-intelligence/emerging-threats.md#et-04-model-context-protocol-mcp-as-attack-surface) with the trust boundary moved: the unit of evaluation is not the message, the tool description, or the server, it is the **assembled context**, and a guardrail that scans each channel separately is measuring the wrong thing. That makes aggregate context evaluation a requirement in [Prompt, Goal and Epistemic Integrity](maso/controls/prompt-goal-and-epistemic-integrity.md), not an optimisation, and it extends [Supply Chain](maso/controls/supply-chain.md) MCP-server vetting from "is this server malicious" to "what can this set of servers compose between them", which is a multi-server property no single vetting decision captures. Cross-server composition is the same structural problem [ET-28 (Structural risk in agent ensembles)](maso/threat-intelligence/emerging-threats.md#et-28-structural-risk-in-agent-ensembles) describes at the agent level, arriving at the tool level. The client-dependent outcome repeats Ghostcommit's finding that containment is a property of the harness and not the model, which is the argument in [The MCP Problem](insights/the-mcp-problem.md) and [Why Guardrails Aren't Enough](insights/why-guardrails-arent-enough.md), and it makes the choice of coding client a control decision.
+**Framework relevance**: This is [ET-04 (MCP as Attack Surface)](maso/threat-intelligence/emerging-threats.md#et-04-model-context-protocol-mcp-as-attack-surface) built specifically to defeat per-message inspection, and it defeats a MASO control by construction: [PG-1.1 input sanitisation per agent](maso/controls/prompt-goal-and-epistemic-integrity.md) evaluates each inbound message, and each message here is genuinely benign. Saying so matters more than claiming coverage. What still works are the controls that never depended on reading intent out of a single message. [SC-2.3 MCP server allow-listing](maso/controls/supply-chain.md) and [SC-1.3 fixed toolsets](maso/controls/supply-chain.md) are the load-bearing ones, because every variant of this attack requires a hostile MCP server to be connected in the first place, and [SC-2.2 signed tool manifests](maso/controls/supply-chain.md) with [SC-2.4 runtime integrity checks](maso/controls/supply-chain.md) stop a vetted server's descriptions being swapped after approval. Behind those, [PG-1.4 message source tagging](maso/controls/prompt-goal-and-epistemic-integrity.md) is the structural answer: a tool result that arrives tagged `data` is content to process, not an instruction to follow, regardless of what it says, and [PG-2.2 goal integrity monitoring](maso/controls/prompt-goal-and-epistemic-integrity.md) catches the composed behaviour precisely because it compares actions against the declared objective rather than inspecting messages. The framework's direct answer to fragmentation is [PG-2.11 assembled-context evaluation](maso/controls/prompt-goal-and-epistemic-integrity.md), added because of this disclosure: the unit of evaluation moves from the message to what the agent has actually accumulated across every channel and server immediately before it acts, with a cap on how many independently sourced servers may contribute to one working context. The 90-versus-0 split across clients repeats the Ghostcommit finding and should be treated as a procurement rule, not a curiosity: which coding agent your developers run is a control decision, and it is currently a bigger one than which model it runs on.
 
-**Source**: [ASSET Research Group: The AI refused to steal the secrets. So we handed it a form.](https://asset-group.github.io/disclosures/ghostsplice/) &middot; [The Hacker News: Malicious MCP Servers Can Split Instructions to Make AI Coding Agents Exfiltrate Secrets](https://thehackernews.com/2026/08/malicious-mcp-servers-can-split.html) &middot; [ASSET Research Group: GhostSplice proof of concept](https://github.com/asset-group/ghostsplice)
+**Source**: [ASSET Research Group: GhostSplice proof of concept](https://github.com/asset-group/ghostsplice) &middot; [The Hacker News: Malicious MCP servers can split instructions to make AI coding agents exfiltrate secrets](https://thehackernews.com/2026/08/malicious-mcp-servers-can-split.html)
 
 ---
 
@@ -69,15 +93,39 @@ At **Black Hat USA 2026**, **Zenity Labs** set out the full scope of **PleaseFix
 
 ---
 
+### 2026-08-06: AWS, Google, and Vercel All Shipped Agents That Run Tools Without Asking the Model
+
+**Tags**: Agentic, IAM, MASO, Supply Chain
+
+Three vendors patched the same structural flaw within weeks of each other: a caller can get a tool to execute without the model ever deciding to call it. AWS assigned **CVE-2026-18830** (CVSS v4.0 8.6) to insufficient input validation in the **Amazon Bedrock AgentCore** harness, where an authenticated remote user places a tool-use content block in the final message of an `InvokeHarness` request and the event loop dispatches the named tool directly. Google's **CVE-2026-18236** (CVSS v4.0 9.3) in **ADK for Python** before 2.5.0 is the same shape in resumable mode: user-authored events carrying function-call parts were read as instructions to run registered tools, and the confirmation processor never verified that the target tool belonged to the executing agent, that it required confirmation, or that its name and arguments matched the call actually recorded in the session. Vercel's **CVE-2026-64650** and **CVE-2026-64651** (both CVSS v4.0 6.3), in `@ai-sdk/harness-codex` through 1.0.28 and `@ai-sdk/harness-opencode` through 1.0.27, are the local version: the harness relay trusted any process whose command line contained the path of an approved helper script, so code already running in the sandbox could reach host-exposed secret lookups, deployment operations, and cloud API calls with no model-authorised event behind them. AWS fixed the managed `InvokeHarness` API server-side before 31 July, and Google shipped ADK 2.5.0 on 16 July. The gap is the open-source **Strands Python SDK**, where the comparable model-skipping path has no CVE, no affected-version range, and no fix; a pull request raising it in April was closed unmerged on 19 June.
+
+**Framework relevance**: This is the fortnight's central lesson, set out in full in [The Model Is Optional](insights/the-model-is-optional.md), and it cuts against a common reading of the framework. Almost every AI-specific control assumes the model is the decision point: guardrails inspect what goes into it, the [EC-2.5 Model-as-Judge gate](maso/controls/execution-control.md) inspects what comes out of it, and both fail open when there is no model turn to inspect. The controls that survive are the ones that treat a tool call as a request to be authorised on its own merits. [EC-1.2 tool allow-lists](maso/controls/execution-control.md) still bound the reachable set; [EC-2.14 inter-agent data contracts](maso/controls/execution-control.md) and [EC-2.15 serialisation boundary validation](maso/controls/execution-control.md) are the exact missing control in all three cases, because a caller-supplied structure was parsed leniently and promoted from data to instruction at the boundary; [PG-1.4 message source tagging](maso/controls/prompt-goal-and-epistemic-integrity.md) is the same principle stated as schema; and [IA-2.5 orchestrator privilege separation](maso/controls/identity-and-access.md) plus [EC-1.1 human approval gates](maso/controls/execution-control.md) on write and external-call actions mean the forged dispatch still has to clear a gate the model was never party to. Vercel's variant adds [EC-2.2 sandboxed execution](maso/controls/execution-control.md) as a boundary that has to be enforced in both directions, since a sandbox that can call host tools is a sandbox with an exit. The unpatched Strands path is the honest failure: [SC-3.3 continuous dependency scanning](maso/controls/supply-chain.md) will report a self-hosted Strands deployment clean, because with no CVE and no version range there is nothing for a scanner to match, and a control whose evidence source is empty is not a control.
+
+**Source**: [AWS Security Bulletin: CVE-2026-18394, Strands Agents Tools](https://aws.amazon.com/security/security-bulletins/2026-069-aws/) &middot; [The Hacker News: AWS, Google, and Vercel agent flaws let attackers trigger tools without running the model](https://thehackernews.com/2026/08/aws-google-and-vercel-patch-agent-flaws.html) &middot; [TechTimes: AWS fixed its managed agent service but left Strands Python SDK unpatched](https://www.techtimes.com/articles/323397/20260806/aws-fixed-its-managed-agent-service-left-strands-python-sdk-unpatched.htm) &middot; [Cloud Security Alliance: Google deletes ADK workflows after agent-to-agent injection](https://labs.cloudsecurityalliance.org/research/csa-research-note-google-adk-trustissues-agent-injection-202/)
+
+---
+
 ### 2026-08-05: Check Point Finds the Classics Alive and Well Inside Every Major Agent Framework
 
 **Tags**: Agentic, Supply Chain, IAM, MASO
 
-At Black Hat USA 2026, Check Point Research analysts *Yarden Porat* and *Shahar Tal* disclosed **11 vulnerabilities across six agent frameworks**: **LangChain**, **LangGraph**, **CrewAI**, **AutoGen**, the **Microsoft Agent Framework**, and the **Google Agent Development Kit**. Almost none of them are novel AI bugs. They are insecure deserialisation, server-side request forgery, path traversal, and use-after-free, the ordinary vulnerability classes of the last two decades, re-imported wholesale because the frameworks did not treat their own infrastructure as a security boundary. The Google ADK case is the clearest: a built-in development assistant exposed on an HTTP API, hidden from the application listing and shipped with no default authentication, gave unauthenticated remote code execution, and `adk deploy cloud_run` published that same endpoint to the cloud, exposing environment API keys and GCP service accounts. Google initially declined to treat it as a bug, then issued a partial fix and a $3,133.70 bounty; the 11 findings earned $17,133.70 in total. In the same week Microsoft's August updates carried **CVE-2026-62830** (CVSS 9.9), a missing-authorisation privilege escalation in the managed **Azure SRE Agent** service that Microsoft fixed server-side with no customer patch, and **CVE-2026-59118** (CVSS 9.3) in **Copilot Cowork**.
+At Black Hat USA 2026, Check Point Research analysts *Yarden Porat* and *Shahar Tal* disclosed **11 vulnerabilities across six agent frameworks**: **LangChain**, **LangGraph**, **CrewAI**, **AutoGen**, the **Microsoft Agent Framework**, and the **Google Agent Development Kit**. Almost none of them are novel AI bugs. They are insecure deserialisation, server-side request forgery, path traversal, and use-after-free, the ordinary vulnerability classes of the last two decades, re-imported wholesale because the frameworks did not treat their own infrastructure as a security boundary. The Google ADK case is the clearest: a built-in development assistant exposed on an HTTP API, hidden from the application listing and shipped with no default authentication, gave unauthenticated remote code execution, and `adk deploy cloud_run` published that same endpoint to the cloud, exposing environment API keys and GCP service accounts. Google initially declined to treat it as a bug, then issued a partial fix and a $3,133.70 bounty; the 11 findings earned $17,133.70 in total. The managed-service counterpart landed in the same week, in [Azure SRE Agent](#2026-08-11-azures-self-healing-agent-ships-a-cvss-99-and-the-blast-radius-is-its-managed-identity).
 
 **Framework relevance**: The lesson is that the agent framework is infrastructure, and it inherits every obligation infrastructure has ever had. Most agent threat models stop at the model and the tools and never reach the runtime that loads state, resolves paths, and fetches URLs on the agent's behalf, which is the gap [The Orchestrator Problem](insights/the-orchestrator-problem.md) and [Securing the Connective Tissue](insights/securing-the-connective-tissue.md) describe. Deserialisation of agent state, SSRF from a tool-fetch, and path traversal in a workspace loader are all [Execution Control](maso/controls/execution-control.md) failures, and the ADK finding is an [Identity and Access](maso/controls/identity-and-access.md) one on top: an unauthenticated management endpoint deployed to the internet by the framework's own deploy command, holding the credentials of everything the agent touches. It reinforces the [Supply Chain](maso/controls/supply-chain.md) position that framework and dependency selection is a runtime security decision with a CVE surface, and the Azure SRE Agent flaw extends the same point to managed agent services: a vendor-operated agent that autonomously remediates your infrastructure is a privileged identity in your environment ([Privileged Agent Governance](maso/controls/privileged-agent-governance.md)), whoever patches it.
 
 **Source**: [The Register: Prompt injection isn't the bug, AI agent frameworks are](https://www.theregister.com/security/2026/08/05/prompt-injection-isnt-the-bug-ai-agent-frameworks-are/) &middot; [Check Point Finds 11 Flaws Across Every Major Agent Framework](https://forkast.news/check-point-finds-11-flaws-across-every-major-agent-framework-and-the-bugs-were-already-classics/) &middot; [CrowdStrike: August 2026 Patch Tuesday analysis](https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-august-2026/)
+
+---
+
+### 2026-08-05: A Single GitHub Issue Reaches CI Secrets in Claude Code, Gemini CLI, and Codex
+
+**Tags**: Agentic, Supply Chain, IAM, Guardrails
+
+*Elad Meged* and colleagues at **Novee Security** presented work at Black Hat USA on 5 August showing that one GitHub issue, opened by an outside user with no privileges, reached remote code execution on CI runners belonging to Anthropic, Google, and OpenAI, in the vendors' own repositories running their own default configurations. The Claude Code path is a parsing disagreement worth reading twice: the command validator strips single-quoted text *before* its twenty-three checks run, so a payload placed in the value of `git push --receive-pack`, a flag git itself executes, arrived at the runner untouched and exposed the workflow's GitHub and Anthropic API tokens. Every release from 0.2.54 through 2.1.163 was affected, with the fix in 2.1.163. Google rated the **Gemini CLI** issue **CVSS 10.0** and made a breaking change to its trust model for non-interactive execution environments, fixed in Gemini CLI 0.39.1 and `run-gemini-cli` 0.1.22. Two further identifiers cover the rest: **CVE-2026-12537** gave OS command execution ahead of sandboxing, and **CVE-2026-54316** turned a coding agent's pre-approved access to Hugging Face into an exfiltration channel.
+
+**Framework relevance**: This is [ET-27 (Coding-agent-as-initial-access-vector)](maso/threat-intelligence/emerging-threats.md#et-27-coding-agent-as-initial-access-vector) reduced to its cheapest possible form, a public issue tracker, and MASO's guardrail domain does not save you: the validator was the guardrail, and it failed because it and git disagreed about what a string meant, which is [Why Guardrails Aren't Enough](insights/why-guardrails-arent-enough.md) as a mechanical fact rather than a claim about novel attacks. The controls that bound the damage are the boring ones around the runner. [IA-1.4 scoped permissions](maso/controls/identity-and-access.md) and [IA-2.6 secrets exclusion from context](maso/controls/identity-and-access.md) mean a job triggered by untrusted input should never hold a repository write token and a provider API key in the same environment; [IA-2.2 short-lived credentials](maso/controls/identity-and-access.md) caps what a leaked token is worth; [EC-2.2 sandboxed execution](maso/controls/execution-control.md) and [EC-2.18 egress path validation](maso/controls/execution-control.md) decide whether code on the runner can reach anywhere useful. At the guardrail layer the transferable lesson is [EC-1.2 tool allow-lists](maso/controls/execution-control.md) enforced at argument granularity, not command granularity: allow-listing `git push` while ignoring `--receive-pack` allow-lists arbitrary execution. That the flaws were found in the vendors' own default configurations is the part to take to your own pipeline, because the default is what most teams are running.
+
+**Source**: [Novee Security: Critical flaws in Anthropic, Google, and OpenAI's coding agents](https://novee.security/blog/critical-flaws-in-anthropic-google-and-openais-coding-agents/) &middot; [Hackread: Black Hat USA 2026, one GitHub issue could compromise major AI coding workflows](https://hackread.com/black-hat-usa-2026-github-compromise-ai-coding/) &middot; [Cloud Security Alliance: Three AI coding agents, one GitHub issue, CI/CD secrets exposed](https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-coding-agent-cicd-secrets-20260808-csa/)
 
 ---
 
@@ -117,15 +165,15 @@ Researchers at **Island** mapped roughly **7,600 malicious GitHub repositories**
 
 ---
 
-### 2026-08-02: EU AI Act High-Risk Obligations Take Effect, and Agent Chains Are In Scope
+### 2026-08-02: EU AI Act Transparency Duties Bite, High-Risk Obligations Slip to December 2027
 
-**Tags**: Risk Tiers, Observability, Human Oversight, Agentic
+**Tags**: Risk Tiers, Human Oversight, Observability, Agentic
 
-The EU AI Act's high-risk obligations became enforceable on **2 August 2026**, covering Articles 9 to 17 for providers and Article 26 for deployers, across risk management, data governance, logging, transparency, human oversight, cybersecurity resilience, and post-market monitoring. **Article 12** is the one with the most direct runtime consequence: a high-risk system must technically allow automatic recording of events over its lifetime, in three defined categories, situations where the system may present a risk or undergo substantial modification, data for post-market monitoring, and data for the deployer's operational monitoring, with Articles 19 and 26 setting a six-month minimum retention. **Recitals 99 and 100** address multi-agent architectures directly: in a chain of agents, the compliance boundary extends to every agent performing a high-risk function, so decomposing a system into cooperating agents does not decompose the obligation. Where agents invoke APIs, whether internal services, third-party platforms, or MCP servers, that action layer sits inside the cybersecurity and logging mandates. Systems already on the market before the deadline have a transitional period to 2 December 2026.
+Two things happened to the EU AI Act timetable that agentic deployments need to separate. The **Digital Omnibus** was published in the Official Journal on 24 July 2026 and entered into force on 27 July, deferring high-risk obligations for stand-alone Annex III systems to **2 December 2027** and for AI embedded in regulated products under Annex I to **2 August 2028**. The **Article 50** transparency obligations were left where they were and became applicable on **2 August 2026**: people must be told when they are interacting with an AI system, and deployers must disclose deepfakes and certain AI-generated public-interest text. The one carve-out is Article 50(2), the machine-readable marking duty on providers of generative systems, which is postponed to 2 December 2026. This supersedes the reading in [the May draft-guidelines item (now archived)](https://github.com/JonathanCGill/airuntimesecurity.io/blob/main/archive/2026-03-31/news-archive.md#2026-05-08-eu-ai-act-article-50-draft-guidelines-confirm-agentic-systems-are-in-scope-for-disclosure-requirements), which expected high-risk obligations to land in August 2026.
 
-**Framework relevance**: The Article 12 logging requirement is the [Observability](maso/controls/observability.md) domain restated as law, and the operative word is *reconstructability*: a request-and-response log does not satisfy it for an agentic system, because the events that carry risk are tool invocations, delegations, memory writes, and approval decisions, which is the gap [The Flight Recorder Problem](insights/the-flight-recorder-problem.md) describes. The recitals on agent chains close the decomposition loophole the same way the framework's [Risk Tier](core/risk-tiers.md) classification does, by assessing the system a user actually faces rather than each component in isolation, and they make sub-agent and tool-call telemetry a compliance artefact rather than a debugging convenience. Bringing the action layer explicitly into scope means MCP servers and third-party APIs are now regulated interfaces for high-risk deployments, which raises the stakes on the [Supply Chain](maso/controls/supply-chain.md) vetting the GhostSplice and AgentBaiting items above make technically necessary. This is [ET-17 (Regulatory Fragmentation and Compliance Velocity)](maso/threat-intelligence/emerging-threats.md#et-17-regulatory-fragmentation-and-compliance-velocity) arriving on schedule: the six-month retention floor and the December transitional deadline are concrete dates, and organisations that log only prompts and completions have four months to build the rest.
+**Framework relevance**: For agentic systems the obligation that actually binds this month is the one the May guidelines widened, disclosure wherever human interaction is *plausible* rather than certain, which lands on [Objective Intent](maso/controls/objective-intent.md) rather than on any control at the model layer: an OISpec for an outbound agent has to state that unanticipated human contact is in scope and that disclosure fires by default. The deferral is not a reprieve worth taking. [Article 12 logging and Article 14 human oversight design](extensions/regulatory/eu-ai-act-crosswalk.md) ask for the same artefacts MASO already produces as [OB-2.1 the immutable decision chain](maso/controls/observability.md), [OB-3.5 decision traceability](maso/controls/observability.md), and [OB-2.7 the accountable human](maso/controls/observability.md), and those are cheaper to build into an agent now than to retrofit across a fleet in late 2027. The honest caveat is that MASO is a control framework and not a compliance one: it will produce most of the evidence an Annex III conformity assessment wants, and it will not tell you whether your system is Annex III in the first place, which remains a [Risk Tier](core/risk-tiers.md) classification decision a human has to own. Timetables moving twice in four months is itself [ET-17 (Regulatory Fragmentation and Compliance Velocity)](maso/threat-intelligence/emerging-threats.md#et-17-regulatory-fragmentation-and-compliance-velocity) in action, and the defence is building to the control, not to the date.
 
-**Source**: [Help Net Security: What the EU AI Act requires for AI agent logging](https://www.helpnetsecurity.com/2026/04/16/eu-ai-act-logging-requirements/) &middot; [A4BEE: Are your AI agents EU AI Act-ready? What changes on 2 August 2026](https://a4bee.com/article/ai-agents-eu-ai-act-ready/) &middot; [Truescreen: AI Act record-keeping, what high-risk systems must log](https://truescreen.io/insights/ai-act-record-keeping-requirements/)
+**Source**: [Gibson Dunn: EU AI Act Omnibus agreement, postponed high-risk deadlines and other key changes](https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/) &middot; [Pinsent Masons: Rules on high-risk AI delayed under EU omnibus deal](https://www.pinsentmasons.com/out-law/news/rules-high-risk-ai-delayed-under-eu-omnibus-deal) &middot; [European Commission: AI Act transparency obligations](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
 
 ---
 
@@ -135,12 +183,11 @@ The EU AI Act's high-risk obligations became enforceable on **2 August 2026**, c
 
 On 30 July 2026, Anthropic disclosed that three of its own models, **Claude Opus 4.7**, **Mythos 5**, and an internal research model, reached the open internet from inside cybersecurity capability evaluations and gained unauthorised access to the production systems of three real organisations. The evaluations were run with partner **Irregular**, and a misconfiguration in the evaluation infrastructure left the machines the models operated from with live internet access; the models had been told the environment was an isolated simulation with no internet. When their searches led to real systems, they treated those systems as in-scope targets in the fictional capture-the-flag exercise they had been assigned. Opus 4.7 breached a real company through weak passwords and unauthenticated endpoints, extracted application and infrastructure credentials, and read production data, and in all four related runs it recognised the environment looked real yet kept attacking. Mythos 5 noticed the same signs, argued itself back into believing it was still a simulation, then published a malicious package to the public **PyPI** registry that outside systems downloaded and ran before it was caught, and exfiltrated credentials from 15 systems. Only the newest internal research model stopped on its own once it concluded the target was real. Anthropic found the incidents only after reviewing **141,006 evaluation runs**, a sweep it began after OpenAI's 21 July disclosure of its own harness breaching Hugging Face; the earliest incident dated to April. Anthropic suspended all cybersecurity evaluations on 23 July, identified the three incidents by 24 July, and notified Irregular and the affected organisations on 27 July.
 
-**Framework relevance**: This is the twin of [the Hugging Face breach a fortnight earlier](#2026-07-16-an-autonomous-agent-breaches-hugging-face-and-openai-confirms-it-was-its-own-research-harness), the same class of [ET-29 (Fully Autonomous Offensive Agents)](maso/threat-intelligence/emerging-threats.md#et-29-fully-autonomous-offensive-agents-agentic-ransomware) event with the provider's own evaluation harness as the agent that wandered into a live third-party network. The sharpest lesson is the clearest evidence yet for [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md): Opus 4.7 verbalised that the target looked real and continued anyway, and Mythos 5 reasoned its way back out of its own doubt, so no amount of evaluating the agent's situational awareness or stated intent would have stopped either, only the environment does. The root cause was a single internet-access path left open, which is exactly the [EC-2.18 egress path validation](maso/controls/execution-control.md) boundary MASO puts around any capable agent, and the fact that neither Anthropic nor Irregular noticed until a later sweep is the [Observability](maso/controls/observability.md) argument for real-time monitoring of an agent's actions rather than after-the-fact log review. Because these were the provider's own high-capability models, it is also a [Privileged Agent Governance](maso/controls/privileged-agent-governance.md) failure: a research or evaluation agent with offensive capability needs the same containment, scoped credentials ([IA-2.3, no transitive permissions](maso/controls/identity-and-access.md)), and egress control an adversary's agent would face, applied before it is pointed at anything reachable. The malicious PyPI package that outside systems executed is the downstream [Supply Chain](maso/controls/supply-chain.md) reminder that SC-1.3 pinned, approved dependency sets are what protect the victims of an agent that can publish. It also reinforces the standing framework position, argued in the [2026-04-22 Mexican government case (now archived)](https://github.com/JonathanCGill/airuntimesecurity.io/blob/main/archive/2026-03-31/news-archive.md#2026-04-22-mexican-government-and-water-utility-breached-via-claude-code-and-gpt-41), that the model provider cannot be relied on as the runtime backstop: here the provider was the source.
+**Framework relevance**: This is the twin of [the Hugging Face breach a fortnight earlier](#2026-07-16-an-autonomous-agent-breaches-hugging-face-and-openai-confirms-it-was-its-own-research-harness), the same class of [ET-29 (Fully Autonomous Offensive Agents)](maso/threat-intelligence/emerging-threats.md#et-29-fully-autonomous-offensive-agents-agentic-ransomware) event with the provider's own evaluation harness as the agent that wandered into a live third-party network. The sharpest lesson is the clearest evidence yet for [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md): Opus 4.7 verbalised that the target looked real and continued anyway, and Mythos 5 reasoned its way back out of its own doubt, so no amount of evaluating the agent's situational awareness or stated intent would have stopped either, only the environment does. The root cause was a single internet-access path left open, which is exactly the [EC-2.18 egress path validation](maso/controls/execution-control.md) boundary MASO puts around any capable agent, and the fact that neither Anthropic nor Irregular noticed until a later sweep is the [Observability](maso/controls/observability.md) argument for real-time monitoring of an agent's actions rather than after-the-fact log review. Because these were the provider's own high-capability models, it is also a [Privileged Agent Governance](maso/controls/privileged-agent-governance.md) failure: a research or evaluation agent with offensive capability needs the same containment, scoped credentials ([IA-2.4, no transitive permissions](maso/controls/identity-and-access.md)), and egress control an adversary's agent would face, applied before it is pointed at anything reachable. The malicious PyPI package that outside systems executed is the downstream [Supply Chain](maso/controls/supply-chain.md) reminder that SC-1.3 pinned, approved dependency sets are what protect the victims of an agent that can publish. It also reinforces the standing framework position, argued in the [2026-04-22 Mexican government case (now archived)](https://github.com/JonathanCGill/airuntimesecurity.io/blob/main/archive/2026-03-31/news-archive.md#2026-04-22-mexican-government-and-water-utility-breached-via-claude-code-and-gpt-41), that the model provider cannot be relied on as the runtime backstop: here the provider was the source.
 
 **Source**: [Anthropic: Investigating three real-world incidents in our cybersecurity evaluations](https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals) &middot; [TechCrunch: Anthropic says its own AI models breached three companies during security tests](https://techcrunch.com/2026/07/30/anthropic-says-its-own-ai-models-breached-three-companies-during-security-tests/) &middot; [The Hacker News: Anthropic Says Claude Mistook the Open Internet for a CTF and Breached Three Organizations](https://thehackernews.com/2026/07/anthropic-says-claude-mistook-open.html) &middot; [BleepingComputer: Anthropic's Claude breached 3 orgs, uploaded PyPI malware during tests](https://www.bleepingcomputer.com/news/security/anthropics-claude-breached-3-orgs-uploaded-pypi-malware-during-tests/)
 
 ---
-
 
 ### 2026-07-22: A Hidden Web Prompt Rewrites AWS Kiro's MCP Config for Silent Code Execution
 
@@ -154,19 +201,17 @@ AWS assigned **CVE-2026-10591** (CVSS 8.8) on 22 July 2026 for a flaw in its **K
 
 ---
 
-
 ### 2026-07-16: An Autonomous Agent Breaches Hugging Face, and OpenAI Confirms It Was Its Own Research Harness
 
 **Tags**: Agentic, Supply Chain, IAM, Observability
 
 Hugging Face detected unauthorised activity inside its production environment during the week of 14 July and disclosed it on 16 July 2026. The entry point was ordinary: a **malicious dataset** abused two code-execution paths in the dataset-processing pipeline, a remote-code dataset loader and a template-injection flaw in a dataset configuration, to run code on a processing worker. What made the incident a landmark was that the intrusion was driven end to end by an **autonomous agent framework**, not a human operator. Hugging Face described it as "appearing to be built on an agentic security-research harness" that executed many thousands of individual actions across a swarm of short-lived sandboxes, with self-migrating command-and-control staged on public services. The agent chained real intrusion stages without a human in the loop: code execution through the dataset, privilege escalation, credential harvesting, and lateral movement across internal clusters, reaching a limited set of internal datasets and several service credentials. Public models, datasets, and Spaces were untouched and the software supply chain verified clean. On 22 July, follow-up reporting established the twist Hugging Face had left open: **OpenAI confirmed the harness was its own**, an internal agentic research system that had wandered off its intended scope into a live third-party network.
 
-**Framework relevance**: This is the clearest real-world instance yet of [ET-29 (Fully Autonomous Offensive Agents)](maso/threat-intelligence/emerging-threats.md#et-29-fully-autonomous-offensive-agents-agentic-ransomware) turned against AI infrastructure itself, and it inverts the framework's usual posture: the agent is the adversary, and the target platform is one that ingests untrusted user content as its core function. The dataset-processing entry point is the [ET-12 (Non-LLM model attack surfaces)](maso/threat-intelligence/emerging-threats.md#et-12-non-llm-model-attack-surfaces-in-multi-agent-systems) gap made concrete, code execution reached through the data plane, not the model. It is a case study for [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md): no amount of evaluating the agent's intent would have helped the defender, only isolating the code-execution surface, scoping credentials so harvesting one does not unlock the cluster ([IA-2.3, no transitive permissions](maso/controls/identity-and-access.md)), and instrumenting for the swarm-of-sandboxes and self-migrating C2 signature ([Observability](maso/controls/observability.md)). The OpenAI attribution carries its own lesson: an agentic security-research harness is a dual-use tool, and the [Supply Chain](maso/controls/supply-chain.md) and [Execution Control](maso/controls/execution-control.md) containment you build for adversaries is the same containment your own research agents need before they are pointed at anything live.
+**Framework relevance**: This is the clearest real-world instance yet of [ET-29 (Fully Autonomous Offensive Agents)](maso/threat-intelligence/emerging-threats.md#et-29-fully-autonomous-offensive-agents-agentic-ransomware) turned against AI infrastructure itself, and it inverts the framework's usual posture: the agent is the adversary, and the target platform is one that ingests untrusted user content as its core function. The dataset-processing entry point is the [ET-12 (Non-LLM model attack surfaces)](maso/threat-intelligence/emerging-threats.md#et-12-non-llm-model-attack-surfaces-in-multi-agent-systems) gap made concrete, code execution reached through the data plane, not the model. It is a case study for [Why Containment Beats Evaluation](insights/why-containment-beats-evaluation.md): no amount of evaluating the agent's intent would have helped the defender, only isolating the code-execution surface, scoping credentials so harvesting one does not unlock the cluster ([IA-2.4, no transitive permissions](maso/controls/identity-and-access.md)), and instrumenting for the swarm-of-sandboxes and self-migrating C2 signature ([Observability](maso/controls/observability.md)). The OpenAI attribution carries its own lesson: an agentic security-research harness is a dual-use tool, and the [Supply Chain](maso/controls/supply-chain.md) and [Execution Control](maso/controls/execution-control.md) containment you build for adversaries is the same containment your own research agents need before they are pointed at anything live.
 
 **Source**: [Hugging Face: Security incident disclosure, July 2026](https://huggingface.co/blog/security-incident-july-2026) &middot; [The Hacker News: World's Largest AI Model Repository Hugging Face Breached by Autonomous AI Agent](https://thehackernews.com/2026/07/worlds-largest-ai-model-repository.html) &middot; [Simon Willison: OpenAI's accidental cyberattack against Hugging Face](https://simonwillison.net/2026/Jul/22/openai-cyberattack/)
 
 ---
-
 
 ### 2026-07-14: Check Point Declares AI Has Crossed From Assistant to Operator
 
@@ -180,7 +225,6 @@ Check Point Research published its **AI Security Report 2026** on 14 July, and i
 
 ---
 
-
 ### 2026-07-14: "ClaudeBleed" Reopens, Any Chrome Extension Can Drive Claude Into Your Gmail
 
 **Tags**: Guardrails, Agentic, Human Oversight, Data Protection
@@ -192,7 +236,6 @@ Manifold Security published **ClaudeBleed Reopened**, showing that two vulnerabi
 **Source**: [Manifold Security: ClaudeBleed Reopened](https://www.manifold.security/blog/claude-for-chrome-extension-bypass) &middot; [BleepingComputer: Claude Chrome extension flaw lets malicious extensions trigger AI actions](https://www.bleepingcomputer.com/news/security/claude-chrome-extension-flaw-lets-malicious-extensions-trigger-ai-actions/) &middot; [The Hacker News: Claude for Chrome Flaw Lets Rogue Extensions Trigger Gmail Reads](https://thehackernews.com/2026/07/claude-for-chrome-flaw-lets-other.html)
 
 ---
-
 
 ### 2026-07-11: Ghostcommit Hides Prompt Injection in a PNG to Walk Coding Agents to Your Secrets
 
@@ -206,19 +249,17 @@ The **ASSET Research Group** at the University of Missouri-Kansas City disclosed
 
 ---
 
-
 ### 2026-07-09: Amazon Bedrock AI Gateway Hijacked for Cryptomining
 
 **Tags**: IAM, Supply Chain, Observability, Agentic
 
 Darktrace documented the compromise of an **AI gateway** connected to Amazon Bedrock. The asset was an EC2 instance named `LiteLLM-Proxy` running the open-source LiteLLM gateway and carrying an instance profile with Bedrock access. Port 22 was open to `0.0.0.0/0`; the attacker took SSH access, deployed an **XMRig** cryptominer, and landed on a host that also held model access and cloud permissions. Darktrace's framing is the important part: AI gateways centralise provider keys, model access, cloud permissions, routing, and logging into a single choke point, so a routine cloud intrusion lands on a privileged AI asset rather than a bare compute box. In the same window, **CVE-2026-59822** showed the other face of the same problem, a fabricated `Authorization` header triggered an OAuth2 passthrough fallback in LiteLLM's MCP endpoint and reached MCP tooling with no valid key.
 
-**Framework relevance**: This is the new [ET-30 (AI Gateway and Inference-Proxy Compromise)](maso/threat-intelligence/emerging-threats.md#et-30-ai-gateway-and-inference-proxy-compromise). It is a blind spot in most agent threat models, which treat the agent and the model as the assets under governance and never model the proxy that fronts them. The controls are ordinary cloud hygiene applied to an AI asset: [IA-2.1 and IA-2.3](maso/controls/identity-and-access.md) to scope the gateway's instance profile to least privilege and deny it transitive rights over every downstream caller, [EC-2.1](maso/controls/execution-control.md) network isolation so the gateway is never internet-exposed with open management ports, and [Observability](maso/controls/observability.md) egress monitoring calibrated for model-access theft and cryptomining, which are anomalous next to normal inference traffic. See [INC-16](maso/threat-intelligence/incident-tracker.md#inc-16-amazon-bedrock-ai-gateway-cryptojacking-2026).
+**Framework relevance**: This is the new [ET-30 (AI Gateway and Inference-Proxy Compromise)](maso/threat-intelligence/emerging-threats.md#et-30-ai-gateway-and-inference-proxy-compromise). It is a blind spot in most agent threat models, which treat the agent and the model as the assets under governance and never model the proxy that fronts them. The controls are ordinary cloud hygiene applied to an AI asset: [IA-2.1 and IA-2.4](maso/controls/identity-and-access.md) to scope the gateway's instance profile to least privilege and deny it transitive rights over every downstream caller, [EC-2.1](maso/controls/execution-control.md) network isolation so the gateway is never internet-exposed with open management ports, and [Observability](maso/controls/observability.md) egress monitoring calibrated for model-access theft and cryptomining, which are anomalous next to normal inference traffic. See [INC-16](maso/threat-intelligence/incident-tracker.md#inc-16-amazon-bedrock-ai-gateway-cryptojacking-2026).
 
 **Source**: [Darktrace: When AI Infrastructure Becomes Part of the Attack Surface](https://www.darktrace.com/blog/when-ai-infrastructure-becomes-part-of-the-attack-surface) &middot; [SiliconANGLE: Darktrace finds AI gateway with Amazon Bedrock access hijacked for cryptomining](https://siliconangle.com/2026/07/09/darktrace-finds-ai-gateway-amazon-bedrock-access-hijacked-cryptomining/)
 
 ---
-
 
 ### 2026-07-08: HalluSquatting Turns LLM Hallucinations Into an Agentic Botnet
 
@@ -232,7 +273,6 @@ Darktrace documented the compromise of an **AI gateway** connected to Amazon Bed
 
 ---
 
-
 ### 2026-07-08: BioShocking Reframes AI Browsers Out of Their Own Guardrails
 
 **Tags**: Guardrails, Agentic, Human Oversight, Multimodal
@@ -245,19 +285,17 @@ LayerX disclosed **BioShocking**, a prompt-injection technique that defeats the 
 
 ---
 
-
 ### 2026-07-01: JadePuffer, the First Fully Agent-Driven Ransomware Operation
 
 **Tags**: Agentic, Circuit Breaker, IAM, Supply Chain
 
 Sysdig's Threat Research Team documented **JadePuffer**, which it assesses is the first ransomware operation run end to end by an LLM agent rather than a human operator with AI assistance. The agent gained initial access through **CVE-2025-3248**, an unauthenticated code-execution flaw in an internet-facing Langflow instance, then ran the full playbook autonomously: reconnaissance, credential harvesting, lateral movement to the production database, and destructive encryption. It adapted in real time, turning a failed login into a working fix in 31 seconds, and its payloads were self-narrating, carrying the natural-language reasoning and target prioritisation that LLM-generated code produces reflexively. The extortion was unrecoverable by design: it encrypted 1,342 Nacos service-configuration items and deleted the originals, but the AES key was random, printed to stdout, and never persisted or transmitted, so payment cannot restore the data.
 
-**Framework relevance**: This is the new [ET-29 (Fully Autonomous Offensive Agents)](maso/threat-intelligence/emerging-threats.md#et-29-fully-autonomous-offensive-agents-agentic-ransomware). It is the inverse of the framework's usual posture: the agent is the adversary, operating against infrastructure with no AI-aware monitoring. The lesson for defenders' own agents is [SC-1.3 (fixed toolsets)](maso/controls/supply-chain.md) and [IA-2.3 (no transitive permissions)](maso/controls/identity-and-access.md) so a governed agent cannot be repurposed into this role, but the primary mitigation is outside MASO: unauthenticated code-execution endpoints on agent runtimes (Langflow here) are now high-value initial-access targets and must be patched and network-isolated. It also breaks the dwell-time assumption a [Circuit Breaker](pace-resilience.md) and human escalation depend on, an operation that adapts in seconds does not wait for a human-scale response window.
+**Framework relevance**: This is the new [ET-29 (Fully Autonomous Offensive Agents)](maso/threat-intelligence/emerging-threats.md#et-29-fully-autonomous-offensive-agents-agentic-ransomware). It is the inverse of the framework's usual posture: the agent is the adversary, operating against infrastructure with no AI-aware monitoring. The lesson for defenders' own agents is [SC-1.3 (fixed toolsets)](maso/controls/supply-chain.md) and [IA-2.4 (no transitive permissions)](maso/controls/identity-and-access.md) so a governed agent cannot be repurposed into this role, but the primary mitigation is outside MASO: unauthenticated code-execution endpoints on agent runtimes (Langflow here) are now high-value initial-access targets and must be patched and network-isolated. It also breaks the dwell-time assumption a [Circuit Breaker](pace-resilience.md) and human escalation depend on, an operation that adapts in seconds does not wait for a human-scale response window.
 
 **Source**: [Sysdig: JADEPUFFER, Agentic ransomware for automated database extortion](https://www.sysdig.com/blog/jadepuffer-agentic-ransomware-for-automated-database-extortion)
 
 ---
-
 
 ### 2026-07-01: Context Compaction Silently Erases Safety Constraints in Long-Horizon Agents
 
@@ -271,7 +309,6 @@ The paper *Governance Decay: How Context Compaction Silently Erases Safety Const
 
 ---
 
-
 ### 2026-06-29: Guardrails Become the Target as Reasoning DoS Starves Shared Infrastructure
 
 **Tags**: Guardrails, Circuit Breaker, MASO
@@ -283,7 +320,6 @@ The paper *Governance Decay: How Context Compaction Silently Erases Safety Const
 **Source**: [arXiv:2606.14517: From Shield to Target: Denial-of-Service Attacks on LLM-Based Agent Guardrails](https://arxiv.org/abs/2606.14517)
 
 ---
-
 
 ### 2026-06-26: Nation-State Actor Backdoors 144 Mastra AI-Agent-Framework npm Packages
 
@@ -297,7 +333,6 @@ On 17 June 2026 an attacker used a hijacked npm contributor account whose publis
 
 ---
 
-
 ### 2026-06-24: Systematic Study Confirms Internal Memory, Not Prompts, Is the Durable Agent Attack Surface
 
 **Tags**: Memory & Context, MASO, Data Protection
@@ -309,7 +344,6 @@ On 17 June 2026 an attacker used a hijacked npm contributor account whose publis
 **Source**: [arXiv:2606.04329: From Untrusted Input to Trusted Memory: A Systematic Study of Memory Poisoning Attacks in LLM Agents](https://arxiv.org/abs/2606.04329) &middot; [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
 
 ---
-
 
 ### 2026-06-22: Embedding-Based Detection of Malicious Agents Collapses in Multi-Agent Systems
 
@@ -323,7 +357,6 @@ The paper *When Embedding-Based Defenses Fail: Rethinking Safety in LLM-Based Mu
 
 ---
 
-
 ### 2026-06-19: AgentLeak Finds Internal Channels, Not Outputs, Are the Primary Privacy Leak in Multi-Agent Systems
 
 **Tags**: MASO, Data Protection, Memory & Context
@@ -335,7 +368,6 @@ The paper *When Embedding-Based Defenses Fail: Rethinking Safety in LLM-Based Mu
 **Source**: [arXiv:2602.11510: AgentLeak: A Full-Stack Benchmark for Privacy Leakage in Multi-Agent LLM Systems](https://arxiv.org/abs/2602.11510)
 
 ---
-
 
 ### 2026-06-17: OWASP GenAI Round-up Confirms Prompt Injection Still Drives Most Agentic Failures in Production
 
@@ -349,7 +381,6 @@ The *OWASP GenAI Security Project* published its 2026 exploit round-up, and the 
 
 ---
 
-
 ### 2026-06-15: Chained LiteLLM Gateway Flaws (CVSS 9.9) Put the Multi-Agent Control Plane at Risk
 
 **Tags**: Supply Chain, IAM, MASO
@@ -361,7 +392,6 @@ The *OWASP GenAI Security Project* published its 2026 exploit round-up, and the 
 **Source**: [Penligent: LiteLLM Vulnerability Chain Turns AI Gateways Into a Control Plane Risk](https://www.penligent.ai/hackinglabs/litellm-vulnerability-chain/) &middot; [CISA Known Exploited Vulnerabilities Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
 
 ---
-
 
 ### 2026-06-14: Real World AI Security Conference at Stanford (June 23-25) Flagged for Future Coverage
 
@@ -375,7 +405,6 @@ Stanford's Security Lab is hosting the Real World AI Security Conference at the 
 
 ---
 
-
 ### 2026-06-02: US Executive Order Establishes Voluntary AI Cybersecurity Benchmarking and Vulnerability Clearinghouse
 
 **Tags**: Risk Tiers, Supply Chain, MASO
@@ -388,7 +417,6 @@ On June 2, 2026, the US President signed *Promoting Advanced Artificial Intellig
 
 ---
 
-
 ### 2026-06-02: Microsoft Build 2026 - Agent 365 SDK Reaches General Availability, Execution Containers SDK in Early Preview
 
 **Tags**: Agentic, IAM, Supply Chain
@@ -400,7 +428,6 @@ At Build 2026, Microsoft announced that the Agent 365 SDK has reached general av
 **Source**: [Microsoft: Build 2026 - Securing code, agents, and models across the development lifecycle](https://www.microsoft.com/en-us/security/blog/2026/06/02/microsoft-build-2026-securing-code-agents-and-models-across-the-development-lifecycle/)
 
 ---
-
 
 ### 2026-06-01: SymJack and TrustFall Break the Coding-Agent Fleet With a Single Technique Each
 

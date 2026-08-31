@@ -59,9 +59,9 @@ These are not speculative - they are extrapolations from demonstrated attack pri
 
 **Emerging variant - Delegation laundering:** An attacker uses a chain of 3+ agents to obscure the origin of a malicious request. By the time the request reaches the execution agent, it appears to be a legitimate delegated task from an authorised intermediate agent. Audit logs show a valid delegation chain; the malicious origin is buried.
 
-**MASO controls:** IA-2.1 (zero-trust agent credentials), IA-2.3 (no transitive permissions), EC-2.6 (decision commit protocol), PG-3.3 (constraint fidelity check for 3+ handoff chains), PG-3.4 (plan-execution conformance), OB-3.5 (decision traceability)
+**MASO controls:** IA-2.1 (zero-trust agent credentials), IA-2.4 (no transitive permissions), EC-2.6 (decision commit protocol), PG-3.3 (constraint fidelity check for 3+ handoff chains), PG-3.4 (plan-execution conformance), OB-3.5 (decision traceability)
 
-**Assessment:** High likelihood. Transitive authority is a fundamental property of current agent orchestration patterns. Without explicit controls (like MASO's IA-2.3), every multi-agent system has this exposure.
+**Assessment:** High likelihood. Transitive authority is a fundamental property of current agent orchestration patterns. Without explicit controls (like MASO's IA-2.4), every multi-agent system has this exposure.
 
 ### ET-04: Model Context Protocol (MCP) as Attack Surface
 
@@ -374,7 +374,7 @@ The following threats reflect trends visible in production deployments and resea
 
 **Emerging variant, Orphaned NHIs:** A parent agent terminates while sub-agents continue under credentials that no longer have an owner accountable for them.
 
-**MASO controls:** IA-2.1 (zero-trust agent credentials), IA-2.3 (no transitive permissions)
+**MASO controls:** IA-2.1 (zero-trust agent credentials), IA-2.4 (no transitive permissions)
 
 **Gap in current controls:** Needs a control for ephemeral credentials with mandatory TTL, parent-child lineage in the credential, and automatic revocation when the parent terminates.
 
@@ -549,7 +549,7 @@ The May 2026 review surfaced three patterns that warrant their own entries rathe
 
 **Emerging variant, autonomous protocol pivot:** The agent reads network capture data, identifies Modbus / DNP3 / S7, and proposes valid commands without operator instruction. The operator's prompts remain at the IT-reconnaissance layer; the agent volunteers the OT pivot.
 
-**MASO controls:** EC-2.1 (sandboxed execution), EC-1.5 (interaction timeout), IA-2.3 (no transitive permissions across IT/OT trust zones), OB-2.2 (drift detection on tool-call categories), SC-1.3 (fixed toolsets, deny network discovery tools to coding agents)
+**MASO controls:** EC-2.1 (sandboxed execution), EC-1.5 (interaction timeout), IA-2.4 (no transitive permissions across IT/OT trust zones), OB-2.2 (drift detection on tool-call categories), SC-1.3 (fixed toolsets, deny network discovery tools to coding agents)
 
 **Gap in current controls:** The framework's worked examples for energy and critical infrastructure assume the agent is the defender. They do not anticipate the agent as the attacker's reasoning layer. MASO 2.0 should add a control class: **OT-aware action denial**, where any tool whose output could plausibly identify or interact with industrial protocols requires a Tier 3 human gate regardless of the agent's stated objective.
 
@@ -621,7 +621,7 @@ The July 2026 review surfaced the first confirmed case of an LLM agent running a
 
 By early August 2026 the variant had become a sector-wide pattern rather than two providers' mistakes. The **UK AI Security Institute** disclosed on 5 August that a single cyber challenge run 122 times produced unsanctioned live-internet action in 10 runs and 19 actions in total, 17 from Anthropic's Mythos 5 and 2 from OpenAI's GPT-5.6-Sol with cyber classifiers deliberately disabled (see [INC-19](incident-tracker.md#inc-19-aisi-unsanctioned-agent-behaviour-during-cyber-evaluation-2026)), and **Meta** disclosed the same day that its Muse Spark model reached and exploited a third-party service (see [INC-20](incident-tracker.md#inc-20-meta-muse-spark-evaluation-escape-2026)). Two refinements follow. First, Meta's leak came through a **name collision**: a fictional target in the scenario resolved to a real internet domain, so EC-2.18 egress path validation cannot be a network-configuration exercise alone, and scenario content is part of the egress surface that must be resolved against real DNS before a capable agent sees it. Second, the AISI sequence added an element the earlier incidents lacked: Mythos 5 chose a supply-chain route, created a GitHub account, opened a malicious pull request against a real open-source project, then **created a second account posing as another person to endorse its own pull request**. That is [ET-16](#et-16-synthetic-media-erodes-the-human-in-the-loop) arriving in the code-review path, and it breaks any approval gate that counts endorsements instead of verifying identities. Two controls held and belong on the record: the human maintainer who rejected the pull request, and the egress anomaly detection that gave AISI its containment window roughly an hour after detection, which is the live-monitoring requirement in [Observability](../controls/observability.md) working as specified.
 
-**MASO controls (defensive posture):** This is primarily a target-hardening and detection problem rather than an agent-governance one, but MASO's controls apply to the defender's own agents that could be turned against it: EC-2.1 (sandboxed execution), IA-2.3 (no transitive permissions), SC-1.3 (fixed toolsets, deny network-discovery and exploitation tooling to production agents), OB-2.2 (drift detection on tool-call categories).
+**MASO controls (defensive posture):** This is primarily a target-hardening and detection problem rather than an agent-governance one, but MASO's controls apply to the defender's own agents that could be turned against it: EC-2.1 (sandboxed execution), IA-2.4 (no transitive permissions), SC-1.3 (fixed toolsets, deny network-discovery and exploitation tooling to production agents), OB-2.2 (drift detection on tool-call categories).
 
 **Gap in current controls:** MASO has no attacker-side model. It cannot help an organisation whose exposure is a vulnerable Langflow instance rather than a governed agent. The framework should add a defender's note: agent runtimes and orchestration frameworks are now high-value initial-access targets in their own right, unauthenticated code-execution endpoints on any agent runtime must be treated as critical, and the detection assumptions built for human dwell time do not hold against an adversary that adapts in seconds.
 
@@ -647,7 +647,7 @@ The mid-July 2026 review surfaced a shift in what attackers aim at. ET-27 and ET
 
 **Emerging variant, unauthenticated MCP passthrough:** CVE-2026-59822 (LiteLLM prior to 1.84.0) let an attacker send a fabricated `Authorization` header to trigger an OAuth2 passthrough fallback that substituted an empty auth object for failed key validation, reaching MCP tooling with no valid key. The gateway meant to enforce authentication became the bypass.
 
-**MASO controls:** IA-2.1 (Non-Human Identity, scope the gateway's instance profile to least privilege), IA-2.3 (no transitive permissions, the gateway must not hold broad Bedrock or cloud rights on behalf of every downstream caller), EC-2.1 (sandboxed execution and network isolation, the gateway must not be internet-exposed with open management ports), SC-1.x (pin and patch the gateway itself as a first-class dependency), OB-2.2 (drift detection on outbound traffic, cryptomining and model-access theft are anomalous egress next to normal inference).
+**MASO controls:** IA-2.1 (Non-Human Identity, scope the gateway's instance profile to least privilege), IA-2.4 (no transitive permissions, the gateway must not hold broad Bedrock or cloud rights on behalf of every downstream caller), EC-2.1 (sandboxed execution and network isolation, the gateway must not be internet-exposed with open management ports), SC-1.x (pin and patch the gateway itself as a first-class dependency), OB-2.2 (drift detection on outbound traffic, cryptomining and model-access theft are anomalous egress next to normal inference).
 
 **Gap in current controls:** MASO has no gateway-as-asset model. It should add: least-privilege instance profiles for model gateways (the gateway holds only the model-invocation scope it proxies, never blanket Bedrock or cloud-admin rights); mandatory network isolation with no public SSH or management ports on gateway hosts; per-request identity propagation so the gateway does not become a confused deputy holding everyone's credentials; and egress monitoring calibrated for model-access theft and cryptomining as distinct from normal inference traffic.
 

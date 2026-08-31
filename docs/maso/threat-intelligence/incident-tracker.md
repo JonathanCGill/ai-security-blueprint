@@ -336,7 +336,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | Control | Mechanism | Effect |
 |---------|-----------|--------|
 | Least-privilege instance profile (IA-2.1) | The gateway's cloud role carries only the model-invocation scope it proxies, never blanket Bedrock or cloud-admin rights | Caps what a compromise of the host can reach on the cloud account |
-| No transitive permissions (IA-2.3) | The gateway does not hold standing rights on behalf of every downstream caller; identity is propagated per request | Prevents the gateway from acting as a confused deputy holding everyone's credentials |
+| No transitive permissions (IA-2.4) | The gateway does not hold standing rights on behalf of every downstream caller; identity is propagated per request | Prevents the gateway from acting as a confused deputy holding everyone's credentials |
 | Network isolation (EC-2.1) | Gateway hosts sit behind private networking with no public SSH or management ports | Removes the internet-exposed entry point the intrusion used |
 | Egress monitoring (OB-2.2) | Outbound traffic baselined so mining-pool connections and model-access theft register as anomalous next to normal inference | Detects the cryptomining and any exfiltration of model access after a compromise |
 
@@ -355,7 +355,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | Control | Mechanism | Effect |
 |---------|-----------|--------|
 | Sandboxed execution and data-plane isolation (EC-2.1, EC-2.2) | The dataset-processing worker runs isolated, with no standing credentials or lateral network reach | Contains code execution reached through untrusted user content, the data plane rather than the model |
-| No transitive permissions (IA-2.3) | Harvesting one service credential does not unlock the cluster | Caps lateral movement after the initial code execution |
+| No transitive permissions (IA-2.4) | Harvesting one service credential does not unlock the cluster | Caps lateral movement after the initial code execution |
 | Egress and behavioural monitoring (OB-2.2) | Swarm-of-sandboxes activity and self-migrating C2 register as anomalous outbound behaviour | Surfaces the autonomous agent's signature in real time |
 | Dual-use harness containment (Privileged Agent Governance, SC-1.x) | A provider's own research agent is confined and egress-validated before being pointed at anything live | Prevents a research tool from becoming an accidental adversary |
 
@@ -431,7 +431,7 @@ This tracker maps publicly disclosed AI security incidents to framework controls
 | Control | Mechanism | Effect |
 |---------|-----------|--------|
 | Vaulted per-flow credential brokering (IA-2.1) | Flows request short-lived, scoped tokens at execution time rather than storing provider keys in the orchestrator | An RCE yields a host, not the keyring for every connected system |
-| No transitive permissions (IA-2.3) | The orchestrator does not hold standing rights over every downstream system its flows touch | Caps lateral movement from the orchestrator into connected data stores |
+| No transitive permissions (IA-2.4) | The orchestrator does not hold standing rights over every downstream system its flows touch | Caps lateral movement from the orchestrator into connected data stores |
 | Network isolation (EC-2.1) | The orchestrator is not internet-reachable and has no public management interface | Removes the unauthenticated network path the token-issuing endpoint depends on |
 | Asset inventory and patch SLA (SC-1.x) | The orchestrator is a named, owned production asset with a patch commitment | Exploitation began before the fix existed; an uninventoried tool is never patched in time |
 

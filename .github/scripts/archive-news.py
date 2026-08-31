@@ -1,17 +1,38 @@
 #!/usr/bin/env python3
-"""Move news items older than 2 months from news.md to news-archive.md."""
+"""Move news items older than three months from news.md to the news archive.
+
+The archive lives outside the MkDocs source tree and is read on GitHub, so
+relative links inside archived items are rewritten to point back into `docs/`.
+"""
 
 import re
 import sys
 from datetime import date, timedelta
 from pathlib import Path
 
-DOCS = Path(__file__).resolve().parents[2] / "docs"
+ROOT = Path(__file__).resolve().parents[2]
+DOCS = ROOT / "docs"
 NEWS_FILE = DOCS / "news.md"
-ARCHIVE_FILE = DOCS / "news-archive.md"
+ARCHIVE_FILE = ROOT / "archive" / "2026-03-31" / "news-archive.md"
 
 ITEM_PATTERN = re.compile(r"^### (\d{4}-\d{2}-\d{2}): ")
-CUTOFF = date.today() - timedelta(days=60)
+CUTOFF = date.today() - timedelta(days=90)
+
+LINK_PATTERN = re.compile(r"\]\(([^)\s]+)\)")
+# Paths that are already absolute, external, or anchor-only are left alone.
+SKIP_PREFIXES = ("http://", "https://", "#", "mailto:", "/", "../")
+
+
+def rewrite_links(text: str) -> str:
+    """Rewrite docs-relative links so they resolve from the archive directory."""
+
+    def repl(match: re.Match[str]) -> str:
+        target = match.group(1)
+        if target.startswith(SKIP_PREFIXES):
+            return match.group(0)
+        return f"]({'../../docs/'}{target})"
+
+    return LINK_PATTERN.sub(repl, text)
 
 
 def parse_items(text: str) -> list[tuple[date | None, str]]:
@@ -56,7 +77,7 @@ def run() -> None:
 
     for item_date, content in items:
         if item_date is not None and item_date < CUTOFF:
-            archive.append(content)
+            archive.append(rewrite_links(content))
         else:
             keep.append(content)
 
@@ -68,7 +89,7 @@ def run() -> None:
     if keep:
         keep_block = "\n" + "".join(keep)
     else:
-        keep_block = "\n\n*No recent items. Check the [news archive](news-archive.md).*\n\n"
+        keep_block = "\n\n*No recent items. Check the [news archive](https://github.com/JonathanCGill/airuntimesecurity.io/blob/main/archive/2026-03-31/news-archive.md).*\n\n"
     new_news = news_text[:news_start] + keep_block + news_text[news_end:]
     NEWS_FILE.write_text(new_news)
 
@@ -83,9 +104,9 @@ def run() -> None:
 
     archived_block = "".join(archive).strip()
     if existing:
-        new_archive_content = f"\n{archived_block}\n\n{existing}\n\n"
+        new_archive_content = f"\n\n{archived_block}\n\n{existing}\n\n"
     else:
-        new_archive_content = f"\n{archived_block}\n\n"
+        new_archive_content = f"\n\n{archived_block}\n\n"
 
     new_archive = archive_text[:arch_start] + new_archive_content + archive_text[arch_end:]
     ARCHIVE_FILE.write_text(new_archive)

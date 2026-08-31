@@ -229,6 +229,7 @@ nav:
       - Evaluation Integrity Risks: insights/evaluation-integrity-risks.md
       - You Don't Know What You're Deploying: insights/you-dont-know-what-youre-deploying.md
       - The Sandbox Escape Problem: insights/the-sandbox-escape-problem.md
+      - The Model Is Optional: insights/the-model-is-optional.md
       - The Agent Supply Chain Crisis: insights/the-agent-supply-chain-crisis.md
     - Agentic AI:
       - When Agents Talk to Agents: insights/when-agents-talk-to-agents.md

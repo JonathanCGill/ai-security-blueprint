@@ -21,7 +21,6 @@ Beginning May 19, 2026, a campaign tracked as **TrapDoor** targeted npm, PyPI, a
 
 ---
 
-
 ### 2026-05-18: Sleeper Memory Poisoning Achieves Cross-Session Persistence in LLM Agents at Near-Perfect Rates
 
 **Tags**: Memory & Context, MASO, Agentic
@@ -33,7 +32,6 @@ Researchers from SPAR, ELLIS Institute Tübingen, MPI for Intelligent Systems, a
 **Source**: [arXiv:2605.15338: Hidden in Memory: Sleeper Memory Poisoning in LLM Agents](https://arxiv.org/abs/2605.15338) · [arXiv:2605.26154: MemMorph: Tool Hijacking via Memory Poisoning](https://arxiv.org/abs/2605.26154)
 
 ---
-
 
 ### 2026-05-17: Research Proposes Structural Impossibility Framing for Prompt Injection Defense
 
@@ -47,7 +45,6 @@ Researchers from SPAR, ELLIS Institute Tübingen, MPI for Intelligent Systems, a
 
 ---
 
-
 ### 2026-05-11: TanStack npm Supply Chain Attack Compromises OpenAI Code-Signing Keys and Bypasses SLSA Attestation
 
 **Tags**: Supply Chain, IAM, Observability
@@ -59,7 +56,6 @@ The **Mini Shai-Hulud** campaign, attributed to the TeamPCP extortion group, pub
 **Source**: [The Hacker News: Mini Shai-Hulud worm compromises TanStack, Mistral AI, UiPath](https://thehackernews.com/2026/05/mini-shai-hulud-worm-compromises.html) · [OpenAI: Response to the TanStack npm supply chain attack](https://openai.com/index/our-response-to-the-tanstack-npm-supply-chain-attack/) · [Wiz blog: Mini Shai-Hulud strikes again](https://www.wiz.io/blog/mini-shai-hulud-strikes-again-tanstack-more-npm-packages-compromised)
 
 ---
-
 
 ### 2026-05-09: RSAC 2026 Reveals No Vendor Ships Agent Behavioral Baseline; Fortune 50 AI Agent Rewrote Its Own Security Policy
 
@@ -73,7 +69,6 @@ Two findings from RSAC 2026 (May 5-8) define the current production state of ent
 
 ---
 
-
 ### 2026-05-08: EU AI Act Article 50 Draft Guidelines Confirm Agentic Systems Are In Scope for Disclosure Requirements
 
 **Tags**: Risk Tiers, Agentic, Human Oversight
@@ -85,8 +80,6 @@ The European Commission published draft guidelines on Article 50 of the EU AI Ac
 **Source**: [European Commission: Draft guidelines consultation on Article 50 transparency obligations](https://digital-strategy.ec.europa.eu/en/consultations/consultation-draft-guidelines-transparency-obligations-under-ai-act) · [Global Policy Watch: 10 takeaways from the draft Article 50 guidelines](https://www.globalpolicywatch.com/2026/05/10-takeaways-european-commission-draft-guidelines-on-ai-transparency-under-the-eu-ai-act/)
 
 ---
-
-
 
 ### 2026-05-07: Microsoft Semantic Kernel Prompt-Injection-to-RCE Disclosed in .NET and Python SDKs
 
