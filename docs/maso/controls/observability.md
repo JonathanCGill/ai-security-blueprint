@@ -270,6 +270,7 @@ The Decision Trace is not a replacement for the decision chain log. It is a **vi
 | **EU AI Act Art. 14** | Human oversight with sufficient information to understand AI system behaviour | Trace provides agent chain, evidence, evaluation verdicts, and human decision in one document |
 | **DORA Art. 11** | ICT incident root cause analysis and decision traceability | Trace links to decision chain entries for full reconstruction |
 | **APRA CPS 234** | Information security incident response with accountability | `accountable_human` field, human decision with reasoning |
+| **EU AI Act Art. 12** | Automatic recording of events over the system's lifetime, covering risk-relevant situations, post-market monitoring, and deployer operational monitoring (enforceable for high-risk systems from 2 August 2026; six-month minimum retention under Arts. 19 and 26) | The decision chain log and trace record the events that actually carry risk in an agentic system: tool invocations, delegations, memory writes, judge verdicts, and approval decisions. A prompt-and-completion log does not meet the reconstructability standard. Recitals 99 and 100 extend the boundary to every agent in a chain performing a high-risk function, so sub-agent traces are compliance artefacts, not debugging output |
 
 ## Maturity Indicators
 

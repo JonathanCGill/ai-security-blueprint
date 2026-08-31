@@ -93,6 +93,7 @@ For systems that maintain memory across sessions (user preferences, conversation
 | **Memory injection prevention** | Validate that persistent memories are genuine (from real conversations) not injected |
 | **Memory write provenance** | Tag every memory write with the source that triggered it: conversation turn, external document URL, tool output, or agent ID. Provenance allows a fabricated memory to be traced to the injecting source on retrieval, and enables anomaly detection on which external sources are triggering memory writes rather than only on memory content. |
 | **Semantic deduplication** | Detect and prevent accumulation of near-duplicate memory entries that could indicate poisoning; semantically similar entries are merged or flagged for review before storage |
+| **Memory eviction on account recovery** | Purge or quarantine persistent memory as part of every credential reset, session revocation, and device re-enrolment. Standard incident response assumes that rotating credentials evicts the attacker. It does not evict a memory implant. The CoSnitch chain in Microsoft Copilot Personal (CVE-2026-24301, August 2026) planted persistent memory rules that survived password resets, session revocation, and device re-enrolment, so the account was recovered and the instructions stayed. Memory must be in the eviction path, and any memory whose write provenance points at the compromise window must be treated as attacker-controlled. |
 
 ### 4. Accumulated Context Evaluation
 
