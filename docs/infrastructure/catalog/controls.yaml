@@ -1,0 +1,968 @@
+# AI Security Infrastructure Controls - machine-readable catalog
+# version 1.0.0  as_at 2026-08-03
+# Authority: airuntimesecurity.io  License: MIT
+# Generated from a single source of truth; do not hand-edit.
+# Ingest into GRC platforms, SIEM enrichment, or CI/CD policy gates.
+catalog: AI Security Infrastructure Controls
+version: 1.0.0
+as_at: '2026-08-03'
+authority: airuntimesecurity.io
+license: MIT
+description: Machine-readable catalog of the 80 infrastructure controls that make behavioural AI security
+  enforceable. Mirrored across aisecuredbydesign.io (pre-runtime) and airuntimesecurity.io (runtime).
+  airuntimesecurity.io is authoritative.
+risk_tier_model:
+  named:
+  - LOW
+  - MEDIUM
+  - HIGH
+  - CRITICAL
+  simplified:
+    '1':
+      named:
+      - LOW
+      - MEDIUM
+      meaning: Internal, no regulated decisions, recoverable errors
+    '2':
+      named:
+      - HIGH
+      meaning: Customer-facing, sensitive data, human review before delivery
+    '3':
+      named:
+      - CRITICAL
+      meaning: Regulated decisions, autonomous write access, financial/medical/legal
+  note: min_tier uses the simplified 1/2/3 system. min_tier 1 == applies to all tiers.
+runtime_layers:
+  L1: Layer 01 - Guardrails (deterministic prevention)
+  L2: Layer 02 - Model-as-Judge / reviewing (detection)
+  L3: Layer 03 - Human Oversight (decision)
+  CB: Circuit Breaker (containment, maps to PACE Emergency)
+total_controls: 80
+domains:
+- slug: identity-and-access
+  name: Identity & Access Management
+  control_count: 8
+  controls:
+  - id: IAM-01
+    title: Authenticate all entities
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: &id001
+    - guardrails
+    - model-as-judge
+    - human-oversight
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/identity-and-access/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/identity-and-access/
+  - id: IAM-02
+    title: Enforce least privilege
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/identity-and-access/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/identity-and-access/
+  - id: IAM-03
+    title: Separate control and data planes
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/identity-and-access/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/identity-and-access/
+  - id: IAM-04
+    title: Constrain agent tool invocation
+    tier_applicability: Tier 2+ (agentic)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/identity-and-access/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/identity-and-access/
+  - id: IAM-05
+    title: Human approval for high-impact actions
+    tier_applicability: Tier 3+ (agentic)
+    min_tier: 3
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/identity-and-access/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/identity-and-access/
+  - id: IAM-06
+    title: Session-scoped credentials
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/identity-and-access/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/identity-and-access/
+  - id: IAM-07
+    title: Prevent credential exposure in context
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/identity-and-access/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/identity-and-access/
+  - id: IAM-08
+    title: Audit all access changes
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/identity-and-access/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/identity-and-access/
+- slug: logging-and-observability
+  name: Logging & Observability
+  control_count: 10
+  controls:
+  - id: LOG-01
+    title: Log all model inputs and outputs
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/logging-and-observability/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/logging-and-observability/
+  - id: LOG-02
+    title: Log guardrail decisions
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/logging-and-observability/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/logging-and-observability/
+  - id: LOG-03
+    title: Log Judge evaluations
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/logging-and-observability/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/logging-and-observability/
+  - id: LOG-04
+    title: Log agent decision chains
+    tier_applicability: Tier 2+ (agentic)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/logging-and-observability/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/logging-and-observability/
+  - id: LOG-05
+    title: Detect behavioral drift
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/logging-and-observability/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/logging-and-observability/
+  - id: LOG-06
+    title: Detect prompt injection attempts
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/logging-and-observability/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/logging-and-observability/
+  - id: LOG-07
+    title: Protect log integrity
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/logging-and-observability/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/logging-and-observability/
+  - id: LOG-08
+    title: Enforce retention policies
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/logging-and-observability/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/logging-and-observability/
+  - id: LOG-09
+    title: Redact sensitive data in logs
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/logging-and-observability/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/logging-and-observability/
+  - id: LOG-10
+    title: Correlate with enterprise SIEM
+    tier_applicability: Tier 3+
+    min_tier: 3
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/logging-and-observability/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/logging-and-observability/
+- slug: network-and-segmentation
+  name: Network & Segmentation
+  control_count: 8
+  controls:
+  - id: NET-01
+    title: Define network zone architecture
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/network-and-segmentation/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/network-and-segmentation/
+  - id: NET-02
+    title: Prevent guardrail bypass at network level
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/network-and-segmentation/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/network-and-segmentation/
+  - id: NET-03
+    title: Isolate Judge evaluation infrastructure
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/network-and-segmentation/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/network-and-segmentation/
+  - id: NET-04
+    title: Control agent egress destinations
+    tier_applicability: Tier 2+ (agentic)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/network-and-segmentation/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/network-and-segmentation/
+  - id: NET-05
+    title: Separate ingestion from runtime
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/network-and-segmentation/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/network-and-segmentation/
+  - id: NET-06
+    title: Protect control plane network path
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/network-and-segmentation/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/network-and-segmentation/
+  - id: NET-07
+    title: Enforce API gateway as single entry
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/network-and-segmentation/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/network-and-segmentation/
+  - id: NET-08
+    title: Monitor cross-zone traffic
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/network-and-segmentation/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/network-and-segmentation/
+- slug: data-protection
+  name: Data Protection
+  control_count: 8
+  controls:
+  - id: DAT-01
+    title: Classify data at AI boundaries
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/data-protection/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/data-protection/
+  - id: DAT-02
+    title: Enforce data minimisation
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/data-protection/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/data-protection/
+  - id: DAT-03
+    title: Detect and redact PII in model I/O
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/data-protection/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/data-protection/
+  - id: DAT-04
+    title: Enforce access-controlled RAG retrieval
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/data-protection/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/data-protection/
+  - id: DAT-05
+    title: Encrypt data at rest and in transit
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/data-protection/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/data-protection/
+  - id: DAT-06
+    title: Prevent sensitive data leakage via responses
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/data-protection/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/data-protection/
+  - id: DAT-07
+    title: Manage conversation history retention
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/data-protection/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/data-protection/
+  - id: DAT-08
+    title: Protect evaluation data sent to Judge
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/data-protection/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/data-protection/
+- slug: secrets-and-credentials
+  name: Secrets & Credentials
+  control_count: 8
+  controls:
+  - id: SEC-01
+    title: Never inject credentials into context windows
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/secrets-and-credentials/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/secrets-and-credentials/
+  - id: SEC-02
+    title: Use short-lived, scoped tokens
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/secrets-and-credentials/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/secrets-and-credentials/
+  - id: SEC-03
+    title: Centralise secrets in a vault
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/secrets-and-credentials/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/secrets-and-credentials/
+  - id: SEC-04
+    title: Scan model I/O for credential patterns
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/secrets-and-credentials/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/secrets-and-credentials/
+  - id: SEC-05
+    title: Rotate credentials on exposure
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Circuit Breaker (containment)
+    primary_runtime_layer_code: CB
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/secrets-and-credentials/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/secrets-and-credentials/
+  - id: SEC-06
+    title: Isolate agent credentials per session
+    tier_applicability: Tier 2+ (agentic)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/secrets-and-credentials/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/secrets-and-credentials/
+  - id: SEC-07
+    title: Protect model endpoint credentials
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/secrets-and-credentials/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/secrets-and-credentials/
+  - id: SEC-08
+    title: Scan code and config for embedded credentials
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/secrets-and-credentials/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/secrets-and-credentials/
+- slug: supply-chain
+  name: Supply Chain
+  control_count: 8
+  controls:
+  - id: SUP-01
+    title: Verify model provenance and integrity
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/supply-chain/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/supply-chain/
+  - id: SUP-02
+    title: Assess model risk before adoption
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/supply-chain/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/supply-chain/
+  - id: SUP-03
+    title: Verify RAG data source integrity
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/supply-chain/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/supply-chain/
+  - id: SUP-04
+    title: Secure fine-tuning pipeline
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/supply-chain/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/supply-chain/
+  - id: SUP-05
+    title: Audit tool and plugin supply chain
+    tier_applicability: Tier 2+ (agentic)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/supply-chain/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/supply-chain/
+  - id: SUP-06
+    title: Verify guardrail and safety model integrity
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/supply-chain/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/supply-chain/
+  - id: SUP-07
+    title: Maintain AI component inventory (AI-BOM)
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/supply-chain/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/supply-chain/
+  - id: SUP-08
+    title: Monitor for model and dependency vulnerabilities
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/supply-chain/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/supply-chain/
+- slug: incident-response
+  name: Incident Response
+  control_count: 8
+  controls:
+  - id: IR-01
+    title: Define AI-specific incident categories
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/incident-response/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/incident-response/
+  - id: IR-02
+    title: Establish detection triggers from logging
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/incident-response/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/incident-response/
+  - id: IR-03
+    title: Define containment procedures
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Circuit Breaker (containment)
+    primary_runtime_layer_code: CB
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/incident-response/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/incident-response/
+  - id: IR-04
+    title: Implement model rollback and guardrail hot-reload
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Circuit Breaker (containment)
+    primary_runtime_layer_code: CB
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/incident-response/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/incident-response/
+  - id: IR-05
+    title: Define investigation for non-deterministic systems
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/incident-response/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/incident-response/
+  - id: IR-06
+    title: Establish communication protocols
+    tier_applicability: Tier 2+
+    min_tier: 2
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/incident-response/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/incident-response/
+  - id: IR-07
+    title: Conduct AI-specific post-incident review
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/incident-response/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/incident-response/
+  - id: IR-08
+    title: Integrate with enterprise IR processes
+    tier_applicability: All
+    min_tier: 1
+    agentic: false
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/incident-response/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/incident-response/
+- slug: tool-access
+  name: Agentic - Tool Access
+  control_count: 6
+  controls:
+  - id: TOOL-01
+    title: Declare tool permissions explicitly before deployment
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/tool-access-controls/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/tool-access-controls/
+  - id: TOOL-02
+    title: Enforce permissions at the gateway, not at the agent
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/tool-access-controls/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/tool-access-controls/
+  - id: TOOL-03
+    title: Constrain tool parameters to declared bounds
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/tool-access-controls/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/tool-access-controls/
+  - id: TOOL-04
+    title: Classify tool actions by reversibility and impact
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 03 - Human Oversight
+    primary_runtime_layer_code: L3
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/tool-access-controls/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/tool-access-controls/
+  - id: TOOL-05
+    title: Rate-limit tool invocations per agent and per tool
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/tool-access-controls/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/tool-access-controls/
+  - id: TOOL-06
+    title: Log every tool invocation with full context
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/tool-access-controls/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/tool-access-controls/
+- slug: session-and-scope
+  name: Agentic - Session & Scope
+  control_count: 5
+  controls:
+  - id: SESS-01
+    title: Define and enforce session boundaries with automatic expiry
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/session-and-scope/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/session-and-scope/
+  - id: SESS-02
+    title: Isolate sessions from each other
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/session-and-scope/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/session-and-scope/
+  - id: SESS-03
+    title: Limit session scope to a declared task
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/session-and-scope/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/session-and-scope/
+  - id: SESS-04
+    title: Implement progressive trust within sessions
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/session-and-scope/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/session-and-scope/
+  - id: SESS-05
+    title: Clean up session state on termination
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Circuit Breaker (containment)
+    primary_runtime_layer_code: CB
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/controls/session-and-scope/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/controls/session-and-scope/
+- slug: delegation-chains
+  name: Agentic - Delegation Chains
+  control_count: 5
+  controls:
+  - id: DEL-01
+    title: Enforce least delegation (no privilege escalation)
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/delegation-chains/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/delegation-chains/
+  - id: DEL-02
+    title: Maintain complete audit trail across chains
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 02 - Model-as-Judge / reviewing
+    primary_runtime_layer_code: L2
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/delegation-chains/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/delegation-chains/
+  - id: DEL-03
+    title: Limit delegation depth
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/delegation-chains/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/delegation-chains/
+  - id: DEL-04
+    title: Require explicit delegation authorisation
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/delegation-chains/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/delegation-chains/
+  - id: DEL-05
+    title: Propagate user identity through chains
+    tier_applicability: Agentic (Tier 2+)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/delegation-chains/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/delegation-chains/
+- slug: sandbox-patterns
+  name: Agentic - Sandbox Patterns
+  control_count: 6
+  controls:
+  - id: SAND-01
+    title: Execute generated code in isolated sandboxes
+    tier_applicability: Agentic (All, code-gen)
+    min_tier: 1
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/sandbox-patterns/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/sandbox-patterns/
+  - id: SAND-02
+    title: Restrict sandbox file system access
+    tier_applicability: Agentic (All, code-gen)
+    min_tier: 1
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/sandbox-patterns/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/sandbox-patterns/
+  - id: SAND-03
+    title: Restrict sandbox network access
+    tier_applicability: Agentic (All, code-gen)
+    min_tier: 1
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/sandbox-patterns/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/sandbox-patterns/
+  - id: SAND-04
+    title: Enforce resource limits on execution
+    tier_applicability: Agentic (All, code-gen)
+    min_tier: 1
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Circuit Breaker (containment)
+    primary_runtime_layer_code: CB
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/sandbox-patterns/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/sandbox-patterns/
+  - id: SAND-05
+    title: Prevent persistent state escaping sessions
+    tier_applicability: Agentic (Tier 2+, code-gen)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Circuit Breaker (containment)
+    primary_runtime_layer_code: CB
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/sandbox-patterns/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/sandbox-patterns/
+  - id: SAND-06
+    title: Scan generated code before execution
+    tier_applicability: Agentic (Tier 2+, code-gen)
+    min_tier: 2
+    agentic: true
+    behavioural_layers: *id001
+    primary_runtime_layer: Layer 01 - Guardrails
+    primary_runtime_layer_code: L1
+    reference:
+      aisecuredbydesign: https://aisecuredbydesign.io/infrastructure/agentic/sandbox-patterns/
+      airuntimesecurity: https://airuntimesecurity.io/infrastructure/agentic/sandbox-patterns/

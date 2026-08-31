@@ -89,7 +89,7 @@ IR 8596 focuses on data provenance and integrity for training and input data, ex
 | Training/input data provenance and integrity | SC-01 (Provenance verification), SC-02 (Integrity checking) | **Strong** |
 | AI-specific identity and access management | [Identity & Access Management](../../infrastructure/README.md) controls, [MASO Identity & Access](../../maso/controls/identity-and-access.md) | **Strong** |
 | Data-in-use protection (context windows, inference) | PR.DS-10 mapped to Session & Scope controls, guardrail layer | **Strong**: identified as "Key AI subcategory" in CSF 2.0 mapping |
-| Least privilege for AI agents and tools | [Tool Access](../../infrastructure/README.md) controls, TA-based least-privilege, MASO IA-2.3 (no transitive permissions) | **Strong** |
+| Least privilege for AI agents and tools | [Tool Access](../../infrastructure/README.md) controls, TA-based least-privilege, MASO IA-2.4 (no transitive permissions) | **Strong** |
 | AI-specific logging and monitoring | [Logging & Observability](../../infrastructure/README.md), prompts, responses, guardrail decisions, Judge evaluations, tool invocations | **Strong** |
 | Model and data supply chain extension | Supply Chain controls, AIBOM, dependency scanning | **Strong** |
 | AI-specific contractual terms with suppliers | SC controls specify provider requirements | **Moderate**: present but could be more prescriptive |

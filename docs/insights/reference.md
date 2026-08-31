@@ -51,6 +51,7 @@ The rest of the library, grouped by theme. Expand the section you need. If you a
     | [Practical Guardrails](practical-guardrails.md) | What guardrails should catch: international PII, RAG filtering, exception governance, five pipeline points. |
     | [Containment Through Declared Intent](containment-through-intent.md) | Declared intent is the organising principle that gives every defence layer its reference point. |
     | [The Intent Layer](the-intent-layer.md) | Mechanical controls constrain what agents can do; semantic evaluation determines whether actions align with objectives. |
+    | [Intent Versus Action](intent-versus-action.md) | Declared intent, authorised means, and observed baseline are three separate reference points, and the state where all three pass and the agent is still wrong. |
     | [Process-Aware Evaluation](process-aware-evaluation.md) | Evaluating what an agent produced matters less than evaluating how it got there. |
     | [The Constraint Curve](the-constraint-curve.md) | Proportionate controls find the peak. Over-constraining destroys the value that justified using an LLM. |
     | [The Verification Gap](the-verification-gap.md) | Current safety approaches cannot confirm ground truth. Match each claim to a verification method along the spectrum, from the dependent [Model-as-Judge](../core/judge-assurance.md) to fully independent formal verification and knowledge-graph lookups. |
@@ -109,6 +110,7 @@ The rest of the library, grouped by theme. Expand the section you need. If you a
     | [What Scales](what-scales.md) | Security controls succeed only if their cost grows slower than the system they protect. |
     | [The Evidence Gap](the-evidence-gap.md) | What research actually supports, and where the science hasn't caught up to the architecture. |
     | [Risk Stories](risk-stories.md) | Real production incidents show where missing controls caused or worsened failures. |
+    | [Where the Attacks Landed](where-the-attacks-landed.md) | Six months of disclosures read as one record: the attack surface descended through the stack, and where the framework was ahead and where it was late. |
     | [The Flight Recorder Problem](the-flight-recorder-problem.md) | You log what happened but not why, or how to replay it. AI systems need provenance chains, not just event logs. |
     | [PACE Resilience](../pace-resilience.md) | How the three-layer architecture achieves operational resilience through layered, independent control redundancy. |
     | [Graph-Based Agent Monitoring](../extensions/technical/graph-based-agent-monitoring.md) | Modelling agent interactions as a live graph to detect anomalous behaviour in near real-time. |
