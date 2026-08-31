@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" role="img" aria-labelledby="asdTitle asdDesc">
+  <title id="asdTitle">Where the attacks landed, February to August 2026</title>
+  <desc id="asdDesc">Sixty-nine news items classified by the layer the attack landed on and the month it was disclosed. The model and guardrail layer peaks in March and never repeats. State and internal channels concentrate in June. Environment and operator peaks in July. August spreads across five layers, with every item concerning composition rather than a single component. Governance and standards output is tracked separately as a response track.</desc>
+
+  <defs>
+    <linearGradient id="asdBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1100" height="620" fill="url(#asdBg)"/>
+
+  <text x="40" y="44" fill="#f1f5f9" font-size="22" font-weight="600">Where the attacks landed</text>
+  <text x="40" y="68" fill="#94a3b8" font-size="13">69 news items, February to August 2026, by the layer the attack reached and the month it was disclosed.</text>
+
+  <!-- column headers -->
+  <g fill="#64748b" font-size="11.5" font-family="'IBM Plex Mono', monospace" text-anchor="middle" letter-spacing="1">
+    <text x="425" y="112">FEB</text>
+    <text x="520" y="112">MAR</text>
+    <text x="615" y="112">APR</text>
+    <text x="710" y="112">MAY</text>
+    <text x="805" y="112">JUN</text>
+    <text x="900" y="112">JUL</text>
+    <text x="995" y="112">AUG</text>
+  </g>
+
+  <!-- rows: y positions -->
+  <g font-size="12.5">
+    <!-- Model & guardrail -->
+    <text x="40" y="146" fill="#e2e8f0" font-weight="600">Model &amp; guardrail</text>
+    <text x="40" y="162" fill="#64748b" font-size="10.5">the decision boundary</text>
+    <rect x="383" y="126" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="425" y="152" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="478" y="126" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.92"/><text x="520" y="152" fill="#0f172a" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="600">4</text>
+    <rect x="573" y="126" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.46"/><text x="615" y="152" fill="#e2e8f0" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">2</text>
+    <rect x="668" y="126" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="710" y="152" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="763" y="126" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="805" y="152" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="858" y="126" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="900" y="152" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="953" y="126" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="995" y="152" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+
+    <!-- Agent host & framework -->
+    <text x="40" y="200" fill="#e2e8f0" font-weight="600">Agent host &amp; framework</text>
+    <text x="40" y="216" fill="#64748b" font-size="10.5">IDEs, SDKs, browsers</text>
+    <rect x="383" y="180" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="478" y="180" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.46"/><text x="520" y="206" fill="#e2e8f0" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">2</text>
+    <rect x="573" y="180" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.46"/><text x="615" y="206" fill="#e2e8f0" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">2</text>
+    <rect x="668" y="180" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="710" y="206" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="763" y="180" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="805" y="206" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="858" y="180" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="900" y="206" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="953" y="180" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.46"/><text x="995" y="206" fill="#e2e8f0" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">2</text>
+
+    <!-- Protocol & orchestration -->
+    <text x="40" y="254" fill="#e2e8f0" font-weight="600">Protocol &amp; orchestration</text>
+    <text x="40" y="270" fill="#64748b" font-size="10.5">MCP, gateways, builders</text>
+    <rect x="383" y="234" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="478" y="234" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="520" y="260" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="573" y="234" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.46"/><text x="615" y="260" fill="#e2e8f0" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">2</text>
+    <rect x="668" y="234" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="763" y="234" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="805" y="260" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="858" y="234" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.46"/><text x="900" y="260" fill="#e2e8f0" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">2</text>
+    <rect x="953" y="234" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.46"/><text x="995" y="260" fill="#e2e8f0" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">2</text>
+
+    <!-- Supply & discovery -->
+    <text x="40" y="308" fill="#e2e8f0" font-weight="600">Supply &amp; discovery</text>
+    <text x="40" y="324" fill="#64748b" font-size="10.5">registries, configs, names</text>
+    <rect x="383" y="288" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="478" y="288" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="520" y="314" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="573" y="288" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="615" y="314" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="668" y="288" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.46"/><text x="710" y="314" fill="#e2e8f0" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">2</text>
+    <rect x="763" y="288" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="805" y="314" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="858" y="288" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.46"/><text x="900" y="314" fill="#e2e8f0" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">2</text>
+    <rect x="953" y="288" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="995" y="314" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+
+    <!-- State & internal channels -->
+    <text x="40" y="362" fill="#e2e8f0" font-weight="600">State &amp; internal channels</text>
+    <text x="40" y="378" fill="#64748b" font-size="10.5">memory, inter-agent traffic</text>
+    <rect x="383" y="342" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="478" y="342" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="573" y="342" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="668" y="342" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="710" y="368" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="763" y="342" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.70"/><text x="805" y="368" fill="#0f172a" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="600">3</text>
+    <rect x="858" y="342" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="900" y="368" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="953" y="342" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+
+    <!-- Environment & operator -->
+    <text x="40" y="416" fill="#e2e8f0" font-weight="600">Environment &amp; operator</text>
+    <text x="40" y="432" fill="#64748b" font-size="10.5">containment, autonomy</text>
+    <rect x="383" y="396" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="425" y="422" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="478" y="396" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="520" y="422" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+    <rect x="573" y="396" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.46"/><text x="615" y="422" fill="#e2e8f0" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">2</text>
+    <rect x="668" y="396" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="763" y="396" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="858" y="396" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.92"/><text x="900" y="422" fill="#0f172a" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="600">4</text>
+    <rect x="953" y="396" width="84" height="42" rx="3" fill="#38bdf8" opacity="0.22"/><text x="995" y="422" fill="#cbd5e1" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+  </g>
+
+  <!-- separator -->
+  <line x1="40" y1="458" x2="1060" y2="458" stroke="#334155" stroke-width="1"/>
+
+  <!-- governance track -->
+  <g font-size="12.5">
+    <text x="40" y="490" fill="#fcd34d" font-weight="600">Governance &amp; standards</text>
+    <text x="40" y="506" fill="#64748b" font-size="10.5">the response track</text>
+    <rect x="383" y="470" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="478" y="470" width="84" height="42" rx="3" fill="#f59e0b" opacity="0.92"/><text x="520" y="496" fill="#0f172a" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="600">6</text>
+    <rect x="573" y="470" width="84" height="42" rx="3" fill="#f59e0b" opacity="0.66"/><text x="615" y="496" fill="#0f172a" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">4</text>
+    <rect x="668" y="470" width="84" height="42" rx="3" fill="#f59e0b" opacity="0.66"/><text x="710" y="496" fill="#0f172a" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">4</text>
+    <rect x="763" y="470" width="84" height="42" rx="3" fill="#f59e0b" opacity="0.66"/><text x="805" y="496" fill="#0f172a" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">4</text>
+    <rect x="858" y="470" width="84" height="42" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="953" y="470" width="84" height="42" rx="3" fill="#f59e0b" opacity="0.28"/><text x="995" y="496" fill="#e2e8f0" font-size="12" text-anchor="middle" font-family="'IBM Plex Mono', monospace">1</text>
+  </g>
+
+  <!-- readout -->
+  <g font-size="11.5" fill="#94a3b8">
+    <text x="40" y="552" fill="#7dd3fc" font-size="11" font-family="'IBM Plex Mono', monospace" letter-spacing="0.8">READING THE GRID</text>
+    <text x="40" y="574">March peaks at the model layer and never repeats. June concentrates in memory and internal channels. July is the month the agent becomes the operator.</text>
+    <text x="40" y="594">August spreads evenly across five layers, and every item in it is about how components combine rather than any single one of them.</text>
+  </g>
+</svg>

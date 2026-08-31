@@ -215,6 +215,7 @@ nav:
       - Practical Guardrails: insights/practical-guardrails.md
       - Containment Through Declared Intent: insights/containment-through-intent.md
       - The Intent Layer: insights/the-intent-layer.md
+      - Intent Versus Action: insights/intent-versus-action.md
       - Process-Aware Evaluation: insights/process-aware-evaluation.md
       - The Constraint Curve: insights/the-constraint-curve.md
       - Feedback Loops: insights/feedback-loops.md
@@ -256,6 +257,7 @@ nav:
       - The Flight Recorder Problem: insights/the-flight-recorder-problem.md
       - Securing the Connective Tissue: insights/securing-the-connective-tissue.md
       - Automated Risk Tiering: insights/automated-risk-tiering.md
+      - Where the Attacks Landed: insights/where-the-attacks-landed.md
 
   - For Your Role:
     - stakeholders/README.md

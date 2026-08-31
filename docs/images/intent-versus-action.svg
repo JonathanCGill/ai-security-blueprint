@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="760" viewBox="0 0 1100 760" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" role="img" aria-labelledby="ivaTitle ivaDesc">
+  <title id="ivaTitle">Intent versus action: three reference points and five execution states</title>
+  <desc id="ivaDesc">Declared intent, authorised means, and observed baseline are three separate reference points against which an agent action is judged. Beneath them, the four-state deviation model of means against outcome, plus a fifth state where all compliance signals pass but the mandate itself was scoped to the wrong environment.</desc>
+
+  <defs>
+    <linearGradient id="ivaBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="ivaIntent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="ivaMeans" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e7490"/><stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+    <linearGradient id="ivaBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#047857"/><stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="ivaAction" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <marker id="ivaArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="1100" height="760" fill="url(#ivaBg)"/>
+
+  <text x="40" y="46" fill="#f1f5f9" font-size="23" font-weight="600">Intent versus action</text>
+  <text x="40" y="70" fill="#94a3b8" font-size="13.5">Three reference points, one action. Each answers a different question, and none substitutes for another.</text>
+
+  <!-- ===== three reference points ===== -->
+  <g>
+    <!-- declared intent -->
+    <rect x="40" y="100" width="330" height="150" rx="7" fill="url(#ivaIntent)" opacity="0.16" stroke="#8b5cf6" stroke-width="1.5"/>
+    <rect x="40" y="100" width="330" height="34" rx="7" fill="url(#ivaIntent)"/>
+    <rect x="40" y="120" width="330" height="14" fill="#8b5cf6" opacity="0.85"/>
+    <text x="58" y="123" fill="#ffffff" font-size="13.5" font-weight="600">Declared intent</text>
+    <text x="352" y="123" fill="#ede9fe" font-size="11" text-anchor="end" font-family="'IBM Plex Mono', monospace">OI</text>
+    <text x="58" y="160" fill="#e9d5ff" font-size="12.5" font-weight="600">What this agent is for.</text>
+    <text x="58" y="182" fill="#cbd5e1" font-size="12">Normative. Authored by a human before</text>
+    <text x="58" y="199" fill="#cbd5e1" font-size="12">the run, versioned, immutable at runtime.</text>
+    <text x="58" y="226" fill="#a5b4fc" font-size="11.5" font-family="'IBM Plex Mono', monospace">OISpec &#183; OI-1.1 &#183; OI-2.1</text>
+    <text x="58" y="242" fill="#94a3b8" font-size="11">Catches: goal drift, letter-not-spirit</text>
+
+    <!-- authorised means -->
+    <rect x="385" y="100" width="330" height="150" rx="7" fill="url(#ivaMeans)" opacity="0.16" stroke="#0891b2" stroke-width="1.5"/>
+    <rect x="385" y="100" width="330" height="34" rx="7" fill="url(#ivaMeans)"/>
+    <rect x="385" y="120" width="330" height="14" fill="#0891b2" opacity="0.85"/>
+    <text x="403" y="123" fill="#ffffff" font-size="13.5" font-weight="600">Authorised means</text>
+    <text x="697" y="123" fill="#cffafe" font-size="11" text-anchor="end" font-family="'IBM Plex Mono', monospace">AT</text>
+    <text x="403" y="160" fill="#a5f3fc" font-size="12.5" font-weight="600">How it is permitted to get there.</text>
+    <text x="403" y="182" fill="#cbd5e1" font-size="12">Structural. Tools provisioned, sequence</text>
+    <text x="403" y="199" fill="#cbd5e1" font-size="12">enforced, blocked attempts recorded.</text>
+    <text x="403" y="226" fill="#67e8f9" font-size="11.5" font-family="'IBM Plex Mono', monospace">Mandate &#183; AT-1.4 &#183; AT-2.7</text>
+    <text x="403" y="242" fill="#94a3b8" font-size="11">Catches: creative substitution</text>
+
+    <!-- observed baseline -->
+    <rect x="730" y="100" width="330" height="150" rx="7" fill="url(#ivaBase)" opacity="0.16" stroke="#059669" stroke-width="1.5"/>
+    <rect x="730" y="100" width="330" height="34" rx="7" fill="url(#ivaBase)"/>
+    <rect x="730" y="120" width="330" height="14" fill="#059669" opacity="0.85"/>
+    <text x="748" y="123" fill="#ffffff" font-size="13.5" font-weight="600">Observed baseline</text>
+    <text x="1042" y="123" fill="#d1fae5" font-size="11" text-anchor="end" font-family="'IBM Plex Mono', monospace">OB</text>
+    <text x="748" y="160" fill="#a7f3d0" font-size="12.5" font-weight="600">What it normally does.</text>
+    <text x="748" y="182" fill="#cbd5e1" font-size="12">Empirical. Learned from this agent's own</text>
+    <text x="748" y="199" fill="#cbd5e1" font-size="12">action history, never from its outputs.</text>
+    <text x="748" y="226" fill="#6ee7b7" font-size="11.5" font-family="'IBM Plex Mono', monospace">Baseline &#183; OB-2.2 &#183; OB-2.3</text>
+    <text x="748" y="242" fill="#94a3b8" font-size="11">Catches: novelty the spec never named</text>
+  </g>
+
+  <!-- converging lines -->
+  <path d="M 205 250 L 205 288 L 550 288" fill="none" stroke="#94a3b8" stroke-width="1.4" opacity="0.65"/>
+  <path d="M 550 250 L 550 288" fill="none" stroke="#94a3b8" stroke-width="1.4" opacity="0.65"/>
+  <path d="M 895 250 L 895 288 L 550 288" fill="none" stroke="#94a3b8" stroke-width="1.4" opacity="0.65"/>
+  <path d="M 550 288 L 550 316" fill="none" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ivaArrow)" opacity="0.85"/>
+
+  <!-- the action -->
+  <rect x="330" y="322" width="440" height="52" rx="7" fill="url(#ivaAction)" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="550" y="345" fill="#ffffff" font-size="14.5" font-weight="600" text-anchor="middle">The action in front of you</text>
+  <text x="550" y="364" fill="#bfdbfe" font-size="11.5" text-anchor="middle">one tool call, its parameters, its destination, its place in the sequence</text>
+
+  <!-- ===== five states ===== -->
+  <text x="40" y="424" fill="#f1f5f9" font-size="16" font-weight="600">The four-state deviation model, and the state it does not have</text>
+  <text x="40" y="446" fill="#94a3b8" font-size="12.5">Means and outcome are each judged against the mandate. Both green is not the same as safe.</text>
+
+  <!-- axis labels -->
+  <text x="60" y="492" fill="#64748b" font-size="11" font-family="'IBM Plex Mono', monospace" letter-spacing="1">OUTCOME</text>
+  <text x="300" y="492" fill="#64748b" font-size="11" font-family="'IBM Plex Mono', monospace" letter-spacing="1">MEANS CORRECT</text>
+  <text x="640" y="492" fill="#64748b" font-size="11" font-family="'IBM Plex Mono', monospace" letter-spacing="1">MEANS INCORRECT</text>
+
+  <!-- row: outcome correct -->
+  <text x="60" y="540" fill="#cbd5e1" font-size="12">correct</text>
+  <rect x="290" y="504" width="320" height="72" rx="6" fill="#134e4a" opacity="0.55" stroke="#0d9488" stroke-width="1.2"/>
+  <text x="308" y="528" fill="#5eead4" font-size="13" font-weight="600">Normal operation</text>
+  <text x="308" y="548" fill="#cbd5e1" font-size="11.5">Detection trivial. Log it.</text>
+  <text x="308" y="566" fill="#94a3b8" font-size="11">Reference: mandate satisfied on both axes.</text>
+
+  <rect x="630" y="504" width="430" height="72" rx="6" fill="#7f1d1d" opacity="0.6" stroke="#dc2626" stroke-width="1.8"/>
+  <text x="648" y="528" fill="#fca5a5" font-size="13" font-weight="600">Creative substitution</text>
+  <text x="648" y="548" fill="#e2e8f0" font-size="11.5">Highest priority. Invisible to any output-only monitor.</text>
+  <text x="648" y="566" fill="#94a3b8" font-size="11">Requires the means comparison: AT-2.7 sequence against mandate.</text>
+
+  <!-- row: outcome incorrect -->
+  <text x="60" y="628" fill="#cbd5e1" font-size="12">incorrect</text>
+  <rect x="290" y="592" width="320" height="72" rx="6" fill="#1e3a5f" opacity="0.55" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="308" y="616" fill="#93c5fd" font-size="13" font-weight="600">Execution failure</text>
+  <text x="308" y="636" fill="#cbd5e1" font-size="11.5">Low difficulty. Outcome monitoring sees it.</text>
+  <text x="308" y="654" fill="#94a3b8" font-size="11">Remediate.</text>
+
+  <rect x="630" y="592" width="430" height="72" rx="6" fill="#78350f" opacity="0.55" stroke="#d97706" stroke-width="1.2"/>
+  <text x="648" y="616" fill="#fcd34d" font-size="13" font-weight="600">Visible failure</text>
+  <text x="648" y="636" fill="#cbd5e1" font-size="11.5">Medium difficulty. Either monitor catches it.</text>
+  <text x="648" y="654" fill="#94a3b8" font-size="11">Incident.</text>
+
+  <!-- fifth state -->
+  <rect x="60" y="682" width="1000" height="56" rx="6" fill="#4c1d95" opacity="0.45" stroke="#a855f7" stroke-width="1.8" stroke-dasharray="6 4"/>
+  <text x="80" y="706" fill="#d8b4fe" font-size="13" font-weight="600">Mandate-scope failure</text>
+  <text x="256" y="706" fill="#e2e8f0" font-size="11.5">correct means &#183; correct outcome &#183; wrong world</text>
+  <text x="80" y="726" fill="#cbd5e1" font-size="11.5">Every compliance signal is green because the mandate was written for an environment the agent was not actually in. No intent or means comparison detects it; only the environment does (EC-2.18, EC-2.20).</text>
+</svg>
