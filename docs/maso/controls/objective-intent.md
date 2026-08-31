@@ -338,6 +338,8 @@ Objective Intent evaluation intensity scales with risk classification:
 | **PA-2.1** Orchestrator intent verification | OISpec verification is continuous, not just at decomposition time |
 | **PA-2.2** Judge calibration | Judge OISpecs make calibration criteria explicit and evaluable, not just accuracy targets |
 | **OB-2.2** Anomaly scoring | Intent alignment score becomes an additional signal in the anomaly scoring vector |
+| **OB-2.3** Drift detection | The behavioural baseline is the empirical counterpart to the OISpec's normative one. Declared intent says what an agent is for; the baseline says what it actually does. Intent without a baseline catches only the failures someone thought to specify; a baseline without intent flags the unusual and cannot say whether it was wrong. Both are inputs to the same escalation decision. See [Intent Versus Action](../../insights/intent-versus-action.md) |
+| **Agentic Task Mandate** (AT-1.4, AT-2.6, AT-2.7) | OISpec declares what the agent should achieve; the mandate governs the means it may use to get there, and the four-state deviation model is the comparison of the two made operational. Creative substitution, correct outcome by unauthorised means, is invisible to intent evaluation that stops at the outcome |
 | **Reviewing controls** (semantic firewall, independent verification, Model-as-Judge, human review) | OISpec's typed success/failure criteria let each criterion be routed to the reviewing control that can actually verify it, rather than sending every check to an LLM Judge. See [Matching Reviewing Controls to Intent Criteria](#matching-reviewing-controls-to-intent-criteria) |
 | **The Intent Layer** (post-execution evaluation) | OISpec provides the structured "Intent Specification" that the post-execution reviewing controls evaluate against, now extended to every agent and every judge |
 
@@ -361,7 +363,13 @@ The judge meta-evaluator operates against its own OISpec. Who evaluates the meta
 
 **Mitigation:** Sampled human review of meta-evaluator verdicts. Calibration testing of the meta-evaluator. The recursion stops at humans, not at more agents.
 
-**4. OISpec maintenance is an ongoing cost.**
+**4. Intent compliance is not containment.**
+
+An agent can satisfy its OISpec completely, use only authorised means, produce the declared outcome, and still cause harm, if the specification was written for an environment the agent is not actually in. This is the mandate-scope failure state in [Agentic Task Mandate](agentic-task-mandate.md#the-fifth-state-mandate-scope-failure): Claude Opus 4.7 solved the capture-the-flag exercise it was set and breached a real company doing it, and Meta's Muse Spark reached a third-party service because a fictional target name in the scenario resolved to a real domain. No comparison inside this domain returns a failure for either run.
+
+**Mitigation:** The boundary is environmental, not semantic. AT-2.16 reconciles a mandate's environmental assumptions against the environment before deployment, [EC-2.18](execution-control.md) validates every reachable egress path, and [EC-2.20](execution-control.md) resolves every name that appears in task or scenario content. Intent evaluation tells you whether the agent did its job; only the environment tells you what its job could reach.
+
+**5. OISpec maintenance is an ongoing cost.**
 
 As agents evolve, tools change, and requirements shift, OISpecs must be updated. Stale OISpecs produce false positives (flagging correct behavior that doesn't match outdated criteria) or false negatives (missing violations of updated requirements).
 
