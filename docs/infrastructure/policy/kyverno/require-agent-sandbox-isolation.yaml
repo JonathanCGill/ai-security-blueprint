@@ -1,0 +1,71 @@
+# Control: SAND-01 (isolated sandboxes), SAND-04 (resource limits),
+#          SAND-05 (no persistent state), SESS-02 (session isolation)
+# Layer: AIRS Layer 01 - Guardrails + Circuit Breaker (resource limits contain runaway agents)
+#
+# Kyverno ClusterPolicy. Applies to pods that execute agent-generated code, marked
+# with the label airs.io/workload=agent-sandbox. Blocks admission of any sandbox
+# pod that is not hardened: no host namespaces, no privilege escalation, dropped
+# capabilities, a hardened runtime class (e.g. gVisor / Kata), an ephemeral
+# read-only root filesystem, and enforced CPU/memory limits.
+#
+# Apply with: kubectl apply -f require-agent-sandbox-isolation.yaml
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-agent-sandbox-isolation
+  annotations:
+    policies.kyverno.io/title: Require agent sandbox isolation
+    policies.kyverno.io/category: AI Security Infrastructure Controls
+    policies.kyverno.io/description: >-
+      Enforces deterministic isolation for pods that run agent-generated code
+      (SAND-01/04/05, SESS-02). Blocks host namespace sharing, privilege
+      escalation, missing resource limits, and mutable root filesystems.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: no-host-namespaces
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+              selector:
+                matchLabels:
+                  airs.io/workload: agent-sandbox
+      validate:
+        message: "SAND-01/SESS-02: agent sandboxes must not share host namespaces."
+        pattern:
+          spec:
+            =(hostNetwork): "false"
+            =(hostPID): "false"
+            =(hostIPC): "false"
+    - name: hardened-runtime-and-limits
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+              selector:
+                matchLabels:
+                  airs.io/workload: agent-sandbox
+      validate:
+        message: >-
+          SAND-01/04/05: agent sandboxes require a hardened runtimeClassName, no
+          privilege escalation, dropped capabilities, a read-only root filesystem,
+          and CPU/memory limits.
+        pattern:
+          spec:
+            runtimeClassName: "gvisor | kata"
+            containers:
+              - name: "*"
+                securityContext:
+                  allowPrivilegeEscalation: false
+                  readOnlyRootFilesystem: true
+                  capabilities:
+                    drop:
+                      - ALL
+                resources:
+                  limits:
+                    memory: "?*"
+                    cpu: "?*"

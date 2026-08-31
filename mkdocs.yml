@@ -274,6 +274,9 @@ nav:
     - Infrastructure:
       - infrastructure/README.md
       - Infrastructure Controls Reference: infrastructure/reference.md
+      - Control Handoff Matrix: infrastructure/handoff-matrix.md
+      - Machine-Readable Catalog: infrastructure/catalog/README.md
+      - Policy as Code (OPA & Kyverno): infrastructure/policy/README.md
       - Controls:
         - Identity & Access: infrastructure/controls/identity-and-access.md
         - Logging & Observability: infrastructure/controls/logging-and-observability.md
@@ -403,6 +406,7 @@ nav:
       - Framework Validation Status: maturity.md
       - Validated Against Real Incidents: validated-against.md
       - Implementation Guide: implementation-guide.md
+      - Glossary & Unified Taxonomy: glossary.md
       - References & Sources: references.md
 
     - Downloads: downloads.md
